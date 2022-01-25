@@ -28,11 +28,11 @@ import getLibrary from './utils/getLibrary'
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName)
 
-if (!!window.ethereum) {
-  window.ethereum.autoRefreshOnNetworkChange = false
-}
+// if (!!window.ethereum) {
+//   window.ethereum.autoRefreshOnNetworkChange = false
+// }
 
-function Updaters() {
+export function Updaters() {
   return (
     <>
       <RadialGradientByChainUpdater />
@@ -47,8 +47,8 @@ function Updaters() {
   )
 }
 
-ReactDOM.render(
-  <StrictMode>
+export function Main() {
+  return (
     <Provider store={store}>
       <HashRouter>
         <LanguageProvider>
@@ -66,6 +66,12 @@ ReactDOM.render(
         </LanguageProvider>
       </HashRouter>
     </Provider>
+  )
+}
+
+ReactDOM.render(
+  <StrictMode>
+    <Main />
   </StrictMode>,
   document.getElementById('root')
 )
