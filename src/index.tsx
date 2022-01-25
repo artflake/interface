@@ -14,7 +14,8 @@ import { HashRouter } from 'react-router-dom'
 import Blocklist from './components/Blocklist'
 import { NetworkContextName } from './constants/misc'
 import { LanguageProvider } from './i18n'
-import App from './pages/App'
+// import App from './pages/App'
+import App from './snowflake/App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import store from './state'
 import ApplicationUpdater from './state/application/updater'
@@ -32,7 +33,7 @@ if (!!window.ethereum) {
   window.ethereum.autoRefreshOnNetworkChange = false
 }
 
-function Updaters() {
+export function Updaters() {
   return (
     <>
       <RadialGradientByChainUpdater />
@@ -47,8 +48,8 @@ function Updaters() {
   )
 }
 
-ReactDOM.render(
-  <StrictMode>
+export function Main() {
+  return (
     <Provider store={store}>
       <HashRouter>
         <LanguageProvider>
@@ -66,9 +67,17 @@ ReactDOM.render(
         </LanguageProvider>
       </HashRouter>
     </Provider>
-  </StrictMode>,
-  document.getElementById('root')
-)
+  )
+}
+
+export { default as App } from './snowflake/App'
+
+// ReactDOM.render(
+//   <StrictMode>
+//     <Main />
+//   </StrictMode>,
+//   document.getElementById('root')
+// )
 
 if (process.env.REACT_APP_SERVICE_WORKER !== 'false') {
   serviceWorkerRegistration.register()

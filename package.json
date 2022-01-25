@@ -2,12 +2,9 @@
   "name": "@uniswap/interface",
   "description": "Uniswap Interface",
   "homepage": ".",
-  "main": "dist/interface.js",
-  "module": "dist/interface.esm.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.tsx",
   "files": [
-    "lib",
-    "dist"
+    "src"
   ],
   "private": true,
   "devDependencies": {
