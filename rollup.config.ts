@@ -32,7 +32,7 @@ const replacements = {
 // const ignore = ['styled-components']
 
 const library = {
-  input: 'src/snowflake.ts',
+  input: 'src/snowflake/index.ts',
   output: [
     {
       file: 'dist2/snowflake.js',
@@ -49,11 +49,10 @@ const library = {
   ],
   // necessary because some nested imports (eg jotai/*) would otherwise not resolve.
   // external: (source: string) => Boolean(deps.find((dep) => source === dep || source.startsWith(dep + '/'))),
-  // external: ['styled-components'],
   // external: (source: string) => ignore.includes(source),
   plugins: [
     // external(),
-    eslint({ include: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'] }),
+    // eslint({ include: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'] }),
     replace({ ...replacements, preventAssignment: true }),
 
     typescript({ tsconfig: './tsconfig.json', useTsconfigDeclarationDir: true }),
@@ -86,7 +85,7 @@ const typings = {
   plugins: [dts({ compilerOptions: { baseUrl: 'dist2/types' } })],
 }
 
-const config = [library, typings]
+// const config = [library, typings]
 // const config = [library]
 
-export default config
+export default library

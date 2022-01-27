@@ -65,6 +65,9 @@ var react = require('@reduxjs/toolkit/query/react');
 var reduxLocalstorageSimple = require('redux-localstorage-simple');
 var graphqlRequest = require('graphql-request');
 var tokenLists = require('@uniswap/token-lists');
+var core$2 = require('@lingui/core');
+var react$1 = require('@lingui/react');
+var plurals$1 = require('make-plural/plurals');
 var smartOrderRouter = require('@uniswap/smart-order-router');
 var ethers = require('ethers/lib/ethers');
 
@@ -261,7 +264,7 @@ var optimismLogoUrl = "data:image/svg+xml,%3Csvg%20width%3D%22170%22%20height%3D
 
 var polygonMaticLogo = "data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20viewBox%3D%220%200%2038.4%2033.5%22%20style%3D%22enable-background%3Anew%200%200%2038.4%2033.5%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%238247E5%3B%7D%3C%2Fstyle%3E%3Cg%3E%20%3Cpath%20class%3D%22st0%22%20d%3D%22M29%2C10.2c-0.7-0.4-1.6-0.4-2.4%2C0L21%2C13.5l-3.8%2C2.1l-5.5%2C3.3c-0.7%2C0.4-1.6%2C0.4-2.4%2C0L5%2C16.3%20%20c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8%2C0.4-1.6%2C1.2-2.1l4.3-2.5c0.7-0.4%2C1.6-0.4%2C2.4%2C0L16%2C7.2c0.7%2C0.4%2C1.2%2C1.2%2C1.2%2C2.1v3.3l3.8-2.2V7%20%20c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4%2C0L1.2%2C5C0.4%2C5.4%2C0%2C6.2%2C0%2C7v9.4c0%2C0.8%2C0.4%2C1.6%2C1.2%2C2.1l8.1%2C4.7%20%20c0.7%2C0.4%2C1.6%2C0.4%2C2.4%2C0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4%2C1.6-0.4%2C2.4%2C0l4.3%2C2.5c0.7%2C0.4%2C1.2%2C1.2%2C1.2%2C2.1v5c0%2C0.8-0.4%2C1.6-1.2%2C2.1%20%20L29%2C28.8c-0.7%2C0.4-1.6%2C0.4-2.4%2C0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8%2C2.2v3.3c0%2C0.8%2C0.4%2C1.6%2C1.2%2C2.1l8.1%2C4.7%20%20c0.7%2C0.4%2C1.6%2C0.4%2C2.4%2C0l8.1-4.7c0.7-0.4%2C1.2-1.2%2C1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29%2C10.2z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E";
 
-var _a$g;
+var _a$h;
 /**
  * List of all the networks supported by the Uniswap Interface
  */
@@ -279,19 +282,19 @@ var SupportedChainId;
     SupportedChainId[SupportedChainId["POLYGON"] = 137] = "POLYGON";
     SupportedChainId[SupportedChainId["POLYGON_MUMBAI"] = 80001] = "POLYGON_MUMBAI";
 })(SupportedChainId || (SupportedChainId = {}));
-(_a$g = {},
-    _a$g[SupportedChainId.MAINNET] = 'mainnet',
-    _a$g[SupportedChainId.ROPSTEN] = 'ropsten',
-    _a$g[SupportedChainId.RINKEBY] = 'rinkeby',
-    _a$g[SupportedChainId.GOERLI] = 'goerli',
-    _a$g[SupportedChainId.KOVAN] = 'kovan',
-    _a$g[SupportedChainId.POLYGON] = 'polygon',
-    _a$g[SupportedChainId.POLYGON_MUMBAI] = 'polygon_mumbai',
-    _a$g[SupportedChainId.ARBITRUM_ONE] = 'arbitrum',
-    _a$g[SupportedChainId.ARBITRUM_RINKEBY] = 'arbitrum_rinkeby',
-    _a$g[SupportedChainId.OPTIMISM] = 'optimism',
-    _a$g[SupportedChainId.OPTIMISTIC_KOVAN] = 'optimistic_kovan',
-    _a$g);
+(_a$h = {},
+    _a$h[SupportedChainId.MAINNET] = 'mainnet',
+    _a$h[SupportedChainId.ROPSTEN] = 'ropsten',
+    _a$h[SupportedChainId.RINKEBY] = 'rinkeby',
+    _a$h[SupportedChainId.GOERLI] = 'goerli',
+    _a$h[SupportedChainId.KOVAN] = 'kovan',
+    _a$h[SupportedChainId.POLYGON] = 'polygon',
+    _a$h[SupportedChainId.POLYGON_MUMBAI] = 'polygon_mumbai',
+    _a$h[SupportedChainId.ARBITRUM_ONE] = 'arbitrum',
+    _a$h[SupportedChainId.ARBITRUM_RINKEBY] = 'arbitrum_rinkeby',
+    _a$h[SupportedChainId.OPTIMISM] = 'optimism',
+    _a$h[SupportedChainId.OPTIMISTIC_KOVAN] = 'optimistic_kovan',
+    _a$h);
 /**
  * Array of all the supported chain IDs
  */
@@ -354,7 +357,7 @@ var DEFAULT_LIST_OF_LISTS = __spreadArray(__spreadArray([], __read(DEFAULT_LIST_
 // default lists to be 'active' aka searched across
 var DEFAULT_ACTIVE_LIST_URLS = [UNI_LIST, GEMINI_LIST];
 
-var _a$f, _b$6;
+var _a$g, _b$6;
 var INFURA_KEY = process.env.REACT_APP_INFURA_KEY;
 if (typeof INFURA_KEY === 'undefined') {
     throw new Error("REACT_APP_INFURA_KEY must be a defined environment variable");
@@ -362,19 +365,19 @@ if (typeof INFURA_KEY === 'undefined') {
 /**
  * These are the network URLs used by the interface when there is not another available source of chain data
  */
-var INFURA_NETWORK_URLS = (_a$f = {},
-    _a$f[SupportedChainId.MAINNET] = "https://mainnet.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.RINKEBY] = "https://rinkeby.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.ROPSTEN] = "https://ropsten.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.GOERLI] = "https://goerli.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.KOVAN] = "https://kovan.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.OPTIMISM] = "https://optimism-mainnet.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.OPTIMISTIC_KOVAN] = "https://optimism-kovan.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.ARBITRUM_ONE] = "https://arbitrum-mainnet.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.ARBITRUM_RINKEBY] = "https://arbitrum-rinkeby.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.POLYGON] = "https://polygon-mainnet.infura.io/v3/" + INFURA_KEY,
-    _a$f[SupportedChainId.POLYGON_MUMBAI] = "https://polygon-mumbai.infura.io/v3/" + INFURA_KEY,
-    _a$f);
+var INFURA_NETWORK_URLS = (_a$g = {},
+    _a$g[SupportedChainId.MAINNET] = "https://mainnet.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.RINKEBY] = "https://rinkeby.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.ROPSTEN] = "https://ropsten.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.GOERLI] = "https://goerli.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.KOVAN] = "https://kovan.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.OPTIMISM] = "https://optimism-mainnet.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.OPTIMISTIC_KOVAN] = "https://optimism-kovan.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.ARBITRUM_ONE] = "https://arbitrum-mainnet.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.ARBITRUM_RINKEBY] = "https://arbitrum-rinkeby.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.POLYGON] = "https://polygon-mainnet.infura.io/v3/" + INFURA_KEY,
+    _a$g[SupportedChainId.POLYGON_MUMBAI] = "https://polygon-mumbai.infura.io/v3/" + INFURA_KEY,
+    _a$g);
 var NetworkType;
 (function (NetworkType) {
     NetworkType[NetworkType["L1"] = 0] = "L1";
@@ -443,7 +446,7 @@ var CHAIN_INFO = (_b$6 = {},
     },
     _b$6[SupportedChainId.OPTIMISM] = {
         networkType: NetworkType.L2,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_1$X || (templateObject_1$X = __makeTemplateObject(["25m"], ["25m"]))),
+        blockWaitMsBeforeWarning: ms__default["default"](templateObject_1$Y || (templateObject_1$Y = __makeTemplateObject(["25m"], ["25m"]))),
         bridge: 'https://gateway.optimism.io/?chainId=1',
         defaultListUrl: OPTIMISM_LIST,
         docs: 'https://optimism.io/',
@@ -460,7 +463,7 @@ var CHAIN_INFO = (_b$6 = {},
     },
     _b$6[SupportedChainId.OPTIMISTIC_KOVAN] = {
         networkType: NetworkType.L2,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_2$E || (templateObject_2$E = __makeTemplateObject(["25m"], ["25m"]))),
+        blockWaitMsBeforeWarning: ms__default["default"](templateObject_2$F || (templateObject_2$F = __makeTemplateObject(["25m"], ["25m"]))),
         bridge: 'https://gateway.optimism.io/',
         defaultListUrl: OPTIMISM_LIST,
         docs: 'https://optimism.io/',
@@ -477,7 +480,7 @@ var CHAIN_INFO = (_b$6 = {},
     },
     _b$6[SupportedChainId.ARBITRUM_ONE] = {
         networkType: NetworkType.L2,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_3$x || (templateObject_3$x = __makeTemplateObject(["10m"], ["10m"]))),
+        blockWaitMsBeforeWarning: ms__default["default"](templateObject_3$y || (templateObject_3$y = __makeTemplateObject(["10m"], ["10m"]))),
         bridge: 'https://bridge.arbitrum.io/',
         docs: 'https://offchainlabs.com/',
         explorer: 'https://arbiscan.io/',
@@ -536,7 +539,7 @@ var CHAIN_INFO = (_b$6 = {},
         },
     },
     _b$6);
-var templateObject_1$X, templateObject_2$E, templateObject_3$x, templateObject_4$n, templateObject_5$k, templateObject_6$e;
+var templateObject_1$Y, templateObject_2$F, templateObject_3$y, templateObject_4$n, templateObject_5$k, templateObject_6$e;
 
 var NetworkContextName = 'NETWORK';
 // 30 minutes, denominated in seconds
@@ -544,6 +547,7 @@ var DEFAULT_DEADLINE_FROM_NOW = 60 * 30;
 var L2_DEADLINE_FROM_NOW = 60 * 5;
 // transaction popup dismisal amounts
 var DEFAULT_TXN_DISMISS_MS = 25000;
+var L2_TXN_DISMISS_MS = 5000;
 // used for rewards deadlines
 JSBI__default["default"].BigInt(60 * 60 * 24 * 7);
 JSBI__default["default"].BigInt(0);
@@ -593,14 +597,14 @@ function constructSameAddressMap(address, additionalNetworks) {
     }, {});
 }
 
-var _a$e, _b$5, _c$4, _d$3, _e$2, _f$1, _g$1, _h$1;
+var _a$f, _b$5, _c$4, _d$3, _e$2, _f$1, _g$1, _h$1;
 var UNI_ADDRESS = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984');
 var MULTICALL_ADDRESS = __assign(__assign({}, constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984', [
     SupportedChainId.OPTIMISTIC_KOVAN,
     SupportedChainId.OPTIMISM,
     SupportedChainId.POLYGON_MUMBAI,
     SupportedChainId.POLYGON,
-])), (_a$e = {}, _a$e[SupportedChainId.ARBITRUM_ONE] = '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB', _a$e[SupportedChainId.ARBITRUM_RINKEBY] = '0xa501c031958F579dB7676fF1CE78AD305794d579', _a$e));
+])), (_a$f = {}, _a$f[SupportedChainId.ARBITRUM_ONE] = '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB', _a$f[SupportedChainId.ARBITRUM_RINKEBY] = '0xa501c031958F579dB7676fF1CE78AD305794d579', _a$f));
 var V2_FACTORY_ADDRESSES = constructSameAddressMap(v2Sdk.FACTORY_ADDRESS);
 var V2_ROUTER_ADDRESS = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D');
 var V3_ROUTER_ADDRESS = constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564', [
@@ -686,7 +690,7 @@ constructSameAddressMap('0xA5644E29708357803b5A882D272c41cC0dF92B34', [
     _h$1[SupportedChainId.ARBITRUM_RINKEBY] = '0xbfd8137f7d1516D3ea5cA83523914859ec47F573',
     _h$1);
 
-var _a$d, _b$4;
+var _a$e, _b$4;
 var AMPL = new sdkCore.Token(SupportedChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth');
 var DAI = new sdkCore.Token(SupportedChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin');
 var DAI_ARBITRUM_ONE = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai stable coin');
@@ -715,13 +719,13 @@ var rETH2 = new sdkCore.Token(SupportedChainId.MAINNET, '0x20BC832ca081b91433ff6
 var SWISE = new sdkCore.Token(SupportedChainId.MAINNET, '0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2', 18, 'SWISE', 'StakeWise');
 var WETH_POLYGON_MUMBAI = new sdkCore.Token(SupportedChainId.POLYGON_MUMBAI, '0xa6fa4fb5f76172d178d61b04b0ecd319c5d1c0aa', 18, 'WETH', 'Wrapped Ether');
 var WETH_POLYGON = new sdkCore.Token(SupportedChainId.POLYGON, '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619', 18, 'WETH', 'Wrapped Ether');
-var UNI = (_a$d = {},
-    _a$d[SupportedChainId.MAINNET] = new sdkCore.Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
-    _a$d[SupportedChainId.RINKEBY] = new sdkCore.Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
-    _a$d[SupportedChainId.ROPSTEN] = new sdkCore.Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
-    _a$d[SupportedChainId.GOERLI] = new sdkCore.Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
-    _a$d[SupportedChainId.KOVAN] = new sdkCore.Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap'),
-    _a$d);
+var UNI = (_a$e = {},
+    _a$e[SupportedChainId.MAINNET] = new sdkCore.Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
+    _a$e[SupportedChainId.RINKEBY] = new sdkCore.Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
+    _a$e[SupportedChainId.ROPSTEN] = new sdkCore.Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
+    _a$e[SupportedChainId.GOERLI] = new sdkCore.Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
+    _a$e[SupportedChainId.KOVAN] = new sdkCore.Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap'),
+    _a$e);
 var WRAPPED_NATIVE_CURRENCY = __assign(__assign({}, sdkCore.WETH9), (_b$4 = {}, _b$4[SupportedChainId.OPTIMISM] = new sdkCore.Token(SupportedChainId.OPTIMISM, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'), _b$4[SupportedChainId.OPTIMISTIC_KOVAN] = new sdkCore.Token(SupportedChainId.OPTIMISTIC_KOVAN, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'), _b$4[SupportedChainId.ARBITRUM_ONE] = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, 'WETH', 'Wrapped Ether'), _b$4[SupportedChainId.ARBITRUM_RINKEBY] = new sdkCore.Token(SupportedChainId.ARBITRUM_RINKEBY, '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681', 18, 'WETH', 'Wrapped Ether'), _b$4[SupportedChainId.POLYGON] = new sdkCore.Token(SupportedChainId.POLYGON, '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', 18, 'WMATIC', 'Wrapped MATIC'), _b$4[SupportedChainId.POLYGON_MUMBAI] = new sdkCore.Token(SupportedChainId.POLYGON_MUMBAI, '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', 18, 'WMATIC', 'Wrapped MATIC'), _b$4));
 function isMatic(chainId) {
     return chainId === SupportedChainId.POLYGON_MUMBAI || chainId === SupportedChainId.POLYGON;
@@ -778,26 +782,26 @@ function nativeOnChain(chainId) {
         : ExtendedEther.onChain(chainId)));
 }
 
-var _a$c, _b$3, _c$3, _d$2, _e$1, _f, _g, _h;
+var _a$d, _b$3, _c$3, _d$2, _e$1, _f, _g, _h;
 var WRAPPED_NATIVE_CURRENCIES_ONLY = Object.fromEntries(Object.entries(WRAPPED_NATIVE_CURRENCY).map(function (_a) {
     var _b = __read(_a, 2), key = _b[0], value = _b[1];
     return [key, [value]];
 }));
 // used to construct intermediary pairs for trading
-var BASES_TO_CHECK_TRADES_AGAINST = __assign(__assign({}, WRAPPED_NATIVE_CURRENCIES_ONLY), (_a$c = {}, _a$c[SupportedChainId.MAINNET] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET]), false), [DAI, USDC, USDT, WBTC], false), _a$c[SupportedChainId.OPTIMISM] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.OPTIMISM]), false), [
+var BASES_TO_CHECK_TRADES_AGAINST = __assign(__assign({}, WRAPPED_NATIVE_CURRENCIES_ONLY), (_a$d = {}, _a$d[SupportedChainId.MAINNET] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET]), false), [DAI, USDC, USDT, WBTC], false), _a$d[SupportedChainId.OPTIMISM] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.OPTIMISM]), false), [
     DAI_OPTIMISM,
     USDT_OPTIMISM,
     WBTC_OPTIMISM,
-], false), _a$c[SupportedChainId.ARBITRUM_ONE] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ARBITRUM_ONE]), false), [
+], false), _a$d[SupportedChainId.ARBITRUM_ONE] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ARBITRUM_ONE]), false), [
     DAI_ARBITRUM_ONE,
     USDT_ARBITRUM_ONE,
     WBTC_ARBITRUM_ONE,
-], false), _a$c[SupportedChainId.POLYGON] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.POLYGON]), false), [
+], false), _a$d[SupportedChainId.POLYGON] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.POLYGON]), false), [
     DAI_POLYGON,
     USDC_POLYGON,
     USDT_POLYGON,
     WETH_POLYGON,
-], false), _a$c));
+], false), _a$d));
 var ADDITIONAL_BASES = (_b$3 = {},
     _b$3[SupportedChainId.MAINNET] = (_c$3 = {
             '0xF16E4d813f4DcfDe4c5b44f305c908742De84eF0': [ETH2X_FLI]
@@ -5552,18 +5556,68 @@ function useIsWindowVisible() {
     return focused;
 }
 
+function useBlock() {
+    var _a = useActiveWeb3React(), chainId = _a.chainId, library = _a.library;
+    var windowVisible = useIsWindowVisible();
+    var _b = __read(React.useState({ chainId: chainId }), 2), state = _b[0], setState = _b[1];
+    var onBlock = React.useCallback(function (block) {
+        setState(function (state) {
+            if (state.chainId === chainId) {
+                if (typeof state.block !== 'number')
+                    return { chainId: chainId, block: block };
+                return { chainId: chainId, block: Math.max(block, state.block) };
+            }
+            return state;
+        });
+    }, [chainId]);
+    React.useEffect(function () {
+        if (library && chainId && windowVisible) {
+            setState({ chainId: chainId });
+            library
+                .getBlockNumber()
+                .then(onBlock)
+                .catch(function (error) {
+                console.error("Failed to get block number for chainId " + chainId, error);
+            });
+            library.on('block', onBlock);
+            return function () {
+                library.removeListener('block', onBlock);
+            };
+        }
+        return undefined;
+    }, [chainId, library, onBlock, windowVisible]);
+    var debouncedBlock = useDebounce(state.block, 100);
+    return state.block ? debouncedBlock : undefined;
+}
 var blockAtom = jotai.atom(undefined);
+function BlockUpdater() {
+    var setBlock = utils.useUpdateAtom(blockAtom);
+    var block = useBlock();
+    React.useEffect(function () {
+        setBlock(block);
+    }, [block, setBlock]);
+    return null;
+}
 /** Requires that BlockUpdater be installed in the DOM tree. */
 function useBlockNumber() {
     var chainId = useActiveWeb3React().chainId;
     var block = utils.useAtomValue(blockAtom);
     return chainId ? block : undefined;
 }
+function useFastForwardBlockNumber() {
+    return utils.useUpdateAtom(blockAtom);
+}
 
-var _a$b;
+var _a$c;
 var multicall = reduxMulticall.createMulticall();
-var reducer = redux.combineReducers((_a$b = {}, _a$b[multicall.reducerPath] = multicall.reducer, _a$b));
+var reducer = redux.combineReducers((_a$c = {}, _a$c[multicall.reducerPath] = multicall.reducer, _a$c));
 redux.createStore(reducer);
+function MulticallUpdater() {
+    var latestBlockNumber = useBlockNumber();
+    var chainId = useActiveWeb3React().chainId;
+    var contract = useInterfaceMulticall();
+    return jsxRuntime.jsx(multicall.Updater, { chainId: chainId, latestBlockNumber: latestBlockNumber, contract: contract }, void 0);
+}
 
 function useMultipleContractSingleData() {
     var _a;
@@ -7847,6 +7901,14 @@ function useDarkModeManager() {
 function useUserLocale() {
     return useAppSelector(function (state) { return state.user.userLocale; });
 }
+function useUserLocaleManager() {
+    var dispatch = useAppDispatch();
+    var locale = useUserLocale();
+    var setLocale = React.useCallback(function (newLocale) {
+        dispatch(updateUserLocale({ userLocale: newLocale }));
+    }, [dispatch]);
+    return [locale, setLocale];
+}
 function useIsExpertMode() {
     return useAppSelector(function (state) { return state.user.userExpertMode; });
 }
@@ -7969,12 +8031,12 @@ function anonymizeLink(href) {
     }
 }
 
-var ButtonText = styled__default["default"].button(templateObject_1$W || (templateObject_1$W = __makeTemplateObject(["\n  outline: none;\n  border: none;\n  font-size: inherit;\n  padding: 0;\n  margin: 0;\n  background: none;\n  cursor: pointer;\n\n  :hover {\n    opacity: 0.7;\n  }\n\n  :focus {\n    text-decoration: underline;\n  }\n"], ["\n  outline: none;\n  border: none;\n  font-size: inherit;\n  padding: 0;\n  margin: 0;\n  background: none;\n  cursor: pointer;\n\n  :hover {\n    opacity: 0.7;\n  }\n\n  :focus {\n    text-decoration: underline;\n  }\n"])));
-var CloseIcon = styled__default["default"](reactFeather.X)(templateObject_2$D || (templateObject_2$D = __makeTemplateObject(["\n  cursor: pointer;\n"], ["\n  cursor: pointer;\n"
+var ButtonText = styled__default["default"].button(templateObject_1$X || (templateObject_1$X = __makeTemplateObject(["\n  outline: none;\n  border: none;\n  font-size: inherit;\n  padding: 0;\n  margin: 0;\n  background: none;\n  cursor: pointer;\n\n  :hover {\n    opacity: 0.7;\n  }\n\n  :focus {\n    text-decoration: underline;\n  }\n"], ["\n  outline: none;\n  border: none;\n  font-size: inherit;\n  padding: 0;\n  margin: 0;\n  background: none;\n  cursor: pointer;\n\n  :hover {\n    opacity: 0.7;\n  }\n\n  :focus {\n    text-decoration: underline;\n  }\n"])));
+var CloseIcon = styled__default["default"](reactFeather.X)(templateObject_2$E || (templateObject_2$E = __makeTemplateObject(["\n  cursor: pointer;\n"], ["\n  cursor: pointer;\n"
     // for wrapper react feather icons
 ])));
 // for wrapper react feather icons
-var IconWrapper = styled__default["default"].div(templateObject_3$w || (templateObject_3$w = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: ", ";\n  height: ", ";\n  margin-right: ", ";\n  margin-left: ", ";\n  & > * {\n    stroke: ", ";\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: ", ";\n  height: ", ";\n  margin-right: ", ";\n  margin-left: ", ";\n  & > * {\n    stroke: ", ";\n  }\n"
+var IconWrapper = styled__default["default"].div(templateObject_3$x || (templateObject_3$x = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: ", ";\n  height: ", ";\n  margin-right: ", ";\n  margin-left: ", ";\n  & > * {\n    stroke: ", ";\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: ", ";\n  height: ", ";\n  margin-right: ", ";\n  margin-left: ", ";\n  & > * {\n    stroke: ", ";\n  }\n"
     // A button that triggers some onClick result, but looks like a link.
 ])), function (_a) {
     var size = _a.size;
@@ -8085,7 +8147,7 @@ var Separator$1 = styled__default["default"].div(templateObject_22 || (templateO
     var theme = _a.theme;
     return theme.bg2;
 });
-var templateObject_1$W, templateObject_2$D, templateObject_3$w, templateObject_4$m, templateObject_5$j, templateObject_6$d, templateObject_7$c, templateObject_8$9, templateObject_9$8, templateObject_10$6, templateObject_11$5, templateObject_12$5, templateObject_13$2, templateObject_14$2, templateObject_15$1, templateObject_16, templateObject_17, templateObject_18, templateObject_19, templateObject_20, templateObject_21, templateObject_22;
+var templateObject_1$X, templateObject_2$E, templateObject_3$x, templateObject_4$m, templateObject_5$j, templateObject_6$d, templateObject_7$c, templateObject_8$9, templateObject_9$8, templateObject_10$6, templateObject_11$5, templateObject_12$5, templateObject_13$2, templateObject_14$2, templateObject_15$1, templateObject_16, templateObject_17, templateObject_18, templateObject_19, templateObject_20, templateObject_21, templateObject_22;
 
 var MEDIA_WIDTHS = {
     upToExtraSmall: 500,
@@ -8108,10 +8170,84 @@ var Z_INDEX;
     Z_INDEX[Z_INDEX["popover"] = 1070] = "popover";
     Z_INDEX[Z_INDEX["tooltip"] = 1080] = "tooltip";
 })(Z_INDEX || (Z_INDEX = {}));
-Object.keys(MEDIA_WIDTHS).reduce(function (accumulator, size) {
-    accumulator[size] = function (a, b, c) { return styled.css(templateObject_1$V || (templateObject_1$V = __makeTemplateObject(["\n      @media (max-width: ", "px) {\n        ", "\n      }\n    "], ["\n      @media (max-width: ", "px) {\n        ", "\n      }\n    "])), MEDIA_WIDTHS[size], styled.css(a, b, c)); };
+var mediaWidthTemplates = Object.keys(MEDIA_WIDTHS).reduce(function (accumulator, size) {
+    accumulator[size] = function (a, b, c) { return styled.css(templateObject_1$W || (templateObject_1$W = __makeTemplateObject(["\n      @media (max-width: ", "px) {\n        ", "\n      }\n    "], ["\n      @media (max-width: ", "px) {\n        ", "\n      }\n    "])), MEDIA_WIDTHS[size], styled.css(a, b, c)); };
     return accumulator;
 }, {});
+var white = '#FFFFFF';
+var black = '#000000';
+function colors(darkMode) {
+    return {
+        darkMode: darkMode,
+        // base
+        white: white,
+        black: black,
+        // text
+        text1: darkMode ? '#FFFFFF' : '#000000',
+        text2: darkMode ? '#C3C5CB' : '#565A69',
+        text3: darkMode ? '#8F96AC' : '#6E727D',
+        text4: darkMode ? '#B2B9D2' : '#C3C5CB',
+        text5: darkMode ? '#2C2F36' : '#EDEEF2',
+        // backgrounds / greys
+        bg0: darkMode ? '#191B1F' : '#FFF',
+        bg1: darkMode ? '#212429' : '#F7F8FA',
+        bg2: darkMode ? '#2C2F36' : '#EDEEF2',
+        bg3: darkMode ? '#40444F' : '#CED0D9',
+        bg4: darkMode ? '#565A69' : '#888D9B',
+        bg5: darkMode ? '#6C7284' : '#888D9B',
+        bg6: darkMode ? '#1A2028' : '#6C7284',
+        //specialty colors
+        modalBG: darkMode ? 'rgba(0,0,0,.425)' : 'rgba(0,0,0,0.3)',
+        advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
+        //primary colors
+        primary1: darkMode ? '#2172E5' : '#E8006F',
+        primary2: darkMode ? '#3680E7' : '#FF8CC3',
+        primary3: darkMode ? '#4D8FEA' : '#FF99C9',
+        primary4: darkMode ? '#376bad70' : '#F6DDE8',
+        primary5: darkMode ? '#153d6f70' : '#FDEAF1',
+        // color text
+        primaryText1: darkMode ? '#5090ea' : '#D50066',
+        // secondary colors
+        secondary1: darkMode ? '#2172E5' : '#E8006F',
+        secondary2: darkMode ? '#17000b26' : '#F6DDE8',
+        secondary3: darkMode ? '#17000b26' : '#FDEAF1',
+        // other
+        red1: darkMode ? '#FF4343' : '#DA2D2B',
+        red2: darkMode ? '#F82D3A' : '#DF1F38',
+        red3: '#D60000',
+        green1: darkMode ? '#27AE60' : '#007D35',
+        yellow1: '#E3A507',
+        yellow2: '#FF8F00',
+        yellow3: '#F3B71E',
+        blue1: darkMode ? '#2172E5' : '#0068FC',
+        blue2: darkMode ? '#5199FF' : '#0068FC',
+        error: darkMode ? '#FD4040' : '#DF1F38',
+        success: darkMode ? '#27AE60' : '#007D35',
+        warning: '#FF8F00',
+        // dont wanna forget these blue yet
+        blue4: darkMode ? '#153d6f70' : '#C4D9F8',
+        // blue5: darkMode ? '#153d6f70' : '#EBF4FF',
+    };
+}
+function theme(darkMode) {
+    return __assign(__assign({}, colors(darkMode)), { grids: {
+            sm: 8,
+            md: 12,
+            lg: 24,
+        }, 
+        //shadows
+        shadow1: darkMode ? '#000' : '#2F80ED', 
+        // media queries
+        mediaWidth: mediaWidthTemplates, 
+        // css snippets
+        flexColumnNoWrap: styled.css(templateObject_2$D || (templateObject_2$D = __makeTemplateObject(["\n      display: flex;\n      flex-flow: column nowrap;\n    "], ["\n      display: flex;\n      flex-flow: column nowrap;\n    "]))), flexRowNoWrap: styled.css(templateObject_3$w || (templateObject_3$w = __makeTemplateObject(["\n      display: flex;\n      flex-flow: row nowrap;\n    "], ["\n      display: flex;\n      flex-flow: row nowrap;\n    "]))) });
+}
+function ThemeProvider(_a) {
+    var children = _a.children;
+    var darkMode = useIsDarkMode();
+    var themeObject = React.useMemo(function () { return theme(darkMode); }, [darkMode]);
+    return jsxRuntime.jsx(styled.ThemeProvider, __assign({ theme: themeObject }, { children: children }), void 0);
+}
 var TextWrapper$1 = styled__default["default"](rebass.Text)(templateObject_4$l || (templateObject_4$l = __makeTemplateObject(["\n  color: ", ";\n"], ["\n  color: ", ";\n"
     /**
      * Preset styles of the Rebass Text component
@@ -8174,7 +8310,7 @@ var ThemedText = {
         return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: error ? 'red1' : 'text2' }, props), void 0);
     },
 };
-styled.createGlobalStyle(templateObject_5$i || (templateObject_5$i = __makeTemplateObject(["\nhtml {\n  color: ", ";\n  background-color: ", " !important;\n}\n\na {\n color: ", "; \n}\n"], ["\nhtml {\n  color: ", ";\n  background-color: ", " !important;\n}\n\na {\n color: ", "; \n}\n"])), function (_a) {
+var ThemedGlobalStyle = styled.createGlobalStyle(templateObject_5$i || (templateObject_5$i = __makeTemplateObject(["\nhtml {\n  color: ", ";\n  background-color: ", " !important;\n}\n\na {\n color: ", "; \n}\n"], ["\nhtml {\n  color: ", ";\n  background-color: ", " !important;\n}\n\na {\n color: ", "; \n}\n"])), function (_a) {
     var theme = _a.theme;
     return theme.text1;
 }, function (_a) {
@@ -8184,9 +8320,9 @@ styled.createGlobalStyle(templateObject_5$i || (templateObject_5$i = __makeTempl
     var theme = _a.theme;
     return theme.blue1;
 });
-var templateObject_1$V, templateObject_4$l, templateObject_5$i;
+var templateObject_1$W, templateObject_2$D, templateObject_3$w, templateObject_4$l, templateObject_5$i;
 
-var Row = styled__default["default"](styledComponents.Box)(templateObject_1$U || (templateObject_1$U = __makeTemplateObject(["\n  width: ", ";\n  display: flex;\n  padding: 0;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", ";\n  border: ", ";\n  border-radius: ", ";\n"], ["\n  width: ", ";\n  display: flex;\n  padding: 0;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", ";\n  border: ", ";\n  border-radius: ", ";\n"])), function (_a) {
+var Row = styled__default["default"](styledComponents.Box)(templateObject_1$V || (templateObject_1$V = __makeTemplateObject(["\n  width: ", ";\n  display: flex;\n  padding: 0;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", ";\n  border: ", ";\n  border-radius: ", ";\n"], ["\n  width: ", ";\n  display: flex;\n  padding: 0;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", ";\n  border: ", ";\n  border-radius: ", ";\n"])), function (_a) {
     var width = _a.width;
     return width !== null && width !== void 0 ? width : '100%';
 }, function (_a) {
@@ -8221,24 +8357,24 @@ var RowFixed = styled__default["default"](Row)(templateObject_5$h || (templateOb
     var gap = _a.gap;
     return gap && "-" + gap;
 });
-var templateObject_1$U, templateObject_2$C, templateObject_3$v, templateObject_4$k, templateObject_5$h;
+var templateObject_1$V, templateObject_2$C, templateObject_3$v, templateObject_4$k, templateObject_5$h;
 
-var _a$a, _b$2, _c$2, _d$1;
-var L2Icon = styled__default["default"].img(templateObject_1$T || (templateObject_1$T = __makeTemplateObject(["\n  width: 24px;\n  height: 24px;\n  margin-right: 16px;\n"], ["\n  width: 24px;\n  height: 24px;\n  margin-right: 16px;\n"])));
+var _a$b, _b$2, _c$2, _d$1;
+var L2Icon = styled__default["default"].img(templateObject_1$U || (templateObject_1$U = __makeTemplateObject(["\n  width: 24px;\n  height: 24px;\n  margin-right: 16px;\n"], ["\n  width: 24px;\n  height: 24px;\n  margin-right: 16px;\n"])));
 styled__default["default"].div(templateObject_2$B || (templateObject_2$B = __makeTemplateObject(["\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n  padding: 0 20px 20px 20px;\n"], ["\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n  padding: 0 20px 20px 20px;\n"])));
 var BodyText = styled__default["default"].div(templateObject_3$u || (templateObject_3$u = __makeTemplateObject(["\n  color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  margin: 8px;\n  font-size: 14px;\n"], ["\n  color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  margin: 8px;\n  font-size: 14px;\n"])), function (_a) {
     var color = _a.color;
     return color;
 });
 var RootWrapper = styled__default["default"].div(templateObject_4$j || (templateObject_4$j = __makeTemplateObject(["\n  position: relative;\n  margin-top: 16px;\n"], ["\n  position: relative;\n  margin-top: 16px;\n"])));
-var SHOULD_SHOW_ALERT = (_a$a = {},
-    _a$a[SupportedChainId.OPTIMISM] = true,
-    _a$a[SupportedChainId.OPTIMISTIC_KOVAN] = true,
-    _a$a[SupportedChainId.ARBITRUM_ONE] = true,
-    _a$a[SupportedChainId.ARBITRUM_RINKEBY] = true,
-    _a$a[SupportedChainId.POLYGON] = true,
-    _a$a[SupportedChainId.POLYGON_MUMBAI] = true,
-    _a$a);
+var SHOULD_SHOW_ALERT = (_a$b = {},
+    _a$b[SupportedChainId.OPTIMISM] = true,
+    _a$b[SupportedChainId.OPTIMISTIC_KOVAN] = true,
+    _a$b[SupportedChainId.ARBITRUM_ONE] = true,
+    _a$b[SupportedChainId.ARBITRUM_RINKEBY] = true,
+    _a$b[SupportedChainId.POLYGON] = true,
+    _a$b[SupportedChainId.POLYGON_MUMBAI] = true,
+    _a$b);
 var BG_COLORS_BY_DARK_MODE_AND_CHAIN_ID = {
     dark: (_b$2 = {},
         _b$2[SupportedChainId.POLYGON] = 'radial-gradient(100% 93.36% at 0% 6.64%, rgba(160, 108, 247, 0.1) 0%, rgba(82, 32, 166, 0.1) 100%)',
@@ -8288,7 +8424,7 @@ function NetworkAlert() {
     var textColor = TEXT_COLORS[chainId];
     return bridge ? (jsxRuntime.jsx(RootWrapper, { children: jsxRuntime.jsx(ContentWrapper$1, __assign({ chainId: chainId, darkMode: darkMode, logoUrl: logoUrl }, { children: jsxRuntime.jsxs(LinkOutToBridge, __assign({ href: bridge }, { children: [jsxRuntime.jsxs(BodyText, __assign({ color: textColor }, { children: [jsxRuntime.jsx(L2Icon, { src: logoUrl }, void 0), jsxRuntime.jsxs(AutoRow, { children: [jsxRuntime.jsx(Header$1, { children: jsxRuntime.jsxs(macro.Trans, { children: [label, " token bridge"] }, void 0) }, void 0), jsxRuntime.jsx(HideSmall, { children: jsxRuntime.jsxs(macro.Trans, { children: ["Deposit tokens to the ", label, " network."] }, void 0) }, void 0)] }, void 0)] }), void 0), jsxRuntime.jsx(StyledArrowUpRight, { color: textColor }, void 0)] }), void 0) }), void 0) }, void 0)) : null;
 }
-var templateObject_1$T, templateObject_2$B, templateObject_3$u, templateObject_4$j, templateObject_5$g, templateObject_6$c, templateObject_7$b, templateObject_8$8;
+var templateObject_1$U, templateObject_2$B, templateObject_3$u, templateObject_4$j, templateObject_5$g, templateObject_6$c, templateObject_7$b, templateObject_8$8;
 
 /**
  * @param open conditional to show content or hide
@@ -8310,7 +8446,7 @@ function AnimatedDropdown(_a) {
     return (jsxRuntime.jsx(reactSpring.animated.div, __assign({ style: __assign(__assign({}, props), { overflow: 'hidden', width: '100%', willChange: 'height' }) }, { children: jsxRuntime.jsx("div", __assign({ ref: ref }, { children: children }), void 0) }), void 0));
 }
 
-var Card = styled__default["default"](styledComponents.Box)(templateObject_1$S || (templateObject_1$S = __makeTemplateObject(["\n  width: ", ";\n  padding: ", ";\n  border-radius: ", ";\n  border: ", ";\n"], ["\n  width: ", ";\n  padding: ", ";\n  border-radius: ", ";\n  border: ", ";\n"])), function (_a) {
+var Card = styled__default["default"](styledComponents.Box)(templateObject_1$T || (templateObject_1$T = __makeTemplateObject(["\n  width: ", ";\n  padding: ", ";\n  border-radius: ", ";\n  border: ", ";\n"], ["\n  width: ", ";\n  padding: ", ";\n  border-radius: ", ";\n  border: ", ";\n"])), function (_a) {
     var width = _a.width;
     return width !== null && width !== void 0 ? width : '100%';
 }, function (_a) {
@@ -8361,9 +8497,9 @@ styled__default["default"](Card)(templateObject_9$7 || (templateObject_9$7 = __m
     var theme = _a.theme;
     return theme.blue2;
 });
-var templateObject_1$S, templateObject_2$A, templateObject_3$t, templateObject_4$i, templateObject_5$f, templateObject_6$b, templateObject_7$a, templateObject_8$7, templateObject_9$7;
+var templateObject_1$T, templateObject_2$A, templateObject_3$t, templateObject_4$i, templateObject_5$f, templateObject_6$b, templateObject_7$a, templateObject_8$7, templateObject_9$7;
 
-var Column = styled__default["default"].div(templateObject_1$R || (templateObject_1$R = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n"])));
+var Column = styled__default["default"].div(templateObject_1$S || (templateObject_1$S = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n"])));
 var ColumnCenter = styled__default["default"](Column)(templateObject_2$z || (templateObject_2$z = __makeTemplateObject(["\n  width: 100%;\n  align-items: center;\n"], ["\n  width: 100%;\n  align-items: center;\n"])));
 var AutoColumn = styled__default["default"].div(templateObject_3$s || (templateObject_3$s = __makeTemplateObject(["\n  display: grid;\n  grid-auto-rows: auto;\n  grid-row-gap: ", ";\n  justify-items: ", ";\n"], ["\n  display: grid;\n  grid-auto-rows: auto;\n  grid-row-gap: ", ";\n  justify-items: ", ";\n"])), function (_a) {
     var gap = _a.gap;
@@ -8372,9 +8508,9 @@ var AutoColumn = styled__default["default"].div(templateObject_3$s || (templateO
     var justify = _a.justify;
     return justify && justify;
 });
-var templateObject_1$R, templateObject_2$z, templateObject_3$s;
+var templateObject_1$S, templateObject_2$z, templateObject_3$s;
 
-var loadingAnimation = styled.keyframes(templateObject_1$Q || (templateObject_1$Q = __makeTemplateObject(["\n  0% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n"], ["\n  0% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n"])));
+var loadingAnimation = styled.keyframes(templateObject_1$R || (templateObject_1$R = __makeTemplateObject(["\n  0% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n"], ["\n  0% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n"])));
 var LoadingRows = styled__default["default"].div(templateObject_2$y || (templateObject_2$y = __makeTemplateObject(["\n  display: grid;\n\n  & > div {\n    animation: ", " 1.5s infinite;\n    animation-fill-mode: both;\n    background: linear-gradient(\n      to left,\n      ", " 25%,\n      ", " 50%,\n      ", " 75%\n    );\n    background-size: 400%;\n    border-radius: 12px;\n    height: 2.4em;\n    will-change: background-position;\n  }\n"], ["\n  display: grid;\n\n  & > div {\n    animation: ", " 1.5s infinite;\n    animation-fill-mode: both;\n    background: linear-gradient(\n      to left,\n      ", " 25%,\n      ", " 50%,\n      ", " 75%\n    );\n    background-size: 400%;\n    border-radius: 12px;\n    height: 2.4em;\n    will-change: background-position;\n  }\n"])), loadingAnimation, function (_a) {
     var theme = _a.theme;
     return theme.bg1;
@@ -8393,7 +8529,7 @@ var loadingOpacityMixin = styled.css(templateObject_3$r || (templateObject_3$r =
     return ($loading ? '0.4' : '1');
 });
 var LoadingOpacityContainer = styled__default["default"].div(templateObject_4$h || (templateObject_4$h = __makeTemplateObject(["\n  ", "\n"], ["\n  ", "\n"])), loadingOpacityMixin);
-var templateObject_1$Q, templateObject_2$y, templateObject_3$r, templateObject_4$h;
+var templateObject_1$R, templateObject_2$y, templateObject_3$r, templateObject_4$h;
 
 /**
  * Invokes callback repeatedly over an interval defined by the delay
@@ -8424,7 +8560,7 @@ function useInterval(callback, delay, leading) {
     }, [delay, leading]);
 }
 
-var PopoverContainer$1 = styled__default["default"].div(templateObject_1$P || (templateObject_1$P = __makeTemplateObject(["\n  z-index: 9999;\n  visibility: ", ";\n  opacity: ", ";\n  transition: visibility 150ms linear, opacity 150ms linear;\n  color: ", ";\n"], ["\n  z-index: 9999;\n  visibility: ", ";\n  opacity: ", ";\n  transition: visibility 150ms linear, opacity 150ms linear;\n  color: ", ";\n"])), function (props) { return (props.show ? 'visible' : 'hidden'); }, function (props) { return (props.show ? 1 : 0); }, function (_a) {
+var PopoverContainer$1 = styled__default["default"].div(templateObject_1$Q || (templateObject_1$Q = __makeTemplateObject(["\n  z-index: 9999;\n  visibility: ", ";\n  opacity: ", ";\n  transition: visibility 150ms linear, opacity 150ms linear;\n  color: ", ";\n"], ["\n  z-index: 9999;\n  visibility: ", ";\n  opacity: ", ";\n  transition: visibility 150ms linear, opacity 150ms linear;\n  color: ", ";\n"])), function (props) { return (props.show ? 'visible' : 'hidden'); }, function (props) { return (props.show ? 1 : 0); }, function (_a) {
     var theme = _a.theme;
     return theme.text2;
 });
@@ -8458,9 +8594,9 @@ function Popover(_a) {
     useInterval(updateCallback, show ? 100 : null);
     return (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx(ReferenceElement, __assign({ ref: setReferenceElement }, { children: children }), void 0), jsxRuntime.jsx(Portal__default["default"], { children: jsxRuntime.jsxs(PopoverContainer$1, __assign({ show: show, ref: setPopperElement, style: styles.popper }, attributes.popper, { children: [content, jsxRuntime.jsx(Arrow, __assign({ className: "arrow-" + ((_c = (_b = attributes.popper) === null || _b === void 0 ? void 0 : _b['data-popper-placement']) !== null && _c !== void 0 ? _c : ''), ref: setArrowElement, style: styles.arrow }, attributes.arrow), void 0)] }), void 0) }, void 0)] }, void 0));
 }
-var templateObject_1$P, templateObject_2$x, templateObject_3$q;
+var templateObject_1$Q, templateObject_2$x, templateObject_3$q;
 
-var TooltipContainer = styled__default["default"].div(templateObject_1$O || (templateObject_1$O = __makeTemplateObject(["\n  max-width: 256px;\n  padding: 0.6rem 1rem;\n  font-weight: 400;\n  word-break: break-word;\n\n  background: ", ";\n  border-radius: 12px;\n  border: 1px solid ", ";\n  box-shadow: 0 4px 8px 0 ", ";\n"], ["\n  max-width: 256px;\n  padding: 0.6rem 1rem;\n  font-weight: 400;\n  word-break: break-word;\n\n  background: ", ";\n  border-radius: 12px;\n  border: 1px solid ", ";\n  box-shadow: 0 4px 8px 0 ", ";\n"])), function (_a) {
+var TooltipContainer = styled__default["default"].div(templateObject_1$P || (templateObject_1$P = __makeTemplateObject(["\n  max-width: 256px;\n  padding: 0.6rem 1rem;\n  font-weight: 400;\n  word-break: break-word;\n\n  background: ", ";\n  border-radius: 12px;\n  border: 1px solid ", ";\n  box-shadow: 0 4px 8px 0 ", ";\n"], ["\n  max-width: 256px;\n  padding: 0.6rem 1rem;\n  font-weight: 400;\n  word-break: break-word;\n\n  background: ", ";\n  border-radius: 12px;\n  border: 1px solid ", ";\n  box-shadow: 0 4px 8px 0 ", ";\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg0;
 }, function (_a) {
@@ -8495,7 +8631,7 @@ function MouseoverTooltipContent(_a) {
     var close = React.useCallback(function () { return setShow(false); }, [setShow]);
     return (jsxRuntime.jsx(TooltipContent, __assign({}, rest, { show: show, content: disableHover ? null : content }, { children: jsxRuntime.jsx("div", __assign({ style: { display: 'inline-block', lineHeight: 0, padding: '0.25rem' }, onMouseEnter: open, onMouseLeave: close }, { children: children }), void 0) }), void 0));
 }
-var templateObject_1$O;
+var templateObject_1$P;
 
 var THIRTY_BIPS_FEE = new sdkCore.Percent(JSBI__default["default"].BigInt(30), JSBI__default["default"].BigInt(10000));
 var INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(THIRTY_BIPS_FEE);
@@ -9228,11 +9364,11 @@ function useAllV3Routes(currencyIn, currencyOut) {
     }, [chainId, currencyIn, currencyOut, pools, poolsLoading]);
 }
 
-var _a$9;
-var QUOTE_GAS_OVERRIDES = (_a$9 = {},
-    _a$9[SupportedChainId.ARBITRUM_ONE] = 25000000,
-    _a$9[SupportedChainId.ARBITRUM_RINKEBY] = 25000000,
-    _a$9);
+var _a$a;
+var QUOTE_GAS_OVERRIDES = (_a$a = {},
+    _a$a[SupportedChainId.ARBITRUM_ONE] = 25000000,
+    _a$a[SupportedChainId.ARBITRUM_RINKEBY] = 25000000,
+    _a$a);
 var DEFAULT_GAS_QUOTE = 2000000;
 /**
  * Returns the best v3 trade for a desired swap
@@ -9335,15 +9471,15 @@ function useClientSideV3Trade(tradeType, amountSpecified, otherCurrency) {
     }, [amountSpecified, currencyIn, currencyOut, quotesResults, routes, routesLoading, tradeType]);
 }
 
-var _a$8;
+var _a$9;
 // Stablecoin amounts used when calculating spot price for a given currency.
 // The amount is large enough to filter low liquidity pairs.
-var STABLECOIN_AMOUNT_OUT = (_a$8 = {},
-    _a$8[SupportedChainId.MAINNET] = sdkCore.CurrencyAmount.fromRawAmount(USDC, 100000000000),
-    _a$8[SupportedChainId.ARBITRUM_ONE] = sdkCore.CurrencyAmount.fromRawAmount(USDC_ARBITRUM, 10000000000),
-    _a$8[SupportedChainId.OPTIMISM] = sdkCore.CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 1e+22),
-    _a$8[SupportedChainId.POLYGON] = sdkCore.CurrencyAmount.fromRawAmount(USDC_POLYGON, 10000000000),
-    _a$8);
+var STABLECOIN_AMOUNT_OUT = (_a$9 = {},
+    _a$9[SupportedChainId.MAINNET] = sdkCore.CurrencyAmount.fromRawAmount(USDC, 100000000000),
+    _a$9[SupportedChainId.ARBITRUM_ONE] = sdkCore.CurrencyAmount.fromRawAmount(USDC_ARBITRUM, 10000000000),
+    _a$9[SupportedChainId.OPTIMISM] = sdkCore.CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 1e+22),
+    _a$9[SupportedChainId.POLYGON] = sdkCore.CurrencyAmount.fromRawAmount(USDC_POLYGON, 10000000000),
+    _a$9);
 /**
  * Returns the price in USDC of the input currency
  * @param currency currency to compute the USDC price of
@@ -9413,7 +9549,7 @@ function useStablecoinAmountFromFiatValue(fiatValue) {
     }
 }
 
-var StyledPriceContainer = styled__default["default"].button(templateObject_1$N || (templateObject_1$N = __makeTemplateObject(["\n  background-color: transparent;\n  border: none;\n  cursor: pointer;\n  align-items: center;\n  justify-content: flex-start;\n  padding: 0;\n  grid-template-columns: 1fr auto;\n  grid-gap: 0.25rem;\n  display: flex;\n  flex-direction: row;\n  text-align: left;\n  flex-wrap: wrap;\n  padding: 8px 0;\n  user-select: text;\n"], ["\n  background-color: transparent;\n  border: none;\n  cursor: pointer;\n  align-items: center;\n  justify-content: flex-start;\n  padding: 0;\n  grid-template-columns: 1fr auto;\n  grid-gap: 0.25rem;\n  display: flex;\n  flex-direction: row;\n  text-align: left;\n  flex-wrap: wrap;\n  padding: 8px 0;\n  user-select: text;\n"])));
+var StyledPriceContainer = styled__default["default"].button(templateObject_1$O || (templateObject_1$O = __makeTemplateObject(["\n  background-color: transparent;\n  border: none;\n  cursor: pointer;\n  align-items: center;\n  justify-content: flex-start;\n  padding: 0;\n  grid-template-columns: 1fr auto;\n  grid-gap: 0.25rem;\n  display: flex;\n  flex-direction: row;\n  text-align: left;\n  flex-wrap: wrap;\n  padding: 8px 0;\n  user-select: text;\n"], ["\n  background-color: transparent;\n  border: none;\n  cursor: pointer;\n  align-items: center;\n  justify-content: flex-start;\n  padding: 0;\n  grid-template-columns: 1fr auto;\n  grid-gap: 0.25rem;\n  display: flex;\n  flex-direction: row;\n  text-align: left;\n  flex-wrap: wrap;\n  padding: 8px 0;\n  user-select: text;\n"])));
 function TradePrice(_a) {
     var _b, _c, _d, _e, _f, _g;
     var price = _a.price, showInverted = _a.showInverted, setShowInverted = _a.setShowInverted;
@@ -9435,9 +9571,9 @@ function TradePrice(_a) {
             flipPrice();
         }, title: text }, { children: [jsxRuntime.jsx(rebass.Text, __assign({ fontWeight: 500, color: theme.text1 }, { children: text }), void 0), ' ', usdcPrice && (jsxRuntime.jsx(ThemedText.DarkGray, { children: jsxRuntime.jsxs(macro.Trans, { children: ["($", usdcPrice.toSignificant(6, { groupSeparator: ',' }), ")"] }, void 0) }, void 0))] }), void 0));
 }
-var templateObject_1$N;
+var templateObject_1$O;
 
-var Wrapper$d = styled__default["default"].div(templateObject_1$M || (templateObject_1$M = __makeTemplateObject(["\n  position: relative;\n  padding: 8px;\n"], ["\n  position: relative;\n  padding: 8px;\n"])));
+var Wrapper$d = styled__default["default"].div(templateObject_1$N || (templateObject_1$N = __makeTemplateObject(["\n  position: relative;\n  padding: 8px;\n"], ["\n  position: relative;\n  padding: 8px;\n"])));
 var ArrowWrapper$1 = styled__default["default"].div(templateObject_3$p || (templateObject_3$p = __makeTemplateObject(["\n  padding: 4px;\n  border-radius: 12px;\n  height: 32px;\n  width: 32px;\n  position: relative;\n  margin-top: -14px;\n  margin-bottom: -14px;\n  left: calc(50% - 16px);\n  /* transform: rotate(90deg); */\n  background-color: ", ";\n  border: 4px solid ", ";\n  z-index: 2;\n  ", "\n"], ["\n  padding: 4px;\n  border-radius: 12px;\n  height: 32px;\n  width: 32px;\n  position: relative;\n  margin-top: -14px;\n  margin-bottom: -14px;\n  left: calc(50% - 16px);\n  /* transform: rotate(90deg); */\n  background-color: ", ";\n  border: 4px solid ", ";\n  z-index: 2;\n  ", "\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg1;
@@ -9508,7 +9644,7 @@ var ResponsiveTooltipContainer = styled__default["default"](TooltipContainer)(te
     return theme.mediaWidth.upToExtraSmall(templateObject_12$4 || (templateObject_12$4 = __makeTemplateObject(["\n    transform: scale(0.8);\n    transform-origin: ", ";\n  "], ["\n    transform: scale(0.8);\n    transform-origin: ", ";\n  "])), origin !== null && origin !== void 0 ? origin : 'top left');
 });
 styled__default["default"](TradePrice)(templateObject_14$1 || (templateObject_14$1 = __makeTemplateObject(["\n  ", "\n"], ["\n  ", "\n"])), loadingOpacityMixin);
-var templateObject_1$M, templateObject_2$w, templateObject_3$p, templateObject_4$g, templateObject_5$e, templateObject_6$a, templateObject_7$9, templateObject_8$6, templateObject_9$6, templateObject_10$5, templateObject_11$4, templateObject_12$4, templateObject_13$1, templateObject_14$1;
+var templateObject_1$N, templateObject_2$w, templateObject_3$p, templateObject_4$g, templateObject_5$e, templateObject_6$a, templateObject_7$9, templateObject_8$6, templateObject_9$6, templateObject_10$5, templateObject_11$4, templateObject_12$4, templateObject_13$1, templateObject_14$1;
 
 /**
  * Formatted version of price impact text with warning colors
@@ -9518,7 +9654,7 @@ function FormattedPriceImpact(_a) {
     return (jsxRuntime.jsx(ErrorText, __assign({ fontWeight: 500, fontSize: 14, severity: warningSeverity(priceImpact) }, { children: priceImpact ? priceImpact.multiply(-1).toFixed(2) + "%" : '-' }), void 0));
 }
 
-var StyledCard$1 = styled__default["default"](Card)(templateObject_1$L || (templateObject_1$L = __makeTemplateObject(["\n  padding: 0;\n"], ["\n  padding: 0;\n"])));
+var StyledCard$1 = styled__default["default"](Card)(templateObject_1$M || (templateObject_1$M = __makeTemplateObject(["\n  padding: 0;\n"], ["\n  padding: 0;\n"])));
 function TextWithLoadingPlaceholder(_a) {
     var syncing = _a.syncing, width = _a.width, children = _a.children;
     return syncing ? (jsxRuntime.jsx(LoadingRows, { children: jsxRuntime.jsx("div", { style: { height: '15px', width: width + "px" } }, void 0) }, void 0)) : (children);
@@ -9541,7 +9677,7 @@ function AdvancedSwapDetails(_a) {
                                     ? trade.minimumAmountOut(allowedSlippage).toSignificant(6) + " " + trade.outputAmount.currency.symbol
                                     : trade.maximumAmountIn(allowedSlippage).toSignificant(6) + " " + trade.inputAmount.currency.symbol }), void 0) }), void 0)] }, void 0), !(trade === null || trade === void 0 ? void 0 : trade.gasUseEstimateUSD) || !chainId || !SUPPORTED_GAS_ESTIMATE_CHAIN_IDS.includes(chainId) ? null : (jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: theme.text3 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Network Fee" }, void 0) }), void 0), jsxRuntime.jsx(TextWithLoadingPlaceholder, __assign({ syncing: syncing, width: 50 }, { children: jsxRuntime.jsxs(ThemedText.Black, __assign({ textAlign: "right", fontSize: 14, color: theme.text3 }, { children: ["~$", trade.gasUseEstimateUSD.toFixed(2)] }), void 0) }), void 0)] }, void 0))] }), void 0) }, void 0));
 }
-var templateObject_1$L;
+var templateObject_1$M;
 
 var _path$3, _line$1, _line2, _path2;
 
@@ -9622,7 +9758,7 @@ function pickFontColor(variant, theme) {
             return polished.readableColor(theme.bg2);
     }
 }
-var Badge = styled__default["default"].div(templateObject_1$K || (templateObject_1$K = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border: ", ";\n  border-radius: 0.5rem;\n  color: ", ";\n  display: inline-flex;\n  padding: 4px 6px;\n  justify-content: center;\n  font-weight: 500;\n"], ["\n  align-items: center;\n  background-color: ", ";\n  border: ", ";\n  border-radius: 0.5rem;\n  color: ", ";\n  display: inline-flex;\n  padding: 4px 6px;\n  justify-content: center;\n  font-weight: 500;\n"])), function (_a) {
+var Badge = styled__default["default"].div(templateObject_1$L || (templateObject_1$L = __makeTemplateObject(["\n  align-items: center;\n  background-color: ", ";\n  border: ", ";\n  border-radius: 0.5rem;\n  color: ", ";\n  display: inline-flex;\n  padding: 4px 6px;\n  justify-content: center;\n  font-weight: 500;\n"], ["\n  align-items: center;\n  background-color: ", ";\n  border: ", ";\n  border-radius: 0.5rem;\n  color: ", ";\n  display: inline-flex;\n  padding: 4px 6px;\n  justify-content: center;\n  font-weight: 500;\n"])), function (_a) {
     var theme = _a.theme, variant = _a.variant;
     return pickBackgroundColor(variant, theme);
 }, function (_a) {
@@ -9632,7 +9768,7 @@ var Badge = styled__default["default"].div(templateObject_1$K || (templateObject
     var theme = _a.theme, variant = _a.variant;
     return pickFontColor(variant, theme);
 });
-var templateObject_1$K;
+var templateObject_1$L;
 
 function safeNamehash(name) {
     if (name === undefined)
@@ -9761,7 +9897,7 @@ function Logo(_a) {
     return jsxRuntime.jsx(reactFeather.Slash, __assign({}, rest, { style: __assign(__assign({}, style), { color: theme.bg4 }) }), void 0);
 }
 
-var StyledLogo$1 = styled__default["default"](Logo)(templateObject_1$J || (templateObject_1$J = __makeTemplateObject(["\n  width: ", ";\n  height: ", ";\n  background: radial-gradient(white 50%, #ffffff00 calc(75% + 1px), #ffffff00 100%);\n  border-radius: 50%;\n  -mox-box-shadow: 0 0 1px ", ";\n  -webkit-box-shadow: 0 0 1px ", ";\n  box-shadow: 0 0 1px ", ";\n  border: 0px solid rgba(255, 255, 255, 0);\n"], ["\n  width: ", ";\n  height: ", ";\n  background: radial-gradient(white 50%, #ffffff00 calc(75% + 1px), #ffffff00 100%);\n  border-radius: 50%;\n  -mox-box-shadow: 0 0 1px ", ";\n  -webkit-box-shadow: 0 0 1px ", ";\n  box-shadow: 0 0 1px ", ";\n  border: 0px solid rgba(255, 255, 255, 0);\n"])), function (_a) {
+var StyledLogo$1 = styled__default["default"](Logo)(templateObject_1$K || (templateObject_1$K = __makeTemplateObject(["\n  width: ", ";\n  height: ", ";\n  background: radial-gradient(white 50%, #ffffff00 calc(75% + 1px), #ffffff00 100%);\n  border-radius: 50%;\n  -mox-box-shadow: 0 0 1px ", ";\n  -webkit-box-shadow: 0 0 1px ", ";\n  box-shadow: 0 0 1px ", ";\n  border: 0px solid rgba(255, 255, 255, 0);\n"], ["\n  width: ", ";\n  height: ", ";\n  background: radial-gradient(white 50%, #ffffff00 calc(75% + 1px), #ffffff00 100%);\n  border-radius: 50%;\n  -mox-box-shadow: 0 0 1px ", ";\n  -webkit-box-shadow: 0 0 1px ", ";\n  box-shadow: 0 0 1px ", ";\n  border: 0px solid rgba(255, 255, 255, 0);\n"])), function (_a) {
     var size = _a.size;
     return size;
 }, function (_a) {
@@ -9783,9 +9919,9 @@ function CurrencyLogo(_a) {
     var logoURIs = useCurrencyLogoURIs(currency);
     return (jsxRuntime.jsx(StyledLogo$1, __assign({ size: size, native: (_b = currency === null || currency === void 0 ? void 0 : currency.isNative) !== null && _b !== void 0 ? _b : false, srcs: logoURIs, alt: ((_c = currency === null || currency === void 0 ? void 0 : currency.symbol) !== null && _c !== void 0 ? _c : 'token') + " logo", style: style }, rest), void 0));
 }
-var templateObject_1$J;
+var templateObject_1$K;
 
-var Wrapper$c = styled__default["default"].div(templateObject_1$I || (templateObject_1$I = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  flex-direction: row;\n  margin-left: ", ";\n"], ["\n  position: relative;\n  display: flex;\n  flex-direction: row;\n  margin-left: ", ";\n"])), function (_a) {
+var Wrapper$c = styled__default["default"].div(templateObject_1$J || (templateObject_1$J = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  flex-direction: row;\n  margin-left: ", ";\n"], ["\n  position: relative;\n  display: flex;\n  flex-direction: row;\n  margin-left: ", ";\n"])), function (_a) {
     var sizeraw = _a.sizeraw, margin = _a.margin;
     return margin && (sizeraw / 3 + 8).toString() + 'px';
 });
@@ -9798,7 +9934,7 @@ function DoubleCurrencyLogo(_a) {
     var currency0 = _a.currency0, currency1 = _a.currency1, _b = _a.size, size = _b === void 0 ? 16 : _b, _c = _a.margin, margin = _c === void 0 ? false : _c;
     return (jsxRuntime.jsxs(Wrapper$c, __assign({ sizeraw: size, margin: margin }, { children: [currency0 && jsxRuntime.jsx(HigherLogo, { currency: currency0, size: size.toString() + 'px' }, void 0), currency1 && jsxRuntime.jsx(CoveredLogo, { currency: currency1, size: size.toString() + 'px', sizeraw: size }, void 0)] }), void 0));
 }
-var templateObject_1$I, templateObject_2$v, templateObject_3$o;
+var templateObject_1$J, templateObject_2$v, templateObject_3$o;
 
 /**
  * Returns a WrappedTokenInfo from the active token lists when possible,
@@ -9842,7 +9978,7 @@ var SvgDotLine = function SvgDotLine(props) {
   })));
 };
 
-var Wrapper$b = styled__default["default"](rebass.Box)(templateObject_1$H || (templateObject_1$H = __makeTemplateObject(["\n  align-items: center;\n  width: 100%;\n"], ["\n  align-items: center;\n  width: 100%;\n"])));
+var Wrapper$b = styled__default["default"](rebass.Box)(templateObject_1$I || (templateObject_1$I = __makeTemplateObject(["\n  align-items: center;\n  width: 100%;\n"], ["\n  align-items: center;\n  width: 100%;\n"])));
 var RouteContainerRow = styled__default["default"](Row)(templateObject_2$u || (templateObject_2$u = __makeTemplateObject(["\n  display: grid;\n  grid-template-columns: 24px 1fr 24px;\n"], ["\n  display: grid;\n  grid-template-columns: 24px 1fr 24px;\n"])));
 var RouteRow = styled__default["default"](Row)(templateObject_3$n || (templateObject_3$n = __makeTemplateObject(["\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  padding: 0.1rem 0.5rem;\n  position: relative;\n"], ["\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  padding: 0.1rem 0.5rem;\n  position: relative;\n"])));
 var PoolBadge = styled__default["default"](Badge)(templateObject_4$f || (templateObject_4$f = __makeTemplateObject(["\n  display: flex;\n  padding: 4px 4px;\n"], ["\n  display: flex;\n  padding: 4px 4px;\n"])));
@@ -9883,7 +10019,7 @@ function Pool(_a) {
     // TODO - link pool icon to info.uniswap.org via query params
     return (jsxRuntime.jsx(MouseoverTooltip, __assign({ text: jsxRuntime.jsxs(macro.Trans, { children: [(tokenInfo0 === null || tokenInfo0 === void 0 ? void 0 : tokenInfo0.symbol) + '/' + (tokenInfo1 === null || tokenInfo1 === void 0 ? void 0 : tokenInfo1.symbol) + ' ' + feeAmount / 10000, "% pool"] }, void 0) }, { children: jsxRuntime.jsxs(PoolBadge, { children: [jsxRuntime.jsx(rebass.Box, __assign({ margin: "0 4px 0 12px" }, { children: jsxRuntime.jsx(DoubleCurrencyLogo, { currency0: tokenInfo1, currency1: tokenInfo0, size: 20 }, void 0) }), void 0), jsxRuntime.jsxs(ThemedText.Small, __assign({ fontSize: 14 }, { children: [feeAmount / 10000, "%"] }), void 0)] }, void 0) }), void 0));
 }
-var templateObject_1$H, templateObject_2$u, templateObject_3$n, templateObject_4$f, templateObject_5$d, templateObject_6$9, templateObject_7$8, templateObject_8$5, templateObject_9$5;
+var templateObject_1$I, templateObject_2$u, templateObject_3$n, templateObject_4$f, templateObject_5$d, templateObject_6$9, templateObject_7$8, templateObject_8$5, templateObject_9$5;
 
 var AUTO_ROUTER_SUPPORTED_CHAINS = Object.values(smartOrderRouter.ChainId);
 
@@ -9947,7 +10083,7 @@ var SvgStaticRoute = function SvgStaticRoute(props) {
   })));
 };
 
-var StyledAutoRouterIcon = styled__default["default"](SvgAutoRouter)(templateObject_1$G || (templateObject_1$G = __makeTemplateObject(["\n  height: 16px;\n  width: 16px;\n\n  :hover {\n    filter: brightness(1.3);\n  }\n"], ["\n  height: 16px;\n  width: 16px;\n\n  :hover {\n    filter: brightness(1.3);\n  }\n"])));
+var StyledAutoRouterIcon = styled__default["default"](SvgAutoRouter)(templateObject_1$H || (templateObject_1$H = __makeTemplateObject(["\n  height: 16px;\n  width: 16px;\n\n  :hover {\n    filter: brightness(1.3);\n  }\n"], ["\n  height: 16px;\n  width: 16px;\n\n  :hover {\n    filter: brightness(1.3);\n  }\n"])));
 var StyledStaticRouterIcon = styled__default["default"](SvgStaticRoute)(templateObject_2$t || (templateObject_2$t = __makeTemplateObject(["\n  height: 16px;\n  width: 16px;\n\n  fill: ", ";\n\n  :hover {\n    filter: brightness(1.3);\n  }\n"], ["\n  height: 16px;\n  width: 16px;\n\n  fill: ", ";\n\n  :hover {\n    filter: brightness(1.3);\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.text3;
@@ -9964,9 +10100,9 @@ function AutoRouterLabel() {
     var autoRouterSupported = useAutoRouterSupported();
     return autoRouterSupported ? (jsxRuntime.jsx(StyledAutoRouterLabel, __assign({ fontSize: 14 }, { children: "Auto Router" }), void 0)) : (jsxRuntime.jsx(ThemedText.Black, __assign({ fontSize: 14 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Trade Route" }, void 0) }), void 0));
 }
-var templateObject_1$G, templateObject_2$t, templateObject_3$m;
+var templateObject_1$H, templateObject_2$t, templateObject_3$m;
 
-var Wrapper$a = styled__default["default"](AutoColumn)(templateObject_1$F || (templateObject_1$F = __makeTemplateObject(["\n  padding: ", ";\n  border-radius: 16px;\n  border: 1px solid ", ";\n  cursor: pointer;\n"], ["\n  padding: ", ";\n  border-radius: 16px;\n  border: 1px solid ", ";\n  cursor: pointer;\n"])), function (_a) {
+var Wrapper$a = styled__default["default"](AutoColumn)(templateObject_1$G || (templateObject_1$G = __makeTemplateObject(["\n  padding: ", ";\n  border-radius: 16px;\n  border: 1px solid ", ";\n  cursor: pointer;\n"], ["\n  padding: ", ";\n  border-radius: 16px;\n  border: 1px solid ", ";\n  cursor: pointer;\n"])), function (_a) {
     var fixedOpen = _a.fixedOpen;
     return (fixedOpen ? '12px' : '12px 8px 12px 12px');
 }, function (_a) {
@@ -10021,9 +10157,9 @@ function getTokenPath(trade) {
         };
     });
 }
-var templateObject_1$F, templateObject_2$s;
+var templateObject_1$G, templateObject_2$s;
 
-var GasWrapper = styled__default["default"](RowFixed)(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  border-radius: 8px;\n  padding: 4px 6px;\n  height: 24px;\n  color: ", ";\n  background-color: ", ";\n  font-size: 14px;\n  font-weight: 500;\n  user-select: none;\n"], ["\n  border-radius: 8px;\n  padding: 4px 6px;\n  height: 24px;\n  color: ", ";\n  background-color: ", ";\n  font-size: 14px;\n  font-weight: 500;\n  user-select: none;\n"])), function (_a) {
+var GasWrapper = styled__default["default"](RowFixed)(templateObject_1$F || (templateObject_1$F = __makeTemplateObject(["\n  border-radius: 8px;\n  padding: 4px 6px;\n  height: 24px;\n  color: ", ";\n  background-color: ", ";\n  font-size: 14px;\n  font-weight: 500;\n  user-select: none;\n"], ["\n  border-radius: 8px;\n  padding: 4px 6px;\n  height: 24px;\n  color: ", ";\n  background-color: ", ";\n  font-size: 14px;\n  font-weight: 500;\n  user-select: none;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.text3;
 }, function (_a) {
@@ -10054,9 +10190,9 @@ function GasEstimateBadge(_a) {
             });
         } }, { children: jsxRuntime.jsx(LoadingOpacityContainer, __assign({ "$loading": loading }, { children: jsxRuntime.jsxs(GasWrapper, { children: [jsxRuntime.jsx(StyledGasIcon, {}, void 0), formattedGasPriceString !== null && formattedGasPriceString !== void 0 ? formattedGasPriceString : null] }, void 0) }), void 0) }), void 0));
 }
-var templateObject_1$E, templateObject_2$r;
+var templateObject_1$F, templateObject_2$r;
 
-var Wrapper$9 = styled__default["default"](Row)(templateObject_1$D || (templateObject_1$D = __makeTemplateObject(["\n  width: 100%;\n  justify-content: center;\n"], ["\n  width: 100%;\n  justify-content: center;\n"])));
+var Wrapper$9 = styled__default["default"](Row)(templateObject_1$E || (templateObject_1$E = __makeTemplateObject(["\n  width: 100%;\n  justify-content: center;\n"], ["\n  width: 100%;\n  justify-content: center;\n"])));
 var StyledInfoIcon = styled__default["default"](reactFeather.Info)(templateObject_2$q || (templateObject_2$q = __makeTemplateObject(["\n  height: 16px;\n  width: 16px;\n  margin-right: 4px;\n  color: ", ";\n"], ["\n  height: 16px;\n  width: 16px;\n  margin-right: 4px;\n  color: ", ";\n"])), function (_a) {
     var theme = _a.theme;
     return theme.text3;
@@ -10105,9 +10241,9 @@ function SwapDetailsDropdown(_a) {
                                     !chainId ||
                                     !SUPPORTED_GAS_ESTIMATE_CHAIN_IDS.includes(chainId) ? null : (jsxRuntime.jsx(GasEstimateBadge, { trade: trade, loading: syncing || loading, showRoute: !showDetails, disableHover: showDetails }, void 0)), jsxRuntime.jsx(RotatingArrow, { stroke: trade ? theme.text3 : theme.bg3, open: Boolean(trade && showDetails) }, void 0)] }, void 0)] }), void 0), jsxRuntime.jsx(AnimatedDropdown, __assign({ open: showDetails }, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: '8px', style: { padding: '0', paddingBottom: '8px' } }, { children: [trade ? (jsxRuntime.jsx(StyledCard, { children: jsxRuntime.jsx(AdvancedSwapDetails, { trade: trade, allowedSlippage: allowedSlippage, syncing: syncing }, void 0) }, void 0)) : null, trade ? jsxRuntime.jsx(SwapRoute, { trade: trade, syncing: syncing }, void 0) : null] }), void 0) }), void 0)] }), void 0) }, void 0));
 }
-var templateObject_1$D, templateObject_2$q, templateObject_3$l, templateObject_4$e, templateObject_5$c, templateObject_6$8, templateObject_7$7, templateObject_8$4, templateObject_9$4, templateObject_10$4;
+var templateObject_1$E, templateObject_2$q, templateObject_3$l, templateObject_4$e, templateObject_5$c, templateObject_6$8, templateObject_7$7, templateObject_8$4, templateObject_9$4, templateObject_10$4;
 
-var BaseButton = styled__default["default"](styledComponents.Button)(templateObject_1$C || (templateObject_1$C = __makeTemplateObject(["\n  padding: ", ";\n  width: ", ";\n  font-weight: 500;\n  text-align: center;\n  border-radius: ", ";\n  outline: none;\n  border: 1px solid transparent;\n  color: ", ";\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  flex-wrap: nowrap;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n  z-index: 1;\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    pointer-events: none;\n  }\n\n  will-change: transform;\n  transition: transform 450ms ease;\n  transform: perspective(1px) translateZ(0);\n\n  > * {\n    user-select: none;\n  }\n\n  > a {\n    text-decoration: none;\n  }\n"], ["\n  padding: ", ";\n  width: ", ";\n  font-weight: 500;\n  text-align: center;\n  border-radius: ", ";\n  outline: none;\n  border: 1px solid transparent;\n  color: ", ";\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  flex-wrap: nowrap;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n  z-index: 1;\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    pointer-events: none;\n  }\n\n  will-change: transform;\n  transition: transform 450ms ease;\n  transform: perspective(1px) translateZ(0);\n\n  > * {\n    user-select: none;\n  }\n\n  > a {\n    text-decoration: none;\n  }\n"])), function (_a) {
+var BaseButton = styled__default["default"](styledComponents.Button)(templateObject_1$D || (templateObject_1$D = __makeTemplateObject(["\n  padding: ", ";\n  width: ", ";\n  font-weight: 500;\n  text-align: center;\n  border-radius: ", ";\n  outline: none;\n  border: 1px solid transparent;\n  color: ", ";\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  flex-wrap: nowrap;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n  z-index: 1;\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    pointer-events: none;\n  }\n\n  will-change: transform;\n  transition: transform 450ms ease;\n  transform: perspective(1px) translateZ(0);\n\n  > * {\n    user-select: none;\n  }\n\n  > a {\n    text-decoration: none;\n  }\n"], ["\n  padding: ", ";\n  width: ", ";\n  font-weight: 500;\n  text-align: center;\n  border-radius: ", ";\n  outline: none;\n  border: 1px solid transparent;\n  color: ", ";\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  flex-wrap: nowrap;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n  z-index: 1;\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    pointer-events: none;\n  }\n\n  will-change: transform;\n  transition: transform 450ms ease;\n  transform: perspective(1px) translateZ(0);\n\n  > * {\n    user-select: none;\n  }\n\n  > a {\n    text-decoration: none;\n  }\n"])), function (_a) {
     var padding = _a.padding;
     return padding !== null && padding !== void 0 ? padding : '16px';
 }, function (_a) {
@@ -10323,7 +10459,7 @@ styled__default["default"].div(templateObject_13 || (templateObject_13 = __makeT
 });
 styled__default["default"].div(templateObject_14 || (templateObject_14 = __makeTemplateObject(["\n  width: 20px;\n  padding: 0 10px;\n  position: absolute;\n  top: 11px;\n  right: 15px;\n"], ["\n  width: 20px;\n  padding: 0 10px;\n  position: absolute;\n  top: 11px;\n  right: 15px;\n"])));
 styled__default["default"](reactFeather.Check)(templateObject_15 || (templateObject_15 = __makeTemplateObject(["\n  size: 13px;\n"], ["\n  size: 13px;\n"])));
-var templateObject_1$C, templateObject_2$p, templateObject_3$k, templateObject_4$d, templateObject_5$b, templateObject_6$7, templateObject_7$6, templateObject_8$3, templateObject_9$3, templateObject_10$3, templateObject_11$3, templateObject_12$3, templateObject_13, templateObject_14, templateObject_15;
+var templateObject_1$D, templateObject_2$p, templateObject_3$k, templateObject_4$d, templateObject_5$b, templateObject_6$7, templateObject_7$6, templateObject_8$3, templateObject_9$3, templateObject_10$3, templateObject_11$3, templateObject_12$3, templateObject_13, templateObject_14, templateObject_15;
 
 var parser = new uaParserJs.UAParser(window.navigator.userAgent);
 var type$1 = parser.getDevice().type;
@@ -10332,7 +10468,7 @@ var isMobile = type$1 === 'mobile' || type$1 === 'tablet';
 
 var AnimatedDialogOverlay = reactSpring.animated(dialog.DialogOverlay);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-var StyledDialogOverlay = styled__default["default"](AnimatedDialogOverlay)(templateObject_1$B || (templateObject_1$B = __makeTemplateObject(["\n  &[data-reach-dialog-overlay] {\n    z-index: 2;\n    background-color: transparent;\n    overflow: hidden;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background-color: ", ";\n  }\n"], ["\n  &[data-reach-dialog-overlay] {\n    z-index: 2;\n    background-color: transparent;\n    overflow: hidden;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background-color: ", ";\n  }\n"])), function (_a) {
+var StyledDialogOverlay = styled__default["default"](AnimatedDialogOverlay)(templateObject_1$C || (templateObject_1$C = __makeTemplateObject(["\n  &[data-reach-dialog-overlay] {\n    z-index: 2;\n    background-color: transparent;\n    overflow: hidden;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background-color: ", ";\n  }\n"], ["\n  &[data-reach-dialog-overlay] {\n    z-index: 2;\n    background-color: transparent;\n    overflow: hidden;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background-color: ", ";\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.modalBG;
 });
@@ -10394,20 +10530,20 @@ function Modal(_a) {
                     ? __assign(__assign({}, bind()), { style: { transform: y.interpolate(function (y) { return "translateY(" + (y > 0 ? y : 0) + "px)"; }) } }) : {}), { "aria-label": "dialog content", minHeight: minHeight, maxHeight: maxHeight, mobile: isMobile }, { children: [!initialFocusRef && isMobile ? jsxRuntime.jsx("div", { tabIndex: 1 }, void 0) : null, children] }), void 0) }), key));
         }) }, void 0));
 }
-var templateObject_1$B, templateObject_2$o, templateObject_3$j, templateObject_4$c, templateObject_5$a, templateObject_6$6, templateObject_7$5;
+var templateObject_1$C, templateObject_2$o, templateObject_3$j, templateObject_4$c, templateObject_5$a, templateObject_6$6, templateObject_7$5;
 
-var _a$7;
-var ETHERSCAN_PREFIXES = (_a$7 = {},
-    _a$7[SupportedChainId.MAINNET] = 'https://etherscan.io',
-    _a$7[SupportedChainId.ROPSTEN] = 'https://ropsten.etherscan.io',
-    _a$7[SupportedChainId.RINKEBY] = 'https://rinkeby.etherscan.io',
-    _a$7[SupportedChainId.GOERLI] = 'https://goerli.etherscan.io',
-    _a$7[SupportedChainId.KOVAN] = 'https://kovan.etherscan.io',
-    _a$7[SupportedChainId.OPTIMISM] = 'https://optimistic.etherscan.io',
-    _a$7[SupportedChainId.OPTIMISTIC_KOVAN] = 'https://kovan-optimistic.etherscan.io',
-    _a$7[SupportedChainId.POLYGON_MUMBAI] = 'https://mumbai.polygonscan.com',
-    _a$7[SupportedChainId.POLYGON] = 'https://polygonscan.com',
-    _a$7);
+var _a$8;
+var ETHERSCAN_PREFIXES = (_a$8 = {},
+    _a$8[SupportedChainId.MAINNET] = 'https://etherscan.io',
+    _a$8[SupportedChainId.ROPSTEN] = 'https://ropsten.etherscan.io',
+    _a$8[SupportedChainId.RINKEBY] = 'https://rinkeby.etherscan.io',
+    _a$8[SupportedChainId.GOERLI] = 'https://goerli.etherscan.io',
+    _a$8[SupportedChainId.KOVAN] = 'https://kovan.etherscan.io',
+    _a$8[SupportedChainId.OPTIMISM] = 'https://optimistic.etherscan.io',
+    _a$8[SupportedChainId.OPTIMISTIC_KOVAN] = 'https://kovan-optimistic.etherscan.io',
+    _a$8[SupportedChainId.POLYGON_MUMBAI] = 'https://mumbai.polygonscan.com',
+    _a$8[SupportedChainId.POLYGON] = 'https://polygonscan.com',
+    _a$8);
 var ExplorerDataType;
 (function (ExplorerDataType) {
     ExplorerDataType["TRANSACTION"] = "transaction";
@@ -10467,7 +10603,7 @@ function getExplorerLink(chainId, data, type) {
     }
 }
 
-var DetailsFooter = styled__default["default"].div(templateObject_1$A || (templateObject_1$A = __makeTemplateObject(["\n  padding-top: calc(16px + 2rem);\n  padding-bottom: 20px;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: -2rem;\n  width: 100%;\n  max-width: 400px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n  color: ", ";\n  background-color: ", ";\n  z-index: ", ";\n\n  transform: ", ";\n  transition: transform 300ms ease-in-out;\n  text-align: center;\n"], ["\n  padding-top: calc(16px + 2rem);\n  padding-bottom: 20px;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: -2rem;\n  width: 100%;\n  max-width: 400px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n  color: ", ";\n  background-color: ", ";\n  z-index: ", ";\n\n  transform: ", ";\n  transition: transform 300ms ease-in-out;\n  text-align: center;\n"])), function (_a) {
+var DetailsFooter = styled__default["default"].div(templateObject_1$B || (templateObject_1$B = __makeTemplateObject(["\n  padding-top: calc(16px + 2rem);\n  padding-bottom: 20px;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: -2rem;\n  width: 100%;\n  max-width: 400px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n  color: ", ";\n  background-color: ", ";\n  z-index: ", ";\n\n  transform: ", ";\n  transition: transform 300ms ease-in-out;\n  text-align: center;\n"], ["\n  padding-top: calc(16px + 2rem);\n  padding-bottom: 20px;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: -2rem;\n  width: 100%;\n  max-width: 400px;\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n  color: ", ";\n  background-color: ", ";\n  z-index: ", ";\n\n  transform: ", ";\n  transition: transform 300ms ease-in-out;\n  text-align: center;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.text2;
 }, function (_a) {
@@ -10499,7 +10635,7 @@ function UnsupportedCurrencyFooter(_a) {
                                     Object.keys(unsupportedTokens).includes(token.address) && (jsxRuntime.jsx(OutlineCard, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: "10px" }, { children: [jsxRuntime.jsxs(AutoRow, __assign({ gap: "5px", align: "center" }, { children: [jsxRuntime.jsx(CurrencyLogo, { currency: token, size: '24px' }, void 0), jsxRuntime.jsx(ThemedText.Body, __assign({ fontWeight: 500 }, { children: token.symbol }), void 0)] }), void 0), chainId && (jsxRuntime.jsx(ExternalLink, __assign({ href: getExplorerLink(chainId, token.address, ExplorerDataType.ADDRESS) }, { children: jsxRuntime.jsx(AddressText$1, { children: token.address }, void 0) }), void 0))] }), void 0) }, (_a = token.address) === null || _a === void 0 ? void 0 : _a.concat('not-supported'))));
                             }), jsxRuntime.jsx(AutoColumn, __assign({ gap: "lg" }, { children: jsxRuntime.jsx(ThemedText.Body, __assign({ fontWeight: 500 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Some assets are not available through this interface because they may not work well with the smart contracts or we are unable to allow trading for legal reasons." }, void 0) }), void 0) }), void 0)] }), void 0) }), void 0) }), void 0), jsxRuntime.jsx(StyledButtonEmpty, __assign({ padding: '0', onClick: function () { return setShowDetails(true); } }, { children: jsxRuntime.jsx(ThemedText.Blue, { children: jsxRuntime.jsx(macro.Trans, { children: "Read more about unsupported assets" }, void 0) }, void 0) }), void 0)] }), void 0));
 }
-var templateObject_1$A, templateObject_2$n, templateObject_3$i, templateObject_4$b;
+var templateObject_1$B, templateObject_2$n, templateObject_3$i, templateObject_4$b;
 
 /**
  * Does a lookup for an ENS name to find its address.
@@ -10569,87 +10705,239 @@ function useENS(nameOrAddress) {
     }); }, [lookup.address, lookup.loading, nameOrAddress, reverseLookup.ENSName, reverseLookup.loading, validated]);
 }
 
-var InputPanel$1 = styled__default["default"].div(templateObject_1$z || (templateObject_1$z = __makeTemplateObject(["\n  ", "\n  position: relative;\n  border-radius: 1.25rem;\n  background-color: ", ";\n  z-index: 1;\n  width: 100%;\n"], ["\n  ", "\n  position: relative;\n  border-radius: 1.25rem;\n  background-color: ", ";\n  z-index: 1;\n  width: 100%;\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.flexColumnNoWrap;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-});
-var ContainerRow = styled__default["default"].div(templateObject_2$m || (templateObject_2$m = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 1.25rem;\n  border: 1px solid ", ";\n  transition: border-color 300ms ", ",\n    color 500ms ", ";\n  background-color: ", ";\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 1.25rem;\n  border: 1px solid ", ";\n  transition: border-color 300ms ", ",\n    color 500ms ", ";\n  background-color: ", ";\n"])), function (_a) {
-    var error = _a.error, theme = _a.theme;
-    return (error ? theme.red1 : theme.bg2);
-}, function (_a) {
-    var error = _a.error;
-    return (error ? 'step-end' : 'step-start');
-}, function (_a) {
-    var error = _a.error;
-    return (error ? 'step-end' : 'step-start');
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-});
-var InputContainer = styled__default["default"].div(templateObject_3$h || (templateObject_3$h = __makeTemplateObject(["\n  flex: 1;\n  padding: 1rem;\n"], ["\n  flex: 1;\n  padding: 1rem;\n"])));
-var Input$2 = styled__default["default"].input(templateObject_4$a || (templateObject_4$a = __makeTemplateObject(["\n  font-size: 1.25rem;\n  outline: none;\n  border: none;\n  flex: 1 1 auto;\n  width: 0;\n  background-color: ", ";\n  transition: color 300ms ", ";\n  color: ", ";\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-weight: 500;\n  width: 100%;\n  ::placeholder {\n    color: ", ";\n  }\n  padding: 0px;\n  -webkit-appearance: textfield;\n\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n\n  ::-webkit-outer-spin-button,\n  ::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n\n  ::placeholder {\n    color: ", ";\n  }\n"], ["\n  font-size: 1.25rem;\n  outline: none;\n  border: none;\n  flex: 1 1 auto;\n  width: 0;\n  background-color: ", ";\n  transition: color 300ms ", ";\n  color: ", ";\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-weight: 500;\n  width: 100%;\n  ::placeholder {\n    color: ", ";\n  }\n  padding: 0px;\n  -webkit-appearance: textfield;\n\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n\n  ::-webkit-outer-spin-button,\n  ::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n\n  ::placeholder {\n    color: ", ";\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-}, function (_a) {
-    var error = _a.error;
-    return (error ? 'step-end' : 'step-start');
-}, function (_a) {
-    var error = _a.error, theme = _a.theme;
-    return (error ? theme.red1 : theme.text1);
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text4;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text4;
-});
-function AddressInputPanel(_a) {
-    var id = _a.id, _b = _a.className, className = _b === void 0 ? 'recipient-address-input' : _b, label = _a.label, placeholder = _a.placeholder, value = _a.value, onChange = _a.onChange;
-    var chainId = useActiveWeb3React().chainId;
-    var theme = React.useContext(styled.ThemeContext);
-    var _c = useENS(value), address = _c.address, loading = _c.loading, name = _c.name;
-    var handleInput = React.useCallback(function (event) {
-        var input = event.target.value;
-        var withoutSpaces = input.replace(/\s+/g, '');
-        onChange(withoutSpaces);
-    }, [onChange]);
-    var error = Boolean(value.length > 0 && !loading && !address);
-    return (jsxRuntime.jsx(InputPanel$1, __assign({ id: id }, { children: jsxRuntime.jsx(ContainerRow, __assign({ error: error }, { children: jsxRuntime.jsx(InputContainer, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: "md" }, { children: [jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.Black, __assign({ color: theme.text2, fontWeight: 500, fontSize: 14 }, { children: label !== null && label !== void 0 ? label : jsxRuntime.jsx(macro.Trans, { children: "Recipient" }, void 0) }), void 0), address && chainId && (jsxRuntime.jsx(ExternalLink, __assign({ href: getExplorerLink(chainId, name !== null && name !== void 0 ? name : address, ExplorerDataType.ADDRESS), style: { fontSize: '14px' } }, { children: jsxRuntime.jsx(macro.Trans, { children: "(View on Explorer)" }, void 0) }), void 0))] }, void 0), jsxRuntime.jsx(Input$2, { className: className, type: "text", autoComplete: "off", autoCorrect: "off", autoCapitalize: "off", spellCheck: "false", placeholder: placeholder !== null && placeholder !== void 0 ? placeholder : macro.t(templateObject_5$9 || (templateObject_5$9 = __makeTemplateObject(["Wallet Address or ENS name"], ["Wallet Address or ENS name"]))), error: error, pattern: "^(0x[a-fA-F0-9]{40})$", onChange: handleInput, value: value }, void 0)] }), void 0) }, void 0) }), void 0) }), void 0));
-}
-var templateObject_1$z, templateObject_2$m, templateObject_3$h, templateObject_4$a, templateObject_5$9;
-
-function formatCurrencyAmount(amount, sigFigs) {
-    if (!amount) {
-        return '-';
-    }
-    if (JSBI__default["default"].equal(amount.quotient, JSBI__default["default"].BigInt(0))) {
-        return '0';
-    }
-    if (amount.divide(amount.decimalScale).lessThan(new sdkCore.Fraction(1, 100000))) {
-        return '<0.00001';
-    }
-    return amount.toSignificant(sigFigs);
+var ERC20_INTERFACE = new abi$6.Interface([
+    {
+        constant: false,
+        inputs: [
+            { name: '_spender', type: 'address' },
+            { name: '_value', type: 'uint256' },
+        ],
+        name: 'approve',
+        outputs: [{ name: '', type: 'bool' }],
+        payable: false,
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+]);
+function approveAmountCalldata(amount, spender) {
+    if (!amount.currency.isToken)
+        throw new Error('Must call with an amount of token');
+    var approveData = ERC20_INTERFACE.encodeFunctionData('approve', [spender, v3Sdk.toHex(amount.quotient)]);
+    return {
+        to: amount.currency.address,
+        data: approveData,
+        value: '0x0',
+    };
 }
 
-var _path;
+var ArgentWalletContractABI = [
+	{
+		inputs: [
+			{
+				components: [
+					{
+						internalType: "address",
+						name: "to",
+						type: "address"
+					},
+					{
+						internalType: "uint256",
+						name: "value",
+						type: "uint256"
+					},
+					{
+						internalType: "bytes",
+						name: "data",
+						type: "bytes"
+					}
+				],
+				name: "_transactions",
+				type: "tuple[]"
+			}
+		],
+		name: "wc_multiCall",
+		outputs: [
+			{
+				internalType: "bytes[]",
+				name: "",
+				type: "bytes[]"
+			}
+		],
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		inputs: [
+			{
+				internalType: "bytes32",
+				name: "_msgHash",
+				type: "bytes32"
+			},
+			{
+				internalType: "bytes",
+				name: "_signature",
+				type: "bytes"
+			}
+		],
+		name: "isValidSignature",
+		outputs: [
+			{
+				internalType: "bytes4",
+				name: "",
+				type: "bytes4"
+			}
+		],
+		stateMutability: "view",
+		type: "function"
+	}
+];
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function useIsArgentWallet() {
+    var _a, _b;
+    var account = useActiveWeb3React().account;
+    var argentWalletDetector = useArgentWalletDetectorContract();
+    var inputs = React.useMemo(function () { return [account !== null && account !== void 0 ? account : undefined]; }, [account]);
+    var call = useSingleCallResult(argentWalletDetector, 'isArgentWallet', inputs, reduxMulticall.NEVER_RELOAD);
+    return (_b = (_a = call === null || call === void 0 ? void 0 : call.result) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0 ? _b : false;
+}
 
-var SvgDropdown = function SvgDropdown(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends({
-    width: 12,
-    height: 7,
-    viewBox: "0 0 12 7",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path || (_path = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M0.97168 1L6.20532 6L11.439 1",
-    stroke: "#AEAEAE"
-  })));
-};
+function useArgentWalletContract() {
+    var account = useActiveWeb3React().account;
+    var isArgentWallet = useIsArgentWallet();
+    return useContract(isArgentWallet ? account !== null && account !== void 0 ? account : undefined : undefined, ArgentWalletContractABI, true);
+}
+
+/**
+ * Returns the swap calls that can be used to make the trade
+ * @param trade trade to execute
+ * @param allowedSlippage user allowed slippage
+ * @param recipientAddressOrName the ENS name or address of the recipient of the swap output
+ * @param signatureData the signature data of the permit of the input token amount, if available
+ */
+function useSwapCallArguments(trade, allowedSlippage, recipientAddressOrName, signatureData, deadline) {
+    var _a = useActiveWeb3React(), account = _a.account, chainId = _a.chainId, library = _a.library;
+    var recipientAddress = useENS(recipientAddressOrName).address;
+    var recipient = recipientAddressOrName === null ? account : recipientAddress;
+    var routerContract = useV2RouterContract();
+    var argentWalletContract = useArgentWalletContract();
+    return React.useMemo(function () {
+        if (!trade || !recipient || !library || !account || !chainId || !deadline)
+            return [];
+        if (trade instanceof v2Sdk.Trade) {
+            if (!routerContract)
+                return [];
+            var swapMethods = [];
+            swapMethods.push(v2Sdk.Router.swapCallParameters(trade, {
+                feeOnTransfer: false,
+                allowedSlippage: allowedSlippage,
+                recipient: recipient,
+                deadline: deadline.toNumber(),
+            }));
+            if (trade.tradeType === sdkCore.TradeType.EXACT_INPUT) {
+                swapMethods.push(v2Sdk.Router.swapCallParameters(trade, {
+                    feeOnTransfer: true,
+                    allowedSlippage: allowedSlippage,
+                    recipient: recipient,
+                    deadline: deadline.toNumber(),
+                }));
+            }
+            return swapMethods.map(function (_a) {
+                var methodName = _a.methodName, args = _a.args, value = _a.value;
+                if (argentWalletContract && trade.inputAmount.currency.isToken) {
+                    return {
+                        address: argentWalletContract.address,
+                        calldata: argentWalletContract.interface.encodeFunctionData('wc_multiCall', [
+                            [
+                                approveAmountCalldata(trade.maximumAmountIn(allowedSlippage), routerContract.address),
+                                {
+                                    to: routerContract.address,
+                                    value: value,
+                                    data: routerContract.interface.encodeFunctionData(methodName, args),
+                                },
+                            ],
+                        ]),
+                        value: '0x0',
+                    };
+                }
+                else {
+                    return {
+                        address: routerContract.address,
+                        calldata: routerContract.interface.encodeFunctionData(methodName, args),
+                        value: value,
+                    };
+                }
+            });
+        }
+        else {
+            // swap options shared by v3 and v2+v3 swap routers
+            var sharedSwapOptions = __assign({ recipient: recipient, slippageTolerance: allowedSlippage }, (signatureData
+                ? {
+                    inputTokenPermit: 'allowed' in signatureData
+                        ? {
+                            expiry: signatureData.deadline,
+                            nonce: signatureData.nonce,
+                            s: signatureData.s,
+                            r: signatureData.r,
+                            v: signatureData.v,
+                        }
+                        : {
+                            deadline: signatureData.deadline,
+                            amount: signatureData.amount,
+                            s: signatureData.s,
+                            r: signatureData.r,
+                            v: signatureData.v,
+                        },
+                }
+                : {}));
+            var swapRouterAddress = chainId
+                ? trade instanceof v3Sdk.Trade
+                    ? V3_ROUTER_ADDRESS[chainId]
+                    : SWAP_ROUTER_ADDRESSES[chainId]
+                : undefined;
+            if (!swapRouterAddress)
+                return [];
+            var _a = trade instanceof v3Sdk.Trade
+                ? v3Sdk.SwapRouter.swapCallParameters(trade, __assign(__assign({}, sharedSwapOptions), { deadline: deadline.toString() }))
+                : routerSdk.SwapRouter.swapCallParameters(trade, __assign(__assign({}, sharedSwapOptions), { deadlineOrPreviousBlockhash: deadline.toString() })), value = _a.value, calldata = _a.calldata;
+            if (argentWalletContract && trade.inputAmount.currency.isToken) {
+                return [
+                    {
+                        address: argentWalletContract.address,
+                        calldata: argentWalletContract.interface.encodeFunctionData('wc_multiCall', [
+                            [
+                                approveAmountCalldata(trade.maximumAmountIn(allowedSlippage), swapRouterAddress),
+                                {
+                                    to: swapRouterAddress,
+                                    value: value,
+                                    data: calldata,
+                                },
+                            ],
+                        ]),
+                        value: '0x0',
+                    },
+                ];
+            }
+            return [
+                {
+                    address: swapRouterAddress,
+                    calldata: calldata,
+                    value: value,
+                },
+            ];
+        }
+    }, [
+        trade,
+        recipient,
+        library,
+        account,
+        chainId,
+        deadline,
+        routerContract,
+        allowedSlippage,
+        argentWalletContract,
+        signatureData,
+    ]);
+}
 
 /**
  * Returns the gas value plus a margin for unexpected or variable gas costs
@@ -10657,6 +10945,181 @@ var SvgDropdown = function SvgDropdown(props) {
  */
 function calculateGasMargin(value) {
     return value.mul(120).div(100);
+}
+
+/**
+ * This is hacking out the revert reason from the ethers provider thrown error however it can.
+ * This object seems to be undocumented by ethers.
+ * @param error an error from the ethers provider
+ */
+function swapErrorToUserReadableMessage(error) {
+    var _a, _b, _c, _d;
+    var reason;
+    while (Boolean(error)) {
+        reason = (_b = (_a = error.reason) !== null && _a !== void 0 ? _a : error.message) !== null && _b !== void 0 ? _b : reason;
+        error = (_c = error.error) !== null && _c !== void 0 ? _c : (_d = error.data) === null || _d === void 0 ? void 0 : _d.originalError;
+    }
+    if ((reason === null || reason === void 0 ? void 0 : reason.indexOf('execution reverted: ')) === 0)
+        reason = reason.substr('execution reverted: '.length);
+    switch (reason) {
+        case 'UniswapV2Router: EXPIRED':
+            return (jsxRuntime.jsx(macro.Trans, { children: "The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low." }, void 0));
+        case 'UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT':
+        case 'UniswapV2Router: EXCESSIVE_INPUT_AMOUNT':
+            return (jsxRuntime.jsx(macro.Trans, { children: "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance." }, void 0));
+        case 'TransferHelper: TRANSFER_FROM_FAILED':
+            return jsxRuntime.jsx(macro.Trans, { children: "The input token cannot be transferred. There may be an issue with the input token." }, void 0);
+        case 'UniswapV2: TRANSFER_FAILED':
+            return jsxRuntime.jsx(macro.Trans, { children: "The output token cannot be transferred. There may be an issue with the output token." }, void 0);
+        case 'UniswapV2: K':
+            return (jsxRuntime.jsx(macro.Trans, { children: "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer." }, void 0));
+        case 'Too little received':
+        case 'Too much requested':
+        case 'STF':
+            return (jsxRuntime.jsx(macro.Trans, { children: "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3." }, void 0));
+        case 'TF':
+            return (jsxRuntime.jsx(macro.Trans, { children: "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3." }, void 0));
+        default:
+            if ((reason === null || reason === void 0 ? void 0 : reason.indexOf('undefined is not an object')) !== -1) {
+                console.error(error, reason);
+                return (jsxRuntime.jsx(macro.Trans, { children: "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3." }, void 0));
+            }
+            return (jsxRuntime.jsxs(macro.Trans, { children: ["Unknown error", reason ? ": \"" + reason + "\"" : '', ". Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."] }, void 0));
+    }
+}
+
+// returns a function that will execute a swap, if the parameters are all valid
+function useSendSwapTransaction(account, chainId, library, trade, // trade to execute, required
+swapCalls) {
+    return React.useMemo(function () {
+        if (!trade || !library || !account || !chainId) {
+            return { callback: null };
+        }
+        return {
+            callback: function onSwap() {
+                return __awaiter(this, void 0, void 0, function () {
+                    var estimatedCalls, bestCallOption, errorCalls, firstNoErrorCall, _a, address, calldata, value;
+                    return __generator(this, function (_b) {
+                        switch (_b.label) {
+                            case 0: return [4 /*yield*/, Promise.all(swapCalls.map(function (call) {
+                                    var address = call.address, calldata = call.calldata, value = call.value;
+                                    var tx = !value || isZero(value)
+                                        ? { from: account, to: address, data: calldata }
+                                        : {
+                                            from: account,
+                                            to: address,
+                                            data: calldata,
+                                            value: value,
+                                        };
+                                    return library
+                                        .estimateGas(tx)
+                                        .then(function (gasEstimate) {
+                                        return {
+                                            call: call,
+                                            gasEstimate: gasEstimate,
+                                        };
+                                    })
+                                        .catch(function (gasError) {
+                                        console.debug('Gas estimate failed, trying eth_call to extract error', call);
+                                        return library
+                                            .call(tx)
+                                            .then(function (result) {
+                                            console.debug('Unexpected successful call after failed estimate gas', call, gasError, result);
+                                            return { call: call, error: jsxRuntime.jsx(macro.Trans, { children: "Unexpected issue with estimating the gas. Please try again." }, void 0) };
+                                        })
+                                            .catch(function (callError) {
+                                            console.debug('Call threw error', call, callError);
+                                            return { call: call, error: swapErrorToUserReadableMessage(callError) };
+                                        });
+                                    });
+                                }))
+                                // a successful estimation is a bignumber gas estimate and the next call is also a bignumber gas estimate
+                            ];
+                            case 1:
+                                estimatedCalls = _b.sent();
+                                bestCallOption = estimatedCalls.find(function (el, ix, list) {
+                                    return 'gasEstimate' in el && (ix === list.length - 1 || 'gasEstimate' in list[ix + 1]);
+                                });
+                                // check if any calls errored with a recognizable error
+                                if (!bestCallOption) {
+                                    errorCalls = estimatedCalls.filter(function (call) { return 'error' in call; });
+                                    if (errorCalls.length > 0)
+                                        throw errorCalls[errorCalls.length - 1].error;
+                                    firstNoErrorCall = estimatedCalls.find(function (call) { return !('error' in call); });
+                                    if (!firstNoErrorCall)
+                                        throw new Error(macro.t(templateObject_1$A || (templateObject_1$A = __makeTemplateObject(["Unexpected error. Could not estimate gas for the swap."], ["Unexpected error. Could not estimate gas for the swap."]))));
+                                    bestCallOption = firstNoErrorCall;
+                                }
+                                _a = bestCallOption.call, address = _a.address, calldata = _a.calldata, value = _a.value;
+                                return [2 /*return*/, library
+                                        .getSigner()
+                                        .sendTransaction(__assign(__assign({ from: account, to: address, data: calldata }, ('gasEstimate' in bestCallOption ? { gasLimit: calculateGasMargin(bestCallOption.gasEstimate) } : {})), (value && !isZero(value) ? { value: value } : {})))
+                                        .then(function (response) {
+                                        return response;
+                                    })
+                                        .catch(function (error) {
+                                        // if the user rejected the tx, pass this along
+                                        if ((error === null || error === void 0 ? void 0 : error.code) === 4001) {
+                                            throw new Error(macro.t(templateObject_2$m || (templateObject_2$m = __makeTemplateObject(["Transaction rejected."], ["Transaction rejected."]))));
+                                        }
+                                        else {
+                                            // otherwise, the error was unexpected and we need to convey that
+                                            console.error("Swap failed", error, address, calldata, value);
+                                            throw new Error(macro.t(templateObject_3$h || (templateObject_3$h = __makeTemplateObject(["Swap failed: ", ""], ["Swap failed: ", ""])), swapErrorToUserReadableMessage(error)));
+                                        }
+                                    })];
+                        }
+                    });
+                });
+            },
+        };
+    }, [account, chainId, library, swapCalls, trade]);
+}
+var templateObject_1$A, templateObject_2$m, templateObject_3$h;
+
+var SwapCallbackState;
+(function (SwapCallbackState) {
+    SwapCallbackState[SwapCallbackState["INVALID"] = 0] = "INVALID";
+    SwapCallbackState[SwapCallbackState["LOADING"] = 1] = "LOADING";
+    SwapCallbackState[SwapCallbackState["VALID"] = 2] = "VALID";
+})(SwapCallbackState || (SwapCallbackState = {}));
+// returns a function that will execute a swap, if the parameters are all valid
+// and the user has approved the slippage adjusted input amount for the trade
+function useSwapCallback$1(trade, // trade to execute, required
+allowedSlippage, // in bips
+recipientAddressOrName, // the ENS name or address of the recipient of the trade, or null if swap should be returned to sender
+signatureData, deadline) {
+    var _a = useActiveWeb3React(), account = _a.account, chainId = _a.chainId, library = _a.library;
+    var swapCalls = useSwapCallArguments(trade, allowedSlippage, recipientAddressOrName, signatureData, deadline);
+    var callback = useSendSwapTransaction(account, chainId, library, trade, swapCalls).callback;
+    var recipientAddress = useENS(recipientAddressOrName).address;
+    var recipient = recipientAddressOrName === null ? account : recipientAddress;
+    return React.useMemo(function () {
+        if (!trade || !library || !account || !chainId || !callback) {
+            return { state: SwapCallbackState.INVALID, callback: null, error: jsxRuntime.jsx(macro.Trans, { children: "Missing dependencies" }, void 0) };
+        }
+        if (!recipient) {
+            if (recipientAddressOrName !== null) {
+                return { state: SwapCallbackState.INVALID, callback: null, error: jsxRuntime.jsx(macro.Trans, { children: "Invalid recipient" }, void 0) };
+            }
+            else {
+                return { state: SwapCallbackState.LOADING, callback: null, error: null };
+            }
+        }
+        return {
+            state: SwapCallbackState.VALID,
+            callback: function onSwap() {
+                return __awaiter(this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        return [2 /*return*/, callback().then(function (response) {
+                                return response;
+                            })];
+                    });
+                });
+            },
+            error: null,
+        };
+    }, [trade, library, account, chainId, callback, recipient, recipientAddressOrName]);
 }
 
 /**
@@ -10823,12 +11286,165 @@ function useHasPendingApproval(token, spender) {
     }, [allTransactions, spender, token === null || token === void 0 ? void 0 : token.address]);
 }
 
+function currencyId(currency) {
+    if (currency.isNative)
+        return 'ETH';
+    if (currency.isToken)
+        return currency.address;
+    throw new Error('invalid currency');
+}
+
 // gets the current timestamp from the blockchain
 function useCurrentBlockTimestamp() {
     var _a, _b;
     var multicall = useInterfaceMulticall();
     return (_b = (_a = useSingleCallResult(multicall, 'getCurrentBlockTimestamp')) === null || _a === void 0 ? void 0 : _a.result) === null || _b === void 0 ? void 0 : _b[0];
 }
+
+// combines the block timestamp with the user setting to give the deadline that should be used for any submitted transaction
+function useTransactionDeadline() {
+    var chainId = useActiveWeb3React().chainId;
+    var ttl = useAppSelector(function (state) { return state.user.userDeadline; });
+    var blockTimestamp = useCurrentBlockTimestamp();
+    return React.useMemo(function () {
+        if (blockTimestamp && chainId && L2_CHAIN_IDS.includes(chainId))
+            return blockTimestamp.add(L2_DEADLINE_FROM_NOW);
+        if (blockTimestamp && ttl)
+            return blockTimestamp.add(ttl);
+        return undefined;
+    }, [blockTimestamp, chainId, ttl]);
+}
+
+// eslint-disable-next-line no-restricted-imports
+// returns a function that will execute a swap, if the parameters are all valid
+// and the user has approved the slippage adjusted input amount for the trade
+function useSwapCallback(trade, // trade to execute, required
+allowedSlippage, // in bips
+recipientAddressOrName, // the ENS name or address of the recipient of the trade, or null if swap should be returned to sender
+signatureData) {
+    var account = useActiveWeb3React().account;
+    var deadline = useTransactionDeadline();
+    var addTransaction = useTransactionAdder();
+    var recipientAddress = useENS(recipientAddressOrName).address;
+    var recipient = recipientAddressOrName === null ? account : recipientAddress;
+    var _a = useSwapCallback$1(trade, allowedSlippage, recipient, signatureData, deadline), state = _a.state, libCallback = _a.callback, error = _a.error;
+    var callback = React.useMemo(function () {
+        if (!libCallback || !trade) {
+            return null;
+        }
+        return function () {
+            return libCallback().then(function (response) {
+                addTransaction(response, trade.tradeType === sdkCore.TradeType.EXACT_INPUT
+                    ? {
+                        type: TransactionType.SWAP,
+                        tradeType: sdkCore.TradeType.EXACT_INPUT,
+                        inputCurrencyId: currencyId(trade.inputAmount.currency),
+                        inputCurrencyAmountRaw: trade.inputAmount.quotient.toString(),
+                        expectedOutputCurrencyAmountRaw: trade.outputAmount.quotient.toString(),
+                        outputCurrencyId: currencyId(trade.outputAmount.currency),
+                        minimumOutputCurrencyAmountRaw: trade.minimumAmountOut(allowedSlippage).quotient.toString(),
+                    }
+                    : {
+                        type: TransactionType.SWAP,
+                        tradeType: sdkCore.TradeType.EXACT_OUTPUT,
+                        inputCurrencyId: currencyId(trade.inputAmount.currency),
+                        maximumInputCurrencyAmountRaw: trade.maximumAmountIn(allowedSlippage).quotient.toString(),
+                        outputCurrencyId: currencyId(trade.outputAmount.currency),
+                        outputCurrencyAmountRaw: trade.outputAmount.quotient.toString(),
+                        expectedInputCurrencyAmountRaw: trade.inputAmount.quotient.toString(),
+                    });
+                return response.hash;
+            });
+        };
+    }, [addTransaction, allowedSlippage, libCallback, trade]);
+    return {
+        state: state,
+        callback: callback,
+        error: error,
+    };
+}
+
+var InputPanel$1 = styled__default["default"].div(templateObject_1$z || (templateObject_1$z = __makeTemplateObject(["\n  ", "\n  position: relative;\n  border-radius: 1.25rem;\n  background-color: ", ";\n  z-index: 1;\n  width: 100%;\n"], ["\n  ", "\n  position: relative;\n  border-radius: 1.25rem;\n  background-color: ", ";\n  z-index: 1;\n  width: 100%;\n"])), function (_a) {
+    var theme = _a.theme;
+    return theme.flexColumnNoWrap;
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.bg1;
+});
+var ContainerRow = styled__default["default"].div(templateObject_2$l || (templateObject_2$l = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 1.25rem;\n  border: 1px solid ", ";\n  transition: border-color 300ms ", ",\n    color 500ms ", ";\n  background-color: ", ";\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 1.25rem;\n  border: 1px solid ", ";\n  transition: border-color 300ms ", ",\n    color 500ms ", ";\n  background-color: ", ";\n"])), function (_a) {
+    var error = _a.error, theme = _a.theme;
+    return (error ? theme.red1 : theme.bg2);
+}, function (_a) {
+    var error = _a.error;
+    return (error ? 'step-end' : 'step-start');
+}, function (_a) {
+    var error = _a.error;
+    return (error ? 'step-end' : 'step-start');
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.bg1;
+});
+var InputContainer = styled__default["default"].div(templateObject_3$g || (templateObject_3$g = __makeTemplateObject(["\n  flex: 1;\n  padding: 1rem;\n"], ["\n  flex: 1;\n  padding: 1rem;\n"])));
+var Input$2 = styled__default["default"].input(templateObject_4$a || (templateObject_4$a = __makeTemplateObject(["\n  font-size: 1.25rem;\n  outline: none;\n  border: none;\n  flex: 1 1 auto;\n  width: 0;\n  background-color: ", ";\n  transition: color 300ms ", ";\n  color: ", ";\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-weight: 500;\n  width: 100%;\n  ::placeholder {\n    color: ", ";\n  }\n  padding: 0px;\n  -webkit-appearance: textfield;\n\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n\n  ::-webkit-outer-spin-button,\n  ::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n\n  ::placeholder {\n    color: ", ";\n  }\n"], ["\n  font-size: 1.25rem;\n  outline: none;\n  border: none;\n  flex: 1 1 auto;\n  width: 0;\n  background-color: ", ";\n  transition: color 300ms ", ";\n  color: ", ";\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-weight: 500;\n  width: 100%;\n  ::placeholder {\n    color: ", ";\n  }\n  padding: 0px;\n  -webkit-appearance: textfield;\n\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n\n  ::-webkit-outer-spin-button,\n  ::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n\n  ::placeholder {\n    color: ", ";\n  }\n"])), function (_a) {
+    var theme = _a.theme;
+    return theme.bg1;
+}, function (_a) {
+    var error = _a.error;
+    return (error ? 'step-end' : 'step-start');
+}, function (_a) {
+    var error = _a.error, theme = _a.theme;
+    return (error ? theme.red1 : theme.text1);
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.text4;
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.text4;
+});
+function AddressInputPanel(_a) {
+    var id = _a.id, _b = _a.className, className = _b === void 0 ? 'recipient-address-input' : _b, label = _a.label, placeholder = _a.placeholder, value = _a.value, onChange = _a.onChange;
+    var chainId = useActiveWeb3React().chainId;
+    var theme = React.useContext(styled.ThemeContext);
+    var _c = useENS(value), address = _c.address, loading = _c.loading, name = _c.name;
+    var handleInput = React.useCallback(function (event) {
+        var input = event.target.value;
+        var withoutSpaces = input.replace(/\s+/g, '');
+        onChange(withoutSpaces);
+    }, [onChange]);
+    var error = Boolean(value.length > 0 && !loading && !address);
+    return (jsxRuntime.jsx(InputPanel$1, __assign({ id: id }, { children: jsxRuntime.jsx(ContainerRow, __assign({ error: error }, { children: jsxRuntime.jsx(InputContainer, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: "md" }, { children: [jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.Black, __assign({ color: theme.text2, fontWeight: 500, fontSize: 14 }, { children: label !== null && label !== void 0 ? label : jsxRuntime.jsx(macro.Trans, { children: "Recipient" }, void 0) }), void 0), address && chainId && (jsxRuntime.jsx(ExternalLink, __assign({ href: getExplorerLink(chainId, name !== null && name !== void 0 ? name : address, ExplorerDataType.ADDRESS), style: { fontSize: '14px' } }, { children: jsxRuntime.jsx(macro.Trans, { children: "(View on Explorer)" }, void 0) }), void 0))] }, void 0), jsxRuntime.jsx(Input$2, { className: className, type: "text", autoComplete: "off", autoCorrect: "off", autoCapitalize: "off", spellCheck: "false", placeholder: placeholder !== null && placeholder !== void 0 ? placeholder : macro.t(templateObject_5$9 || (templateObject_5$9 = __makeTemplateObject(["Wallet Address or ENS name"], ["Wallet Address or ENS name"]))), error: error, pattern: "^(0x[a-fA-F0-9]{40})$", onChange: handleInput, value: value }, void 0)] }), void 0) }, void 0) }), void 0) }), void 0));
+}
+var templateObject_1$z, templateObject_2$l, templateObject_3$g, templateObject_4$a, templateObject_5$9;
+
+function formatCurrencyAmount(amount, sigFigs) {
+    if (!amount) {
+        return '-';
+    }
+    if (JSBI__default["default"].equal(amount.quotient, JSBI__default["default"].BigInt(0))) {
+        return '0';
+    }
+    if (amount.divide(amount.decimalScale).lessThan(new sdkCore.Fraction(1, 100000))) {
+        return '<0.00001';
+    }
+    return amount.toSignificant(sigFigs);
+}
+
+var _path;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var SvgDropdown = function SvgDropdown(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends({
+    width: 12,
+    height: 7,
+    viewBox: "0 0 12 7",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path || (_path = /*#__PURE__*/React__namespace.createElement("path", {
+    d: "M0.97168 1L6.20532 6L11.439 1",
+    stroke: "#AEAEAE"
+  })));
+};
 
 new abi$6.Interface(abi$5);
 ({
@@ -10965,19 +11581,11 @@ function useToggle(initialState) {
     return [state, toggle];
 }
 
-function currencyId(currency) {
-    if (currency.isNative)
-        return 'ETH';
-    if (currency.isToken)
-        return currency.address;
-    throw new Error('invalid currency');
-}
-
-var MobileWrapper = styled__default["default"](AutoColumn)(templateObject_2$l || (templateObject_2$l = __makeTemplateObject(["\n  ", ";\n"], ["\n  ", ";\n"])), function (_a) {
+var MobileWrapper = styled__default["default"](AutoColumn)(templateObject_2$k || (templateObject_2$k = __makeTemplateObject(["\n  ", ";\n"], ["\n  ", ";\n"])), function (_a) {
     var theme = _a.theme;
     return theme.mediaWidth.upToSmall(templateObject_1$x || (templateObject_1$x = __makeTemplateObject(["\n    display: none;\n  "], ["\n    display: none;\n  "])));
 });
-var BaseWrapper = styled__default["default"].div(templateObject_3$g || (templateObject_3$g = __makeTemplateObject(["\n  border: 1px solid ", ";\n  border-radius: 10px;\n  display: flex;\n  padding: 6px;\n\n  align-items: center;\n  :hover {\n    cursor: ", ";\n    background-color: ", ";\n  }\n\n  color: ", ";\n  background-color: ", ";\n  filter: ", ";\n"], ["\n  border: 1px solid ", ";\n  border-radius: 10px;\n  display: flex;\n  padding: 6px;\n\n  align-items: center;\n  :hover {\n    cursor: ", ";\n    background-color: ", ";\n  }\n\n  color: ", ";\n  background-color: ", ";\n  filter: ", ";\n"])), function (_a) {
+var BaseWrapper = styled__default["default"].div(templateObject_3$f || (templateObject_3$f = __makeTemplateObject(["\n  border: 1px solid ", ";\n  border-radius: 10px;\n  display: flex;\n  padding: 6px;\n\n  align-items: center;\n  :hover {\n    cursor: ", ";\n    background-color: ", ";\n  }\n\n  color: ", ";\n  background-color: ", ";\n  filter: ", ";\n"], ["\n  border: 1px solid ", ";\n  border-radius: 10px;\n  display: flex;\n  padding: 6px;\n\n  align-items: center;\n  :hover {\n    cursor: ", ";\n    background-color: ", ";\n  }\n\n  color: ", ";\n  background-color: ", ";\n  filter: ", ";\n"])), function (_a) {
     var theme = _a.theme, disable = _a.disable;
     return (disable ? 'transparent' : theme.bg3);
 }, function (_a) {
@@ -11011,7 +11619,7 @@ function CurrencyLogoFromList(_a) {
     var token = useTokenInfoFromActiveList(currency);
     return jsxRuntime.jsx(CurrencyLogo, { currency: token, style: { marginRight: 8 } }, void 0);
 }
-var templateObject_1$x, templateObject_2$l, templateObject_3$g;
+var templateObject_1$x, templateObject_2$k, templateObject_3$f;
 
 var QuestionWrapper = styled__default["default"].div(templateObject_1$w || (templateObject_1$w = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0px;\n  width: 18px;\n  height: 18px;\n  border: none;\n  background: none;\n  outline: none;\n  cursor: default;\n  border-radius: 36px;\n  font-size: 12px;\n  background-color: ", ";\n  color: ", ";\n\n  :hover,\n  :focus {\n    opacity: 0.7;\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0px;\n  width: 18px;\n  height: 18px;\n  border: none;\n  background: none;\n  outline: none;\n  cursor: default;\n  border-radius: 36px;\n  font-size: 12px;\n  background-color: ", ";\n  color: ", ";\n\n  :hover,\n  :focus {\n    opacity: 0.7;\n  }\n"])), function (_a) {
     var theme = _a.theme;
@@ -11020,7 +11628,7 @@ var QuestionWrapper = styled__default["default"].div(templateObject_1$w || (temp
     var theme = _a.theme;
     return theme.text2;
 });
-var QuestionMark = styled__default["default"].span(templateObject_2$k || (templateObject_2$k = __makeTemplateObject(["\n  font-size: 14px;\n"], ["\n  font-size: 14px;\n"])));
+var QuestionMark = styled__default["default"].span(templateObject_2$j || (templateObject_2$j = __makeTemplateObject(["\n  font-size: 14px;\n"], ["\n  font-size: 14px;\n"])));
 function QuestionHelper(_a) {
     var text = _a.text;
     var _b = __read(React.useState(false), 2), show = _b[0], setShow = _b[1];
@@ -11028,12 +11636,12 @@ function QuestionHelper(_a) {
     var close = React.useCallback(function () { return setShow(false); }, [setShow]);
     return (jsxRuntime.jsx("span", __assign({ style: { marginLeft: 4, display: 'flex', alignItems: 'center' } }, { children: jsxRuntime.jsx(Tooltip, __assign({ text: text, show: show }, { children: jsxRuntime.jsx(QuestionWrapper, __assign({ onClick: open, onMouseEnter: open, onMouseLeave: close }, { children: jsxRuntime.jsx(QuestionMark, { children: "?" }, void 0) }), void 0) }), void 0) }), void 0));
 }
-var templateObject_1$w, templateObject_2$k;
+var templateObject_1$w, templateObject_2$j;
 
 var TokenListLogo = "data:image/svg+xml,%3Csvg%20width%3D%22225%22%20height%3D%22225%22%20viewBox%3D%220%200%20225%20225%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M74.8125%20190.529C65.7561%20190.513%2055.5298%20183.748%2051.9715%20175.42L19.9417%20100.456C16.3834%2092.1277%2020.8404%2085.39%2029.8968%2085.4068L111.417%2085.5579C120.473%2085.5747%20130.699%2092.3395%20134.258%20100.668L166.288%20175.632C169.846%20183.96%20165.389%20190.697%20156.332%20190.681L74.8125%20190.529Z%22%20fill%3D%22%23131313%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22white%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22url%28%23paint0_radial%29%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22url%28%23paint1_radial%29%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22url%28%23paint2_radial%29%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22url%28%23paint3_radial%29%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M92.958%20165.95C82.7695%20165.931%2071.265%20158.321%2067.2619%20148.952L26.2489%2052.9632C22.2458%2043.5941%2027.26%2036.0143%2037.4485%2036.0332L141.832%2036.2266C152.02%2036.2455%20163.525%2043.8559%20167.528%2053.225L208.541%20149.214C212.544%20158.583%20207.53%20166.163%20197.341%20166.144L92.958%20165.95ZM71.3614%20148.959C74.475%20156.246%2083.4229%20162.166%2091.3473%20162.18L195.73%20162.374C203.655%20162.388%20207.555%20156.493%20204.441%20149.206L163.428%2053.2174C160.315%2045.9304%20151.367%2040.0111%20143.442%2039.9964L39.0592%2039.803C31.1349%2039.7883%2027.2349%2045.6837%2030.3485%2052.9708L71.3614%20148.959Z%22%20fill%3D%22%23131313%22%2F%3E%3Cpath%20d%3D%22M68.565%2053.3425C81.1781%2053.3659%2095.4205%2062.7875%20100.376%2074.3862C105.332%2085.985%2099.1246%2095.3687%2086.5115%2095.3454C73.8984%2095.322%2059.6559%2085.9004%2054.7001%2074.3016C49.7443%2062.7028%2055.9518%2053.3191%2068.565%2053.3425Z%22%20fill%3D%22%23131313%22%2F%3E%3Cpath%20d%3D%22M90.6891%20104.981C103.302%20105.004%20117.545%20114.425%20122.5%20126.024C127.456%20137.623%20121.249%20147.007%20108.636%20146.983C96.0225%20146.96%2081.7801%20137.538%2076.8243%20125.94C71.8685%20114.341%2078.076%20104.957%2090.6891%20104.981Z%22%20fill%3D%22%23131313%22%2F%3E%3Cpath%20d%3D%22M147.538%20105.142C160.151%20105.166%20174.394%20114.587%20179.349%20126.186C184.305%20137.785%20178.098%20147.168%20165.485%20147.145C152.871%20147.122%20138.629%20137.7%20133.673%20126.101C128.717%20114.503%20134.925%20105.119%20147.538%20105.142Z%22%20fill%3D%22%23131313%22%2F%3E%3Cdefs%3E%3CradialGradient%20id%3D%22paint0_radial%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientUnits%3D%22userSpaceOnUse%22%20gradientTransform%3D%22translate%28134.41%2068.3006%29%20rotate%28-33.9533%29%20scale%2890.6795%2083.3208%29%22%3E%3Cstop%20offset%3D%220.661458%22%20stop-color%3D%22%23C4FCF8%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22paint1_radial%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientUnits%3D%22userSpaceOnUse%22%20gradientTransform%3D%22translate%2842.7873%20129.218%29%20rotate%28-24.1606%29%20scale%28213.359%20196.045%29%22%3E%3Cstop%20stop-color%3D%22%23FF0099%22%20stop-opacity%3D%220.9%22%2F%3E%3Cstop%20offset%3D%220.770833%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22paint2_radial%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientUnits%3D%22userSpaceOnUse%22%20gradientTransform%3D%22translate%28176.854%20148.655%29%20rotate%28-53.4908%29%20scale%28107.342%2098.6309%29%22%3E%3Cstop%20stop-color%3D%22%23FFEC43%22%2F%3E%3Cstop%20offset%3D%220.805707%22%20stop-color%3D%22%23FFF6A8%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22paint3_radial%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientUnits%3D%22userSpaceOnUse%22%20gradientTransform%3D%22translate%2857.5443%2053.4752%29%20rotate%2820.3896%29%20scale%28137.027%20125.907%29%22%3E%3Cstop%20offset%3D%220.125%22%20stop-color%3D%22%235886FE%22%20stop-opacity%3D%220.46%22%2F%3E%3Cstop%20offset%3D%220.673044%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E";
 
 var rotate = styled.keyframes(templateObject_1$v || (templateObject_1$v = __makeTemplateObject(["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"], ["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"])));
-var StyledSVG = styled__default["default"].svg(templateObject_2$j || (templateObject_2$j = __makeTemplateObject(["\n  animation: 2s ", " linear infinite;\n  height: ", ";\n  width: ", ";\n  path {\n    stroke: ", ";\n  }\n"], ["\n  animation: 2s ", " linear infinite;\n  height: ", ";\n  width: ", ";\n  path {\n    stroke: ", ";\n  }\n"
+var StyledSVG = styled__default["default"].svg(templateObject_2$i || (templateObject_2$i = __makeTemplateObject(["\n  animation: 2s ", " linear infinite;\n  height: ", ";\n  width: ", ";\n  path {\n    stroke: ", ";\n  }\n"], ["\n  animation: 2s ", " linear infinite;\n  height: ", ";\n  width: ", ";\n  path {\n    stroke: ", ";\n  }\n"
     /**
      * Takes in custom size and stroke for circle color, default to primary color as fill,
      * need ...rest for layered styles on top
@@ -11056,7 +11664,7 @@ function Loader(_a) {
     var _b = _a.size, size = _b === void 0 ? '16px' : _b, stroke = _a.stroke, rest = __rest(_a, ["size", "stroke"]);
     return (jsxRuntime.jsx(StyledSVG, __assign({ viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", size: size, stroke: stroke }, rest, { children: jsxRuntime.jsx("path", { d: "M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 9.27455 20.9097 6.80375 19.1414 5", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round" }, void 0) }), void 0));
 }
-var templateObject_1$v, templateObject_2$j;
+var templateObject_1$v, templateObject_2$i;
 
 var StyledListLogo = styled__default["default"](Logo)(templateObject_1$u || (templateObject_1$u = __makeTemplateObject(["\n  width: ", ";\n  height: ", ";\n"], ["\n  width: ", ";\n  height: ", ";\n"])), function (_a) {
     var size = _a.size;
@@ -11076,11 +11684,11 @@ var TokenSection = styled__default["default"].div(templateObject_1$t || (templat
     var dim = _a.dim;
     return (dim ? '0.4' : '1');
 });
-var CheckIcon = styled__default["default"](reactFeather.CheckCircle)(templateObject_2$i || (templateObject_2$i = __makeTemplateObject(["\n  height: 16px;\n  width: 16px;\n  margin-right: 6px;\n  stroke: ", ";\n"], ["\n  height: 16px;\n  width: 16px;\n  margin-right: 6px;\n  stroke: ", ";\n"])), function (_a) {
+var CheckIcon = styled__default["default"](reactFeather.CheckCircle)(templateObject_2$h || (templateObject_2$h = __makeTemplateObject(["\n  height: 16px;\n  width: 16px;\n  margin-right: 6px;\n  stroke: ", ";\n"], ["\n  height: 16px;\n  width: 16px;\n  margin-right: 6px;\n  stroke: ", ";\n"])), function (_a) {
     var theme = _a.theme;
     return theme.green1;
 });
-var NameOverflow = styled__default["default"].div(templateObject_3$f || (templateObject_3$f = __makeTemplateObject(["\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 140px;\n  font-size: 12px;\n"], ["\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 140px;\n  font-size: 12px;\n"])));
+var NameOverflow = styled__default["default"].div(templateObject_3$e || (templateObject_3$e = __makeTemplateObject(["\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 140px;\n  font-size: 12px;\n"], ["\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 140px;\n  font-size: 12px;\n"])));
 function ImportRow(_a) {
     var token = _a.token, style = _a.style, dim = _a.dim, showImportView = _a.showImportView, setImportToken = _a.setImportToken;
     var theme = useTheme();
@@ -11093,17 +11701,17 @@ function ImportRow(_a) {
                     showImportView();
                 } }, { children: jsxRuntime.jsx(macro.Trans, { children: "Import" }, void 0) }), void 0)) : (jsxRuntime.jsxs(RowFixed, __assign({ style: { minWidth: 'fit-content' } }, { children: [jsxRuntime.jsx(CheckIcon, {}, void 0), jsxRuntime.jsx(ThemedText.Main, __assign({ color: theme.green1 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Active" }, void 0) }), void 0)] }), void 0))] }), void 0));
 }
-var templateObject_1$t, templateObject_2$i, templateObject_3$f;
+var templateObject_1$t, templateObject_2$h, templateObject_3$e;
 
 var TextDot = styled__default["default"].div(templateObject_1$s || (templateObject_1$s = __makeTemplateObject(["\n  height: 3px;\n  width: 3px;\n  background-color: ", ";\n  border-radius: 50%;\n"], ["\n  height: 3px;\n  width: 3px;\n  background-color: ", ";\n  border-radius: 50%;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.text2;
 });
-var Checkbox = styled__default["default"].input(templateObject_2$h || (templateObject_2$h = __makeTemplateObject(["\n  border: 1px solid ", ";\n  height: 20px;\n  margin: 0;\n"], ["\n  border: 1px solid ", ";\n  height: 20px;\n  margin: 0;\n"])), function (_a) {
+var Checkbox = styled__default["default"].input(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n  border: 1px solid ", ";\n  height: 20px;\n  margin: 0;\n"], ["\n  border: 1px solid ", ";\n  height: 20px;\n  margin: 0;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.red3;
 });
-var PaddedColumn = styled__default["default"](AutoColumn)(templateObject_3$e || (templateObject_3$e = __makeTemplateObject(["\n  padding: 20px;\n"], ["\n  padding: 20px;\n"])));
+var PaddedColumn = styled__default["default"](AutoColumn)(templateObject_3$d || (templateObject_3$d = __makeTemplateObject(["\n  padding: 20px;\n"], ["\n  padding: 20px;\n"])));
 var MenuItem = styled__default["default"](RowBetween)(templateObject_4$9 || (templateObject_4$9 = __makeTemplateObject(["\n  padding: 4px 20px;\n  height: 56px;\n  display: grid;\n  grid-template-columns: auto minmax(auto, 1fr) auto minmax(0, 72px);\n  grid-gap: 16px;\n  cursor: ", ";\n  pointer-events: ", ";\n  :hover {\n    background-color: ", ";\n  }\n  opacity: ", ";\n"], ["\n  padding: 4px 20px;\n  height: 56px;\n  display: grid;\n  grid-template-columns: auto minmax(auto, 1fr) auto minmax(0, 72px);\n  grid-gap: 16px;\n  cursor: ", ";\n  pointer-events: ", ";\n  :hover {\n    background-color: ", ";\n  }\n  opacity: ", ";\n"])), function (_a) {
     var disabled = _a.disabled;
     return !disabled && 'pointer';
@@ -11138,20 +11746,20 @@ var SeparatorDark = styled__default["default"].div(templateObject_7$4 || (templa
     var theme = _a.theme;
     return theme.bg3;
 });
-var templateObject_1$s, templateObject_2$h, templateObject_3$e, templateObject_4$9, templateObject_5$8, templateObject_6$5, templateObject_7$4;
+var templateObject_1$s, templateObject_2$g, templateObject_3$d, templateObject_4$9, templateObject_5$8, templateObject_6$5, templateObject_7$4;
 
 function currencyKey(currency) {
     return currency.isToken ? currency.address : 'ETHER';
 }
 var StyledBalanceText = styled__default["default"](rebass.Text)(templateObject_1$r || (templateObject_1$r = __makeTemplateObject(["\n  white-space: nowrap;\n  overflow: hidden;\n  max-width: 5rem;\n  text-overflow: ellipsis;\n"], ["\n  white-space: nowrap;\n  overflow: hidden;\n  max-width: 5rem;\n  text-overflow: ellipsis;\n"])));
-var Tag = styled__default["default"].div(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  border-radius: 4px;\n  padding: 0.25rem 0.3rem 0.25rem 0.3rem;\n  max-width: 6rem;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  justify-self: flex-end;\n  margin-right: 4px;\n"], ["\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  border-radius: 4px;\n  padding: 0.25rem 0.3rem 0.25rem 0.3rem;\n  max-width: 6rem;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  justify-self: flex-end;\n  margin-right: 4px;\n"])), function (_a) {
+var Tag = styled__default["default"].div(templateObject_2$f || (templateObject_2$f = __makeTemplateObject(["\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  border-radius: 4px;\n  padding: 0.25rem 0.3rem 0.25rem 0.3rem;\n  max-width: 6rem;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  justify-self: flex-end;\n  margin-right: 4px;\n"], ["\n  background-color: ", ";\n  color: ", ";\n  font-size: 14px;\n  border-radius: 4px;\n  padding: 0.25rem 0.3rem 0.25rem 0.3rem;\n  max-width: 6rem;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  justify-self: flex-end;\n  margin-right: 4px;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg3;
 }, function (_a) {
     var theme = _a.theme;
     return theme.text2;
 });
-var FixedContentRow = styled__default["default"].div(templateObject_3$d || (templateObject_3$d = __makeTemplateObject(["\n  padding: 4px 20px;\n  height: 56px;\n  display: grid;\n  grid-gap: 16px;\n  align-items: center;\n"], ["\n  padding: 4px 20px;\n  height: 56px;\n  display: grid;\n  grid-gap: 16px;\n  align-items: center;\n"])));
+var FixedContentRow = styled__default["default"].div(templateObject_3$c || (templateObject_3$c = __makeTemplateObject(["\n  padding: 4px 20px;\n  height: 56px;\n  display: grid;\n  grid-gap: 16px;\n  align-items: center;\n"], ["\n  padding: 4px 20px;\n  height: 56px;\n  display: grid;\n  grid-gap: 16px;\n  align-items: center;\n"])));
 function Balance(_a) {
     var balance = _a.balance;
     return jsxRuntime.jsx(StyledBalanceText, __assign({ title: balance.toExact() }, { children: balance.toSignificant(4) }), void 0);
@@ -11241,10 +11849,10 @@ function CurrencyList(_a) {
     }, []);
     return (jsxRuntime.jsx(reactWindow.FixedSizeList, __assign({ height: height, ref: fixedListRef, width: "100%", itemData: itemData, itemCount: itemData.length, itemSize: 56, itemKey: itemKey }, { children: Row }), void 0));
 }
-var templateObject_1$r, templateObject_2$g, templateObject_3$d, templateObject_4$8, templateObject_5$7;
+var templateObject_1$r, templateObject_2$f, templateObject_3$c, templateObject_4$8, templateObject_5$7;
 
 var ContentWrapper = styled__default["default"](Column)(templateObject_1$q || (templateObject_1$q = __makeTemplateObject(["\n  width: 100%;\n  flex: 1 1;\n  position: relative;\n"], ["\n  width: 100%;\n  flex: 1 1;\n  position: relative;\n"])));
-var Footer$1 = styled__default["default"].div(templateObject_2$f || (templateObject_2$f = __makeTemplateObject(["\n  width: 100%;\n  border-radius: 20px;\n  padding: 20px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  background-color: ", ";\n  border-top: 1px solid ", ";\n"], ["\n  width: 100%;\n  border-radius: 20px;\n  padding: 20px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  background-color: ", ";\n  border-top: 1px solid ", ";\n"])), function (_a) {
+var Footer$1 = styled__default["default"].div(templateObject_2$e || (templateObject_2$e = __makeTemplateObject(["\n  width: 100%;\n  border-radius: 20px;\n  padding: 20px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  background-color: ", ";\n  border-top: 1px solid ", ";\n"], ["\n  width: 100%;\n  border-radius: 20px;\n  padding: 20px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  background-color: ", ";\n  border-top: 1px solid ", ";\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg1;
 }, function (_a) {
@@ -11331,22 +11939,22 @@ function CurrencySearch(_a) {
     useOnClickOutside(node, open ? toggle : undefined);
     // if no results on main list, show option to expand into inactive
     var filteredInactiveTokens = useSearchInactiveTokenLists(filteredTokens.length === 0 || (debouncedQuery.length > 2 && !isAddressSearch) ? debouncedQuery : undefined);
-    return (jsxRuntime.jsxs(ContentWrapper, { children: [jsxRuntime.jsxs(PaddedColumn, __assign({ gap: "16px" }, { children: [jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(rebass.Text, __assign({ fontWeight: 500, fontSize: 16 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Select a token" }, void 0) }), void 0), jsxRuntime.jsx(CloseIcon, { onClick: onDismiss }, void 0)] }, void 0), jsxRuntime.jsx(Row, { children: jsxRuntime.jsx(SearchInput, { type: "text", id: "token-search-input", placeholder: macro.t(templateObject_3$c || (templateObject_3$c = __makeTemplateObject(["Search name or paste address"], ["Search name or paste address"]))), autoComplete: "off", value: searchQuery, ref: inputRef, onChange: handleInput, onKeyDown: handleEnter }, void 0) }, void 0), showCommonBases && (jsxRuntime.jsx(CommonBases, { chainId: chainId, onSelect: handleCurrencySelect, selectedCurrency: selectedCurrency }, void 0))] }), void 0), jsxRuntime.jsx(Separator, {}, void 0), searchToken && !searchTokenIsAdded ? (jsxRuntime.jsx(Column, __assign({ style: { padding: '20px 0', height: '100%' } }, { children: jsxRuntime.jsx(ImportRow, { token: searchToken, showImportView: showImportView, setImportToken: setImportToken }, void 0) }), void 0)) : (filteredSortedTokens === null || filteredSortedTokens === void 0 ? void 0 : filteredSortedTokens.length) > 0 || (filteredInactiveTokens === null || filteredInactiveTokens === void 0 ? void 0 : filteredInactiveTokens.length) > 0 ? (jsxRuntime.jsx("div", __assign({ style: { flex: '1' } }, { children: jsxRuntime.jsx(AutoSizer__default["default"], __assign({ disableWidth: true }, { children: function (_a) {
+    return (jsxRuntime.jsxs(ContentWrapper, { children: [jsxRuntime.jsxs(PaddedColumn, __assign({ gap: "16px" }, { children: [jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(rebass.Text, __assign({ fontWeight: 500, fontSize: 16 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Select a token" }, void 0) }), void 0), jsxRuntime.jsx(CloseIcon, { onClick: onDismiss }, void 0)] }, void 0), jsxRuntime.jsx(Row, { children: jsxRuntime.jsx(SearchInput, { type: "text", id: "token-search-input", placeholder: macro.t(templateObject_3$b || (templateObject_3$b = __makeTemplateObject(["Search name or paste address"], ["Search name or paste address"]))), autoComplete: "off", value: searchQuery, ref: inputRef, onChange: handleInput, onKeyDown: handleEnter }, void 0) }, void 0), showCommonBases && (jsxRuntime.jsx(CommonBases, { chainId: chainId, onSelect: handleCurrencySelect, selectedCurrency: selectedCurrency }, void 0))] }), void 0), jsxRuntime.jsx(Separator, {}, void 0), searchToken && !searchTokenIsAdded ? (jsxRuntime.jsx(Column, __assign({ style: { padding: '20px 0', height: '100%' } }, { children: jsxRuntime.jsx(ImportRow, { token: searchToken, showImportView: showImportView, setImportToken: setImportToken }, void 0) }), void 0)) : (filteredSortedTokens === null || filteredSortedTokens === void 0 ? void 0 : filteredSortedTokens.length) > 0 || (filteredInactiveTokens === null || filteredInactiveTokens === void 0 ? void 0 : filteredInactiveTokens.length) > 0 ? (jsxRuntime.jsx("div", __assign({ style: { flex: '1' } }, { children: jsxRuntime.jsx(AutoSizer__default["default"], __assign({ disableWidth: true }, { children: function (_a) {
                         var height = _a.height;
                         return (jsxRuntime.jsx(CurrencyList, { height: height, currencies: disableNonToken ? filteredSortedTokens : filteredSortedTokensWithETH, otherListTokens: filteredInactiveTokens, onCurrencySelect: handleCurrencySelect, otherCurrency: otherSelectedCurrency, selectedCurrency: selectedCurrency, fixedListRef: fixedList, showImportView: showImportView, setImportToken: setImportToken, showCurrencyAmount: showCurrencyAmount }, void 0));
                     } }), void 0) }), void 0)) : (jsxRuntime.jsx(Column, __assign({ style: { padding: '20px', height: '100%' } }, { children: jsxRuntime.jsx(ThemedText.Main, __assign({ color: theme.text3, textAlign: "center", mb: "20px" }, { children: jsxRuntime.jsx(macro.Trans, { children: "No results found." }, void 0) }), void 0) }), void 0)), jsxRuntime.jsx(Footer$1, { children: jsxRuntime.jsx(Row, __assign({ justify: "center" }, { children: jsxRuntime.jsx(ButtonText, __assign({ onClick: showManageView, color: theme.primary1, className: "list-token-manage-button" }, { children: jsxRuntime.jsxs(RowFixed, { children: [jsxRuntime.jsx(IconWrapper, __assign({ size: "16px", marginRight: "6px", stroke: theme.primaryText1 }, { children: jsxRuntime.jsx(reactFeather.Edit, {}, void 0) }), void 0), jsxRuntime.jsx(ThemedText.Main, __assign({ color: theme.primaryText1 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Manage Token Lists" }, void 0) }), void 0)] }, void 0) }), void 0) }), void 0) }, void 0)] }, void 0));
 }
-var templateObject_1$q, templateObject_2$f, templateObject_3$c;
+var templateObject_1$q, templateObject_2$e, templateObject_3$b;
 
 var UNISWAP_LOGO_URL = "data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2215%22%20viewBox%3D%220%200%2014%2015%22%20fill%3D%22black%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20style%3D%22mix-blend-mode%3Adarken%22%3E%3Cpath%20d%3D%22M4.15217%201.55141C3.96412%201.52242%203.95619%201.51902%204.04468%201.5055C4.21427%201.47958%204.61472%201.51491%204.89067%201.58012C5.53489%201.73232%206.12109%202.12221%206.74683%202.81466L6.91307%202.99862L7.15088%202.96062C8.15274%202.8006%209.17194%202.92778%2010.0244%203.31918C10.2589%203.42686%2010.6287%203.64121%2010.6749%203.69629C10.6896%203.71384%2010.7166%203.82684%2010.7349%203.94742C10.7982%204.36458%2010.7665%204.68434%2010.6382%204.92317C10.5683%205.05313%2010.5644%205.09432%2010.6114%205.20554C10.6489%205.2943%2010.7534%205.35999%2010.8569%205.35985C11.0687%205.35956%2011.2968%205.0192%2011.4024%204.54561L11.4444%204.3575L11.5275%204.45109C11.9835%204.96459%2012.3417%205.66488%2012.4032%206.16335L12.4192%206.29332L12.3426%206.17517C12.2107%205.97186%2012.0781%205.83346%2011.9084%205.72183C11.6024%205.52062%2011.2789%205.45215%2010.4222%205.40727C9.64839%205.36675%209.21045%205.30106%208.77621%205.16032C8.03738%204.9209%207.66493%204.60204%206.78729%203.4576C6.39748%202.94928%206.15654%202.66804%205.91687%202.44155C5.37228%201.92691%204.83716%201.65701%204.15217%201.55141Z%22%2F%3E%3Cpath%20d%3D%22M10.8494%202.68637C10.8689%202.34575%2010.9153%202.12108%2011.0088%201.9159C11.0458%201.83469%2011.0804%201.76822%2011.0858%201.76822C11.0911%201.76822%2011.075%201.82816%2011.05%201.90142C10.9821%202.10054%2010.9709%202.3729%2011.0177%202.68978C11.0771%203.09184%2011.1109%203.14985%2011.5385%203.58416C11.739%203.78788%2011.9723%204.0448%2012.0568%204.15511L12.2106%204.35568L12.0568%204.21234C11.8688%204.03705%2011.4364%203.6952%2011.3409%203.64633C11.2768%203.61356%2011.2673%203.61413%2011.2278%203.65321C11.1914%203.68922%2011.1837%203.74333%2011.1787%203.99915C11.1708%204.39786%2011.1161%204.65377%2010.9842%204.90965C10.9128%205.04805%2010.9015%205.01851%2010.9661%204.8623C11.0143%204.74566%2011.0192%204.69439%2011.0189%204.30842C11.0181%203.53291%2010.9255%203.34647%2010.3823%203.02709C10.2447%202.94618%2010.0179%202.8295%209.87839%202.76778C9.73887%202.70606%209.62805%202.6523%209.63208%202.64828C9.64746%202.63307%2010.1772%202.78675%2010.3905%202.86828C10.7077%202.98954%2010.76%203.00526%2010.7985%202.99063C10.8244%202.98082%2010.8369%202.90608%2010.8494%202.68637Z%22%2F%3E%3Cpath%20d%3D%22M4.51745%204.01304C4.13569%203.49066%203.89948%202.68973%203.95062%202.091L3.96643%201.90572L4.05333%201.92148C4.21652%201.95106%204.49789%202.05515%204.62964%202.13469C4.9912%202.35293%205.14773%202.64027%205.30697%203.37811C5.35362%203.59423%205.41482%203.8388%205.44298%203.9216C5.48831%204.05487%205.65962%204.36617%205.7989%204.56834C5.89922%204.71395%205.83258%204.78295%205.61082%204.76305C5.27215%204.73267%204.8134%204.41799%204.51745%204.01304Z%22%2F%3E%3Cpath%20d%3D%22M10.3863%207.90088C8.60224%207.18693%207.97389%206.56721%207.97389%205.52157C7.97389%205.36769%207.97922%205.24179%207.98571%205.24179C7.99221%205.24179%208.06124%205.29257%208.1391%205.35465C8.50088%205.64305%208.906%205.76623%2010.0275%205.92885C10.6875%206.02455%2011.0589%206.10185%2011.4015%206.21477C12.4904%206.57371%2013.1641%207.30212%2013.3248%208.29426C13.3715%208.58255%2013.3441%209.12317%2013.2684%209.4081C13.2087%209.63315%2013.0263%2010.0388%2012.9779%2010.0544C12.9645%2010.0587%2012.9514%2010.0076%2012.9479%209.93809C12.9296%209.56554%2012.7402%209.20285%2012.4221%208.93116C12.0604%208.62227%2011.5745%208.37633%2010.3863%207.90088Z%22%2F%3E%3Cpath%20d%3D%22M9.13385%208.19748C9.11149%208.06527%209.07272%207.89643%209.04769%207.82228L9.00217%207.68748L9.08672%207.7818C9.20374%207.91233%209.2962%208.07937%209.37457%208.30185C9.43438%208.47165%209.44111%208.52215%209.44066%208.79807C9.4402%209.06896%209.43273%209.12575%209.3775%209.27858C9.29042%209.51959%209.18233%209.69048%209.00097%209.87391C8.67507%2010.2036%208.25607%2010.3861%207.65143%2010.4618C7.54633%2010.4749%207.24%2010.4971%206.97069%2010.511C6.292%2010.5461%205.84531%2010.6186%205.44393%2010.7587C5.38623%2010.7788%205.3347%2010.7911%205.32947%2010.7859C5.31323%2010.7698%205.58651%2010.6079%205.81223%2010.4998C6.1305%2010.3474%206.44733%2010.2643%207.15719%2010.1468C7.50785%2010.0887%207.86998%2010.0183%207.96194%209.99029C8.83033%209.72566%209.27671%209.04276%209.13385%208.19748Z%22%2F%3E%3Cpath%20d%3D%22M9.95169%209.64109C9.71465%209.13463%209.66022%208.64564%209.79009%208.18961C9.80399%208.14088%209.82632%208.101%209.83976%208.101C9.85319%208.101%209.90913%208.13105%209.96404%208.16777C10.0733%208.24086%2010.2924%208.36395%2010.876%208.68023C11.6043%209.0749%2012.0196%209.3805%2012.302%209.72965C12.5493%2010.0354%2012.7023%2010.3837%2012.776%2010.8084C12.8177%2011.0489%2012.7932%2011.6277%2012.7311%2011.8699C12.5353%2012.6337%2012.0802%2013.2336%2011.4311%2013.5837C11.336%2013.635%2011.2506%2013.6771%2011.2414%2013.6773C11.2321%2013.6775%2011.2668%2013.5899%2011.3184%2013.4827C11.5367%2013.029%2011.5616%2012.5877%2011.3965%2012.0965C11.2954%2011.7957%2011.0893%2011.4287%2010.6732%2010.8084C10.1893%2010.0873%2010.0707%209.89539%209.95169%209.64109Z%22%2F%3E%3Cpath%20d%3D%22M3.25046%2012.3737C3.91252%2011.8181%204.73629%2011.4234%205.48666%2011.3022C5.81005%2011.25%206.34877%2011.2707%206.64823%2011.3469C7.12824%2011.469%207.55763%2011.7425%207.78094%2012.0683C7.99918%2012.3867%208.09281%2012.6642%208.19029%2013.2816C8.22875%2013.5252%208.27057%2013.7697%208.28323%2013.8251C8.35644%2014.1451%208.4989%2014.4008%208.67544%2014.5293C8.95583%2014.7333%209.43865%2014.7459%209.91362%2014.5618C9.99423%2014.5305%2010.0642%2014.5089%2010.0691%2014.5138C10.0864%2014.5308%209.84719%2014.6899%209.67847%2014.7737C9.45143%2014.8864%209.2709%2014.93%209.03102%2014.93C8.59601%2014.93%208.23486%2014.7101%207.9335%2014.2616C7.87419%2014.1733%207.7409%2013.909%207.63729%2013.6741C7.3191%2012.9528%207.16199%2012.7331%206.79255%2012.4926C6.47104%2012.2834%206.05641%2012.2459%205.74449%2012.3979C5.33475%2012.5976%205.22043%2013.118%205.51389%2013.4478C5.63053%2013.5789%205.84803%2013.6919%206.02588%2013.7139C6.35861%2013.7551%206.64455%2013.5035%206.64455%2013.1696C6.64455%2012.9528%206.56071%2012.8291%206.34966%2012.7344C6.0614%2012.6051%205.75156%2012.7562%205.75304%2013.0254C5.75368%2013.1402%205.80396%2013.2122%205.91971%2013.2643C5.99397%2013.2977%205.99569%2013.3003%205.93514%2013.2878C5.67066%2013.2333%205.6087%2012.9164%205.82135%2012.706C6.07667%2012.4535%206.60461%2012.5649%206.78591%2012.9097C6.86208%2013.0545%206.87092%2013.3429%206.80451%2013.517C6.6559%2013.9068%206.22256%2014.1117%205.78297%2014.0002C5.48368%2013.9242%205.36181%2013.842%205.00097%2013.4726C4.37395%2012.8306%204.13053%2012.7062%203.22657%2012.566L3.05335%2012.5391L3.25046%2012.3737Z%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M0.308383%200.883984C2.40235%203.40996%203.84457%204.45213%204.00484%204.67231C4.13717%204.85412%204.08737%205.01757%203.86067%205.14567C3.7346%205.21689%203.47541%205.28905%203.34564%205.28905C3.19887%205.28905%203.14847%205.23278%203.14847%205.23278C3.06337%205.15255%203.01544%205.16658%202.5784%204.39555C1.97166%203.45981%201.46389%202.68357%201.45004%202.67057C1.41801%202.64052%201.41856%202.64153%202.51654%204.59413C2.69394%205.0011%202.55182%205.15049%202.55182%205.20845C2.55182%205.32636%202.51946%205.38834%202.37311%205.55059C2.12914%205.8211%202.02008%206.12505%201.94135%206.7541C1.8531%207.45926%201.60492%207.95737%200.917156%208.80989C0.514562%209.30893%200.448686%209.4004%200.3471%209.60153C0.219144%209.85482%200.183961%209.99669%200.169701%2010.3165C0.154629%2010.6547%200.183983%2010.8732%200.287934%2011.1965C0.378939%2011.4796%200.473932%2011.6665%200.716778%2012.0403C0.926351%2012.3629%201.04702%2012.6027%201.04702%2012.6965C1.04702%2012.7711%201.06136%2012.7712%201.38611%2012.6983C2.16328%2012.5239%202.79434%2012.2171%203.14925%2011.8411C3.36891%2011.6084%203.42048%2011.4799%203.42215%2011.1611C3.42325%2010.9525%203.41587%2010.9088%203.35914%2010.7888C3.2668%2010.5935%203.09869%2010.4311%202.72817%2010.1794C2.2427%209.84953%202.03534%209.58398%201.97807%209.21878C1.93108%208.91913%201.98559%208.70771%202.25416%208.14825C2.53214%207.56916%202.60103%207.32239%202.64763%206.73869C2.67773%206.36158%202.71941%206.21286%202.82842%206.09348C2.94212%205.969%203.04447%205.92684%203.32584%205.88863C3.78457%205.82635%204.07667%205.70839%204.31677%205.48849C4.52505%205.29772%204.61221%205.11391%204.62558%204.8372L4.63574%204.62747L4.51934%204.49259C4.09783%204.00411%200.0261003%200.5%200.000160437%200.5C-0.00538105%200.5%200.133325%200.672804%200.308383%200.883984ZM1.28364%2010.6992C1.37894%2010.5314%201.3283%2010.3158%201.16889%2010.2104C1.01827%2010.1109%200.78428%2010.1578%200.78428%2010.2875C0.78428%2010.3271%200.806303%2010.3559%200.855937%2010.3813C0.939514%2010.424%200.945581%2010.4721%200.879823%2010.5703C0.81323%2010.6698%200.818604%2010.7573%200.894991%2010.8167C1.0181%2010.9125%201.19237%2010.8598%201.28364%2010.6992Z%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M4.92523%205.99865C4.70988%206.06439%204.50054%206.29124%204.43574%206.5291C4.39621%206.67421%204.41864%206.92875%204.47785%207.00736C4.57351%207.13433%204.66602%207.16778%204.91651%207.16603C5.40693%207.16263%205.83327%206.95358%205.88284%206.69224C5.92347%206.47801%205.73622%206.18112%205.4783%206.05078C5.34521%205.98355%205.06217%205.95688%204.92523%205.99865ZM5.49853%206.44422C5.57416%206.33741%205.54107%206.22198%205.41245%206.14391C5.1675%205.99525%204.79708%206.11827%204.79708%206.34826C4.79708%206.46274%204.99025%206.58765%205.16731%206.58765C5.28516%206.58765%205.44644%206.5178%205.49853%206.44422Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E";
 
-var _a$6;
-var NETWORK_POLLING_INTERVALS = (_a$6 = {},
-    _a$6[SupportedChainId.ARBITRUM_ONE] = ms__default["default"](templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["1s"], ["1s"]))),
-    _a$6[SupportedChainId.ARBITRUM_RINKEBY] = ms__default["default"](templateObject_2$e || (templateObject_2$e = __makeTemplateObject(["1s"], ["1s"]))),
-    _a$6[SupportedChainId.OPTIMISM] = ms__default["default"](templateObject_3$b || (templateObject_3$b = __makeTemplateObject(["1s"], ["1s"]))),
-    _a$6[SupportedChainId.OPTIMISTIC_KOVAN] = ms__default["default"](templateObject_4$7 || (templateObject_4$7 = __makeTemplateObject(["1s"], ["1s"]))),
-    _a$6);
+var _a$7;
+var NETWORK_POLLING_INTERVALS = (_a$7 = {},
+    _a$7[SupportedChainId.ARBITRUM_ONE] = ms__default["default"](templateObject_1$p || (templateObject_1$p = __makeTemplateObject(["1s"], ["1s"]))),
+    _a$7[SupportedChainId.ARBITRUM_RINKEBY] = ms__default["default"](templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["1s"], ["1s"]))),
+    _a$7[SupportedChainId.OPTIMISM] = ms__default["default"](templateObject_3$a || (templateObject_3$a = __makeTemplateObject(["1s"], ["1s"]))),
+    _a$7[SupportedChainId.OPTIMISTIC_KOVAN] = ms__default["default"](templateObject_4$7 || (templateObject_4$7 = __makeTemplateObject(["1s"], ["1s"]))),
+    _a$7);
 function getLibrary(provider) {
     var library = new providers.Web3Provider(provider, typeof provider.chainId === 'number'
         ? provider.chainId
@@ -11363,7 +11971,7 @@ function getLibrary(provider) {
     });
     return library;
 }
-var templateObject_1$p, templateObject_2$e, templateObject_3$b, templateObject_4$7;
+var templateObject_1$p, templateObject_2$d, templateObject_3$a, templateObject_4$7;
 
 var OVERLAY_READY = 'OVERLAY_READY';
 var CHAIN_ID_NETWORK_ARGUMENT = {
@@ -11791,9 +12399,9 @@ var WarningWrapper = styled__default["default"](Card)(templateObject_1$n || (tem
     var theme = _a.theme, highWarning = _a.highWarning;
     return highWarning ? polished.transparentize(0.8, theme.red1) : polished.transparentize(0.8, theme.yellow2);
 });
-var AddressText = styled__default["default"](ThemedText.Blue)(templateObject_3$a || (templateObject_3$a = __makeTemplateObject(["\n  font-size: 12px;\n  word-break: break-all;\n\n  ", "\n"], ["\n  font-size: 12px;\n  word-break: break-all;\n\n  ", "\n"])), function (_a) {
+var AddressText = styled__default["default"](ThemedText.Blue)(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["\n  font-size: 12px;\n  word-break: break-all;\n\n  ", "\n"], ["\n  font-size: 12px;\n  word-break: break-all;\n\n  ", "\n"])), function (_a) {
     var theme = _a.theme;
-    return theme.mediaWidth.upToSmall(templateObject_2$d || (templateObject_2$d = __makeTemplateObject(["\n    font-size: 10px;\n  "], ["\n    font-size: 10px;\n  "])));
+    return theme.mediaWidth.upToSmall(templateObject_2$c || (templateObject_2$c = __makeTemplateObject(["\n    font-size: 10px;\n  "], ["\n    font-size: 10px;\n  "])));
 });
 var TokenImportCard = function (_a) {
     var list = _a.list, token = _a.token;
@@ -11801,11 +12409,11 @@ var TokenImportCard = function (_a) {
     var chainId = useActiveWeb3React().chainId;
     return (jsxRuntime.jsx(Card, __assign({ backgroundColor: theme.bg2, padding: "2rem" }, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: "10px", justify: "center" }, { children: [jsxRuntime.jsx(CurrencyLogo, { currency: token, size: '32px' }, void 0), jsxRuntime.jsxs(AutoColumn, __assign({ gap: "4px", justify: "center" }, { children: [jsxRuntime.jsx(ThemedText.Body, __assign({ ml: "8px", mr: "8px", fontWeight: 500, fontSize: 20 }, { children: token.symbol }), void 0), jsxRuntime.jsx(ThemedText.DarkGray, __assign({ fontWeight: 400, fontSize: 14 }, { children: token.name }), void 0)] }), void 0), chainId && (jsxRuntime.jsx(ExternalLink, __assign({ href: getExplorerLink(chainId, token.address, ExplorerDataType.ADDRESS) }, { children: jsxRuntime.jsx(AddressText, __assign({ fontSize: 12 }, { children: token.address }), void 0) }), void 0)), list !== undefined ? (jsxRuntime.jsxs(RowFixed, { children: [list.logoURI && jsxRuntime.jsx(ListLogo, { logoURI: list.logoURI, size: "16px" }, void 0), jsxRuntime.jsx(ThemedText.Small, __assign({ ml: "6px", fontSize: 14, color: theme.text3 }, { children: jsxRuntime.jsxs(macro.Trans, { children: ["via ", list.name, " token list"] }, void 0) }), void 0)] }, void 0)) : (jsxRuntime.jsx(WarningWrapper, __assign({ "$borderRadius": "4px", padding: "4px", highWarning: true }, { children: jsxRuntime.jsxs(RowFixed, { children: [jsxRuntime.jsx(reactFeather.AlertCircle, { stroke: theme.red1, size: "10px" }, void 0), jsxRuntime.jsx(ThemedText.Body, __assign({ color: theme.red1, ml: "4px", fontSize: "10px", fontWeight: 500 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Unknown Source" }, void 0) }), void 0)] }, void 0) }), void 0))] }), void 0) }), void 0));
 };
-var templateObject_1$n, templateObject_2$d, templateObject_3$a;
+var templateObject_1$n, templateObject_2$c, templateObject_3$9;
 
 var Wrapper$7 = styled__default["default"].div(templateObject_1$m || (templateObject_1$m = __makeTemplateObject(["\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n  height: 100%;\n  width: 100%;\n"], ["\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n  height: 100%;\n  width: 100%;\n"])));
-var Button = styled__default["default"](ButtonPrimary)(templateObject_2$c || (templateObject_2$c = __makeTemplateObject(["\n  margin-top: 1em;\n  padding: 10px 1em;\n"], ["\n  margin-top: 1em;\n  padding: 10px 1em;\n"])));
-var Content = styled__default["default"].div(templateObject_3$9 || (templateObject_3$9 = __makeTemplateObject(["\n  padding: 1em;\n"], ["\n  padding: 1em;\n"])));
+var Button = styled__default["default"](ButtonPrimary)(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n  margin-top: 1em;\n  padding: 10px 1em;\n"], ["\n  margin-top: 1em;\n  padding: 10px 1em;\n"])));
+var Content = styled__default["default"].div(templateObject_3$8 || (templateObject_3$8 = __makeTemplateObject(["\n  padding: 1em;\n"], ["\n  padding: 1em;\n"])));
 var Copy = styled__default["default"](ThemedText.Body)(templateObject_4$6 || (templateObject_4$6 = __makeTemplateObject(["\n  text-align: center;\n  margin: 0 2em 1em !important;\n  font-weight: 400;\n  font-size: 16px;\n"], ["\n  text-align: center;\n  margin: 0 2em 1em !important;\n  font-weight: 400;\n  font-size: 16px;\n"])));
 var Header = styled__default["default"].div(templateObject_5$6 || (templateObject_5$6 = __makeTemplateObject(["\n  align-items: center;\n  display: flex;\n  gap: 14px;\n  justify-content: space-between;\n  padding: 20px;\n  width: 100%;\n"], ["\n  align-items: center;\n  display: flex;\n  gap: 14px;\n  justify-content: space-between;\n  padding: 20px;\n  width: 100%;\n"])));
 var Icon = styled__default["default"](reactFeather.AlertCircle)(templateObject_6$4 || (templateObject_6$4 = __makeTemplateObject(["\n  stroke: ", ";\n  width: 48px;\n  height: 48px;\n"], ["\n  stroke: ", ";\n  width: 48px;\n  height: 48px;\n"])), function (_a) {
@@ -11816,7 +12424,7 @@ var BlockedToken = function (_a) {
     var onBack = _a.onBack, onDismiss = _a.onDismiss, blockedTokens = _a.blockedTokens;
     return (jsxRuntime.jsxs(Wrapper$7, { children: [jsxRuntime.jsxs(Header, { children: [onBack ? jsxRuntime.jsx(reactFeather.ArrowLeft, { style: { cursor: 'pointer' }, onClick: onBack }, void 0) : jsxRuntime.jsx("div", {}, void 0), jsxRuntime.jsx(ThemedText.MediumHeader, { children: jsxRuntime.jsx(macro.Trans, { children: "Token not supported" }, void 0) }, void 0), onDismiss ? jsxRuntime.jsx(CloseIcon, { onClick: onDismiss }, void 0) : jsxRuntime.jsx("div", {}, void 0)] }, void 0), jsxRuntime.jsx(Icon, {}, void 0), jsxRuntime.jsxs(Content, { children: [jsxRuntime.jsx(Copy, { children: jsxRuntime.jsx(macro.Trans, { children: "This token is not supported in the Uniswap Labs app" }, void 0) }, void 0), jsxRuntime.jsx(TokenImportCard, { token: blockedTokens[0] }, void 0), jsxRuntime.jsx(Button, __assign({ disabled: true }, { children: jsxRuntime.jsx(macro.Trans, { children: "Import" }, void 0) }), void 0)] }, void 0)] }, void 0));
 };
-var templateObject_1$m, templateObject_2$c, templateObject_3$9, templateObject_4$6, templateObject_5$6, templateObject_6$4;
+var templateObject_1$m, templateObject_2$b, templateObject_3$8, templateObject_4$6, templateObject_5$6, templateObject_6$4;
 
 var Wrapper$6 = styled__default["default"].div(templateObject_1$l || (templateObject_1$l = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n  overflow: auto;\n"], ["\n  position: relative;\n  width: 100%;\n  overflow: auto;\n"])));
 function ImportToken(props) {
@@ -11887,11 +12495,11 @@ var Wrapper$5 = styled__default["default"].button(templateObject_1$k || (templat
     var theme = _a.theme;
     return theme.bg1;
 });
-var ToggleElement$1 = styled__default["default"].span(templateObject_2$b || (templateObject_2$b = __makeTemplateObject(["\n  border-radius: 50%;\n  height: 24px;\n  width: 24px;\n  background-color: ", ";\n  :hover {\n    opacity: 0.8;\n  }\n"], ["\n  border-radius: 50%;\n  height: 24px;\n  width: 24px;\n  background-color: ", ";\n  :hover {\n    opacity: 0.8;\n  }\n"])), function (_a) {
+var ToggleElement$1 = styled__default["default"].span(templateObject_2$a || (templateObject_2$a = __makeTemplateObject(["\n  border-radius: 50%;\n  height: 24px;\n  width: 24px;\n  background-color: ", ";\n  :hover {\n    opacity: 0.8;\n  }\n"], ["\n  border-radius: 50%;\n  height: 24px;\n  width: 24px;\n  background-color: ", ";\n  :hover {\n    opacity: 0.8;\n  }\n"])), function (_a) {
     var isActive = _a.isActive, bgColor = _a.bgColor, theme = _a.theme;
     return (isActive ? bgColor : theme.bg4);
 });
-var StatusText = styled__default["default"](ThemedText.Main)(templateObject_3$8 || (templateObject_3$8 = __makeTemplateObject(["\n  margin: 0 10px;\n  width: 24px;\n  color: ", ";\n"], ["\n  margin: 0 10px;\n  width: 24px;\n  color: ", ";\n"])), function (_a) {
+var StatusText = styled__default["default"](ThemedText.Main)(templateObject_3$7 || (templateObject_3$7 = __makeTemplateObject(["\n  margin: 0 10px;\n  width: 24px;\n  color: ", ";\n"], ["\n  margin: 0 10px;\n  width: 24px;\n  color: ", ";\n"])), function (_a) {
     var theme = _a.theme, isActive = _a.isActive;
     return (isActive ? theme.text1 : theme.text3);
 });
@@ -11899,14 +12507,14 @@ function ListToggle(_a) {
     var id = _a.id, isActive = _a.isActive, bgColor = _a.bgColor, toggle = _a.toggle;
     return (jsxRuntime.jsxs(Wrapper$5, __assign({ id: id, isActive: isActive, onClick: toggle }, { children: [isActive && (jsxRuntime.jsx(StatusText, __assign({ fontWeight: "600", margin: "0 6px", isActive: true }, { children: jsxRuntime.jsx(macro.Trans, { children: "ON" }, void 0) }), void 0)), jsxRuntime.jsx(ToggleElement$1, { isActive: isActive, bgColor: bgColor }, void 0), !isActive && (jsxRuntime.jsx(StatusText, __assign({ fontWeight: "600", margin: "0 6px", isActive: false }, { children: jsxRuntime.jsx(macro.Trans, { children: "OFF" }, void 0) }), void 0))] }), void 0));
 }
-var templateObject_1$k, templateObject_2$b, templateObject_3$8;
+var templateObject_1$k, templateObject_2$a, templateObject_3$7;
 
 var Wrapper$4 = styled__default["default"](Column)(templateObject_1$j || (templateObject_1$j = __makeTemplateObject(["\n  flex: 1;\n  overflow-y: hidden;\n"], ["\n  flex: 1;\n  overflow-y: hidden;\n"])));
-var UnpaddedLinkStyledButton = styled__default["default"](LinkStyledButton)(templateObject_2$a || (templateObject_2$a = __makeTemplateObject(["\n  padding: 0;\n  font-size: 1rem;\n  opacity: ", ";\n"], ["\n  padding: 0;\n  font-size: 1rem;\n  opacity: ", ";\n"])), function (_a) {
+var UnpaddedLinkStyledButton = styled__default["default"](LinkStyledButton)(templateObject_2$9 || (templateObject_2$9 = __makeTemplateObject(["\n  padding: 0;\n  font-size: 1rem;\n  opacity: ", ";\n"], ["\n  padding: 0;\n  font-size: 1rem;\n  opacity: ", ";\n"])), function (_a) {
     var disabled = _a.disabled;
     return (disabled ? '0.4' : '1');
 });
-var PopoverContainer = styled__default["default"].div(templateObject_3$7 || (templateObject_3$7 = __makeTemplateObject(["\n  z-index: 100;\n  visibility: ", ";\n  opacity: ", ";\n  transition: visibility 150ms linear, opacity 150ms linear;\n  background: ", ";\n  border: 1px solid ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  color: ", ";\n  border-radius: 0.5rem;\n  padding: 1rem;\n  display: grid;\n  grid-template-rows: 1fr;\n  grid-gap: 8px;\n  font-size: 1rem;\n  text-align: left;\n"], ["\n  z-index: 100;\n  visibility: ", ";\n  opacity: ", ";\n  transition: visibility 150ms linear, opacity 150ms linear;\n  background: ", ";\n  border: 1px solid ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  color: ", ";\n  border-radius: 0.5rem;\n  padding: 1rem;\n  display: grid;\n  grid-template-rows: 1fr;\n  grid-gap: 8px;\n  font-size: 1rem;\n  text-align: left;\n"])), function (props) { return (props.show ? 'visible' : 'hidden'); }, function (props) { return (props.show ? 1 : 0); }, function (_a) {
+var PopoverContainer = styled__default["default"].div(templateObject_3$6 || (templateObject_3$6 = __makeTemplateObject(["\n  z-index: 100;\n  visibility: ", ";\n  opacity: ", ";\n  transition: visibility 150ms linear, opacity 150ms linear;\n  background: ", ";\n  border: 1px solid ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  color: ", ";\n  border-radius: 0.5rem;\n  padding: 1rem;\n  display: grid;\n  grid-template-rows: 1fr;\n  grid-gap: 8px;\n  font-size: 1rem;\n  text-align: left;\n"], ["\n  z-index: 100;\n  visibility: ", ";\n  opacity: ", ";\n  transition: visibility 150ms linear, opacity 150ms linear;\n  background: ", ";\n  border: 1px solid ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  color: ", ";\n  border-radius: 0.5rem;\n  padding: 1rem;\n  display: grid;\n  grid-template-rows: 1fr;\n  grid-gap: 8px;\n  font-size: 1rem;\n  text-align: left;\n"])), function (props) { return (props.show ? 'visible' : 'hidden'); }, function (props) { return (props.show ? 1 : 0); }, function (_a) {
     var theme = _a.theme;
     return theme.bg2;
 }, function (_a) {
@@ -12109,10 +12717,10 @@ function ManageLists(_a) {
     }, [listUrlInput, setImportList, setListUrl, setModalView, tempList]);
     return (jsxRuntime.jsxs(Wrapper$4, { children: [jsxRuntime.jsxs(PaddedColumn, __assign({ gap: "14px" }, { children: [jsxRuntime.jsx(Row, { children: jsxRuntime.jsx(SearchInput, { type: "text", id: "list-add-input", placeholder: macro.t(templateObject_12$2 || (templateObject_12$2 = __makeTemplateObject(["https:// or ipfs:// or ENS name"], ["https:// or ipfs:// or ENS name"]))), value: listUrlInput, onChange: handleInput }, void 0) }, void 0), addError ? (jsxRuntime.jsx(ThemedText.Error, __assign({ title: addError, style: { textOverflow: 'ellipsis', overflow: 'hidden' }, error: true }, { children: addError }), void 0)) : null] }), void 0), tempList && (jsxRuntime.jsx(PaddedColumn, __assign({ style: { paddingTop: 0 } }, { children: jsxRuntime.jsx(Card, __assign({ backgroundColor: theme.bg2, padding: "12px 20px" }, { children: jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsxs(RowFixed, { children: [tempList.logoURI && jsxRuntime.jsx(ListLogo, { logoURI: tempList.logoURI, size: "40px" }, void 0), jsxRuntime.jsxs(AutoColumn, __assign({ gap: "4px", style: { marginLeft: '20px' } }, { children: [jsxRuntime.jsx(ThemedText.Body, __assign({ fontWeight: 600 }, { children: tempList.name }), void 0), jsxRuntime.jsx(ThemedText.Main, __assign({ fontSize: '12px' }, { children: jsxRuntime.jsxs(macro.Trans, { children: [tempList.tokens.length, " tokens"] }, void 0) }), void 0)] }), void 0)] }, void 0), isImported ? (jsxRuntime.jsxs(RowFixed, { children: [jsxRuntime.jsx(IconWrapper, __assign({ stroke: theme.text2, size: "16px", marginRight: '10px' }, { children: jsxRuntime.jsx(reactFeather.CheckCircle, {}, void 0) }), void 0), jsxRuntime.jsx(ThemedText.Body, __assign({ color: theme.text2 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Loaded" }, void 0) }), void 0)] }, void 0)) : (jsxRuntime.jsx(ButtonPrimary, __assign({ style: { fontSize: '14px' }, padding: "6px 8px", width: "fit-content", onClick: handleImport }, { children: jsxRuntime.jsx(macro.Trans, { children: "Import" }, void 0) }), void 0))] }, void 0) }), void 0) }), void 0)), jsxRuntime.jsx(Separator, {}, void 0), jsxRuntime.jsx(ListContainer, { children: jsxRuntime.jsx(AutoColumn, __assign({ gap: "md" }, { children: sortedLists.map(function (listUrl) { return (jsxRuntime.jsx(ListRow, { listUrl: listUrl }, listUrl)); }) }), void 0) }, void 0)] }, void 0));
 }
-var templateObject_1$j, templateObject_2$a, templateObject_3$7, templateObject_4$5, templateObject_5$5, templateObject_6$3, templateObject_7$3, templateObject_8$2, templateObject_9$2, templateObject_10$2, templateObject_11$2, templateObject_12$2;
+var templateObject_1$j, templateObject_2$9, templateObject_3$6, templateObject_4$5, templateObject_5$5, templateObject_6$3, templateObject_7$3, templateObject_8$2, templateObject_9$2, templateObject_10$2, templateObject_11$2, templateObject_12$2;
 
 var Wrapper$3 = styled__default["default"].div(templateObject_1$i || (templateObject_1$i = __makeTemplateObject(["\n  width: 100%;\n  height: calc(100% - 60px);\n  position: relative;\n  padding-bottom: 80px;\n"], ["\n  width: 100%;\n  height: calc(100% - 60px);\n  position: relative;\n  padding-bottom: 80px;\n"])));
-var Footer = styled__default["default"].div(templateObject_2$9 || (templateObject_2$9 = __makeTemplateObject(["\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  border-radius: 20px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n  border-top: 1px solid ", ";\n  padding: 20px;\n  text-align: center;\n"], ["\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  border-radius: 20px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n  border-top: 1px solid ", ";\n  padding: 20px;\n  text-align: center;\n"])), function (_a) {
+var Footer = styled__default["default"].div(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  border-radius: 20px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n  border-top: 1px solid ", ";\n  padding: 20px;\n  text-align: center;\n"], ["\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  border-radius: 20px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n  border-top: 1px solid ", ";\n  padding: 20px;\n  text-align: center;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg3;
 });
@@ -12147,14 +12755,14 @@ function ManageTokens(_a) {
     }, [userAddedTokens, chainId, removeToken]);
     return (jsxRuntime.jsxs(Wrapper$3, { children: [jsxRuntime.jsxs(Column, __assign({ style: { width: '100%', height: '100%', flex: '1 1' } }, { children: [jsxRuntime.jsxs(PaddedColumn, __assign({ gap: "14px" }, { children: [jsxRuntime.jsx(Row, { children: jsxRuntime.jsx(SearchInput, { type: "text", id: "token-search-input", placeholder: '0x0000', value: searchQuery, autoComplete: "off", ref: inputRef, onChange: handleInput }, void 0) }, void 0), searchQuery !== '' && !isAddressSearch && (jsxRuntime.jsx(ThemedText.Error, __assign({ error: true }, { children: jsxRuntime.jsx(macro.Trans, { children: "Enter valid token address" }, void 0) }), void 0)), searchToken && (jsxRuntime.jsx(Card, __assign({ backgroundColor: theme.bg2, padding: "10px 0" }, { children: jsxRuntime.jsx(ImportRow, { token: searchToken, showImportView: function () { return setModalView(CurrencyModalView.importToken); }, setImportToken: setImportToken, style: { height: 'fit-content' } }, void 0) }), void 0))] }), void 0), jsxRuntime.jsx(Separator, {}, void 0), jsxRuntime.jsxs(PaddedColumn, __assign({ gap: "lg", style: { overflow: 'auto', marginBottom: '10px' } }, { children: [jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.Main, __assign({ fontWeight: 600 }, { children: jsxRuntime.jsxs(macro.Trans, { children: [userAddedTokens === null || userAddedTokens === void 0 ? void 0 : userAddedTokens.length, " Custom Tokens"] }, void 0) }), void 0), userAddedTokens.length > 0 && (jsxRuntime.jsx(ButtonText, __assign({ onClick: handleRemoveAll }, { children: jsxRuntime.jsx(ThemedText.Blue, { children: jsxRuntime.jsx(macro.Trans, { children: "Clear all" }, void 0) }, void 0) }), void 0))] }, void 0), tokenList] }), void 0)] }), void 0), jsxRuntime.jsx(Footer, { children: jsxRuntime.jsx(ThemedText.DarkGray, { children: jsxRuntime.jsx(macro.Trans, { children: "Tip: Custom tokens are stored locally in your browser" }, void 0) }, void 0) }, void 0)] }, void 0));
 }
-var templateObject_1$i, templateObject_2$9;
+var templateObject_1$i, templateObject_2$8;
 
 var Wrapper$2 = styled__default["default"].div(templateObject_1$h || (templateObject_1$h = __makeTemplateObject(["\n  width: 100%;\n  position: relative;\n  display: flex;\n  flex-flow: column;\n"], ["\n  width: 100%;\n  position: relative;\n  display: flex;\n  flex-flow: column;\n"])));
-var ToggleWrapper = styled__default["default"](RowBetween)(templateObject_2$8 || (templateObject_2$8 = __makeTemplateObject(["\n  background-color: ", ";\n  border-radius: 12px;\n  padding: 6px;\n"], ["\n  background-color: ", ";\n  border-radius: 12px;\n  padding: 6px;\n"])), function (_a) {
+var ToggleWrapper = styled__default["default"](RowBetween)(templateObject_2$7 || (templateObject_2$7 = __makeTemplateObject(["\n  background-color: ", ";\n  border-radius: 12px;\n  padding: 6px;\n"], ["\n  background-color: ", ";\n  border-radius: 12px;\n  padding: 6px;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg3;
 });
-var ToggleOption = styled__default["default"].div(templateObject_3$6 || (templateObject_3$6 = __makeTemplateObject(["\n  width: 48%;\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 12px;\n  font-weight: 600;\n  background-color: ", ";\n  color: ", ";\n  user-select: none;\n\n  :hover {\n    cursor: pointer;\n    opacity: 0.7;\n  }\n"], ["\n  width: 48%;\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 12px;\n  font-weight: 600;\n  background-color: ", ";\n  color: ", ";\n  user-select: none;\n\n  :hover {\n    cursor: pointer;\n    opacity: 0.7;\n  }\n"])), function (_a) {
+var ToggleOption = styled__default["default"].div(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["\n  width: 48%;\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 12px;\n  font-weight: 600;\n  background-color: ", ";\n  color: ", ";\n  user-select: none;\n\n  :hover {\n    cursor: pointer;\n    opacity: 0.7;\n  }\n"], ["\n  width: 48%;\n  padding: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 12px;\n  font-weight: 600;\n  background-color: ", ";\n  color: ", ";\n  user-select: none;\n\n  :hover {\n    cursor: pointer;\n    opacity: 0.7;\n  }\n"])), function (_a) {
     var theme = _a.theme, active = _a.active;
     return (active ? theme.bg1 : theme.bg3);
 }, function (_a) {
@@ -12167,7 +12775,7 @@ function Manage(_a) {
     var _b = __read(React.useState(true), 2), showLists = _b[0], setShowLists = _b[1];
     return (jsxRuntime.jsxs(Wrapper$2, { children: [jsxRuntime.jsx(PaddedColumn, { children: jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(reactFeather.ArrowLeft, { style: { cursor: 'pointer' }, onClick: function () { return setModalView(CurrencyModalView.search); } }, void 0), jsxRuntime.jsx(rebass.Text, __assign({ fontWeight: 500, fontSize: 20 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Manage" }, void 0) }), void 0), jsxRuntime.jsx(CloseIcon, { onClick: onDismiss }, void 0)] }, void 0) }, void 0), jsxRuntime.jsx(Separator, {}, void 0), jsxRuntime.jsx(PaddedColumn, __assign({ style: { paddingBottom: 0 } }, { children: jsxRuntime.jsxs(ToggleWrapper, { children: [jsxRuntime.jsx(ToggleOption, __assign({ onClick: function () { return setShowLists(!showLists); }, active: showLists }, { children: jsxRuntime.jsx(macro.Trans, { children: "Lists" }, void 0) }), void 0), jsxRuntime.jsx(ToggleOption, __assign({ onClick: function () { return setShowLists(!showLists); }, active: !showLists }, { children: jsxRuntime.jsx(macro.Trans, { children: "Tokens" }, void 0) }), void 0)] }, void 0) }), void 0), showLists ? (jsxRuntime.jsx(ManageLists, { setModalView: setModalView, setImportList: setImportList, setListUrl: setListUrl }, void 0)) : (jsxRuntime.jsx(ManageTokens, { setModalView: setModalView, setImportToken: setImportToken }, void 0))] }, void 0));
 }
-var templateObject_1$h, templateObject_2$8, templateObject_3$6;
+var templateObject_1$h, templateObject_2$7, templateObject_3$5;
 
 var CurrencyModalView;
 (function (CurrencyModalView) {
@@ -12281,11 +12889,11 @@ var InputPanel = styled__default["default"].div(templateObject_1$e || (templateO
     var hideInput = _a.hideInput;
     return (hideInput ? '100%' : 'initial');
 });
-var FixedContainer = styled__default["default"].div(templateObject_2$7 || (templateObject_2$7 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  border-radius: 20px;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 2;\n"], ["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  border-radius: 20px;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 2;\n"])), function (_a) {
+var FixedContainer = styled__default["default"].div(templateObject_2$6 || (templateObject_2$6 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  border-radius: 20px;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 2;\n"], ["\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  border-radius: 20px;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 2;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg2;
 });
-var Container$1 = styled__default["default"].div(templateObject_3$5 || (templateObject_3$5 = __makeTemplateObject(["\n  border-radius: ", ";\n  border: 1px solid ", ";\n  background-color: ", ";\n  width: ", ";\n  :focus,\n  :hover {\n    border: 1px solid ", ";\n  }\n"], ["\n  border-radius: ", ";\n  border: 1px solid ", ";\n  background-color: ", ";\n  width: ", ";\n  :focus,\n  :hover {\n    border: 1px solid ", ";\n  }\n"])), function (_a) {
+var Container$1 = styled__default["default"].div(templateObject_3$4 || (templateObject_3$4 = __makeTemplateObject(["\n  border-radius: ", ";\n  border: 1px solid ", ";\n  background-color: ", ";\n  width: ", ";\n  :focus,\n  :hover {\n    border: 1px solid ", ";\n  }\n"], ["\n  border-radius: ", ";\n  border: 1px solid ", ";\n  background-color: ", ";\n  width: ", ";\n  :focus,\n  :hover {\n    border: 1px solid ", ";\n  }\n"])), function (_a) {
     var hideInput = _a.hideInput;
     return (hideInput ? '16px' : '20px');
 }, function (_a) {
@@ -12394,7 +13002,7 @@ function CurrencyInputPanel(_a) {
                                                             currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
                                                         : currency === null || currency === void 0 ? void 0 : currency.symbol) || jsxRuntime.jsx(macro.Trans, { children: "Select a token" }, void 0) }), void 0))] }, void 0), onCurrencySelect && jsxRuntime.jsx(StyledDropDown, { selected: !!currency }, void 0)] }, void 0) }), void 0)] }), void 0), !hideInput && !hideBalance && currency && (jsxRuntime.jsx(FiatRow, { children: jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(LoadingOpacityContainer, __assign({ "$loading": loading }, { children: jsxRuntime.jsx(FiatValue, { fiatValue: fiatValue, priceImpact: priceImpact }, void 0) }), void 0), account ? (jsxRuntime.jsxs(RowFixed, __assign({ style: { height: '17px' } }, { children: [jsxRuntime.jsx(ThemedText.Body, __assign({ onClick: onMax, color: theme.text3, fontWeight: 500, fontSize: 14, style: { display: 'inline', cursor: 'pointer' } }, { children: !hideBalance && currency && selectedCurrencyBalance ? (renderBalance ? (renderBalance(selectedCurrencyBalance)) : (jsxRuntime.jsxs(macro.Trans, { children: ["Balance: ", formatCurrencyAmount(selectedCurrencyBalance, 4)] }, void 0))) : null }), void 0), showMaxButton && selectedCurrencyBalance ? (jsxRuntime.jsx(StyledBalanceMax, __assign({ onClick: onMax }, { children: jsxRuntime.jsx(macro.Trans, { children: "MAX" }, void 0) }), void 0)) : null] }), void 0)) : (jsxRuntime.jsx("span", {}, void 0))] }, void 0) }, void 0))] }), void 0), onCurrencySelect && (jsxRuntime.jsx(CurrencySearchModal, { isOpen: modalOpen, onDismiss: handleDismissSearch, onCurrencySelect: onCurrencySelect, selectedCurrency: currency, otherSelectedCurrency: otherCurrency, showCommonBases: showCommonBases, showCurrencyAmount: showCurrencyAmount, disableNonToken: disableNonToken }, void 0))] }), void 0));
 }
-var templateObject_1$e, templateObject_2$7, templateObject_3$5, templateObject_4$4, templateObject_5$4, templateObject_6$2, templateObject_7$2, templateObject_8$1, templateObject_9$1, templateObject_10$1, templateObject_11$1, templateObject_12$1;
+var templateObject_1$e, templateObject_2$6, templateObject_3$4, templateObject_4$4, templateObject_5$4, templateObject_6$2, templateObject_7$2, templateObject_8$1, templateObject_9$1, templateObject_10$1, templateObject_11$1, templateObject_12$1;
 
 /**
  * Given the price impact, get user confirmation.
@@ -12624,22 +13232,22 @@ function TransactionSummary(_a) {
 }
 
 var Wrapper$1 = styled__default["default"].div(templateObject_1$d || (templateObject_1$d = __makeTemplateObject(["\n  height: 90px;\n  width: 90px;\n"], ["\n  height: 90px;\n  width: 90px;\n"])));
-var dash = styled.keyframes(templateObject_2$6 || (templateObject_2$6 = __makeTemplateObject(["\n  0% {\n    stroke-dashoffset: 1000;\n  }\n  100% {\n    stroke-dashoffset: 0;\n  }\n"], ["\n  0% {\n    stroke-dashoffset: 1000;\n  }\n  100% {\n    stroke-dashoffset: 0;\n  }\n"])));
-var dashCheck = styled.keyframes(templateObject_3$4 || (templateObject_3$4 = __makeTemplateObject(["\n  0% {\n    stroke-dashoffset: -100;\n  }\n  100% {\n    stroke-dashoffset: 900;\n  }\n"], ["\n  0% {\n    stroke-dashoffset: -100;\n  }\n  100% {\n    stroke-dashoffset: 900;\n  }\n"])));
+var dash = styled.keyframes(templateObject_2$5 || (templateObject_2$5 = __makeTemplateObject(["\n  0% {\n    stroke-dashoffset: 1000;\n  }\n  100% {\n    stroke-dashoffset: 0;\n  }\n"], ["\n  0% {\n    stroke-dashoffset: 1000;\n  }\n  100% {\n    stroke-dashoffset: 0;\n  }\n"])));
+var dashCheck = styled.keyframes(templateObject_3$3 || (templateObject_3$3 = __makeTemplateObject(["\n  0% {\n    stroke-dashoffset: -100;\n  }\n  100% {\n    stroke-dashoffset: 900;\n  }\n"], ["\n  0% {\n    stroke-dashoffset: -100;\n  }\n  100% {\n    stroke-dashoffset: 900;\n  }\n"])));
 var Circle = styled__default["default"].circle(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n  stroke-dasharray: 1000;\n  stroke-dashoffset: 0;\n  -webkit-animation: ", " 0.9s ease-in-out;\n  animation: ", " 0.9s ease-in-out;\n"], ["\n  stroke-dasharray: 1000;\n  stroke-dashoffset: 0;\n  -webkit-animation: ", " 0.9s ease-in-out;\n  animation: ", " 0.9s ease-in-out;\n"])), dash, dash);
 var PolyLine = styled__default["default"].polyline(templateObject_5$3 || (templateObject_5$3 = __makeTemplateObject(["\n  stroke-dasharray: 1000;\n  stroke-dashoffset: 0;\n  stroke-dashoffset: -100;\n  -webkit-animation: ", " 0.9s 0.35s ease-in-out forwards;\n  animation: ", " 0.9s 0.35s ease-in-out forwards;\n"], ["\n  stroke-dasharray: 1000;\n  stroke-dashoffset: 0;\n  stroke-dashoffset: -100;\n  -webkit-animation: ", " 0.9s 0.35s ease-in-out forwards;\n  animation: ", " 0.9s 0.35s ease-in-out forwards;\n"])), dashCheck, dashCheck);
 function AnimatedConfirmation() {
     var theme = useTheme();
     return (jsxRuntime.jsx(Wrapper$1, __assign({ className: "w4rAnimated_checkmark" }, { children: jsxRuntime.jsxs("svg", __assign({ version: "1.1", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 130.2 130.2" }, { children: [jsxRuntime.jsx(Circle, { className: "path circle", fill: "none", stroke: theme.green1, strokeWidth: "6", strokeMiterlimit: "10", cx: "65.1", cy: "65.1", r: "62.1" }, void 0), jsxRuntime.jsx(PolyLine, { className: "path check", fill: "none", stroke: theme.green1, strokeWidth: "6", strokeLinecap: "round", strokeMiterlimit: "10", points: "100.2,40.2 51.5,88.8 29.8,67.5 " }, void 0)] }), void 0) }), void 0));
 }
-var templateObject_1$d, templateObject_2$6, templateObject_3$4, templateObject_4$3, templateObject_5$3;
+var templateObject_1$d, templateObject_2$5, templateObject_3$3, templateObject_4$3, templateObject_5$3;
 
 var Wrapper = styled__default["default"].div(templateObject_1$c || (templateObject_1$c = __makeTemplateObject(["\n  width: 100%;\n  padding: 1rem;\n"], ["\n  width: 100%;\n  padding: 1rem;\n"])));
-var Section = styled__default["default"](AutoColumn)(templateObject_2$5 || (templateObject_2$5 = __makeTemplateObject(["\n  padding: ", ";\n"], ["\n  padding: ", ";\n"])), function (_a) {
+var Section = styled__default["default"](AutoColumn)(templateObject_2$4 || (templateObject_2$4 = __makeTemplateObject(["\n  padding: ", ";\n"], ["\n  padding: ", ";\n"])), function (_a) {
     var inline = _a.inline;
     return (inline ? '0' : '0');
 });
-var BottomSection = styled__default["default"](Section)(templateObject_3$3 || (templateObject_3$3 = __makeTemplateObject(["\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n"], ["\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n"])));
+var BottomSection = styled__default["default"](Section)(templateObject_3$2 || (templateObject_3$2 = __makeTemplateObject(["\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n"], ["\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 20px;\n"])));
 var ConfirmedIcon = styled__default["default"](ColumnCenter)(templateObject_4$2 || (templateObject_4$2 = __makeTemplateObject(["\n  padding: ", ";\n"], ["\n  padding: ", ";\n"])), function (_a) {
     var inline = _a.inline;
     return (inline ? '20px 0' : '32px 0;');
@@ -12691,7 +13299,7 @@ function TransactionConfirmationModal(_a) {
     // confirmation screen
     return (jsxRuntime.jsx(Modal, __assign({ isOpen: isOpen, onDismiss: onDismiss, maxHeight: 90 }, { children: isL2 && (hash || attemptingTxn) ? (jsxRuntime.jsx(L2Content, { chainId: chainId, hash: hash, onDismiss: onDismiss, pendingText: pendingText }, void 0)) : attemptingTxn ? (jsxRuntime.jsx(ConfirmationPendingContent, { onDismiss: onDismiss, pendingText: pendingText }, void 0)) : hash ? (jsxRuntime.jsx(TransactionSubmittedContent, { chainId: chainId, hash: hash, onDismiss: onDismiss, currencyToAdd: currencyToAdd }, void 0)) : (content()) }), void 0));
 }
-var templateObject_1$c, templateObject_2$5, templateObject_3$3, templateObject_4$2, templateObject_5$2;
+var templateObject_1$c, templateObject_2$4, templateObject_3$2, templateObject_4$2, templateObject_5$2;
 
 function SwapModalFooter(_a) {
     var onConfirm = _a.onConfirm, swapErrorMessage = _a.swapErrorMessage, disabledConfirm = _a.disabledConfirm;
@@ -12744,7 +13352,7 @@ function ConfirmSwapModal(_a) {
     return (jsxRuntime.jsx(TransactionConfirmationModal, { isOpen: isOpen, onDismiss: onDismiss, attemptingTxn: attemptingTxn, hash: txHash, content: confirmationContent, pendingText: pendingText, currencyToAdd: trade === null || trade === void 0 ? void 0 : trade.outputAmount.currency }, void 0));
 }
 
-var _a$5;
+var _a$6;
 var ApplicationModal;
 (function (ApplicationModal) {
     ApplicationModal[ApplicationModal["WALLET"] = 0] = "WALLET";
@@ -12796,7 +13404,7 @@ var applicationSlice = toolkit.createSlice({
         },
     },
 });
-(_a$5 = applicationSlice.actions, _a$5.updateChainId); var setOpenModal = _a$5.setOpenModal; _a$5.addPopup; _a$5.removePopup;
+var updateChainId = (_a$6 = applicationSlice.actions, _a$6.updateChainId), setOpenModal = _a$6.setOpenModal, addPopup = _a$6.addPopup; _a$6.removePopup;
 var application = applicationSlice.reducer;
 
 function useModalOpen(modal) {
@@ -12813,6 +13421,13 @@ function useWalletModalToggle() {
 }
 function useToggleSettingsMenu() {
     return useToggleModal(ApplicationModal.SETTINGS);
+}
+// returns a function that allows adding a popup
+function useAddPopup() {
+    var dispatch = useAppDispatch();
+    return React.useCallback(function (content, key, removeAfterMs) {
+        dispatch(addPopup({ content: content, key: key, removeAfterMs: removeAfterMs !== null && removeAfterMs !== void 0 ? removeAfterMs : DEFAULT_TXN_DISMISS_MS }));
+    }, [dispatch]);
 }
 
 var ToggleElement = styled__default["default"].span(templateObject_1$a || (templateObject_1$a = __makeTemplateObject(["\n  padding: 0.25rem 0.6rem;\n  border-radius: 9px;\n  background: ", ";\n  color: ", ";\n  font-size: 14px;\n  font-weight: ", ";\n  :hover {\n    user-select: ", ";\n    background: ", ";\n    color: ", ";\n  }\n"], ["\n  padding: 0.25rem 0.6rem;\n  border-radius: 9px;\n  background: ", ";\n  color: ", ";\n  font-size: 14px;\n  font-weight: ", ";\n  :hover {\n    user-select: ", ";\n    background: ", ";\n    color: ", ";\n  }\n"])), function (_a) {
@@ -12834,7 +13449,7 @@ var ToggleElement = styled__default["default"].span(templateObject_1$a || (templ
     var theme = _a.theme, isActive = _a.isActive, isOnSwitch = _a.isOnSwitch;
     return (isActive ? (isOnSwitch ? theme.white : theme.white) : theme.text3);
 });
-var StyledToggle = styled__default["default"].button(templateObject_2$4 || (templateObject_2$4 = __makeTemplateObject(["\n  border-radius: 12px;\n  border: none;\n  background: ", ";\n  display: flex;\n  width: fit-content;\n  cursor: pointer;\n  outline: none;\n  padding: 2px;\n"], ["\n  border-radius: 12px;\n  border: none;\n  background: ", ";\n  display: flex;\n  width: fit-content;\n  cursor: pointer;\n  outline: none;\n  padding: 2px;\n"])), function (_a) {
+var StyledToggle = styled__default["default"].button(templateObject_2$3 || (templateObject_2$3 = __makeTemplateObject(["\n  border-radius: 12px;\n  border: none;\n  background: ", ";\n  display: flex;\n  width: fit-content;\n  cursor: pointer;\n  outline: none;\n  padding: 2px;\n"], ["\n  border-radius: 12px;\n  border: none;\n  background: ", ";\n  display: flex;\n  width: fit-content;\n  cursor: pointer;\n  outline: none;\n  padding: 2px;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg0;
 });
@@ -12842,7 +13457,7 @@ function Toggle(_a) {
     var id = _a.id, isActive = _a.isActive, toggle = _a.toggle, _b = _a.checked, checked = _b === void 0 ? jsxRuntime.jsx(macro.Trans, { children: "On" }, void 0) : _b, _c = _a.unchecked, unchecked = _c === void 0 ? jsxRuntime.jsx(macro.Trans, { children: "Off" }, void 0) : _c;
     return (jsxRuntime.jsxs(StyledToggle, __assign({ id: id, isActive: isActive, onClick: toggle }, { children: [jsxRuntime.jsx(ToggleElement, __assign({ isActive: isActive, isOnSwitch: true }, { children: checked }), void 0), jsxRuntime.jsx(ToggleElement, __assign({ isActive: !isActive, isOnSwitch: false }, { children: unchecked }), void 0)] }), void 0));
 }
-var templateObject_1$a, templateObject_2$4;
+var templateObject_1$a, templateObject_2$3;
 
 var SlippageError;
 (function (SlippageError) {
@@ -12868,14 +13483,14 @@ var FancyButton = styled__default["default"].button(templateObject_1$9 || (templ
     var theme = _a.theme;
     return theme.primary1;
 });
-var Option = styled__default["default"](FancyButton)(templateObject_2$3 || (templateObject_2$3 = __makeTemplateObject(["\n  margin-right: 8px;\n  :hover {\n    cursor: pointer;\n  }\n  background-color: ", ";\n  color: ", ";\n"], ["\n  margin-right: 8px;\n  :hover {\n    cursor: pointer;\n  }\n  background-color: ", ";\n  color: ", ";\n"])), function (_a) {
+var Option = styled__default["default"](FancyButton)(templateObject_2$2 || (templateObject_2$2 = __makeTemplateObject(["\n  margin-right: 8px;\n  :hover {\n    cursor: pointer;\n  }\n  background-color: ", ";\n  color: ", ";\n"], ["\n  margin-right: 8px;\n  :hover {\n    cursor: pointer;\n  }\n  background-color: ", ";\n  color: ", ";\n"])), function (_a) {
     var active = _a.active, theme = _a.theme;
     return active && theme.primary1;
 }, function (_a) {
     var active = _a.active, theme = _a.theme;
     return (active ? theme.white : theme.text1);
 });
-var Input = styled__default["default"].input(templateObject_3$2 || (templateObject_3$2 = __makeTemplateObject(["\n  background: ", ";\n  font-size: 16px;\n  width: auto;\n  outline: none;\n  &::-webkit-outer-spin-button,\n  &::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n  color: ", ";\n  text-align: right;\n"], ["\n  background: ", ";\n  font-size: 16px;\n  width: auto;\n  outline: none;\n  &::-webkit-outer-spin-button,\n  &::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n  color: ", ";\n  text-align: right;\n"])), function (_a) {
+var Input = styled__default["default"].input(templateObject_3$1 || (templateObject_3$1 = __makeTemplateObject(["\n  background: ", ";\n  font-size: 16px;\n  width: auto;\n  outline: none;\n  &::-webkit-outer-spin-button,\n  &::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n  color: ", ";\n  text-align: right;\n"], ["\n  background: ", ";\n  font-size: 16px;\n  width: auto;\n  outline: none;\n  &::-webkit-outer-spin-button,\n  &::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n  color: ", ";\n  text-align: right;\n"])), function (_a) {
     var theme = _a.theme;
     return theme.bg1;
 }, function (_a) {
@@ -12973,17 +13588,17 @@ function TransactionSettings(_a) {
                                         setDeadlineError(false);
                                     }, color: deadlineError ? 'red' : '' }, void 0) }), void 0), jsxRuntime.jsx(ThemedText.Body, __assign({ style: { paddingLeft: '8px' }, fontSize: 14 }, { children: jsxRuntime.jsx(macro.Trans, { children: "minutes" }, void 0) }), void 0)] }, void 0)] }), void 0))] }), void 0));
 }
-var templateObject_1$9, templateObject_2$3, templateObject_3$2, templateObject_4$1, templateObject_5$1, templateObject_6$1, templateObject_7$1;
+var templateObject_1$9, templateObject_2$2, templateObject_3$1, templateObject_4$1, templateObject_5$1, templateObject_6$1, templateObject_7$1;
 
 var StyledMenuIcon = styled__default["default"](reactFeather.Settings)(templateObject_1$8 || (templateObject_1$8 = __makeTemplateObject(["\n  height: 20px;\n  width: 20px;\n\n  > * {\n    stroke: ", ";\n  }\n\n  :hover {\n    opacity: 0.7;\n  }\n"], ["\n  height: 20px;\n  width: 20px;\n\n  > * {\n    stroke: ", ";\n  }\n\n  :hover {\n    opacity: 0.7;\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.text1;
 });
-var StyledCloseIcon = styled__default["default"](reactFeather.X)(templateObject_2$2 || (templateObject_2$2 = __makeTemplateObject(["\n  height: 20px;\n  width: 20px;\n  :hover {\n    cursor: pointer;\n  }\n\n  > * {\n    stroke: ", ";\n  }\n"], ["\n  height: 20px;\n  width: 20px;\n  :hover {\n    cursor: pointer;\n  }\n\n  > * {\n    stroke: ", ";\n  }\n"])), function (_a) {
+var StyledCloseIcon = styled__default["default"](reactFeather.X)(templateObject_2$1 || (templateObject_2$1 = __makeTemplateObject(["\n  height: 20px;\n  width: 20px;\n  :hover {\n    cursor: pointer;\n  }\n\n  > * {\n    stroke: ", ";\n  }\n"], ["\n  height: 20px;\n  width: 20px;\n  :hover {\n    cursor: pointer;\n  }\n\n  > * {\n    stroke: ", ";\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.text1;
 });
-var StyledMenuButton = styled__default["default"].button(templateObject_3$1 || (templateObject_3$1 = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n  height: 100%;\n  border: none;\n  background-color: transparent;\n  margin: 0;\n  padding: 0;\n  border-radius: 0.5rem;\n  height: 20px;\n\n  :hover,\n  :focus {\n    cursor: pointer;\n    outline: none;\n  }\n"], ["\n  position: relative;\n  width: 100%;\n  height: 100%;\n  border: none;\n  background-color: transparent;\n  margin: 0;\n  padding: 0;\n  border-radius: 0.5rem;\n  height: 20px;\n\n  :hover,\n  :focus {\n    cursor: pointer;\n    outline: none;\n  }\n"])));
+var StyledMenuButton = styled__default["default"].button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n  height: 100%;\n  border: none;\n  background-color: transparent;\n  margin: 0;\n  padding: 0;\n  border-radius: 0.5rem;\n  height: 20px;\n\n  :hover,\n  :focus {\n    cursor: pointer;\n    outline: none;\n  }\n"], ["\n  position: relative;\n  width: 100%;\n  height: 100%;\n  border: none;\n  background-color: transparent;\n  margin: 0;\n  padding: 0;\n  border-radius: 0.5rem;\n  height: 20px;\n\n  :hover,\n  :focus {\n    cursor: pointer;\n    outline: none;\n  }\n"])));
 var EmojiWrapper = styled__default["default"].div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  position: absolute;\n  bottom: -6px;\n  right: 0px;\n  font-size: 14px;\n"], ["\n  position: absolute;\n  bottom: -6px;\n  right: 0px;\n  font-size: 14px;\n"])));
 var StyledMenu = styled__default["default"].div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  margin-left: 0.5rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  border: none;\n  text-align: left;\n"], ["\n  margin-left: 0.5rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  border: none;\n  text-align: left;\n"])));
 var MenuFlyout = styled__default["default"].span(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  min-width: 20.125rem;\n  background-color: ", ";\n  border: 1px solid ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  font-size: 1rem;\n  position: absolute;\n  top: 2rem;\n  right: 0rem;\n  z-index: 100;\n\n  ", ";\n\n  user-select: none;\n"], ["\n  min-width: 20.125rem;\n  background-color: ", ";\n  border: 1px solid ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  font-size: 1rem;\n  position: absolute;\n  top: 2rem;\n  right: 0rem;\n  z-index: 100;\n\n  ", ";\n\n  user-select: none;\n"])), function (_a) {
@@ -13040,7 +13655,7 @@ function SettingsTab(_a) {
                                             setShowConfirmation(true);
                                         } }, void 0)] }, void 0)] }), void 0) }, void 0))] }), void 0));
 }
-var templateObject_1$8, templateObject_2$2, templateObject_3$1, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12;
+var templateObject_1$8, templateObject_2$1, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12;
 
 var StyledSwapHeader = styled__default["default"].div(templateObject_1$7 || (templateObject_1$7 = __makeTemplateObject(["\n  padding: 1rem 1.25rem 0.5rem 1.25rem;\n  width: 100%;\n  color: ", ";\n"], ["\n  padding: 1rem 1.25rem 0.5rem 1.25rem;\n  width: 100%;\n  color: ", ";\n"])), function (_a) {
     var theme = _a.theme;
@@ -13064,6 +13679,15 @@ function useParsedQueryString() {
     var search = reactRouterDom.useLocation().search;
     return React.useMemo(function () { return parsedQueryString(search); }, [search]);
 }
+
+/*eslint-disable*/
+
+var enUS={messages:{"$-":"$-","$<0/>":"$<0/>","${0}":["$",["0"]],"(${0})":["($",["0"],")"],"(View on Explorer)":"(View on Explorer)","(clear all)":"(clear all)","(edit)":"(edit)","- Remove recipient":"- Remove recipient","0 UNI / week":"0 UNI / week","25%":"25%","50%":"50%","75%":"75%","<0/> All Proposals":"<0/> All Proposals","<0/> Votes":"<0/> Votes","<0>Account analytics and accrued fees</0><1> ↗ </1>":"<0>Account analytics and accrued fees</0><1> ↗ </1>","<0>Current Price:</0><1><2/></1><3>{0} per {1}</3>":["<0>Current Price:</0><1><2/></1><3>",["0"]," per ",["1"],"</3>"],"<0>Tip:</0> Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive.":"<0>Tip:</0> Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive.","<0>Tip:</0> Select an action and describe your proposal for the community. The proposal cannot be modified after submission, so please verify all information before submitting. The voting period will begin immediately and last for 7 days. To propose a custom action, <1>read the docs</1>.":"<0>Tip:</0> Select an action and describe your proposal for the community. The proposal cannot be modified after submission, so please verify all information before submitting. The voting period will begin immediately and last for 7 days. To propose a custom action, <1>read the docs</1>.","<0>Tip:</0> Use this tool to find v2 pools that don't automatically appear in the interface.":"<0>Tip:</0> Use this tool to find v2 pools that don't automatically appear in the interface.","<0>Tip:</0> When you add liquidity, you will receive pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time.":"<0>Tip:</0> When you add liquidity, you will receive pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time.","<0>Unlock voting</0> to prepare for the next proposal.":"<0>Unlock voting</0> to prepare for the next proposal.","<0>🎉 </0>Welcome to team Unicorn :) <1>🎉</1>":"<0>🎉 </0>Welcome to team Unicorn :) <1>🎉</1>","A minimum threshold of 0.25% of the total UNI supply is required to submit proposals":"A minimum threshold of 0.25% of the total UNI supply is required to submit proposals","About":"About","Accept":"Accept","Account":"Account","Active":"Active","Add":"Add","Add <0/> and <1/> to Uniswap V2":"Add <0/> and <1/> to Uniswap V2","Add Delegate +":"Add Delegate +","Add Liquidity":"Add Liquidity","Add V2 Liquidity":"Add V2 Liquidity","Add liquidity.":"Add liquidity.","Add more liquidity":"Add more liquidity","Add {0} to Metamask <0/>":["Add ",["0"]," to Metamask <0/>"],"Add {0}-{1} liquidity":["Add ",["0"],"-",["1"]," liquidity"],"Add {0}/{1} V3 liquidity":["Add ",["0"],"/",["1"]," V3 liquidity"],"Added {0}":["Added ",["0"]],"Address has no available claim":"Address has no available claim","Against":"Against","Allow LP token migration":"Allow LP token migration","Allow high price impact trades and skip the confirm screen. Use at your own risk.":"Allow high price impact trades and skip the confirm screen. Use at your own risk.","Allow the Uniswap Protocol to use your {0}":["Allow the Uniswap Protocol to use your ",["0"]],"Allowed":"Allowed","Amount":"Amount","An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3.":"An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3.","Approval pending <0/>":"Approval pending <0/>","Approve":"Approve","Approve Token":"Approve Token","Approve {0}":["Approve ",["0"]],"Approve {0} first":["Approve ",["0"]," first"],"Approved":"Approved","Approving":"Approving","Approving {0}":["Approving ",["0"]],"Arbiscan":"Arbiscan","Arbitrum Bridge":"Arbitrum Bridge","Arbitrum is in Beta and may experience downtime. During downtime, your position will not earn fees and you will be unable to remove liquidity. <0>Read more.</0>":"Arbitrum is in Beta and may experience downtime. During downtime, your position will not earn fees and you will be unable to remove liquidity. <0>Read more.</0>","Are you sure?":"Are you sure?","As a member of the Uniswap community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>":"As a member of the Uniswap community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>","At least {0} {1} and {2} {3} will be refunded to your wallet due to selected price range.":["At least ",["0"]," ",["1"]," and ",["2"]," ",["3"]," will be refunded to your wallet due to selected price range."],"Auto":"Auto","Auto Router API":"Auto Router API","Available to deposit: {0}":["Available to deposit: ",["0"]],"Balance: {0}":["Balance: ",["0"]],"Best for exotic pairs.":"Best for exotic pairs.","Best for most pairs.":"Best for most pairs.","Best for stable pairs.":"Best for stable pairs.","Best for very stable pairs.":"Best for very stable pairs.","Best price route costs ~{formattedGasPriceString} in gas.":["Best price route costs ~",["formattedGasPriceString"]," in gas."],"Blocked address":"Blocked address","Bridge":"Bridge","By adding liquidity you'll earn 0.3% of all trades on this pair proportional to your share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.":"By adding liquidity you'll earn 0.3% of all trades on this pair proportional to your share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.","By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one.":"By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one.","By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the Uniswap <1>Protocol Disclaimer</1>.":"By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the Uniswap <1>Protocol Disclaimer</1>.","Canceled":"Canceled","Change":"Change","Charts":"Charts","Check network status":"Check network status","Check out our v3 LP walkthrough and migration guides.":"Check out our v3 LP walkthrough and migration guides.","Claim":"Claim","Claim <0/> for {0}":["Claim <0/> for ",["0"]],"Claim UNI":"Claim UNI","Claim UNI Token":"Claim UNI Token","Claim UNI reward for {0}":["Claim UNI reward for ",["0"]],"Claim fees":"Claim fees","Claim your UNI tokens":"Claim your UNI tokens","Claimed":"Claimed","Claimed UNI!":"Claimed UNI!","Claimed!":"Claimed!","Claiming":"Claiming","Claiming UNI":"Claiming UNI","Claiming {0} UNI":["Claiming ",["0"]," UNI"],"Clear All":"Clear All","Clear all":"Clear all","Close":"Close","Closed":"Closed","Collect":"Collect","Collect as WETH":"Collect as WETH","Collect fees":"Collect fees","Collect {0}/{1} fees":["Collect ",["0"],"/",["1"]," fees"],"Collected":"Collected","Collecting":"Collecting","Collecting fees":"Collecting fees","Collecting fees will withdraw currently available fees for you.":"Collecting fees will withdraw currently available fees for you.","Confirm":"Confirm","Confirm Supply":"Confirm Supply","Confirm Swap":"Confirm Swap","Confirm swap":"Confirm swap","Confirm this transaction in your wallet":"Confirm this transaction in your wallet","Confirm transaction in wallet":"Confirm transaction in wallet","Connect Wallet":"Connect Wallet","Connect a wallet":"Connect a wallet","Connect to a wallet to find pools":"Connect to a wallet to find pools","Connect to a wallet to view your V2 liquidity.":"Connect to a wallet to view your V2 liquidity.","Connect to a wallet to view your liquidity.":"Connect to a wallet to view your liquidity.","Connect wallet to swap":"Connect wallet to swap","Connected with {name}":["Connected with ",["name"]],"Copied":"Copied","Copy Address":"Copy Address","Create Pool & Supply":"Create Pool & Supply","Create Proposal":"Create Proposal","Create a pair":"Create a pair","Create a pool":"Create a pool","Create an issue on GitHub":"Create an issue on GitHub","Create pool and add {0}/{1} V3 liquidity":["Create pool and add ",["0"],"/",["1"]," V3 liquidity"],"Create pool.":"Create pool.","Create {0}/{1} V3 pool":["Create ",["0"],"/",["1"]," V3 pool"],"Current price":"Current price","Current {0} Price:":["Current ",["0"]," Price:"],"Custom":"Custom","Dark Theme":"Dark Theme","Defeated":"Defeated","Delegate Votes":"Delegate Votes","Delegate voting power to {0}":["Delegate voting power to ",["0"]],"Delegated to:":"Delegated to:","Delegating votes":"Delegating votes","Deposit":"Deposit","Deposit Amounts":"Deposit Amounts","Deposit UNI-V2 LP Tokens":"Deposit UNI-V2 LP Tokens","Deposit liquidity":"Deposit liquidity","Deposit tokens to the {label} network.":["Deposit tokens to the ",["label"]," network."],"Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token.":"Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token.","Deposited liquidity:":"Deposited liquidity:","Deposited {0} UNI-V2":["Deposited ",["0"]," UNI-V2"],"Depositing Liquidity":"Depositing Liquidity","Description":"Description","Detailed":"Detailed","Details":"Details","Disconnect":"Disconnect","Discord":"Discord","Dismiss":"Dismiss","Docs":"Docs","Don’t see one of your v2 positions? <0>Import it.</0>":"Don’t see one of your v2 positions? <0>Import it.</0>","Earned UNI tokens represent voting shares in Uniswap governance.":"Earned UNI tokens represent voting shares in Uniswap governance.","Edit":"Edit","Efficiency Comparison":"Efficiency Comparison","Enter a percent":"Enter a percent","Enter a recipient":"Enter a recipient","Enter a valid slippage percentage":"Enter a valid slippage percentage","Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on submission.":"Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on submission.","Enter an amount":"Enter an amount","Enter valid list location":"Enter valid list location","Enter valid token address":"Enter valid token address","Enter {0} amount":["Enter ",["0"]," amount"],"Error":"Error","Error connecting":"Error connecting","Error connecting. Try refreshing the page.":"Error connecting. Try refreshing the page.","Error details":"Error details","Error importing list":"Error importing list","Estimate may differ due to your wallet gas settings":"Estimate may differ due to your wallet gas settings","Estimated network fee":"Estimated network fee","Etherscan":"Etherscan","Executed":"Executed","Expanded results from inactive Token Lists":"Expanded results from inactive Token Lists","Expected Output":"Expected Output","Expert Mode":"Expert Mode","Expert mode turns off the confirm transaction prompt and allows high slippage trades that often result in bad rates and lost funds.":"Expert mode turns off the confirm transaction prompt and allows high slippage trades that often result in bad rates and lost funds.","Expired":"Expired","Explore Uniswap Analytics.":"Explore Uniswap Analytics.","Failed to switch networks from the Uniswap Interface. In order to use Uniswap on {0}, you must change the network in your wallet.":["Failed to switch networks from the Uniswap Interface. In order to use Uniswap on ",["0"],", you must change the network in your wallet."],"Fee Tier":"Fee Tier","Fee tier":"Fee tier","Fetching best price...":"Fetching best price...","Fetching best price…":"Fetching best price…","For":"For","For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3.":"For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3.","From":"From","From (at most)":"From (at most)","Full Range":"Full Range","Full range positions may earn less fees than concentrated positions. Learn more <0>here</0>.":"Full range positions may earn less fees than concentrated positions. Learn more <0>here</0>.","Get support on Discord":"Get support on Discord","Help Center":"Help Center","Hide":"Hide","Hide closed positions":"Hide closed positions","High Price Impact":"High Price Impact","How this app uses APIs":"How this app uses APIs","I understand":"I understand","If you purchase a token from this list, you may not be able to sell it back.":"If you purchase a token from this list, you may not be able to sell it back.","Import":"Import","Import List":"Import List","Import Pool":"Import Pool","Import V2 Pool":"Import V2 Pool","Import at your own risk":"Import at your own risk","In range":"In range","Increase Liquidity":"Increase Liquidity","Initial prices and pool share":"Initial prices and pool share","Initializing...":"Initializing...","Input is estimated. You will sell at most <0>{0} {1}</0> or the transaction will revert.":["Input is estimated. You will sell at most <0>",["0"]," ",["1"],"</0> or the transaction will revert."],"Install Metamask":"Install Metamask","Insufficient liquidity for this trade.":"Insufficient liquidity for this trade.","Insufficient {0}":["Insufficient ",["0"]],"Insufficient {0} balance":["Insufficient ",["0"]," balance"],"Interface Settings":"Interface Settings","Invalid pair":"Invalid pair","Invalid pair.":"Invalid pair.","Invalid price input":"Invalid price input","Invalid range selected. The min price must be lower than the max price.":"Invalid range selected. The min price must be lower than the max price.","Invalid recipient":"Invalid recipient","Language":"Language","Learn":"Learn","Learn about providing liquidity":"Learn about providing liquidity","Learn more":"Learn more","Legal & Privacy":"Legal & Privacy","Light Theme":"Light Theme","Liquidity":"Liquidity","Liquidity data not available.":"Liquidity data not available.","Liquidity provider rewards":"Liquidity provider rewards","Liquidity providers earn a 0.3% fee on all trades proportional to their share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.":"Liquidity providers earn a 0.3% fee on all trades proportional to their share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.","Lists":"Lists","Loaded":"Loaded","Loading":"Loading","MAX":"MAX","Manage":"Manage","Manage Liquidity in Rewards Pool":"Manage Liquidity in Rewards Pool","Manage Token Lists":"Manage Token Lists","Manage this pool.":"Manage this pool.","Max":"Max","Max Price":"Max Price","Max price":"Max price","Max slippage":"Max slippage","Max:":"Max:","Maximum sent":"Maximum sent","Menu":"Menu","Migrate":"Migrate","Migrate Liquidity to V3":"Migrate Liquidity to V3","Migrate V2 Liquidity":"Migrate V2 Liquidity","Migrate your liquidity tokens from Uniswap V2 to Uniswap V3.":"Migrate your liquidity tokens from Uniswap V2 to Uniswap V3.","Migrate {0}/{1} liquidity to V3":["Migrate ",["0"],"/",["1"]," liquidity to V3"],"Migrating":"Migrating","Min Price":"Min Price","Min price":"Min price","Min:":"Min:","Minimum received":"Minimum received","Missing dependencies":"Missing dependencies","Mock Toggle":"Mock Toggle","More":"More","Network Fee":"Network Fee","Network Warning":"Network Warning","Network fees exceed 50% of the swap amount!":"Network fees exceed 50% of the swap amount!","New Position":"New Position","No V2 Liquidity found.":"No V2 Liquidity found.","No active pools":"No active pools","No data":"No data","No description.":"No description.","No liquidity found.":"No liquidity found.","No pool found.":"No pool found.","No proposals found.":"No proposals found.","No results found.":"No results found.","Not created":"Not created","OFF":"OFF","ON":"ON","ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING.":"ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING.","Off":"Off","On":"On","Once you are happy with the rate click supply to review.":"Once you are happy with the rate click supply to review.","Only UNI votes that were self delegated or delegated to another address before block {0} are eligible for voting.":["Only UNI votes that were self delegated or delegated to another address before block ",["0"]," are eligible for voting."],"Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device.":"Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device.","Optimism Gateway":"Optimism Gateway","Optimism is in Beta and may experience downtime. Optimism expects planned downtime to upgrade the network in the near future. During downtime, your position will not earn fees and you will be unable to remove liquidity. <0>Read more.</0>":"Optimism is in Beta and may experience downtime. Optimism expects planned downtime to upgrade the network in the near future. During downtime, your position will not earn fees and you will be unable to remove liquidity. <0>Read more.</0>","Optimistic Etherscan":"Optimistic Etherscan","Out of range":"Out of range","Output is estimated.":"Output is estimated.","Output is estimated. If the price changes by more than {0}% your transaction will revert.":["Output is estimated. If the price changes by more than ",["0"],"% your transaction will revert."],"Output is estimated. You will receive at least <0>{0} {1}</0> or the transaction will revert.":["Output is estimated. You will receive at least <0>",["0"]," ",["1"],"</0> or the transaction will revert."],"Output will be sent to <0>{0}</0>":["Output will be sent to <0>",["0"],"</0>"],"Owner":"Owner","Participating pools":"Participating pools","Pending":"Pending","Please confirm you would like to remove this list by typing REMOVE":"Please confirm you would like to remove this list by typing REMOVE","Please connect to Layer 1 Ethereum":"Please connect to Layer 1 Ethereum","Please connect to a supported network in the dropdown menu or in your wallet.":"Please connect to a supported network in the dropdown menu or in your wallet.","Please type the word \"{confirmWord}\" to enable expert mode.":["Please type the word \"",["confirmWord"],"\" to enable expert mode."],"Polygon Bridge":"Polygon Bridge","Polygonscan":"Polygonscan","Pool":"Pool","Pool Found!":"Pool Found!","Pool Rate":"Pool Rate","Pool rate":"Pool rate","Pool tokens in rewards pool:":"Pool tokens in rewards pool:","Pooled {0}:":["Pooled ",["0"],":"],"Pools Overview":"Pools Overview","Preview":"Preview","Price":"Price","Price Difference:":"Price Difference:","Price Impact":"Price Impact","Price Impact Too High":"Price Impact Too High","Price Updated":"Price Updated","Price impact":"Price impact","Price range":"Price range","Price updated":"Price updated","Price:":"Price:","Prices and pool share":"Prices and pool share","Proposal":"Proposal","Proposal Submitted":"Proposal Submitted","Proposal Title":"Proposal Title","Proposals":"Proposals","Proposals submitted by community members will appear here.":"Proposals submitted by community members will appear here.","Proposed Action":"Proposed Action","Proposer":"Proposer","Protocol Disclaimer":"Protocol Disclaimer","Queued":"Queued","Rates":"Rates","Read more about UNI":"Read more about UNI","Read more about Uniswap governance":"Read more about Uniswap governance","Read more about providing liquidity":"Read more about providing liquidity","Read more about unsupported assets":"Read more about unsupported assets","Recent Transactions":"Recent Transactions","Recent transactions":"Recent transactions","Recipient":"Recipient","Reload the page":"Reload the page","Remove":"Remove","Remove <0/> and <1/>":"Remove <0/> and <1/>","Remove Amount":"Remove Amount","Remove Delegate":"Remove Delegate","Remove Liquidity":"Remove Liquidity","Remove list":"Remove list","Removing {0} {1} and {2} {3}":["Removing ",["0"]," ",["1"]," and ",["2"]," ",["3"]],"Removing {0} {1} and{2} {3}":["Removing ",["0"]," ",["1"]," and",["2"]," ",["3"]],"Request Features":"Request Features","Reset":"Reset","Return":"Return","Review swap":"Review swap","Search by token name or address":"Search by token name or address","Search name or paste address":"Search name or paste address","Select Pair":"Select Pair","Select a network":"Select a network","Select a token":"Select a token","Select a token to find your v2 liquidity.":"Select a token to find your v2 liquidity.","Select an action":"Select an action","Selected Range":"Selected Range","Self":"Self","Self Delegate":"Self Delegate","Set Price Range":"Set Price Range","Set Starting Price":"Set Starting Price","Settings":"Settings","Share of Pool":"Share of Pool","Share of Pool:":"Share of Pool:","Show Portis":"Show Portis","Show closed positions":"Show closed positions","Simple":"Simple","Slippage tolerance":"Slippage tolerance","Some assets are not available through this interface because they may not work well with the smart contracts or we are unable to allow trading for legal reasons.":"Some assets are not available through this interface because they may not work well with the smart contracts or we are unable to allow trading for legal reasons.","Something went wrong":"Something went wrong","Something went wrong.":"Something went wrong.","Step 1. Get UNI-V2 Liquidity tokens":"Step 1. Get UNI-V2 Liquidity tokens","Submit new proposal":"Submit new proposal","Submitting Proposal":"Submitting Proposal","Submitting Vote":"Submitting Vote","Succeeded":"Succeeded","Success":"Success","Supply":"Supply","Supplying {0} {1} and {2} {3}":["Supplying ",["0"]," ",["1"]," and ",["2"]," ",["3"]],"Swap":"Swap","Swap <0/> for exactly <1/>":"Swap <0/> for exactly <1/>","Swap Anyway":"Swap Anyway","Swap details":"Swap details","Swap exactly <0/> for <1/>":"Swap exactly <0/> for <1/>","Swap failed: {0}":["Swap failed: ",["0"]],"Swap summary":"Swap summary","Swapping {0} {1} for {2} {3}":["Swapping ",["0"]," ",["1"]," for ",["2"]," ",["3"]],"Take a 10 minute survey to help us improve your experience in the Uniswap app.":"Take a 10 minute survey to help us improve your experience in the Uniswap app.","Tell us what you think ↗":"Tell us what you think ↗","Thanks for being part of the Uniswap community <0/>":"Thanks for being part of the Uniswap community <0/>","The % you will earn in fees.":"The % you will earn in fees.","The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer.":"The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer.","The app fetches blockchain data from The Graph’s hosted service.":"The app fetches blockchain data from The Graph’s hosted service.","The app fetches on-chain data and constructs contract calls with an Infura API.":"The app fetches on-chain data and constructs contract calls with an Infura API.","The app fetches the optimal trade route from a Uniswap Labs server.":"The app fetches the optimal trade route from a Uniswap Labs server.","The app logs anonymized usage statistics in order to improve over time.":"The app logs anonymized usage statistics in order to improve over time.","The app securely collects your wallet address and shares it with TRM Labs Inc. for risk and compliance reasons.":"The app securely collects your wallet address and shares it with TRM Labs Inc. for risk and compliance reasons.","The cost of sending this transaction is more than half of the value of the input amount.":"The cost of sending this transaction is more than half of the value of the input amount.","The current fast gas amount for sending a transaction on L1. Gas fees are paid in Ethereum's native currency Ether (ETH) and denominated in GWEI.":"The current fast gas amount for sending a transaction on L1. Gas fees are paid in Ethereum's native currency Ether (ETH) and denominated in GWEI.","The estimated difference between the USD values of input and output amounts.":"The estimated difference between the USD values of input and output amounts.","The input token cannot be transferred. There may be an issue with the input token.":"The input token cannot be transferred. There may be an issue with the input token.","The market price is outside your specified price range. Single-asset deposit only.":"The market price is outside your specified price range. Single-asset deposit only.","The most recent block number on this network. Prices update on every block.":"The most recent block number on this network. Prices update on every block.","The output token cannot be transferred. There may be an issue with the output token.":"The output token cannot be transferred. There may be an issue with the output token.","The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3.":"The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3.","The price of this pool is outside of your selected range. Your position is not currently earning fees.":"The price of this pool is outside of your selected range. Your position is not currently earning fees.","The price of this pool is within your selected range. Your position is currently earning fees.":"The price of this pool is within your selected range. Your position is currently earning fees.","The ratio of tokens you add will set the price of this pool.":"The ratio of tokens you add will set the price of this pool.","The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low.":"The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low.","There is no liquidity data.":"There is no liquidity data.","This app uses the following third-party APIs:":"This app uses the following third-party APIs:","This pool must be initialized before you can add liquidity. To initialize, select a starting price for the pool. Then, enter your liquidity price range and deposit amount. Gas fees will be higher than usual due to the initialization transaction.":"This pool must be initialized before you can add liquidity. To initialize, select a starting price for the pool. Then, enter your liquidity price range and deposit amount. Gas fees will be higher than usual due to the initialization transaction.","This route optimizes your total output by considering split routes, multiple hops, and the gas cost of each step.":"This route optimizes your total output by considering split routes, multiple hops, and the gas cost of each step.","This token doesn't appear on the active token list(s). Make sure this is the token that you want to trade.":"This token doesn't appear on the active token list(s). Make sure this is the token that you want to trade.","This token is not supported in the Uniswap Labs app":"This token is not supported in the Uniswap Labs app","This tool will safely migrate your {0} liquidity to V3. The process is completely trustless thanks to the":["This tool will safely migrate your ",["0"]," liquidity to V3. The process is completely trustless thanks to the"],"This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3.":"This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3.","This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.":"This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.","Tip: Custom tokens are stored locally in your browser":"Tip: Custom tokens are stored locally in your browser","To":"To","To (at least)":"To (at least)","Token not supported":"Token not supported","Tokens":"Tokens","Tokens from inactive lists. Import specific tokens below or click Manage to activate more lists.":"Tokens from inactive lists. Import specific tokens below or click Manage to activate more lists.","Top pools":"Top pools","Total deposited":"Total deposited","Total deposits":"Total deposits","Trade Route":"Trade Route","Trading":"Trading","Transaction Settings":"Transaction Settings","Transaction Submitted":"Transaction Submitted","Transaction completed in":"Transaction completed in","Transaction deadline":"Transaction deadline","Transaction pending":"Transaction pending","Transaction rejected.":"Transaction rejected.","Transaction submitted":"Transaction submitted","Transfer Token":"Transfer Token","Try Again":"Try Again","Try increasing your slippage tolerance.<0/>NOTE: Fee on transfer and rebase tokens are incompatible with Uniswap V3.":"Try increasing your slippage tolerance.<0/>NOTE: Fee on transfer and rebase tokens are incompatible with Uniswap V3.","Turn On Expert Mode":"Turn On Expert Mode","UNI has arrived":"UNI has arrived","UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party.":"UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party.","UNI {0}/{1} Burned":["UNI ",["0"],"/",["1"]," Burned"],"UNI-V2 LP tokens are required. Once you've added liquidity to the {0}-{1} pool you can stake your liquidity tokens on this page.":["UNI-V2 LP tokens are required. Once you've added liquidity to the ",["0"],"-",["1"]," pool you can stake your liquidity tokens on this page."],"UNI-V2 {0}-{1}":["UNI-V2 ",["0"],"-",["1"]],"Unclaimed UNI":"Unclaimed UNI","Unclaimed fees":"Unclaimed fees","Undetermined":"Undetermined","Unexpected error. Could not estimate gas for the swap.":"Unexpected error. Could not estimate gas for the swap.","Unexpected issue with estimating the gas. Please try again.":"Unexpected issue with estimating the gas. Please try again.","Uniswap Governance":"Uniswap Governance","Uniswap Labs' Terms of Service":"Uniswap Labs' Terms of Service","Uniswap available in: <0>{0}</0>":["Uniswap available in: <0>",["0"],"</0>"],"Uniswap governance is only available on Layer 1. Switch your network to Ethereum Mainnet to view Proposals and Vote.":"Uniswap governance is only available on Layer 1. Switch your network to Ethereum Mainnet to view Proposals and Vote.","Uniswap liquidity mining":"Uniswap liquidity mining","Uniswap migration contract↗":"Uniswap migration contract↗","Unknown Source":"Unknown Source","Unknown error{0}. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3.":["Unknown error",["0"],". Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."],"Unlock Votes":"Unlock Votes","Unlock Voting":"Unlock Voting","Unlocking Votes":"Unlocking Votes","Unsupported Asset":"Unsupported Asset","Unsupported Assets":"Unsupported Assets","Unsupported network–switch to another to trade.":"Unsupported network–switch to another to trade.","Untitled":"Untitled","Unwrap":"Unwrap","Unwrap <0/> to {0}":["Unwrap <0/> to ",["0"]],"Update Delegation":"Update Delegation","Update list":"Update list","Use the Uniswap Labs API to get faster quotes.":"Use the Uniswap Labs API to get faster quotes.","User":"User","V2 is not available on Layer 2. Switch to Layer 1 Ethereum.":"V2 is not available on Layer 2. Switch to Layer 1 Ethereum.","V2 liquidity":"V2 liquidity","V3 {0} Price:":["V3 ",["0"]," Price:"],"View accrued fees and analytics<0>↗</0>":"View accrued fees and analytics<0>↗</0>","View list":"View list","View on Etherscan":"View on Etherscan","View on Explorer":"View on Explorer","View transaction on Explorer":"View transaction on Explorer","Vote":"Vote","Vote Against":"Vote Against","Vote For":"Vote For","Vote against proposal {proposalId}":["Vote against proposal ",["proposalId"]],"Vote against proposal {proposalKey}":["Vote against proposal ",["proposalKey"]],"Vote against proposal {proposalKey} with reason \"{0}\"":["Vote against proposal ",["proposalKey"]," with reason \"",["0"],"\""],"Vote for proposal {proposalId}":["Vote for proposal ",["proposalId"]],"Vote for proposal {proposalKey}":["Vote for proposal ",["proposalKey"]],"Vote for proposal {proposalKey} with reason \"{0}\"":["Vote for proposal ",["proposalKey"]," with reason \"",["0"],"\""],"Vote to abstain on proposal {proposalId}":["Vote to abstain on proposal ",["proposalId"]],"Vote to abstain on proposal {proposalKey}":["Vote to abstain on proposal ",["proposalKey"]],"Vote to abstain on proposal {proposalKey} with reason \"{0}\"":["Vote to abstain on proposal ",["proposalKey"]," with reason \"",["0"],"\""],"Voting ended {0}":["Voting ended ",["0"]],"Voting ends approximately {0}":["Voting ends approximately ",["0"]],"Voting starts approximately {0}":["Voting starts approximately ",["0"]],"Waiting For Confirmation":"Waiting For Confirmation","Wallet Address or ENS name":"Wallet Address or ENS name","Weekly Rewards":"Weekly Rewards","Welcome to team Unicorn :)":"Welcome to team Unicorn :)","When you claim without withdrawing your liquidity remains in the mining pool.":"When you claim without withdrawing your liquidity remains in the mining pool.","When you withdraw, the contract will automagically claim UNI on your behalf!":"When you withdraw, the contract will automagically claim UNI on your behalf!","When you withdraw, your UNI is claimed and your liquidity is removed from the mining pool.":"When you withdraw, your UNI is claimed and your liquidity is removed from the mining pool.","Withdraw":"Withdraw","Withdraw & Claim":"Withdraw & Claim","Withdraw deposited liquidity":"Withdraw deposited liquidity","Withdrawing {0} UNI-V2":["Withdrawing ",["0"]," UNI-V2"],"Withdrew UNI-V2!":"Withdrew UNI-V2!","Wrap":"Wrap","Wrap <0/> to {0}":["Wrap <0/> to ",["0"]],"Wrong Network":"Wrong Network","You already have an active or pending proposal":"You already have an active or pending proposal","You are creating a pool":"You are creating a pool","You are the first liquidity provider for this Uniswap V3 pool. Your liquidity will migrate at the current {0} price.":["You are the first liquidity provider for this Uniswap V3 pool. Your liquidity will migrate at the current ",["0"]," price."],"You are the first liquidity provider.":"You are the first liquidity provider.","You can either vote on each proposal yourself or delegate your votes to a third party.":"You can either vote on each proposal yourself or delegate your votes to a third party.","You can now trade {0}":["You can now trade ",["0"]],"You don't have enough votes to submit a proposal":"You don't have enough votes to submit a proposal","You don’t have liquidity in this pool yet.":"You don’t have liquidity in this pool yet.","You may have lost your network connection, or {label} might be down right now.":["You may have lost your network connection, or ",["label"]," might be down right now."],"You may have lost your network connection.":"You may have lost your network connection.","You might consider waiting until the network fees go down to complete this transaction.":"You might consider waiting until the network fees go down to complete this transaction.","You must connect an account.":"You must connect an account.","You must give the Uniswap smart contracts permission to use your {0}. You only have to do this once per token.":["You must give the Uniswap smart contracts permission to use your ",["0"],". You only have to do this once per token."],"You must have {formattedProposalThreshold} votes to submit a proposal":["You must have ",["formattedProposalThreshold"]," votes to submit a proposal"],"You should only deposit liquidity into Uniswap V3 at a price you believe is correct. <0/>If the price seems incorrect, you can either make a swap to move the price or wait for someone else to do so.":"You should only deposit liquidity into Uniswap V3 at a price you believe is correct. <0/>If the price seems incorrect, you can either make a swap to move the price or wait for someone else to do so.","You will also collect fees earned from this position.":"You will also collect fees earned from this position.","You will receive":"You will receive","You will receive at least {0} {1} or the transaction will revert.":["You will receive at least ",["0"]," ",["1"]," or the transaction will revert."],"You will send at most {0} {1} or the transaction will revert.":["You will send at most ",["0"]," ",["1"]," or the transaction will revert."],"Your V2 liquidity":"Your V2 liquidity","Your active V3 liquidity positions will appear here.":"Your active V3 liquidity positions will appear here.","Your liquidity deposits":"Your liquidity deposits","Your pool share:":"Your pool share:","Your position":"Your position","Your position has 0 liquidity, and is not earning fees.":"Your position has 0 liquidity, and is not earning fees.","Your position will appear here.":"Your position will appear here.","Your position will be 100% composed of {0} at this price":["Your position will be 100% composed of ",["0"]," at this price"],"Your position will be 100% {0} at this price.":["Your position will be 100% ",["0"]," at this price."],"Your position will not earn fees or be used in trades until the market price moves into your range.":"Your position will not earn fees or be used in trades until the market price moves into your range.","Your positions":"Your positions","Your rate":"Your rate","Your total pool tokens:":"Your total pool tokens:","Your transaction cost will be much higher as it includes the gas to create the pool.":"Your transaction cost will be much higher as it includes the gas to create the pool.","Your transaction may be frontrun":"Your transaction may be frontrun","Your transaction may fail":"Your transaction may fail","Your transaction will revert if it has been pending for longer than this period of time.":"Your transaction will revert if it has been pending for longer than this period of time.","Your transaction will revert if it is pending for more than this period of time.":"Your transaction will revert if it is pending for more than this period of time.","Your transaction will revert if the price changes unfavorably by more than this percentage.":"Your transaction will revert if the price changes unfavorably by more than this percentage.","Your transactions will appear here...":"Your transactions will appear here...","Your unclaimed UNI":"Your unclaimed UNI","after slippage":"after slippage","confirm":"confirm","for {0}":["for ",["0"]],"gwei":"gwei","has socks emoji":"has socks emoji","here.":"here.","https:// or ipfs:// or ENS name":"https:// or ipfs:// or ENS name","minutes":"minutes","via {0}":["via ",["0"]],"via {0} token list":["via ",["0"]," token list"],"{0, plural, one {Import token} other {Import tokens}}":[["0","plural",{one:"Import token",other:"Import tokens"}]],"{0}":[["0"]],"{0} %":[["0"]," %"],"{0} <0/> per <1/>":[["0"]," <0/> per <1/>"],"{0} Custom Tokens":[["0"]," Custom Tokens"],"{0} Deposited":[["0"]," Deposited"],"{0} ETH":[["0"]," ETH"],"{0} Fees Earned:":[["0"]," Fees Earned:"],"{0} Pending":[["0"]," Pending"],"{0} UNI":[["0"]," UNI"],"{0} UNI / week":[["0"]," UNI / week"],"{0} UNI-V2":[["0"]," UNI-V2"],"{0} UNI-V2 LP tokens available":[["0"]," UNI-V2 LP tokens available"],"{0} Votes":[["0"]," Votes"],"{0} per {1}":[["0"]," per ",["1"]],"{0} tokens":[["0"]," tokens"],"{0} {1} Price:":[["0"]," ",["1"]," Price:"],"{0} {nativeCurrencySymbol}":[["0"]," ",["nativeCurrencySymbol"]],"{0} • Added by user":[["0"]," • Added by user"],"{0}%":[["0"],"%"],"{0}% fee tier":[["0"],"% fee tier"],"{0}% pool":[["0"],"% pool"],"{0}% select":[["0"],"% select"],"{0}-{1} Liquidity Mining":[["0"],"-",["1"]," Liquidity Mining"],"{0}/{1} LP NFT":[["0"],"/",["1"]," LP NFT"],"{0}/{1} LP Tokens":[["0"],"/",["1"]," LP Tokens"],"{SOCKS_AMOUNT} UNI":[["SOCKS_AMOUNT"]," UNI"],"{USER_AMOUNT} UNI":[["USER_AMOUNT"]," UNI"],"{activeTokensOnThisChain} tokens":[["activeTokensOnThisChain"]," tokens"],"{integrator} fee":[["integrator"]," fee"],"{label} token bridge":[["label"]," token bridge"],"{min}m {sec}s":[["min"],"m ",["sec"],"s"],"{percentForSlider}%":[["percentForSlider"],"%"],"{sec}s":[["sec"],"s"],"{tokenB} per {tokenA}":[["tokenB"]," per ",["tokenA"]],"← Back to Pools Overview":"← Back to Pools Overview"}};
+
+var enUS$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/_mergeNamespaces({
+    __proto__: null,
+    'default': enUS
+}, [enUS]));
 
 var SUPPORTED_LOCALES = [
     // order as they appear in the language dropdown
@@ -13101,6 +13725,7 @@ var SUPPORTED_LOCALES = [
     'zh-TW',
 ];
 var DEFAULT_LOCALE = 'en-US';
+var DEFAULT_CATALOG = enUS$1;
 var LOCALE_LABEL = {
     'af-ZA': 'Afrikaans',
     'ar-SA': 'العربية',
@@ -13169,16 +13794,16 @@ var burnV3 = toolkit.createReducer(initialState$6, function (builder) {
     });
 });
 
-var _a$4;
+var _a$5;
 // List of supported subgraphs. Note that the app currently only support one active subgraph at a time
-var CHAIN_SUBGRAPH_URL = (_a$4 = {},
-    _a$4[SupportedChainId.MAINNET] = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
-    _a$4[SupportedChainId.RINKEBY] = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
-    _a$4[SupportedChainId.ARBITRUM_ONE] = 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
-    _a$4[SupportedChainId.OPTIMISM] = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-optimism-dev',
-    _a$4[SupportedChainId.POLYGON] = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
-    _a$4);
-var api = react.createApi({
+var CHAIN_SUBGRAPH_URL = (_a$5 = {},
+    _a$5[SupportedChainId.MAINNET] = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
+    _a$5[SupportedChainId.RINKEBY] = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
+    _a$5[SupportedChainId.ARBITRUM_ONE] = 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
+    _a$5[SupportedChainId.OPTIMISM] = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-optimism-dev',
+    _a$5[SupportedChainId.POLYGON] = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
+    _a$5);
+var api$1 = react.createApi({
     reducerPath: 'dataApi',
     baseQuery: graphqlRequestBaseQuery(),
     endpoints: function (builder) { return ({
@@ -13198,7 +13823,7 @@ var api = react.createApi({
             query: function (_a) {
                 var token0 = _a.token0, token1 = _a.token1;
                 return ({
-                    document: graphqlRequest.gql(templateObject_2$1 || (templateObject_2$1 = __makeTemplateObject(["\n          query feeTierDistribution($token0: String!, $token1: String!) {\n            _meta {\n              block {\n                number\n              }\n            }\n            asToken0: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token0, token1: $token1 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n            asToken1: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token1, token1: $token0 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n          }\n        "], ["\n          query feeTierDistribution($token0: String!, $token1: String!) {\n            _meta {\n              block {\n                number\n              }\n            }\n            asToken0: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token0, token1: $token1 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n            asToken1: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token1, token1: $token0 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n          }\n        "]))),
+                    document: graphqlRequest.gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n          query feeTierDistribution($token0: String!, $token1: String!) {\n            _meta {\n              block {\n                number\n              }\n            }\n            asToken0: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token0, token1: $token1 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n            asToken1: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token1, token1: $token0 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n          }\n        "], ["\n          query feeTierDistribution($token0: String!, $token1: String!) {\n            _meta {\n              block {\n                number\n              }\n            }\n            asToken0: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token0, token1: $token1 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n            asToken1: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token1, token1: $token0 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n          }\n        "]))),
                     variables: {
                         token0: token0,
                         token1: token1,
@@ -13248,7 +13873,7 @@ function graphqlRequestBaseQuery() {
         });
     };
 }
-var templateObject_1$6, templateObject_2$1;
+var templateObject_1$6, templateObject_2;
 
 // fired once when the app reloads but before the app renders
 // allows any updates to be applied to store data loaded from localStorage
@@ -13413,8 +14038,28 @@ function filterToKey(filter) {
     var _a, _b, _c, _d;
     return ((_a = filter.address) !== null && _a !== void 0 ? _a : '') + ":" + ((_d = (_c = (_b = filter.topics) === null || _b === void 0 ? void 0 : _b.map(function (topic) { return (topic ? (Array.isArray(topic) ? topic.join(';') : topic) : '\0'); })) === null || _c === void 0 ? void 0 : _c.join('-')) !== null && _d !== void 0 ? _d : '');
 }
+/**
+ * Convert a filter key to the corresponding filter
+ * @param key key to convert
+ */
+function keyToFilter(key) {
+    var pcs = key.split(':');
+    var address = pcs[0];
+    var topics = pcs[1].split('-').map(function (topic) {
+        if (topic === '\0')
+            return null;
+        var parts = topic.split(';');
+        if (parts.length === 1)
+            return parts[0];
+        return parts;
+    });
+    return {
+        address: address.length === 0 ? undefined : address,
+        topics: topics,
+    };
+}
 
-var _a$3;
+var _a$4;
 var slice = toolkit.createSlice({
     name: 'logs',
     initialState: {},
@@ -13488,7 +14133,7 @@ var slice = toolkit.createSlice({
     },
 });
 var logs = slice.reducer;
-(_a$3 = slice.actions, _a$3.addListener); _a$3.removeListener; _a$3.fetchedLogs; _a$3.fetchedLogsError; _a$3.fetchingLogs;
+(_a$4 = slice.actions, _a$4.addListener); _a$4.removeListener; var fetchedLogs = _a$4.fetchedLogs, fetchedLogsError = _a$4.fetchedLogsError, fetchingLogs = _a$4.fetchingLogs;
 
 var Field$2;
 (function (Field) {
@@ -14367,10 +15012,10 @@ var user = toolkit.createReducer(initialState, function (builder) {
     });
 });
 
-var _a$2;
+var _a$3;
 var PERSISTED_KEYS = ['user', 'transactions', 'lists'];
 var store = toolkit.configureStore({
-    reducer: (_a$2 = {
+    reducer: (_a$3 = {
             application: application,
             user: user,
             transactions: transactions,
@@ -14383,12 +15028,12 @@ var store = toolkit.configureStore({
             lists: lists,
             logs: logs
         },
-        _a$2[api.reducerPath] = api.reducer,
-        _a$2[routingApi.reducerPath] = routingApi.reducer,
-        _a$2),
+        _a$3[api$1.reducerPath] = api$1.reducer,
+        _a$3[routingApi.reducerPath] = routingApi.reducer,
+        _a$3),
     middleware: function (getDefaultMiddleware) {
         return getDefaultMiddleware({ thunk: true })
-            .concat(api.middleware)
+            .concat(api$1.middleware)
             .concat(routingApi.middleware)
             .concat(reduxLocalstorageSimple.save({ states: PERSISTED_KEYS, debounce: 1000 }));
     },
@@ -14397,7 +15042,7 @@ var store = toolkit.configureStore({
 store.dispatch(updateVersion());
 react.setupListeners(store.dispatch);
 
-var _a$1, _b$1, _c$1;
+var _a$2, _b$1, _c$1;
 /**
  * Given a locale string (e.g. from user agent), return the best match for corresponding SupportedLocale
  * @param maybeSupportedLocale the fuzzy locale identifier
@@ -14425,7 +15070,7 @@ function storeLocale() {
     var _a;
     return (_a = store.getState().user.userLocale) !== null && _a !== void 0 ? _a : undefined;
 }
-(_c$1 = (_b$1 = (_a$1 = parseLocale(parsedQueryString().lng)) !== null && _a$1 !== void 0 ? _a$1 : storeLocale()) !== null && _b$1 !== void 0 ? _b$1 : navigatorLocale()) !== null && _c$1 !== void 0 ? _c$1 : DEFAULT_LOCALE;
+var initialLocale = (_c$1 = (_b$1 = (_a$2 = parseLocale(parsedQueryString().lng)) !== null && _a$2 !== void 0 ? _a$2 : storeLocale()) !== null && _b$1 !== void 0 ? _b$1 : navigatorLocale()) !== null && _c$1 !== void 0 ? _c$1 : DEFAULT_LOCALE;
 function useUrlLocale() {
     var parsed = useParsedQueryString();
     return parseLocale(parsed.lng);
@@ -14709,30 +15354,7 @@ function useApproveCallbackFromTrade(trade, allowedSlippage) {
     return [approval, useGetAndTrackApproval(getApproval)];
 }
 
-function useIsArgentWallet() {
-    var _a, _b;
-    var account = useActiveWeb3React().account;
-    var argentWalletDetector = useArgentWalletDetectorContract();
-    var inputs = React.useMemo(function () { return [account !== null && account !== void 0 ? account : undefined]; }, [account]);
-    var call = useSingleCallResult(argentWalletDetector, 'isArgentWallet', inputs, reduxMulticall.NEVER_RELOAD);
-    return (_b = (_a = call === null || call === void 0 ? void 0 : call.result) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0 ? _b : false;
-}
-
-// combines the block timestamp with the user setting to give the deadline that should be used for any submitted transaction
-function useTransactionDeadline() {
-    var chainId = useActiveWeb3React().chainId;
-    var ttl = useAppSelector(function (state) { return state.user.userDeadline; });
-    var blockTimestamp = useCurrentBlockTimestamp();
-    return React.useMemo(function () {
-        if (blockTimestamp && chainId && L2_CHAIN_IDS.includes(chainId))
-            return blockTimestamp.add(L2_DEADLINE_FROM_NOW);
-        if (blockTimestamp && ttl)
-            return blockTimestamp.add(ttl);
-        return undefined;
-    }, [blockTimestamp, chainId, ttl]);
-}
-
-var _a, _b, _c, _d, _e;
+var _a$1, _b, _c, _d, _e;
 var PermitType;
 (function (PermitType) {
     PermitType[PermitType["AMOUNT"] = 1] = "AMOUNT";
@@ -14742,11 +15364,11 @@ var PermitType;
 var PERMIT_VALIDITY_BUFFER = 20 * 60;
 // todo: read this information from extensions on token lists or elsewhere (permit registry?)
 var PERMITTABLE_TOKENS = {
-    1: (_a = {},
-        _a[USDC.address] = { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
-        _a[DAI.address] = { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
-        _a[UNI[1].address] = { type: PermitType.AMOUNT, name: 'Uniswap' },
-        _a),
+    1: (_a$1 = {},
+        _a$1[USDC.address] = { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
+        _a$1[DAI.address] = { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
+        _a$1[UNI[1].address] = { type: PermitType.AMOUNT, name: 'Uniswap' },
+        _a$1),
     4: (_b = {
             '0xc7AD46e0b8a400Bb3C915120d284AafbA8fc4735': { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' }
         },
@@ -14796,10 +15418,9 @@ var PERMIT_ALLOWED_TYPE = [
     { name: 'expiry', type: 'uint256' },
     { name: 'allowed', type: 'bool' },
 ];
-function useERC20Permit(currencyAmount, spender, overridePermitInfo) {
+function useERC20Permit(currencyAmount, spender, transactionDeadline, overridePermitInfo) {
     var _a, _b;
     var _c = useActiveWeb3React(), account = _c.account, chainId = _c.chainId, library = _c.library;
-    var transactionDeadline = useTransactionDeadline();
     var tokenAddress = ((_a = currencyAmount === null || currencyAmount === void 0 ? void 0 : currencyAmount.currency) === null || _a === void 0 ? void 0 : _a.isToken) ? currencyAmount.currency.address : undefined;
     var eip2612Contract = useEIP2612Contract(tokenAddress);
     var isArgentWallet = useIsArgentWallet();
@@ -14914,12 +15535,7 @@ function useERC20Permit(currencyAmount, spender, overridePermitInfo) {
         signatureData,
     ]);
 }
-({
-    version: '1',
-    name: 'Uniswap V2',
-    type: PermitType.AMOUNT,
-});
-function useERC20PermitFromTrade(trade, allowedSlippage) {
+function useERC20PermitFromTrade(trade, allowedSlippage, transactionDeadline) {
     var chainId = useActiveWeb3React().chainId;
     var swapRouterAddress = chainId
         ? // v2 router does not support
@@ -14930,7 +15546,7 @@ function useERC20PermitFromTrade(trade, allowedSlippage) {
                     : SWAP_ROUTER_ADDRESSES[chainId]
         : undefined;
     var amountToApprove = React.useMemo(function () { return (trade ? trade.maximumAmountIn(allowedSlippage) : undefined); }, [trade, allowedSlippage]);
-    return useERC20Permit(amountToApprove, swapRouterAddress, null);
+    return useERC20Permit(amountToApprove, swapRouterAddress, transactionDeadline, null);
 }
 
 /**
@@ -14949,406 +15565,6 @@ function useIsSwapUnsupported(currencyIn, currencyOut) {
         return currencyInUnsupported || currencyOutUnsupported;
     }, [currencyIn, currencyOut, unsupportedTokens]);
 }
-
-var ERC20_INTERFACE = new abi$6.Interface([
-    {
-        constant: false,
-        inputs: [
-            { name: '_spender', type: 'address' },
-            { name: '_value', type: 'uint256' },
-        ],
-        name: 'approve',
-        outputs: [{ name: '', type: 'bool' }],
-        payable: false,
-        stateMutability: 'nonpayable',
-        type: 'function',
-    },
-]);
-function approveAmountCalldata(amount, spender) {
-    if (!amount.currency.isToken)
-        throw new Error('Must call with an amount of token');
-    var approveData = ERC20_INTERFACE.encodeFunctionData('approve', [spender, v3Sdk.toHex(amount.quotient)]);
-    return {
-        to: amount.currency.address,
-        data: approveData,
-        value: '0x0',
-    };
-}
-
-var ArgentWalletContractABI = [
-	{
-		inputs: [
-			{
-				components: [
-					{
-						internalType: "address",
-						name: "to",
-						type: "address"
-					},
-					{
-						internalType: "uint256",
-						name: "value",
-						type: "uint256"
-					},
-					{
-						internalType: "bytes",
-						name: "data",
-						type: "bytes"
-					}
-				],
-				name: "_transactions",
-				type: "tuple[]"
-			}
-		],
-		name: "wc_multiCall",
-		outputs: [
-			{
-				internalType: "bytes[]",
-				name: "",
-				type: "bytes[]"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "_msgHash",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes",
-				name: "_signature",
-				type: "bytes"
-			}
-		],
-		name: "isValidSignature",
-		outputs: [
-			{
-				internalType: "bytes4",
-				name: "",
-				type: "bytes4"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	}
-];
-
-function useArgentWalletContract() {
-    var account = useActiveWeb3React().account;
-    var isArgentWallet = useIsArgentWallet();
-    return useContract(isArgentWallet ? account !== null && account !== void 0 ? account : undefined : undefined, ArgentWalletContractABI, true);
-}
-
-var SwapCallbackState;
-(function (SwapCallbackState) {
-    SwapCallbackState[SwapCallbackState["INVALID"] = 0] = "INVALID";
-    SwapCallbackState[SwapCallbackState["LOADING"] = 1] = "LOADING";
-    SwapCallbackState[SwapCallbackState["VALID"] = 2] = "VALID";
-})(SwapCallbackState || (SwapCallbackState = {}));
-/**
- * Returns the swap calls that can be used to make the trade
- * @param trade trade to execute
- * @param allowedSlippage user allowed slippage
- * @param recipientAddressOrName the ENS name or address of the recipient of the swap output
- * @param signatureData the signature data of the permit of the input token amount, if available
- */
-function useSwapCallArguments(trade, // trade to execute, required
-allowedSlippage, // in bips
-recipientAddressOrName, // the ENS name or address of the recipient of the trade, or null if swap should be returned to sender
-signatureData) {
-    var _a = useActiveWeb3React(), account = _a.account, chainId = _a.chainId, library = _a.library;
-    var recipientAddress = useENS(recipientAddressOrName).address;
-    var recipient = recipientAddressOrName === null ? account : recipientAddress;
-    var deadline = useTransactionDeadline();
-    var routerContract = useV2RouterContract();
-    var argentWalletContract = useArgentWalletContract();
-    return React.useMemo(function () {
-        if (!trade || !recipient || !library || !account || !chainId || !deadline)
-            return [];
-        if (trade instanceof v2Sdk.Trade) {
-            if (!routerContract)
-                return [];
-            var swapMethods = [];
-            swapMethods.push(v2Sdk.Router.swapCallParameters(trade, {
-                feeOnTransfer: false,
-                allowedSlippage: allowedSlippage,
-                recipient: recipient,
-                deadline: deadline.toNumber(),
-            }));
-            if (trade.tradeType === sdkCore.TradeType.EXACT_INPUT) {
-                swapMethods.push(v2Sdk.Router.swapCallParameters(trade, {
-                    feeOnTransfer: true,
-                    allowedSlippage: allowedSlippage,
-                    recipient: recipient,
-                    deadline: deadline.toNumber(),
-                }));
-            }
-            return swapMethods.map(function (_a) {
-                var methodName = _a.methodName, args = _a.args, value = _a.value;
-                if (argentWalletContract && trade.inputAmount.currency.isToken) {
-                    return {
-                        address: argentWalletContract.address,
-                        calldata: argentWalletContract.interface.encodeFunctionData('wc_multiCall', [
-                            [
-                                approveAmountCalldata(trade.maximumAmountIn(allowedSlippage), routerContract.address),
-                                {
-                                    to: routerContract.address,
-                                    value: value,
-                                    data: routerContract.interface.encodeFunctionData(methodName, args),
-                                },
-                            ],
-                        ]),
-                        value: '0x0',
-                    };
-                }
-                else {
-                    return {
-                        address: routerContract.address,
-                        calldata: routerContract.interface.encodeFunctionData(methodName, args),
-                        value: value,
-                    };
-                }
-            });
-        }
-        else {
-            // swap options shared by v3 and v2+v3 swap routers
-            var sharedSwapOptions = __assign({ recipient: recipient, slippageTolerance: allowedSlippage }, (signatureData
-                ? {
-                    inputTokenPermit: 'allowed' in signatureData
-                        ? {
-                            expiry: signatureData.deadline,
-                            nonce: signatureData.nonce,
-                            s: signatureData.s,
-                            r: signatureData.r,
-                            v: signatureData.v,
-                        }
-                        : {
-                            deadline: signatureData.deadline,
-                            amount: signatureData.amount,
-                            s: signatureData.s,
-                            r: signatureData.r,
-                            v: signatureData.v,
-                        },
-                }
-                : {}));
-            var swapRouterAddress = chainId
-                ? trade instanceof v3Sdk.Trade
-                    ? V3_ROUTER_ADDRESS[chainId]
-                    : SWAP_ROUTER_ADDRESSES[chainId]
-                : undefined;
-            if (!swapRouterAddress)
-                return [];
-            var _a = trade instanceof v3Sdk.Trade
-                ? v3Sdk.SwapRouter.swapCallParameters(trade, __assign(__assign({}, sharedSwapOptions), { deadline: deadline.toString() }))
-                : routerSdk.SwapRouter.swapCallParameters(trade, __assign(__assign({}, sharedSwapOptions), { deadlineOrPreviousBlockhash: deadline.toString() })), value = _a.value, calldata = _a.calldata;
-            if (argentWalletContract && trade.inputAmount.currency.isToken) {
-                return [
-                    {
-                        address: argentWalletContract.address,
-                        calldata: argentWalletContract.interface.encodeFunctionData('wc_multiCall', [
-                            [
-                                approveAmountCalldata(trade.maximumAmountIn(allowedSlippage), swapRouterAddress),
-                                {
-                                    to: swapRouterAddress,
-                                    value: value,
-                                    data: calldata,
-                                },
-                            ],
-                        ]),
-                        value: '0x0',
-                    },
-                ];
-            }
-            return [
-                {
-                    address: swapRouterAddress,
-                    calldata: calldata,
-                    value: value,
-                },
-            ];
-        }
-    }, [
-        trade,
-        recipient,
-        library,
-        account,
-        chainId,
-        deadline,
-        routerContract,
-        allowedSlippage,
-        argentWalletContract,
-        signatureData,
-    ]);
-}
-/**
- * This is hacking out the revert reason from the ethers provider thrown error however it can.
- * This object seems to be undocumented by ethers.
- * @param error an error from the ethers provider
- */
-function swapErrorToUserReadableMessage(error) {
-    var _a, _b, _c, _d;
-    var reason;
-    while (Boolean(error)) {
-        reason = (_b = (_a = error.reason) !== null && _a !== void 0 ? _a : error.message) !== null && _b !== void 0 ? _b : reason;
-        error = (_c = error.error) !== null && _c !== void 0 ? _c : (_d = error.data) === null || _d === void 0 ? void 0 : _d.originalError;
-    }
-    if ((reason === null || reason === void 0 ? void 0 : reason.indexOf('execution reverted: ')) === 0)
-        reason = reason.substr('execution reverted: '.length);
-    switch (reason) {
-        case 'UniswapV2Router: EXPIRED':
-            return (jsxRuntime.jsx(macro.Trans, { children: "The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low." }, void 0));
-        case 'UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT':
-        case 'UniswapV2Router: EXCESSIVE_INPUT_AMOUNT':
-            return (jsxRuntime.jsx(macro.Trans, { children: "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance." }, void 0));
-        case 'TransferHelper: TRANSFER_FROM_FAILED':
-            return jsxRuntime.jsx(macro.Trans, { children: "The input token cannot be transferred. There may be an issue with the input token." }, void 0);
-        case 'UniswapV2: TRANSFER_FAILED':
-            return jsxRuntime.jsx(macro.Trans, { children: "The output token cannot be transferred. There may be an issue with the output token." }, void 0);
-        case 'UniswapV2: K':
-            return (jsxRuntime.jsx(macro.Trans, { children: "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer." }, void 0));
-        case 'Too little received':
-        case 'Too much requested':
-        case 'STF':
-            return (jsxRuntime.jsx(macro.Trans, { children: "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3." }, void 0));
-        case 'TF':
-            return (jsxRuntime.jsx(macro.Trans, { children: "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3." }, void 0));
-        default:
-            if ((reason === null || reason === void 0 ? void 0 : reason.indexOf('undefined is not an object')) !== -1) {
-                console.error(error, reason);
-                return (jsxRuntime.jsx(macro.Trans, { children: "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3." }, void 0));
-            }
-            return (jsxRuntime.jsxs(macro.Trans, { children: ["Unknown error", reason ? ": \"" + reason + "\"" : '', ". Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."] }, void 0));
-    }
-}
-// returns a function that will execute a swap, if the parameters are all valid
-// and the user has approved the slippage adjusted input amount for the trade
-function useSwapCallback(trade, // trade to execute, required
-allowedSlippage, // in bips
-recipientAddressOrName, // the ENS name or address of the recipient of the trade, or null if swap should be returned to sender
-signatureData) {
-    var _a = useActiveWeb3React(), account = _a.account, chainId = _a.chainId, library = _a.library;
-    var swapCalls = useSwapCallArguments(trade, allowedSlippage, recipientAddressOrName, signatureData);
-    var addTransaction = useTransactionAdder();
-    var recipientAddress = useENS(recipientAddressOrName).address;
-    var recipient = recipientAddressOrName === null ? account : recipientAddress;
-    return React.useMemo(function () {
-        if (!trade || !library || !account || !chainId) {
-            return { state: SwapCallbackState.INVALID, callback: null, error: jsxRuntime.jsx(macro.Trans, { children: "Missing dependencies" }, void 0) };
-        }
-        if (!recipient) {
-            if (recipientAddressOrName !== null) {
-                return { state: SwapCallbackState.INVALID, callback: null, error: jsxRuntime.jsx(macro.Trans, { children: "Invalid recipient" }, void 0) };
-            }
-            else {
-                return { state: SwapCallbackState.LOADING, callback: null, error: null };
-            }
-        }
-        return {
-            state: SwapCallbackState.VALID,
-            callback: function onSwap() {
-                return __awaiter(this, void 0, void 0, function () {
-                    var estimatedCalls, bestCallOption, errorCalls, firstNoErrorCall, _a, address, calldata, value;
-                    return __generator(this, function (_b) {
-                        switch (_b.label) {
-                            case 0: return [4 /*yield*/, Promise.all(swapCalls.map(function (call) {
-                                    var address = call.address, calldata = call.calldata, value = call.value;
-                                    var tx = !value || isZero(value)
-                                        ? { from: account, to: address, data: calldata }
-                                        : {
-                                            from: account,
-                                            to: address,
-                                            data: calldata,
-                                            value: value,
-                                        };
-                                    return library
-                                        .estimateGas(tx)
-                                        .then(function (gasEstimate) {
-                                        return {
-                                            call: call,
-                                            gasEstimate: gasEstimate,
-                                        };
-                                    })
-                                        .catch(function (gasError) {
-                                        console.debug('Gas estimate failed, trying eth_call to extract error', call);
-                                        return library
-                                            .call(tx)
-                                            .then(function (result) {
-                                            console.debug('Unexpected successful call after failed estimate gas', call, gasError, result);
-                                            return { call: call, error: jsxRuntime.jsx(macro.Trans, { children: "Unexpected issue with estimating the gas. Please try again." }, void 0) };
-                                        })
-                                            .catch(function (callError) {
-                                            console.debug('Call threw error', call, callError);
-                                            return { call: call, error: swapErrorToUserReadableMessage(callError) };
-                                        });
-                                    });
-                                }))
-                                // a successful estimation is a bignumber gas estimate and the next call is also a bignumber gas estimate
-                            ];
-                            case 1:
-                                estimatedCalls = _b.sent();
-                                bestCallOption = estimatedCalls.find(function (el, ix, list) {
-                                    return 'gasEstimate' in el && (ix === list.length - 1 || 'gasEstimate' in list[ix + 1]);
-                                });
-                                // check if any calls errored with a recognizable error
-                                if (!bestCallOption) {
-                                    errorCalls = estimatedCalls.filter(function (call) { return 'error' in call; });
-                                    if (errorCalls.length > 0)
-                                        throw errorCalls[errorCalls.length - 1].error;
-                                    firstNoErrorCall = estimatedCalls.find(function (call) { return !('error' in call); });
-                                    if (!firstNoErrorCall)
-                                        throw new Error(macro.t(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["Unexpected error. Could not estimate gas for the swap."], ["Unexpected error. Could not estimate gas for the swap."]))));
-                                    bestCallOption = firstNoErrorCall;
-                                }
-                                _a = bestCallOption.call, address = _a.address, calldata = _a.calldata, value = _a.value;
-                                return [2 /*return*/, library
-                                        .getSigner()
-                                        .sendTransaction(__assign(__assign({ from: account, to: address, data: calldata }, ('gasEstimate' in bestCallOption ? { gasLimit: calculateGasMargin(bestCallOption.gasEstimate) } : {})), (value && !isZero(value) ? { value: value } : {})))
-                                        .then(function (response) {
-                                        addTransaction(response, trade.tradeType === sdkCore.TradeType.EXACT_INPUT
-                                            ? {
-                                                type: TransactionType.SWAP,
-                                                tradeType: sdkCore.TradeType.EXACT_INPUT,
-                                                inputCurrencyId: currencyId(trade.inputAmount.currency),
-                                                inputCurrencyAmountRaw: trade.inputAmount.quotient.toString(),
-                                                expectedOutputCurrencyAmountRaw: trade.outputAmount.quotient.toString(),
-                                                outputCurrencyId: currencyId(trade.outputAmount.currency),
-                                                minimumOutputCurrencyAmountRaw: trade.minimumAmountOut(allowedSlippage).quotient.toString(),
-                                            }
-                                            : {
-                                                type: TransactionType.SWAP,
-                                                tradeType: sdkCore.TradeType.EXACT_OUTPUT,
-                                                inputCurrencyId: currencyId(trade.inputAmount.currency),
-                                                maximumInputCurrencyAmountRaw: trade.maximumAmountIn(allowedSlippage).quotient.toString(),
-                                                outputCurrencyId: currencyId(trade.outputAmount.currency),
-                                                outputCurrencyAmountRaw: trade.outputAmount.quotient.toString(),
-                                                expectedInputCurrencyAmountRaw: trade.inputAmount.quotient.toString(),
-                                            });
-                                        return response.hash;
-                                    })
-                                        .catch(function (error) {
-                                        // if the user rejected the tx, pass this along
-                                        if ((error === null || error === void 0 ? void 0 : error.code) === 4001) {
-                                            throw new Error(macro.t(templateObject_2 || (templateObject_2 = __makeTemplateObject(["Transaction rejected."], ["Transaction rejected."]))));
-                                        }
-                                        else {
-                                            // otherwise, the error was unexpected and we need to convey that
-                                            console.error("Swap failed", error, address, calldata, value);
-                                            throw new Error(macro.t(templateObject_3 || (templateObject_3 = __makeTemplateObject(["Swap failed: ", ""], ["Swap failed: ", ""])), swapErrorToUserReadableMessage(error)));
-                                        }
-                                    })];
-                        }
-                    });
-                });
-            },
-            error: null,
-        };
-    }, [trade, library, account, chainId, recipient, recipientAddressOrName, swapCalls, addTransaction, allowedSlippage]);
-}
-var templateObject_1$2, templateObject_2, templateObject_3;
 
 var WrapType;
 (function (WrapType) {
@@ -15501,7 +15717,7 @@ function maxAmountSpend(currencyAmount) {
     return currencyAmount;
 }
 
-var BodyWrapper = styled__default["default"].main(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n  position: relative;\n  margin-top: ", ";\n  max-width: ", ";\n  width: 100%;\n  background: ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 24px;\n  margin-top: 1rem;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: ", ";\n"], ["\n  position: relative;\n  margin-top: ", ";\n  max-width: ", ";\n  width: 100%;\n  background: ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 24px;\n  margin-top: 1rem;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: ", ";\n"
+var BodyWrapper = styled__default["default"].main(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n  position: relative;\n  margin-top: ", ";\n  max-width: ", ";\n  width: 100%;\n  background: ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 24px;\n  margin-top: 1rem;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: ", ";\n"], ["\n  position: relative;\n  margin-top: ", ";\n  max-width: ", ";\n  width: 100%;\n  background: ", ";\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 24px;\n  margin-top: 1rem;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: ", ";\n"
     /**
      * The styled container element that wraps the content of most pages and the tabs.
      */
@@ -15522,9 +15738,9 @@ function AppBody(_a) {
     var children = _a.children, rest = __rest(_a, ["children"]);
     return jsxRuntime.jsx(BodyWrapper, __assign({}, rest, { children: children }), void 0);
 }
-var templateObject_1$1;
+var templateObject_1$2;
 
-var AlertWrapper = styled__default["default"].div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  max-width: 460px;\n  width: 100%;\n"], ["\n  max-width: 460px;\n  width: 100%;\n"])));
+var AlertWrapper = styled__default["default"].div(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n  max-width: 460px;\n  width: 100%;\n"], ["\n  max-width: 460px;\n  width: 100%;\n"])));
 function Swap(_a) {
     var _this = this;
     var _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
@@ -15616,7 +15832,8 @@ function Swap(_a) {
             : 'SwapRouter';
     // check whether the user has approved the router on the input token
     var _y = __read(useApproveCallbackFromTrade(approvalOptimizedTrade, allowedSlippage), 2), approvalState = _y[0], approveCallback = _y[1];
-    var _z = useERC20PermitFromTrade(approvalOptimizedTrade, allowedSlippage), signatureState = _z.state, signatureData = _z.signatureData, gatherPermitSignature = _z.gatherPermitSignature;
+    var transactionDeadline = useTransactionDeadline();
+    var _z = useERC20PermitFromTrade(approvalOptimizedTrade, allowedSlippage, transactionDeadline), signatureState = _z.state, signatureData = _z.signatureData, gatherPermitSignature = _z.gatherPermitSignature;
     var handleApprove = React.useCallback(function () { return __awaiter(_this, void 0, void 0, function () {
         var error_1;
         var _a;
@@ -15801,7 +16018,1125 @@ function Swap(_a) {
                                                     }
                                                 }, id: "swap-button", disabled: !isValid || routeIsSyncing || routeIsLoading || priceImpactTooHigh || !!swapCallbackError, error: isValid && priceImpactSeverity > 2 && !swapCallbackError }, { children: jsxRuntime.jsx(rebass.Text, __assign({ fontSize: 20, fontWeight: 500 }, { children: swapInputError ? (swapInputError) : routeIsSyncing || routeIsLoading ? (jsxRuntime.jsx(macro.Trans, { children: "Swap" }, void 0)) : priceImpactSeverity > 2 ? (jsxRuntime.jsx(macro.Trans, { children: "Swap Anyway" }, void 0)) : priceImpactTooHigh ? (jsxRuntime.jsx(macro.Trans, { children: "Price Impact Too High" }, void 0)) : (jsxRuntime.jsx(macro.Trans, { children: "Swap" }, void 0)) }), void 0) }), void 0)), isExpertMode && swapErrorMessage ? jsxRuntime.jsx(SwapCallbackError, { error: swapErrorMessage }, void 0) : null] }, void 0)] }), void 0)] }), void 0)] }, void 0), jsxRuntime.jsx(AlertWrapper, { children: jsxRuntime.jsx(NetworkAlert, {}, void 0) }, void 0), jsxRuntime.jsx(SwitchLocaleLink, {}, void 0), !swapIsUnsupported ? null : (jsxRuntime.jsx(UnsupportedCurrencyFooter, { show: swapIsUnsupported, currencies: [currencies[Field.INPUT], currencies[Field.OUTPUT]] }, void 0))] }, void 0));
 }
+var templateObject_1$1;
+
+// This optional code is used to register a service worker.
+// register() is not called by default.
+// This lets the app load faster on subsequent visits in production, and gives
+// it offline capabilities. However, it also means that developers (and users)
+// will only see deployed updates on subsequent visits to a page, after all the
+// existing tabs open on the page have been closed, since previously cached
+// resources are updated in the background.
+// To learn more about the benefits of this model and instructions on how to
+// opt-in, read https://cra.link/PWA
+var isLocalhost = Boolean(window.location.hostname === 'localhost' ||
+    // [::1] is the IPv6 localhost address.
+    window.location.hostname === '[::1]' ||
+    // 127.0.0.0/8 are considered localhost for IPv4.
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
+function registerValidSW(swUrl, config) {
+    navigator.serviceWorker
+        .register(swUrl)
+        .then(function (registration) {
+        registration.onupdatefound = function () {
+            var installingWorker = registration.installing;
+            if (installingWorker == null) {
+                return;
+            }
+            installingWorker.onstatechange = function () {
+                if (installingWorker.state === 'installed') {
+                    if (navigator.serviceWorker.controller) {
+                        // At this point, the updated precached content has been fetched,
+                        // but the previous service worker will still serve the older
+                        // content until all client tabs are closed.
+                        console.log('New content is available and will be used when all ' +
+                            'tabs for this page are closed. See https://cra.link/PWA.');
+                        // Execute callback
+                        if (config && config.onUpdate) {
+                            config.onUpdate(registration);
+                        }
+                    }
+                    else {
+                        // At this point, everything has been precached.
+                        // It's the perfect time to display a
+                        // "Content is cached for offline use." message.
+                        console.log('Content is cached for offline use.');
+                        // Execute callback
+                        if (config && config.onSuccess) {
+                            config.onSuccess(registration);
+                        }
+                    }
+                }
+            };
+        };
+    })
+        .catch(function (error) {
+        console.error('Error during service worker registration:', error);
+    });
+}
+function checkValidServiceWorker(swUrl, config) {
+    // Check if the service worker can be found. If it can't reload the page.
+    fetch(swUrl, {
+        headers: { 'Service-Worker': 'script' },
+    })
+        .then(function (response) {
+        // Ensure service worker exists, and that we really are getting a JS file.
+        var contentType = response.headers.get('content-type');
+        if (response.status === 404 || (contentType != null && contentType.indexOf('javascript') === -1)) {
+            // No service worker found. Probably a different app. Reload the page.
+            navigator.serviceWorker.ready.then(function (registration) {
+                registration.unregister().then(function () {
+                    window.location.reload();
+                });
+            });
+        }
+        else {
+            // Service worker found. Proceed as normal.
+            registerValidSW(swUrl, config);
+        }
+    })
+        .catch(function () {
+        console.log('No internet connection found. App is running in offline mode.');
+    });
+}
+function register(config) {
+    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+        // The URL constructor is available in all browsers that support SW.
+        var publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
+        if (publicUrl.origin !== window.location.origin) {
+            // Our service worker won't work if PUBLIC_URL is on a different origin
+            // from what our page is served on. This might happen if a CDN is used to
+            // serve assets; see https://github.com/facebook/create-react-app/issues/2374
+            return;
+        }
+        window.addEventListener('load', function () {
+            var swUrl = process.env.PUBLIC_URL + "/service-worker.js";
+            if (isLocalhost) {
+                // This is running on localhost. Let's check if a service worker still exists or not.
+                checkValidServiceWorker(swUrl, config);
+                // Add some additional logging to localhost, pointing developers to the
+                // service worker/PWA documentation.
+                navigator.serviceWorker.ready.then(function () {
+                    console.log('This web app is being served cache-first by a service ' +
+                        'worker. To learn more, visit https://cra.link/PWA');
+                });
+            }
+            else {
+                // Is not localhost. Just register service worker
+                registerValidSW(swUrl, config);
+            }
+        });
+    }
+}
+function unregister() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.ready
+            .then(function (registration) {
+            registration.unregister();
+        })
+            .catch(function (error) {
+            console.error(error.message);
+        });
+    }
+}
+
+var serviceWorkerRegistration = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    register: register,
+    unregister: unregister
+});
+
+// SDN OFAC addresses
+var BLOCKED_ADDRESSES = [
+    '0x7Db418b5D567A4e0E8c59Ad71BE1FcE48f3E6107',
+    '0x72a5843cc08275C8171E582972Aa4fDa8C397B2A',
+    '0x7F19720A857F834887FC9A7bC0a0fBe7Fc7f8102',
+    '0xA7e5d5A720f06526557c513402f2e6B5fA20b008',
+    '0x1da5821544e25c636c1417Ba96Ade4Cf6D2f9B5A',
+    '0x9F4cda013E354b8fC285BF4b9A60460cEe7f7Ea9',
+    '0x19Aa5Fe80D33a56D56c78e82eA5E50E5d80b4Dff',
+    '0x2f389cE8bD8ff92De3402FFCe4691d17fC4f6535',
+    '0xe7aa314c77F4233C18C6CC84384A9247c0cf367B',
+    '0x7F367cC41522cE07553e823bf3be79A889DEbe1B',
+    '0xd882cFc20F52f2599D84b8e8D58C7FB62cfE344b',
+    '0x901bb9583b24D97e995513C6778dc6888AB6870e',
+    '0x8576aCC5C05D6Ce88f4e49bf65BdF0C62F91353C',
+    '0xC8a65Fadf0e0dDAf421F28FEAb69Bf6E2E589963',
+    '0x308eD4B7b49797e1A98D3818bFF6fe5385410370',
+    '0x67d40EE1A85bf4a4Bb7Ffae16De985e8427B',
+    '0x6f1ca141a28907f78ebaa64fb83a9088b02a83',
+    '0x6acdfba02d390b97ac2b2d42a63e85293bcc1',
+    '0x48549a34ae37b12f6a30566245176994e17c6',
+    '0x5512d943ed1f7c8a43f3435c85f7ab68b30121',
+    '0xc455f7fd3e0e12afd51fba5c106909934d8a0e',
+    '0x3cbded43efdaf0fc77b9c55f6fc9988fcc9b757d',
+    '0x67d40EE1A85bf4a4Bb7Ffae16De985e8427B6b45',
+    '0x6f1ca141a28907f78ebaa64fb83a9088b02a8352',
+    '0x6acdfba02d390b97ac2b2d42a63e85293bcc160e',
+    '0x48549a34ae37b12f6a30566245176994e17c6b4a',
+    '0x5512d943ed1f7c8a43f3435c85f7ab68b30121b0',
+    '0xc455f7fd3e0e12afd51fba5c106909934d8a0e4a',
+];
+function Blocklist(_a) {
+    var children = _a.children;
+    var account = useActiveWeb3React().account;
+    var blocked = React.useMemo(function () { return Boolean(account && BLOCKED_ADDRESSES.indexOf(account) !== -1); }, [account]);
+    if (blocked) {
+        return (jsxRuntime.jsx("div", { children: jsxRuntime.jsx(macro.Trans, { children: "Blocked address" }, void 0) }, void 0));
+    }
+    return jsxRuntime.jsx(jsxRuntime.Fragment, { children: children }, void 0);
+}
+
+var plurals = {
+    'af-ZA': plurals$1.af,
+    'ar-SA': plurals$1.ar,
+    'ca-ES': plurals$1.ca,
+    'cs-CZ': plurals$1.cs,
+    'da-DK': plurals$1.da,
+    'de-DE': plurals$1.de,
+    'el-GR': plurals$1.el,
+    'en-US': plurals$1.en,
+    'es-ES': plurals$1.es,
+    'fi-FI': plurals$1.fi,
+    'fr-FR': plurals$1.fr,
+    'he-IL': plurals$1.he,
+    'hu-HU': plurals$1.hu,
+    'id-ID': plurals$1.id,
+    'it-IT': plurals$1.it,
+    'ja-JP': plurals$1.ja,
+    'ko-KR': plurals$1.ko,
+    'nl-NL': plurals$1.nl,
+    'no-NO': plurals$1.no,
+    'pl-PL': plurals$1.pl,
+    'pt-BR': plurals$1.pt,
+    'pt-PT': plurals$1.pt,
+    'ro-RO': plurals$1.ro,
+    'ru-RU': plurals$1.ru,
+    'sr-SP': plurals$1.sr,
+    'sv-SE': plurals$1.sv,
+    'sw-TZ': plurals$1.sw,
+    'tr-TR': plurals$1.tr,
+    'uk-UA': plurals$1.uk,
+    'vi-VN': plurals$1.vi,
+    'zh-CN': plurals$1.zh,
+    'zh-TW': plurals$1.zh,
+    pseudo: plurals$1.en,
+};
+function dynamicActivate(locale) {
+    return __awaiter(this, void 0, void 0, function () {
+        var catalog, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    core$2.i18n.loadLocaleData(locale, { plurals: function () { return plurals[locale]; } });
+                    if (!(locale === DEFAULT_LOCALE)) return [3 /*break*/, 1];
+                    _a = DEFAULT_CATALOG;
+                    return [3 /*break*/, 3];
+                case 1: return [4 /*yield*/, (function (t) { return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(t)); }); })("locales/" + locale)];
+                case 2:
+                    _a = _b.sent();
+                    _b.label = 3;
+                case 3:
+                    catalog = _a;
+                    core$2.i18n.load(locale, catalog.messages);
+                    core$2.i18n.activate(locale);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function Provider(_a) {
+    var locale = _a.locale, _b = _a.forceRenderAfterLocaleChange, forceRenderAfterLocaleChange = _b === void 0 ? true : _b, onActivate = _a.onActivate, children = _a.children;
+    React.useEffect(function () {
+        dynamicActivate(locale)
+            .then(function () { return onActivate === null || onActivate === void 0 ? void 0 : onActivate(locale); })
+            .catch(function (error) {
+            console.error('Failed to activate locale', locale, error);
+        });
+    }, [locale, onActivate]);
+    return (jsxRuntime.jsx(react$1.I18nProvider, __assign({ forceRenderOnLocaleChange: forceRenderAfterLocaleChange, i18n: core$2.i18n }, { children: children }), void 0));
+}
+
+dynamicActivate(initialLocale);
+function LanguageProvider(_a) {
+    var children = _a.children;
+    var locale = useActiveLocale();
+    var _b = __read(useUserLocaleManager(), 2), setUserLocale = _b[1];
+    var onActivate = React.useCallback(function (locale) {
+        document.documentElement.setAttribute('lang', locale);
+        setUserLocale(locale); // stores the selected locale to persist across sessions
+    }, [setUserLocale]);
+    return (jsxRuntime.jsx(Provider, __assign({ locale: locale, forceRenderAfterLocaleChange: false, onActivate: onActivate }, { children: children }), void 0));
+}
+
+var Bundle_OrderBy;
+(function (Bundle_OrderBy) {
+    Bundle_OrderBy["Id"] = "id";
+    Bundle_OrderBy["EthPriceUsd"] = "ethPriceUSD";
+})(Bundle_OrderBy || (Bundle_OrderBy = {}));
+var Burn_OrderBy;
+(function (Burn_OrderBy) {
+    Burn_OrderBy["Id"] = "id";
+    Burn_OrderBy["Transaction"] = "transaction";
+    Burn_OrderBy["Pool"] = "pool";
+    Burn_OrderBy["Token0"] = "token0";
+    Burn_OrderBy["Token1"] = "token1";
+    Burn_OrderBy["Timestamp"] = "timestamp";
+    Burn_OrderBy["Owner"] = "owner";
+    Burn_OrderBy["Origin"] = "origin";
+    Burn_OrderBy["Amount"] = "amount";
+    Burn_OrderBy["Amount0"] = "amount0";
+    Burn_OrderBy["Amount1"] = "amount1";
+    Burn_OrderBy["AmountUsd"] = "amountUSD";
+    Burn_OrderBy["TickLower"] = "tickLower";
+    Burn_OrderBy["TickUpper"] = "tickUpper";
+    Burn_OrderBy["LogIndex"] = "logIndex";
+})(Burn_OrderBy || (Burn_OrderBy = {}));
+var Collect_OrderBy;
+(function (Collect_OrderBy) {
+    Collect_OrderBy["Id"] = "id";
+    Collect_OrderBy["Transaction"] = "transaction";
+    Collect_OrderBy["Timestamp"] = "timestamp";
+    Collect_OrderBy["Pool"] = "pool";
+    Collect_OrderBy["Owner"] = "owner";
+    Collect_OrderBy["Amount0"] = "amount0";
+    Collect_OrderBy["Amount1"] = "amount1";
+    Collect_OrderBy["AmountUsd"] = "amountUSD";
+    Collect_OrderBy["TickLower"] = "tickLower";
+    Collect_OrderBy["TickUpper"] = "tickUpper";
+    Collect_OrderBy["LogIndex"] = "logIndex";
+})(Collect_OrderBy || (Collect_OrderBy = {}));
+var Factory_OrderBy;
+(function (Factory_OrderBy) {
+    Factory_OrderBy["Id"] = "id";
+    Factory_OrderBy["PoolCount"] = "poolCount";
+    Factory_OrderBy["TxCount"] = "txCount";
+    Factory_OrderBy["TotalVolumeUsd"] = "totalVolumeUSD";
+    Factory_OrderBy["TotalVolumeEth"] = "totalVolumeETH";
+    Factory_OrderBy["TotalFeesUsd"] = "totalFeesUSD";
+    Factory_OrderBy["TotalFeesEth"] = "totalFeesETH";
+    Factory_OrderBy["UntrackedVolumeUsd"] = "untrackedVolumeUSD";
+    Factory_OrderBy["TotalValueLockedUsd"] = "totalValueLockedUSD";
+    Factory_OrderBy["TotalValueLockedEth"] = "totalValueLockedETH";
+    Factory_OrderBy["TotalValueLockedUsdUntracked"] = "totalValueLockedUSDUntracked";
+    Factory_OrderBy["TotalValueLockedEthUntracked"] = "totalValueLockedETHUntracked";
+    Factory_OrderBy["Owner"] = "owner";
+})(Factory_OrderBy || (Factory_OrderBy = {}));
+var Flash_OrderBy;
+(function (Flash_OrderBy) {
+    Flash_OrderBy["Id"] = "id";
+    Flash_OrderBy["Transaction"] = "transaction";
+    Flash_OrderBy["Timestamp"] = "timestamp";
+    Flash_OrderBy["Pool"] = "pool";
+    Flash_OrderBy["Sender"] = "sender";
+    Flash_OrderBy["Recipient"] = "recipient";
+    Flash_OrderBy["Amount0"] = "amount0";
+    Flash_OrderBy["Amount1"] = "amount1";
+    Flash_OrderBy["AmountUsd"] = "amountUSD";
+    Flash_OrderBy["Amount0Paid"] = "amount0Paid";
+    Flash_OrderBy["Amount1Paid"] = "amount1Paid";
+    Flash_OrderBy["LogIndex"] = "logIndex";
+})(Flash_OrderBy || (Flash_OrderBy = {}));
+var Mint_OrderBy;
+(function (Mint_OrderBy) {
+    Mint_OrderBy["Id"] = "id";
+    Mint_OrderBy["Transaction"] = "transaction";
+    Mint_OrderBy["Timestamp"] = "timestamp";
+    Mint_OrderBy["Pool"] = "pool";
+    Mint_OrderBy["Token0"] = "token0";
+    Mint_OrderBy["Token1"] = "token1";
+    Mint_OrderBy["Owner"] = "owner";
+    Mint_OrderBy["Sender"] = "sender";
+    Mint_OrderBy["Origin"] = "origin";
+    Mint_OrderBy["Amount"] = "amount";
+    Mint_OrderBy["Amount0"] = "amount0";
+    Mint_OrderBy["Amount1"] = "amount1";
+    Mint_OrderBy["AmountUsd"] = "amountUSD";
+    Mint_OrderBy["TickLower"] = "tickLower";
+    Mint_OrderBy["TickUpper"] = "tickUpper";
+    Mint_OrderBy["LogIndex"] = "logIndex";
+})(Mint_OrderBy || (Mint_OrderBy = {}));
+var OrderDirection;
+(function (OrderDirection) {
+    OrderDirection["Asc"] = "asc";
+    OrderDirection["Desc"] = "desc";
+})(OrderDirection || (OrderDirection = {}));
+var PoolDayData_OrderBy;
+(function (PoolDayData_OrderBy) {
+    PoolDayData_OrderBy["Id"] = "id";
+    PoolDayData_OrderBy["Date"] = "date";
+    PoolDayData_OrderBy["Pool"] = "pool";
+    PoolDayData_OrderBy["Liquidity"] = "liquidity";
+    PoolDayData_OrderBy["SqrtPrice"] = "sqrtPrice";
+    PoolDayData_OrderBy["Token0Price"] = "token0Price";
+    PoolDayData_OrderBy["Token1Price"] = "token1Price";
+    PoolDayData_OrderBy["Tick"] = "tick";
+    PoolDayData_OrderBy["FeeGrowthGlobal0X128"] = "feeGrowthGlobal0X128";
+    PoolDayData_OrderBy["FeeGrowthGlobal1X128"] = "feeGrowthGlobal1X128";
+    PoolDayData_OrderBy["TvlUsd"] = "tvlUSD";
+    PoolDayData_OrderBy["VolumeToken0"] = "volumeToken0";
+    PoolDayData_OrderBy["VolumeToken1"] = "volumeToken1";
+    PoolDayData_OrderBy["VolumeUsd"] = "volumeUSD";
+    PoolDayData_OrderBy["FeesUsd"] = "feesUSD";
+    PoolDayData_OrderBy["TxCount"] = "txCount";
+    PoolDayData_OrderBy["Open"] = "open";
+    PoolDayData_OrderBy["High"] = "high";
+    PoolDayData_OrderBy["Low"] = "low";
+    PoolDayData_OrderBy["Close"] = "close";
+})(PoolDayData_OrderBy || (PoolDayData_OrderBy = {}));
+var PoolHourData_OrderBy;
+(function (PoolHourData_OrderBy) {
+    PoolHourData_OrderBy["Id"] = "id";
+    PoolHourData_OrderBy["PeriodStartUnix"] = "periodStartUnix";
+    PoolHourData_OrderBy["Pool"] = "pool";
+    PoolHourData_OrderBy["Liquidity"] = "liquidity";
+    PoolHourData_OrderBy["SqrtPrice"] = "sqrtPrice";
+    PoolHourData_OrderBy["Token0Price"] = "token0Price";
+    PoolHourData_OrderBy["Token1Price"] = "token1Price";
+    PoolHourData_OrderBy["Tick"] = "tick";
+    PoolHourData_OrderBy["FeeGrowthGlobal0X128"] = "feeGrowthGlobal0X128";
+    PoolHourData_OrderBy["FeeGrowthGlobal1X128"] = "feeGrowthGlobal1X128";
+    PoolHourData_OrderBy["TvlUsd"] = "tvlUSD";
+    PoolHourData_OrderBy["VolumeToken0"] = "volumeToken0";
+    PoolHourData_OrderBy["VolumeToken1"] = "volumeToken1";
+    PoolHourData_OrderBy["VolumeUsd"] = "volumeUSD";
+    PoolHourData_OrderBy["FeesUsd"] = "feesUSD";
+    PoolHourData_OrderBy["TxCount"] = "txCount";
+    PoolHourData_OrderBy["Open"] = "open";
+    PoolHourData_OrderBy["High"] = "high";
+    PoolHourData_OrderBy["Low"] = "low";
+    PoolHourData_OrderBy["Close"] = "close";
+})(PoolHourData_OrderBy || (PoolHourData_OrderBy = {}));
+var Pool_OrderBy;
+(function (Pool_OrderBy) {
+    Pool_OrderBy["Id"] = "id";
+    Pool_OrderBy["CreatedAtTimestamp"] = "createdAtTimestamp";
+    Pool_OrderBy["CreatedAtBlockNumber"] = "createdAtBlockNumber";
+    Pool_OrderBy["Token0"] = "token0";
+    Pool_OrderBy["Token1"] = "token1";
+    Pool_OrderBy["FeeTier"] = "feeTier";
+    Pool_OrderBy["Liquidity"] = "liquidity";
+    Pool_OrderBy["SqrtPrice"] = "sqrtPrice";
+    Pool_OrderBy["FeeGrowthGlobal0X128"] = "feeGrowthGlobal0X128";
+    Pool_OrderBy["FeeGrowthGlobal1X128"] = "feeGrowthGlobal1X128";
+    Pool_OrderBy["Token0Price"] = "token0Price";
+    Pool_OrderBy["Token1Price"] = "token1Price";
+    Pool_OrderBy["Tick"] = "tick";
+    Pool_OrderBy["ObservationIndex"] = "observationIndex";
+    Pool_OrderBy["VolumeToken0"] = "volumeToken0";
+    Pool_OrderBy["VolumeToken1"] = "volumeToken1";
+    Pool_OrderBy["VolumeUsd"] = "volumeUSD";
+    Pool_OrderBy["UntrackedVolumeUsd"] = "untrackedVolumeUSD";
+    Pool_OrderBy["FeesUsd"] = "feesUSD";
+    Pool_OrderBy["TxCount"] = "txCount";
+    Pool_OrderBy["CollectedFeesToken0"] = "collectedFeesToken0";
+    Pool_OrderBy["CollectedFeesToken1"] = "collectedFeesToken1";
+    Pool_OrderBy["CollectedFeesUsd"] = "collectedFeesUSD";
+    Pool_OrderBy["TotalValueLockedToken0"] = "totalValueLockedToken0";
+    Pool_OrderBy["TotalValueLockedToken1"] = "totalValueLockedToken1";
+    Pool_OrderBy["TotalValueLockedEth"] = "totalValueLockedETH";
+    Pool_OrderBy["TotalValueLockedUsd"] = "totalValueLockedUSD";
+    Pool_OrderBy["TotalValueLockedUsdUntracked"] = "totalValueLockedUSDUntracked";
+    Pool_OrderBy["LiquidityProviderCount"] = "liquidityProviderCount";
+    Pool_OrderBy["PoolHourData"] = "poolHourData";
+    Pool_OrderBy["PoolDayData"] = "poolDayData";
+    Pool_OrderBy["Mints"] = "mints";
+    Pool_OrderBy["Burns"] = "burns";
+    Pool_OrderBy["Swaps"] = "swaps";
+    Pool_OrderBy["Collects"] = "collects";
+    Pool_OrderBy["Ticks"] = "ticks";
+})(Pool_OrderBy || (Pool_OrderBy = {}));
+var PositionSnapshot_OrderBy;
+(function (PositionSnapshot_OrderBy) {
+    PositionSnapshot_OrderBy["Id"] = "id";
+    PositionSnapshot_OrderBy["Owner"] = "owner";
+    PositionSnapshot_OrderBy["Pool"] = "pool";
+    PositionSnapshot_OrderBy["Position"] = "position";
+    PositionSnapshot_OrderBy["BlockNumber"] = "blockNumber";
+    PositionSnapshot_OrderBy["Timestamp"] = "timestamp";
+    PositionSnapshot_OrderBy["Liquidity"] = "liquidity";
+    PositionSnapshot_OrderBy["DepositedToken0"] = "depositedToken0";
+    PositionSnapshot_OrderBy["DepositedToken1"] = "depositedToken1";
+    PositionSnapshot_OrderBy["WithdrawnToken0"] = "withdrawnToken0";
+    PositionSnapshot_OrderBy["WithdrawnToken1"] = "withdrawnToken1";
+    PositionSnapshot_OrderBy["CollectedFeesToken0"] = "collectedFeesToken0";
+    PositionSnapshot_OrderBy["CollectedFeesToken1"] = "collectedFeesToken1";
+    PositionSnapshot_OrderBy["Transaction"] = "transaction";
+    PositionSnapshot_OrderBy["FeeGrowthInside0LastX128"] = "feeGrowthInside0LastX128";
+    PositionSnapshot_OrderBy["FeeGrowthInside1LastX128"] = "feeGrowthInside1LastX128";
+})(PositionSnapshot_OrderBy || (PositionSnapshot_OrderBy = {}));
+var Position_OrderBy;
+(function (Position_OrderBy) {
+    Position_OrderBy["Id"] = "id";
+    Position_OrderBy["Owner"] = "owner";
+    Position_OrderBy["Pool"] = "pool";
+    Position_OrderBy["Token0"] = "token0";
+    Position_OrderBy["Token1"] = "token1";
+    Position_OrderBy["TickLower"] = "tickLower";
+    Position_OrderBy["TickUpper"] = "tickUpper";
+    Position_OrderBy["Liquidity"] = "liquidity";
+    Position_OrderBy["DepositedToken0"] = "depositedToken0";
+    Position_OrderBy["DepositedToken1"] = "depositedToken1";
+    Position_OrderBy["WithdrawnToken0"] = "withdrawnToken0";
+    Position_OrderBy["WithdrawnToken1"] = "withdrawnToken1";
+    Position_OrderBy["CollectedFeesToken0"] = "collectedFeesToken0";
+    Position_OrderBy["CollectedFeesToken1"] = "collectedFeesToken1";
+    Position_OrderBy["Transaction"] = "transaction";
+    Position_OrderBy["FeeGrowthInside0LastX128"] = "feeGrowthInside0LastX128";
+    Position_OrderBy["FeeGrowthInside1LastX128"] = "feeGrowthInside1LastX128";
+})(Position_OrderBy || (Position_OrderBy = {}));
+var Swap_OrderBy;
+(function (Swap_OrderBy) {
+    Swap_OrderBy["Id"] = "id";
+    Swap_OrderBy["Transaction"] = "transaction";
+    Swap_OrderBy["Timestamp"] = "timestamp";
+    Swap_OrderBy["Pool"] = "pool";
+    Swap_OrderBy["Token0"] = "token0";
+    Swap_OrderBy["Token1"] = "token1";
+    Swap_OrderBy["Sender"] = "sender";
+    Swap_OrderBy["Recipient"] = "recipient";
+    Swap_OrderBy["Origin"] = "origin";
+    Swap_OrderBy["Amount0"] = "amount0";
+    Swap_OrderBy["Amount1"] = "amount1";
+    Swap_OrderBy["AmountUsd"] = "amountUSD";
+    Swap_OrderBy["SqrtPriceX96"] = "sqrtPriceX96";
+    Swap_OrderBy["Tick"] = "tick";
+    Swap_OrderBy["LogIndex"] = "logIndex";
+})(Swap_OrderBy || (Swap_OrderBy = {}));
+var TickDayData_OrderBy;
+(function (TickDayData_OrderBy) {
+    TickDayData_OrderBy["Id"] = "id";
+    TickDayData_OrderBy["Date"] = "date";
+    TickDayData_OrderBy["Pool"] = "pool";
+    TickDayData_OrderBy["Tick"] = "tick";
+    TickDayData_OrderBy["LiquidityGross"] = "liquidityGross";
+    TickDayData_OrderBy["LiquidityNet"] = "liquidityNet";
+    TickDayData_OrderBy["VolumeToken0"] = "volumeToken0";
+    TickDayData_OrderBy["VolumeToken1"] = "volumeToken1";
+    TickDayData_OrderBy["VolumeUsd"] = "volumeUSD";
+    TickDayData_OrderBy["FeesUsd"] = "feesUSD";
+    TickDayData_OrderBy["FeeGrowthOutside0X128"] = "feeGrowthOutside0X128";
+    TickDayData_OrderBy["FeeGrowthOutside1X128"] = "feeGrowthOutside1X128";
+})(TickDayData_OrderBy || (TickDayData_OrderBy = {}));
+var TickHourData_OrderBy;
+(function (TickHourData_OrderBy) {
+    TickHourData_OrderBy["Id"] = "id";
+    TickHourData_OrderBy["PeriodStartUnix"] = "periodStartUnix";
+    TickHourData_OrderBy["Pool"] = "pool";
+    TickHourData_OrderBy["Tick"] = "tick";
+    TickHourData_OrderBy["LiquidityGross"] = "liquidityGross";
+    TickHourData_OrderBy["LiquidityNet"] = "liquidityNet";
+    TickHourData_OrderBy["VolumeToken0"] = "volumeToken0";
+    TickHourData_OrderBy["VolumeToken1"] = "volumeToken1";
+    TickHourData_OrderBy["VolumeUsd"] = "volumeUSD";
+    TickHourData_OrderBy["FeesUsd"] = "feesUSD";
+})(TickHourData_OrderBy || (TickHourData_OrderBy = {}));
+var Tick_OrderBy;
+(function (Tick_OrderBy) {
+    Tick_OrderBy["Id"] = "id";
+    Tick_OrderBy["PoolAddress"] = "poolAddress";
+    Tick_OrderBy["TickIdx"] = "tickIdx";
+    Tick_OrderBy["Pool"] = "pool";
+    Tick_OrderBy["LiquidityGross"] = "liquidityGross";
+    Tick_OrderBy["LiquidityNet"] = "liquidityNet";
+    Tick_OrderBy["Price0"] = "price0";
+    Tick_OrderBy["Price1"] = "price1";
+    Tick_OrderBy["VolumeToken0"] = "volumeToken0";
+    Tick_OrderBy["VolumeToken1"] = "volumeToken1";
+    Tick_OrderBy["VolumeUsd"] = "volumeUSD";
+    Tick_OrderBy["UntrackedVolumeUsd"] = "untrackedVolumeUSD";
+    Tick_OrderBy["FeesUsd"] = "feesUSD";
+    Tick_OrderBy["CollectedFeesToken0"] = "collectedFeesToken0";
+    Tick_OrderBy["CollectedFeesToken1"] = "collectedFeesToken1";
+    Tick_OrderBy["CollectedFeesUsd"] = "collectedFeesUSD";
+    Tick_OrderBy["CreatedAtTimestamp"] = "createdAtTimestamp";
+    Tick_OrderBy["CreatedAtBlockNumber"] = "createdAtBlockNumber";
+    Tick_OrderBy["LiquidityProviderCount"] = "liquidityProviderCount";
+    Tick_OrderBy["FeeGrowthOutside0X128"] = "feeGrowthOutside0X128";
+    Tick_OrderBy["FeeGrowthOutside1X128"] = "feeGrowthOutside1X128";
+})(Tick_OrderBy || (Tick_OrderBy = {}));
+var TokenDayData_OrderBy;
+(function (TokenDayData_OrderBy) {
+    TokenDayData_OrderBy["Id"] = "id";
+    TokenDayData_OrderBy["Date"] = "date";
+    TokenDayData_OrderBy["Token"] = "token";
+    TokenDayData_OrderBy["Volume"] = "volume";
+    TokenDayData_OrderBy["VolumeUsd"] = "volumeUSD";
+    TokenDayData_OrderBy["UntrackedVolumeUsd"] = "untrackedVolumeUSD";
+    TokenDayData_OrderBy["TotalValueLocked"] = "totalValueLocked";
+    TokenDayData_OrderBy["TotalValueLockedUsd"] = "totalValueLockedUSD";
+    TokenDayData_OrderBy["PriceUsd"] = "priceUSD";
+    TokenDayData_OrderBy["FeesUsd"] = "feesUSD";
+    TokenDayData_OrderBy["Open"] = "open";
+    TokenDayData_OrderBy["High"] = "high";
+    TokenDayData_OrderBy["Low"] = "low";
+    TokenDayData_OrderBy["Close"] = "close";
+})(TokenDayData_OrderBy || (TokenDayData_OrderBy = {}));
+var TokenHourData_OrderBy;
+(function (TokenHourData_OrderBy) {
+    TokenHourData_OrderBy["Id"] = "id";
+    TokenHourData_OrderBy["PeriodStartUnix"] = "periodStartUnix";
+    TokenHourData_OrderBy["Token"] = "token";
+    TokenHourData_OrderBy["Volume"] = "volume";
+    TokenHourData_OrderBy["VolumeUsd"] = "volumeUSD";
+    TokenHourData_OrderBy["UntrackedVolumeUsd"] = "untrackedVolumeUSD";
+    TokenHourData_OrderBy["TotalValueLocked"] = "totalValueLocked";
+    TokenHourData_OrderBy["TotalValueLockedUsd"] = "totalValueLockedUSD";
+    TokenHourData_OrderBy["PriceUsd"] = "priceUSD";
+    TokenHourData_OrderBy["FeesUsd"] = "feesUSD";
+    TokenHourData_OrderBy["Open"] = "open";
+    TokenHourData_OrderBy["High"] = "high";
+    TokenHourData_OrderBy["Low"] = "low";
+    TokenHourData_OrderBy["Close"] = "close";
+})(TokenHourData_OrderBy || (TokenHourData_OrderBy = {}));
+var Token_OrderBy;
+(function (Token_OrderBy) {
+    Token_OrderBy["Id"] = "id";
+    Token_OrderBy["Symbol"] = "symbol";
+    Token_OrderBy["Name"] = "name";
+    Token_OrderBy["Decimals"] = "decimals";
+    Token_OrderBy["TotalSupply"] = "totalSupply";
+    Token_OrderBy["Volume"] = "volume";
+    Token_OrderBy["VolumeUsd"] = "volumeUSD";
+    Token_OrderBy["UntrackedVolumeUsd"] = "untrackedVolumeUSD";
+    Token_OrderBy["FeesUsd"] = "feesUSD";
+    Token_OrderBy["TxCount"] = "txCount";
+    Token_OrderBy["PoolCount"] = "poolCount";
+    Token_OrderBy["TotalValueLocked"] = "totalValueLocked";
+    Token_OrderBy["TotalValueLockedUsd"] = "totalValueLockedUSD";
+    Token_OrderBy["TotalValueLockedUsdUntracked"] = "totalValueLockedUSDUntracked";
+    Token_OrderBy["DerivedEth"] = "derivedETH";
+    Token_OrderBy["WhitelistPools"] = "whitelistPools";
+    Token_OrderBy["TokenDayData"] = "tokenDayData";
+})(Token_OrderBy || (Token_OrderBy = {}));
+var Transaction_OrderBy;
+(function (Transaction_OrderBy) {
+    Transaction_OrderBy["Id"] = "id";
+    Transaction_OrderBy["BlockNumber"] = "blockNumber";
+    Transaction_OrderBy["Timestamp"] = "timestamp";
+    Transaction_OrderBy["GasUsed"] = "gasUsed";
+    Transaction_OrderBy["GasPrice"] = "gasPrice";
+    Transaction_OrderBy["Mints"] = "mints";
+    Transaction_OrderBy["Burns"] = "burns";
+    Transaction_OrderBy["Swaps"] = "swaps";
+    Transaction_OrderBy["Flashed"] = "flashed";
+    Transaction_OrderBy["Collects"] = "collects";
+})(Transaction_OrderBy || (Transaction_OrderBy = {}));
+var UniswapDayData_OrderBy;
+(function (UniswapDayData_OrderBy) {
+    UniswapDayData_OrderBy["Id"] = "id";
+    UniswapDayData_OrderBy["Date"] = "date";
+    UniswapDayData_OrderBy["VolumeEth"] = "volumeETH";
+    UniswapDayData_OrderBy["VolumeUsd"] = "volumeUSD";
+    UniswapDayData_OrderBy["VolumeUsdUntracked"] = "volumeUSDUntracked";
+    UniswapDayData_OrderBy["FeesUsd"] = "feesUSD";
+    UniswapDayData_OrderBy["TxCount"] = "txCount";
+    UniswapDayData_OrderBy["TvlUsd"] = "tvlUSD";
+})(UniswapDayData_OrderBy || (UniswapDayData_OrderBy = {}));
+var _SubgraphErrorPolicy_;
+(function (_SubgraphErrorPolicy_) {
+    /** Data will be returned even if the subgraph has indexing errors */
+    _SubgraphErrorPolicy_["Allow"] = "allow";
+    /** If the subgraph has indexing errors, data will be omitted. The default. */
+    _SubgraphErrorPolicy_["Deny"] = "deny";
+})(_SubgraphErrorPolicy_ || (_SubgraphErrorPolicy_ = {}));
+var AllV3TicksDocument = "\n    query allV3Ticks($poolAddress: String!, $skip: Int!) {\n  ticks(\n    first: 1000\n    skip: $skip\n    where: {poolAddress: $poolAddress}\n    orderBy: tickIdx\n  ) {\n    tick: tickIdx\n    liquidityNet\n    price0\n    price1\n  }\n}\n    ";
+var FeeTierDistributionDocument = "\n    query feeTierDistribution($token0: String!, $token1: String!) {\n  _meta {\n    block {\n      number\n    }\n  }\n  asToken0: pools(\n    orderBy: totalValueLockedToken0\n    orderDirection: desc\n    where: {token0: $token0, token1: $token1}\n  ) {\n    feeTier\n    totalValueLockedToken0\n    totalValueLockedToken1\n  }\n  asToken1: pools(\n    orderBy: totalValueLockedToken0\n    orderDirection: desc\n    where: {token0: $token1, token1: $token0}\n  ) {\n    feeTier\n    totalValueLockedToken0\n    totalValueLockedToken1\n  }\n}\n    ";
+var injectedRtkApi = api$1.injectEndpoints({
+    endpoints: function (build) { return ({
+        allV3Ticks: build.query({
+            query: function (variables) { return ({ document: AllV3TicksDocument, variables: variables }); }
+        }),
+        feeTierDistribution: build.query({
+            query: function (variables) { return ({ document: FeeTierDistributionDocument, variables: variables }); }
+        }),
+    }); },
+});
+injectedRtkApi.useAllV3TicksQuery; injectedRtkApi.useLazyAllV3TicksQuery; injectedRtkApi.useFeeTierDistributionQuery; injectedRtkApi.useLazyFeeTierDistributionQuery;
+
+// tag that should be applied to queries that need to be invalidated when the chain changes
+var CHAIN_TAG = 'Chain';
+// enhanced api to provide/invalidate tags
+var api = injectedRtkApi.enhanceEndpoints({
+    addTagTypes: [CHAIN_TAG],
+    endpoints: {
+        allV3Ticks: {
+            providesTags: [CHAIN_TAG],
+        },
+        feeTierDistribution: {
+            providesTags: [CHAIN_TAG],
+        },
+    },
+});
+api.useAllV3TicksQuery; api.useFeeTierDistributionQuery;
+
+/**
+ * Returns the input chain ID if chain is supported. If not, return undefined
+ * @param chainId a chain ID, which will be returned if it is a supported chain ID
+ */
+function supportedChainId(chainId) {
+    if (chainId in SupportedChainId) {
+        return chainId;
+    }
+    return undefined;
+}
+
+function useQueryCacheInvalidator() {
+    var dispatch = useAppDispatch();
+    // subscribe to `chainId` changes in the redux store rather than Web3
+    // this will ensure that when `invalidateTags` is called, the latest
+    // `chainId` is available in redux to build the subgraph url
+    var chainId = useAppSelector(function (state) { return state.application.chainId; });
+    React.useEffect(function () {
+        dispatch(api.util.invalidateTags([CHAIN_TAG]));
+    }, [chainId, dispatch]);
+}
+function Updater$5() {
+    var _a = useActiveWeb3React(), chainId = _a.chainId, library = _a.library;
+    var dispatch = useAppDispatch();
+    var windowVisible = useIsWindowVisible();
+    var _b = __read(React.useState(chainId), 2), activeChainId = _b[0], setActiveChainId = _b[1];
+    useQueryCacheInvalidator();
+    React.useEffect(function () {
+        if (library && chainId && windowVisible) {
+            setActiveChainId(chainId);
+        }
+    }, [dispatch, chainId, library, windowVisible]);
+    var debouncedChainId = useDebounce(activeChainId, 100);
+    React.useEffect(function () {
+        var _a;
+        var chainId = debouncedChainId ? (_a = supportedChainId(debouncedChainId)) !== null && _a !== void 0 ? _a : null : null;
+        dispatch(updateChainId({ chainId: chainId }));
+    }, [dispatch, debouncedChainId]);
+    return null;
+}
+
+function Updater$4() {
+    var _a = useActiveWeb3React(), chainId = _a.chainId, library = _a.library;
+    var dispatch = useAppDispatch();
+    var isWindowVisible = useIsWindowVisible();
+    // get all loaded lists, and the active urls
+    var lists = useAllLists();
+    var activeListUrls = useActiveListUrls();
+    var fetchList = useFetchListCallback();
+    var fetchAllListsCallback = React.useCallback(function () {
+        if (!isWindowVisible)
+            return;
+        Object.keys(lists).forEach(function (url) {
+            return fetchList(url).catch(function (error) { return console.debug('interval list fetching error', error); });
+        });
+    }, [fetchList, isWindowVisible, lists]);
+    React.useEffect(function () {
+        if (chainId && [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)) {
+            dispatch(enableList(OPTIMISM_LIST));
+        }
+        if (chainId && [SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_RINKEBY].includes(chainId)) {
+            dispatch(enableList(ARBITRUM_LIST));
+        }
+    }, [chainId, dispatch]);
+    // fetch all lists every 10 minutes, but only after we initialize library
+    useInterval(fetchAllListsCallback, library ? 1000 * 60 * 10 : null);
+    // whenever a list is not loaded and not loading, try again to load it
+    React.useEffect(function () {
+        Object.keys(lists).forEach(function (listUrl) {
+            var list = lists[listUrl];
+            if (!list.current && !list.loadingRequestId && !list.error) {
+                fetchList(listUrl).catch(function (error) { return console.debug('list added fetching error', error); });
+            }
+        });
+    }, [dispatch, fetchList, library, lists]);
+    // if any lists from unsupported lists are loaded, check them too (in case new updates since last visit)
+    React.useEffect(function () {
+        UNSUPPORTED_LIST_URLS.forEach(function (listUrl) {
+            var list = lists[listUrl];
+            if (!list || (!list.current && !list.loadingRequestId && !list.error)) {
+                fetchList(listUrl).catch(function (error) { return console.debug('list added fetching error', error); });
+            }
+        });
+    }, [dispatch, fetchList, library, lists]);
+    // automatically update lists if versions are minor/patch
+    React.useEffect(function () {
+        Object.keys(lists).forEach(function (listUrl) {
+            var list = lists[listUrl];
+            if (list.current && list.pendingUpdate) {
+                var bump = tokenLists.getVersionUpgrade(list.current.version, list.pendingUpdate.version);
+                switch (bump) {
+                    case tokenLists.VersionUpgrade.NONE:
+                        throw new Error('unexpected no version bump');
+                    case tokenLists.VersionUpgrade.PATCH:
+                    case tokenLists.VersionUpgrade.MINOR:
+                        var min = tokenLists.minVersionBump(list.current.tokens, list.pendingUpdate.tokens);
+                        // automatically update minor/patch as long as bump matches the min update
+                        if (bump >= min) {
+                            dispatch(acceptListUpdate(listUrl));
+                        }
+                        else {
+                            console.error("List at url " + listUrl + " could not automatically update because the version bump was only PATCH/MINOR while the update had breaking changes and should have been MAJOR");
+                        }
+                        break;
+                    // update any active or inactive lists
+                    case tokenLists.VersionUpgrade.MAJOR:
+                        dispatch(acceptListUpdate(listUrl));
+                }
+            }
+        });
+    }, [dispatch, lists, activeListUrls]);
+    return null;
+}
+
+function Updater$3() {
+    var dispatch = useAppDispatch();
+    var state = useAppSelector(function (state) { return state.logs; });
+    var _a = useActiveWeb3React(), chainId = _a.chainId, library = _a.library;
+    var blockNumber = useBlockNumber();
+    var filtersNeedFetch = React.useMemo(function () {
+        if (!chainId || typeof blockNumber !== 'number')
+            return [];
+        var active = state[chainId];
+        if (!active)
+            return [];
+        return Object.keys(active)
+            .filter(function (key) {
+            var _a = active[key], fetchingBlockNumber = _a.fetchingBlockNumber, results = _a.results, listeners = _a.listeners;
+            if (listeners === 0)
+                return false;
+            if (typeof fetchingBlockNumber === 'number' && fetchingBlockNumber >= blockNumber)
+                return false;
+            if (results && typeof results.blockNumber === 'number' && results.blockNumber >= blockNumber)
+                return false;
+            return true;
+        })
+            .map(function (key) { return keyToFilter(key); });
+    }, [blockNumber, chainId, state]);
+    React.useEffect(function () {
+        if (!library || !chainId || typeof blockNumber !== 'number' || filtersNeedFetch.length === 0)
+            return;
+        dispatch(fetchingLogs({ chainId: chainId, filters: filtersNeedFetch, blockNumber: blockNumber }));
+        filtersNeedFetch.forEach(function (filter) {
+            library
+                .getLogs(__assign(__assign({}, filter), { fromBlock: 0, toBlock: blockNumber }))
+                .then(function (logs) {
+                dispatch(fetchedLogs({
+                    chainId: chainId,
+                    filter: filter,
+                    results: { logs: logs, blockNumber: blockNumber },
+                }));
+            })
+                .catch(function (error) {
+                console.error('Failed to get logs', filter, error);
+                dispatch(fetchedLogsError({
+                    chainId: chainId,
+                    filter: filter,
+                    blockNumber: blockNumber,
+                }));
+            });
+        });
+    }, [blockNumber, chainId, dispatch, filtersNeedFetch, library]);
+    return null;
+}
+
+function wait(ms) {
+    return new Promise(function (resolve) { return setTimeout(resolve, ms); });
+}
+function waitRandom(min, max) {
+    return wait(min + Math.round(Math.random() * Math.max(0, max - min)));
+}
+/**
+ * This error is thrown if the function is cancelled before completing
+ */
+var CancelledError = /** @class */ (function (_super) {
+    __extends(CancelledError, _super);
+    function CancelledError() {
+        var _this = _super.call(this, 'Cancelled') || this;
+        _this.isCancelledError = true;
+        return _this;
+    }
+    return CancelledError;
+}(Error));
+/**
+ * Throw this error if the function should retry
+ */
+var RetryableError = /** @class */ (function (_super) {
+    __extends(RetryableError, _super);
+    function RetryableError() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.isRetryableError = true;
+        return _this;
+    }
+    return RetryableError;
+}(Error));
+/**
+ * Retries the function that returns the promise until the promise successfully resolves up to n retries
+ * @param fn function to retry
+ * @param n how many times to retry
+ * @param minWait min wait between retries in ms
+ * @param maxWait max wait between retries in ms
+ */
+function retry(fn, _a) {
+    var _this = this;
+    var n = _a.n, minWait = _a.minWait, maxWait = _a.maxWait;
+    var completed = false;
+    var rejectCancelled;
+    var promise = new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+        var result, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    rejectCancelled = reject;
+                    _a.label = 1;
+                case 1:
+                    result = void 0;
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, fn()];
+                case 3:
+                    result = _a.sent();
+                    if (!completed) {
+                        resolve(result);
+                        completed = true;
+                    }
+                    return [3 /*break*/, 7];
+                case 4:
+                    error_1 = _a.sent();
+                    if (completed) {
+                        return [3 /*break*/, 7];
+                    }
+                    if (n <= 0 || !error_1.isRetryableError) {
+                        reject(error_1);
+                        completed = true;
+                        return [3 /*break*/, 7];
+                    }
+                    n--;
+                    return [3 /*break*/, 5];
+                case 5: return [4 /*yield*/, waitRandom(minWait, maxWait)];
+                case 6:
+                    _a.sent();
+                    return [3 /*break*/, 1];
+                case 7: return [2 /*return*/];
+            }
+        });
+    }); });
+    return {
+        promise: promise,
+        cancel: function () {
+            if (completed)
+                return;
+            completed = true;
+            rejectCancelled(new CancelledError());
+        },
+    };
+}
+
+var _a;
+function shouldCheck(lastBlockNumber, tx) {
+    if (tx.receipt)
+        return false;
+    if (!tx.lastCheckedBlockNumber)
+        return true;
+    var blocksSinceCheck = lastBlockNumber - tx.lastCheckedBlockNumber;
+    if (blocksSinceCheck < 1)
+        return false;
+    var minutesPending = (new Date().getTime() - tx.addedTime) / ms__default["default"](templateObject_1 || (templateObject_1 = __makeTemplateObject(["1m"], ["1m"])));
+    if (minutesPending > 60) {
+        // every 10 blocks if pending longer than an hour
+        return blocksSinceCheck > 9;
+    }
+    else if (minutesPending > 5) {
+        // every 3 blocks if pending longer than 5 minutes
+        return blocksSinceCheck > 2;
+    }
+    else {
+        // otherwise every block
+        return true;
+    }
+}
+var RETRY_OPTIONS_BY_CHAIN_ID = (_a = {},
+    _a[SupportedChainId.ARBITRUM_ONE] = { n: 10, minWait: 250, maxWait: 1000 },
+    _a[SupportedChainId.ARBITRUM_RINKEBY] = { n: 10, minWait: 250, maxWait: 1000 },
+    _a[SupportedChainId.OPTIMISTIC_KOVAN] = { n: 10, minWait: 250, maxWait: 1000 },
+    _a[SupportedChainId.OPTIMISM] = { n: 10, minWait: 250, maxWait: 1000 },
+    _a);
+var DEFAULT_RETRY_OPTIONS = { n: 1, minWait: 0, maxWait: 0 };
+function Updater$2(_a) {
+    var pendingTransactions = _a.pendingTransactions, onCheck = _a.onCheck, onReceipt = _a.onReceipt;
+    var _b = useActiveWeb3React(), chainId = _b.chainId, library = _b.library;
+    var lastBlockNumber = useBlockNumber();
+    var fastForwardBlockNumber = useFastForwardBlockNumber();
+    var getReceipt = React.useCallback(function (hash) {
+        var _a;
+        if (!library || !chainId)
+            throw new Error('No library or chainId');
+        var retryOptions = (_a = RETRY_OPTIONS_BY_CHAIN_ID[chainId]) !== null && _a !== void 0 ? _a : DEFAULT_RETRY_OPTIONS;
+        return retry(function () {
+            return library.getTransactionReceipt(hash).then(function (receipt) {
+                if (receipt === null) {
+                    console.debug("Retrying tranasaction receipt for " + hash);
+                    throw new RetryableError();
+                }
+                return receipt;
+            });
+        }, retryOptions);
+    }, [chainId, library]);
+    React.useEffect(function () {
+        if (!chainId || !library || !lastBlockNumber)
+            return;
+        var cancels = Object.keys(pendingTransactions)
+            .filter(function (hash) { return shouldCheck(lastBlockNumber, pendingTransactions[hash]); })
+            .map(function (hash) {
+            var _a = getReceipt(hash), promise = _a.promise, cancel = _a.cancel;
+            promise
+                .then(function (receipt) {
+                if (receipt) {
+                    onReceipt({ chainId: chainId, hash: hash, receipt: receipt });
+                }
+                else {
+                    onCheck({ chainId: chainId, hash: hash, blockNumber: lastBlockNumber });
+                }
+            })
+                .catch(function (error) {
+                if (!error.isCancelledError) {
+                    console.warn("Failed to get transaction receipt for " + hash, error);
+                }
+            });
+            return cancel;
+        });
+        return function () {
+            cancels.forEach(function (cancel) { return cancel(); });
+        };
+    }, [chainId, library, lastBlockNumber, getReceipt, fastForwardBlockNumber, onReceipt, onCheck, pendingTransactions]);
+    return null;
+}
 var templateObject_1;
+
+function Updater$1() {
+    var chainId = useActiveWeb3React().chainId;
+    var addPopup = useAddPopup();
+    // speed up popup dismisall time if on L2
+    var isL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId));
+    var dispatch = useAppDispatch();
+    var onCheck = React.useCallback(function (_a) {
+        var chainId = _a.chainId, hash = _a.hash, blockNumber = _a.blockNumber;
+        return dispatch(checkedTransaction({ chainId: chainId, hash: hash, blockNumber: blockNumber }));
+    }, [dispatch]);
+    var onReceipt = React.useCallback(function (_a) {
+        var chainId = _a.chainId, hash = _a.hash, receipt = _a.receipt;
+        dispatch(finalizeTransaction({
+            chainId: chainId,
+            hash: hash,
+            receipt: {
+                blockHash: receipt.blockHash,
+                blockNumber: receipt.blockNumber,
+                contractAddress: receipt.contractAddress,
+                from: receipt.from,
+                status: receipt.status,
+                to: receipt.to,
+                transactionHash: receipt.transactionHash,
+                transactionIndex: receipt.transactionIndex,
+            },
+        }));
+        addPopup({
+            txn: { hash: hash },
+        }, hash, isL2 ? L2_TXN_DISMISS_MS : DEFAULT_TXN_DISMISS_MS);
+    }, [addPopup, dispatch, isL2]);
+    var state = useAppSelector(function (state) { return state.transactions; });
+    var pendingTransactions = React.useMemo(function () { var _a; return (chainId ? (_a = state[chainId]) !== null && _a !== void 0 ? _a : {} : {}); }, [chainId, state]);
+    return jsxRuntime.jsx(Updater$2, { pendingTransactions: pendingTransactions, onCheck: onCheck, onReceipt: onReceipt }, void 0);
+}
+
+function Updater() {
+    var dispatch = useAppDispatch();
+    // keep dark mode in sync with the system
+    React.useEffect(function () {
+        var darkHandler = function (match) {
+            dispatch(updateMatchesDarkMode({ matchesDarkMode: match.matches }));
+        };
+        var match = window === null || window === void 0 ? void 0 : window.matchMedia('(prefers-color-scheme: dark)');
+        dispatch(updateMatchesDarkMode({ matchesDarkMode: match.matches }));
+        if (match === null || match === void 0 ? void 0 : match.addListener) {
+            match === null || match === void 0 ? void 0 : match.addListener(darkHandler);
+        }
+        else if (match === null || match === void 0 ? void 0 : match.addEventListener) {
+            match === null || match === void 0 ? void 0 : match.addEventListener('change', darkHandler);
+        }
+        return function () {
+            if (match === null || match === void 0 ? void 0 : match.removeListener) {
+                match === null || match === void 0 ? void 0 : match.removeListener(darkHandler);
+            }
+            else if (match === null || match === void 0 ? void 0 : match.removeEventListener) {
+                match === null || match === void 0 ? void 0 : match.removeEventListener('change', darkHandler);
+            }
+        };
+    }, [dispatch]);
+    return null;
+}
+
+var initialStyles = {
+    width: '200vw',
+    height: '200vh',
+    transform: 'translate(-50vw, -100vh)',
+    backgroundBlendMode: '',
+};
+var backgroundResetStyles = {
+    width: '100vw',
+    height: '100vh',
+    transform: 'unset',
+    backgroundBlendMode: '',
+};
+var backgroundRadialGradientElement = document.getElementById('background-radial-gradient');
+var setBackground = function (newValues) {
+    return Object.entries(newValues).forEach(function (_a) {
+        var _b = __read(_a, 2), key = _b[0], value = _b[1];
+        if (backgroundRadialGradientElement) {
+            backgroundRadialGradientElement.style[key] = value;
+        }
+    });
+};
+function RadialGradientByChainUpdater() {
+    var chainId = useActiveWeb3React().chainId;
+    var _a = __read(useDarkModeManager(), 1), darkMode = _a[0];
+    // manage background color
+    React.useEffect(function () {
+        if (!backgroundRadialGradientElement) {
+            return;
+        }
+        switch (chainId) {
+            case SupportedChainId.ARBITRUM_ONE:
+            case SupportedChainId.ARBITRUM_RINKEBY:
+                setBackground(backgroundResetStyles);
+                var arbitrumLightGradient = 'radial-gradient(150% 100% at 50% 0%, #CDE8FB 0%, #FCF3F9 50%, #FFFFFF 100%)';
+                var arbitrumDarkGradient = 'radial-gradient(150% 100% at 50% 0%, #0A294B 0%, #221E30 50%, #1F2128 100%)';
+                backgroundRadialGradientElement.style.background = darkMode ? arbitrumDarkGradient : arbitrumLightGradient;
+                break;
+            case SupportedChainId.OPTIMISM:
+            case SupportedChainId.OPTIMISTIC_KOVAN:
+                setBackground(backgroundResetStyles);
+                var optimismLightGradient = 'radial-gradient(150% 100% at 50% 0%, #FFFBF2 2%, #FFF4F9 53%, #FFFFFF 100%)';
+                var optimismDarkGradient = 'radial-gradient(150% 100% at 50% 0%, #3E2E38 2%, #2C1F2D 53%, #1F2128 100%)';
+                backgroundRadialGradientElement.style.background = darkMode ? optimismDarkGradient : optimismLightGradient;
+                break;
+            case SupportedChainId.POLYGON:
+            case SupportedChainId.POLYGON_MUMBAI:
+                setBackground(backgroundResetStyles);
+                var polygonLightGradient = 'radial-gradient(153.32% 100% at 47.26% 0%, rgba(130, 71, 229, 0.0864) 0%, rgba(0, 41, 255, 0.06) 48.19%, rgba(0, 41, 255, 0.012) 100%), #FFFFFF';
+                var polygonDarkGradient = 'radial-gradient(150.6% 98.22% at 48.06% 0%, rgba(130, 71, 229, 0.6) 0%, rgba(200, 168, 255, 0) 100%), #1F2128';
+                backgroundRadialGradientElement.style.background = darkMode ? polygonDarkGradient : polygonLightGradient;
+                backgroundRadialGradientElement.style.backgroundBlendMode = darkMode ? 'overlay,normal' : 'multiply,normal';
+                break;
+            default:
+                setBackground(initialStyles);
+                backgroundRadialGradientElement.style.background = '';
+        }
+    }, [darkMode, chainId]);
+    return null;
+}
+
+function Updaters() {
+    return (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx(RadialGradientByChainUpdater, {}, void 0), jsxRuntime.jsx(Updater$4, {}, void 0), jsxRuntime.jsx(Updater, {}, void 0), jsxRuntime.jsx(Updater$5, {}, void 0), jsxRuntime.jsx(Updater$1, {}, void 0), jsxRuntime.jsx(BlockUpdater, {}, void 0), jsxRuntime.jsx(MulticallUpdater, {}, void 0), jsxRuntime.jsx(Updater$3, {}, void 0)] }, void 0));
+}
+
+var Web3ProviderNetwork = core.createWeb3ReactRoot(NetworkContextName);
+var Providers = function (props) { return (jsxRuntime.jsx(reactRedux.Provider, __assign({ store: store }, { children: jsxRuntime.jsx(reactRouterDom.HashRouter, { children: jsxRuntime.jsx(LanguageProvider, { children: jsxRuntime.jsx(core.Web3ReactProvider, __assign({ getLibrary: getLibrary }, { children: jsxRuntime.jsx(Web3ProviderNetwork, __assign({ getLibrary: getLibrary }, { children: jsxRuntime.jsxs(Blocklist, { children: [jsxRuntime.jsx(Updaters, {}, void 0), jsxRuntime.jsxs(ThemeProvider, { children: [jsxRuntime.jsx(ThemedGlobalStyle, {}, void 0), props.children] }, void 0)] }, void 0) }), void 0) }), void 0) }, void 0) }, void 0) }), void 0)); };
 
 var $schema = "http://json-schema.org/draft-07/schema#";
 var $id = "https://uniswap.org/tokenlist.schema.json";
@@ -16410,5 +17745,9 @@ var index = /*#__PURE__*/Object.freeze({
     getQuote: getQuote
 });
 
+exports.INFURA_NETWORK_URLS = INFURA_NETWORK_URLS;
+exports.Providers = Providers;
 exports.Swap = Swap;
+exports.Updaters = Updaters;
+exports.serviceWorkerRegistration = serviceWorkerRegistration;
 //# sourceMappingURL=snowflake.js.map
