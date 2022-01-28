@@ -47,8 +47,10 @@ const library = {
   plugins: [
     // eslint({ include: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'] }),
     typescript({ tsconfig: './tsconfig.json', useTsconfigDeclarationDir: false }),
-    commonjs({ esmExternals: true, requireReturnsDefault: false }),
-    // resolve(),
+    url(), // imports files (including svgs) as data URIs
+
+    commonjs(),
+    // resolve({ resolveOnly: ['assets/**/**'] }),
 
     // babel({
     //   extensions: [...DEFAULT_EXTENSIONS, '.ts', 'tsx'],
@@ -59,7 +61,6 @@ const library = {
     // eslint({ include: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'] }),
     json(), // imports json
     // replace({ ...replacements, preventAssignment: true }),
-    url(), // imports files (including svgs) as data URIs
     svgr({ exportType: 'named', svgo: false }), // imports svgs as React components
     sass(), // imports sass styles
   ],
