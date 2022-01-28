@@ -33,7 +33,10 @@ import {
   V3_MIGRATOR_ADDRESSES,
 } from 'constants/addresses'
 import { useMemo } from 'react'
-import { NonfungiblePositionManager, Quoter, UniswapInterfaceMulticall } from 'types/v3'
+// import { NonfungiblePositionManager, Quoter, UniswapInterfaceMulticall } from 'types/v3'
+import { NonfungiblePositionManager } from 'types/v3/NonfungiblePositionManager'
+import { Quoter } from 'types/v3/Quoter'
+import { UniswapInterfaceMulticall } from 'types/v3/UniswapInterfaceMulticall'
 import { V3Migrator } from 'types/v3/V3Migrator'
 import { getContract } from 'utils'
 
