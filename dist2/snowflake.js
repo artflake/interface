@@ -1,138 +1,157 @@
-'use strict';
+Object.defineProperty(exports, '__esModule', { value: true })
 
-Object.defineProperty(exports, '__esModule', { value: true });
+var jsxRuntime = require('react/jsx-runtime')
+var styled = require('styled-components/macro')
+var React = require('react')
+var reactRedux = require('react-redux')
+var toolkit = require('@reduxjs/toolkit')
+var qs = require('qs')
+var reactRouterDom = require('react-router-dom')
+var address = require('@ethersproject/address')
+var macro = require('@lingui/macro')
+var core = require('@web3-react/core')
+var sdkCore = require('@uniswap/sdk-core')
+var JSBI = require('jsbi')
+var rebass = require('rebass')
+var constants = require('@ethersproject/constants')
+var contracts = require('@ethersproject/contracts')
+var jotai = require('jotai')
+var utils = require('jotai/utils')
+var reduxMulticall = require('@uniswap/redux-multicall')
+var v2Sdk = require('@uniswap/v2-sdk')
+var v3Sdk = require('@uniswap/v3-sdk')
+var redux = require('redux')
+var hash = require('@ethersproject/hash')
+var app = require('firebase/app')
+var database = require('firebase/database')
+var bytes = require('@ethersproject/bytes')
+var strings = require('@ethersproject/strings')
+var core$1 = require('widgets-web3-react/core')
+var empty = require('widgets-web3-react/empty')
+var CID = require('cids')
+var multicodec = require('multicodec')
+var multihashes = require('multihashes')
+var abi$7 = require('@ethersproject/abi')
+var reactFeather = require('react-feather')
+var ReactGA = require('react-ga')
+var styledComponents = require('rebass/styled-components')
+var polished = require('polished')
+var ReactConfetti = require('react-confetti')
+var dialog = require('@reach/dialog')
+var reactSpring = require('react-spring')
+var reactUseGesture = require('react-use-gesture')
+var uaParserJs = require('ua-parser-js')
+var react = require('@reduxjs/toolkit/query/react')
+var reduxLocalstorageSimple = require('redux-localstorage-simple')
+var graphqlRequest = require('graphql-request')
+var tokenLists = require('@uniswap/token-lists')
+var routerSdk = require('@uniswap/router-sdk')
+var ms = require('ms.macro')
+var units = require('@ethersproject/units')
+var useScrollPosition = require('@react-hook/window-scroll')
+var Portal = require('@reach/portal')
+var reactPopper = require('react-popper')
+var safeAppsWeb3React = require('@gnosis.pm/safe-apps-web3-react')
+var injectedConnector = require('@web3-react/injected-connector')
+var portisConnector = require('@web3-react/portis-connector')
+var walletconnectConnector = require('@web3-react/walletconnect-connector')
+var walletlinkConnector = require('@web3-react/walletlink-connector')
+var providers = require('@ethersproject/providers')
+var fortmaticConnector = require('@web3-react/fortmatic-connector')
+var abstractConnector = require('@web3-react/abstract-connector')
+var invariant = require('tiny-invariant')
+var clone$1 = require('clone')
+var colorConvert = require('color-convert')
+var colorString = require('color-string')
+var bignumber = require('@ethersproject/bignumber')
+var copy = require('copy-to-clipboard')
+var web = require('react-spring/web')
+var useResizeObserver = require('use-resize-observer')
+var AutoSizer = require('react-virtualized-auto-sizer')
+var reactWindow = require('react-window')
+var Vibrant = require('node-vibrant/lib/bundle')
+var wcagContrast = require('wcag-contrast')
+var core$2 = require('@lingui/core')
+var react$1 = require('@lingui/react')
+var plurals$1 = require('make-plural/plurals')
+var smartOrderRouter = require('@uniswap/smart-order-router')
+var ethers = require('ethers/lib/ethers')
 
-var jsxRuntime = require('react/jsx-runtime');
-var styled = require('styled-components/macro');
-var React = require('react');
-var reactRedux = require('react-redux');
-var toolkit = require('@reduxjs/toolkit');
-var qs = require('qs');
-var reactRouterDom = require('react-router-dom');
-var address = require('@ethersproject/address');
-var macro = require('@lingui/macro');
-var core = require('@web3-react/core');
-var sdkCore = require('@uniswap/sdk-core');
-var JSBI = require('jsbi');
-var rebass = require('rebass');
-var constants = require('@ethersproject/constants');
-var contracts = require('@ethersproject/contracts');
-var jotai = require('jotai');
-var utils = require('jotai/utils');
-var reduxMulticall = require('@uniswap/redux-multicall');
-var v2Sdk = require('@uniswap/v2-sdk');
-var v3Sdk = require('@uniswap/v3-sdk');
-var redux = require('redux');
-var hash = require('@ethersproject/hash');
-var app = require('firebase/app');
-var database = require('firebase/database');
-var bytes = require('@ethersproject/bytes');
-var strings = require('@ethersproject/strings');
-var core$1 = require('widgets-web3-react/core');
-var empty = require('widgets-web3-react/empty');
-var CID = require('cids');
-var multicodec = require('multicodec');
-var multihashes = require('multihashes');
-var abi$7 = require('@ethersproject/abi');
-var reactFeather = require('react-feather');
-var ReactGA = require('react-ga');
-var styledComponents = require('rebass/styled-components');
-var polished = require('polished');
-var ReactConfetti = require('react-confetti');
-var dialog = require('@reach/dialog');
-var reactSpring = require('react-spring');
-var reactUseGesture = require('react-use-gesture');
-var uaParserJs = require('ua-parser-js');
-var react = require('@reduxjs/toolkit/query/react');
-var reduxLocalstorageSimple = require('redux-localstorage-simple');
-var graphqlRequest = require('graphql-request');
-var tokenLists = require('@uniswap/token-lists');
-var routerSdk = require('@uniswap/router-sdk');
-var ms = require('ms.macro');
-var units = require('@ethersproject/units');
-var useScrollPosition = require('@react-hook/window-scroll');
-var Portal = require('@reach/portal');
-var reactPopper = require('react-popper');
-var safeAppsWeb3React = require('@gnosis.pm/safe-apps-web3-react');
-var injectedConnector = require('@web3-react/injected-connector');
-var portisConnector = require('@web3-react/portis-connector');
-var walletconnectConnector = require('@web3-react/walletconnect-connector');
-var walletlinkConnector = require('@web3-react/walletlink-connector');
-var providers = require('@ethersproject/providers');
-var fortmaticConnector = require('@web3-react/fortmatic-connector');
-var abstractConnector = require('@web3-react/abstract-connector');
-var invariant = require('tiny-invariant');
-var clone$1 = require('clone');
-var colorConvert = require('color-convert');
-var colorString = require('color-string');
-var bignumber = require('@ethersproject/bignumber');
-var copy = require('copy-to-clipboard');
-var web = require('react-spring/web');
-var useResizeObserver = require('use-resize-observer');
-var AutoSizer = require('react-virtualized-auto-sizer');
-var reactWindow = require('react-window');
-var Vibrant = require('node-vibrant/lib/bundle');
-var wcagContrast = require('wcag-contrast');
-var core$2 = require('@lingui/core');
-var react$1 = require('@lingui/react');
-var plurals$1 = require('make-plural/plurals');
-var smartOrderRouter = require('@uniswap/smart-order-router');
-var ethers = require('ethers/lib/ethers');
-
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+function _interopDefaultLegacy(e) {
+  return e && typeof e === 'object' && 'default' in e ? e : { default: e }
+}
 
 function _interopNamespace(e) {
-    if (e && e.__esModule) return e;
-    var n = Object.create(null);
-    if (e) {
-        Object.keys(e).forEach(function (k) {
-            if (k !== 'default') {
-                var d = Object.getOwnPropertyDescriptor(e, k);
-                Object.defineProperty(n, k, d.get ? d : {
-                    enumerable: true,
-                    get: function () { return e[k]; }
-                });
-            }
-        });
-    }
-    n["default"] = e;
-    return Object.freeze(n);
+  if (e && e.__esModule) return e
+  var n = Object.create(null)
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k)
+        Object.defineProperty(
+          n,
+          k,
+          d.get
+            ? d
+            : {
+                enumerable: true,
+                get() {
+                  return e[k]
+                },
+              }
+        )
+      }
+    })
+  }
+  n['default'] = e
+  return Object.freeze(n)
 }
 
 function _mergeNamespaces(n, m) {
-    m.forEach(function (e) {
-        e && typeof e !== 'string' && !Array.isArray(e) && Object.keys(e).forEach(function (k) {
-            if (k !== 'default' && !(k in n)) {
-                var d = Object.getOwnPropertyDescriptor(e, k);
-                Object.defineProperty(n, k, d.get ? d : {
-                    enumerable: true,
-                    get: function () { return e[k]; }
-                });
-            }
-        });
-    });
-    return Object.freeze(n);
+  m.forEach(function (e) {
+    e &&
+      typeof e !== 'string' &&
+      !Array.isArray(e) &&
+      Object.keys(e).forEach(function (k) {
+        if (k !== 'default' && !(k in n)) {
+          var d = Object.getOwnPropertyDescriptor(e, k)
+          Object.defineProperty(
+            n,
+            k,
+            d.get
+              ? d
+              : {
+                  enumerable: true,
+                  get() {
+                    return e[k]
+                  },
+                }
+          )
+        }
+      })
+  })
+  return Object.freeze(n)
 }
 
-var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
-var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-var React__namespace = /*#__PURE__*/_interopNamespace(React);
-var qs__default = /*#__PURE__*/_interopDefaultLegacy(qs);
-var JSBI__default = /*#__PURE__*/_interopDefaultLegacy(JSBI);
-var CID__default = /*#__PURE__*/_interopDefaultLegacy(CID);
-var ReactGA__default = /*#__PURE__*/_interopDefaultLegacy(ReactGA);
-var ReactConfetti__default = /*#__PURE__*/_interopDefaultLegacy(ReactConfetti);
-var ms__default = /*#__PURE__*/_interopDefaultLegacy(ms);
-var useScrollPosition__default = /*#__PURE__*/_interopDefaultLegacy(useScrollPosition);
-var Portal__default = /*#__PURE__*/_interopDefaultLegacy(Portal);
-var invariant__default = /*#__PURE__*/_interopDefaultLegacy(invariant);
-var clone__namespace = /*#__PURE__*/_interopNamespace(clone$1);
-var colorConvert__namespace = /*#__PURE__*/_interopNamespace(colorConvert);
-var colorString__namespace = /*#__PURE__*/_interopNamespace(colorString);
-var copy__default = /*#__PURE__*/_interopDefaultLegacy(copy);
-var useResizeObserver__default = /*#__PURE__*/_interopDefaultLegacy(useResizeObserver);
-var AutoSizer__default = /*#__PURE__*/_interopDefaultLegacy(AutoSizer);
-var Vibrant__default = /*#__PURE__*/_interopDefaultLegacy(Vibrant);
+var styled__default = /*#__PURE__*/ _interopDefaultLegacy(styled)
+var React__default = /*#__PURE__*/ _interopDefaultLegacy(React)
+var React__namespace = /*#__PURE__*/ _interopNamespace(React)
+var qs__default = /*#__PURE__*/ _interopDefaultLegacy(qs)
+var JSBI__default = /*#__PURE__*/ _interopDefaultLegacy(JSBI)
+var CID__default = /*#__PURE__*/ _interopDefaultLegacy(CID)
+var ReactGA__default = /*#__PURE__*/ _interopDefaultLegacy(ReactGA)
+var ReactConfetti__default = /*#__PURE__*/ _interopDefaultLegacy(ReactConfetti)
+var ms__default = /*#__PURE__*/ _interopDefaultLegacy(ms)
+var useScrollPosition__default = /*#__PURE__*/ _interopDefaultLegacy(useScrollPosition)
+var Portal__default = /*#__PURE__*/ _interopDefaultLegacy(Portal)
+var invariant__default = /*#__PURE__*/ _interopDefaultLegacy(invariant)
+var clone__namespace = /*#__PURE__*/ _interopNamespace(clone$1)
+var colorConvert__namespace = /*#__PURE__*/ _interopNamespace(colorConvert)
+var colorString__namespace = /*#__PURE__*/ _interopNamespace(colorString)
+var copy__default = /*#__PURE__*/ _interopDefaultLegacy(copy)
+var useResizeObserver__default = /*#__PURE__*/ _interopDefaultLegacy(useResizeObserver)
+var AutoSizer__default = /*#__PURE__*/ _interopDefaultLegacy(AutoSizer)
+var Vibrant__default = /*#__PURE__*/ _interopDefaultLegacy(Vibrant)
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -150,280 +169,435 @@ PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 /* global Reflect, Promise */
 
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    if (typeof b !== "function" && b !== null)
-        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+var extendStatics = function (d, b) {
+  extendStatics =
+    Object.setPrototypeOf ||
+    ({ __proto__: [] } instanceof Array &&
+      function (d, b) {
+        d.__proto__ = b
+      }) ||
+    function (d, b) {
+      for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]
+    }
+  return extendStatics(d, b)
 }
 
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+function __extends(d, b) {
+  if (typeof b !== 'function' && b !== null)
+    throw new TypeError('Class extends value ' + String(b) + ' is not a constructor or null')
+  extendStatics(d, b)
+  function __() {
+    this.constructor = d
+  }
+  d.prototype = b === null ? Object.create(b) : ((__.prototype = b.prototype), new __())
+}
+
+var __assign = function () {
+  __assign =
+    Object.assign ||
+    function __assign(t) {
+      for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i]
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
+      }
+      return t
+    }
+  return __assign.apply(this, arguments)
+}
 
 function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
+  var t = {}
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p]
+  if (s != null && typeof Object.getOwnPropertySymbols === 'function')
+    for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+      if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]]
+    }
+  return t
 }
 
 function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
+  function adopt(value) {
+    return value instanceof P
+      ? value
+      : new P(function (resolve) {
+          resolve(value)
+        })
+  }
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value))
+      } catch (e) {
+        reject(e)
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator['throw'](value))
+      } catch (e) {
+        reject(e)
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected)
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next())
+  })
 }
 
 function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+  var _ = {
+      label: 0,
+      sent() {
+        if (t[0] & 1) throw t[1]
+        return t[1]
+      },
+      trys: [],
+      ops: [],
+    },
+    f,
+    y,
+    t,
+    g
+  return (
+    (g = { next: verb(0), throw: verb(1), return: verb(2) }),
+    typeof Symbol === 'function' &&
+      (g[Symbol.iterator] = function () {
+        return this
+      }),
+    g
+  )
+  function verb(n) {
+    return function (v) {
+      return step([n, v])
     }
+  }
+  function step(op) {
+    if (f) throw new TypeError('Generator is already executing.')
+    while (_)
+      try {
+        if (
+          ((f = 1),
+          y &&
+            (t = op[0] & 2 ? y['return'] : op[0] ? y['throw'] || ((t = y['return']) && t.call(y), 0) : y.next) &&
+            !(t = t.call(y, op[1])).done)
+        )
+          return t
+        if (((y = 0), t)) op = [op[0] & 2, t.value]
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op
+            break
+          case 4:
+            _.label++
+            return { value: op[1], done: false }
+          case 5:
+            _.label++
+            y = op[1]
+            op = [0]
+            continue
+          case 7:
+            op = _.ops.pop()
+            _.trys.pop()
+            continue
+          default:
+            if (!((t = _.trys), (t = t.length > 0 && t[t.length - 1])) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0
+              continue
+            }
+            if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) {
+              _.label = op[1]
+              break
+            }
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1]
+              t = op
+              break
+            }
+            if (t && _.label < t[2]) {
+              _.label = t[2]
+              _.ops.push(op)
+              break
+            }
+            if (t[2]) _.ops.pop()
+            _.trys.pop()
+            continue
+        }
+        op = body.call(thisArg, _)
+      } catch (e) {
+        op = [6, e]
+        y = 0
+      } finally {
+        f = t = 0
+      }
+    if (op[0] & 5) throw op[1]
+    return { value: op[0] ? op[1] : void 0, done: true }
+  }
 }
 
 function __values(o) {
-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-    if (m) return m.call(o);
-    if (o && typeof o.length === "number") return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+  var s = typeof Symbol === 'function' && Symbol.iterator,
+    m = s && o[s],
+    i = 0
+  if (m) return m.call(o)
+  if (o && typeof o.length === 'number')
+    return {
+      next() {
+        if (o && i >= o.length) o = void 0
+        return { value: o && o[i++], done: !o }
+      },
+    }
+  throw new TypeError(s ? 'Object is not iterable.' : 'Symbol.iterator is not defined.')
 }
 
 function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
+  var m = typeof Symbol === 'function' && o[Symbol.iterator]
+  if (!m) return o
+  var i = m.call(o),
+    r,
+    ar = [],
+    e
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value)
+  } catch (error) {
+    e = { error }
+  } finally {
     try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+      if (r && !r.done && (m = i['return'])) m.call(i)
+    } finally {
+      if (e) throw e.error
     }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
+  }
+  return ar
 }
 
 function __spreadArray(to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
+  if (pack || arguments.length === 2)
+    for (var i = 0, l = from.length, ar; i < l; i++) {
+      if (ar || !(i in from)) {
+        if (!ar) ar = Array.prototype.slice.call(from, 0, i)
+        ar[i] = from[i]
+      }
     }
-    return to.concat(ar || Array.prototype.slice.call(from));
+  return to.concat(ar || Array.prototype.slice.call(from))
 }
 
 function __makeTemplateObject(cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, 'raw', { value: raw })
+  } else {
+    cooked.raw = raw
+  }
+  return cooked
 }
 
-var rotate$2 = styled.keyframes(templateObject_1$1n || (templateObject_1$1n = __makeTemplateObject(["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"], ["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"])));
-var StyledSVG = styled__default["default"].svg(templateObject_2$11 || (templateObject_2$11 = __makeTemplateObject(["\n  animation: 2s ", " linear infinite;\n  height: ", ";\n  width: ", ";\n  path {\n    stroke: ", ";\n  }\n"], ["\n  animation: 2s ", " linear infinite;\n  height: ", ";\n  width: ", ";\n  path {\n    stroke: ", ";\n  }\n"
-    /**
-     * Takes in custom size and stroke for circle color, default to primary color as fill,
-     * need ...rest for layered styles on top
-     */
-])), rotate$2, function (_a) {
-    var size = _a.size;
-    return size;
-}, function (_a) {
-    var size = _a.size;
-    return size;
-}, function (_a) {
-    var stroke = _a.stroke, theme = _a.theme;
-    return stroke !== null && stroke !== void 0 ? stroke : theme.primary1;
-});
+var rotate$2 = styled.keyframes(
+  templateObject_1$1n ||
+    (templateObject_1$1n = __makeTemplateObject(
+      ['\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n'],
+      ['\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n']
+    ))
+)
+var StyledSVG = styled__default['default'].svg(
+  templateObject_2$11 ||
+    (templateObject_2$11 = __makeTemplateObject(
+      ['\n  animation: 2s ', ' linear infinite;\n  height: ', ';\n  width: ', ';\n  path {\n    stroke: ', ';\n  }\n'],
+      [
+        '\n  animation: 2s ',
+        ' linear infinite;\n  height: ',
+        ';\n  width: ',
+        ';\n  path {\n    stroke: ',
+        ';\n  }\n',
+        /**
+         * Takes in custom size and stroke for circle color, default to primary color as fill,
+         * need ...rest for layered styles on top
+         */
+      ]
+    )),
+  rotate$2,
+  function (_a) {
+    var size = _a.size
+    return size
+  },
+  function (_a) {
+    var size = _a.size
+    return size
+  },
+  function (_a) {
+    var stroke = _a.stroke,
+      theme = _a.theme
+    return stroke !== null && stroke !== void 0 ? stroke : theme.primary1
+  }
+)
 /**
  * Takes in custom size and stroke for circle color, default to primary color as fill,
  * need ...rest for layered styles on top
  */
 function Loader(_a) {
-    var _b = _a.size, size = _b === void 0 ? '16px' : _b, stroke = _a.stroke, rest = __rest(_a, ["size", "stroke"]);
-    return (jsxRuntime.jsx(StyledSVG, __assign({ viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", size: size, stroke: stroke }, rest, { children: jsxRuntime.jsx("path", { d: "M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 9.27455 20.9097 6.80375 19.1414 5", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round" }, void 0) }), void 0));
+  var _b = _a.size,
+    size = _b === void 0 ? '16px' : _b,
+    stroke = _a.stroke,
+    rest = __rest(_a, ['size', 'stroke'])
+  return jsxRuntime.jsx(
+    StyledSVG,
+    __assign({ viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg', size, stroke }, rest, {
+      children: jsxRuntime.jsx(
+        'path',
+        {
+          d: 'M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 9.27455 20.9097 6.80375 19.1414 5',
+          strokeWidth: '2.5',
+          strokeLinecap: 'round',
+          strokeLinejoin: 'round',
+        },
+        void 0
+      ),
+    }),
+    void 0
+  )
 }
-var templateObject_1$1n, templateObject_2$11;
+var templateObject_1$1n, templateObject_2$11
 
-var useAppDispatch = function () { return reactRedux.useDispatch(); };
-var useAppSelector = reactRedux.useSelector;
+var useAppDispatch = function () {
+  return reactRedux.useDispatch()
+}
+var useAppSelector = reactRedux.useSelector
 
-var updateMatchesDarkMode = toolkit.createAction('user/updateMatchesDarkMode');
-var updateUserDarkMode = toolkit.createAction('user/updateUserDarkMode');
-var updateUserExpertMode = toolkit.createAction('user/updateUserExpertMode');
-var updateUserLocale = toolkit.createAction('user/updateUserLocale');
-var updateShowSurveyPopup = toolkit.createAction('user/updateShowSurveyPopup');
-var updateUserClientSideRouter = toolkit.createAction('user/updateUserClientSideRouter');
-var updateHideClosedPositions = toolkit.createAction('user/hideClosedPositions');
-var updateUserSlippageTolerance = toolkit.createAction('user/updateUserSlippageTolerance');
-var updateUserDeadline = toolkit.createAction('user/updateUserDeadline');
-var addSerializedToken = toolkit.createAction('user/addSerializedToken');
-var removeSerializedToken = toolkit.createAction('user/removeSerializedToken');
-var addSerializedPair = toolkit.createAction('user/addSerializedPair');
-var removeSerializedPair = toolkit.createAction('user/removeSerializedPair');
+var updateMatchesDarkMode = toolkit.createAction('user/updateMatchesDarkMode')
+var updateUserDarkMode = toolkit.createAction('user/updateUserDarkMode')
+var updateUserExpertMode = toolkit.createAction('user/updateUserExpertMode')
+var updateUserLocale = toolkit.createAction('user/updateUserLocale')
+var updateShowSurveyPopup = toolkit.createAction('user/updateShowSurveyPopup')
+var updateUserClientSideRouter = toolkit.createAction('user/updateUserClientSideRouter')
+var updateHideClosedPositions = toolkit.createAction('user/hideClosedPositions')
+var updateUserSlippageTolerance = toolkit.createAction('user/updateUserSlippageTolerance')
+var updateUserDeadline = toolkit.createAction('user/updateUserDeadline')
+var addSerializedToken = toolkit.createAction('user/addSerializedToken')
+var removeSerializedToken = toolkit.createAction('user/removeSerializedToken')
+var addSerializedPair = toolkit.createAction('user/addSerializedPair')
+var removeSerializedPair = toolkit.createAction('user/removeSerializedPair')
 
 function parsedQueryString(search) {
-    if (!search) {
-        // react-router-dom places search string in the hash
-        var hash = window.location.hash;
-        search = hash.substr(hash.indexOf('?'));
-    }
-    return search && search.length > 1 ? qs.parse(search, { parseArrays: false, ignoreQueryPrefix: true }) : {};
+  if (!search) {
+    // react-router-dom places search string in the hash
+    var hash = window.location.hash
+    search = hash.substr(hash.indexOf('?'))
+  }
+  return search && search.length > 1 ? qs.parse(search, { parseArrays: false, ignoreQueryPrefix: true }) : {}
 }
 function useParsedQueryString() {
-    var search = reactRouterDom.useLocation().search;
-    return React.useMemo(function () { return parsedQueryString(search); }, [search]);
+  var search = reactRouterDom.useLocation().search
+  return React.useMemo(
+    function () {
+      return parsedQueryString(search)
+    },
+    [search]
+  )
 }
 
 function ApeModeQueryParamReader() {
-    useApeModeQueryParamReader();
-    return null;
+  useApeModeQueryParamReader()
+  return null
 }
 function useApeModeQueryParamReader() {
-    var dispatch = useAppDispatch();
-    var ape = useParsedQueryString().ape;
-    React.useEffect(function () {
-        if (typeof ape !== 'string')
-            return;
-        if (ape === '' || ape.toLowerCase() === 'true') {
-            dispatch(updateUserExpertMode({ userExpertMode: true }));
-        }
-    });
+  var dispatch = useAppDispatch()
+  var ape = useParsedQueryString().ape
+  React.useEffect(function () {
+    if (typeof ape !== 'string') return
+    if (ape === '' || ape.toLowerCase() === 'true') {
+      dispatch(updateUserExpertMode({ userExpertMode: true }))
+    }
+  })
 }
 
-var NetworkContextName = 'NETWORK';
-var IS_IN_IFRAME = window.parent !== window;
+var NetworkContextName = 'NETWORK'
+var IS_IN_IFRAME = window.parent !== window
 // 30 minutes, denominated in seconds
-var DEFAULT_DEADLINE_FROM_NOW = 60 * 30;
-var L2_DEADLINE_FROM_NOW = 60 * 5;
+var DEFAULT_DEADLINE_FROM_NOW = 60 * 30
+var L2_DEADLINE_FROM_NOW = 60 * 5
 // transaction popup dismisal amounts
-var DEFAULT_TXN_DISMISS_MS = 25000;
-var L2_TXN_DISMISS_MS = 5000;
+var DEFAULT_TXN_DISMISS_MS = 25000
+var L2_TXN_DISMISS_MS = 5000
 // used for rewards deadlines
-JSBI__default["default"].BigInt(60 * 60 * 24 * 7);
-JSBI__default["default"].BigInt(0);
+JSBI__default['default'].BigInt(60 * 60 * 24 * 7)
+JSBI__default['default'].BigInt(0)
 // one basis JSBI.BigInt
-var BIPS_BASE = JSBI__default["default"].BigInt(10000);
-new sdkCore.Percent(JSBI__default["default"].BigInt(1), BIPS_BASE);
+var BIPS_BASE = JSBI__default['default'].BigInt(10000)
+new sdkCore.Percent(JSBI__default['default'].BigInt(1), BIPS_BASE)
 // used for warning states
-var ALLOWED_PRICE_IMPACT_LOW = new sdkCore.Percent(JSBI__default["default"].BigInt(100), BIPS_BASE); // 1%
-var ALLOWED_PRICE_IMPACT_MEDIUM = new sdkCore.Percent(JSBI__default["default"].BigInt(300), BIPS_BASE); // 3%
-var ALLOWED_PRICE_IMPACT_HIGH = new sdkCore.Percent(JSBI__default["default"].BigInt(500), BIPS_BASE); // 5%
+var ALLOWED_PRICE_IMPACT_LOW = new sdkCore.Percent(JSBI__default['default'].BigInt(100), BIPS_BASE) // 1%
+var ALLOWED_PRICE_IMPACT_MEDIUM = new sdkCore.Percent(JSBI__default['default'].BigInt(300), BIPS_BASE) // 3%
+var ALLOWED_PRICE_IMPACT_HIGH = new sdkCore.Percent(JSBI__default['default'].BigInt(500), BIPS_BASE) // 5%
 // if the price slippage exceeds this number, force the user to type 'confirm' to execute
-var PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN = new sdkCore.Percent(JSBI__default["default"].BigInt(1000), BIPS_BASE); // 10%
+var PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN = new sdkCore.Percent(JSBI__default['default'].BigInt(1000), BIPS_BASE) // 10%
 // for non expert mode disable swaps above this
-var BLOCKED_PRICE_IMPACT_NON_EXPERT = new sdkCore.Percent(JSBI__default["default"].BigInt(1500), BIPS_BASE); // 15%
-var BETTER_TRADE_LESS_HOPS_THRESHOLD = new sdkCore.Percent(JSBI__default["default"].BigInt(50), BIPS_BASE);
-var ZERO_PERCENT = new sdkCore.Percent('0');
-new sdkCore.Percent(JSBI__default["default"].BigInt(200), BIPS_BASE);
-var ONE_HUNDRED_PERCENT = new sdkCore.Percent('1');
+var BLOCKED_PRICE_IMPACT_NON_EXPERT = new sdkCore.Percent(JSBI__default['default'].BigInt(1500), BIPS_BASE) // 15%
+var BETTER_TRADE_LESS_HOPS_THRESHOLD = new sdkCore.Percent(JSBI__default['default'].BigInt(50), BIPS_BASE)
+var ZERO_PERCENT = new sdkCore.Percent('0')
+new sdkCore.Percent(JSBI__default['default'].BigInt(200), BIPS_BASE)
+var ONE_HUNDRED_PERCENT = new sdkCore.Percent('1')
 
 function useActiveWeb3React() {
-    // if (false) {
-    //   return useWidgetsWeb3React()
-    // }
-    var interfaceContext = core.useWeb3React();
-    var interfaceNetworkContext = core.useWeb3React(NetworkContextName);
-    if (interfaceContext.active) {
-        return interfaceContext;
-    }
-    return interfaceNetworkContext;
+  // if (false) {
+  //   return useWidgetsWeb3React()
+  // }
+  var interfaceContext = core.useWeb3React()
+  var interfaceNetworkContext = core.useWeb3React(NetworkContextName)
+  if (interfaceContext.active) {
+    return interfaceContext
+  }
+  return interfaceNetworkContext
 }
 
-var Circle$1 = "data:image/svg+xml,%3Csvg%20width%3D%2294%22%20height%3D%2294%22%20viewBox%3D%220%200%2094%2094%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%20%3Cpath%20d%3D%22M92%2047C92%2022.1472%2071.8528%202%2047%202C22.1472%202%202%2022.1472%202%2047C2%2071.8528%2022.1472%2092%2047%2092%22%20stroke%3D%22%232172E5%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E";
+var Circle$1 =
+  'data:image/svg+xml,%3Csvg%20width%3D%2294%22%20height%3D%2294%22%20viewBox%3D%220%200%2094%2094%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%20%3Cpath%20d%3D%22M92%2047C92%2022.1472%2071.8528%202%2047%202C22.1472%202%202%2022.1472%202%2047C2%2071.8528%2022.1472%2092%2047%2092%22%20stroke%3D%22%232172E5%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E'
 
-var tokenLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAABJCAYAAABxcwvcAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAB01SURBVHgBvVxpkB1XdT6n+71ZJMsaCVs2BKxxEjCb8DhUGbPYlpMKwWBjuRI2Y4NJBYhZYlNFwpYqSVXEbD9sA2bJUsg2XqBCxXihIPzQyMYUkFRpJCAGUimPnAQvAWskjTTLe9035zvL7X4jL7IWd9Wbee/17b73fvcs3znn9mN6ho+53XPjJVXr5e0Ec7E21WmcUhorSh5PiYmqioi16QwTz6SUpqkoZqjq76B+Pdk5eWyKmWfoGTyYjvGRdqexHs1voILO5VRvECDGipQoFYX0nqSBvPryKpIOR0DDX3lb2Lm6JipL+b7OAy665VTVr7fxcOf27orRSTrGxzEDaW73vvXdTndjSvUE1WmsrmzeNn/ptgYwAQopCCIhClDC9335DCBxTt/btTpkgIe2wLkoptNQZ7JcPrRZrp+mY3AcdZD6e+cul38bZe7jOitMzOaUgUCvhUgHQKIWYNZWQIOklQWlXmXXCUgAU8+hCYAVAPW7vqDfKfR6LostvZm9m0dPffY0HcXjqIHU37t/g+jFNTKdcZWG2gECJqwT0ImphrV7VanwwTC7WrF/NkDyB+1IegCIAKeyFUgLAuZwx0CU/yJhW4rjlx01yTpikNLc3HivT18TaVivElMy1WJjVGAAjKyyqRHp5FShUu29uxTx4HAADDQthWoF2G2AcQuoIECb7/tXtd6fAZ6Mg4fKTeWq5ZvpCI8jAml+z+xVZdHZKEMfSzEZOYpOKepUKCjWCef32qOqVzYybr/tvQLJnO/l6Jodq1p2LNQU0gdAFwWoHqQr8EvWTbec7pXleaOrRqfpMI/DAik9sHusf+LIv6SK1kMqcBMdtEwcAOWlD2DIv4LdkJG7kmQwktuajI1+B/vlQNbNaDnULiXvpdUP3vZEnuYWTXUDcOm3HBvdxMPdw5Kqpw2SqlePtkrn42oXwt50BSCVGL9rzHagqzQAitmZlO0Nx+QrMvHyf3VIUspGzmiCq583NVWszR5CBbmq9f5J/gtAxCOda8uVyz5ET/N4WiDN7t49MdQZ3Qr1YjcSXJQ2gVCjuGttq5hhSgP645NtfY+JBT2g9vXu7gMIByxVKfAy494SQ7NdrJ6vnusRixrWsHPDYgaWDU/y2OjFT4eQHjJIs7tnJ4a73a1gxzoUBscrGtftQOj0Y0LkQhJG1tu4HFCmCNT2ZJxtUDb01AK/GhDVDKq2TX5NySo9qoxyvt43b5/RVgx9MTo8VZy4/LxDBao4lEaLAKjsbE1uoOGmS9ieGKtzGApHhbvCu4SkmG5lHpQCrJCcFJrETXtIj0tS1twU3zdjU4lKnJ2DmrGaTML9vjzatesUKBj53kTafWBr8gU/YpAQazEkqOQxcu5TQr9j4nUzqdQWoSxdDpSrwVLhTUEk/QykgOO+3r5IDRVQosnu4gOtwtWNzSZiEfUV6Mv35fEjA8BXe+Ym6v2L19CRgpQQjHZ5a6qqMQsNWPVajWG47X0L3ji5p7H3hFXzgcfSJ3KDDZ4U19cNompw+3VWr5ikEkxuBFJ1vXaDDpXv1Rbj1bVLctFIZDgJfFw+rOcYjgF9/d/s5SJVTwnUk4LU7xTXSMfj5G4U7l3jqWR6pp3vErXetadZfQWEm3DDp8uuKuG4ySmATrJt8PE5ZpXcvnW8z1C3oAyuh0nv6wvBjRdkau6t/YKCiBYoz+oWCn7/13uvSgv9DXQ4IPX2LyA43VBAtyGu3dI6806Nw8iAXnYS0V33U7rz/rC+S+yUG18OrXTVQuylEpmy9HG0ofakHYzQ0hZppdK8HLsxBLtXCfZ7JTBwkNqCnWuZuhXHDakDMONO4FVfk3GMPxEWj+vdlAvVxQMqwskYdASmJkEuEamlRh/+LtGY6P0n1mc7wK6WmUhCdXY8TPTgDDHanj3eMHFygAFeZRkAhl0pY4LBrQq3OQhd2D4nAyoFVQgVxpglP5WclOq5sjAhlVgq7V/UvqDi3VNWTfLo0HmHDNLivvntcmJCF9DVbNBL1dRoTYv3vOlWuepkoo+d6yDRYDiye55oj7xOWUl0zzTxvbuoxjw/cBbRimFrlnyymBdW20fIdSNAmbln72o5JwusHVCMGWRXbVZlasiUFxjXV/M98UyLErp0TNrWrHhXZ6izZSkeB6lbf1ZSHUwTOIOVKsqWEYwVyu6aqCGJ0vE/iGrf8QtKb7nNAKHUqBiu3fEQ0YuvIz7/RqLxVZRE6hhe53U3mHSpWrp09pPbF5uYp0LsnrWfwz13PtJIrQmaDW2x8mElamcZMtdCCDVi1EBpBDIJ+xaueTxacBBINfNG5RdV45ozMw5xzsbR3/v5dLxIw/cE452iUudvoSQGXRXBSWICIGh677ScF2D2iGd8/yuIv3qRApd++nADasnZfpPHYWZvbJJqtQDczx9pqEBtr+TqHXYxObfScVRur9wesQCVPGUs3GlMyOZVTwrSIqSoEgMWnrto2G5qUSDmMK/OnWvKgaTyEAFK1ep1W4imd+cMY3Hqqow5i1fkm7bbHV96EqWvvFGAukFtVtq1m0hUMd00RfzDB0U1H5BVXjR1wZj+41GiL/7I2kw9ZDQkMgOQpNqBsHxLEyfC/rgChHEvlg2pxzMrIuHLvrkrl0oTD4I0/4B8Ma5GsVPkyWUjOKBefoNETUQPyHbPCSWQSUKqXn+jNbr1zcRnPMf4jqgWbJGCfeFplG55S151vv7HlD76vYHBpfb/U8YovWYt0aWnE8t/BfHj36f0kXOIrzjT2HTtUlTVrTRx4/XU9hBnpqKzEdWsf3vApFeSduXJKzYLcJsOkqTe3Nx6ueG4ulSIZ6dsDZabTGOw40hzhCo50+WVw2pfaNUyou+8w0CEKt243e50wQsbAyxgKQJ91xFRPZLJcmv12v8T7nvLDmKA/9IvEAEotP/MNqJv7NRcEoeaRtag4FxEgBHX8zFrzLM2laOh0pwGPN6BxSupdWSQ6h5dHuIcaYlMw1rmJ+t57Rynbbfc8PIFLyK68xfEp66mdN97iNeKN3vvt4n/Tibz9gn1bjrpGVHJ6Rm7R9g2eMaXnew9N0ebKukBwE7/ooJOVwi4K0Yo/e8et0vhCl1qcH8nj5nDweYiScdI//aQnMtENs32EKOuHwAJZR+RjHfGMJSAReJd7UxqiX6zztxe8laQq+IjQKRtDxCtHhWJklu/4TSiqycpfUlsyW2iYivNiPOXf5JVQSc3NqrqmUS1BkBZAlpAkEAM14qtO//5xE4jlMk5G89j6rtJqHyB2dl57cR4qPTCQkIAjFDnnQMg9UqpiwXVp+ATLTXzLyxopCa6z8y6ca8qslBZIYoML4ZzQhxZgEkfP5f46m1mk+57twF5/Y+If/aoz7owYJ4rknb3ZXJ+bAAQboEVL4bRft7xom4/pSQgRZynHCrzgdry6pHkg8q5VKm+wH7BBkPtlnXMQ+6f3zAoScwbNAWiqYTUisHMc9kqh1fz5FioRytJpoOLceFaURsWEJKnbBmqhImLKuI///xKtVtJOFOkaHXyuCfa3S3n3vACSi1wuA0YQAYxRdsr7hAq8W9N4SGoPgCqYj462cbOFSZFRi9ca/oeyswuZpXraONE55o/hKqVLXk2IGpBvWiFC7oqCBcqyt4ueV4op4QKtzkiObTuJJNKxHewJWev1YnUGBC8VbhsBzoyLvQ8kajb3qq8KglJpR/sIvrZIw1gawWclaMKkB6fuYfokpepRHGypJsKEJxQ5WN2Vs4uZSCdLPbIclHyvxLeJNlMWoSK1pCmSUZCTSj99uAZxVCnIY4+mpTf0IBPVtXKxM0/h6TNihq88qvKh1JLZeDC+VbYpGEz8sGe05J6G1b/vyW7cOFNRF96I6Wznpd5kGYesAB7FygJH0Mf9HNR2Zt3iOE/h+hvzmnoCl4RNUTuylO7FBVifAUOpRTmgMZyGEq5dvWk8KjzOkXZHU9sDZQXMeXBJgcrVCmMNy0Rf0091MZBOETpk5M6GW2DQFakKV1wmr4nv2Yg4VZ4oOp2LqdlAcAbbjSOJKSTzz5F/p+sINMrnqtSYOour48KOJd8U0A6uxlklMzLVuUFEoXr1JT44mDuaCdxHBUC4AJKVP0JVbc6VetNrVxM6kaKErXcu0sUpEVtY6tPpmayGT3hM3rcJXblnHHnLA78gyIhdwlFANO+70Ehgq8QL9V1dWADG/eArRKVUklBbCev9J1fDnq9V51ilAHe8xxR3Rv/zMIdGPHsnVue2aUktEWnV9kcVR4wjwVpIyoqage7NA4zPc7ZEHPLhTQ+JBvpOggsZ0Nr2DLVLamin0o8JerA4uZ5/anU5Ip8UFd8mxLsy15R/Lt/SSQ0wErgJoV6z8q9zl+eOYB9+71+RtjyFaERUMt1X1AVpOVDeW3JjbZ5szSoDu3MaHszB6Su4zZX8hqFiOFK81hxA16iVqzlmLhZUXJuq/aHDanCTZZ2NG1qBq7TsF4npxgrMpl3/ZLSJd+QKF5itZeuaRYnaEfHKioJRPEjZzeTzq0OVn9IKJ37j0Sf+4F5tbhC84Ns0t4t842QabDVZc8MyPuhwiTvQE9empoe68hqnRpRcmbaqSWOVd1ImU+SIoHlRslSHE4TcNqj+SRMO6Vmdla9lS/AgW7eKZI2ROltpyuBzLWzqLdF1RYSINQhiaejT99L9D97qC1NA6oXx2fFyx0vget7z7RQiUryKqdJSRDlIc+T9eoMJO5XSWGzqCLOo3FY6rVaamnt5rBlcpdeFA15JPd0la8jtwy8ixG2zMAe6cdXr/VzyTKOyQcC1/2Jc4ned5bGeLbPyO2ierZK1YOdEesLYN55GbG4+CcDKEvWZ+/V7ACH5NRuY/t1tp8JxrnvZaa+Y+DCkkYkETenGzHGCgommqgp+fh/jhitldA3ozQ4oFyCBmOWQBYeSWGEN2vZOvbUqZEvBxfp1cptWWX3AiHMgRCInUsrw95cdyHR1PuFpL5RedTSI5tUtP3Sj/UbLcfnmLRlFtjtj/eZz7HtTDFCSiuLdkEw5cS9eazUNuQtKhBtGxX14UmaJH1qm7W/dEJs0iq7N/S97zX5XHGtcwKPvaiYCWVyj1n7f3XR8u9W8ZhdeS8eEVJK299P6YY/tfc0aJ+0l+/+p+ayc0XGKQc7aHqvdjBceI4MC1Ny1p5CS8NR+WDrKjSEw5gHEKW3i6xlMtKXt8J8+h5j1DiQ30mNC2SnM1E4tN4L9yacFyLvBaDGo+qCwSQgkYd07WdElSa+QElUCjSC7rxUAeO3rMsg6fRARsG2exW1eAC1Q5QwG22bqEUC5L89+oDfnTGVo4xoJN9NLJMPOTXRurtOA9HVT2I0kghfuwVvWXdyo2aFgauqpGP0QFYBIwMgx4gpG/sU9qK2ImSSSdNjB5oxwe5cfAvR13eY6n3+AslYXmgBcgy9b5xHs5Iha+y7XzxgVxLZYWfjpFQExQENeIUSF3VV74nyb+ZFA3LbzgQUjR6TVx3wDm78I9/LwGZqQCYJKeyPexeL1Jkiga/xon9OOTBN2U7orZAGBrcCrWjbIkjuX91F6Q+uJ/r1XjHwYthvfpMyckY7z1KSL1Dkkjjv5k2NSVmofJFqXzhXNykXPaDcUKXEBx62KFyySmbLbgWgbHY/vfWbDaYK2iMWXzm3yhtwCuMmKll1ZB0MWgWuqt3BcWMDo5R+2bckHfwClRKStG8sSO5XOFK66OtKZOnFwrveKoHuujV2fbj6RAOhkM3H51qZVqSe78VM2UFNFYLaLtW2iGMcyfYIOEbkF7Prg2J5604vB9GgS0YMheR9mN7SHWnR7DnK5WscXmlNviNXA1xILBi1sOm0R3Lnn/xjAuWhN62z2K116HADKEjXKyUgfvM66z/KSxHcRkZVOVlqVBKhiPJCaSvuX3ejSCgNnzKlsystdWEqwDkz2aiAmy3s91FRdXqw8yEbwNtPt/gpBoyy0mv+Xo2nHv3aKxjkVQvLAJAbcnA1RhpEQhQUA1gmm9Z+zgB6iQS2wpE0lsNNVo2q/WkvSjb3MO6fFcZ9/mnG03DvFqPVxaJYcPIUSmFZAZwXYqnSJDyJlml4M9URdZuusSmzspBDgai9zOzJNspcR/JKtQEVFVWeWTA7hLK1VC00FgtAsaLrPm+pDgGR3TOy2yW9HnwG0ojyN6TkuGFL7aI9UrOvktTKqpEcrOrTA1h95LZffYoGyNFfBu27v5L1/yOiE5bZQrSLq7FvKmhBVFJ8X5NyqvB0TNPY6NUpF4cmE8JgSFKqnbNY/sWcXcOdUpsmlDbhnNSHDfrqT6gx/61Bf+xfRSJeaPlr3YdNTUoFqvreM91OJNtezM5foqSFRXOekzfMo4frRJr+8J8sqG2pnUoTjPjqEbWbJi3RoBmZPY3gktzpaGkJWwdJcmpqqo4f2WFauoqhc1MZj8o3kxMF48wcw9yql5zIJpoky6iHBKxaN2uBE2AhMYYkme7wd8ARL+k7VHWRd0IaBKXx8N1FawuOEz3LMxVuZEnTKFpdoYPVToFL3IRbUd0BYH13Eu58FKDau8K+AEg7FpTodvzR9K1cv03AmVBQdJOBb9TKLDv2TlMT2AaHR+0LbvnBmQGA2vZCL5Fipe5lhHf7oRQC7v4V8c1TGj4MGHxRL3rbOg18YwOpEcK+e5tmG48C9+cv1wWi+3bRIFqctcG4o1ebI9ovzONFmUnXZnbRPmMxrfIyqd0oUseN3q7py2QuOurk2kMQLF/gYMeaZggmcPVrB6RnABwM78tS60dFV3iOGuQLbpLvfnwQQHo7AZA+eBfx336fIthUxhy0INXN7lvNMsoUPvwaOuh4zvFmJgofeMfjnm6m/rrinINzuefeOVU5bTPSmY7HLmxtujxZjAzN5JCgXV6qUvO4Al59l0tuAElib5J4krbx1HOoiMArCWehT0g5WtKwSLaF3Wq3ZXfpGTQk0kR9c15aH5FIgyzeo3aN3doE8yVrbHtPhFPMTWgSsZqXu0lUTVO2ngtXmUA1d6R7Q9wuV3D7/d51wXLBKzylb5Pg1lq76GrJOAgn2n36tdYWEgPAbnmzuPQP6kYtgtSgBkdZ+JoDDPnf30d0g6Rdb3+7fs7nP3dvC3F/g1jRPVyOBHBIGjc3QzYToIQoRx7JF12P2vkRJEoquOmRWZWgGl4dUki0pTVr716quP3+7O7Iw2rVBPFMa5NWDkOokYQUW1nwecdDlLBzRIxx2FyLu7wBDLTYIYaUhEfa8QHjVLBrCDvAtXAeLxzfvlSJYd4s6tyKigjK3e6IiqJASVJVoTsupfajFrnGBbuGeYU58bAHjB57vblv9qo443e2iaqtp6WSBC8nYjcJBgovUPf7RizVyCnJsNx2tK8beYhMZpKglkH0IhAO9hqkDXQB3uied+fqbAInwjUvWmNSJ4l++uuzG0YtWc7skQpj6SlLBlFOvYK0Qs0Q4EZbtkW0jmoDJWcg2O4r96of22/URObMz1Yp2kSto2h/KJePbFZ67jkdVbsQV7LB5UchmJo4zlUwDZDF5HGR787PsRgZQJAQFB+R9jjrFNskesf9ZnAB3Hu8AIC8dRRMex6Udk0abD+l9AeAkHn41iVy/QrKT0D1vHwd1/omMPYnA1CtxXbAqPDyUBeZUhjsyTYuA94Xh4jd1urAwno9JTfBJnErQIb7Dw4Vm0tb7tiNbIoEF0cnbCnZlvtWoEEkRU2SqBujEvv65xN96k/sWuxzevn1tsHrjssayQ0pCtVR4GuTpjKXPChTlBD1nEMiozlOEeq98xaK4Mmm8dVUnLQCz53c/qQgYedttXdxuyTixoB+MRJbUopGv90gxaMKMTA9XddNmrRO2c5nFQg1adMMGaieQxiSmqGlq7cSX/NDTajpzpGwSUEmQ2XioWaXrAxU1Ng6RRPZs0sVhPNAX0vaCf1j89bLn7tFAHrXUkyKpV/w6Oi00PHrOFIFqm6tFSka/5Q80OXY1+MhgybLQMhKl7ZY/WSMPmc2NTflrHv5UH5cNMgqY7vz+SJd7/hnov96LOeF6P5HbWz+XEmzeO6xiH3HLdFAyqU2O6mgLVT6XJxuKEV5//dWo9PN9DgHP96X2DNY71vYXu9fGCfvR/cVdlirnamIQDg1ohxGHmSU6lxUyHnzzIA5S377uZQsXVEfa2350WrwbTttiyEynn8hLHv1MgttknnPHA9ik2inbGwlupeqCHsKRg/Y2kdnzTPChkrFpnj+CZvl+k2HDJICNbs40T8wv12rmLD62PAuq+3knqLSGtqhxjoeEkxNhSXTBS9h5xV18qbve64WYVPaJMNTuCFgeXNWLkBQAzCEqFs0BDRUPLX2hs8LQL+ZNWmCR1vWpfL3T5yS0tMZT4RF8UQnJE0xVRw38iGFBD9egLlJVZOKJrjVdkweJtSZG8Uu3BzSaGiRPA1RNyQPR0woPxqWBjBSl+/7rjny4ApKau4TAfGAypGFFy7pkfbR5B08L4JuXLZ29bT0cTE9ycH0FEc1v3htPTN3pcY0bkNK5HzMCFm93LkL58HaowiQPo388ZWGEUYUFJRe3bJxS0YUYKjaGai4Xlv2/Wc6wpG0QS/NFlEExKAK4TlEDWtRMfWS/UrpSXHaiYj2z5AFnXoyDAp6iqMcGbpK4pjJsBVYTTyyGc/vR32Kw76k5LtZnMN03DOGq1bkrW2Kqm6nVQgI8DohGeylJ2q8VfCgkhsbFh6127E+hjpNXzjxm/1mizQrKjGaZDkFoA89FUCHBJICtXL04mKkO0VRy4cu718wshYOyUs/oXZqg4LxMnu5nLPHiW08Jh2NVOmusyp5/ocdCGuTwqOFgV/07EAEwJiQ57ryI2HStsauXPx2gNb/JaA9YTnxSStgqK89lPk/pbrFoR4Pj2TuX5zI+4e6XmKKDVHkvy8SRtbTpQ2Zc9cc+TRqSYKmQ1oere354nEJSGmklWOnSJgBSF6vaqJ7DAMb2FFpwc7a+UXjcr/7LCrWHPeEnuyIQAqgxPB9rd67sKHuVzYHrAz+I3EO29S3xLp6OCTYhgqKDfRqC3AucsghGWFLws5kirBkhF6oUNC6vg8yEvkBEr6HOZiZs8fe8aQnpAj9vnANPPS7ZCxb6GkcTwukDNZCb1P12IGNOmiPylnzwmIMR4eayUf+hlyYwiZFfIiPtRviruWYI1mvbTzNmkcangzR+pBnAep6cEsNANlrqWJ7fq7U+xUvWjNNI92LD8UGHRWQcPQX+5cXBxY31nvmx9WDQZJCYrARCqCF7aDmWQ6TDuUJtmkiDHXXDXxrw2fYwPwTHG7cLVXCTQiC9kIY64f3SXghfG7eqj+Q2gIB88nHbRNPezkf5g+8HDZIOLCfUFKw19a/3X9R7RPWjVFOD4rlwzZJ8Cy3LwMd1hHeeJU39lSz2zO3LbF7VtUnPFrfwov02JzN4sAi1QJUAXoidgglrmLts2Z4efeQDfQTHUcEUhwyscsFqI0SyoxrzAYpcpulE4Y9wE/3dMpMMI27BCXwJJrXvlRNkB4JVQp2HUxdbE4NwHTnBxuL7hb5aUo+4ThkF7eJpzxs6WkfRwWkOKr9C5toduGdab43jl1ixXAn/0AUBxsWm5V/kQuSEPme2OCFD/CAvp0nzRvY2A6jhl8qGuBAHOrZs1+7UdV69gq4920C8KalOaEjOY4qSDj8qej1tG9+Y71/cRy2QrfdDdv2urwvUyaGZ3tV4qScrL+B5JlHEgnJYU7s2Ic0Spuk2ixtUHXGjzhI7KUPPa9aBsk5quDEcdRBah94NkPivcu5178ozS6MJTwlwOaq9bFOJOAdBPJ9mxrK+FY83X9ZWRjBw67CABI1emx/Xrlsl7j4LdLVtXwMfzHwmILUPvxhlg0SWE4IIKfrRnJkK7F3E8+iieE1rkTmJTW/JMCJ8VePOdoBKdwlwE0q+5faCh+jH7pbejxjIC09BDQ8koBqwLi/xvwVx7S8ZvwFUKb5Gf59yTj+Hw/7ALl9bHOSAAAAAElFTkSuQmCC";
+var tokenLogo =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAABJCAYAAABxcwvcAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAB01SURBVHgBvVxpkB1XdT6n+71ZJMsaCVs2BKxxEjCb8DhUGbPYlpMKwWBjuRI2Y4NJBYhZYlNFwpYqSVXEbD9sA2bJUsg2XqBCxXihIPzQyMYUkFRpJCAGUimPnAQvAWskjTTLe9035zvL7X4jL7IWd9Wbee/17b73fvcs3znn9mN6ho+53XPjJVXr5e0Ec7E21WmcUhorSh5PiYmqioi16QwTz6SUpqkoZqjq76B+Pdk5eWyKmWfoGTyYjvGRdqexHs1voILO5VRvECDGipQoFYX0nqSBvPryKpIOR0DDX3lb2Lm6JipL+b7OAy665VTVr7fxcOf27orRSTrGxzEDaW73vvXdTndjSvUE1WmsrmzeNn/ptgYwAQopCCIhClDC9335DCBxTt/btTpkgIe2wLkoptNQZ7JcPrRZrp+mY3AcdZD6e+cul38bZe7jOitMzOaUgUCvhUgHQKIWYNZWQIOklQWlXmXXCUgAU8+hCYAVAPW7vqDfKfR6LostvZm9m0dPffY0HcXjqIHU37t/g+jFNTKdcZWG2gECJqwT0ImphrV7VanwwTC7WrF/NkDyB+1IegCIAKeyFUgLAuZwx0CU/yJhW4rjlx01yTpikNLc3HivT18TaVivElMy1WJjVGAAjKyyqRHp5FShUu29uxTx4HAADDQthWoF2G2AcQuoIECb7/tXtd6fAZ6Mg4fKTeWq5ZvpCI8jAml+z+xVZdHZKEMfSzEZOYpOKepUKCjWCef32qOqVzYybr/tvQLJnO/l6Jodq1p2LNQU0gdAFwWoHqQr8EvWTbec7pXleaOrRqfpMI/DAik9sHusf+LIv6SK1kMqcBMdtEwcAOWlD2DIv4LdkJG7kmQwktuajI1+B/vlQNbNaDnULiXvpdUP3vZEnuYWTXUDcOm3HBvdxMPdw5Kqpw2SqlePtkrn42oXwt50BSCVGL9rzHagqzQAitmZlO0Nx+QrMvHyf3VIUspGzmiCq583NVWszR5CBbmq9f5J/gtAxCOda8uVyz5ET/N4WiDN7t49MdQZ3Qr1YjcSXJQ2gVCjuGttq5hhSgP645NtfY+JBT2g9vXu7gMIByxVKfAy494SQ7NdrJ6vnusRixrWsHPDYgaWDU/y2OjFT4eQHjJIs7tnJ4a73a1gxzoUBscrGtftQOj0Y0LkQhJG1tu4HFCmCNT2ZJxtUDb01AK/GhDVDKq2TX5NySo9qoxyvt43b5/RVgx9MTo8VZy4/LxDBao4lEaLAKjsbE1uoOGmS9ieGKtzGApHhbvCu4SkmG5lHpQCrJCcFJrETXtIj0tS1twU3zdjU4lKnJ2DmrGaTML9vjzatesUKBj53kTafWBr8gU/YpAQazEkqOQxcu5TQr9j4nUzqdQWoSxdDpSrwVLhTUEk/QykgOO+3r5IDRVQosnu4gOtwtWNzSZiEfUV6Mv35fEjA8BXe+Ym6v2L19CRgpQQjHZ5a6qqMQsNWPVajWG47X0L3ji5p7H3hFXzgcfSJ3KDDZ4U19cNompw+3VWr5ikEkxuBFJ1vXaDDpXv1Rbj1bVLctFIZDgJfFw+rOcYjgF9/d/s5SJVTwnUk4LU7xTXSMfj5G4U7l3jqWR6pp3vErXetadZfQWEm3DDp8uuKuG4ySmATrJt8PE5ZpXcvnW8z1C3oAyuh0nv6wvBjRdkau6t/YKCiBYoz+oWCn7/13uvSgv9DXQ4IPX2LyA43VBAtyGu3dI6806Nw8iAXnYS0V33U7rz/rC+S+yUG18OrXTVQuylEpmy9HG0ofakHYzQ0hZppdK8HLsxBLtXCfZ7JTBwkNqCnWuZuhXHDakDMONO4FVfk3GMPxEWj+vdlAvVxQMqwskYdASmJkEuEamlRh/+LtGY6P0n1mc7wK6WmUhCdXY8TPTgDDHanj3eMHFygAFeZRkAhl0pY4LBrQq3OQhd2D4nAyoFVQgVxpglP5WclOq5sjAhlVgq7V/UvqDi3VNWTfLo0HmHDNLivvntcmJCF9DVbNBL1dRoTYv3vOlWuepkoo+d6yDRYDiye55oj7xOWUl0zzTxvbuoxjw/cBbRimFrlnyymBdW20fIdSNAmbln72o5JwusHVCMGWRXbVZlasiUFxjXV/M98UyLErp0TNrWrHhXZ6izZSkeB6lbf1ZSHUwTOIOVKsqWEYwVyu6aqCGJ0vE/iGrf8QtKb7nNAKHUqBiu3fEQ0YuvIz7/RqLxVZRE6hhe53U3mHSpWrp09pPbF5uYp0LsnrWfwz13PtJIrQmaDW2x8mElamcZMtdCCDVi1EBpBDIJ+xaueTxacBBINfNG5RdV45ozMw5xzsbR3/v5dLxIw/cE452iUudvoSQGXRXBSWICIGh677ScF2D2iGd8/yuIv3qRApd++nADasnZfpPHYWZvbJJqtQDczx9pqEBtr+TqHXYxObfScVRur9wesQCVPGUs3GlMyOZVTwrSIqSoEgMWnrto2G5qUSDmMK/OnWvKgaTyEAFK1ep1W4imd+cMY3Hqqow5i1fkm7bbHV96EqWvvFGAukFtVtq1m0hUMd00RfzDB0U1H5BVXjR1wZj+41GiL/7I2kw9ZDQkMgOQpNqBsHxLEyfC/rgChHEvlg2pxzMrIuHLvrkrl0oTD4I0/4B8Ma5GsVPkyWUjOKBefoNETUQPyHbPCSWQSUKqXn+jNbr1zcRnPMf4jqgWbJGCfeFplG55S151vv7HlD76vYHBpfb/U8YovWYt0aWnE8t/BfHj36f0kXOIrzjT2HTtUlTVrTRx4/XU9hBnpqKzEdWsf3vApFeSduXJKzYLcJsOkqTe3Nx6ueG4ulSIZ6dsDZabTGOw40hzhCo50+WVw2pfaNUyou+8w0CEKt243e50wQsbAyxgKQJ91xFRPZLJcmv12v8T7nvLDmKA/9IvEAEotP/MNqJv7NRcEoeaRtag4FxEgBHX8zFrzLM2laOh0pwGPN6BxSupdWSQ6h5dHuIcaYlMw1rmJ+t57Rynbbfc8PIFLyK68xfEp66mdN97iNeKN3vvt4n/Tibz9gn1bjrpGVHJ6Rm7R9g2eMaXnew9N0ebKukBwE7/ooJOVwi4K0Yo/e8et0vhCl1qcH8nj5nDweYiScdI//aQnMtENs32EKOuHwAJZR+RjHfGMJSAReJd7UxqiX6zztxe8laQq+IjQKRtDxCtHhWJklu/4TSiqycpfUlsyW2iYivNiPOXf5JVQSc3NqrqmUS1BkBZAlpAkEAM14qtO//5xE4jlMk5G89j6rtJqHyB2dl57cR4qPTCQkIAjFDnnQMg9UqpiwXVp+ATLTXzLyxopCa6z8y6ca8qslBZIYoML4ZzQhxZgEkfP5f46m1mk+57twF5/Y+If/aoz7owYJ4rknb3ZXJ+bAAQboEVL4bRft7xom4/pSQgRZynHCrzgdry6pHkg8q5VKm+wH7BBkPtlnXMQ+6f3zAoScwbNAWiqYTUisHMc9kqh1fz5FioRytJpoOLceFaURsWEJKnbBmqhImLKuI///xKtVtJOFOkaHXyuCfa3S3n3vACSi1wuA0YQAYxRdsr7hAq8W9N4SGoPgCqYj462cbOFSZFRi9ca/oeyswuZpXraONE55o/hKqVLXk2IGpBvWiFC7oqCBcqyt4ueV4op4QKtzkiObTuJJNKxHewJWev1YnUGBC8VbhsBzoyLvQ8kajb3qq8KglJpR/sIvrZIw1gawWclaMKkB6fuYfokpepRHGypJsKEJxQ5WN2Vs4uZSCdLPbIclHyvxLeJNlMWoSK1pCmSUZCTSj99uAZxVCnIY4+mpTf0IBPVtXKxM0/h6TNihq88qvKh1JLZeDC+VbYpGEz8sGe05J6G1b/vyW7cOFNRF96I6Wznpd5kGYesAB7FygJH0Mf9HNR2Zt3iOE/h+hvzmnoCl4RNUTuylO7FBVifAUOpRTmgMZyGEq5dvWk8KjzOkXZHU9sDZQXMeXBJgcrVCmMNy0Rf0091MZBOETpk5M6GW2DQFakKV1wmr4nv2Yg4VZ4oOp2LqdlAcAbbjSOJKSTzz5F/p+sINMrnqtSYOour48KOJd8U0A6uxlklMzLVuUFEoXr1JT44mDuaCdxHBUC4AJKVP0JVbc6VetNrVxM6kaKErXcu0sUpEVtY6tPpmayGT3hM3rcJXblnHHnLA78gyIhdwlFANO+70Ehgq8QL9V1dWADG/eArRKVUklBbCev9J1fDnq9V51ilAHe8xxR3Rv/zMIdGPHsnVue2aUktEWnV9kcVR4wjwVpIyoqage7NA4zPc7ZEHPLhTQ+JBvpOggsZ0Nr2DLVLamin0o8JerA4uZ5/anU5Ip8UFd8mxLsy15R/Lt/SSQ0wErgJoV6z8q9zl+eOYB9+71+RtjyFaERUMt1X1AVpOVDeW3JjbZ5szSoDu3MaHszB6Su4zZX8hqFiOFK81hxA16iVqzlmLhZUXJuq/aHDanCTZZ2NG1qBq7TsF4npxgrMpl3/ZLSJd+QKF5itZeuaRYnaEfHKioJRPEjZzeTzq0OVn9IKJ37j0Sf+4F5tbhC84Ns0t4t842QabDVZc8MyPuhwiTvQE9empoe68hqnRpRcmbaqSWOVd1ImU+SIoHlRslSHE4TcNqj+SRMO6Vmdla9lS/AgW7eKZI2ROltpyuBzLWzqLdF1RYSINQhiaejT99L9D97qC1NA6oXx2fFyx0vget7z7RQiUryKqdJSRDlIc+T9eoMJO5XSWGzqCLOo3FY6rVaamnt5rBlcpdeFA15JPd0la8jtwy8ixG2zMAe6cdXr/VzyTKOyQcC1/2Jc4ned5bGeLbPyO2ierZK1YOdEesLYN55GbG4+CcDKEvWZ+/V7ACH5NRuY/t1tp8JxrnvZaa+Y+DCkkYkETenGzHGCgommqgp+fh/jhitldA3ozQ4oFyCBmOWQBYeSWGEN2vZOvbUqZEvBxfp1cptWWX3AiHMgRCInUsrw95cdyHR1PuFpL5RedTSI5tUtP3Sj/UbLcfnmLRlFtjtj/eZz7HtTDFCSiuLdkEw5cS9eazUNuQtKhBtGxX14UmaJH1qm7W/dEJs0iq7N/S97zX5XHGtcwKPvaiYCWVyj1n7f3XR8u9W8ZhdeS8eEVJK299P6YY/tfc0aJ+0l+/+p+ayc0XGKQc7aHqvdjBceI4MC1Ny1p5CS8NR+WDrKjSEw5gHEKW3i6xlMtKXt8J8+h5j1DiQ30mNC2SnM1E4tN4L9yacFyLvBaDGo+qCwSQgkYd07WdElSa+QElUCjSC7rxUAeO3rMsg6fRARsG2exW1eAC1Q5QwG22bqEUC5L89+oDfnTGVo4xoJN9NLJMPOTXRurtOA9HVT2I0kghfuwVvWXdyo2aFgauqpGP0QFYBIwMgx4gpG/sU9qK2ImSSSdNjB5oxwe5cfAvR13eY6n3+AslYXmgBcgy9b5xHs5Iha+y7XzxgVxLZYWfjpFQExQENeIUSF3VV74nyb+ZFA3LbzgQUjR6TVx3wDm78I9/LwGZqQCYJKeyPexeL1Jkiga/xon9OOTBN2U7orZAGBrcCrWjbIkjuX91F6Q+uJ/r1XjHwYthvfpMyckY7z1KSL1Dkkjjv5k2NSVmofJFqXzhXNykXPaDcUKXEBx62KFyySmbLbgWgbHY/vfWbDaYK2iMWXzm3yhtwCuMmKll1ZB0MWgWuqt3BcWMDo5R+2bckHfwClRKStG8sSO5XOFK66OtKZOnFwrveKoHuujV2fbj6RAOhkM3H51qZVqSe78VM2UFNFYLaLtW2iGMcyfYIOEbkF7Prg2J5604vB9GgS0YMheR9mN7SHWnR7DnK5WscXmlNviNXA1xILBi1sOm0R3Lnn/xjAuWhN62z2K116HADKEjXKyUgfvM66z/KSxHcRkZVOVlqVBKhiPJCaSvuX3ejSCgNnzKlsystdWEqwDkz2aiAmy3s91FRdXqw8yEbwNtPt/gpBoyy0mv+Xo2nHv3aKxjkVQvLAJAbcnA1RhpEQhQUA1gmm9Z+zgB6iQS2wpE0lsNNVo2q/WkvSjb3MO6fFcZ9/mnG03DvFqPVxaJYcPIUSmFZAZwXYqnSJDyJlml4M9URdZuusSmzspBDgai9zOzJNspcR/JKtQEVFVWeWTA7hLK1VC00FgtAsaLrPm+pDgGR3TOy2yW9HnwG0ojyN6TkuGFL7aI9UrOvktTKqpEcrOrTA1h95LZffYoGyNFfBu27v5L1/yOiE5bZQrSLq7FvKmhBVFJ8X5NyqvB0TNPY6NUpF4cmE8JgSFKqnbNY/sWcXcOdUpsmlDbhnNSHDfrqT6gx/61Bf+xfRSJeaPlr3YdNTUoFqvreM91OJNtezM5foqSFRXOekzfMo4frRJr+8J8sqG2pnUoTjPjqEbWbJi3RoBmZPY3gktzpaGkJWwdJcmpqqo4f2WFauoqhc1MZj8o3kxMF48wcw9yql5zIJpoky6iHBKxaN2uBE2AhMYYkme7wd8ARL+k7VHWRd0IaBKXx8N1FawuOEz3LMxVuZEnTKFpdoYPVToFL3IRbUd0BYH13Eu58FKDau8K+AEg7FpTodvzR9K1cv03AmVBQdJOBb9TKLDv2TlMT2AaHR+0LbvnBmQGA2vZCL5Fipe5lhHf7oRQC7v4V8c1TGj4MGHxRL3rbOg18YwOpEcK+e5tmG48C9+cv1wWi+3bRIFqctcG4o1ebI9ovzONFmUnXZnbRPmMxrfIyqd0oUseN3q7py2QuOurk2kMQLF/gYMeaZggmcPVrB6RnABwM78tS60dFV3iOGuQLbpLvfnwQQHo7AZA+eBfx336fIthUxhy0INXN7lvNMsoUPvwaOuh4zvFmJgofeMfjnm6m/rrinINzuefeOVU5bTPSmY7HLmxtujxZjAzN5JCgXV6qUvO4Al59l0tuAElib5J4krbx1HOoiMArCWehT0g5WtKwSLaF3Wq3ZXfpGTQk0kR9c15aH5FIgyzeo3aN3doE8yVrbHtPhFPMTWgSsZqXu0lUTVO2ngtXmUA1d6R7Q9wuV3D7/d51wXLBKzylb5Pg1lq76GrJOAgn2n36tdYWEgPAbnmzuPQP6kYtgtSgBkdZ+JoDDPnf30d0g6Rdb3+7fs7nP3dvC3F/g1jRPVyOBHBIGjc3QzYToIQoRx7JF12P2vkRJEoquOmRWZWgGl4dUki0pTVr716quP3+7O7Iw2rVBPFMa5NWDkOokYQUW1nwecdDlLBzRIxx2FyLu7wBDLTYIYaUhEfa8QHjVLBrCDvAtXAeLxzfvlSJYd4s6tyKigjK3e6IiqJASVJVoTsupfajFrnGBbuGeYU58bAHjB57vblv9qo443e2iaqtp6WSBC8nYjcJBgovUPf7RizVyCnJsNx2tK8beYhMZpKglkH0IhAO9hqkDXQB3uied+fqbAInwjUvWmNSJ4l++uuzG0YtWc7skQpj6SlLBlFOvYK0Qs0Q4EZbtkW0jmoDJWcg2O4r96of22/URObMz1Yp2kSto2h/KJePbFZ67jkdVbsQV7LB5UchmJo4zlUwDZDF5HGR787PsRgZQJAQFB+R9jjrFNskesf9ZnAB3Hu8AIC8dRRMex6Udk0abD+l9AeAkHn41iVy/QrKT0D1vHwd1/omMPYnA1CtxXbAqPDyUBeZUhjsyTYuA94Xh4jd1urAwno9JTfBJnErQIb7Dw4Vm0tb7tiNbIoEF0cnbCnZlvtWoEEkRU2SqBujEvv65xN96k/sWuxzevn1tsHrjssayQ0pCtVR4GuTpjKXPChTlBD1nEMiozlOEeq98xaK4Mmm8dVUnLQCz53c/qQgYedttXdxuyTixoB+MRJbUopGv90gxaMKMTA9XddNmrRO2c5nFQg1adMMGaieQxiSmqGlq7cSX/NDTajpzpGwSUEmQ2XioWaXrAxU1Ng6RRPZs0sVhPNAX0vaCf1j89bLn7tFAHrXUkyKpV/w6Oi00PHrOFIFqm6tFSka/5Q80OXY1+MhgybLQMhKl7ZY/WSMPmc2NTflrHv5UH5cNMgqY7vz+SJd7/hnov96LOeF6P5HbWz+XEmzeO6xiH3HLdFAyqU2O6mgLVT6XJxuKEV5//dWo9PN9DgHP96X2DNY71vYXu9fGCfvR/cVdlirnamIQDg1ohxGHmSU6lxUyHnzzIA5S377uZQsXVEfa2350WrwbTttiyEynn8hLHv1MgttknnPHA9ik2inbGwlupeqCHsKRg/Y2kdnzTPChkrFpnj+CZvl+k2HDJICNbs40T8wv12rmLD62PAuq+3knqLSGtqhxjoeEkxNhSXTBS9h5xV18qbve64WYVPaJMNTuCFgeXNWLkBQAzCEqFs0BDRUPLX2hs8LQL+ZNWmCR1vWpfL3T5yS0tMZT4RF8UQnJE0xVRw38iGFBD9egLlJVZOKJrjVdkweJtSZG8Uu3BzSaGiRPA1RNyQPR0woPxqWBjBSl+/7rjny4ApKau4TAfGAypGFFy7pkfbR5B08L4JuXLZ29bT0cTE9ycH0FEc1v3htPTN3pcY0bkNK5HzMCFm93LkL58HaowiQPo388ZWGEUYUFJRe3bJxS0YUYKjaGai4Xlv2/Wc6wpG0QS/NFlEExKAK4TlEDWtRMfWS/UrpSXHaiYj2z5AFnXoyDAp6iqMcGbpK4pjJsBVYTTyyGc/vR32Kw76k5LtZnMN03DOGq1bkrW2Kqm6nVQgI8DohGeylJ2q8VfCgkhsbFh6127E+hjpNXzjxm/1mizQrKjGaZDkFoA89FUCHBJICtXL04mKkO0VRy4cu718wshYOyUs/oXZqg4LxMnu5nLPHiW08Jh2NVOmusyp5/ocdCGuTwqOFgV/07EAEwJiQ57ryI2HStsauXPx2gNb/JaA9YTnxSStgqK89lPk/pbrFoR4Pj2TuX5zI+4e6XmKKDVHkvy8SRtbTpQ2Zc9cc+TRqSYKmQ1oere354nEJSGmklWOnSJgBSF6vaqJ7DAMb2FFpwc7a+UXjcr/7LCrWHPeEnuyIQAqgxPB9rd67sKHuVzYHrAz+I3EO29S3xLp6OCTYhgqKDfRqC3AucsghGWFLws5kirBkhF6oUNC6vg8yEvkBEr6HOZiZs8fe8aQnpAj9vnANPPS7ZCxb6GkcTwukDNZCb1P12IGNOmiPylnzwmIMR4eayUf+hlyYwiZFfIiPtRviruWYI1mvbTzNmkcangzR+pBnAep6cEsNANlrqWJ7fq7U+xUvWjNNI92LD8UGHRWQcPQX+5cXBxY31nvmx9WDQZJCYrARCqCF7aDmWQ6TDuUJtmkiDHXXDXxrw2fYwPwTHG7cLVXCTQiC9kIY64f3SXghfG7eqj+Q2gIB88nHbRNPezkf5g+8HDZIOLCfUFKw19a/3X9R7RPWjVFOD4rlwzZJ8Cy3LwMd1hHeeJU39lSz2zO3LbF7VtUnPFrfwov02JzN4sAi1QJUAXoidgglrmLts2Z4efeQDfQTHUcEUhwyscsFqI0SyoxrzAYpcpulE4Y9wE/3dMpMMI27BCXwJJrXvlRNkB4JVQp2HUxdbE4NwHTnBxuL7hb5aUo+4ThkF7eJpzxs6WkfRwWkOKr9C5toduGdab43jl1ixXAn/0AUBxsWm5V/kQuSEPme2OCFD/CAvp0nzRvY2A6jhl8qGuBAHOrZs1+7UdV69gq4920C8KalOaEjOY4qSDj8qej1tG9+Y71/cRy2QrfdDdv2urwvUyaGZ3tV4qScrL+B5JlHEgnJYU7s2Ic0Spuk2ixtUHXGjzhI7KUPPa9aBsk5quDEcdRBah94NkPivcu5178ozS6MJTwlwOaq9bFOJOAdBPJ9mxrK+FY83X9ZWRjBw67CABI1emx/Xrlsl7j4LdLVtXwMfzHwmILUPvxhlg0SWE4IIKfrRnJkK7F3E8+iieE1rkTmJTW/JMCJ8VePOdoBKdwlwE0q+5faCh+jH7pbejxjIC09BDQ8koBqwLi/xvwVx7S8ZvwFUKb5Gf59yTj+Hw/7ALl9bHOSAAAAAElFTkSuQmCC'
 
 // returns the checksummed address if the address is valid, otherwise returns false
 function isAddress(value) {
-    try {
-        return address.getAddress(value);
-    }
-    catch (_a) {
-        return false;
-    }
+  try {
+    return address.getAddress(value)
+  } catch (_a) {
+    return false
+  }
 }
 // shorten the checksummed version of the input address to have 0x + 4 characters at start and end
 function shortenAddress(address, chars) {
-    if (chars === void 0) { chars = 4; }
-    var parsed = isAddress(address);
-    if (!parsed) {
-        throw Error("Invalid 'address' parameter '" + address + "'.");
-    }
-    return parsed.substring(0, chars + 2) + "..." + parsed.substring(42 - chars);
+  if (chars === void 0) {
+    chars = 4
+  }
+  var parsed = isAddress(address)
+  if (!parsed) {
+    throw Error("Invalid 'address' parameter '" + address + "'.")
+  }
+  return parsed.substring(0, chars + 2) + '...' + parsed.substring(42 - chars)
 }
 // account is not optional
 function getSigner(library, account) {
-    return library.getSigner(account).connectUnchecked();
+  return library.getSigner(account).connectUnchecked()
 }
 // account is optional
 function getProviderOrSigner(library, account) {
-    return account ? getSigner(library, account) : library;
+  return account ? getSigner(library, account) : library
 }
 // account is optional
 function getContract(address, ABI, library, account) {
-    if (!isAddress(address) || address === constants.AddressZero) {
-        throw Error("Invalid 'address' parameter '" + address + "'.");
-    }
-    return new contracts.Contract(address, ABI, getProviderOrSigner(library, account));
+  if (!isAddress(address) || address === constants.AddressZero) {
+    throw Error("Invalid 'address' parameter '" + address + "'.")
+  }
+  return new contracts.Contract(address, ABI, getProviderOrSigner(library, account))
 }
 function escapeRegExp(string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
 }
 function isTokenOnList(chainTokenMap, token) {
-    var _a;
-    return Boolean((token === null || token === void 0 ? void 0 : token.isToken) && ((_a = chainTokenMap[token.chainId]) === null || _a === void 0 ? void 0 : _a[token.address]));
+  var _a
+  return Boolean(
+    (token === null || token === void 0 ? void 0 : token.isToken) &&
+      ((_a = chainTokenMap[token.chainId]) === null || _a === void 0 ? void 0 : _a[token.address])
+  )
 }
 
 /**
@@ -432,5215 +606,5391 @@ function isTokenOnList(chainTokenMap, token) {
  */
 // modified from https://usehooks.com/useDebounce/
 function useDebounce(value, delay) {
-    var _a = __read(React.useState(value), 2), debouncedValue = _a[0], setDebouncedValue = _a[1];
-    React.useEffect(function () {
-        // Update debounced value after delay
-        var handler = setTimeout(function () {
-            setDebouncedValue(value);
-        }, delay);
-        // Cancel the timeout if value changes (also on delay change or unmount)
-        // This is how we prevent debounced value from updating if value is changed ...
-        // .. within the delay period. Timeout gets cleared and restarted.
-        return function () {
-            clearTimeout(handler);
-        };
-    }, [value, delay]);
-    return debouncedValue;
+  var _a = __read(React.useState(value), 2),
+    debouncedValue = _a[0],
+    setDebouncedValue = _a[1]
+  React.useEffect(
+    function () {
+      // Update debounced value after delay
+      var handler = setTimeout(function () {
+        setDebouncedValue(value)
+      }, delay)
+      // Cancel the timeout if value changes (also on delay change or unmount)
+      // This is how we prevent debounced value from updating if value is changed ...
+      // .. within the delay period. Timeout gets cleared and restarted.
+      return function () {
+        clearTimeout(handler)
+      }
+    },
+    [value, delay]
+  )
+  return debouncedValue
 }
 
-var VISIBILITY_STATE_SUPPORTED = 'visibilityState' in document;
+var VISIBILITY_STATE_SUPPORTED = 'visibilityState' in document
 function isWindowVisible() {
-    return !VISIBILITY_STATE_SUPPORTED || document.visibilityState !== 'hidden';
+  return !VISIBILITY_STATE_SUPPORTED || document.visibilityState !== 'hidden'
 }
 /**
  * Returns whether the window is currently visible to the user.
  */
 function useIsWindowVisible() {
-    var _a = __read(React.useState(isWindowVisible()), 2), focused = _a[0], setFocused = _a[1];
-    var listener = React.useCallback(function () {
-        setFocused(isWindowVisible());
-    }, [setFocused]);
-    React.useEffect(function () {
-        if (!VISIBILITY_STATE_SUPPORTED)
-            return undefined;
-        document.addEventListener('visibilitychange', listener);
-        return function () {
-            document.removeEventListener('visibilitychange', listener);
-        };
-    }, [listener]);
-    return focused;
+  var _a = __read(React.useState(isWindowVisible()), 2),
+    focused = _a[0],
+    setFocused = _a[1]
+  var listener = React.useCallback(
+    function () {
+      setFocused(isWindowVisible())
+    },
+    [setFocused]
+  )
+  React.useEffect(
+    function () {
+      if (!VISIBILITY_STATE_SUPPORTED) return undefined
+      document.addEventListener('visibilitychange', listener)
+      return function () {
+        document.removeEventListener('visibilitychange', listener)
+      }
+    },
+    [listener]
+  )
+  return focused
 }
 
 function useBlock() {
-    var _a = useActiveWeb3React(), chainId = _a.chainId, library = _a.library;
-    var windowVisible = useIsWindowVisible();
-    var _b = __read(React.useState({ chainId: chainId }), 2), state = _b[0], setState = _b[1];
-    var onBlock = React.useCallback(function (block) {
-        setState(function (state) {
-            if (state.chainId === chainId) {
-                if (typeof state.block !== 'number')
-                    return { chainId: chainId, block: block };
-                return { chainId: chainId, block: Math.max(block, state.block) };
-            }
-            return state;
-        });
-    }, [chainId]);
-    React.useEffect(function () {
-        if (library && chainId && windowVisible) {
-            setState({ chainId: chainId });
-            library
-                .getBlockNumber()
-                .then(onBlock)
-                .catch(function (error) {
-                console.error("Failed to get block number for chainId " + chainId, error);
-            });
-            library.on('block', onBlock);
-            return function () {
-                library.removeListener('block', onBlock);
-            };
+  var _a = useActiveWeb3React(),
+    chainId = _a.chainId,
+    library = _a.library
+  var windowVisible = useIsWindowVisible()
+  var _b = __read(React.useState({ chainId }), 2),
+    state = _b[0],
+    setState = _b[1]
+  var onBlock = React.useCallback(
+    function (block) {
+      setState(function (state) {
+        if (state.chainId === chainId) {
+          if (typeof state.block !== 'number') return { chainId, block }
+          return { chainId, block: Math.max(block, state.block) }
         }
-        return undefined;
-    }, [chainId, library, onBlock, windowVisible]);
-    var debouncedBlock = useDebounce(state.block, 100);
-    return state.block ? debouncedBlock : undefined;
+        return state
+      })
+    },
+    [chainId]
+  )
+  React.useEffect(
+    function () {
+      if (library && chainId && windowVisible) {
+        setState({ chainId })
+        library
+          .getBlockNumber()
+          .then(onBlock)
+          .catch(function (error) {
+            console.error('Failed to get block number for chainId ' + chainId, error)
+          })
+        library.on('block', onBlock)
+        return function () {
+          library.removeListener('block', onBlock)
+        }
+      }
+      return undefined
+    },
+    [chainId, library, onBlock, windowVisible]
+  )
+  var debouncedBlock = useDebounce(state.block, 100)
+  return state.block ? debouncedBlock : undefined
 }
-var blockAtom = jotai.atom(undefined);
+var blockAtom = jotai.atom(undefined)
 function BlockUpdater() {
-    var setBlock = utils.useUpdateAtom(blockAtom);
-    var block = useBlock();
-    React.useEffect(function () {
-        setBlock(block);
-    }, [block, setBlock]);
-    return null;
+  var setBlock = utils.useUpdateAtom(blockAtom)
+  var block = useBlock()
+  React.useEffect(
+    function () {
+      setBlock(block)
+    },
+    [block, setBlock]
+  )
+  return null
 }
 /** Requires that BlockUpdater be installed in the DOM tree. */
 function useBlockNumber() {
-    var chainId = useActiveWeb3React().chainId;
-    var block = utils.useAtomValue(blockAtom);
-    return chainId ? block : undefined;
+  var chainId = useActiveWeb3React().chainId
+  var block = utils.useAtomValue(blockAtom)
+  return chainId ? block : undefined
 }
 function useFastForwardBlockNumber() {
-    return utils.useUpdateAtom(blockAtom);
+  return utils.useUpdateAtom(blockAtom)
 }
 
 var abi$6 = [
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "_rewardsDistribution",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "_rewardsToken",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "_stakingToken",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "constructor"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "reward",
-				type: "uint256"
-			}
-		],
-		name: "RewardAdded",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "user",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "reward",
-				type: "uint256"
-			}
-		],
-		name: "RewardPaid",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "user",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount",
-				type: "uint256"
-			}
-		],
-		name: "Staked",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "user",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount",
-				type: "uint256"
-			}
-		],
-		name: "Withdrawn",
-		type: "event"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "account",
-				type: "address"
-			}
-		],
-		name: "balanceOf",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "account",
-				type: "address"
-			}
-		],
-		name: "earned",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-		],
-		name: "exit",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-		],
-		name: "getReward",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "getRewardForDuration",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "lastTimeRewardApplicable",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "lastUpdateTime",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "reward",
-				type: "uint256"
-			}
-		],
-		name: "notifyRewardAmount",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "periodFinish",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "rewardPerToken",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "rewardPerTokenStored",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "rewardRate",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		name: "rewards",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "rewardsDistribution",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "rewardsDuration",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "rewardsToken",
-		outputs: [
-			{
-				internalType: "contract IERC20",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amount",
-				type: "uint256"
-			}
-		],
-		name: "stake",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amount",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			},
-			{
-				internalType: "uint8",
-				name: "v",
-				type: "uint8"
-			},
-			{
-				internalType: "bytes32",
-				name: "r",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "s",
-				type: "bytes32"
-			}
-		],
-		name: "stakeWithPermit",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "stakingToken",
-		outputs: [
-			{
-				internalType: "contract IERC20",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "totalSupply",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		name: "userRewardPerTokenPaid",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amount",
-				type: "uint256"
-			}
-		],
-		name: "withdraw",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	}
-];
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_rewardsDistribution',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: '_rewardsToken',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: '_stakingToken',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'reward',
+        type: 'uint256',
+      },
+    ],
+    name: 'RewardAdded',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'user',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'reward',
+        type: 'uint256',
+      },
+    ],
+    name: 'RewardPaid',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'user',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
+    ],
+    name: 'Staked',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'user',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
+    ],
+    name: 'Withdrawn',
+    type: 'event',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
+    ],
+    name: 'balanceOf',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
+    ],
+    name: 'earned',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: 'exit',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: 'getReward',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'getRewardForDuration',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'lastTimeRewardApplicable',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'lastUpdateTime',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'reward',
+        type: 'uint256',
+      },
+    ],
+    name: 'notifyRewardAmount',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'periodFinish',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'rewardPerToken',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'rewardPerTokenStored',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'rewardRate',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'rewards',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'rewardsDistribution',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'rewardsDuration',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'rewardsToken',
+    outputs: [
+      {
+        internalType: 'contract IERC20',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
+    ],
+    name: 'stake',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint8',
+        name: 'v',
+        type: 'uint8',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'r',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 's',
+        type: 'bytes32',
+      },
+    ],
+    name: 'stakeWithPermit',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'stakingToken',
+    outputs: [
+      {
+        internalType: 'contract IERC20',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'userRewardPerTokenPaid',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
+    ],
+    name: 'withdraw',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+]
 
 var abi$5 = [
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "token_",
-				type: "address"
-			},
-			{
-				internalType: "bytes32",
-				name: "merkleRoot_",
-				type: "bytes32"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "constructor"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "index",
-				type: "uint256"
-			},
-			{
-				indexed: false,
-				internalType: "address",
-				name: "account",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount",
-				type: "uint256"
-			}
-		],
-		name: "Claimed",
-		type: "event"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "index",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "account",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "amount",
-				type: "uint256"
-			},
-			{
-				internalType: "bytes32[]",
-				name: "merkleProof",
-				type: "bytes32[]"
-			}
-		],
-		name: "claim",
-		outputs: [
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "index",
-				type: "uint256"
-			}
-		],
-		name: "isClaimed",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "merkleRoot",
-		outputs: [
-			{
-				internalType: "bytes32",
-				name: "",
-				type: "bytes32"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "token",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'token_',
+        type: 'address',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'merkleRoot_',
+        type: 'bytes32',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'index',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
+    ],
+    name: 'Claimed',
+    type: 'event',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'index',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256',
+      },
+      {
+        internalType: 'bytes32[]',
+        name: 'merkleProof',
+        type: 'bytes32[]',
+      },
+    ],
+    name: 'claim',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'index',
+        type: 'uint256',
+      },
+    ],
+    name: 'isClaimed',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'merkleRoot',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'token',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var abi$4 = [
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			},
-			{
-				indexed: true,
-				internalType: "address",
-				name: "spender",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "value",
-				type: "uint256"
-			}
-		],
-		name: "Approval",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "sender",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount0",
-				type: "uint256"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount1",
-				type: "uint256"
-			},
-			{
-				indexed: true,
-				internalType: "address",
-				name: "to",
-				type: "address"
-			}
-		],
-		name: "Burn",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "sender",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount0",
-				type: "uint256"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount1",
-				type: "uint256"
-			}
-		],
-		name: "Mint",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "sender",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount0In",
-				type: "uint256"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount1In",
-				type: "uint256"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount0Out",
-				type: "uint256"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "amount1Out",
-				type: "uint256"
-			},
-			{
-				indexed: true,
-				internalType: "address",
-				name: "to",
-				type: "address"
-			}
-		],
-		name: "Swap",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: false,
-				internalType: "uint112",
-				name: "reserve0",
-				type: "uint112"
-			},
-			{
-				indexed: false,
-				internalType: "uint112",
-				name: "reserve1",
-				type: "uint112"
-			}
-		],
-		name: "Sync",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "from",
-				type: "address"
-			},
-			{
-				indexed: true,
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "value",
-				type: "uint256"
-			}
-		],
-		name: "Transfer",
-		type: "event"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "DOMAIN_SEPARATOR",
-		outputs: [
-			{
-				internalType: "bytes32",
-				name: "",
-				type: "bytes32"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "MINIMUM_LIQUIDITY",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "PERMIT_TYPEHASH",
-		outputs: [
-			{
-				internalType: "bytes32",
-				name: "",
-				type: "bytes32"
-			}
-		],
-		payable: false,
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "spender",
-				type: "address"
-			}
-		],
-		name: "allowance",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "spender",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "value",
-				type: "uint256"
-			}
-		],
-		name: "approve",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			}
-		],
-		name: "balanceOf",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			}
-		],
-		name: "burn",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amount0",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amount1",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "decimals",
-		outputs: [
-			{
-				internalType: "uint8",
-				name: "",
-				type: "uint8"
-			}
-		],
-		payable: false,
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "factory",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "getReserves",
-		outputs: [
-			{
-				internalType: "uint112",
-				name: "reserve0",
-				type: "uint112"
-			},
-			{
-				internalType: "uint112",
-				name: "reserve1",
-				type: "uint112"
-			},
-			{
-				internalType: "uint32",
-				name: "blockTimestampLast",
-				type: "uint32"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		name: "initialize",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "kLast",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			}
-		],
-		name: "mint",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "name",
-		outputs: [
-			{
-				internalType: "string",
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			}
-		],
-		name: "nonces",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "spender",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "value",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			},
-			{
-				internalType: "uint8",
-				name: "v",
-				type: "uint8"
-			},
-			{
-				internalType: "bytes32",
-				name: "r",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "s",
-				type: "bytes32"
-			}
-		],
-		name: "permit",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "price0CumulativeLast",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "price1CumulativeLast",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			}
-		],
-		name: "skim",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amount0Out",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amount1Out",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "bytes",
-				name: "data",
-				type: "bytes"
-			}
-		],
-		name: "swap",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "symbol",
-		outputs: [
-			{
-				internalType: "string",
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-		],
-		name: "sync",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "token0",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "token1",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "totalSupply",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "value",
-				type: "uint256"
-			}
-		],
-		name: "transfer",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "from",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "value",
-				type: "uint256"
-			}
-		],
-		name: "transferFrom",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	}
-];
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'spender',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'Approval',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'sender',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount0',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount1',
+        type: 'uint256',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+    ],
+    name: 'Burn',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'sender',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount0',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount1',
+        type: 'uint256',
+      },
+    ],
+    name: 'Mint',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'sender',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount0In',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount1In',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount0Out',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amount1Out',
+        type: 'uint256',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+    ],
+    name: 'Swap',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'uint112',
+        name: 'reserve0',
+        type: 'uint112',
+      },
+      {
+        indexed: false,
+        internalType: 'uint112',
+        name: 'reserve1',
+        type: 'uint112',
+      },
+    ],
+    name: 'Sync',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'from',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'Transfer',
+    type: 'event',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'DOMAIN_SEPARATOR',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'MINIMUM_LIQUIDITY',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'PERMIT_TYPEHASH',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    payable: false,
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'spender',
+        type: 'address',
+      },
+    ],
+    name: 'allowance',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'spender',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'approve',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+    ],
+    name: 'balanceOf',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+    ],
+    name: 'burn',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amount0',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amount1',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'decimals',
+    outputs: [
+      {
+        internalType: 'uint8',
+        name: '',
+        type: 'uint8',
+      },
+    ],
+    payable: false,
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'factory',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'getReserves',
+    outputs: [
+      {
+        internalType: 'uint112',
+        name: 'reserve0',
+        type: 'uint112',
+      },
+      {
+        internalType: 'uint112',
+        name: 'reserve1',
+        type: 'uint112',
+      },
+      {
+        internalType: 'uint32',
+        name: 'blockTimestampLast',
+        type: 'uint32',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'initialize',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'kLast',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+    ],
+    name: 'mint',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'name',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+    ],
+    name: 'nonces',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'spender',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint8',
+        name: 'v',
+        type: 'uint8',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'r',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 's',
+        type: 'bytes32',
+      },
+    ],
+    name: 'permit',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'price0CumulativeLast',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'price1CumulativeLast',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+    ],
+    name: 'skim',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amount0Out',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amount1Out',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes',
+      },
+    ],
+    name: 'swap',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'symbol',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: 'sync',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'token0',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'token1',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'transfer',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'from',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'transferFrom',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+]
 
 var abi$3 = [
-	{
-		inputs: [
-		],
-		name: "WETH",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "tokenA",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "tokenB",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "amountADesired",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountBDesired",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountAMin",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountBMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "addLiquidity",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountA",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountB",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "token",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "amountTokenDesired",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountTokenMin",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountETHMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "addLiquidityETH",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountToken",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountETH",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			}
-		],
-		stateMutability: "payable",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "factory",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "reserveIn",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "reserveOut",
-				type: "uint256"
-			}
-		],
-		name: "getAmountIn",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			}
-		],
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "reserveIn",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "reserveOut",
-				type: "uint256"
-			}
-		],
-		name: "getAmountOut",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			}
-		],
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			}
-		],
-		name: "getAmountsIn",
-		outputs: [
-			{
-				internalType: "uint256[]",
-				name: "amounts",
-				type: "uint256[]"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			}
-		],
-		name: "getAmountsOut",
-		outputs: [
-			{
-				internalType: "uint256[]",
-				name: "amounts",
-				type: "uint256[]"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountA",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "reserveA",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "reserveB",
-				type: "uint256"
-			}
-		],
-		name: "quote",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountB",
-				type: "uint256"
-			}
-		],
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "tokenA",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "tokenB",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountAMin",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountBMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "removeLiquidity",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountA",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountB",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "token",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountTokenMin",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountETHMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "removeLiquidityETH",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountToken",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountETH",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "token",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountTokenMin",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountETHMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "removeLiquidityETHSupportingFeeOnTransferTokens",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountETH",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "token",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountTokenMin",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountETHMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			},
-			{
-				internalType: "bool",
-				name: "approveMax",
-				type: "bool"
-			},
-			{
-				internalType: "uint8",
-				name: "v",
-				type: "uint8"
-			},
-			{
-				internalType: "bytes32",
-				name: "r",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "s",
-				type: "bytes32"
-			}
-		],
-		name: "removeLiquidityETHWithPermit",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountToken",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountETH",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "token",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountTokenMin",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountETHMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			},
-			{
-				internalType: "bool",
-				name: "approveMax",
-				type: "bool"
-			},
-			{
-				internalType: "uint8",
-				name: "v",
-				type: "uint8"
-			},
-			{
-				internalType: "bytes32",
-				name: "r",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "s",
-				type: "bytes32"
-			}
-		],
-		name: "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountETH",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "tokenA",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "tokenB",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "liquidity",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountAMin",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountBMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			},
-			{
-				internalType: "bool",
-				name: "approveMax",
-				type: "bool"
-			},
-			{
-				internalType: "uint8",
-				name: "v",
-				type: "uint8"
-			},
-			{
-				internalType: "bytes32",
-				name: "r",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "s",
-				type: "bytes32"
-			}
-		],
-		name: "removeLiquidityWithPermit",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountA",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountB",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapETHForExactTokens",
-		outputs: [
-			{
-				internalType: "uint256[]",
-				name: "amounts",
-				type: "uint256[]"
-			}
-		],
-		stateMutability: "payable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountOutMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapExactETHForTokens",
-		outputs: [
-			{
-				internalType: "uint256[]",
-				name: "amounts",
-				type: "uint256[]"
-			}
-		],
-		stateMutability: "payable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountOutMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapExactETHForTokensSupportingFeeOnTransferTokens",
-		outputs: [
-		],
-		stateMutability: "payable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountOutMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapExactTokensForETH",
-		outputs: [
-			{
-				internalType: "uint256[]",
-				name: "amounts",
-				type: "uint256[]"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountOutMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapExactTokensForETHSupportingFeeOnTransferTokens",
-		outputs: [
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountOutMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapExactTokensForTokens",
-		outputs: [
-			{
-				internalType: "uint256[]",
-				name: "amounts",
-				type: "uint256[]"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountOutMin",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapExactTokensForTokensSupportingFeeOnTransferTokens",
-		outputs: [
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountInMax",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapTokensForExactETH",
-		outputs: [
-			{
-				internalType: "uint256[]",
-				name: "amounts",
-				type: "uint256[]"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "amountInMax",
-				type: "uint256"
-			},
-			{
-				internalType: "address[]",
-				name: "path",
-				type: "address[]"
-			},
-			{
-				internalType: "address",
-				name: "to",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "deadline",
-				type: "uint256"
-			}
-		],
-		name: "swapTokensForExactTokens",
-		outputs: [
-			{
-				internalType: "uint256[]",
-				name: "amounts",
-				type: "uint256[]"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	}
-];
+  {
+    inputs: [],
+    name: 'WETH',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'tokenA',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'tokenB',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountADesired',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountBDesired',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountAMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountBMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'addLiquidity',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountA',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountB',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountTokenDesired',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountTokenMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountETHMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'addLiquidityETH',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountToken',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'factory',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'reserveIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'reserveOut',
+        type: 'uint256',
+      },
+    ],
+    name: 'getAmountIn',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'reserveIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'reserveOut',
+        type: 'uint256',
+      },
+    ],
+    name: 'getAmountOut',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+    ],
+    name: 'getAmountsIn',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: 'amounts',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+    ],
+    name: 'getAmountsOut',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: 'amounts',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountA',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'reserveA',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'reserveB',
+        type: 'uint256',
+      },
+    ],
+    name: 'quote',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountB',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'tokenA',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'tokenB',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountAMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountBMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'removeLiquidity',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountA',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountB',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountTokenMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountETHMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'removeLiquidityETH',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountToken',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountTokenMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountETHMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'removeLiquidityETHSupportingFeeOnTransferTokens',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountTokenMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountETHMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+      {
+        internalType: 'bool',
+        name: 'approveMax',
+        type: 'bool',
+      },
+      {
+        internalType: 'uint8',
+        name: 'v',
+        type: 'uint8',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'r',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 's',
+        type: 'bytes32',
+      },
+    ],
+    name: 'removeLiquidityETHWithPermit',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountToken',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountTokenMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountETHMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+      {
+        internalType: 'bool',
+        name: 'approveMax',
+        type: 'bool',
+      },
+      {
+        internalType: 'uint8',
+        name: 'v',
+        type: 'uint8',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'r',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 's',
+        type: 'bytes32',
+      },
+    ],
+    name: 'removeLiquidityETHWithPermitSupportingFeeOnTransferTokens',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountETH',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'tokenA',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'tokenB',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'liquidity',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountAMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountBMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+      {
+        internalType: 'bool',
+        name: 'approveMax',
+        type: 'bool',
+      },
+      {
+        internalType: 'uint8',
+        name: 'v',
+        type: 'uint8',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'r',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 's',
+        type: 'bytes32',
+      },
+    ],
+    name: 'removeLiquidityWithPermit',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountA',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountB',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapETHForExactTokens',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: 'amounts',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOutMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapExactETHForTokens',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: 'amounts',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOutMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapExactETHForTokensSupportingFeeOnTransferTokens',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountOutMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapExactTokensForETH',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: 'amounts',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountOutMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapExactTokensForETHSupportingFeeOnTransferTokens',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountOutMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapExactTokensForTokens',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: 'amounts',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountOutMin',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapExactTokensForTokensSupportingFeeOnTransferTokens',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountInMax',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapTokensForExactETH',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: 'amounts',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountInMax',
+        type: 'uint256',
+      },
+      {
+        internalType: 'address[]',
+        name: 'path',
+        type: 'address[]',
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: 'deadline',
+        type: 'uint256',
+      },
+    ],
+    name: 'swapTokensForExactTokens',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: 'amounts',
+        type: 'uint256[]',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+]
 
 var abi$2 = [
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "_factory",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "_WETH9",
-				type: "address"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "constructor"
-	},
-	{
-		inputs: [
-		],
-		name: "WETH9",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "factory",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "bytes",
-				name: "path",
-				type: "bytes"
-			},
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			}
-		],
-		name: "quoteExactInput",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "tokenIn",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "tokenOut",
-				type: "address"
-			},
-			{
-				internalType: "uint24",
-				name: "fee",
-				type: "uint24"
-			},
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			},
-			{
-				internalType: "uint160",
-				name: "sqrtPriceLimitX96",
-				type: "uint160"
-			}
-		],
-		name: "quoteExactInputSingle",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "bytes",
-				name: "path",
-				type: "bytes"
-			},
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			}
-		],
-		name: "quoteExactOutput",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "tokenIn",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "tokenOut",
-				type: "address"
-			},
-			{
-				internalType: "uint24",
-				name: "fee",
-				type: "uint24"
-			},
-			{
-				internalType: "uint256",
-				name: "amountOut",
-				type: "uint256"
-			},
-			{
-				internalType: "uint160",
-				name: "sqrtPriceLimitX96",
-				type: "uint160"
-			}
-		],
-		name: "quoteExactOutputSingle",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "amountIn",
-				type: "uint256"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "int256",
-				name: "amount0Delta",
-				type: "int256"
-			},
-			{
-				internalType: "int256",
-				name: "amount1Delta",
-				type: "int256"
-			},
-			{
-				internalType: "bytes",
-				name: "path",
-				type: "bytes"
-			}
-		],
-		name: "uniswapV3SwapCallback",
-		outputs: [
-		],
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_factory',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: '_WETH9',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    inputs: [],
+    name: 'WETH9',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'factory',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes',
+        name: 'path',
+        type: 'bytes',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+    ],
+    name: 'quoteExactInput',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'tokenIn',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'tokenOut',
+        type: 'address',
+      },
+      {
+        internalType: 'uint24',
+        name: 'fee',
+        type: 'uint24',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint160',
+        name: 'sqrtPriceLimitX96',
+        type: 'uint160',
+      },
+    ],
+    name: 'quoteExactInputSingle',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes',
+        name: 'path',
+        type: 'bytes',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+    ],
+    name: 'quoteExactOutput',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'tokenIn',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'tokenOut',
+        type: 'address',
+      },
+      {
+        internalType: 'uint24',
+        name: 'fee',
+        type: 'uint24',
+      },
+      {
+        internalType: 'uint256',
+        name: 'amountOut',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint160',
+        name: 'sqrtPriceLimitX96',
+        type: 'uint160',
+      },
+    ],
+    name: 'quoteExactOutputSingle',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'amountIn',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'int256',
+        name: 'amount0Delta',
+        type: 'int256',
+      },
+      {
+        internalType: 'int256',
+        name: 'amount1Delta',
+        type: 'int256',
+      },
+      {
+        internalType: 'bytes',
+        name: 'path',
+        type: 'bytes',
+      },
+    ],
+    name: 'uniswapV3SwapCallback',
+    outputs: [],
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var abi$1 = [
-	{
-		inputs: [
-		],
-		name: "getCurrentBlockTimestamp",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "timestamp",
-				type: "uint256"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "addr",
-				type: "address"
-			}
-		],
-		name: "getEthBalance",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "balance",
-				type: "uint256"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				components: [
-					{
-						internalType: "address",
-						name: "target",
-						type: "address"
-					},
-					{
-						internalType: "uint256",
-						name: "gasLimit",
-						type: "uint256"
-					},
-					{
-						internalType: "bytes",
-						name: "callData",
-						type: "bytes"
-					}
-				],
-				internalType: "struct UniswapInterfaceMulticall.Call[]",
-				name: "calls",
-				type: "tuple[]"
-			}
-		],
-		name: "multicall",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "blockNumber",
-				type: "uint256"
-			},
-			{
-				components: [
-					{
-						internalType: "bool",
-						name: "success",
-						type: "bool"
-					},
-					{
-						internalType: "uint256",
-						name: "gasUsed",
-						type: "uint256"
-					},
-					{
-						internalType: "bytes",
-						name: "returnData",
-						type: "bytes"
-					}
-				],
-				internalType: "struct UniswapInterfaceMulticall.Result[]",
-				name: "returnData",
-				type: "tuple[]"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	}
-];
+  {
+    inputs: [],
+    name: 'getCurrentBlockTimestamp',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'timestamp',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'addr',
+        type: 'address',
+      },
+    ],
+    name: 'getEthBalance',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'balance',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: 'address',
+            name: 'target',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'gasLimit',
+            type: 'uint256',
+          },
+          {
+            internalType: 'bytes',
+            name: 'callData',
+            type: 'bytes',
+          },
+        ],
+        internalType: 'struct UniswapInterfaceMulticall.Call[]',
+        name: 'calls',
+        type: 'tuple[]',
+      },
+    ],
+    name: 'multicall',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'blockNumber',
+        type: 'uint256',
+      },
+      {
+        components: [
+          {
+            internalType: 'bool',
+            name: 'success',
+            type: 'bool',
+          },
+          {
+            internalType: 'uint256',
+            name: 'gasUsed',
+            type: 'uint256',
+          },
+          {
+            internalType: 'bytes',
+            name: 'returnData',
+            type: 'bytes',
+          },
+        ],
+        internalType: 'struct UniswapInterfaceMulticall.Result[]',
+        name: 'returnData',
+        type: 'tuple[]',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+]
 
 var ARGENT_WALLET_DETECTOR_ABI = [
-	{
-		inputs: [
-			{
-				internalType: "bytes32[]",
-				name: "_codes",
-				type: "bytes32[]"
-			},
-			{
-				internalType: "address[]",
-				name: "_implementations",
-				type: "address[]"
-			}
-		],
-		stateMutability: "nonpayable",
-		type: "constructor"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "code",
-				type: "bytes32"
-			}
-		],
-		name: "CodeAdded",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "implementation",
-				type: "address"
-			}
-		],
-		name: "ImplementationAdded",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "_newOwner",
-				type: "address"
-			}
-		],
-		name: "OwnerChanged",
-		type: "event"
-	},
-	{
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "",
-				type: "bytes32"
-			}
-		],
-		name: "acceptedCodes",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "exists",
-				type: "bool"
-			},
-			{
-				internalType: "uint128",
-				name: "index",
-				type: "uint128"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		name: "acceptedImplementations",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "exists",
-				type: "bool"
-			},
-			{
-				internalType: "uint128",
-				name: "index",
-				type: "uint128"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "_code",
-				type: "bytes32"
-			}
-		],
-		name: "addCode",
-		outputs: [
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "_argentWallet",
-				type: "address"
-			}
-		],
-		name: "addCodeAndImplementationFromWallet",
-		outputs: [
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "_impl",
-				type: "address"
-			}
-		],
-		name: "addImplementation",
-		outputs: [
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "_newOwner",
-				type: "address"
-			}
-		],
-		name: "changeOwner",
-		outputs: [
-		],
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "getCodes",
-		outputs: [
-			{
-				internalType: "bytes32[]",
-				name: "",
-				type: "bytes32[]"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "getImplementations",
-		outputs: [
-			{
-				internalType: "address[]",
-				name: "",
-				type: "address[]"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "address",
-				name: "_wallet",
-				type: "address"
-			}
-		],
-		name: "isArgentWallet",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "owner",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    inputs: [
+      {
+        internalType: 'bytes32[]',
+        name: '_codes',
+        type: 'bytes32[]',
+      },
+      {
+        internalType: 'address[]',
+        name: '_implementations',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'code',
+        type: 'bytes32',
+      },
+    ],
+    name: 'CodeAdded',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'implementation',
+        type: 'address',
+      },
+    ],
+    name: 'ImplementationAdded',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: '_newOwner',
+        type: 'address',
+      },
+    ],
+    name: 'OwnerChanged',
+    type: 'event',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    name: 'acceptedCodes',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: 'exists',
+        type: 'bool',
+      },
+      {
+        internalType: 'uint128',
+        name: 'index',
+        type: 'uint128',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'acceptedImplementations',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: 'exists',
+        type: 'bool',
+      },
+      {
+        internalType: 'uint128',
+        name: 'index',
+        type: 'uint128',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: '_code',
+        type: 'bytes32',
+      },
+    ],
+    name: 'addCode',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_argentWallet',
+        type: 'address',
+      },
+    ],
+    name: 'addCodeAndImplementationFromWallet',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_impl',
+        type: 'address',
+      },
+    ],
+    name: 'addImplementation',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_newOwner',
+        type: 'address',
+      },
+    ],
+    name: 'changeOwner',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getCodes',
+    outputs: [
+      {
+        internalType: 'bytes32[]',
+        name: '',
+        type: 'bytes32[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getImplementations',
+    outputs: [
+      {
+        internalType: 'address[]',
+        name: '',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_wallet',
+        type: 'address',
+      },
+    ],
+    name: 'isArgentWallet',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'owner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var EIP_2612 = [
-	{
-		constant: true,
-		inputs: [
-			{
-				name: "owner",
-				type: "address"
-			}
-		],
-		name: "nonces",
-		outputs: [
-			{
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "DOMAIN_SEPARATOR",
-		outputs: [
-			{
-				name: "",
-				type: "bytes32"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    constant: true,
+    inputs: [
+      {
+        name: 'owner',
+        type: 'address',
+      },
+    ],
+    name: 'nonces',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'DOMAIN_SEPARATOR',
+    outputs: [
+      {
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var ENS_PUBLIC_RESOLVER_ABI = [
-	{
-		inputs: [
-			{
-				internalType: "contract ENS",
-				name: "_ens",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "constructor"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: true,
-				internalType: "uint256",
-				name: "contentType",
-				type: "uint256"
-			}
-		],
-		name: "ABIChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "address",
-				name: "a",
-				type: "address"
-			}
-		],
-		name: "AddrChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "uint256",
-				name: "coinType",
-				type: "uint256"
-			},
-			{
-				indexed: false,
-				internalType: "bytes",
-				name: "newAddress",
-				type: "bytes"
-			}
-		],
-		name: "AddressChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: true,
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			},
-			{
-				indexed: true,
-				internalType: "address",
-				name: "target",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "bool",
-				name: "isAuthorised",
-				type: "bool"
-			}
-		],
-		name: "AuthorisationChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "bytes",
-				name: "hash",
-				type: "bytes"
-			}
-		],
-		name: "ContenthashChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "bytes",
-				name: "name",
-				type: "bytes"
-			},
-			{
-				indexed: false,
-				internalType: "uint16",
-				name: "resource",
-				type: "uint16"
-			},
-			{
-				indexed: false,
-				internalType: "bytes",
-				name: "record",
-				type: "bytes"
-			}
-		],
-		name: "DNSRecordChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "bytes",
-				name: "name",
-				type: "bytes"
-			},
-			{
-				indexed: false,
-				internalType: "uint16",
-				name: "resource",
-				type: "uint16"
-			}
-		],
-		name: "DNSRecordDeleted",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "DNSZoneCleared",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: true,
-				internalType: "bytes4",
-				name: "interfaceID",
-				type: "bytes4"
-			},
-			{
-				indexed: false,
-				internalType: "address",
-				name: "implementer",
-				type: "address"
-			}
-		],
-		name: "InterfaceChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "string",
-				name: "name",
-				type: "string"
-			}
-		],
-		name: "NameChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "bytes32",
-				name: "x",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "bytes32",
-				name: "y",
-				type: "bytes32"
-			}
-		],
-		name: "PubkeyChanged",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: true,
-				internalType: "string",
-				name: "indexedKey",
-				type: "string"
-			},
-			{
-				indexed: false,
-				internalType: "string",
-				name: "key",
-				type: "string"
-			}
-		],
-		name: "TextChanged",
-		type: "event"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "uint256",
-				name: "contentTypes",
-				type: "uint256"
-			}
-		],
-		name: "ABI",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			},
-			{
-				internalType: "bytes",
-				name: "",
-				type: "bytes"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "addr",
-		outputs: [
-			{
-				internalType: "address payable",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "",
-				type: "bytes32"
-			},
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		name: "authorisations",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "clearDNSZone",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "contenthash",
-		outputs: [
-			{
-				internalType: "bytes",
-				name: "",
-				type: "bytes"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "name",
-				type: "bytes32"
-			},
-			{
-				internalType: "uint16",
-				name: "resource",
-				type: "uint16"
-			}
-		],
-		name: "dnsRecord",
-		outputs: [
-			{
-				internalType: "bytes",
-				name: "",
-				type: "bytes"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "name",
-				type: "bytes32"
-			}
-		],
-		name: "hasDNSRecords",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes4",
-				name: "interfaceID",
-				type: "bytes4"
-			}
-		],
-		name: "interfaceImplementer",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "name",
-		outputs: [
-			{
-				internalType: "string",
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "pubkey",
-		outputs: [
-			{
-				internalType: "bytes32",
-				name: "x",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "y",
-				type: "bytes32"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "uint256",
-				name: "contentType",
-				type: "uint256"
-			},
-			{
-				internalType: "bytes",
-				name: "data",
-				type: "bytes"
-			}
-		],
-		name: "setABI",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "uint256",
-				name: "coinType",
-				type: "uint256"
-			},
-			{
-				internalType: "bytes",
-				name: "a",
-				type: "bytes"
-			}
-		],
-		name: "setAddr",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "address",
-				name: "a",
-				type: "address"
-			}
-		],
-		name: "setAddr",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "address",
-				name: "target",
-				type: "address"
-			},
-			{
-				internalType: "bool",
-				name: "isAuthorised",
-				type: "bool"
-			}
-		],
-		name: "setAuthorisation",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes",
-				name: "hash",
-				type: "bytes"
-			}
-		],
-		name: "setContenthash",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes",
-				name: "data",
-				type: "bytes"
-			}
-		],
-		name: "setDNSRecords",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes4",
-				name: "interfaceID",
-				type: "bytes4"
-			},
-			{
-				internalType: "address",
-				name: "implementer",
-				type: "address"
-			}
-		],
-		name: "setInterface",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "string",
-				name: "name",
-				type: "string"
-			}
-		],
-		name: "setName",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "x",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "y",
-				type: "bytes32"
-			}
-		],
-		name: "setPubkey",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "string",
-				name: "key",
-				type: "string"
-			},
-			{
-				internalType: "string",
-				name: "value",
-				type: "string"
-			}
-		],
-		name: "setText",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes4",
-				name: "interfaceID",
-				type: "bytes4"
-			}
-		],
-		name: "supportsInterface",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "pure",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "string",
-				name: "key",
-				type: "string"
-			}
-		],
-		name: "text",
-		outputs: [
-			{
-				internalType: "string",
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    inputs: [
+      {
+        internalType: 'contract ENS',
+        name: '_ens',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: true,
+        internalType: 'uint256',
+        name: 'contentType',
+        type: 'uint256',
+      },
+    ],
+    name: 'ABIChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'a',
+        type: 'address',
+      },
+    ],
+    name: 'AddrChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'coinType',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'bytes',
+        name: 'newAddress',
+        type: 'bytes',
+      },
+    ],
+    name: 'AddressChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'target',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'bool',
+        name: 'isAuthorised',
+        type: 'bool',
+      },
+    ],
+    name: 'AuthorisationChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'bytes',
+        name: 'hash',
+        type: 'bytes',
+      },
+    ],
+    name: 'ContenthashChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'bytes',
+        name: 'name',
+        type: 'bytes',
+      },
+      {
+        indexed: false,
+        internalType: 'uint16',
+        name: 'resource',
+        type: 'uint16',
+      },
+      {
+        indexed: false,
+        internalType: 'bytes',
+        name: 'record',
+        type: 'bytes',
+      },
+    ],
+    name: 'DNSRecordChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'bytes',
+        name: 'name',
+        type: 'bytes',
+      },
+      {
+        indexed: false,
+        internalType: 'uint16',
+        name: 'resource',
+        type: 'uint16',
+      },
+    ],
+    name: 'DNSRecordDeleted',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'DNSZoneCleared',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: true,
+        internalType: 'bytes4',
+        name: 'interfaceID',
+        type: 'bytes4',
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'implementer',
+        type: 'address',
+      },
+    ],
+    name: 'InterfaceChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'string',
+        name: 'name',
+        type: 'string',
+      },
+    ],
+    name: 'NameChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'bytes32',
+        name: 'x',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'bytes32',
+        name: 'y',
+        type: 'bytes32',
+      },
+    ],
+    name: 'PubkeyChanged',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: true,
+        internalType: 'string',
+        name: 'indexedKey',
+        type: 'string',
+      },
+      {
+        indexed: false,
+        internalType: 'string',
+        name: 'key',
+        type: 'string',
+      },
+    ],
+    name: 'TextChanged',
+    type: 'event',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'uint256',
+        name: 'contentTypes',
+        type: 'uint256',
+      },
+    ],
+    name: 'ABI',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+      {
+        internalType: 'bytes',
+        name: '',
+        type: 'bytes',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'addr',
+    outputs: [
+      {
+        internalType: 'address payable',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'authorisations',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'clearDNSZone',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'contenthash',
+    outputs: [
+      {
+        internalType: 'bytes',
+        name: '',
+        type: 'bytes',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'name',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'uint16',
+        name: 'resource',
+        type: 'uint16',
+      },
+    ],
+    name: 'dnsRecord',
+    outputs: [
+      {
+        internalType: 'bytes',
+        name: '',
+        type: 'bytes',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'name',
+        type: 'bytes32',
+      },
+    ],
+    name: 'hasDNSRecords',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes4',
+        name: 'interfaceID',
+        type: 'bytes4',
+      },
+    ],
+    name: 'interfaceImplementer',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'name',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'pubkey',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: 'x',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'y',
+        type: 'bytes32',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'uint256',
+        name: 'contentType',
+        type: 'uint256',
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes',
+      },
+    ],
+    name: 'setABI',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'uint256',
+        name: 'coinType',
+        type: 'uint256',
+      },
+      {
+        internalType: 'bytes',
+        name: 'a',
+        type: 'bytes',
+      },
+    ],
+    name: 'setAddr',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'address',
+        name: 'a',
+        type: 'address',
+      },
+    ],
+    name: 'setAddr',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'address',
+        name: 'target',
+        type: 'address',
+      },
+      {
+        internalType: 'bool',
+        name: 'isAuthorised',
+        type: 'bool',
+      },
+    ],
+    name: 'setAuthorisation',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes',
+        name: 'hash',
+        type: 'bytes',
+      },
+    ],
+    name: 'setContenthash',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes',
+      },
+    ],
+    name: 'setDNSRecords',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes4',
+        name: 'interfaceID',
+        type: 'bytes4',
+      },
+      {
+        internalType: 'address',
+        name: 'implementer',
+        type: 'address',
+      },
+    ],
+    name: 'setInterface',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'string',
+        name: 'name',
+        type: 'string',
+      },
+    ],
+    name: 'setName',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'x',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'y',
+        type: 'bytes32',
+      },
+    ],
+    name: 'setPubkey',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'string',
+        name: 'key',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: 'value',
+        type: 'string',
+      },
+    ],
+    name: 'setText',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes4',
+        name: 'interfaceID',
+        type: 'bytes4',
+      },
+    ],
+    name: 'supportsInterface',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'string',
+        name: 'key',
+        type: 'string',
+      },
+    ],
+    name: 'text',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var ENS_ABI = [
-	{
-		inputs: [
-			{
-				internalType: "contract ENS",
-				name: "_old",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "constructor"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			},
-			{
-				indexed: true,
-				internalType: "address",
-				name: "operator",
-				type: "address"
-			},
-			{
-				indexed: false,
-				internalType: "bool",
-				name: "approved",
-				type: "bool"
-			}
-		],
-		name: "ApprovalForAll",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "label",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			}
-		],
-		name: "NewOwner",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "address",
-				name: "resolver",
-				type: "address"
-			}
-		],
-		name: "NewResolver",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "uint64",
-				name: "ttl",
-				type: "uint64"
-			}
-		],
-		name: "NewTTL",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				indexed: false,
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			}
-		],
-		name: "Transfer",
-		type: "event"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "operator",
-				type: "address"
-			}
-		],
-		name: "isApprovedForAll",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "old",
-		outputs: [
-			{
-				internalType: "contract ENS",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "owner",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "recordExists",
-		outputs: [
-			{
-				internalType: "bool",
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "resolver",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "address",
-				name: "operator",
-				type: "address"
-			},
-			{
-				internalType: "bool",
-				name: "approved",
-				type: "bool"
-			}
-		],
-		name: "setApprovalForAll",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			}
-		],
-		name: "setOwner",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "resolver",
-				type: "address"
-			},
-			{
-				internalType: "uint64",
-				name: "ttl",
-				type: "uint64"
-			}
-		],
-		name: "setRecord",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "address",
-				name: "resolver",
-				type: "address"
-			}
-		],
-		name: "setResolver",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "label",
-				type: "bytes32"
-			},
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			}
-		],
-		name: "setSubnodeOwner",
-		outputs: [
-			{
-				internalType: "bytes32",
-				name: "",
-				type: "bytes32"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "bytes32",
-				name: "label",
-				type: "bytes32"
-			},
-			{
-				internalType: "address",
-				name: "owner",
-				type: "address"
-			},
-			{
-				internalType: "address",
-				name: "resolver",
-				type: "address"
-			},
-			{
-				internalType: "uint64",
-				name: "ttl",
-				type: "uint64"
-			}
-		],
-		name: "setSubnodeRecord",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			},
-			{
-				internalType: "uint64",
-				name: "ttl",
-				type: "uint64"
-			}
-		],
-		name: "setTTL",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "node",
-				type: "bytes32"
-			}
-		],
-		name: "ttl",
-		outputs: [
-			{
-				internalType: "uint64",
-				name: "",
-				type: "uint64"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    inputs: [
+      {
+        internalType: 'contract ENS',
+        name: '_old',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'bool',
+        name: 'approved',
+        type: 'bool',
+      },
+    ],
+    name: 'ApprovalForAll',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'label',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+    ],
+    name: 'NewOwner',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'resolver',
+        type: 'address',
+      },
+    ],
+    name: 'NewResolver',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'uint64',
+        name: 'ttl',
+        type: 'uint64',
+      },
+    ],
+    name: 'NewTTL',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+    ],
+    name: 'Transfer',
+    type: 'event',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
+      },
+    ],
+    name: 'isApprovedForAll',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'old',
+    outputs: [
+      {
+        internalType: 'contract ENS',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'owner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'recordExists',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'resolver',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
+      },
+      {
+        internalType: 'bool',
+        name: 'approved',
+        type: 'bool',
+      },
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+    ],
+    name: 'setOwner',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'resolver',
+        type: 'address',
+      },
+      {
+        internalType: 'uint64',
+        name: 'ttl',
+        type: 'uint64',
+      },
+    ],
+    name: 'setRecord',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'address',
+        name: 'resolver',
+        type: 'address',
+      },
+    ],
+    name: 'setResolver',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'label',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+    ],
+    name: 'setSubnodeOwner',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'label',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        internalType: 'address',
+        name: 'resolver',
+        type: 'address',
+      },
+      {
+        internalType: 'uint64',
+        name: 'ttl',
+        type: 'uint64',
+      },
+    ],
+    name: 'setSubnodeRecord',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'uint64',
+        name: 'ttl',
+        type: 'uint64',
+      },
+    ],
+    name: 'setTTL',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'ttl',
+    outputs: [
+      {
+        internalType: 'uint64',
+        name: '',
+        type: 'uint64',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var ERC20ABI = [
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "name",
-		outputs: [
-			{
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				name: "_spender",
-				type: "address"
-			},
-			{
-				name: "_value",
-				type: "uint256"
-			}
-		],
-		name: "approve",
-		outputs: [
-			{
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "totalSupply",
-		outputs: [
-			{
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				name: "_from",
-				type: "address"
-			},
-			{
-				name: "_to",
-				type: "address"
-			},
-			{
-				name: "_value",
-				type: "uint256"
-			}
-		],
-		name: "transferFrom",
-		outputs: [
-			{
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "decimals",
-		outputs: [
-			{
-				name: "",
-				type: "uint8"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				name: "_owner",
-				type: "address"
-			}
-		],
-		name: "balanceOf",
-		outputs: [
-			{
-				name: "balance",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "symbol",
-		outputs: [
-			{
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				name: "_to",
-				type: "address"
-			},
-			{
-				name: "_value",
-				type: "uint256"
-			}
-		],
-		name: "transfer",
-		outputs: [
-			{
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				name: "_owner",
-				type: "address"
-			},
-			{
-				name: "_spender",
-				type: "address"
-			}
-		],
-		name: "allowance",
-		outputs: [
-			{
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		payable: true,
-		stateMutability: "payable",
-		type: "fallback"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				name: "owner",
-				type: "address"
-			},
-			{
-				indexed: true,
-				name: "spender",
-				type: "address"
-			},
-			{
-				indexed: false,
-				name: "value",
-				type: "uint256"
-			}
-		],
-		name: "Approval",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				name: "from",
-				type: "address"
-			},
-			{
-				indexed: true,
-				name: "to",
-				type: "address"
-			},
-			{
-				indexed: false,
-				name: "value",
-				type: "uint256"
-			}
-		],
-		name: "Transfer",
-		type: "event"
-	}
-];
+  {
+    constant: true,
+    inputs: [],
+    name: 'name',
+    outputs: [
+      {
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: '_spender',
+        type: 'address',
+      },
+      {
+        name: '_value',
+        type: 'uint256',
+      },
+    ],
+    name: 'approve',
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: '_from',
+        type: 'address',
+      },
+      {
+        name: '_to',
+        type: 'address',
+      },
+      {
+        name: '_value',
+        type: 'uint256',
+      },
+    ],
+    name: 'transferFrom',
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'decimals',
+    outputs: [
+      {
+        name: '',
+        type: 'uint8',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '_owner',
+        type: 'address',
+      },
+    ],
+    name: 'balanceOf',
+    outputs: [
+      {
+        name: 'balance',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'symbol',
+    outputs: [
+      {
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: '_to',
+        type: 'address',
+      },
+      {
+        name: '_value',
+        type: 'uint256',
+      },
+    ],
+    name: 'transfer',
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '_owner',
+        type: 'address',
+      },
+      {
+        name: '_spender',
+        type: 'address',
+      },
+    ],
+    name: 'allowance',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    payable: true,
+    stateMutability: 'payable',
+    type: 'fallback',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        name: 'spender',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'Approval',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'from',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        name: 'to',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'Transfer',
+    type: 'event',
+  },
+]
 
 var ERC20_BYTES32_ABI = [
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "name",
-		outputs: [
-			{
-				name: "",
-				type: "bytes32"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "symbol",
-		outputs: [
-			{
-				name: "",
-				type: "bytes32"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    constant: true,
+    inputs: [],
+    name: 'name',
+    outputs: [
+      {
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'symbol',
+    outputs: [
+      {
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var ERC721_ABI = [
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "tokenId",
-				type: "uint256"
-			}
-		],
-		name: "ownerOf",
-		outputs: [
-			{
-				internalType: "address",
-				name: "",
-				type: "address"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "tokenId",
-				type: "uint256"
-			}
-		],
-		name: "tokenURI",
-		outputs: [
-			{
-				internalType: "string",
-				name: "",
-				type: "string"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256',
+      },
+    ],
+    name: 'ownerOf',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256',
+      },
+    ],
+    name: 'tokenURI',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var ERC1155_ABI = [
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "address",
-				name: "_owner",
-				type: "address"
-			},
-			{
-				internalType: "uint256",
-				name: "_id",
-				type: "uint256"
-			}
-		],
-		name: "balanceOf",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "_id",
-				type: "uint256"
-			}
-		],
-		name: "uri",
-		outputs: [
-			{
-				internalType: "string",
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_owner',
+        type: 'address',
+      },
+      {
+        internalType: 'uint256',
+        name: '_id',
+        type: 'uint256',
+      },
+    ],
+    name: 'balanceOf',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_id',
+        type: 'uint256',
+      },
+    ],
+    name: 'uri',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
 var WETH_ABI = [
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "name",
-		outputs: [
-			{
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				name: "guy",
-				type: "address"
-			},
-			{
-				name: "wad",
-				type: "uint256"
-			}
-		],
-		name: "approve",
-		outputs: [
-			{
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "totalSupply",
-		outputs: [
-			{
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				name: "src",
-				type: "address"
-			},
-			{
-				name: "dst",
-				type: "address"
-			},
-			{
-				name: "wad",
-				type: "uint256"
-			}
-		],
-		name: "transferFrom",
-		outputs: [
-			{
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				name: "wad",
-				type: "uint256"
-			}
-		],
-		name: "withdraw",
-		outputs: [
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "decimals",
-		outputs: [
-			{
-				name: "",
-				type: "uint8"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				name: "",
-				type: "address"
-			}
-		],
-		name: "balanceOf",
-		outputs: [
-			{
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-		],
-		name: "symbol",
-		outputs: [
-			{
-				name: "",
-				type: "string"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-			{
-				name: "dst",
-				type: "address"
-			},
-			{
-				name: "wad",
-				type: "uint256"
-			}
-		],
-		name: "transfer",
-		outputs: [
-			{
-				name: "",
-				type: "bool"
-			}
-		],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function"
-	},
-	{
-		constant: false,
-		inputs: [
-		],
-		name: "deposit",
-		outputs: [
-		],
-		payable: true,
-		stateMutability: "payable",
-		type: "function"
-	},
-	{
-		constant: true,
-		inputs: [
-			{
-				name: "",
-				type: "address"
-			},
-			{
-				name: "",
-				type: "address"
-			}
-		],
-		name: "allowance",
-		outputs: [
-			{
-				name: "",
-				type: "uint256"
-			}
-		],
-		payable: false,
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		payable: true,
-		stateMutability: "payable",
-		type: "fallback"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				name: "src",
-				type: "address"
-			},
-			{
-				indexed: true,
-				name: "guy",
-				type: "address"
-			},
-			{
-				indexed: false,
-				name: "wad",
-				type: "uint256"
-			}
-		],
-		name: "Approval",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				name: "src",
-				type: "address"
-			},
-			{
-				indexed: true,
-				name: "dst",
-				type: "address"
-			},
-			{
-				indexed: false,
-				name: "wad",
-				type: "uint256"
-			}
-		],
-		name: "Transfer",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				name: "dst",
-				type: "address"
-			},
-			{
-				indexed: false,
-				name: "wad",
-				type: "uint256"
-			}
-		],
-		name: "Deposit",
-		type: "event"
-	},
-	{
-		anonymous: false,
-		inputs: [
-			{
-				indexed: true,
-				name: "src",
-				type: "address"
-			},
-			{
-				indexed: false,
-				name: "wad",
-				type: "uint256"
-			}
-		],
-		name: "Withdrawal",
-		type: "event"
-	}
-];
+  {
+    constant: true,
+    inputs: [],
+    name: 'name',
+    outputs: [
+      {
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: 'guy',
+        type: 'address',
+      },
+      {
+        name: 'wad',
+        type: 'uint256',
+      },
+    ],
+    name: 'approve',
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: 'src',
+        type: 'address',
+      },
+      {
+        name: 'dst',
+        type: 'address',
+      },
+      {
+        name: 'wad',
+        type: 'uint256',
+      },
+    ],
+    name: 'transferFrom',
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: 'wad',
+        type: 'uint256',
+      },
+    ],
+    name: 'withdraw',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'decimals',
+    outputs: [
+      {
+        name: '',
+        type: 'uint8',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'balanceOf',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'symbol',
+    outputs: [
+      {
+        name: '',
+        type: 'string',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: 'dst',
+        type: 'address',
+      },
+      {
+        name: 'wad',
+        type: 'uint256',
+      },
+    ],
+    name: 'transfer',
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+      },
+    ],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: 'deposit',
+    outputs: [],
+    payable: true,
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '',
+        type: 'address',
+      },
+      {
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'allowance',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    payable: true,
+    stateMutability: 'payable',
+    type: 'fallback',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'src',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        name: 'guy',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'wad',
+        type: 'uint256',
+      },
+    ],
+    name: 'Approval',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'src',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        name: 'dst',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'wad',
+        type: 'uint256',
+      },
+    ],
+    name: 'Transfer',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'dst',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'wad',
+        type: 'uint256',
+      },
+    ],
+    name: 'Deposit',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'src',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'wad',
+        type: 'uint256',
+      },
+    ],
+    name: 'Withdrawal',
+    type: 'event',
+  },
+]
 
-var _a$h;
+var _a$h
 /**
  * List of all the networks supported by the Uniswap Interface
  */
-var SupportedChainId;
-(function (SupportedChainId) {
-    SupportedChainId[SupportedChainId["MAINNET"] = 1] = "MAINNET";
-    SupportedChainId[SupportedChainId["ROPSTEN"] = 3] = "ROPSTEN";
-    SupportedChainId[SupportedChainId["RINKEBY"] = 4] = "RINKEBY";
-    SupportedChainId[SupportedChainId["GOERLI"] = 5] = "GOERLI";
-    SupportedChainId[SupportedChainId["KOVAN"] = 42] = "KOVAN";
-    SupportedChainId[SupportedChainId["ARBITRUM_ONE"] = 42161] = "ARBITRUM_ONE";
-    SupportedChainId[SupportedChainId["ARBITRUM_RINKEBY"] = 421611] = "ARBITRUM_RINKEBY";
-    SupportedChainId[SupportedChainId["OPTIMISM"] = 10] = "OPTIMISM";
-    SupportedChainId[SupportedChainId["OPTIMISTIC_KOVAN"] = 69] = "OPTIMISTIC_KOVAN";
-    SupportedChainId[SupportedChainId["POLYGON"] = 137] = "POLYGON";
-    SupportedChainId[SupportedChainId["POLYGON_MUMBAI"] = 80001] = "POLYGON_MUMBAI";
-})(SupportedChainId || (SupportedChainId = {}));
-var CHAIN_IDS_TO_NAMES = (_a$h = {},
-    _a$h[SupportedChainId.MAINNET] = 'mainnet',
-    _a$h[SupportedChainId.ROPSTEN] = 'ropsten',
-    _a$h[SupportedChainId.RINKEBY] = 'rinkeby',
-    _a$h[SupportedChainId.GOERLI] = 'goerli',
-    _a$h[SupportedChainId.KOVAN] = 'kovan',
-    _a$h[SupportedChainId.POLYGON] = 'polygon',
-    _a$h[SupportedChainId.POLYGON_MUMBAI] = 'polygon_mumbai',
-    _a$h[SupportedChainId.ARBITRUM_ONE] = 'arbitrum',
-    _a$h[SupportedChainId.ARBITRUM_RINKEBY] = 'arbitrum_rinkeby',
-    _a$h[SupportedChainId.OPTIMISM] = 'optimism',
-    _a$h[SupportedChainId.OPTIMISTIC_KOVAN] = 'optimistic_kovan',
-    _a$h);
+var SupportedChainId
+;(function (SupportedChainId) {
+  SupportedChainId[(SupportedChainId['MAINNET'] = 1)] = 'MAINNET'
+  SupportedChainId[(SupportedChainId['ROPSTEN'] = 3)] = 'ROPSTEN'
+  SupportedChainId[(SupportedChainId['RINKEBY'] = 4)] = 'RINKEBY'
+  SupportedChainId[(SupportedChainId['GOERLI'] = 5)] = 'GOERLI'
+  SupportedChainId[(SupportedChainId['KOVAN'] = 42)] = 'KOVAN'
+  SupportedChainId[(SupportedChainId['ARBITRUM_ONE'] = 42161)] = 'ARBITRUM_ONE'
+  SupportedChainId[(SupportedChainId['ARBITRUM_RINKEBY'] = 421611)] = 'ARBITRUM_RINKEBY'
+  SupportedChainId[(SupportedChainId['OPTIMISM'] = 10)] = 'OPTIMISM'
+  SupportedChainId[(SupportedChainId['OPTIMISTIC_KOVAN'] = 69)] = 'OPTIMISTIC_KOVAN'
+  SupportedChainId[(SupportedChainId['POLYGON'] = 137)] = 'POLYGON'
+  SupportedChainId[(SupportedChainId['POLYGON_MUMBAI'] = 80001)] = 'POLYGON_MUMBAI'
+})(SupportedChainId || (SupportedChainId = {}))
+var CHAIN_IDS_TO_NAMES =
+  ((_a$h = {}),
+  (_a$h[SupportedChainId.MAINNET] = 'mainnet'),
+  (_a$h[SupportedChainId.ROPSTEN] = 'ropsten'),
+  (_a$h[SupportedChainId.RINKEBY] = 'rinkeby'),
+  (_a$h[SupportedChainId.GOERLI] = 'goerli'),
+  (_a$h[SupportedChainId.KOVAN] = 'kovan'),
+  (_a$h[SupportedChainId.POLYGON] = 'polygon'),
+  (_a$h[SupportedChainId.POLYGON_MUMBAI] = 'polygon_mumbai'),
+  (_a$h[SupportedChainId.ARBITRUM_ONE] = 'arbitrum'),
+  (_a$h[SupportedChainId.ARBITRUM_RINKEBY] = 'arbitrum_rinkeby'),
+  (_a$h[SupportedChainId.OPTIMISM] = 'optimism'),
+  (_a$h[SupportedChainId.OPTIMISTIC_KOVAN] = 'optimistic_kovan'),
+  _a$h)
 /**
  * Array of all the supported chain IDs
  */
-var ALL_SUPPORTED_CHAIN_IDS = Object.values(SupportedChainId).filter(function (id) { return typeof id === 'number'; });
-var SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [SupportedChainId.MAINNET, SupportedChainId.POLYGON];
+var ALL_SUPPORTED_CHAIN_IDS = Object.values(SupportedChainId).filter(function (id) {
+  return typeof id === 'number'
+})
+var SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [SupportedChainId.MAINNET, SupportedChainId.POLYGON]
 /**
  * All the chain IDs that are running the Ethereum protocol.
  */
-[
-    SupportedChainId.MAINNET,
-    SupportedChainId.ROPSTEN,
-    SupportedChainId.RINKEBY,
-    SupportedChainId.GOERLI,
-    SupportedChainId.KOVAN,
-    SupportedChainId.POLYGON,
-    SupportedChainId.POLYGON_MUMBAI,
-];
+;[
+  SupportedChainId.MAINNET,
+  SupportedChainId.ROPSTEN,
+  SupportedChainId.RINKEBY,
+  SupportedChainId.GOERLI,
+  SupportedChainId.KOVAN,
+  SupportedChainId.POLYGON,
+  SupportedChainId.POLYGON_MUMBAI,
+]
 /**
  * Controls some L2 specific behavior, e.g. slippage tolerance, special UI behavior.
  * The expectation is that all of these networks have immediate transaction confirmation.
  */
 var L2_CHAIN_IDS = [
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISTIC_KOVAN,
-];
+  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ARBITRUM_RINKEBY,
+  SupportedChainId.OPTIMISM,
+  SupportedChainId.OPTIMISTIC_KOVAN,
+]
 
 var DEFAULT_NETWORKS = [
-    SupportedChainId.MAINNET,
-    SupportedChainId.ROPSTEN,
-    SupportedChainId.RINKEBY,
-    SupportedChainId.GOERLI,
-    SupportedChainId.KOVAN,
-];
+  SupportedChainId.MAINNET,
+  SupportedChainId.ROPSTEN,
+  SupportedChainId.RINKEBY,
+  SupportedChainId.GOERLI,
+  SupportedChainId.KOVAN,
+]
 function constructSameAddressMap(address, additionalNetworks) {
-    if (additionalNetworks === void 0) { additionalNetworks = []; }
-    return DEFAULT_NETWORKS.concat(additionalNetworks).reduce(function (memo, chainId) {
-        memo[chainId] = address;
-        return memo;
-    }, {});
+  if (additionalNetworks === void 0) {
+    additionalNetworks = []
+  }
+  return DEFAULT_NETWORKS.concat(additionalNetworks).reduce(function (memo, chainId) {
+    memo[chainId] = address
+    return memo
+  }, {})
 }
 
-var _a$g, _b$6, _c$4, _d$3, _e$2, _f$1, _g$1, _h$1;
-var UNI_ADDRESS = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984');
-var MULTICALL_ADDRESS = __assign(__assign({}, constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984', [
-    SupportedChainId.OPTIMISTIC_KOVAN,
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
-])), (_a$g = {}, _a$g[SupportedChainId.ARBITRUM_ONE] = '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB', _a$g[SupportedChainId.ARBITRUM_RINKEBY] = '0xa501c031958F579dB7676fF1CE78AD305794d579', _a$g));
-var V2_FACTORY_ADDRESSES = constructSameAddressMap(v2Sdk.FACTORY_ADDRESS);
-var V2_ROUTER_ADDRESS = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D');
+var _a$g, _b$6, _c$4, _d$3, _e$2, _f$1, _g$1, _h$1
+var UNI_ADDRESS = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984')
+var MULTICALL_ADDRESS = __assign(
+  __assign(
+    {},
+    constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984', [
+      SupportedChainId.OPTIMISTIC_KOVAN,
+      SupportedChainId.OPTIMISM,
+      SupportedChainId.POLYGON_MUMBAI,
+      SupportedChainId.POLYGON,
+    ])
+  ),
+  ((_a$g = {}),
+  (_a$g[SupportedChainId.ARBITRUM_ONE] = '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB'),
+  (_a$g[SupportedChainId.ARBITRUM_RINKEBY] = '0xa501c031958F579dB7676fF1CE78AD305794d579'),
+  _a$g)
+)
+var V2_FACTORY_ADDRESSES = constructSameAddressMap(v2Sdk.FACTORY_ADDRESS)
+var V2_ROUTER_ADDRESS = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D')
 var V3_ROUTER_ADDRESS = constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564', [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISTIC_KOVAN,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON,
-    SupportedChainId.POLYGON_MUMBAI,
-]);
+  SupportedChainId.OPTIMISM,
+  SupportedChainId.OPTIMISTIC_KOVAN,
+  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ARBITRUM_RINKEBY,
+  SupportedChainId.POLYGON,
+  SupportedChainId.POLYGON_MUMBAI,
+])
 var SWAP_ROUTER_ADDRESSES = constructSameAddressMap('0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45', [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISTIC_KOVAN,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON,
-    SupportedChainId.POLYGON_MUMBAI,
-]);
+  SupportedChainId.OPTIMISM,
+  SupportedChainId.OPTIMISTIC_KOVAN,
+  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ARBITRUM_RINKEBY,
+  SupportedChainId.POLYGON,
+  SupportedChainId.POLYGON_MUMBAI,
+])
 /**
  * The oldest V0 governance address
  */
-constructSameAddressMap('0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F');
+constructSameAddressMap('0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F')
 /**
  * The older V1 governance address
  */
-(_b$6 = {},
-    _b$6[SupportedChainId.MAINNET] = '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6',
-    _b$6);
+;(_b$6 = {}), (_b$6[SupportedChainId.MAINNET] = '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6'), _b$6
 /**
  * The latest governor bravo that is currently admin of timelock
  */
-(_c$4 = {},
-    _c$4[SupportedChainId.MAINNET] = '0x408ED6354d4973f66138C91495F2f2FCbd8724C3',
-    _c$4);
-constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC');
-var MERKLE_DISTRIBUTOR_ADDRESS = (_d$3 = {},
-    _d$3[SupportedChainId.MAINNET] = '0x090D4613473dEE047c3f2706764f49E0821D256e',
-    _d$3);
-var ARGENT_WALLET_DETECTOR_ADDRESS = (_e$2 = {},
-    _e$2[SupportedChainId.MAINNET] = '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8',
-    _e$2);
+;(_c$4 = {}), (_c$4[SupportedChainId.MAINNET] = '0x408ED6354d4973f66138C91495F2f2FCbd8724C3'), _c$4
+constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC')
+var MERKLE_DISTRIBUTOR_ADDRESS =
+  ((_d$3 = {}), (_d$3[SupportedChainId.MAINNET] = '0x090D4613473dEE047c3f2706764f49E0821D256e'), _d$3)
+var ARGENT_WALLET_DETECTOR_ADDRESS =
+  ((_e$2 = {}), (_e$2[SupportedChainId.MAINNET] = '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8'), _e$2)
 var V3_CORE_FACTORY_ADDRESSES = constructSameAddressMap(v3Sdk.FACTORY_ADDRESS, [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISTIC_KOVAN,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
-]);
+  SupportedChainId.OPTIMISM,
+  SupportedChainId.OPTIMISTIC_KOVAN,
+  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ARBITRUM_RINKEBY,
+  SupportedChainId.POLYGON_MUMBAI,
+  SupportedChainId.POLYGON,
+])
 var QUOTER_ADDRESSES = constructSameAddressMap('0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6', [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISTIC_KOVAN,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
-]);
+  SupportedChainId.OPTIMISM,
+  SupportedChainId.OPTIMISTIC_KOVAN,
+  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ARBITRUM_RINKEBY,
+  SupportedChainId.POLYGON_MUMBAI,
+  SupportedChainId.POLYGON,
+])
 constructSameAddressMap('0xC36442b4a4522E871399CD717aBDD847Ab11FE88', [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISTIC_KOVAN,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
-]);
-var ENS_REGISTRAR_ADDRESSES = (_f$1 = {},
-    _f$1[SupportedChainId.MAINNET] = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
-    _f$1[SupportedChainId.ROPSTEN] = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
-    _f$1[SupportedChainId.GOERLI] = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
-    _f$1[SupportedChainId.RINKEBY] = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
-    _f$1);
-var SOCKS_CONTROLLER_ADDRESSES = (_g$1 = {},
-    _g$1[SupportedChainId.MAINNET] = '0x65770b5283117639760beA3F867b69b3697a91dd',
-    _g$1);
+  SupportedChainId.OPTIMISM,
+  SupportedChainId.OPTIMISTIC_KOVAN,
+  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ARBITRUM_RINKEBY,
+  SupportedChainId.POLYGON_MUMBAI,
+  SupportedChainId.POLYGON,
+])
+var ENS_REGISTRAR_ADDRESSES =
+  ((_f$1 = {}),
+  (_f$1[SupportedChainId.MAINNET] = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'),
+  (_f$1[SupportedChainId.ROPSTEN] = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'),
+  (_f$1[SupportedChainId.GOERLI] = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'),
+  (_f$1[SupportedChainId.RINKEBY] = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'),
+  _f$1)
+var SOCKS_CONTROLLER_ADDRESSES =
+  ((_g$1 = {}), (_g$1[SupportedChainId.MAINNET] = '0x65770b5283117639760beA3F867b69b3697a91dd'), _g$1)
 constructSameAddressMap('0xA5644E29708357803b5A882D272c41cC0dF92B34', [
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
-]);
-(_h$1 = {},
-    _h$1[SupportedChainId.ARBITRUM_ONE] = '0xbfd8137f7d1516D3ea5cA83523914859ec47F573',
-    _h$1[SupportedChainId.ARBITRUM_RINKEBY] = '0xbfd8137f7d1516D3ea5cA83523914859ec47F573',
-    _h$1);
+  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ARBITRUM_RINKEBY,
+  SupportedChainId.POLYGON_MUMBAI,
+  SupportedChainId.POLYGON,
+])
+;(_h$1 = {}),
+  (_h$1[SupportedChainId.ARBITRUM_ONE] = '0xbfd8137f7d1516D3ea5cA83523914859ec47F573'),
+  (_h$1[SupportedChainId.ARBITRUM_RINKEBY] = '0xbfd8137f7d1516D3ea5cA83523914859ec47F573'),
+  _h$1
 
-var _a$f, _b$5;
-var AMPL = new sdkCore.Token(SupportedChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth');
-var DAI = new sdkCore.Token(SupportedChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin');
-var DAI_ARBITRUM_ONE = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai stable coin');
-var DAI_OPTIMISM = new sdkCore.Token(SupportedChainId.OPTIMISM, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai stable coin');
-var USDC = new sdkCore.Token(SupportedChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C');
-var USDC_ARBITRUM = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', 6, 'USDC', 'USD//C');
-var USDC_POLYGON = new sdkCore.Token(SupportedChainId.POLYGON, '0x2791bca1f2de4661ed88a30c99a7a9449aa84174', 6, 'USDC', 'USD//C');
-var DAI_POLYGON = new sdkCore.Token(SupportedChainId.POLYGON, '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', 18, 'DAI', 'Dai Stablecoin');
-var USDT_POLYGON = new sdkCore.Token(SupportedChainId.POLYGON, '0xc2132d05d31c914a87c6611c10748aeb04b58e8f', 6, 'USDT', 'Tether USD');
-var WBTC_POLYGON = new sdkCore.Token(SupportedChainId.POLYGON, '0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6', 8, 'WBTC', 'Wrapped BTC');
-var USDC_OPTIMISM = new sdkCore.Token(SupportedChainId.OPTIMISM, '0x7F5c764cBc14f9669B88837ca1490cCa17c31607', 6, 'USDC', 'USD//C');
-var USDT = new sdkCore.Token(SupportedChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD');
-var USDT_ARBITRUM_ONE = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9', 6, 'USDT', 'Tether USD');
-var USDT_OPTIMISM = new sdkCore.Token(SupportedChainId.OPTIMISM, '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58', 6, 'USDT', 'Tether USD');
-var WBTC = new sdkCore.Token(SupportedChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC');
-var WBTC_ARBITRUM_ONE = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f', 8, 'WBTC', 'Wrapped BTC');
-var WBTC_OPTIMISM = new sdkCore.Token(SupportedChainId.OPTIMISM, '0x68f180fcCe6836688e9084f035309E29Bf0A2095', 8, 'WBTC', 'Wrapped BTC');
-var FEI = new sdkCore.Token(SupportedChainId.MAINNET, '0x956F47F50A910163D8BF957Cf5846D573E7f87CA', 18, 'FEI', 'Fei USD');
-var TRIBE = new sdkCore.Token(SupportedChainId.MAINNET, '0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B', 18, 'TRIBE', 'Tribe');
-var FRAX = new sdkCore.Token(SupportedChainId.MAINNET, '0x853d955aCEf822Db058eb8505911ED77F175b99e', 18, 'FRAX', 'Frax');
-var FXS = new sdkCore.Token(SupportedChainId.MAINNET, '0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0', 18, 'FXS', 'Frax Share');
-var renBTC = new sdkCore.Token(SupportedChainId.MAINNET, '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D', 8, 'renBTC', 'renBTC');
-var ETH2X_FLI = new sdkCore.Token(SupportedChainId.MAINNET, '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD', 18, 'ETH2x-FLI', 'ETH 2x Flexible Leverage Index');
-var sETH2 = new sdkCore.Token(SupportedChainId.MAINNET, '0xFe2e637202056d30016725477c5da089Ab0A043A', 18, 'sETH2', 'StakeWise Staked ETH2');
-var rETH2 = new sdkCore.Token(SupportedChainId.MAINNET, '0x20BC832ca081b91433ff6c17f85701B6e92486c5', 18, 'rETH2', 'StakeWise Reward ETH2');
-var SWISE = new sdkCore.Token(SupportedChainId.MAINNET, '0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2', 18, 'SWISE', 'StakeWise');
-var WETH_POLYGON_MUMBAI = new sdkCore.Token(SupportedChainId.POLYGON_MUMBAI, '0xa6fa4fb5f76172d178d61b04b0ecd319c5d1c0aa', 18, 'WETH', 'Wrapped Ether');
-var WETH_POLYGON = new sdkCore.Token(SupportedChainId.POLYGON, '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619', 18, 'WETH', 'Wrapped Ether');
-var UNI = (_a$f = {},
-    _a$f[SupportedChainId.MAINNET] = new sdkCore.Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
-    _a$f[SupportedChainId.RINKEBY] = new sdkCore.Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
-    _a$f[SupportedChainId.ROPSTEN] = new sdkCore.Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
-    _a$f[SupportedChainId.GOERLI] = new sdkCore.Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
-    _a$f[SupportedChainId.KOVAN] = new sdkCore.Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap'),
-    _a$f);
-var WRAPPED_NATIVE_CURRENCY = __assign(__assign({}, sdkCore.WETH9), (_b$5 = {}, _b$5[SupportedChainId.OPTIMISM] = new sdkCore.Token(SupportedChainId.OPTIMISM, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'), _b$5[SupportedChainId.OPTIMISTIC_KOVAN] = new sdkCore.Token(SupportedChainId.OPTIMISTIC_KOVAN, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'), _b$5[SupportedChainId.ARBITRUM_ONE] = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, 'WETH', 'Wrapped Ether'), _b$5[SupportedChainId.ARBITRUM_RINKEBY] = new sdkCore.Token(SupportedChainId.ARBITRUM_RINKEBY, '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681', 18, 'WETH', 'Wrapped Ether'), _b$5[SupportedChainId.POLYGON] = new sdkCore.Token(SupportedChainId.POLYGON, '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', 18, 'WMATIC', 'Wrapped MATIC'), _b$5[SupportedChainId.POLYGON_MUMBAI] = new sdkCore.Token(SupportedChainId.POLYGON_MUMBAI, '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', 18, 'WMATIC', 'Wrapped MATIC'), _b$5));
+var _a$f, _b$5
+var AMPL = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0xD46bA6D942050d489DBd938a2C909A5d5039A161',
+  9,
+  'AMPL',
+  'Ampleforth'
+)
+var DAI = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+)
+var DAI_ARBITRUM_ONE = new sdkCore.Token(
+  SupportedChainId.ARBITRUM_ONE,
+  '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
+  18,
+  'DAI',
+  'Dai stable coin'
+)
+var DAI_OPTIMISM = new sdkCore.Token(
+  SupportedChainId.OPTIMISM,
+  '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
+  18,
+  'DAI',
+  'Dai stable coin'
+)
+var USDC = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+  6,
+  'USDC',
+  'USD//C'
+)
+var USDC_ARBITRUM = new sdkCore.Token(
+  SupportedChainId.ARBITRUM_ONE,
+  '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8',
+  6,
+  'USDC',
+  'USD//C'
+)
+var USDC_POLYGON = new sdkCore.Token(
+  SupportedChainId.POLYGON,
+  '0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
+  6,
+  'USDC',
+  'USD//C'
+)
+var DAI_POLYGON = new sdkCore.Token(
+  SupportedChainId.POLYGON,
+  '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+)
+var USDT_POLYGON = new sdkCore.Token(
+  SupportedChainId.POLYGON,
+  '0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
+  6,
+  'USDT',
+  'Tether USD'
+)
+var WBTC_POLYGON = new sdkCore.Token(
+  SupportedChainId.POLYGON,
+  '0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+)
+var USDC_OPTIMISM = new sdkCore.Token(
+  SupportedChainId.OPTIMISM,
+  '0x7F5c764cBc14f9669B88837ca1490cCa17c31607',
+  6,
+  'USDC',
+  'USD//C'
+)
+var USDT = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+  6,
+  'USDT',
+  'Tether USD'
+)
+var USDT_ARBITRUM_ONE = new sdkCore.Token(
+  SupportedChainId.ARBITRUM_ONE,
+  '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
+  6,
+  'USDT',
+  'Tether USD'
+)
+var USDT_OPTIMISM = new sdkCore.Token(
+  SupportedChainId.OPTIMISM,
+  '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58',
+  6,
+  'USDT',
+  'Tether USD'
+)
+var WBTC = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+)
+var WBTC_ARBITRUM_ONE = new sdkCore.Token(
+  SupportedChainId.ARBITRUM_ONE,
+  '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+)
+var WBTC_OPTIMISM = new sdkCore.Token(
+  SupportedChainId.OPTIMISM,
+  '0x68f180fcCe6836688e9084f035309E29Bf0A2095',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+)
+var FEI = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0x956F47F50A910163D8BF957Cf5846D573E7f87CA',
+  18,
+  'FEI',
+  'Fei USD'
+)
+var TRIBE = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B',
+  18,
+  'TRIBE',
+  'Tribe'
+)
+var FRAX = new sdkCore.Token(SupportedChainId.MAINNET, '0x853d955aCEf822Db058eb8505911ED77F175b99e', 18, 'FRAX', 'Frax')
+var FXS = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0',
+  18,
+  'FXS',
+  'Frax Share'
+)
+var renBTC = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D',
+  8,
+  'renBTC',
+  'renBTC'
+)
+var ETH2X_FLI = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD',
+  18,
+  'ETH2x-FLI',
+  'ETH 2x Flexible Leverage Index'
+)
+var sETH2 = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0xFe2e637202056d30016725477c5da089Ab0A043A',
+  18,
+  'sETH2',
+  'StakeWise Staked ETH2'
+)
+var rETH2 = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0x20BC832ca081b91433ff6c17f85701B6e92486c5',
+  18,
+  'rETH2',
+  'StakeWise Reward ETH2'
+)
+var SWISE = new sdkCore.Token(
+  SupportedChainId.MAINNET,
+  '0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2',
+  18,
+  'SWISE',
+  'StakeWise'
+)
+var WETH_POLYGON_MUMBAI = new sdkCore.Token(
+  SupportedChainId.POLYGON_MUMBAI,
+  '0xa6fa4fb5f76172d178d61b04b0ecd319c5d1c0aa',
+  18,
+  'WETH',
+  'Wrapped Ether'
+)
+var WETH_POLYGON = new sdkCore.Token(
+  SupportedChainId.POLYGON,
+  '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
+  18,
+  'WETH',
+  'Wrapped Ether'
+)
+var UNI =
+  ((_a$f = {}),
+  (_a$f[SupportedChainId.MAINNET] = new sdkCore.Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap')),
+  (_a$f[SupportedChainId.RINKEBY] = new sdkCore.Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap')),
+  (_a$f[SupportedChainId.ROPSTEN] = new sdkCore.Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap')),
+  (_a$f[SupportedChainId.GOERLI] = new sdkCore.Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap')),
+  (_a$f[SupportedChainId.KOVAN] = new sdkCore.Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap')),
+  _a$f)
+var WRAPPED_NATIVE_CURRENCY = __assign(
+  __assign({}, sdkCore.WETH9),
+  ((_b$5 = {}),
+  (_b$5[SupportedChainId.OPTIMISM] = new sdkCore.Token(
+    SupportedChainId.OPTIMISM,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  )),
+  (_b$5[SupportedChainId.OPTIMISTIC_KOVAN] = new sdkCore.Token(
+    SupportedChainId.OPTIMISTIC_KOVAN,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  )),
+  (_b$5[SupportedChainId.ARBITRUM_ONE] = new sdkCore.Token(
+    SupportedChainId.ARBITRUM_ONE,
+    '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  )),
+  (_b$5[SupportedChainId.ARBITRUM_RINKEBY] = new sdkCore.Token(
+    SupportedChainId.ARBITRUM_RINKEBY,
+    '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  )),
+  (_b$5[SupportedChainId.POLYGON] = new sdkCore.Token(
+    SupportedChainId.POLYGON,
+    '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+    18,
+    'WMATIC',
+    'Wrapped MATIC'
+  )),
+  (_b$5[SupportedChainId.POLYGON_MUMBAI] = new sdkCore.Token(
+    SupportedChainId.POLYGON_MUMBAI,
+    '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889',
+    18,
+    'WMATIC',
+    'Wrapped MATIC'
+  )),
+  _b$5)
+)
 function isMatic(chainId) {
-    return chainId === SupportedChainId.POLYGON_MUMBAI || chainId === SupportedChainId.POLYGON;
+  return chainId === SupportedChainId.POLYGON_MUMBAI || chainId === SupportedChainId.POLYGON
 }
 var MaticNativeCurrency = /** @class */ (function (_super) {
-    __extends(MaticNativeCurrency, _super);
-    function MaticNativeCurrency(chainId) {
-        var _this = this;
-        if (!isMatic(chainId))
-            throw new Error('Not matic');
-        _this = _super.call(this, chainId, 18, 'MATIC', 'Polygon Matic') || this;
-        return _this;
-    }
-    MaticNativeCurrency.prototype.equals = function (other) {
-        return other.isNative && other.chainId === this.chainId;
-    };
-    Object.defineProperty(MaticNativeCurrency.prototype, "wrapped", {
-        get: function () {
-            if (!isMatic(this.chainId))
-                throw new Error('Not matic');
-            return WRAPPED_NATIVE_CURRENCY[this.chainId];
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return MaticNativeCurrency;
-}(sdkCore.NativeCurrency));
+  __extends(MaticNativeCurrency, _super)
+  function MaticNativeCurrency(chainId) {
+    var _this = this
+    if (!isMatic(chainId)) throw new Error('Not matic')
+    _this = _super.call(this, chainId, 18, 'MATIC', 'Polygon Matic') || this
+    return _this
+  }
+  MaticNativeCurrency.prototype.equals = function (other) {
+    return other.isNative && other.chainId === this.chainId
+  }
+  Object.defineProperty(MaticNativeCurrency.prototype, 'wrapped', {
+    get() {
+      if (!isMatic(this.chainId)) throw new Error('Not matic')
+      return WRAPPED_NATIVE_CURRENCY[this.chainId]
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  return MaticNativeCurrency
+})(sdkCore.NativeCurrency)
 var ExtendedEther = /** @class */ (function (_super) {
-    __extends(ExtendedEther, _super);
-    function ExtendedEther() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Object.defineProperty(ExtendedEther.prototype, "wrapped", {
-        get: function () {
-            if (this.chainId in WRAPPED_NATIVE_CURRENCY)
-                return WRAPPED_NATIVE_CURRENCY[this.chainId];
-            throw new Error('Unsupported chain ID');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    ExtendedEther.onChain = function (chainId) {
-        var _a;
-        return (_a = this._cachedExtendedEther[chainId]) !== null && _a !== void 0 ? _a : (this._cachedExtendedEther[chainId] = new ExtendedEther(chainId));
-    };
-    ExtendedEther._cachedExtendedEther = {};
-    return ExtendedEther;
-}(sdkCore.Ether));
-var cachedNativeCurrency = {};
+  __extends(ExtendedEther, _super)
+  function ExtendedEther() {
+    return (_super !== null && _super.apply(this, arguments)) || this
+  }
+  Object.defineProperty(ExtendedEther.prototype, 'wrapped', {
+    get() {
+      if (this.chainId in WRAPPED_NATIVE_CURRENCY) return WRAPPED_NATIVE_CURRENCY[this.chainId]
+      throw new Error('Unsupported chain ID')
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  ExtendedEther.onChain = function (chainId) {
+    var _a
+    return (_a = this._cachedExtendedEther[chainId]) !== null && _a !== void 0
+      ? _a
+      : (this._cachedExtendedEther[chainId] = new ExtendedEther(chainId))
+  }
+  ExtendedEther._cachedExtendedEther = {}
+  return ExtendedEther
+})(sdkCore.Ether)
+var cachedNativeCurrency = {}
 function nativeOnChain(chainId) {
-    var _a;
-    return ((_a = cachedNativeCurrency[chainId]) !== null && _a !== void 0 ? _a : (cachedNativeCurrency[chainId] = isMatic(chainId)
+  var _a
+  return (_a = cachedNativeCurrency[chainId]) !== null && _a !== void 0
+    ? _a
+    : (cachedNativeCurrency[chainId] = isMatic(chainId)
         ? new MaticNativeCurrency(chainId)
-        : ExtendedEther.onChain(chainId)));
+        : ExtendedEther.onChain(chainId))
 }
 
 // returns null on errors
 function useContract(addressOrAddressMap, ABI, withSignerIfPossible) {
-    if (withSignerIfPossible === void 0) { withSignerIfPossible = true; }
-    var _a = useActiveWeb3React(), library = _a.library, account = _a.account, chainId = _a.chainId;
-    return React.useMemo(function () {
-        if (!addressOrAddressMap || !ABI || !library || !chainId)
-            return null;
-        var address;
-        if (typeof addressOrAddressMap === 'string')
-            address = addressOrAddressMap;
-        else
-            address = addressOrAddressMap[chainId];
-        if (!address)
-            return null;
-        try {
-            return getContract(address, ABI, library, withSignerIfPossible && account ? account : undefined);
-        }
-        catch (error) {
-            console.error('Failed to get contract', error);
-            return null;
-        }
-    }, [addressOrAddressMap, ABI, library, chainId, withSignerIfPossible, account]);
+  if (withSignerIfPossible === void 0) {
+    withSignerIfPossible = true
+  }
+  var _a = useActiveWeb3React(),
+    library = _a.library,
+    account = _a.account,
+    chainId = _a.chainId
+  return React.useMemo(
+    function () {
+      if (!addressOrAddressMap || !ABI || !library || !chainId) return null
+      var address
+      if (typeof addressOrAddressMap === 'string') address = addressOrAddressMap
+      else address = addressOrAddressMap[chainId]
+      if (!address) return null
+      try {
+        return getContract(address, ABI, library, withSignerIfPossible && account ? account : undefined)
+      } catch (error) {
+        console.error('Failed to get contract', error)
+        return null
+      }
+    },
+    [addressOrAddressMap, ABI, library, chainId, withSignerIfPossible, account]
+  )
 }
 function useTokenContract(tokenAddress, withSignerIfPossible) {
-    return useContract(tokenAddress, ERC20ABI, withSignerIfPossible);
+  return useContract(tokenAddress, ERC20ABI, withSignerIfPossible)
 }
 function useWETHContract(withSignerIfPossible) {
-    var _a;
-    var chainId = useActiveWeb3React().chainId;
-    return useContract(chainId ? (_a = WRAPPED_NATIVE_CURRENCY[chainId]) === null || _a === void 0 ? void 0 : _a.address : undefined, WETH_ABI, withSignerIfPossible);
+  var _a
+  var chainId = useActiveWeb3React().chainId
+  return useContract(
+    chainId ? ((_a = WRAPPED_NATIVE_CURRENCY[chainId]) === null || _a === void 0 ? void 0 : _a.address) : undefined,
+    WETH_ABI,
+    withSignerIfPossible
+  )
 }
 function useERC721Contract(nftAddress) {
-    return useContract(nftAddress, ERC721_ABI, false);
+  return useContract(nftAddress, ERC721_ABI, false)
 }
 function useERC1155Contract(nftAddress) {
-    return useContract(nftAddress, ERC1155_ABI, false);
+  return useContract(nftAddress, ERC1155_ABI, false)
 }
 function useArgentWalletDetectorContract() {
-    return useContract(ARGENT_WALLET_DETECTOR_ADDRESS, ARGENT_WALLET_DETECTOR_ABI, false);
+  return useContract(ARGENT_WALLET_DETECTOR_ADDRESS, ARGENT_WALLET_DETECTOR_ABI, false)
 }
 function useENSRegistrarContract(withSignerIfPossible) {
-    return useContract(ENS_REGISTRAR_ADDRESSES, ENS_ABI, withSignerIfPossible);
+  return useContract(ENS_REGISTRAR_ADDRESSES, ENS_ABI, withSignerIfPossible)
 }
 function useENSResolverContract(address, withSignerIfPossible) {
-    return useContract(address, ENS_PUBLIC_RESOLVER_ABI, withSignerIfPossible);
+  return useContract(address, ENS_PUBLIC_RESOLVER_ABI, withSignerIfPossible)
 }
 function useBytes32TokenContract(tokenAddress, withSignerIfPossible) {
-    return useContract(tokenAddress, ERC20_BYTES32_ABI, withSignerIfPossible);
+  return useContract(tokenAddress, ERC20_BYTES32_ABI, withSignerIfPossible)
 }
 function useEIP2612Contract(tokenAddress) {
-    return useContract(tokenAddress, EIP_2612, false);
+  return useContract(tokenAddress, EIP_2612, false)
 }
 function useV2RouterContract() {
-    return useContract(V2_ROUTER_ADDRESS, abi$3, true);
+  return useContract(V2_ROUTER_ADDRESS, abi$3, true)
 }
 function useInterfaceMulticall() {
-    return useContract(MULTICALL_ADDRESS, abi$1, false);
+  return useContract(MULTICALL_ADDRESS, abi$1, false)
 }
 function useMerkleDistributorContract() {
-    return useContract(MERKLE_DISTRIBUTOR_ADDRESS, abi$5, true);
+  return useContract(MERKLE_DISTRIBUTOR_ADDRESS, abi$5, true)
 }
 function useV3Quoter() {
-    return useContract(QUOTER_ADDRESSES, abi$2);
+  return useContract(QUOTER_ADDRESSES, abi$2)
 }
 
-var _a$e;
-var multicall = reduxMulticall.createMulticall();
-var reducer = redux.combineReducers((_a$e = {}, _a$e[multicall.reducerPath] = multicall.reducer, _a$e));
-redux.createStore(reducer);
+var _a$e
+var multicall = reduxMulticall.createMulticall()
+var reducer = redux.combineReducers(((_a$e = {}), (_a$e[multicall.reducerPath] = multicall.reducer), _a$e))
+redux.createStore(reducer)
 function MulticallUpdater() {
-    var latestBlockNumber = useBlockNumber();
-    var chainId = useActiveWeb3React().chainId;
-    var contract = useInterfaceMulticall();
-    return jsxRuntime.jsx(multicall.Updater, { chainId: chainId, latestBlockNumber: latestBlockNumber, contract: contract }, void 0);
+  var latestBlockNumber = useBlockNumber()
+  var chainId = useActiveWeb3React().chainId
+  var contract = useInterfaceMulticall()
+  return jsxRuntime.jsx(multicall.Updater, { chainId, latestBlockNumber, contract }, void 0)
 }
 
 function useMultipleContractSingleData() {
-    var _a;
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    var _b = useCallContext(), chainId = _b.chainId, latestBlock = _b.latestBlock;
-    return (_a = multicall.hooks).useMultipleContractSingleData.apply(_a, __spreadArray([chainId, latestBlock], __read(args), false));
+  var _a
+  var args = []
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i]
+  }
+  var _b = useCallContext(),
+    chainId = _b.chainId,
+    latestBlock = _b.latestBlock
+  return (_a = multicall.hooks).useMultipleContractSingleData.apply(
+    _a,
+    __spreadArray([chainId, latestBlock], __read(args), false)
+  )
 }
 function useSingleCallResult() {
-    var _a;
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    var _b = useCallContext(), chainId = _b.chainId, latestBlock = _b.latestBlock;
-    return (_a = multicall.hooks).useSingleCallResult.apply(_a, __spreadArray([chainId, latestBlock], __read(args), false));
+  var _a
+  var args = []
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i]
+  }
+  var _b = useCallContext(),
+    chainId = _b.chainId,
+    latestBlock = _b.latestBlock
+  return (_a = multicall.hooks).useSingleCallResult.apply(
+    _a,
+    __spreadArray([chainId, latestBlock], __read(args), false)
+  )
 }
 function useSingleContractMultipleData() {
-    var _a;
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    var _b = useCallContext(), chainId = _b.chainId, latestBlock = _b.latestBlock;
-    return (_a = multicall.hooks).useSingleContractMultipleData.apply(_a, __spreadArray([chainId, latestBlock], __read(args), false));
+  var _a
+  var args = []
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i]
+  }
+  var _b = useCallContext(),
+    chainId = _b.chainId,
+    latestBlock = _b.latestBlock
+  return (_a = multicall.hooks).useSingleContractMultipleData.apply(
+    _a,
+    __spreadArray([chainId, latestBlock], __read(args), false)
+  )
 }
 function useSingleContractWithCallData() {
-    var _a;
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    var _b = useCallContext(), chainId = _b.chainId, latestBlock = _b.latestBlock;
-    return (_a = multicall.hooks).useSingleContractWithCallData.apply(_a, __spreadArray([chainId, latestBlock], __read(args), false));
+  var _a
+  var args = []
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i]
+  }
+  var _b = useCallContext(),
+    chainId = _b.chainId,
+    latestBlock = _b.latestBlock
+  return (_a = multicall.hooks).useSingleContractWithCallData.apply(
+    _a,
+    __spreadArray([chainId, latestBlock], __read(args), false)
+  )
 }
 function useCallContext() {
-    var chainId = useActiveWeb3React().chainId;
-    var latestBlock = useBlockNumber();
-    return { chainId: chainId, latestBlock: latestBlock };
+  var chainId = useActiveWeb3React().chainId
+  var latestBlock = useBlockNumber()
+  return { chainId, latestBlock }
 }
 
 function safeNamehash(name) {
-    if (name === undefined)
-        return undefined;
-    try {
-        return hash.namehash(name);
-    }
-    catch (error) {
-        console.debug(error);
-        return undefined;
-    }
+  if (name === undefined) return undefined
+  try {
+    return hash.namehash(name)
+  } catch (error) {
+    console.debug(error)
+    return undefined
+  }
 }
 
 /**
@@ -5648,29 +5998,44 @@ function safeNamehash(name) {
  * @param hexNumberString
  */
 function isZero(hexNumberString) {
-    return /^0x0*$/.test(hexNumberString);
+  return /^0x0*$/.test(hexNumberString)
 }
 
 /**
  * Does a lookup for an ENS name to find its address.
  */
 function useENSAddress(ensName) {
-    var _a;
-    var debouncedName = useDebounce(ensName, 200);
-    var ensNodeArgument = React.useMemo(function () { return [debouncedName === null ? undefined : safeNamehash(debouncedName)]; }, [debouncedName]);
-    var registrarContract = useENSRegistrarContract(false);
-    var resolverAddress = useSingleCallResult(registrarContract, 'resolver', ensNodeArgument);
-    var resolverAddressResult = (_a = resolverAddress.result) === null || _a === void 0 ? void 0 : _a[0];
-    var resolverContract = useENSResolverContract(resolverAddressResult && !isZero(resolverAddressResult) ? resolverAddressResult : undefined, false);
-    var addr = useSingleCallResult(resolverContract, 'addr', ensNodeArgument);
-    var changed = debouncedName !== ensName;
-    return React.useMemo(function () {
-        var _a, _b;
-        return ({
-            address: changed ? null : (_b = (_a = addr.result) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0 ? _b : null,
-            loading: changed || resolverAddress.loading || addr.loading,
-        });
-    }, [addr.loading, addr.result, changed, resolverAddress.loading]);
+  var _a
+  var debouncedName = useDebounce(ensName, 200)
+  var ensNodeArgument = React.useMemo(
+    function () {
+      return [debouncedName === null ? undefined : safeNamehash(debouncedName)]
+    },
+    [debouncedName]
+  )
+  var registrarContract = useENSRegistrarContract(false)
+  var resolverAddress = useSingleCallResult(registrarContract, 'resolver', ensNodeArgument)
+  var resolverAddressResult = (_a = resolverAddress.result) === null || _a === void 0 ? void 0 : _a[0]
+  var resolverContract = useENSResolverContract(
+    resolverAddressResult && !isZero(resolverAddressResult) ? resolverAddressResult : undefined,
+    false
+  )
+  var addr = useSingleCallResult(resolverContract, 'addr', ensNodeArgument)
+  var changed = debouncedName !== ensName
+  return React.useMemo(
+    function () {
+      var _a, _b
+      return {
+        address: changed
+          ? null
+          : (_b = (_a = addr.result) === null || _a === void 0 ? void 0 : _a[0]) !== null && _b !== void 0
+          ? _b
+          : null,
+        loading: changed || resolverAddress.loading || addr.loading,
+      }
+    },
+    [addr.loading, addr.result, changed, resolverAddress.loading]
+  )
 }
 
 /**
@@ -5678,30 +6043,40 @@ function useENSAddress(ensName) {
  * Note this is not the same as looking up an ENS name to find an address.
  */
 function useENSName(address) {
-    var _a, _b;
-    var debouncedAddress = useDebounce(address, 200);
-    var ensNodeArgument = React.useMemo(function () {
-        if (!debouncedAddress || !isAddress(debouncedAddress))
-            return [undefined];
-        return [hash.namehash(debouncedAddress.toLowerCase().substr(2) + ".addr.reverse")];
-    }, [debouncedAddress]);
-    var registrarContract = useENSRegistrarContract(false);
-    var resolverAddress = useSingleCallResult(registrarContract, 'resolver', ensNodeArgument);
-    var resolverAddressResult = (_a = resolverAddress.result) === null || _a === void 0 ? void 0 : _a[0];
-    var resolverContract = useENSResolverContract(resolverAddressResult && !isZero(resolverAddressResult) ? resolverAddressResult : undefined, false);
-    var nameCallRes = useSingleCallResult(resolverContract, 'name', ensNodeArgument);
-    var name = (_b = nameCallRes.result) === null || _b === void 0 ? void 0 : _b[0];
-    /* ENS does not enforce that an address owns a .eth domain before setting it as a reverse proxy
+  var _a, _b
+  var debouncedAddress = useDebounce(address, 200)
+  var ensNodeArgument = React.useMemo(
+    function () {
+      if (!debouncedAddress || !isAddress(debouncedAddress)) return [undefined]
+      return [hash.namehash(debouncedAddress.toLowerCase().substr(2) + '.addr.reverse')]
+    },
+    [debouncedAddress]
+  )
+  var registrarContract = useENSRegistrarContract(false)
+  var resolverAddress = useSingleCallResult(registrarContract, 'resolver', ensNodeArgument)
+  var resolverAddressResult = (_a = resolverAddress.result) === null || _a === void 0 ? void 0 : _a[0]
+  var resolverContract = useENSResolverContract(
+    resolverAddressResult && !isZero(resolverAddressResult) ? resolverAddressResult : undefined,
+    false
+  )
+  var nameCallRes = useSingleCallResult(resolverContract, 'name', ensNodeArgument)
+  var name = (_b = nameCallRes.result) === null || _b === void 0 ? void 0 : _b[0]
+  /* ENS does not enforce that an address owns a .eth domain before setting it as a reverse proxy
        and recommends that you perform a match on the forward resolution
        see: https://docs.ens.domains/dapp-developer-guide/resolving-names#reverse-resolution
     */
-    var fwdAddr = useENSAddress(name);
-    var checkedName = address === (fwdAddr === null || fwdAddr === void 0 ? void 0 : fwdAddr.address) ? name : null;
-    var changed = debouncedAddress !== address;
-    return React.useMemo(function () { return ({
+  var fwdAddr = useENSAddress(name)
+  var checkedName = address === (fwdAddr === null || fwdAddr === void 0 ? void 0 : fwdAddr.address) ? name : null
+  var changed = debouncedAddress !== address
+  return React.useMemo(
+    function () {
+      return {
         ENSName: changed ? null : checkedName,
         loading: changed || resolverAddress.loading || nameCallRes.loading,
-    }); }, [changed, nameCallRes.loading, checkedName, resolverAddress.loading]);
+      }
+    },
+    [changed, nameCallRes.loading, checkedName, resolverAddress.loading]
+  )
 }
 
 /**
@@ -5709,14 +6084,23 @@ function useENSName(address) {
  * @param nameOrAddress ENS name or address
  */
 function useENS(nameOrAddress) {
-    var validated = isAddress(nameOrAddress);
-    var reverseLookup = useENSName(validated ? validated : undefined);
-    var lookup = useENSAddress(nameOrAddress);
-    return React.useMemo(function () { return ({
+  var validated = isAddress(nameOrAddress)
+  var reverseLookup = useENSName(validated ? validated : undefined)
+  var lookup = useENSAddress(nameOrAddress)
+  return React.useMemo(
+    function () {
+      return {
         loading: reverseLookup.loading || lookup.loading,
         address: validated ? validated : lookup.address,
-        name: reverseLookup.ENSName ? reverseLookup.ENSName : !validated && lookup.address ? nameOrAddress || null : null,
-    }); }, [lookup.address, lookup.loading, nameOrAddress, reverseLookup.ENSName, reverseLookup.loading, validated]);
+        name: reverseLookup.ENSName
+          ? reverseLookup.ENSName
+          : !validated && lookup.address
+          ? nameOrAddress || null
+          : null,
+      }
+    },
+    [lookup.address, lookup.loading, nameOrAddress, reverseLookup.ENSName, reverseLookup.loading, validated]
+  )
 }
 
 /**
@@ -5724,741 +6108,884 @@ function useENS(nameOrAddress) {
  * @param value the gas value to pad
  */
 function calculateGasMargin(value) {
-    return value.mul(120).div(100);
+  return value.mul(120).div(100)
 }
 
 /**
  * Be careful adding to this enum, always assign a unique value (typescript will not prevent duplicate values).
  * These values is persisted in state and if you change the value it will cause errors
  */
-var TransactionType;
-(function (TransactionType) {
-    TransactionType[TransactionType["APPROVAL"] = 0] = "APPROVAL";
-    TransactionType[TransactionType["SWAP"] = 1] = "SWAP";
-    TransactionType[TransactionType["DEPOSIT_LIQUIDITY_STAKING"] = 2] = "DEPOSIT_LIQUIDITY_STAKING";
-    TransactionType[TransactionType["WITHDRAW_LIQUIDITY_STAKING"] = 3] = "WITHDRAW_LIQUIDITY_STAKING";
-    TransactionType[TransactionType["CLAIM"] = 4] = "CLAIM";
-    TransactionType[TransactionType["VOTE"] = 5] = "VOTE";
-    TransactionType[TransactionType["DELEGATE"] = 6] = "DELEGATE";
-    TransactionType[TransactionType["WRAP"] = 7] = "WRAP";
-    TransactionType[TransactionType["CREATE_V3_POOL"] = 8] = "CREATE_V3_POOL";
-    TransactionType[TransactionType["ADD_LIQUIDITY_V3_POOL"] = 9] = "ADD_LIQUIDITY_V3_POOL";
-    TransactionType[TransactionType["ADD_LIQUIDITY_V2_POOL"] = 10] = "ADD_LIQUIDITY_V2_POOL";
-    TransactionType[TransactionType["MIGRATE_LIQUIDITY_V3"] = 11] = "MIGRATE_LIQUIDITY_V3";
-    TransactionType[TransactionType["COLLECT_FEES"] = 12] = "COLLECT_FEES";
-    TransactionType[TransactionType["REMOVE_LIQUIDITY_V3"] = 13] = "REMOVE_LIQUIDITY_V3";
-    TransactionType[TransactionType["SUBMIT_PROPOSAL"] = 14] = "SUBMIT_PROPOSAL";
-})(TransactionType || (TransactionType = {}));
-var addTransaction = toolkit.createAction('transactions/addTransaction');
-var clearAllTransactions = toolkit.createAction('transactions/clearAllTransactions');
-var finalizeTransaction = toolkit.createAction('transactions/finalizeTransaction');
-var checkedTransaction = toolkit.createAction('transactions/checkedTransaction');
+var TransactionType
+;(function (TransactionType) {
+  TransactionType[(TransactionType['APPROVAL'] = 0)] = 'APPROVAL'
+  TransactionType[(TransactionType['SWAP'] = 1)] = 'SWAP'
+  TransactionType[(TransactionType['DEPOSIT_LIQUIDITY_STAKING'] = 2)] = 'DEPOSIT_LIQUIDITY_STAKING'
+  TransactionType[(TransactionType['WITHDRAW_LIQUIDITY_STAKING'] = 3)] = 'WITHDRAW_LIQUIDITY_STAKING'
+  TransactionType[(TransactionType['CLAIM'] = 4)] = 'CLAIM'
+  TransactionType[(TransactionType['VOTE'] = 5)] = 'VOTE'
+  TransactionType[(TransactionType['DELEGATE'] = 6)] = 'DELEGATE'
+  TransactionType[(TransactionType['WRAP'] = 7)] = 'WRAP'
+  TransactionType[(TransactionType['CREATE_V3_POOL'] = 8)] = 'CREATE_V3_POOL'
+  TransactionType[(TransactionType['ADD_LIQUIDITY_V3_POOL'] = 9)] = 'ADD_LIQUIDITY_V3_POOL'
+  TransactionType[(TransactionType['ADD_LIQUIDITY_V2_POOL'] = 10)] = 'ADD_LIQUIDITY_V2_POOL'
+  TransactionType[(TransactionType['MIGRATE_LIQUIDITY_V3'] = 11)] = 'MIGRATE_LIQUIDITY_V3'
+  TransactionType[(TransactionType['COLLECT_FEES'] = 12)] = 'COLLECT_FEES'
+  TransactionType[(TransactionType['REMOVE_LIQUIDITY_V3'] = 13)] = 'REMOVE_LIQUIDITY_V3'
+  TransactionType[(TransactionType['SUBMIT_PROPOSAL'] = 14)] = 'SUBMIT_PROPOSAL'
+})(TransactionType || (TransactionType = {}))
+var addTransaction = toolkit.createAction('transactions/addTransaction')
+var clearAllTransactions = toolkit.createAction('transactions/clearAllTransactions')
+var finalizeTransaction = toolkit.createAction('transactions/finalizeTransaction')
+var checkedTransaction = toolkit.createAction('transactions/checkedTransaction')
 
 var SUPPORTED_TRANSACTION_TYPES = [
-    TransactionType.ADD_LIQUIDITY_V2_POOL,
-    TransactionType.ADD_LIQUIDITY_V3_POOL,
-    TransactionType.CREATE_V3_POOL,
-    TransactionType.REMOVE_LIQUIDITY_V3,
-    TransactionType.SWAP,
-];
-var FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_KEY;
-var firebaseEnabled = typeof FIREBASE_API_KEY !== 'undefined';
-if (firebaseEnabled)
-    initializeFirebase();
+  TransactionType.ADD_LIQUIDITY_V2_POOL,
+  TransactionType.ADD_LIQUIDITY_V3_POOL,
+  TransactionType.CREATE_V3_POOL,
+  TransactionType.REMOVE_LIQUIDITY_V3,
+  TransactionType.SWAP,
+]
+var FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_KEY
+var firebaseEnabled = typeof FIREBASE_API_KEY !== 'undefined'
+if (firebaseEnabled) initializeFirebase()
 function useMonitoringEventCallback() {
-    var chainId = useActiveWeb3React().chainId;
-    return React.useCallback(function log(type, _a) {
-        var transactionResponse = _a.transactionResponse, walletAddress = _a.walletAddress;
-        return __awaiter(this, void 0, void 0, function () {
-            var db;
-            return __generator(this, function (_b) {
-                if (!firebaseEnabled)
-                    return [2 /*return*/];
-                db = database.getDatabase();
-                if (!walletAddress) {
-                    console.debug('Wallet address required to log monitoring events.');
-                    return [2 /*return*/];
-                }
-                try {
-                    database.push(database.ref(db, 'trm'), {
-                        chainId: chainId,
-                        origin: window.location.origin,
-                        timestamp: Date.now(),
-                        tx: transactionResponse,
-                        type: type,
-                        walletAddress: walletAddress,
-                    });
-                }
-                catch (e) {
-                    console.debug('Error adding document: ', e);
-                }
-                return [2 /*return*/];
-            });
-        });
-    }, [chainId]);
+  var chainId = useActiveWeb3React().chainId
+  return React.useCallback(
+    function log(type, _a) {
+      var transactionResponse = _a.transactionResponse,
+        walletAddress = _a.walletAddress
+      return __awaiter(this, void 0, void 0, function () {
+        var db
+        return __generator(this, function (_b) {
+          if (!firebaseEnabled) return [2 /*return*/]
+          db = database.getDatabase()
+          if (!walletAddress) {
+            console.debug('Wallet address required to log monitoring events.')
+            return [2 /*return*/]
+          }
+          try {
+            database.push(database.ref(db, 'trm'), {
+              chainId,
+              origin: window.location.origin,
+              timestamp: Date.now(),
+              tx: transactionResponse,
+              type,
+              walletAddress,
+            })
+          } catch (e) {
+            console.debug('Error adding document: ', e)
+          }
+          return [2 /*return*/]
+        })
+      })
+    },
+    [chainId]
+  )
 }
 function useTransactionMonitoringEventCallback() {
-    var account = useActiveWeb3React().account;
-    var log = useMonitoringEventCallback();
-    return React.useCallback(function (info, transactionResponse) {
-        if (SUPPORTED_TRANSACTION_TYPES.includes(info.type)) {
-            log(TransactionType[info.type], {
-                transactionResponse: (function (_a) {
-                    var hash = _a.hash, v = _a.v, r = _a.r, s = _a.s;
-                    return ({ hash: hash, v: v, r: r, s: s });
-                })(transactionResponse),
-                walletAddress: account !== null && account !== void 0 ? account : undefined,
-            });
-        }
-    }, [account, log]);
+  var account = useActiveWeb3React().account
+  var log = useMonitoringEventCallback()
+  return React.useCallback(
+    function (info, transactionResponse) {
+      if (SUPPORTED_TRANSACTION_TYPES.includes(info.type)) {
+        log(TransactionType[info.type], {
+          transactionResponse: (function (_a) {
+            var hash = _a.hash,
+              v = _a.v,
+              r = _a.r,
+              s = _a.s
+            return { hash, v, r, s }
+          })(transactionResponse),
+          walletAddress: account !== null && account !== void 0 ? account : undefined,
+        })
+      }
+    },
+    [account, log]
+  )
 }
 function useWalletConnectMonitoringEventCallback() {
-    var log = useMonitoringEventCallback();
-    return React.useCallback(function (walletAddress) {
-        log('WALLET_CONNECTED', { transactionResponse: { hash: '', r: '', s: '', v: -1 }, walletAddress: walletAddress });
-    }, [log]);
+  var log = useMonitoringEventCallback()
+  return React.useCallback(
+    function (walletAddress) {
+      log('WALLET_CONNECTED', { transactionResponse: { hash: '', r: '', s: '', v: -1 }, walletAddress })
+    },
+    [log]
+  )
 }
 function initializeFirebase() {
-    app.initializeApp({
-        apiKey: process.env.REACT_APP_FIREBASE_KEY,
-        authDomain: 'interface-monitoring.firebaseapp.com',
-        databaseURL: 'https://interface-monitoring-default-rtdb.firebaseio.com',
-        projectId: 'interface-monitoring',
-        storageBucket: 'interface-monitoring.appspot.com',
-        messagingSenderId: '968187720053',
-        appId: '1:968187720053:web:acedf72dce629d470be33c',
-    });
+  app.initializeApp({
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
+    authDomain: 'interface-monitoring.firebaseapp.com',
+    databaseURL: 'https://interface-monitoring-default-rtdb.firebaseio.com',
+    projectId: 'interface-monitoring',
+    storageBucket: 'interface-monitoring.appspot.com',
+    messagingSenderId: '968187720053',
+    appId: '1:968187720053:web:acedf72dce629d470be33c',
+  })
 }
 
 // helper that can take a ethers library transaction response and add it to the list of transactions
 function useTransactionAdder() {
-    var _a = useActiveWeb3React(), chainId = _a.chainId, account = _a.account;
-    var dispatch = useAppDispatch();
-    var logMonitoringEvent = useTransactionMonitoringEventCallback();
-    return React.useCallback(function (response, info) {
-        if (!account)
-            return;
-        if (!chainId)
-            return;
-        var hash = response.hash;
-        if (!hash) {
-            throw Error('No transaction hash found.');
-        }
-        dispatch(addTransaction({ hash: hash, from: account, info: info, chainId: chainId }));
-        logMonitoringEvent(info, response);
-    }, [account, chainId, dispatch, logMonitoringEvent]);
+  var _a = useActiveWeb3React(),
+    chainId = _a.chainId,
+    account = _a.account
+  var dispatch = useAppDispatch()
+  var logMonitoringEvent = useTransactionMonitoringEventCallback()
+  return React.useCallback(
+    function (response, info) {
+      if (!account) return
+      if (!chainId) return
+      var hash = response.hash
+      if (!hash) {
+        throw Error('No transaction hash found.')
+      }
+      dispatch(addTransaction({ hash, from: account, info, chainId }))
+      logMonitoringEvent(info, response)
+    },
+    [account, chainId, dispatch, logMonitoringEvent]
+  )
 }
 // returns all the transactions for the current chain
 function useAllTransactions() {
-    var _a;
-    var chainId = useActiveWeb3React().chainId;
-    var state = useAppSelector(function (state) { return state.transactions; });
-    return chainId ? (_a = state[chainId]) !== null && _a !== void 0 ? _a : {} : {};
+  var _a
+  var chainId = useActiveWeb3React().chainId
+  var state = useAppSelector(function (state) {
+    return state.transactions
+  })
+  return chainId ? ((_a = state[chainId]) !== null && _a !== void 0 ? _a : {}) : {}
 }
 function useTransaction(transactionHash) {
-    var allTransactions = useAllTransactions();
-    if (!transactionHash) {
-        return undefined;
-    }
-    return allTransactions[transactionHash];
+  var allTransactions = useAllTransactions()
+  if (!transactionHash) {
+    return undefined
+  }
+  return allTransactions[transactionHash]
 }
 function useIsTransactionPending(transactionHash) {
-    var transactions = useAllTransactions();
-    if (!transactionHash || !transactions[transactionHash])
-        return false;
-    return !transactions[transactionHash].receipt;
+  var transactions = useAllTransactions()
+  if (!transactionHash || !transactions[transactionHash]) return false
+  return !transactions[transactionHash].receipt
 }
 function useIsTransactionConfirmed(transactionHash) {
-    var transactions = useAllTransactions();
-    if (!transactionHash || !transactions[transactionHash])
-        return false;
-    return Boolean(transactions[transactionHash].receipt);
+  var transactions = useAllTransactions()
+  if (!transactionHash || !transactions[transactionHash]) return false
+  return Boolean(transactions[transactionHash].receipt)
 }
 /**
  * Returns whether a transaction happened in the last day (86400 seconds * 1000 milliseconds / second)
  * @param tx to check for recency
  */
 function isTransactionRecent(tx) {
-    return new Date().getTime() - tx.addedTime < 86400000;
+  return new Date().getTime() - tx.addedTime < 86400000
 }
 // returns whether a token has a pending approval transaction
 function useHasPendingApproval(token, spender) {
-    var allTransactions = useAllTransactions();
-    return React.useMemo(function () {
-        return typeof (token === null || token === void 0 ? void 0 : token.address) === 'string' &&
-            typeof spender === 'string' &&
-            Object.keys(allTransactions).some(function (hash) {
-                var tx = allTransactions[hash];
-                if (!tx)
-                    return false;
-                if (tx.receipt) {
-                    return false;
-                }
-                else {
-                    if (tx.info.type !== TransactionType.APPROVAL)
-                        return false;
-                    return tx.info.spender === spender && tx.info.tokenAddress === token.address && isTransactionRecent(tx);
-                }
-            });
-    }, [allTransactions, spender, token === null || token === void 0 ? void 0 : token.address]);
+  var allTransactions = useAllTransactions()
+  return React.useMemo(
+    function () {
+      return (
+        typeof (token === null || token === void 0 ? void 0 : token.address) === 'string' &&
+        typeof spender === 'string' &&
+        Object.keys(allTransactions).some(function (hash) {
+          var tx = allTransactions[hash]
+          if (!tx) return false
+          if (tx.receipt) {
+            return false
+          } else {
+            if (tx.info.type !== TransactionType.APPROVAL) return false
+            return tx.info.spender === spender && tx.info.tokenAddress === token.address && isTransactionRecent(tx)
+          }
+        })
+      )
+    },
+    [allTransactions, spender, token === null || token === void 0 ? void 0 : token.address]
+  )
 }
 // watch for submissions to claim
 // return null if not done loading, return undefined if not found
 function useUserHasSubmittedClaim(account) {
-    var allTransactions = useAllTransactions();
-    // get the txn if it has been submitted
-    var claimTxn = React.useMemo(function () {
-        var txnIndex = Object.keys(allTransactions).find(function (hash) {
-            var tx = allTransactions[hash];
-            return tx.info.type === TransactionType.CLAIM && tx.info.recipient === account;
-        });
-        return txnIndex && allTransactions[txnIndex] ? allTransactions[txnIndex] : undefined;
-    }, [account, allTransactions]);
-    return { claimSubmitted: Boolean(claimTxn), claimTxn: claimTxn };
+  var allTransactions = useAllTransactions()
+  // get the txn if it has been submitted
+  var claimTxn = React.useMemo(
+    function () {
+      var txnIndex = Object.keys(allTransactions).find(function (hash) {
+        var tx = allTransactions[hash]
+        return tx.info.type === TransactionType.CLAIM && tx.info.recipient === account
+      })
+      return txnIndex && allTransactions[txnIndex] ? allTransactions[txnIndex] : undefined
+    },
+    [account, allTransactions]
+  )
+  return { claimSubmitted: Boolean(claimTxn), claimTxn }
 }
 
-var FETCH_CLAIM_MAPPING_PROMISE = null;
+var FETCH_CLAIM_MAPPING_PROMISE = null
 function fetchClaimMapping() {
-    return (FETCH_CLAIM_MAPPING_PROMISE !== null && FETCH_CLAIM_MAPPING_PROMISE !== void 0 ? FETCH_CLAIM_MAPPING_PROMISE : (FETCH_CLAIM_MAPPING_PROMISE = fetch("https://raw.githubusercontent.com/Uniswap/mrkl-drop-data-chunks/final/chunks/mapping.json")
-        .then(function (res) { return res.json(); })
+  return FETCH_CLAIM_MAPPING_PROMISE !== null && FETCH_CLAIM_MAPPING_PROMISE !== void 0
+    ? FETCH_CLAIM_MAPPING_PROMISE
+    : (FETCH_CLAIM_MAPPING_PROMISE = fetch(
+        'https://raw.githubusercontent.com/Uniswap/mrkl-drop-data-chunks/final/chunks/mapping.json'
+      )
+        .then(function (res) {
+          return res.json()
+        })
         .catch(function (error) {
-        console.error('Failed to get claims mapping', error);
-        FETCH_CLAIM_MAPPING_PROMISE = null;
-    })));
+          console.error('Failed to get claims mapping', error)
+          FETCH_CLAIM_MAPPING_PROMISE = null
+        }))
 }
-var FETCH_CLAIM_FILE_PROMISES = {};
+var FETCH_CLAIM_FILE_PROMISES = {}
 function fetchClaimFile(key) {
-    var _a;
-    return ((_a = FETCH_CLAIM_FILE_PROMISES[key]) !== null && _a !== void 0 ? _a : (FETCH_CLAIM_FILE_PROMISES[key] = fetch("https://raw.githubusercontent.com/Uniswap/mrkl-drop-data-chunks/final/chunks/" + key + ".json")
-        .then(function (res) { return res.json(); })
+  var _a
+  return (_a = FETCH_CLAIM_FILE_PROMISES[key]) !== null && _a !== void 0
+    ? _a
+    : (FETCH_CLAIM_FILE_PROMISES[key] = fetch(
+        'https://raw.githubusercontent.com/Uniswap/mrkl-drop-data-chunks/final/chunks/' + key + '.json'
+      )
+        .then(function (res) {
+          return res.json()
+        })
         .catch(function (error) {
-        console.error("Failed to get claim file mapping for starting address " + key, error);
-        delete FETCH_CLAIM_FILE_PROMISES[key];
-    })));
+          console.error('Failed to get claim file mapping for starting address ' + key, error)
+          delete FETCH_CLAIM_FILE_PROMISES[key]
+        }))
 }
-var FETCH_CLAIM_PROMISES = {};
+var FETCH_CLAIM_PROMISES = {}
 // returns the claim for the given address, or null if not valid
 function fetchClaim(account) {
-    var _a;
-    var formatted = isAddress(account);
-    if (!formatted)
-        return Promise.reject(new Error('Invalid address'));
-    return ((_a = FETCH_CLAIM_PROMISES[account]) !== null && _a !== void 0 ? _a : (FETCH_CLAIM_PROMISES[account] = fetchClaimMapping()
+  var _a
+  var formatted = isAddress(account)
+  if (!formatted) return Promise.reject(new Error('Invalid address'))
+  return (_a = FETCH_CLAIM_PROMISES[account]) !== null && _a !== void 0
+    ? _a
+    : (FETCH_CLAIM_PROMISES[account] = fetchClaimMapping()
         .then(function (mapping) {
-        var e_1, _a;
-        var sorted = Object.keys(mapping).sort(function (a, b) { return (a.toLowerCase() < b.toLowerCase() ? -1 : 1); });
-        try {
-            for (var sorted_1 = __values(sorted), sorted_1_1 = sorted_1.next(); !sorted_1_1.done; sorted_1_1 = sorted_1.next()) {
-                var startingAddress = sorted_1_1.value;
-                var lastAddress = mapping[startingAddress];
-                if (startingAddress.toLowerCase() <= formatted.toLowerCase()) {
-                    if (formatted.toLowerCase() <= lastAddress.toLowerCase()) {
-                        return startingAddress;
-                    }
+          var e_1, _a
+          var sorted = Object.keys(mapping).sort(function (a, b) {
+            return a.toLowerCase() < b.toLowerCase() ? -1 : 1
+          })
+          try {
+            for (
+              var sorted_1 = __values(sorted), sorted_1_1 = sorted_1.next();
+              !sorted_1_1.done;
+              sorted_1_1 = sorted_1.next()
+            ) {
+              var startingAddress = sorted_1_1.value
+              var lastAddress = mapping[startingAddress]
+              if (startingAddress.toLowerCase() <= formatted.toLowerCase()) {
+                if (formatted.toLowerCase() <= lastAddress.toLowerCase()) {
+                  return startingAddress
                 }
-                else {
-                    throw new Error("Claim for " + formatted + " was not found in partial search");
-                }
+              } else {
+                throw new Error('Claim for ' + formatted + ' was not found in partial search')
+              }
             }
-        }
-        catch (e_1_1) { e_1 = { error: e_1_1 }; }
-        finally {
+          } catch (e_1_1) {
+            e_1 = { error: e_1_1 }
+          } finally {
             try {
-                if (sorted_1_1 && !sorted_1_1.done && (_a = sorted_1.return)) _a.call(sorted_1);
+              if (sorted_1_1 && !sorted_1_1.done && (_a = sorted_1.return)) _a.call(sorted_1)
+            } finally {
+              if (e_1) throw e_1.error
             }
-            finally { if (e_1) throw e_1.error; }
-        }
-        throw new Error("Claim for " + formatted + " was not found after searching all mappings");
-    })
+          }
+          throw new Error('Claim for ' + formatted + ' was not found after searching all mappings')
+        })
         .then(fetchClaimFile)
         .then(function (result) {
-        if (result[formatted])
-            return result[formatted];
-        throw new Error("Claim for " + formatted + " was not found in claim file!");
-    })
+          if (result[formatted]) return result[formatted]
+          throw new Error('Claim for ' + formatted + ' was not found in claim file!')
+        })
         .catch(function (error) {
-        console.debug('Claim fetch failed', error);
-        throw error;
-    })));
+          console.debug('Claim fetch failed', error)
+          throw error
+        }))
 }
 // parse distributorContract blob and detect if user has claim data
 // null means we know it does not
 function useUserClaimData(account) {
-    var chainId = useActiveWeb3React().chainId;
-    var _a = __read(React.useState({}), 2), claimInfo = _a[0], setClaimInfo = _a[1];
-    React.useEffect(function () {
-        if (!account || chainId !== 1)
-            return;
-        fetchClaim(account)
-            .then(function (accountClaimInfo) {
-            return setClaimInfo(function (claimInfo) {
-                var _a;
-                return __assign(__assign({}, claimInfo), (_a = {}, _a[account] = accountClaimInfo, _a));
-            });
+  var chainId = useActiveWeb3React().chainId
+  var _a = __read(React.useState({}), 2),
+    claimInfo = _a[0],
+    setClaimInfo = _a[1]
+  React.useEffect(
+    function () {
+      if (!account || chainId !== 1) return
+      fetchClaim(account)
+        .then(function (accountClaimInfo) {
+          return setClaimInfo(function (claimInfo) {
+            var _a
+            return __assign(__assign({}, claimInfo), ((_a = {}), (_a[account] = accountClaimInfo), _a))
+          })
         })
-            .catch(function () {
-            setClaimInfo(function (claimInfo) {
-                var _a;
-                return __assign(__assign({}, claimInfo), (_a = {}, _a[account] = null, _a));
-            });
-        });
-    }, [account, chainId]);
-    return account && chainId === 1 ? claimInfo[account] : null;
+        .catch(function () {
+          setClaimInfo(function (claimInfo) {
+            var _a
+            return __assign(__assign({}, claimInfo), ((_a = {}), (_a[account] = null), _a))
+          })
+        })
+    },
+    [account, chainId]
+  )
+  return account && chainId === 1 ? claimInfo[account] : null
 }
 // check if user is in blob and has not yet claimed UNI
 function useUserHasAvailableClaim(account) {
-    var _a;
-    var userClaimData = useUserClaimData(account);
-    var distributorContract = useMerkleDistributorContract();
-    var isClaimedResult = useSingleCallResult(distributorContract, 'isClaimed', [userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.index]);
-    // user is in blob and contract marks as unclaimed
-    return Boolean(userClaimData && !isClaimedResult.loading && ((_a = isClaimedResult.result) === null || _a === void 0 ? void 0 : _a[0]) === false);
+  var _a
+  var userClaimData = useUserClaimData(account)
+  var distributorContract = useMerkleDistributorContract()
+  var isClaimedResult = useSingleCallResult(distributorContract, 'isClaimed', [
+    userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.index,
+  ])
+  // user is in blob and contract marks as unclaimed
+  return Boolean(
+    userClaimData &&
+      !isClaimedResult.loading &&
+      ((_a = isClaimedResult.result) === null || _a === void 0 ? void 0 : _a[0]) === false
+  )
 }
 function useUserUnclaimedAmount(account) {
-    var chainId = useActiveWeb3React().chainId;
-    var userClaimData = useUserClaimData(account);
-    var canClaim = useUserHasAvailableClaim(account);
-    var uni = chainId ? UNI[chainId] : undefined;
-    if (!uni)
-        return undefined;
-    if (!canClaim || !userClaimData) {
-        return sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].BigInt(0));
-    }
-    return sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].BigInt(userClaimData.amount));
+  var chainId = useActiveWeb3React().chainId
+  var userClaimData = useUserClaimData(account)
+  var canClaim = useUserHasAvailableClaim(account)
+  var uni = chainId ? UNI[chainId] : undefined
+  if (!uni) return undefined
+  if (!canClaim || !userClaimData) {
+    return sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default['default'].BigInt(0))
+  }
+  return sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default['default'].BigInt(userClaimData.amount))
 }
 function useClaimCallback(account) {
-    // get claim data for this account
-    var _a = useActiveWeb3React(), library = _a.library, chainId = _a.chainId;
-    var claimData = useUserClaimData(account);
-    // used for popup summary
-    var unclaimedAmount = useUserUnclaimedAmount(account);
-    var addTransaction = useTransactionAdder();
-    var distributorContract = useMerkleDistributorContract();
-    var claimCallback = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var args;
-            var _a;
-            return __generator(this, function (_b) {
-                if (!claimData || !account || !library || !chainId || !distributorContract)
-                    return [2 /*return*/];
-                args = [claimData.index, account, claimData.amount, claimData.proof];
-                return [2 /*return*/, (_a = distributorContract.estimateGas)['claim'].apply(_a, __spreadArray(__spreadArray([], __read(args), false), [{}], false)).then(function (estimatedGasLimit) {
-                        return distributorContract
-                            .claim.apply(distributorContract, __spreadArray(__spreadArray([], __read(args), false), [{ value: null, gasLimit: calculateGasMargin(estimatedGasLimit) }], false)).then(function (response) {
-                            addTransaction(response, {
-                                type: TransactionType.CLAIM,
-                                recipient: account,
-                                uniAmountRaw: unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.quotient.toString(),
-                            });
-                            return response.hash;
-                        });
-                    })];
-            });
-        });
-    };
-    return { claimCallback: claimCallback };
+  // get claim data for this account
+  var _a = useActiveWeb3React(),
+    library = _a.library,
+    chainId = _a.chainId
+  var claimData = useUserClaimData(account)
+  // used for popup summary
+  var unclaimedAmount = useUserUnclaimedAmount(account)
+  var addTransaction = useTransactionAdder()
+  var distributorContract = useMerkleDistributorContract()
+  var claimCallback = function () {
+    return __awaiter(this, void 0, void 0, function () {
+      var args
+      var _a
+      return __generator(this, function (_b) {
+        if (!claimData || !account || !library || !chainId || !distributorContract) return [2 /*return*/]
+        args = [claimData.index, account, claimData.amount, claimData.proof]
+        return [
+          2 /*return*/,
+          (_a = distributorContract.estimateGas)['claim']
+            .apply(_a, __spreadArray(__spreadArray([], __read(args), false), [{}], false))
+            .then(function (estimatedGasLimit) {
+              return distributorContract.claim
+                .apply(
+                  distributorContract,
+                  __spreadArray(
+                    __spreadArray([], __read(args), false),
+                    [{ value: null, gasLimit: calculateGasMargin(estimatedGasLimit) }],
+                    false
+                  )
+                )
+                .then(function (response) {
+                  addTransaction(response, {
+                    type: TransactionType.CLAIM,
+                    recipient: account,
+                    uniAmountRaw:
+                      unclaimedAmount === null || unclaimedAmount === void 0
+                        ? void 0
+                        : unclaimedAmount.quotient.toString(),
+                  })
+                  return response.hash
+                })
+            }),
+        ]
+      })
+    })
+  }
+  return { claimCallback }
 }
 
-var _a$d, _b$4, _c$3, _d$2, _e$1, _f, _g, _h;
-var WRAPPED_NATIVE_CURRENCIES_ONLY = Object.fromEntries(Object.entries(WRAPPED_NATIVE_CURRENCY).map(function (_a) {
-    var _b = __read(_a, 2), key = _b[0], value = _b[1];
-    return [key, [value]];
-}));
+var _a$d, _b$4, _c$3, _d$2, _e$1, _f, _g, _h
+var WRAPPED_NATIVE_CURRENCIES_ONLY = Object.fromEntries(
+  Object.entries(WRAPPED_NATIVE_CURRENCY).map(function (_a) {
+    var _b = __read(_a, 2),
+      key = _b[0],
+      value = _b[1]
+    return [key, [value]]
+  })
+)
 // used to construct intermediary pairs for trading
-var BASES_TO_CHECK_TRADES_AGAINST = __assign(__assign({}, WRAPPED_NATIVE_CURRENCIES_ONLY), (_a$d = {}, _a$d[SupportedChainId.MAINNET] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET]), false), [DAI, USDC, USDT, WBTC], false), _a$d[SupportedChainId.OPTIMISM] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.OPTIMISM]), false), [
-    DAI_OPTIMISM,
-    USDT_OPTIMISM,
-    WBTC_OPTIMISM,
-], false), _a$d[SupportedChainId.ARBITRUM_ONE] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ARBITRUM_ONE]), false), [
-    DAI_ARBITRUM_ONE,
-    USDT_ARBITRUM_ONE,
-    WBTC_ARBITRUM_ONE,
-], false), _a$d[SupportedChainId.POLYGON] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.POLYGON]), false), [
-    DAI_POLYGON,
-    USDC_POLYGON,
-    USDT_POLYGON,
-    WETH_POLYGON,
-], false), _a$d));
-var ADDITIONAL_BASES = (_b$4 = {},
-    _b$4[SupportedChainId.MAINNET] = (_c$3 = {
-            '0xF16E4d813f4DcfDe4c5b44f305c908742De84eF0': [ETH2X_FLI]
-        },
-        _c$3[rETH2.address] = [sETH2],
-        _c$3[SWISE.address] = [sETH2],
-        _c$3[FEI.address] = [TRIBE],
-        _c$3[TRIBE.address] = [FEI],
-        _c$3[FRAX.address] = [FXS],
-        _c$3[FXS.address] = [FRAX],
-        _c$3[WBTC.address] = [renBTC],
-        _c$3[renBTC.address] = [WBTC],
-        _c$3),
-    _b$4);
+var BASES_TO_CHECK_TRADES_AGAINST = __assign(
+  __assign({}, WRAPPED_NATIVE_CURRENCIES_ONLY),
+  ((_a$d = {}),
+  (_a$d[SupportedChainId.MAINNET] = __spreadArray(
+    __spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET]), false),
+    [DAI, USDC, USDT, WBTC],
+    false
+  )),
+  (_a$d[SupportedChainId.OPTIMISM] = __spreadArray(
+    __spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.OPTIMISM]), false),
+    [DAI_OPTIMISM, USDT_OPTIMISM, WBTC_OPTIMISM],
+    false
+  )),
+  (_a$d[SupportedChainId.ARBITRUM_ONE] = __spreadArray(
+    __spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ARBITRUM_ONE]), false),
+    [DAI_ARBITRUM_ONE, USDT_ARBITRUM_ONE, WBTC_ARBITRUM_ONE],
+    false
+  )),
+  (_a$d[SupportedChainId.POLYGON] = __spreadArray(
+    __spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.POLYGON]), false),
+    [DAI_POLYGON, USDC_POLYGON, USDT_POLYGON, WETH_POLYGON],
+    false
+  )),
+  _a$d)
+)
+var ADDITIONAL_BASES =
+  ((_b$4 = {}),
+  (_b$4[SupportedChainId.MAINNET] =
+    ((_c$3 = {
+      '0xF16E4d813f4DcfDe4c5b44f305c908742De84eF0': [ETH2X_FLI],
+    }),
+    (_c$3[rETH2.address] = [sETH2]),
+    (_c$3[SWISE.address] = [sETH2]),
+    (_c$3[FEI.address] = [TRIBE]),
+    (_c$3[TRIBE.address] = [FEI]),
+    (_c$3[FRAX.address] = [FXS]),
+    (_c$3[FXS.address] = [FRAX]),
+    (_c$3[WBTC.address] = [renBTC]),
+    (_c$3[renBTC.address] = [WBTC]),
+    _c$3)),
+  _b$4)
 /**
  * Some tokens can only be swapped via certain pairs, so we override the list of bases that are considered for these
  * tokens.
  */
-var CUSTOM_BASES = (_d$2 = {},
-    _d$2[SupportedChainId.MAINNET] = (_e$1 = {},
-        _e$1[AMPL.address] = [DAI, WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET]],
-        _e$1),
-    _d$2);
+var CUSTOM_BASES =
+  ((_d$2 = {}),
+  (_d$2[SupportedChainId.MAINNET] =
+    ((_e$1 = {}), (_e$1[AMPL.address] = [DAI, WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET]]), _e$1)),
+  _d$2)
 /**
  * Shows up in the currency select for swap and add liquidity
  */
-var COMMON_BASES = (_f = {},
-    _f[SupportedChainId.MAINNET] = [
-        nativeOnChain(SupportedChainId.MAINNET),
-        DAI,
-        USDC,
-        USDT,
-        WBTC,
-        WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET],
-    ],
-    _f[SupportedChainId.ROPSTEN] = [
-        nativeOnChain(SupportedChainId.ROPSTEN),
-        WRAPPED_NATIVE_CURRENCY[SupportedChainId.ROPSTEN],
-    ],
-    _f[SupportedChainId.RINKEBY] = [
-        nativeOnChain(SupportedChainId.RINKEBY),
-        WRAPPED_NATIVE_CURRENCY[SupportedChainId.RINKEBY],
-    ],
-    _f[SupportedChainId.GOERLI] = [nativeOnChain(SupportedChainId.GOERLI), WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI]],
-    _f[SupportedChainId.KOVAN] = [nativeOnChain(SupportedChainId.KOVAN), WRAPPED_NATIVE_CURRENCY[SupportedChainId.KOVAN]],
-    _f[SupportedChainId.ARBITRUM_ONE] = [
-        nativeOnChain(SupportedChainId.ARBITRUM_ONE),
-        DAI_ARBITRUM_ONE,
-        USDC_ARBITRUM,
-        USDT_ARBITRUM_ONE,
-        WBTC_ARBITRUM_ONE,
-        WRAPPED_NATIVE_CURRENCY[SupportedChainId.ARBITRUM_ONE],
-    ],
-    _f[SupportedChainId.ARBITRUM_RINKEBY] = [
-        nativeOnChain(SupportedChainId.ARBITRUM_RINKEBY),
-        WRAPPED_NATIVE_CURRENCY[SupportedChainId.ARBITRUM_RINKEBY],
-    ],
-    _f[SupportedChainId.OPTIMISM] = [
-        nativeOnChain(SupportedChainId.OPTIMISM),
-        DAI_OPTIMISM,
-        USDC_OPTIMISM,
-        USDT_OPTIMISM,
-        WBTC_OPTIMISM,
-    ],
-    _f[SupportedChainId.OPTIMISTIC_KOVAN] = [nativeOnChain(SupportedChainId.OPTIMISTIC_KOVAN)],
-    _f[SupportedChainId.POLYGON] = [
-        nativeOnChain(SupportedChainId.POLYGON),
-        WETH_POLYGON,
-        USDC_POLYGON,
-        DAI_POLYGON,
-        USDT_POLYGON,
-        WBTC_POLYGON,
-    ],
-    _f[SupportedChainId.POLYGON_MUMBAI] = [
-        nativeOnChain(SupportedChainId.POLYGON_MUMBAI),
-        WRAPPED_NATIVE_CURRENCY[SupportedChainId.POLYGON_MUMBAI],
-        WETH_POLYGON_MUMBAI,
-    ],
-    _f);
+var COMMON_BASES =
+  ((_f = {}),
+  (_f[SupportedChainId.MAINNET] = [
+    nativeOnChain(SupportedChainId.MAINNET),
+    DAI,
+    USDC,
+    USDT,
+    WBTC,
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET],
+  ]),
+  (_f[SupportedChainId.ROPSTEN] = [
+    nativeOnChain(SupportedChainId.ROPSTEN),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.ROPSTEN],
+  ]),
+  (_f[SupportedChainId.RINKEBY] = [
+    nativeOnChain(SupportedChainId.RINKEBY),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.RINKEBY],
+  ]),
+  (_f[SupportedChainId.GOERLI] = [
+    nativeOnChain(SupportedChainId.GOERLI),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI],
+  ]),
+  (_f[SupportedChainId.KOVAN] = [
+    nativeOnChain(SupportedChainId.KOVAN),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.KOVAN],
+  ]),
+  (_f[SupportedChainId.ARBITRUM_ONE] = [
+    nativeOnChain(SupportedChainId.ARBITRUM_ONE),
+    DAI_ARBITRUM_ONE,
+    USDC_ARBITRUM,
+    USDT_ARBITRUM_ONE,
+    WBTC_ARBITRUM_ONE,
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.ARBITRUM_ONE],
+  ]),
+  (_f[SupportedChainId.ARBITRUM_RINKEBY] = [
+    nativeOnChain(SupportedChainId.ARBITRUM_RINKEBY),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.ARBITRUM_RINKEBY],
+  ]),
+  (_f[SupportedChainId.OPTIMISM] = [
+    nativeOnChain(SupportedChainId.OPTIMISM),
+    DAI_OPTIMISM,
+    USDC_OPTIMISM,
+    USDT_OPTIMISM,
+    WBTC_OPTIMISM,
+  ]),
+  (_f[SupportedChainId.OPTIMISTIC_KOVAN] = [nativeOnChain(SupportedChainId.OPTIMISTIC_KOVAN)]),
+  (_f[SupportedChainId.POLYGON] = [
+    nativeOnChain(SupportedChainId.POLYGON),
+    WETH_POLYGON,
+    USDC_POLYGON,
+    DAI_POLYGON,
+    USDT_POLYGON,
+    WBTC_POLYGON,
+  ]),
+  (_f[SupportedChainId.POLYGON_MUMBAI] = [
+    nativeOnChain(SupportedChainId.POLYGON_MUMBAI),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.POLYGON_MUMBAI],
+    WETH_POLYGON_MUMBAI,
+  ]),
+  _f)
 // used to construct the list of all pairs we consider by default in the frontend
-__assign(__assign({}, WRAPPED_NATIVE_CURRENCIES_ONLY), (_g = {}, _g[SupportedChainId.MAINNET] = __spreadArray(__spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET]), false), [DAI, USDC, USDT, WBTC], false), _g));
-(_h = {},
-    _h[SupportedChainId.MAINNET] = [
-        [
-            new sdkCore.Token(SupportedChainId.MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),
-            new sdkCore.Token(SupportedChainId.MAINNET, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin'),
-        ],
-        [USDC, USDT],
-        [DAI, USDT],
+__assign(
+  __assign({}, WRAPPED_NATIVE_CURRENCIES_ONLY),
+  ((_g = {}),
+  (_g[SupportedChainId.MAINNET] = __spreadArray(
+    __spreadArray([], __read(WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.MAINNET]), false),
+    [DAI, USDC, USDT, WBTC],
+    false
+  )),
+  _g)
+)
+;(_h = {}),
+  (_h[SupportedChainId.MAINNET] = [
+    [
+      new sdkCore.Token(
+        SupportedChainId.MAINNET,
+        '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643',
+        8,
+        'cDAI',
+        'Compound Dai'
+      ),
+      new sdkCore.Token(
+        SupportedChainId.MAINNET,
+        '0x39AA39c021dfbaE8faC545936693aC917d5E7563',
+        8,
+        'cUSDC',
+        'Compound USD Coin'
+      ),
     ],
-    _h);
+    [USDC, USDT],
+    [DAI, USDT],
+  ]),
+  _h
 
-var EthereumLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAADxdJREFUeJztXVtzFMcVplwuP8VVeYmf7HJ+RKqSl/AQP6X8H+yqXUEIjhMnQY5jO9oVCIzA5mowdzAYG4xAGAyWLC5G3IyDL8gOASUYKrarYGZWC7qi23b6692VV6uZ7e6ZnT3di07VV6JUaLfnnG+6z+lz+vScOXUoL6SzP52/2PtlQ9p7piHlLU2k3P2JJqcjkXLO8589/OdN/tPjvx8VEP8Wv+sp/J8O/A3+Fp+Bz8JnUj/XrPjIwjT7ybxm57fJlLsy2eR2cwPe4QZksYB/Nr4D34XvxHdTP/8DJ+k0e4S/lb9Jpr2WZJNzgRtjPDaDS4DvFmPgY8GYMDZq/dStNKQzv0qmnA1c6RkqgysQIoMxYqzU+qoLWZDO/jyZdl7lir1ObdwQZLiOseMZqPVonSTS7i+4AtsTTW6O2pDR4ebEs/Bnotar8dKw2Pk1n0I76Y0W16zgdOIZqfVsnCSbvaeEB2+AkWpCBEQS/Jmp9U4u3Fl6nIdWB6gNQgb+7NABtR1qLjxcejiZdhfxKXGA3AjUswHXAXQBnVDbpSbCPeO5fAr8hlrxpgE6gW6o7ROb5N96Z3l9ePZxgUcMXEd1NxssbMk8kWxyztEr2A5AV3XjGySb3acTSLYYoFjL4EF31PYLLXwaeyiZcltnp/woEJtIrdAltT21BEkR7tnuo1dgfQC6tCbRlGh1H02k3C5qpalg/bt3WdOGDPk4lACdct1S27eiLEgPPMbDmcvkylLAgiUOc/sm2LHuITavmX48KoBun1828DNqO/tKsiX7JF+zeqmVpIqPzg2xyckc++Sfw2ImoB6POtxe6Jra3tMEb75Nxv/Hmxk2MZGbIsCpz4bZn1d45OPSIQF0Tm13IViXbJn2i+i9NcYgRQIA+zsGyMelA6Fzap8AnqktDl8RO9r7WVFKCQAs3dJHPj4tcN2TRQcizrcs1Hv+NZf1D04GEqDj/JBwDqnHqYNCiFj7fYL8Jg+9AnTQfXmYlUo5AYAtbffIx6lNAm6L2hpfbO/atcO3dGsfy+VyUgIAL66yySEE3FzNto2R2ElYtrffkHbYd7fHWbkEEeDQyUHk6cnHrQkPtonV+CKla2FWDx6+nwQRAFi5K0s+bl3ANrGmkvP5fPoH1cFfX/fYyP2cNgG6Lg6z55a55OPXJgG3UVzGn2vbug98fvW+r/FlBADePtJPPn59iKKS6lYW5ad++8q4Vu+5G2h8FQIAr663JFlUAtiqqksBZ1Uj9UPp4neLHeb0TUQmwNEzg2xemv559OE2VsX4KE2ysXoXhpOJCgGAdXttShblAZtVpayMe5Zt1A+ji5fXZdj4uL/jF4YApy4NsxdaLXQIue2iGb/Ze4r6IcLg6rejUuPrEAB47yO7kkVTJIhyAsnG41rYylUVHQIAizdZlixqyh9DC2V8HGKkHrwuELffHZiUWz4kAVBEAueS+jl1EepAqo2ndLFW64guAYBNB2xMFjmdWsbHWXbqQesC0zMMGjcBgEVv2JYs4tDpT5BvzmDAoBWBxM2tH8a0jB+FAAe77EsWwaZKxkdLE9u2fPce65dbu4oEAFp32JYscnNK7WrQ14Z+sOpAMefwiLrjVy0CdF0cYguX2rU3ANtKCWBTdS9wqWcklPGjEgDYcdiuZBEaV1U0PtqbUQ9SB6/vyoY2fjUIALy81q5kUcUWduhxRz1AVcxvdthtb2aVT60JcOT0oKg4otaHKmBjX+OLA50GN2Esx+FT8mRPLQgAIO1MrQ91ArgZ31JytDqlHpwqXlrjsbExvZg/TgKcvDTM/rjcHocQtp45/ae9FuqBqeLr/6gle2pFAAChKLVeVAFbzyRAk3OBemAq2LhfPdlTSwIA6Y12JItg62nGR9tzyq7bqljY4rK+e5WrfCgJcPzskHBOqfUkJQC39bRW9+h9Tz0oFXx8Yahqxo+DAMCGfXY4hLB5SfjnrqQekAypjRntZA8FAU5/NixK0an1JQNsXrL+m1/4ceM7/WRPJcExsas3Rtn7nQNVJ8GBj82vHppWKBLrNStVAOrzqyWjPHzEWQGEbjBW81t9bPn2LNt9tF/UE1SLBMu2Ge4QcpsL4+MyJPLBVADi68HhcMmeUrnbP8kufDUyw8ggQBHoD7Dt4D3WyX2NqASAv/L7Fnr9VYK4CAs3YlEPpBLOfxk+2QP5wRlnZy7ztTnAUKUEKGLJpj72JnfmUFoehQTbDpldPQTb8/Xfe5Z6IEHA1BxWem+N8rdd/ib7EaAUq/dkxZoelgTYtaTWYxBwJR7y/8uoB+IHnMbB26sjY+M59uU1vr5/qj6FywhQxIodWfbOh/2ioZQOAZCzMLV6CLafU7hUkXww5Wjr8j/S7Sdo+3LxyojSGx+WAFN+wtY+tp1P7V0afsIbbxtaPcRtb2T1b+Mqj90flcf8t91x1v158PoeBwGKWLy5j23kfsIxBT/h5KfDoj8RtV7LIaqFTcwBfHUt+Eg35L//G2WnqxSyhSVAKdZwP+FgV2U/Yc9R85JFIieQwH25BgymCHTt9JPxiRy7ch3xe/QQrdoEKGLlzqzICgb5CQb2Je6ZU7g0mXogAmjR5mWnJ3uwB3Dp65nxu4kEKGIZ9xN2tN9jJy5OJ6txfYm57TEDGNPwCdm0otzJTLCzX+T31uMwfJwEmNpP2NLHNu2/y453/0gEw/oSe3MK16dTD2Sqf+/N78diN3qtCDDlMG7qY2v33mWHTg6Y1ZeY294YAhw7Ozi1P19L1IIA0/yEXdxpfMeQWUAQwJAlAClUtHOrdwL8fW3GpBPGnlFOIIDp8lh3dT19EwiAJe4PprWdKziBRoWBALaB1/JpEhsothMAdYJY8w3dDhZh4HkDBuIL7J7t+qDfWgKg57BRYV85uO0xA3SQD0SCl9ZkRP9eWwjwyrqM8bUABXQYkwySpU0xhb62Lcs6z5u7E4idPpUDIn8ypeOYSAYZkg5esTPLPr0yIu2+gd1CnA3QTcvGSYA0B6IY2TpfXNLQxo5a30BDyluKI2HPUA+kCHj/qNlDDl0WKsGxevd49LAxqvGxPM2XjBV+AJpNYp/DpJ1AURBiUkkYvP9i9S9yAnjTZX+DaffoJ+H9g7CGR1j3nEKDCIS12OLGd6HGwaRoQJSEmVYU+rfVHhu+/2MR6LWbo+JMQGUmO6Lo4kSIsDFMWKfSNRRLWWnJOdrPm3aAVBSFmlgWXt7sEQc4kB+QKRBv5Pb2e7ERAIUqssbROL629eDMMSzZbFiZeLEs3NSDISjhLpeh4Umx7ssaMiD+bpMUaOgQAE6b7DYxjAkdS7ouzoxScFUdtT7LMe1giIlHw/AmORn/g6AoFlWps0OdP7p7hiUA/AuVUi74A+gU4vf5KC2XOYkkBCg9Gmbq4VBMm0gRBwkqgGX7B1A+PO+ggpKgsO4vK+VhHXwBVAAFkQuhqqk3kE07HGry8XDU5FcStIWHl40Zo9LnwH9AXZ6MAHBCZUe8EaLiFLBsL2LVbjOrgWccDze5QQTeQpX27zj6tV3hJM4r6zPsg5Lpemr7lv9eRiIA5V4dCruR+wxuLz+jQYTpLWIwHQ8MqZ0P/Pb7MdYiuQMYpMLOI87vIcRU2ZrFUnPwhNp+A7arTb5xzLdFjOlNorCTpio4+o0zhSBOpc+EZy+LKJDD33lYLyNpYPXvNPg2ibKhTRzqA3QE9wUiHAzTtgXx/po9+jUJpreTD2wTlw8HzW4UCY/e7wpYmSCc1NmDRxQQpioJOQzTbxgLbBSZXwbMbxWLmDtsj8B/3RiteA8gMnr7QtYlItEjW3JMQMVWsflZwL1OPUgZEM6FFWwrI2dQWp+H4o3NB/S2kMuBo+zUepFB2ixaEMCSdvFf/Lvy+UGZIKpAW5hiNBDF+Cae+/MlgEq7eFsujMAWbdSegdXoEoZNKFmewAwoXhhRWAasuDIGTRuitI57kNrFK18ZA7Hp0qgPz4RvHhmVACZV90ihc2lUfhYwr3GEHxrS4XsIRiEAchQmVfdUgva1cRCbLo58sayKKG4CIOdvWnVPxZckzMWRYhYwsFAkCDpXxkYlgHHVPRUQ+upYQQDLLo/W7SkYhgAoOaN+Ti0CRLk8GpJIOQeoH0IVSOfeCagiqgYBUH1sYnVPILjtIhkf0pDOPM6diAHyh1EEpufxClVEYQmA4o9Gi66Mhc1gu8gEgCTT7iLqB9KBrIooDAGM7fUXRABus6oYH5JOs4e5M/EN9UNpsF+0gq8WAd4zuLrH9/m5rWCzqhEAkkw7c23YIi4CmTl0EI1KAFHdY9UVsW4Otqqq8UtIsJz+AdWBJhNRCYD0M/Vz6AA2isX4kPxS4JyjfkgdVKoikhHgrfctC/m4bao+9ZfLwpbMEwlDGkupoFIVUSUCtJ80v7qnDB5sE6vxi5Jsdp+2yR9AFdCoTxVREAEwaxjTy08JfN3nNqmJ8adIkHJb6R9cHbt9qoiCCIBOJNTj1QFsUVPjQ/ha8xCPNfdRP7wOcFmUjAC7j9hR3TNlfG4D2KLmBCiQ4JFEyu2iVoIqyquIyglgT3VPAVz3gSXetZJEq/tossm9TK4MRbSWVBGVEwDtXqjHpwqhc657UuMXZUF64DHuiPRSK0UVOLJdTgCcPKIelzrcXuic2u7TJNmSfdIWEhSriIoEsKm6BzqGrqnt7StgpS3LAc7to+MIqntMvM/HD9CtcW9+uWBdssUxxDk+dPGiHocSoFNT1nyZiIOmloWIJqMQ6tF6+7oi9gnEZpE9O4bmwc1Bh2RxfjUkv21sT+7AIHg1396NS5CksC2LSAnoqmaJnVqJSCWLeoLZJSEYophjeewpXUpBtYpN5WW1AnQSWyWPaQKGc7Y32lRtHJvhhQ7cxrp+64NElJw3OW3URqB76522qpVu2yw4vWLTMbTohne7I5/YqUfBIUZbTiWHMjx/ttAHNR8kwVn2fJOKeogYxGZOu/b5/FnJt6vJ9yyyI8tYZvhejF25LcusVBa0N0OPO5ObWWJsGKO0FdushBckRdDqFP1u0fSYsss5vluMgY8FY7IuYVMPgrbn6H2PCxBEJBHn9Tf8s4UHz78L3zmj5fqsmCG4DAk3YiWbvGfFvYgpdz888EJL/J7Chdkerk8XEP8Wv+vJzyo8EsHf8L/FZ+Czpi5YqjP5P2ey0rAsl+yGAAAAAElFTkSuQmCC";
+var EthereumLogo =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAADxdJREFUeJztXVtzFMcVplwuP8VVeYmf7HJ+RKqSl/AQP6X8H+yqXUEIjhMnQY5jO9oVCIzA5mowdzAYG4xAGAyWLC5G3IyDL8gOASUYKrarYGZWC7qi23b6692VV6uZ7e6ZnT3di07VV6JUaLfnnG+6z+lz+vScOXUoL6SzP52/2PtlQ9p7piHlLU2k3P2JJqcjkXLO8589/OdN/tPjvx8VEP8Wv+sp/J8O/A3+Fp+Bz8JnUj/XrPjIwjT7ybxm57fJlLsy2eR2cwPe4QZksYB/Nr4D34XvxHdTP/8DJ+k0e4S/lb9Jpr2WZJNzgRtjPDaDS4DvFmPgY8GYMDZq/dStNKQzv0qmnA1c6RkqgysQIoMxYqzU+qoLWZDO/jyZdl7lir1ObdwQZLiOseMZqPVonSTS7i+4AtsTTW6O2pDR4ebEs/Bnotar8dKw2Pk1n0I76Y0W16zgdOIZqfVsnCSbvaeEB2+AkWpCBEQS/Jmp9U4u3Fl6nIdWB6gNQgb+7NABtR1qLjxcejiZdhfxKXGA3AjUswHXAXQBnVDbpSbCPeO5fAr8hlrxpgE6gW6o7ROb5N96Z3l9ePZxgUcMXEd1NxssbMk8kWxyztEr2A5AV3XjGySb3acTSLYYoFjL4EF31PYLLXwaeyiZcltnp/woEJtIrdAltT21BEkR7tnuo1dgfQC6tCbRlGh1H02k3C5qpalg/bt3WdOGDPk4lACdct1S27eiLEgPPMbDmcvkylLAgiUOc/sm2LHuITavmX48KoBun1828DNqO/tKsiX7JF+zeqmVpIqPzg2xyckc++Sfw2ImoB6POtxe6Jra3tMEb75Nxv/Hmxk2MZGbIsCpz4bZn1d45OPSIQF0Tm13IViXbJn2i+i9NcYgRQIA+zsGyMelA6Fzap8AnqktDl8RO9r7WVFKCQAs3dJHPj4tcN2TRQcizrcs1Hv+NZf1D04GEqDj/JBwDqnHqYNCiFj7fYL8Jg+9AnTQfXmYlUo5AYAtbffIx6lNAm6L2hpfbO/atcO3dGsfy+VyUgIAL66yySEE3FzNto2R2ElYtrffkHbYd7fHWbkEEeDQyUHk6cnHrQkPtonV+CKla2FWDx6+nwQRAFi5K0s+bl3ANrGmkvP5fPoH1cFfX/fYyP2cNgG6Lg6z55a55OPXJgG3UVzGn2vbug98fvW+r/FlBADePtJPPn59iKKS6lYW5ad++8q4Vu+5G2h8FQIAr663JFlUAtiqqksBZ1Uj9UPp4neLHeb0TUQmwNEzg2xemv559OE2VsX4KE2ysXoXhpOJCgGAdXttShblAZtVpayMe5Zt1A+ji5fXZdj4uL/jF4YApy4NsxdaLXQIue2iGb/Ze4r6IcLg6rejUuPrEAB47yO7kkVTJIhyAsnG41rYylUVHQIAizdZlixqyh9DC2V8HGKkHrwuELffHZiUWz4kAVBEAueS+jl1EepAqo2ndLFW64guAYBNB2xMFjmdWsbHWXbqQesC0zMMGjcBgEVv2JYs4tDpT5BvzmDAoBWBxM2tH8a0jB+FAAe77EsWwaZKxkdLE9u2fPce65dbu4oEAFp32JYscnNK7WrQ14Z+sOpAMefwiLrjVy0CdF0cYguX2rU3ANtKCWBTdS9wqWcklPGjEgDYcdiuZBEaV1U0PtqbUQ9SB6/vyoY2fjUIALy81q5kUcUWduhxRz1AVcxvdthtb2aVT60JcOT0oKg4otaHKmBjX+OLA50GN2Esx+FT8mRPLQgAIO1MrQ91ArgZ31JytDqlHpwqXlrjsbExvZg/TgKcvDTM/rjcHocQtp45/ae9FuqBqeLr/6gle2pFAAChKLVeVAFbzyRAk3OBemAq2LhfPdlTSwIA6Y12JItg62nGR9tzyq7bqljY4rK+e5WrfCgJcPzskHBOqfUkJQC39bRW9+h9Tz0oFXx8Yahqxo+DAMCGfXY4hLB5SfjnrqQekAypjRntZA8FAU5/NixK0an1JQNsXrL+m1/4ceM7/WRPJcExsas3Rtn7nQNVJ8GBj82vHppWKBLrNStVAOrzqyWjPHzEWQGEbjBW81t9bPn2LNt9tF/UE1SLBMu2Ge4QcpsL4+MyJPLBVADi68HhcMmeUrnbP8kufDUyw8ggQBHoD7Dt4D3WyX2NqASAv/L7Fnr9VYK4CAs3YlEPpBLOfxk+2QP5wRlnZy7ztTnAUKUEKGLJpj72JnfmUFoehQTbDpldPQTb8/Xfe5Z6IEHA1BxWem+N8rdd/ib7EaAUq/dkxZoelgTYtaTWYxBwJR7y/8uoB+IHnMbB26sjY+M59uU1vr5/qj6FywhQxIodWfbOh/2ioZQOAZCzMLV6CLafU7hUkXww5Wjr8j/S7Sdo+3LxyojSGx+WAFN+wtY+tp1P7V0afsIbbxtaPcRtb2T1b+Mqj90flcf8t91x1v158PoeBwGKWLy5j23kfsIxBT/h5KfDoj8RtV7LIaqFTcwBfHUt+Eg35L//G2WnqxSyhSVAKdZwP+FgV2U/Yc9R85JFIieQwH25BgymCHTt9JPxiRy7ch3xe/QQrdoEKGLlzqzICgb5CQb2Je6ZU7g0mXogAmjR5mWnJ3uwB3Dp65nxu4kEKGIZ9xN2tN9jJy5OJ6txfYm57TEDGNPwCdm0otzJTLCzX+T31uMwfJwEmNpP2NLHNu2/y453/0gEw/oSe3MK16dTD2Sqf+/N78diN3qtCDDlMG7qY2v33mWHTg6Y1ZeY294YAhw7Ozi1P19L1IIA0/yEXdxpfMeQWUAQwJAlAClUtHOrdwL8fW3GpBPGnlFOIIDp8lh3dT19EwiAJe4PprWdKziBRoWBALaB1/JpEhsothMAdYJY8w3dDhZh4HkDBuIL7J7t+qDfWgKg57BRYV85uO0xA3SQD0SCl9ZkRP9eWwjwyrqM8bUABXQYkwySpU0xhb62Lcs6z5u7E4idPpUDIn8ypeOYSAYZkg5esTPLPr0yIu2+gd1CnA3QTcvGSYA0B6IY2TpfXNLQxo5a30BDyluKI2HPUA+kCHj/qNlDDl0WKsGxevd49LAxqvGxPM2XjBV+AJpNYp/DpJ1AURBiUkkYvP9i9S9yAnjTZX+DaffoJ+H9g7CGR1j3nEKDCIS12OLGd6HGwaRoQJSEmVYU+rfVHhu+/2MR6LWbo+JMQGUmO6Lo4kSIsDFMWKfSNRRLWWnJOdrPm3aAVBSFmlgWXt7sEQc4kB+QKRBv5Pb2e7ERAIUqssbROL629eDMMSzZbFiZeLEs3NSDISjhLpeh4Umx7ssaMiD+bpMUaOgQAE6b7DYxjAkdS7ouzoxScFUdtT7LMe1giIlHw/AmORn/g6AoFlWps0OdP7p7hiUA/AuVUi74A+gU4vf5KC2XOYkkBCg9Gmbq4VBMm0gRBwkqgGX7B1A+PO+ggpKgsO4vK+VhHXwBVAAFkQuhqqk3kE07HGry8XDU5FcStIWHl40Zo9LnwH9AXZ6MAHBCZUe8EaLiFLBsL2LVbjOrgWccDze5QQTeQpX27zj6tV3hJM4r6zPsg5Lpemr7lv9eRiIA5V4dCruR+wxuLz+jQYTpLWIwHQ8MqZ0P/Pb7MdYiuQMYpMLOI87vIcRU2ZrFUnPwhNp+A7arTb5xzLdFjOlNorCTpio4+o0zhSBOpc+EZy+LKJDD33lYLyNpYPXvNPg2ibKhTRzqA3QE9wUiHAzTtgXx/po9+jUJpreTD2wTlw8HzW4UCY/e7wpYmSCc1NmDRxQQpioJOQzTbxgLbBSZXwbMbxWLmDtsj8B/3RiteA8gMnr7QtYlItEjW3JMQMVWsflZwL1OPUgZEM6FFWwrI2dQWp+H4o3NB/S2kMuBo+zUepFB2ixaEMCSdvFf/Lvy+UGZIKpAW5hiNBDF+Cae+/MlgEq7eFsujMAWbdSegdXoEoZNKFmewAwoXhhRWAasuDIGTRuitI57kNrFK18ZA7Hp0qgPz4RvHhmVACZV90ihc2lUfhYwr3GEHxrS4XsIRiEAchQmVfdUgva1cRCbLo58sayKKG4CIOdvWnVPxZckzMWRYhYwsFAkCDpXxkYlgHHVPRUQ+upYQQDLLo/W7SkYhgAoOaN+Ti0CRLk8GpJIOQeoH0IVSOfeCagiqgYBUH1sYnVPILjtIhkf0pDOPM6diAHyh1EEpufxClVEYQmA4o9Gi66Mhc1gu8gEgCTT7iLqB9KBrIooDAGM7fUXRABus6oYH5JOs4e5M/EN9UNpsF+0gq8WAd4zuLrH9/m5rWCzqhEAkkw7c23YIi4CmTl0EI1KAFHdY9UVsW4Otqqq8UtIsJz+AdWBJhNRCYD0M/Vz6AA2isX4kPxS4JyjfkgdVKoikhHgrfctC/m4bao+9ZfLwpbMEwlDGkupoFIVUSUCtJ80v7qnDB5sE6vxi5Jsdp+2yR9AFdCoTxVREAEwaxjTy08JfN3nNqmJ8adIkHJb6R9cHbt9qoiCCIBOJNTj1QFsUVPjQ/ha8xCPNfdRP7wOcFmUjAC7j9hR3TNlfG4D2KLmBCiQ4JFEyu2iVoIqyquIyglgT3VPAVz3gSXetZJEq/tossm9TK4MRbSWVBGVEwDtXqjHpwqhc657UuMXZUF64DHuiPRSK0UVOLJdTgCcPKIelzrcXuic2u7TJNmSfdIWEhSriIoEsKm6BzqGrqnt7StgpS3LAc7to+MIqntMvM/HD9CtcW9+uWBdssUxxDk+dPGiHocSoFNT1nyZiIOmloWIJqMQ6tF6+7oi9gnEZpE9O4bmwc1Bh2RxfjUkv21sT+7AIHg1396NS5CksC2LSAnoqmaJnVqJSCWLeoLZJSEYophjeewpXUpBtYpN5WW1AnQSWyWPaQKGc7Y32lRtHJvhhQ7cxrp+64NElJw3OW3URqB76522qpVu2yw4vWLTMbTohne7I5/YqUfBIUZbTiWHMjx/ttAHNR8kwVn2fJOKeogYxGZOu/b5/FnJt6vJ9yyyI8tYZvhejF25LcusVBa0N0OPO5ObWWJsGKO0FdushBckRdDqFP1u0fSYsss5vluMgY8FY7IuYVMPgrbn6H2PCxBEJBHn9Tf8s4UHz78L3zmj5fqsmCG4DAk3YiWbvGfFvYgpdz888EJL/J7Chdkerk8XEP8Wv+vJzyo8EsHf8L/FZ+Czpi5YqjP5P2ey0rAsl+yGAAAAAElFTkSuQmCC'
 
-var arbitrumLogoUrl = "data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%220%200%20470.287%20514.251%22%20enable-background%3D%22new%200%200%20470.287%20514.251%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%20id%3D%22Background%22%3E%3C%2Fg%3E%3Cg%20id%3D%22Logos_and_symbols%22%3E%20%3Cg%20id%3D%22SYMBOL_VER_3%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_3_3_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_4%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_4_1_%22%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_4_3_%22%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22off_2_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22VER_3_1_%22%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2_1_%22%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22VER_3%22%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2%22%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22off_2%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1_3_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1_1_%22%3E%20%20%3Cg%20id%3D%22_x31_-3%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_14_%22%3E%20%20%20%3Cpath%20fill%3D%22%232D374B%22%20d%3D%22M291.134%2C237.469l35.654-60.5l96.103%2C149.684l0.046%2C28.727l-0.313-197.672%20%20%20%20c-0.228-4.832-2.794-9.252-6.887-11.859L242.715%2C46.324c-4.045-1.99-9.18-1.967-13.22%2C0.063c-0.546%2C0.272-1.06%2C0.57-1.548%2C0.895%20%20%20%20l-0.604%2C0.379L59.399%2C144.983l-0.651%2C0.296c-0.838%2C0.385-1.686%2C0.875-2.48%2C1.444c-3.185%2C2.283-5.299%2C5.66-5.983%2C9.448%20%20%20%20c-0.103%2C0.574-0.179%2C1.158-0.214%2C1.749l0.264%2C161.083l89.515-138.745c11.271-18.397%2C35.825-24.323%2C58.62-24.001l26.753%2C0.706%20%20%20%20L67.588%2C409.765l18.582%2C10.697L245.692%2C157.22l70.51-0.256L157.091%2C426.849l66.306%2C38.138l7.922%2C4.556%20%20%20%20c3.351%2C1.362%2C7.302%2C1.431%2C10.681%2C0.21l175.453-101.678l-33.544%2C19.438L291.134%2C237.469z%20M304.736%2C433.395l-66.969-105.108%20%20%20%20l40.881-69.371l87.952%2C138.628L304.736%2C433.395z%22%2F%3E%20%20%20%3Cpolygon%20fill%3D%22%2328A0F0%22%20points%3D%22237.768%2C328.286%20304.736%2C433.395%20366.601%2C397.543%20278.648%2C258.915%20%20%20%20%22%2F%3E%20%20%20%3Cpath%20fill%3D%22%2328A0F0%22%20d%3D%22M422.937%2C355.379l-0.046-28.727l-96.103-149.684l-35.654%2C60.5l92.774%2C150.043l33.544-19.438%20%20%20%20c3.29-2.673%2C5.281-6.594%2C5.49-10.825L422.937%2C355.379z%22%2F%3E%20%20%20%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M20.219%2C382.469l47.369%2C27.296l157.634-252.801l-26.753-0.706c-22.795-0.322-47.35%2C5.604-58.62%2C24.001%20%20%20%20L50.334%2C319.004l-30.115%2C46.271V382.469z%22%2F%3E%20%20%20%3Cpolygon%20fill%3D%22%23FFFFFF%22%20points%3D%22316.202%2C156.964%20245.692%2C157.22%2086.17%2C420.462%20141.928%2C452.565%20157.091%2C426.849%20%20%20%20%22%2F%3E%20%20%20%3Cpath%20fill%3D%22%2396BEDC%22%20d%3D%22M452.65%2C156.601c-0.59-14.746-8.574-28.245-21.08-36.104L256.28%2C19.692%20%20%20%20c-12.371-6.229-27.825-6.237-40.218-0.004c-1.465%2C0.739-170.465%2C98.752-170.465%2C98.752c-2.339%2C1.122-4.592%2C2.458-6.711%2C3.975%20%20%20%20c-11.164%2C8.001-17.969%2C20.435-18.668%2C34.095v208.765l30.115-46.271L50.07%2C157.921c0.035-0.589%2C0.109-1.169%2C0.214-1.741%20%20%20%20c0.681-3.79%2C2.797-7.171%2C5.983-9.456c0.795-0.569%2C172.682-100.064%2C173.228-100.337c4.04-2.029%2C9.175-2.053%2C13.22-0.063%20%20%20%20l173.022%2C99.523c4.093%2C2.607%2C6.659%2C7.027%2C6.887%2C11.859v199.542c-0.209%2C4.231-1.882%2C8.152-5.172%2C10.825l-33.544%2C19.438%20%20%20%20l-17.308%2C10.031l-61.864%2C35.852l-62.737%2C36.357c-3.379%2C1.221-7.33%2C1.152-10.681-0.21l-74.228-42.693l-15.163%2C25.717%20%20%20%20l66.706%2C38.406c2.206%2C1.255%2C4.171%2C2.367%2C5.784%2C3.272c2.497%2C1.4%2C4.199%2C2.337%2C4.8%2C2.629c4.741%2C2.303%2C11.563%2C3.643%2C17.71%2C3.643%20%20%20%20c5.636%2C0%2C11.132-1.035%2C16.332-3.072l182.225-105.531c10.459-8.104%2C16.612-20.325%2C17.166-33.564V156.601z%22%2F%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_13_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_6_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_4_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22One_color_version_-_White_3_%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original_15_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22One_color_version_-_White%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Monochromatic_3_%22%3E%20%20%20%3Cg%20id%3D%22_x33__7_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Monochromatic%22%3E%20%20%20%3Cg%20id%3D%22_x33__3_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22_x33__2_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22_x33__1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22_x33_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_10_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_2_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22_x34__1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Monochromatic_2_%22%3E%20%20%20%3Cg%20id%3D%22_x33__6_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22One_color_version_-_White_2_%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original_11_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_5_%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original_12_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22One_color_version_-_White_1_%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original_9_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1_2_%22%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2_4_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2-1-1_1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2-2-1_1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2-3-1_4_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22New_Symbol_1_%22%3E%20%20%20%3Cg%20id%3D%22SYMBOL_VER_2-3-1_3_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22New_Symbol%22%3E%20%20%20%3Cg%20id%3D%22SYMBOL_VER_2-3-1_1_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_2_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_4_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_3_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_3_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1_2_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1_2%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1_2_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22Symbol_-_Original_7_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22Symbol_-_Original_8_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_2-1-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_2-2-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_2-3-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5-1_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5-2_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5-2%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22Symbol_-_Monochromatic_1_%22%3E%20%20%3Cg%20id%3D%22_x33__4_%22%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E";
+var arbitrumLogoUrl =
+  'data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%220%200%20470.287%20514.251%22%20enable-background%3D%22new%200%200%20470.287%20514.251%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%20id%3D%22Background%22%3E%3C%2Fg%3E%3Cg%20id%3D%22Logos_and_symbols%22%3E%20%3Cg%20id%3D%22SYMBOL_VER_3%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_3_3_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_4%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_4_1_%22%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_4_3_%22%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22off_2_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22VER_3_1_%22%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2_1_%22%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22VER_3%22%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2%22%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22off_2%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1_3_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1_1_%22%3E%20%20%3Cg%20id%3D%22_x31_-3%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_14_%22%3E%20%20%20%3Cpath%20fill%3D%22%232D374B%22%20d%3D%22M291.134%2C237.469l35.654-60.5l96.103%2C149.684l0.046%2C28.727l-0.313-197.672%20%20%20%20c-0.228-4.832-2.794-9.252-6.887-11.859L242.715%2C46.324c-4.045-1.99-9.18-1.967-13.22%2C0.063c-0.546%2C0.272-1.06%2C0.57-1.548%2C0.895%20%20%20%20l-0.604%2C0.379L59.399%2C144.983l-0.651%2C0.296c-0.838%2C0.385-1.686%2C0.875-2.48%2C1.444c-3.185%2C2.283-5.299%2C5.66-5.983%2C9.448%20%20%20%20c-0.103%2C0.574-0.179%2C1.158-0.214%2C1.749l0.264%2C161.083l89.515-138.745c11.271-18.397%2C35.825-24.323%2C58.62-24.001l26.753%2C0.706%20%20%20%20L67.588%2C409.765l18.582%2C10.697L245.692%2C157.22l70.51-0.256L157.091%2C426.849l66.306%2C38.138l7.922%2C4.556%20%20%20%20c3.351%2C1.362%2C7.302%2C1.431%2C10.681%2C0.21l175.453-101.678l-33.544%2C19.438L291.134%2C237.469z%20M304.736%2C433.395l-66.969-105.108%20%20%20%20l40.881-69.371l87.952%2C138.628L304.736%2C433.395z%22%2F%3E%20%20%20%3Cpolygon%20fill%3D%22%2328A0F0%22%20points%3D%22237.768%2C328.286%20304.736%2C433.395%20366.601%2C397.543%20278.648%2C258.915%20%20%20%20%22%2F%3E%20%20%20%3Cpath%20fill%3D%22%2328A0F0%22%20d%3D%22M422.937%2C355.379l-0.046-28.727l-96.103-149.684l-35.654%2C60.5l92.774%2C150.043l33.544-19.438%20%20%20%20c3.29-2.673%2C5.281-6.594%2C5.49-10.825L422.937%2C355.379z%22%2F%3E%20%20%20%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M20.219%2C382.469l47.369%2C27.296l157.634-252.801l-26.753-0.706c-22.795-0.322-47.35%2C5.604-58.62%2C24.001%20%20%20%20L50.334%2C319.004l-30.115%2C46.271V382.469z%22%2F%3E%20%20%20%3Cpolygon%20fill%3D%22%23FFFFFF%22%20points%3D%22316.202%2C156.964%20245.692%2C157.22%2086.17%2C420.462%20141.928%2C452.565%20157.091%2C426.849%20%20%20%20%22%2F%3E%20%20%20%3Cpath%20fill%3D%22%2396BEDC%22%20d%3D%22M452.65%2C156.601c-0.59-14.746-8.574-28.245-21.08-36.104L256.28%2C19.692%20%20%20%20c-12.371-6.229-27.825-6.237-40.218-0.004c-1.465%2C0.739-170.465%2C98.752-170.465%2C98.752c-2.339%2C1.122-4.592%2C2.458-6.711%2C3.975%20%20%20%20c-11.164%2C8.001-17.969%2C20.435-18.668%2C34.095v208.765l30.115-46.271L50.07%2C157.921c0.035-0.589%2C0.109-1.169%2C0.214-1.741%20%20%20%20c0.681-3.79%2C2.797-7.171%2C5.983-9.456c0.795-0.569%2C172.682-100.064%2C173.228-100.337c4.04-2.029%2C9.175-2.053%2C13.22-0.063%20%20%20%20l173.022%2C99.523c4.093%2C2.607%2C6.659%2C7.027%2C6.887%2C11.859v199.542c-0.209%2C4.231-1.882%2C8.152-5.172%2C10.825l-33.544%2C19.438%20%20%20%20l-17.308%2C10.031l-61.864%2C35.852l-62.737%2C36.357c-3.379%2C1.221-7.33%2C1.152-10.681-0.21l-74.228-42.693l-15.163%2C25.717%20%20%20%20l66.706%2C38.406c2.206%2C1.255%2C4.171%2C2.367%2C5.784%2C3.272c2.497%2C1.4%2C4.199%2C2.337%2C4.8%2C2.629c4.741%2C2.303%2C11.563%2C3.643%2C17.71%2C3.643%20%20%20%20c5.636%2C0%2C11.132-1.035%2C16.332-3.072l182.225-105.531c10.459-8.104%2C16.612-20.325%2C17.166-33.564V156.601z%22%2F%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_13_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_6_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_4_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22One_color_version_-_White_3_%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original_15_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22One_color_version_-_White%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Monochromatic_3_%22%3E%20%20%20%3Cg%20id%3D%22_x33__7_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Monochromatic%22%3E%20%20%20%3Cg%20id%3D%22_x33__3_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22_x33__2_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22_x33__1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22_x33_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_10_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_2_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22_x34__1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Monochromatic_2_%22%3E%20%20%20%3Cg%20id%3D%22_x33__6_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22One_color_version_-_White_2_%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original_11_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22Symbol_-_Original_5_%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original_12_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22One_color_version_-_White_1_%22%3E%20%20%20%3Cg%20id%3D%22Symbol_-_Original_9_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1_2_%22%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2_4_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2-1-1_1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2-2-1_1_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22SYMBOL_VER_2-3-1_4_%22%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22New_Symbol_1_%22%3E%20%20%20%3Cg%20id%3D%22SYMBOL_VER_2-3-1_3_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%20%3Cg%20id%3D%22New_Symbol%22%3E%20%20%20%3Cg%20id%3D%22SYMBOL_VER_2-3-1_1_%22%3E%20%20%20%3C%2Fg%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_2_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_4_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_3_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_3_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1_2_2_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1_2%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_1-1-1_2_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22Symbol_-_Original_7_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22Symbol_-_Original_8_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_2-1-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_2-2-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_2-3-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5-1_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5-1%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5-2_1_%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22SYMBOL_VER_5-2%22%3E%20%3C%2Fg%3E%20%3Cg%20id%3D%22Symbol_-_Monochromatic_1_%22%3E%20%20%3Cg%20id%3D%22_x33__4_%22%3E%20%20%3C%2Fg%3E%20%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'
 
-var optimismLogoUrl = "data:image/svg+xml,%3Csvg%20width%3D%22170%22%20height%3D%22168%22%20viewBox%3D%220%200%20170%20168%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20clip-path%3D%22url%28%23clip0%29%22%3E%3Cpath%20opacity%3D%220.6%22%20d%3D%22M85.05%20168C132.022%20168%20170.1%20130.105%20170.1%2083.3593C170.1%2036.6135%200%2036.6135%200%2083.3593C0%20130.105%2038.0782%20168%2085.05%20168Z%22%20fill%3D%22%23FF505F%22%2F%3E%3Cpath%20opacity%3D%220.6%22%20d%3D%22M85.05%20168C132.022%20168%20170.1%20130.105%20170.1%2083.3593C170.1%2036.6135%200%2036.6135%200%2083.3593C0%20130.105%2038.0782%20168%2085.05%20168Z%22%20fill%3D%22%23FF0320%22%2F%3E%3Cpath%20d%3D%22M85.05%200C132.022%200%20170.1%2037.8949%20170.1%2084.6407C170.1%20131.386%200%20131.386%200%2084.6407C0%2037.8949%2038.0782%200%2085.05%200Z%22%20fill%3D%22white%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M144.665%2064.0394L112.444%2012.3742L89.0263%2078.9477L144.665%2064.0394Z%22%20fill%3D%22%23FF4E65%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M143.777%2064.215L112.444%2012.3742L165.349%2058.4347L143.777%2064.215Z%22%20fill%3D%22white%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M144.551%2063.613L142.479%20124.467L88.912%2078.5213L144.551%2063.613Z%22%20fill%3D%22%23D0001A%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M143.663%2063.7886L142.479%20124.467L165.235%2058.0083L143.663%2063.7886Z%22%20fill%3D%22%23FF697B%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CclipPath%20id%3D%22clip0%22%3E%3Crect%20width%3D%22170%22%20height%3D%22168%22%20fill%3D%22white%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E";
+var optimismLogoUrl =
+  'data:image/svg+xml,%3Csvg%20width%3D%22170%22%20height%3D%22168%22%20viewBox%3D%220%200%20170%20168%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20clip-path%3D%22url%28%23clip0%29%22%3E%3Cpath%20opacity%3D%220.6%22%20d%3D%22M85.05%20168C132.022%20168%20170.1%20130.105%20170.1%2083.3593C170.1%2036.6135%200%2036.6135%200%2083.3593C0%20130.105%2038.0782%20168%2085.05%20168Z%22%20fill%3D%22%23FF505F%22%2F%3E%3Cpath%20opacity%3D%220.6%22%20d%3D%22M85.05%20168C132.022%20168%20170.1%20130.105%20170.1%2083.3593C170.1%2036.6135%200%2036.6135%200%2083.3593C0%20130.105%2038.0782%20168%2085.05%20168Z%22%20fill%3D%22%23FF0320%22%2F%3E%3Cpath%20d%3D%22M85.05%200C132.022%200%20170.1%2037.8949%20170.1%2084.6407C170.1%20131.386%200%20131.386%200%2084.6407C0%2037.8949%2038.0782%200%2085.05%200Z%22%20fill%3D%22white%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M144.665%2064.0394L112.444%2012.3742L89.0263%2078.9477L144.665%2064.0394Z%22%20fill%3D%22%23FF4E65%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M143.777%2064.215L112.444%2012.3742L165.349%2058.4347L143.777%2064.215Z%22%20fill%3D%22white%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M144.551%2063.613L142.479%20124.467L88.912%2078.5213L144.551%2063.613Z%22%20fill%3D%22%23D0001A%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M143.663%2063.7886L142.479%20124.467L165.235%2058.0083L143.663%2063.7886Z%22%20fill%3D%22%23FF697B%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CclipPath%20id%3D%22clip0%22%3E%3Crect%20width%3D%22170%22%20height%3D%22168%22%20fill%3D%22white%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E'
 
-var polygonMaticLogo = "data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20viewBox%3D%220%200%2038.4%2033.5%22%20style%3D%22enable-background%3Anew%200%200%2038.4%2033.5%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%238247E5%3B%7D%3C%2Fstyle%3E%3Cg%3E%20%3Cpath%20class%3D%22st0%22%20d%3D%22M29%2C10.2c-0.7-0.4-1.6-0.4-2.4%2C0L21%2C13.5l-3.8%2C2.1l-5.5%2C3.3c-0.7%2C0.4-1.6%2C0.4-2.4%2C0L5%2C16.3%20%20c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8%2C0.4-1.6%2C1.2-2.1l4.3-2.5c0.7-0.4%2C1.6-0.4%2C2.4%2C0L16%2C7.2c0.7%2C0.4%2C1.2%2C1.2%2C1.2%2C2.1v3.3l3.8-2.2V7%20%20c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4%2C0L1.2%2C5C0.4%2C5.4%2C0%2C6.2%2C0%2C7v9.4c0%2C0.8%2C0.4%2C1.6%2C1.2%2C2.1l8.1%2C4.7%20%20c0.7%2C0.4%2C1.6%2C0.4%2C2.4%2C0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4%2C1.6-0.4%2C2.4%2C0l4.3%2C2.5c0.7%2C0.4%2C1.2%2C1.2%2C1.2%2C2.1v5c0%2C0.8-0.4%2C1.6-1.2%2C2.1%20%20L29%2C28.8c-0.7%2C0.4-1.6%2C0.4-2.4%2C0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8%2C2.2v3.3c0%2C0.8%2C0.4%2C1.6%2C1.2%2C2.1l8.1%2C4.7%20%20c0.7%2C0.4%2C1.6%2C0.4%2C2.4%2C0l8.1-4.7c0.7-0.4%2C1.2-1.2%2C1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29%2C10.2z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E";
+var polygonMaticLogo =
+  'data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20viewBox%3D%220%200%2038.4%2033.5%22%20style%3D%22enable-background%3Anew%200%200%2038.4%2033.5%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3A%238247E5%3B%7D%3C%2Fstyle%3E%3Cg%3E%20%3Cpath%20class%3D%22st0%22%20d%3D%22M29%2C10.2c-0.7-0.4-1.6-0.4-2.4%2C0L21%2C13.5l-3.8%2C2.1l-5.5%2C3.3c-0.7%2C0.4-1.6%2C0.4-2.4%2C0L5%2C16.3%20%20c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8%2C0.4-1.6%2C1.2-2.1l4.3-2.5c0.7-0.4%2C1.6-0.4%2C2.4%2C0L16%2C7.2c0.7%2C0.4%2C1.2%2C1.2%2C1.2%2C2.1v3.3l3.8-2.2V7%20%20c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4%2C0L1.2%2C5C0.4%2C5.4%2C0%2C6.2%2C0%2C7v9.4c0%2C0.8%2C0.4%2C1.6%2C1.2%2C2.1l8.1%2C4.7%20%20c0.7%2C0.4%2C1.6%2C0.4%2C2.4%2C0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4%2C1.6-0.4%2C2.4%2C0l4.3%2C2.5c0.7%2C0.4%2C1.2%2C1.2%2C1.2%2C2.1v5c0%2C0.8-0.4%2C1.6-1.2%2C2.1%20%20L29%2C28.8c-0.7%2C0.4-1.6%2C0.4-2.4%2C0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8%2C2.2v3.3c0%2C0.8%2C0.4%2C1.6%2C1.2%2C2.1l8.1%2C4.7%20%20c0.7%2C0.4%2C1.6%2C0.4%2C2.4%2C0l8.1-4.7c0.7-0.4%2C1.2-1.2%2C1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29%2C10.2z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E'
 
-var UNI_LIST = 'https://tokens.uniswap.org';
-var AAVE_LIST = 'tokenlist.aave.eth';
-var BA_LIST = 'https://raw.githubusercontent.com/The-Blockchain-Association/sec-notice-list/master/ba-sec-list.json';
-var CMC_ALL_LIST = 'https://api.coinmarketcap.com/data-api/v3/uniswap/all.json';
-var COINGECKO_LIST = 'https://tokens.coingecko.com/uniswap/all.json';
-var COMPOUND_LIST = 'https://raw.githubusercontent.com/compound-finance/token-list/master/compound.tokenlist.json';
-var GEMINI_LIST = 'https://www.gemini.com/uniswap/manifest.json';
-var ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json';
-var KLEROS_LIST = 't2crtokens.eth';
-var OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json';
-var ROLL_LIST = 'https://app.tryroll.com/tokens.json';
-var SET_LIST = 'https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json';
-var WRAPPED_LIST = 'wrapped.tokensoft.eth';
-var UNSUPPORTED_LIST_URLS = [BA_LIST];
+var UNI_LIST = 'https://tokens.uniswap.org'
+var AAVE_LIST = 'tokenlist.aave.eth'
+var BA_LIST = 'https://raw.githubusercontent.com/The-Blockchain-Association/sec-notice-list/master/ba-sec-list.json'
+var CMC_ALL_LIST = 'https://api.coinmarketcap.com/data-api/v3/uniswap/all.json'
+var COINGECKO_LIST = 'https://tokens.coingecko.com/uniswap/all.json'
+var COMPOUND_LIST = 'https://raw.githubusercontent.com/compound-finance/token-list/master/compound.tokenlist.json'
+var GEMINI_LIST = 'https://www.gemini.com/uniswap/manifest.json'
+var ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
+var KLEROS_LIST = 't2crtokens.eth'
+var OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
+var ROLL_LIST = 'https://app.tryroll.com/tokens.json'
+var SET_LIST = 'https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json'
+var WRAPPED_LIST = 'wrapped.tokensoft.eth'
+var UNSUPPORTED_LIST_URLS = [BA_LIST]
 // this is the default list of lists that are exposed to users
 // lower index == higher priority for token import
 var DEFAULT_LIST_OF_LISTS_TO_DISPLAY = [
-    UNI_LIST,
-    COMPOUND_LIST,
-    AAVE_LIST,
-    CMC_ALL_LIST,
-    COINGECKO_LIST,
-    KLEROS_LIST,
-    GEMINI_LIST,
-    WRAPPED_LIST,
-    SET_LIST,
-    ROLL_LIST,
-    ARBITRUM_LIST,
-    OPTIMISM_LIST,
-];
-var DEFAULT_LIST_OF_LISTS = __spreadArray(__spreadArray([], __read(DEFAULT_LIST_OF_LISTS_TO_DISPLAY), false), __read(UNSUPPORTED_LIST_URLS), false);
+  UNI_LIST,
+  COMPOUND_LIST,
+  AAVE_LIST,
+  CMC_ALL_LIST,
+  COINGECKO_LIST,
+  KLEROS_LIST,
+  GEMINI_LIST,
+  WRAPPED_LIST,
+  SET_LIST,
+  ROLL_LIST,
+  ARBITRUM_LIST,
+  OPTIMISM_LIST,
+]
+var DEFAULT_LIST_OF_LISTS = __spreadArray(
+  __spreadArray([], __read(DEFAULT_LIST_OF_LISTS_TO_DISPLAY), false),
+  __read(UNSUPPORTED_LIST_URLS),
+  false
+)
 // default lists to be 'active' aka searched across
-var DEFAULT_ACTIVE_LIST_URLS = [UNI_LIST, GEMINI_LIST];
+var DEFAULT_ACTIVE_LIST_URLS = [UNI_LIST, GEMINI_LIST]
 
-var _a$c, _b$3;
-var INFURA_KEY = process.env.REACT_APP_INFURA_KEY;
+var _a$c, _b$3
+var INFURA_KEY = process.env.REACT_APP_INFURA_KEY
 if (typeof INFURA_KEY === 'undefined') {
-    throw new Error("REACT_APP_INFURA_KEY must be a defined environment variable");
+  throw new Error('REACT_APP_INFURA_KEY must be a defined environment variable')
 }
 /**
  * These are the network URLs used by the interface when there is not another available source of chain data
  */
-var INFURA_NETWORK_URLS = (_a$c = {},
-    _a$c[SupportedChainId.MAINNET] = "https://mainnet.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.RINKEBY] = "https://rinkeby.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.ROPSTEN] = "https://ropsten.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.GOERLI] = "https://goerli.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.KOVAN] = "https://kovan.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.OPTIMISM] = "https://optimism-mainnet.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.OPTIMISTIC_KOVAN] = "https://optimism-kovan.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.ARBITRUM_ONE] = "https://arbitrum-mainnet.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.ARBITRUM_RINKEBY] = "https://arbitrum-rinkeby.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.POLYGON] = "https://polygon-mainnet.infura.io/v3/" + INFURA_KEY,
-    _a$c[SupportedChainId.POLYGON_MUMBAI] = "https://polygon-mumbai.infura.io/v3/" + INFURA_KEY,
-    _a$c);
-var NetworkType;
-(function (NetworkType) {
-    NetworkType[NetworkType["L1"] = 0] = "L1";
-    NetworkType[NetworkType["L2"] = 1] = "L2";
-})(NetworkType || (NetworkType = {}));
-var CHAIN_INFO = (_b$3 = {},
-    _b$3[SupportedChainId.MAINNET] = {
-        networkType: NetworkType.L1,
-        docs: 'https://docs.uniswap.org/',
-        explorer: 'https://etherscan.io/',
-        infoLink: 'https://info.uniswap.org/#/',
-        label: 'Ethereum',
-        logoUrl: EthereumLogo,
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-            rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.MAINNET],
-        },
+var INFURA_NETWORK_URLS =
+  ((_a$c = {}),
+  (_a$c[SupportedChainId.MAINNET] = 'https://mainnet.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.RINKEBY] = 'https://rinkeby.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.ROPSTEN] = 'https://ropsten.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.GOERLI] = 'https://goerli.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.KOVAN] = 'https://kovan.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.OPTIMISM] = 'https://optimism-mainnet.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.OPTIMISTIC_KOVAN] = 'https://optimism-kovan.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.ARBITRUM_ONE] = 'https://arbitrum-mainnet.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.ARBITRUM_RINKEBY] = 'https://arbitrum-rinkeby.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.POLYGON] = 'https://polygon-mainnet.infura.io/v3/' + INFURA_KEY),
+  (_a$c[SupportedChainId.POLYGON_MUMBAI] = 'https://polygon-mumbai.infura.io/v3/' + INFURA_KEY),
+  _a$c)
+var NetworkType
+;(function (NetworkType) {
+  NetworkType[(NetworkType['L1'] = 0)] = 'L1'
+  NetworkType[(NetworkType['L2'] = 1)] = 'L2'
+})(NetworkType || (NetworkType = {}))
+var CHAIN_INFO =
+  ((_b$3 = {}),
+  (_b$3[SupportedChainId.MAINNET] = {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.uniswap.org/',
+    explorer: 'https://etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'Ethereum',
+    logoUrl: EthereumLogo,
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+      rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.MAINNET],
     },
-    _b$3[SupportedChainId.RINKEBY] = {
-        networkType: NetworkType.L1,
-        docs: 'https://docs.uniswap.org/',
-        explorer: 'https://rinkeby.etherscan.io/',
-        infoLink: 'https://info.uniswap.org/#/',
-        label: 'Rinkeby',
-        logoUrl: EthereumLogo,
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Rinkeby Ether', symbol: 'rETH', decimals: 18 },
-            rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.RINKEBY],
-        },
+  }),
+  (_b$3[SupportedChainId.RINKEBY] = {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.uniswap.org/',
+    explorer: 'https://rinkeby.etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'Rinkeby',
+    logoUrl: EthereumLogo,
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Rinkeby Ether', symbol: 'rETH', decimals: 18 },
+      rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.RINKEBY],
     },
-    _b$3[SupportedChainId.ROPSTEN] = {
-        networkType: NetworkType.L1,
-        docs: 'https://docs.uniswap.org/',
-        explorer: 'https://ropsten.etherscan.io/',
-        infoLink: 'https://info.uniswap.org/#/',
-        label: 'Ropsten',
-        logoUrl: EthereumLogo,
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Ropsten Ether', symbol: 'ropETH', decimals: 18 },
-            rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.ROPSTEN],
-        },
+  }),
+  (_b$3[SupportedChainId.ROPSTEN] = {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.uniswap.org/',
+    explorer: 'https://ropsten.etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'Ropsten',
+    logoUrl: EthereumLogo,
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Ropsten Ether', symbol: 'ropETH', decimals: 18 },
+      rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.ROPSTEN],
     },
-    _b$3[SupportedChainId.KOVAN] = {
-        networkType: NetworkType.L1,
-        docs: 'https://docs.uniswap.org/',
-        explorer: 'https://kovan.etherscan.io/',
-        infoLink: 'https://info.uniswap.org/#/',
-        label: 'Kovan',
-        logoUrl: EthereumLogo,
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Kovan Ether', symbol: 'kovETH', decimals: 18 },
-            rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.KOVAN],
-        },
+  }),
+  (_b$3[SupportedChainId.KOVAN] = {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.uniswap.org/',
+    explorer: 'https://kovan.etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'Kovan',
+    logoUrl: EthereumLogo,
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Kovan Ether', symbol: 'kovETH', decimals: 18 },
+      rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.KOVAN],
     },
-    _b$3[SupportedChainId.GOERLI] = {
-        networkType: NetworkType.L1,
-        docs: 'https://docs.uniswap.org/',
-        explorer: 'https://goerli.etherscan.io/',
-        infoLink: 'https://info.uniswap.org/#/',
-        label: 'Görli',
-        logoUrl: EthereumLogo,
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Görli Ether', symbol: 'görETH', decimals: 18 },
-            rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.GOERLI],
-        },
+  }),
+  (_b$3[SupportedChainId.GOERLI] = {
+    networkType: NetworkType.L1,
+    docs: 'https://docs.uniswap.org/',
+    explorer: 'https://goerli.etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/',
+    label: 'Görli',
+    logoUrl: EthereumLogo,
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Görli Ether', symbol: 'görETH', decimals: 18 },
+      rpcUrl: INFURA_NETWORK_URLS[SupportedChainId.GOERLI],
     },
-    _b$3[SupportedChainId.OPTIMISM] = {
-        networkType: NetworkType.L2,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_1$1m || (templateObject_1$1m = __makeTemplateObject(["25m"], ["25m"]))),
-        bridge: 'https://gateway.optimism.io/?chainId=1',
-        defaultListUrl: OPTIMISM_LIST,
-        docs: 'https://optimism.io/',
-        explorer: 'https://optimistic.etherscan.io/',
-        infoLink: 'https://info.uniswap.org/#/optimism/',
-        label: 'Optimism',
-        logoUrl: optimismLogoUrl,
-        statusPage: 'https://optimism.io/status',
-        helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-            rpcUrl: 'https://mainnet.optimism.io',
-        },
+  }),
+  (_b$3[SupportedChainId.OPTIMISM] = {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms__default['default'](
+      templateObject_1$1m || (templateObject_1$1m = __makeTemplateObject(['25m'], ['25m']))
+    ),
+    bridge: 'https://gateway.optimism.io/?chainId=1',
+    defaultListUrl: OPTIMISM_LIST,
+    docs: 'https://optimism.io/',
+    explorer: 'https://optimistic.etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/optimism/',
+    label: 'Optimism',
+    logoUrl: optimismLogoUrl,
+    statusPage: 'https://optimism.io/status',
+    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+      rpcUrl: 'https://mainnet.optimism.io',
     },
-    _b$3[SupportedChainId.OPTIMISTIC_KOVAN] = {
-        networkType: NetworkType.L2,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_2$10 || (templateObject_2$10 = __makeTemplateObject(["25m"], ["25m"]))),
-        bridge: 'https://gateway.optimism.io/',
-        defaultListUrl: OPTIMISM_LIST,
-        docs: 'https://optimism.io/',
-        explorer: 'https://optimistic.etherscan.io/',
-        infoLink: 'https://info.uniswap.org/#/optimism/',
-        label: 'Optimistic Kovan',
-        logoUrl: optimismLogoUrl,
-        statusPage: 'https://optimism.io/status',
-        helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Optimistic Kovan Ether', symbol: 'kovOpETH', decimals: 18 },
-            rpcUrl: 'https://kovan.optimism.io',
-        },
+  }),
+  (_b$3[SupportedChainId.OPTIMISTIC_KOVAN] = {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms__default['default'](
+      templateObject_2$10 || (templateObject_2$10 = __makeTemplateObject(['25m'], ['25m']))
+    ),
+    bridge: 'https://gateway.optimism.io/',
+    defaultListUrl: OPTIMISM_LIST,
+    docs: 'https://optimism.io/',
+    explorer: 'https://optimistic.etherscan.io/',
+    infoLink: 'https://info.uniswap.org/#/optimism/',
+    label: 'Optimistic Kovan',
+    logoUrl: optimismLogoUrl,
+    statusPage: 'https://optimism.io/status',
+    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Optimistic Kovan Ether', symbol: 'kovOpETH', decimals: 18 },
+      rpcUrl: 'https://kovan.optimism.io',
     },
-    _b$3[SupportedChainId.ARBITRUM_ONE] = {
-        networkType: NetworkType.L2,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_3$T || (templateObject_3$T = __makeTemplateObject(["10m"], ["10m"]))),
-        bridge: 'https://bridge.arbitrum.io/',
-        docs: 'https://offchainlabs.com/',
-        explorer: 'https://arbiscan.io/',
-        infoLink: 'https://info.uniswap.org/#/arbitrum',
-        label: 'Arbitrum',
-        logoUrl: arbitrumLogoUrl,
-        defaultListUrl: ARBITRUM_LIST,
-        helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-            rpcUrl: 'https://arb1.arbitrum.io/rpc',
-        },
+  }),
+  (_b$3[SupportedChainId.ARBITRUM_ONE] = {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms__default['default'](
+      templateObject_3$T || (templateObject_3$T = __makeTemplateObject(['10m'], ['10m']))
+    ),
+    bridge: 'https://bridge.arbitrum.io/',
+    docs: 'https://offchainlabs.com/',
+    explorer: 'https://arbiscan.io/',
+    infoLink: 'https://info.uniswap.org/#/arbitrum',
+    label: 'Arbitrum',
+    logoUrl: arbitrumLogoUrl,
+    defaultListUrl: ARBITRUM_LIST,
+    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+      rpcUrl: 'https://arb1.arbitrum.io/rpc',
     },
-    _b$3[SupportedChainId.ARBITRUM_RINKEBY] = {
-        networkType: NetworkType.L2,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_4$H || (templateObject_4$H = __makeTemplateObject(["10m"], ["10m"]))),
-        bridge: 'https://bridge.arbitrum.io/',
-        docs: 'https://offchainlabs.com/',
-        explorer: 'https://rinkeby-explorer.arbitrum.io/',
-        infoLink: 'https://info.uniswap.org/#/arbitrum/',
-        label: 'Arbitrum Rinkeby',
-        logoUrl: arbitrumLogoUrl,
-        defaultListUrl: ARBITRUM_LIST,
-        helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Rinkeby Arbitrum Ether', symbol: 'rinkArbETH', decimals: 18 },
-            rpcUrl: 'https://rinkeby.arbitrum.io/rpc',
-        },
+  }),
+  (_b$3[SupportedChainId.ARBITRUM_RINKEBY] = {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms__default['default'](
+      templateObject_4$H || (templateObject_4$H = __makeTemplateObject(['10m'], ['10m']))
+    ),
+    bridge: 'https://bridge.arbitrum.io/',
+    docs: 'https://offchainlabs.com/',
+    explorer: 'https://rinkeby-explorer.arbitrum.io/',
+    infoLink: 'https://info.uniswap.org/#/arbitrum/',
+    label: 'Arbitrum Rinkeby',
+    logoUrl: arbitrumLogoUrl,
+    defaultListUrl: ARBITRUM_LIST,
+    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Rinkeby Arbitrum Ether', symbol: 'rinkArbETH', decimals: 18 },
+      rpcUrl: 'https://rinkeby.arbitrum.io/rpc',
     },
-    _b$3[SupportedChainId.POLYGON] = {
-        networkType: NetworkType.L1,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_5$y || (templateObject_5$y = __makeTemplateObject(["10m"], ["10m"]))),
-        bridge: 'https://wallet.polygon.technology/bridge',
-        docs: 'https://polygon.io/',
-        explorer: 'https://polygonscan.com/',
-        infoLink: 'https://info.uniswap.org/#/polygon/',
-        label: 'Polygon',
-        logoUrl: polygonMaticLogo,
-        addNetworkInfo: {
-            rpcUrl: 'https://polygon-rpc.com/',
-            nativeCurrency: { name: 'Polygon Matic', symbol: 'MATIC', decimals: 18 },
-        },
+  }),
+  (_b$3[SupportedChainId.POLYGON] = {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms__default['default'](
+      templateObject_5$y || (templateObject_5$y = __makeTemplateObject(['10m'], ['10m']))
+    ),
+    bridge: 'https://wallet.polygon.technology/bridge',
+    docs: 'https://polygon.io/',
+    explorer: 'https://polygonscan.com/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'Polygon',
+    logoUrl: polygonMaticLogo,
+    addNetworkInfo: {
+      rpcUrl: 'https://polygon-rpc.com/',
+      nativeCurrency: { name: 'Polygon Matic', symbol: 'MATIC', decimals: 18 },
     },
-    _b$3[SupportedChainId.POLYGON_MUMBAI] = {
-        networkType: NetworkType.L1,
-        blockWaitMsBeforeWarning: ms__default["default"](templateObject_6$p || (templateObject_6$p = __makeTemplateObject(["10m"], ["10m"]))),
-        bridge: 'https://wallet.polygon.technology/bridge',
-        docs: 'https://polygon.io/',
-        explorer: 'https://mumbai.polygonscan.com/',
-        infoLink: 'https://info.uniswap.org/#/polygon/',
-        label: 'Polygon Mumbai',
-        logoUrl: polygonMaticLogo,
-        addNetworkInfo: {
-            nativeCurrency: { name: 'Polygon Mumbai Matic', symbol: 'mMATIC', decimals: 18 },
-            rpcUrl: 'https://rpc-endpoints.superfluid.dev/mumbai',
-        },
+  }),
+  (_b$3[SupportedChainId.POLYGON_MUMBAI] = {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms__default['default'](
+      templateObject_6$p || (templateObject_6$p = __makeTemplateObject(['10m'], ['10m']))
+    ),
+    bridge: 'https://wallet.polygon.technology/bridge',
+    docs: 'https://polygon.io/',
+    explorer: 'https://mumbai.polygonscan.com/',
+    infoLink: 'https://info.uniswap.org/#/polygon/',
+    label: 'Polygon Mumbai',
+    logoUrl: polygonMaticLogo,
+    addNetworkInfo: {
+      nativeCurrency: { name: 'Polygon Mumbai Matic', symbol: 'mMATIC', decimals: 18 },
+      rpcUrl: 'https://rpc-endpoints.superfluid.dev/mumbai',
     },
-    _b$3);
-var templateObject_1$1m, templateObject_2$10, templateObject_3$T, templateObject_4$H, templateObject_5$y, templateObject_6$p;
+  }),
+  _b$3)
+var templateObject_1$1m,
+  templateObject_2$10,
+  templateObject_3$T,
+  templateObject_4$H,
+  templateObject_5$y,
+  templateObject_6$p
 
 function useNativeCurrency() {
-    var chainId = useActiveWeb3React().chainId;
-    return React.useMemo(function () {
-        return chainId
-            ? nativeOnChain(chainId)
-            : // display mainnet when not connected
-                nativeOnChain(SupportedChainId.MAINNET);
-    }, [chainId]);
+  var chainId = useActiveWeb3React().chainId
+  return React.useMemo(
+    function () {
+      return chainId
+        ? nativeOnChain(chainId)
+        : // display mainnet when not connected
+          nativeOnChain(SupportedChainId.MAINNET)
+    },
+    [chainId]
+  )
 }
 
-var EMPTY_CONNECTOR = core$1.initializeConnector(function () { return empty.EMPTY; });
-utils.atomWithDefault(function () { return EMPTY_CONNECTOR; });
-utils.atomWithDefault(function () { return EMPTY_CONNECTOR; });
+var EMPTY_CONNECTOR = core$1.initializeConnector(function () {
+  return empty.EMPTY
+})
+utils.atomWithDefault(function () {
+  return EMPTY_CONNECTOR
+})
+utils.atomWithDefault(function () {
+  return EMPTY_CONNECTOR
+})
 
 var REGISTRAR_ABI = [
-    {
-        constant: true,
-        inputs: [
-            {
-                name: 'node',
-                type: 'bytes32',
-            },
-        ],
-        name: 'resolver',
-        outputs: [
-            {
-                name: 'resolverAddress',
-                type: 'address',
-            },
-        ],
-        payable: false,
-        stateMutability: 'view',
-        type: 'function',
-    },
-];
-var REGISTRAR_ADDRESS = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e';
+  {
+    constant: true,
+    inputs: [
+      {
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'resolver',
+    outputs: [
+      {
+        name: 'resolverAddress',
+        type: 'address',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
+var REGISTRAR_ADDRESS = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'
 var RESOLVER_ABI = [
-    {
-        constant: true,
-        inputs: [
-            {
-                internalType: 'bytes32',
-                name: 'node',
-                type: 'bytes32',
-            },
-        ],
-        name: 'contenthash',
-        outputs: [
-            {
-                internalType: 'bytes',
-                name: '',
-                type: 'bytes',
-            },
-        ],
-        payable: false,
-        stateMutability: 'view',
-        type: 'function',
-    },
-];
+  {
+    constant: true,
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'node',
+        type: 'bytes32',
+      },
+    ],
+    name: 'contenthash',
+    outputs: [
+      {
+        internalType: 'bytes',
+        name: '',
+        type: 'bytes',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 // cache the resolver contracts since most of them are the public resolver
 function resolverContract(resolverAddress, provider) {
-    return new contracts.Contract(resolverAddress, RESOLVER_ABI, provider);
+  return new contracts.Contract(resolverAddress, RESOLVER_ABI, provider)
 }
 /**
  * Fetches and decodes the result of an ENS contenthash lookup on mainnet to a URI
@@ -6466,68 +6993,65 @@ function resolverContract(resolverAddress, provider) {
  * @param provider provider to use to fetch the data
  */
 function resolveENSContentHash(ensName, provider) {
-    return __awaiter(this, void 0, void 0, function () {
-        var ensRegistrarContract, hash$1, resolverAddress;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    ensRegistrarContract = new contracts.Contract(REGISTRAR_ADDRESS, REGISTRAR_ABI, provider);
-                    hash$1 = hash.namehash(ensName);
-                    return [4 /*yield*/, ensRegistrarContract.resolver(hash$1)];
-                case 1:
-                    resolverAddress = _a.sent();
-                    return [2 /*return*/, resolverContract(resolverAddress, provider).contenthash(hash$1)];
-            }
-        });
-    });
+  return __awaiter(this, void 0, void 0, function () {
+    var ensRegistrarContract, hash$1, resolverAddress
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          ensRegistrarContract = new contracts.Contract(REGISTRAR_ADDRESS, REGISTRAR_ABI, provider)
+          hash$1 = hash.namehash(ensName)
+          return [4 /*yield*/, ensRegistrarContract.resolver(hash$1)]
+        case 1:
+          resolverAddress = _a.sent()
+          return [2 /*return*/, resolverContract(resolverAddress, provider).contenthash(hash$1)]
+      }
+    })
+  })
 }
 
 function hexToUint8Array(hex) {
-    hex = hex.startsWith('0x') ? hex.substr(2) : hex;
-    if (hex.length % 2 !== 0)
-        throw new Error('hex must have length that is multiple of 2');
-    var arr = new Uint8Array(hex.length / 2);
-    for (var i = 0; i < arr.length; i++) {
-        arr[i] = parseInt(hex.substr(i * 2, 2), 16);
-    }
-    return arr;
+  hex = hex.startsWith('0x') ? hex.substr(2) : hex
+  if (hex.length % 2 !== 0) throw new Error('hex must have length that is multiple of 2')
+  var arr = new Uint8Array(hex.length / 2)
+  for (var i = 0; i < arr.length; i++) {
+    arr[i] = parseInt(hex.substr(i * 2, 2), 16)
+  }
+  return arr
 }
-var UTF_8_DECODER = new TextDecoder('utf-8');
+var UTF_8_DECODER = new TextDecoder('utf-8')
 /**
  * Returns the URI representation of the content hash for supported codecs
  * @param contenthash to decode
  */
 function contenthashToUri(contenthash) {
-    var data = hexToUint8Array(contenthash);
-    var codec = multicodec.getNameFromData(data);
-    switch (codec) {
-        case 'ipfs-ns': {
-            var unprefixedData = multicodec.rmPrefix(data);
-            var cid = new CID__default["default"](unprefixedData);
-            return "ipfs://" + multihashes.toB58String(cid.multihash);
-        }
-        case 'ipns-ns': {
-            var unprefixedData = multicodec.rmPrefix(data);
-            var cid = new CID__default["default"](unprefixedData);
-            var multihash = multihashes.decode(cid.multihash);
-            if (multihash.name === 'identity') {
-                return "ipns://" + UTF_8_DECODER.decode(multihash.digest).trim();
-            }
-            else {
-                return "ipns://" + multihashes.toB58String(cid.multihash);
-            }
-        }
-        default:
-            throw new Error("Unrecognized codec: " + codec);
+  var data = hexToUint8Array(contenthash)
+  var codec = multicodec.getNameFromData(data)
+  switch (codec) {
+    case 'ipfs-ns': {
+      var unprefixedData = multicodec.rmPrefix(data)
+      var cid = new CID__default['default'](unprefixedData)
+      return 'ipfs://' + multihashes.toB58String(cid.multihash)
     }
+    case 'ipns-ns': {
+      var unprefixedData = multicodec.rmPrefix(data)
+      var cid = new CID__default['default'](unprefixedData)
+      var multihash = multihashes.decode(cid.multihash)
+      if (multihash.name === 'identity') {
+        return 'ipns://' + UTF_8_DECODER.decode(multihash.digest).trim()
+      } else {
+        return 'ipns://' + multihashes.toB58String(cid.multihash)
+      }
+    }
+    default:
+      throw new Error('Unrecognized codec: ' + codec)
+  }
 }
 
-var ENS_NAME_REGEX$1 = /^(([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*\.)+)eth(\/.*)?$/;
+var ENS_NAME_REGEX$1 = /^(([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*\.)+)eth(\/.*)?$/
 function parseENSAddress(ensAddress) {
-    var match = ensAddress.match(ENS_NAME_REGEX$1);
-    if (!match)
-        return undefined;
-    return { ensName: match[1].toLowerCase() + "eth", ensPath: match[4] };
+  var match = ensAddress.match(ENS_NAME_REGEX$1)
+  if (!match) return undefined
+  return { ensName: match[1].toLowerCase() + 'eth', ensPath: match[4] }
 }
 
 /**
@@ -6535,463 +7059,646 @@ function parseENSAddress(ensAddress) {
  * @param uri to convert to fetch-able http url
  */
 function uriToHttp(uri) {
-    var _a, _b, _c;
-    var protocol = uri.split(':')[0].toLowerCase();
-    switch (protocol) {
-        case 'data':
-            return [uri];
-        case 'https':
-            return [uri];
-        case 'http':
-            return ['https' + uri.substr(4), uri];
-        case 'ipfs':
-            var hash = (_a = uri.match(/^ipfs:(\/\/)?(.*)$/i)) === null || _a === void 0 ? void 0 : _a[2];
-            return ["https://cloudflare-ipfs.com/ipfs/" + hash + "/", "https://ipfs.io/ipfs/" + hash + "/"];
-        case 'ipns':
-            var name_1 = (_b = uri.match(/^ipns:(\/\/)?(.*)$/i)) === null || _b === void 0 ? void 0 : _b[2];
-            return ["https://cloudflare-ipfs.com/ipns/" + name_1 + "/", "https://ipfs.io/ipns/" + name_1 + "/"];
-        case 'ar':
-            var tx = (_c = uri.match(/^ar:(\/\/)?(.*)$/i)) === null || _c === void 0 ? void 0 : _c[2];
-            return ["https://arweave.net/" + tx];
-        default:
-            return [];
-    }
+  var _a, _b, _c
+  var protocol = uri.split(':')[0].toLowerCase()
+  switch (protocol) {
+    case 'data':
+      return [uri]
+    case 'https':
+      return [uri]
+    case 'http':
+      return ['https' + uri.substr(4), uri]
+    case 'ipfs':
+      var hash = (_a = uri.match(/^ipfs:(\/\/)?(.*)$/i)) === null || _a === void 0 ? void 0 : _a[2]
+      return ['https://cloudflare-ipfs.com/ipfs/' + hash + '/', 'https://ipfs.io/ipfs/' + hash + '/']
+    case 'ipns':
+      var name_1 = (_b = uri.match(/^ipns:(\/\/)?(.*)$/i)) === null || _b === void 0 ? void 0 : _b[2]
+      return ['https://cloudflare-ipfs.com/ipns/' + name_1 + '/', 'https://ipfs.io/ipns/' + name_1 + '/']
+    case 'ar':
+      var tx = (_c = uri.match(/^ar:(\/\/)?(.*)$/i)) === null || _c === void 0 ? void 0 : _c[2]
+      return ['https://arweave.net/' + tx]
+    default:
+      return []
+  }
 }
 
-var ValidationSchema;
-(function (ValidationSchema) {
-    ValidationSchema["LIST"] = "list";
-    ValidationSchema["TOKENS"] = "tokens";
-})(ValidationSchema || (ValidationSchema = {}));
-var validator = new Promise(function (resolve) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, ajv, schema, validator;
+var ValidationSchema
+;(function (ValidationSchema) {
+  ValidationSchema['LIST'] = 'list'
+  ValidationSchema['TOKENS'] = 'tokens'
+})(ValidationSchema || (ValidationSchema = {}))
+var validator = new Promise(function (resolve) {
+  return __awaiter(void 0, void 0, void 0, function () {
+    var _a, ajv, schema, validator
     return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0: return [4 /*yield*/, Promise.all([Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('ajv')); }), Promise.resolve().then(function () { return tokenlist_schema$1; })])];
-            case 1:
-                _a = __read.apply(void 0, [_b.sent(), 2]), ajv = _a[0], schema = _a[1];
-                validator = new ajv.default({ allErrors: true })
-                    .addSchema(schema, ValidationSchema.LIST)
-                    // Adds a meta scheme of Pick<TokenList, 'tokens'>
-                    .addSchema(__assign(__assign({}, schema), { $id: schema.$id + '#tokens', required: ['tokens'] }), ValidationSchema.TOKENS);
-                resolve(validator);
-                return [2 /*return*/];
-        }
-    });
-}); });
+      switch (_b.label) {
+        case 0:
+          return [
+            4 /*yield*/,
+            Promise.all([
+              Promise.resolve().then(function () {
+                return /*#__PURE__*/ _interopNamespace(require('ajv'))
+              }),
+              Promise.resolve().then(function () {
+                return tokenlist_schema$1
+              }),
+            ]),
+          ]
+        case 1:
+          ;(_a = __read.apply(void 0, [_b.sent(), 2])), (ajv = _a[0]), (schema = _a[1])
+          validator = new ajv.default({ allErrors: true })
+            .addSchema(schema, ValidationSchema.LIST)
+            // Adds a meta scheme of Pick<TokenList, 'tokens'>
+            .addSchema(
+              __assign(__assign({}, schema), { $id: schema.$id + '#tokens', required: ['tokens'] }),
+              ValidationSchema.TOKENS
+            )
+          resolve(validator)
+          return [2 /*return*/]
+      }
+    })
+  })
+})
 function getValidationErrors(validate) {
-    var _a, _b;
-    return ((_b = (_a = validate === null || validate === void 0 ? void 0 : validate.errors) === null || _a === void 0 ? void 0 : _a.map(function (error) { return [error.dataPath, error.message].filter(Boolean).join(' '); }).join('; ')) !== null && _b !== void 0 ? _b : 'unknown error');
+  var _a, _b
+  return (_b =
+    (_a = validate === null || validate === void 0 ? void 0 : validate.errors) === null || _a === void 0
+      ? void 0
+      : _a
+          .map(function (error) {
+            return [error.dataPath, error.message].filter(Boolean).join(' ')
+          })
+          .join('; ')) !== null && _b !== void 0
+    ? _b
+    : 'unknown error'
 }
 /**
  * Validates a token list.
  * @param json the TokenList to validate
  */
 function validateTokenList(json) {
-    return __awaiter(this, void 0, void 0, function () {
-        var validate;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, validator];
-                case 1:
-                    validate = (_a.sent()).getSchema(ValidationSchema.LIST);
-                    if (validate === null || validate === void 0 ? void 0 : validate(json)) {
-                        return [2 /*return*/, json];
-                    }
-                    throw new Error("Token list failed validation: " + getValidationErrors(validate));
-            }
-        });
-    });
+  return __awaiter(this, void 0, void 0, function () {
+    var validate
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          return [4 /*yield*/, validator]
+        case 1:
+          validate = _a.sent().getSchema(ValidationSchema.LIST)
+          if (validate === null || validate === void 0 ? void 0 : validate(json)) {
+            return [2 /*return*/, json]
+          }
+          throw new Error('Token list failed validation: ' + getValidationErrors(validate))
+      }
+    })
+  })
 }
 
-var listCache = new Map();
+var listCache = new Map()
 /** Fetches and validates a token list. */
 function fetchTokenList$1(listUrl, resolveENSContentHash) {
-    var _a;
-    return __awaiter(this, void 0, void 0, function () {
-        var cached, urls, parsedENS, contentHashUri, error_1, message, translatedUri, message, i, url, isLast, response, error_2, message, message, json, list;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    cached = listCache === null || listCache === void 0 ? void 0 : listCache.get(listUrl) // avoid spurious re-fetches
-                    ;
-                    if (cached) {
-                        return [2 /*return*/, cached];
-                    }
-                    parsedENS = parseENSAddress(listUrl);
-                    if (!parsedENS) return [3 /*break*/, 5];
-                    contentHashUri = void 0;
-                    _b.label = 1;
-                case 1:
-                    _b.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, resolveENSContentHash(parsedENS.ensName)];
-                case 2:
-                    contentHashUri = _b.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _b.sent();
-                    message = "failed to resolve ENS name: " + parsedENS.ensName;
-                    console.debug(message, error_1);
-                    throw new Error(message);
-                case 4:
-                    translatedUri = void 0;
-                    try {
-                        translatedUri = contenthashToUri(contentHashUri);
-                    }
-                    catch (error) {
-                        message = "failed to translate contenthash to URI: " + contentHashUri;
-                        console.debug(message, error);
-                        throw new Error(message);
-                    }
-                    urls = uriToHttp("" + translatedUri + ((_a = parsedENS.ensPath) !== null && _a !== void 0 ? _a : ''));
-                    return [3 /*break*/, 6];
-                case 5:
-                    urls = uriToHttp(listUrl);
-                    _b.label = 6;
-                case 6:
-                    i = 0;
-                    _b.label = 7;
-                case 7:
-                    if (!(i < urls.length)) return [3 /*break*/, 15];
-                    url = urls[i];
-                    isLast = i === urls.length - 1;
-                    response = void 0;
-                    _b.label = 8;
-                case 8:
-                    _b.trys.push([8, 10, , 11]);
-                    return [4 /*yield*/, fetch(url, { credentials: 'omit' })];
-                case 9:
-                    response = _b.sent();
-                    return [3 /*break*/, 11];
-                case 10:
-                    error_2 = _b.sent();
-                    message = "failed to fetch list: " + listUrl;
-                    console.debug(message, error_2);
-                    if (isLast)
-                        throw new Error(message);
-                    return [3 /*break*/, 14];
-                case 11:
-                    if (!response.ok) {
-                        message = "failed to fetch list: " + listUrl;
-                        console.debug(message, response.statusText);
-                        if (isLast)
-                            throw new Error(message);
-                        return [3 /*break*/, 14];
-                    }
-                    return [4 /*yield*/, response.json()];
-                case 12:
-                    json = _b.sent();
-                    return [4 /*yield*/, validateTokenList(json)];
-                case 13:
-                    list = _b.sent();
-                    listCache === null || listCache === void 0 ? void 0 : listCache.set(listUrl, list);
-                    return [2 /*return*/, list];
-                case 14:
-                    i++;
-                    return [3 /*break*/, 7];
-                case 15: throw new Error('Unrecognized list URL protocol.');
-            }
-        });
-    });
+  var _a
+  return __awaiter(this, void 0, void 0, function () {
+    var cached,
+      urls,
+      parsedENS,
+      contentHashUri,
+      error_1,
+      message,
+      translatedUri,
+      message,
+      i,
+      url,
+      isLast,
+      response,
+      error_2,
+      message,
+      message,
+      json,
+      list
+    return __generator(this, function (_b) {
+      switch (_b.label) {
+        case 0:
+          cached = listCache === null || listCache === void 0 ? void 0 : listCache.get(listUrl) // avoid spurious re-fetches
+          if (cached) {
+            return [2 /*return*/, cached]
+          }
+          parsedENS = parseENSAddress(listUrl)
+          if (!parsedENS) return [3 /*break*/, 5]
+          contentHashUri = void 0
+          _b.label = 1
+        case 1:
+          _b.trys.push([1, 3, , 4])
+          return [4 /*yield*/, resolveENSContentHash(parsedENS.ensName)]
+        case 2:
+          contentHashUri = _b.sent()
+          return [3 /*break*/, 4]
+        case 3:
+          error_1 = _b.sent()
+          message = 'failed to resolve ENS name: ' + parsedENS.ensName
+          console.debug(message, error_1)
+          throw new Error(message)
+        case 4:
+          translatedUri = void 0
+          try {
+            translatedUri = contenthashToUri(contentHashUri)
+          } catch (error) {
+            message = 'failed to translate contenthash to URI: ' + contentHashUri
+            console.debug(message, error)
+            throw new Error(message)
+          }
+          urls = uriToHttp('' + translatedUri + ((_a = parsedENS.ensPath) !== null && _a !== void 0 ? _a : ''))
+          return [3 /*break*/, 6]
+        case 5:
+          urls = uriToHttp(listUrl)
+          _b.label = 6
+        case 6:
+          i = 0
+          _b.label = 7
+        case 7:
+          if (!(i < urls.length)) return [3 /*break*/, 15]
+          url = urls[i]
+          isLast = i === urls.length - 1
+          response = void 0
+          _b.label = 8
+        case 8:
+          _b.trys.push([8, 10, , 11])
+          return [4 /*yield*/, fetch(url, { credentials: 'omit' })]
+        case 9:
+          response = _b.sent()
+          return [3 /*break*/, 11]
+        case 10:
+          error_2 = _b.sent()
+          message = 'failed to fetch list: ' + listUrl
+          console.debug(message, error_2)
+          if (isLast) throw new Error(message)
+          return [3 /*break*/, 14]
+        case 11:
+          if (!response.ok) {
+            message = 'failed to fetch list: ' + listUrl
+            console.debug(message, response.statusText)
+            if (isLast) throw new Error(message)
+            return [3 /*break*/, 14]
+          }
+          return [4 /*yield*/, response.json()]
+        case 12:
+          json = _b.sent()
+          return [4 /*yield*/, validateTokenList(json)]
+        case 13:
+          list = _b.sent()
+          listCache === null || listCache === void 0 ? void 0 : listCache.set(listUrl, list)
+          return [2 /*return*/, list]
+        case 14:
+          i++
+          return [3 /*break*/, 7]
+        case 15:
+          throw new Error('Unrecognized list URL protocol.')
+      }
+    })
+  })
 }
 
 /**
  * Returns a map of the given addresses to their eventually consistent ETH balances.
  */
 function useNativeCurrencyBalances(uncheckedAddresses) {
-    var chainId = useActiveWeb3React().chainId;
-    var multicallContract = useInterfaceMulticall();
-    var validAddressInputs = React.useMemo(function () {
-        return uncheckedAddresses
-            ? uncheckedAddresses
-                .map(isAddress)
-                .filter(function (a) { return a !== false; })
-                .sort()
-                .map(function (addr) { return [addr]; })
-            : [];
-    }, [uncheckedAddresses]);
-    var results = useSingleContractMultipleData(multicallContract, 'getEthBalance', validAddressInputs);
-    return React.useMemo(function () {
-        return validAddressInputs.reduce(function (memo, _a, i) {
-            var _b, _c;
-            var _d = __read(_a, 1), address = _d[0];
-            var value = (_c = (_b = results === null || results === void 0 ? void 0 : results[i]) === null || _b === void 0 ? void 0 : _b.result) === null || _c === void 0 ? void 0 : _c[0];
-            if (value && chainId)
-                memo[address] = sdkCore.CurrencyAmount.fromRawAmount(nativeOnChain(chainId), JSBI__default["default"].BigInt(value.toString()));
-            return memo;
-        }, {});
-    }, [validAddressInputs, chainId, results]);
+  var chainId = useActiveWeb3React().chainId
+  var multicallContract = useInterfaceMulticall()
+  var validAddressInputs = React.useMemo(
+    function () {
+      return uncheckedAddresses
+        ? uncheckedAddresses
+            .map(isAddress)
+            .filter(function (a) {
+              return a !== false
+            })
+            .sort()
+            .map(function (addr) {
+              return [addr]
+            })
+        : []
+    },
+    [uncheckedAddresses]
+  )
+  var results = useSingleContractMultipleData(multicallContract, 'getEthBalance', validAddressInputs)
+  return React.useMemo(
+    function () {
+      return validAddressInputs.reduce(function (memo, _a, i) {
+        var _b, _c
+        var _d = __read(_a, 1),
+          address = _d[0]
+        var value =
+          (_c =
+            (_b = results === null || results === void 0 ? void 0 : results[i]) === null || _b === void 0
+              ? void 0
+              : _b.result) === null || _c === void 0
+            ? void 0
+            : _c[0]
+        if (value && chainId)
+          memo[address] = sdkCore.CurrencyAmount.fromRawAmount(
+            nativeOnChain(chainId),
+            JSBI__default['default'].BigInt(value.toString())
+          )
+        return memo
+      }, {})
+    },
+    [validAddressInputs, chainId, results]
+  )
 }
-var ERC20Interface = new abi$7.Interface(ERC20ABI);
-var tokenBalancesGasRequirement = { gasRequired: 125000 };
+var ERC20Interface = new abi$7.Interface(ERC20ABI)
+var tokenBalancesGasRequirement = { gasRequired: 125000 }
 /**
  * Returns a map of token addresses to their eventually consistent token balances for a single account.
  */
 function useTokenBalancesWithLoadingIndicator(address, tokens) {
-    var validatedTokens = React.useMemo(function () { var _a; return (_a = tokens === null || tokens === void 0 ? void 0 : tokens.filter(function (t) { return isAddress(t === null || t === void 0 ? void 0 : t.address) !== false; })) !== null && _a !== void 0 ? _a : []; }, [tokens]);
-    var validatedTokenAddresses = React.useMemo(function () { return validatedTokens.map(function (vt) { return vt.address; }); }, [validatedTokens]);
-    var balances = useMultipleContractSingleData(validatedTokenAddresses, ERC20Interface, 'balanceOf', React.useMemo(function () { return [address]; }, [address]), tokenBalancesGasRequirement);
-    var anyLoading = React.useMemo(function () { return balances.some(function (callState) { return callState.loading; }); }, [balances]);
-    return React.useMemo(function () { return [
+  var validatedTokens = React.useMemo(
+    function () {
+      var _a
+      return (_a =
+        tokens === null || tokens === void 0
+          ? void 0
+          : tokens.filter(function (t) {
+              return isAddress(t === null || t === void 0 ? void 0 : t.address) !== false
+            })) !== null && _a !== void 0
+        ? _a
+        : []
+    },
+    [tokens]
+  )
+  var validatedTokenAddresses = React.useMemo(
+    function () {
+      return validatedTokens.map(function (vt) {
+        return vt.address
+      })
+    },
+    [validatedTokens]
+  )
+  var balances = useMultipleContractSingleData(
+    validatedTokenAddresses,
+    ERC20Interface,
+    'balanceOf',
+    React.useMemo(
+      function () {
+        return [address]
+      },
+      [address]
+    ),
+    tokenBalancesGasRequirement
+  )
+  var anyLoading = React.useMemo(
+    function () {
+      return balances.some(function (callState) {
+        return callState.loading
+      })
+    },
+    [balances]
+  )
+  return React.useMemo(
+    function () {
+      return [
         address && validatedTokens.length > 0
-            ? validatedTokens.reduce(function (memo, token, i) {
-                var _a, _b;
-                var value = (_b = (_a = balances === null || balances === void 0 ? void 0 : balances[i]) === null || _a === void 0 ? void 0 : _a.result) === null || _b === void 0 ? void 0 : _b[0];
-                var amount = value ? JSBI__default["default"].BigInt(value.toString()) : undefined;
-                if (amount) {
-                    memo[token.address] = sdkCore.CurrencyAmount.fromRawAmount(token, amount);
-                }
-                return memo;
+          ? validatedTokens.reduce(function (memo, token, i) {
+              var _a, _b
+              var value =
+                (_b =
+                  (_a = balances === null || balances === void 0 ? void 0 : balances[i]) === null || _a === void 0
+                    ? void 0
+                    : _a.result) === null || _b === void 0
+                  ? void 0
+                  : _b[0]
+              var amount = value ? JSBI__default['default'].BigInt(value.toString()) : undefined
+              if (amount) {
+                memo[token.address] = sdkCore.CurrencyAmount.fromRawAmount(token, amount)
+              }
+              return memo
             }, {})
-            : {},
+          : {},
         anyLoading,
-    ]; }, [address, validatedTokens, anyLoading, balances]);
+      ]
+    },
+    [address, validatedTokens, anyLoading, balances]
+  )
 }
 function useTokenBalances(address, tokens) {
-    return useTokenBalancesWithLoadingIndicator(address, tokens)[0];
+  return useTokenBalancesWithLoadingIndicator(address, tokens)[0]
 }
 // get the balance for a single token/account combo
 function useTokenBalance(account, token) {
-    var tokenBalances = useTokenBalances(account, React.useMemo(function () { return [token]; }, [token]));
-    if (!token)
-        return undefined;
-    return tokenBalances[token.address];
+  var tokenBalances = useTokenBalances(
+    account,
+    React.useMemo(
+      function () {
+        return [token]
+      },
+      [token]
+    )
+  )
+  if (!token) return undefined
+  return tokenBalances[token.address]
 }
 function useCurrencyBalances(account, currencies) {
-    var tokens = React.useMemo(function () { var _a; return (_a = currencies === null || currencies === void 0 ? void 0 : currencies.filter(function (currency) { var _a; return (_a = currency === null || currency === void 0 ? void 0 : currency.isToken) !== null && _a !== void 0 ? _a : false; })) !== null && _a !== void 0 ? _a : []; }, [currencies]);
-    var tokenBalances = useTokenBalances(account, tokens);
-    var containsETH = React.useMemo(function () { var _a; return (_a = currencies === null || currencies === void 0 ? void 0 : currencies.some(function (currency) { return currency === null || currency === void 0 ? void 0 : currency.isNative; })) !== null && _a !== void 0 ? _a : false; }, [currencies]);
-    var ethBalance = useNativeCurrencyBalances(React.useMemo(function () { return (containsETH ? [account] : []); }, [containsETH, account]));
-    return React.useMemo(function () {
-        var _a;
-        return (_a = currencies === null || currencies === void 0 ? void 0 : currencies.map(function (currency) {
-            if (!account || !currency)
-                return undefined;
-            if (currency.isToken)
-                return tokenBalances[currency.address];
-            if (currency.isNative)
-                return ethBalance[account];
-            return undefined;
-        })) !== null && _a !== void 0 ? _a : [];
-    }, [account, currencies, ethBalance, tokenBalances]);
+  var tokens = React.useMemo(
+    function () {
+      var _a
+      return (_a =
+        currencies === null || currencies === void 0
+          ? void 0
+          : currencies.filter(function (currency) {
+              var _a
+              return (_a = currency === null || currency === void 0 ? void 0 : currency.isToken) !== null &&
+                _a !== void 0
+                ? _a
+                : false
+            })) !== null && _a !== void 0
+        ? _a
+        : []
+    },
+    [currencies]
+  )
+  var tokenBalances = useTokenBalances(account, tokens)
+  var containsETH = React.useMemo(
+    function () {
+      var _a
+      return (_a =
+        currencies === null || currencies === void 0
+          ? void 0
+          : currencies.some(function (currency) {
+              return currency === null || currency === void 0 ? void 0 : currency.isNative
+            })) !== null && _a !== void 0
+        ? _a
+        : false
+    },
+    [currencies]
+  )
+  var ethBalance = useNativeCurrencyBalances(
+    React.useMemo(
+      function () {
+        return containsETH ? [account] : []
+      },
+      [containsETH, account]
+    )
+  )
+  return React.useMemo(
+    function () {
+      var _a
+      return (_a =
+        currencies === null || currencies === void 0
+          ? void 0
+          : currencies.map(function (currency) {
+              if (!account || !currency) return undefined
+              if (currency.isToken) return tokenBalances[currency.address]
+              if (currency.isNative) return ethBalance[account]
+              return undefined
+            })) !== null && _a !== void 0
+        ? _a
+        : []
+    },
+    [account, currencies, ethBalance, tokenBalances]
+  )
 }
 function useCurrencyBalance(account, currency) {
-    return useCurrencyBalances(account, React.useMemo(function () { return [currency]; }, [currency]))[0];
+  return useCurrencyBalances(
+    account,
+    React.useMemo(
+      function () {
+        return [currency]
+      },
+      [currency]
+    )
+  )[0]
 }
 
-var alwaysTrue = function () { return true; };
+var alwaysTrue = function () {
+  return true
+}
 /** Creates a filter function that filters tokens that do not match the query. */
 function getTokenFilter(query) {
-    var searchingAddress = isAddress(query);
-    if (searchingAddress) {
-        var address_1 = searchingAddress.toLowerCase();
-        return function (t) { return 'address' in t && address_1 === t.address.toLowerCase(); };
+  var searchingAddress = isAddress(query)
+  if (searchingAddress) {
+    var address_1 = searchingAddress.toLowerCase()
+    return function (t) {
+      return 'address' in t && address_1 === t.address.toLowerCase()
     }
-    var queryParts = query
-        .toLowerCase()
-        .split(/\s+/)
-        .filter(function (s) { return s.length > 0; });
-    if (queryParts.length === 0)
-        return alwaysTrue;
-    var match = function (s) {
-        var parts = s
-            .toLowerCase()
-            .split(/\s+/)
-            .filter(function (s) { return s.length > 0; });
-        return queryParts.every(function (p) { return p.length === 0 || parts.some(function (sp) { return sp.startsWith(p) || sp.endsWith(p); }); });
-    };
-    return function (_a) {
-        var name = _a.name, symbol = _a.symbol;
-        return Boolean((symbol && match(symbol)) || (name && match(name)));
-    };
+  }
+  var queryParts = query
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(function (s) {
+      return s.length > 0
+    })
+  if (queryParts.length === 0) return alwaysTrue
+  var match = function (s) {
+    var parts = s
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(function (s) {
+        return s.length > 0
+      })
+    return queryParts.every(function (p) {
+      return (
+        p.length === 0 ||
+        parts.some(function (sp) {
+          return sp.startsWith(p) || sp.endsWith(p)
+        })
+      )
+    })
+  }
+  return function (_a) {
+    var name = _a.name,
+      symbol = _a.symbol
+    return Boolean((symbol && match(symbol)) || (name && match(name)))
+  }
 }
 
 /** Sorts currency amounts (descending). */
 function balanceComparator(a, b) {
-    if (a && b) {
-        return a.greaterThan(b) ? -1 : a.equalTo(b) ? 0 : 1;
-    }
-    else if (a === null || a === void 0 ? void 0 : a.greaterThan('0')) {
-        return -1;
-    }
-    else if (b === null || b === void 0 ? void 0 : b.greaterThan('0')) {
-        return 1;
-    }
-    return 0;
+  if (a && b) {
+    return a.greaterThan(b) ? -1 : a.equalTo(b) ? 0 : 1
+  } else if (a === null || a === void 0 ? void 0 : a.greaterThan('0')) {
+    return -1
+  } else if (b === null || b === void 0 ? void 0 : b.greaterThan('0')) {
+    return 1
+  }
+  return 0
 }
 /** Sorts tokens by currency amount (descending), then symbol (ascending). */
 function tokenComparator(balances, a, b) {
-    // Sorts by balances
-    var balanceComparison = balanceComparator(balances[a.address], balances[b.address]);
-    if (balanceComparison !== 0)
-        return balanceComparison;
-    // Sorts by symbol
-    if (a.symbol && b.symbol) {
-        return a.symbol.toLowerCase() < b.symbol.toLowerCase() ? -1 : 1;
-    }
-    return -1;
+  // Sorts by balances
+  var balanceComparison = balanceComparator(balances[a.address], balances[b.address])
+  if (balanceComparison !== 0) return balanceComparison
+  // Sorts by symbol
+  if (a.symbol && b.symbol) {
+    return a.symbol.toLowerCase() < b.symbol.toLowerCase() ? -1 : 1
+  }
+  return -1
 }
 /** Sorts tokens by query, giving precedence to exact matches and partial matches. */
 function useSortTokensByQuery(query, tokens) {
-    return React.useMemo(function () {
-        if (!tokens) {
-            return [];
+  return React.useMemo(
+    function () {
+      if (!tokens) {
+        return []
+      }
+      var matches = query
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(function (s) {
+          return s.length > 0
+        })
+      if (matches.length > 1) {
+        return tokens
+      }
+      var exactMatches = []
+      var symbolSubtrings = []
+      var rest = []
+      // sort tokens by exact match -> subtring on symbol match -> rest
+      tokens.map(function (token) {
+        var _a, _b
+        if (((_a = token.symbol) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === matches[0]) {
+          return exactMatches.push(token)
+        } else if (
+          (_b = token.symbol) === null || _b === void 0
+            ? void 0
+            : _b.toLowerCase().startsWith(query.toLowerCase().trim())
+        ) {
+          return symbolSubtrings.push(token)
+        } else {
+          return rest.push(token)
         }
-        var matches = query
-            .toLowerCase()
-            .split(/\s+/)
-            .filter(function (s) { return s.length > 0; });
-        if (matches.length > 1) {
-            return tokens;
-        }
-        var exactMatches = [];
-        var symbolSubtrings = [];
-        var rest = [];
-        // sort tokens by exact match -> subtring on symbol match -> rest
-        tokens.map(function (token) {
-            var _a, _b;
-            if (((_a = token.symbol) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === matches[0]) {
-                return exactMatches.push(token);
-            }
-            else if ((_b = token.symbol) === null || _b === void 0 ? void 0 : _b.toLowerCase().startsWith(query.toLowerCase().trim())) {
-                return symbolSubtrings.push(token);
-            }
-            else {
-                return rest.push(token);
-            }
-        });
-        return __spreadArray(__spreadArray(__spreadArray([], __read(exactMatches), false), __read(symbolSubtrings), false), __read(rest), false);
-    }, [tokens, query]);
+      })
+      return __spreadArray(
+        __spreadArray(__spreadArray([], __read(exactMatches), false), __read(symbolSubtrings), false),
+        __read(rest),
+        false
+      )
+    },
+    [tokens, query]
+  )
 }
 
 /**
  * Token instances created from token info on a token list.
  */
 var WrappedTokenInfo = /** @class */ (function () {
-    function WrappedTokenInfo(tokenInfo, list) {
-        this.isNative = false;
-        this.isToken = true;
-        this._checksummedAddress = null;
-        this._tags = null;
-        this.tokenInfo = tokenInfo;
-        this.list = list;
-    }
-    Object.defineProperty(WrappedTokenInfo.prototype, "address", {
-        get: function () {
-            if (this._checksummedAddress)
-                return this._checksummedAddress;
-            var checksummedAddress = isAddress(this.tokenInfo.address);
-            if (!checksummedAddress)
-                throw new Error("Invalid token address: " + this.tokenInfo.address);
-            return (this._checksummedAddress = checksummedAddress);
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(WrappedTokenInfo.prototype, "chainId", {
-        get: function () {
-            return this.tokenInfo.chainId;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(WrappedTokenInfo.prototype, "decimals", {
-        get: function () {
-            return this.tokenInfo.decimals;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(WrappedTokenInfo.prototype, "name", {
-        get: function () {
-            return this.tokenInfo.name;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(WrappedTokenInfo.prototype, "symbol", {
-        get: function () {
-            return this.tokenInfo.symbol;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(WrappedTokenInfo.prototype, "logoURI", {
-        get: function () {
-            return this.tokenInfo.logoURI;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(WrappedTokenInfo.prototype, "tags", {
-        get: function () {
-            var _a;
-            if (this._tags !== null)
-                return this._tags;
-            if (!this.tokenInfo.tags)
-                return (this._tags = []);
-            var listTags = (_a = this.list) === null || _a === void 0 ? void 0 : _a.tags;
-            if (!listTags)
-                return (this._tags = []);
-            return (this._tags = this.tokenInfo.tags.map(function (tagId) {
-                return __assign(__assign({}, listTags[tagId]), { id: tagId });
-            }));
-        },
-        enumerable: false,
-        configurable: true
-    });
-    WrappedTokenInfo.prototype.equals = function (other) {
-        return other.chainId === this.chainId && other.isToken && other.address.toLowerCase() === this.address.toLowerCase();
-    };
-    WrappedTokenInfo.prototype.sortsBefore = function (other) {
-        if (this.equals(other))
-            throw new Error('Addresses should not be equal');
-        return this.address.toLowerCase() < other.address.toLowerCase();
-    };
-    Object.defineProperty(WrappedTokenInfo.prototype, "wrapped", {
-        get: function () {
-            return this;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return WrappedTokenInfo;
-}());
+  function WrappedTokenInfo(tokenInfo, list) {
+    this.isNative = false
+    this.isToken = true
+    this._checksummedAddress = null
+    this._tags = null
+    this.tokenInfo = tokenInfo
+    this.list = list
+  }
+  Object.defineProperty(WrappedTokenInfo.prototype, 'address', {
+    get() {
+      if (this._checksummedAddress) return this._checksummedAddress
+      var checksummedAddress = isAddress(this.tokenInfo.address)
+      if (!checksummedAddress) throw new Error('Invalid token address: ' + this.tokenInfo.address)
+      return (this._checksummedAddress = checksummedAddress)
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  Object.defineProperty(WrappedTokenInfo.prototype, 'chainId', {
+    get() {
+      return this.tokenInfo.chainId
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  Object.defineProperty(WrappedTokenInfo.prototype, 'decimals', {
+    get() {
+      return this.tokenInfo.decimals
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  Object.defineProperty(WrappedTokenInfo.prototype, 'name', {
+    get() {
+      return this.tokenInfo.name
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  Object.defineProperty(WrappedTokenInfo.prototype, 'symbol', {
+    get() {
+      return this.tokenInfo.symbol
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  Object.defineProperty(WrappedTokenInfo.prototype, 'logoURI', {
+    get() {
+      return this.tokenInfo.logoURI
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  Object.defineProperty(WrappedTokenInfo.prototype, 'tags', {
+    get() {
+      var _a
+      if (this._tags !== null) return this._tags
+      if (!this.tokenInfo.tags) return (this._tags = [])
+      var listTags = (_a = this.list) === null || _a === void 0 ? void 0 : _a.tags
+      if (!listTags) return (this._tags = [])
+      return (this._tags = this.tokenInfo.tags.map(function (tagId) {
+        return __assign(__assign({}, listTags[tagId]), { id: tagId })
+      }))
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  WrappedTokenInfo.prototype.equals = function (other) {
+    return other.chainId === this.chainId && other.isToken && other.address.toLowerCase() === this.address.toLowerCase()
+  }
+  WrappedTokenInfo.prototype.sortsBefore = function (other) {
+    if (this.equals(other)) throw new Error('Addresses should not be equal')
+    return this.address.toLowerCase() < other.address.toLowerCase()
+  }
+  Object.defineProperty(WrappedTokenInfo.prototype, 'wrapped', {
+    get() {
+      return this
+    },
+    enumerable: false,
+    configurable: true,
+  })
+  return WrappedTokenInfo
+})()
 
-var mapCache = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
+var mapCache = typeof WeakMap !== 'undefined' ? new WeakMap() : null
 function tokensToChainTokenMap(tokens) {
-    var cached = mapCache === null || mapCache === void 0 ? void 0 : mapCache.get(tokens);
-    if (cached)
-        return cached;
-    var _a = __read(Array.isArray(tokens) ? [undefined, tokens] : [tokens, tokens.tokens], 2), list = _a[0], infos = _a[1];
-    var map = infos.reduce(function (map, info) {
-        var _a;
-        var token = new WrappedTokenInfo(info, list);
-        if (((_a = map[token.chainId]) === null || _a === void 0 ? void 0 : _a[token.address]) !== undefined) {
-            console.warn("Duplicate token skipped: " + token.address);
-            return map;
-        }
-        if (!map[token.chainId]) {
-            map[token.chainId] = {};
-        }
-        map[token.chainId][token.address] = { token: token, list: list };
-        return map;
-    }, {});
-    mapCache === null || mapCache === void 0 ? void 0 : mapCache.set(tokens, map);
-    return map;
+  var cached = mapCache === null || mapCache === void 0 ? void 0 : mapCache.get(tokens)
+  if (cached) return cached
+  var _a = __read(Array.isArray(tokens) ? [undefined, tokens] : [tokens, tokens.tokens], 2),
+    list = _a[0],
+    infos = _a[1]
+  var map = infos.reduce(function (map, info) {
+    var _a
+    var token = new WrappedTokenInfo(info, list)
+    if (((_a = map[token.chainId]) === null || _a === void 0 ? void 0 : _a[token.address]) !== undefined) {
+      console.warn('Duplicate token skipped: ' + token.address)
+      return map
+    }
+    if (!map[token.chainId]) {
+      map[token.chainId] = {}
+    }
+    map[token.chainId][token.address] = { token, list }
+    return map
+  }, {})
+  mapCache === null || mapCache === void 0 ? void 0 : mapCache.set(tokens, map)
+  return map
 }
 
-jotai.atom({});
+jotai.atom({})
 
 // parse a name or symbol from a token response
-var BYTES32_REGEX = /^0x[a-fA-F0-9]{64}$/;
+var BYTES32_REGEX = /^0x[a-fA-F0-9]{64}$/
 function parseStringOrBytes32(str, bytes32, defaultValue) {
-    return str && str.length > 0
-        ? str
-        : // need to check for proper bytes string and valid terminator
-            bytes32 && BYTES32_REGEX.test(bytes32) && bytes.arrayify(bytes32)[31] === 0
-                ? strings.parseBytes32String(bytes32)
-                : defaultValue;
+  return str && str.length > 0
+    ? str
+    : // need to check for proper bytes string and valid terminator
+    bytes32 && BYTES32_REGEX.test(bytes32) && bytes.arrayify(bytes32)[31] === 0
+    ? strings.parseBytes32String(bytes32)
+    : defaultValue
 }
 /**
  * Returns a Token from the tokenAddress.
@@ -6999,44 +7706,72 @@ function parseStringOrBytes32(str, bytes32, defaultValue) {
  * Returns undefined if tokenAddress is invalid or token does not exist.
  */
 function useTokenFromMap(tokens, tokenAddress) {
-    var chainId = useActiveWeb3React().chainId;
-    var address = isAddress(tokenAddress);
-    var tokenContract = useTokenContract(address ? address : undefined, false);
-    var tokenContractBytes32 = useBytes32TokenContract(address ? address : undefined, false);
-    var token = address ? tokens[address] : undefined;
-    var tokenName = useSingleCallResult(token ? undefined : tokenContract, 'name', undefined, reduxMulticall.NEVER_RELOAD);
-    var tokenNameBytes32 = useSingleCallResult(token ? undefined : tokenContractBytes32, 'name', undefined, reduxMulticall.NEVER_RELOAD);
-    var symbol = useSingleCallResult(token ? undefined : tokenContract, 'symbol', undefined, reduxMulticall.NEVER_RELOAD);
-    var symbolBytes32 = useSingleCallResult(token ? undefined : tokenContractBytes32, 'symbol', undefined, reduxMulticall.NEVER_RELOAD);
-    var decimals = useSingleCallResult(token ? undefined : tokenContract, 'decimals', undefined, reduxMulticall.NEVER_RELOAD);
-    return React.useMemo(function () {
-        var _a, _b, _c, _d;
-        if (token)
-            return token;
-        if (tokenAddress === null)
-            return null;
-        if (!chainId || !address)
-            return undefined;
-        if (decimals.loading || symbol.loading || tokenName.loading)
-            return null;
-        if (decimals.result) {
-            return new sdkCore.Token(chainId, address, decimals.result[0], parseStringOrBytes32((_a = symbol.result) === null || _a === void 0 ? void 0 : _a[0], (_b = symbolBytes32.result) === null || _b === void 0 ? void 0 : _b[0], 'UNKNOWN'), parseStringOrBytes32((_c = tokenName.result) === null || _c === void 0 ? void 0 : _c[0], (_d = tokenNameBytes32.result) === null || _d === void 0 ? void 0 : _d[0], 'Unknown Token'));
-        }
-        return undefined;
-    }, [
-        address,
-        chainId,
-        decimals.loading,
-        decimals.result,
-        symbol.loading,
-        symbol.result,
-        symbolBytes32.result,
-        token,
-        tokenAddress,
-        tokenName.loading,
-        tokenName.result,
-        tokenNameBytes32.result,
-    ]);
+  var chainId = useActiveWeb3React().chainId
+  var address = isAddress(tokenAddress)
+  var tokenContract = useTokenContract(address ? address : undefined, false)
+  var tokenContractBytes32 = useBytes32TokenContract(address ? address : undefined, false)
+  var token = address ? tokens[address] : undefined
+  var tokenName = useSingleCallResult(token ? undefined : tokenContract, 'name', undefined, reduxMulticall.NEVER_RELOAD)
+  var tokenNameBytes32 = useSingleCallResult(
+    token ? undefined : tokenContractBytes32,
+    'name',
+    undefined,
+    reduxMulticall.NEVER_RELOAD
+  )
+  var symbol = useSingleCallResult(token ? undefined : tokenContract, 'symbol', undefined, reduxMulticall.NEVER_RELOAD)
+  var symbolBytes32 = useSingleCallResult(
+    token ? undefined : tokenContractBytes32,
+    'symbol',
+    undefined,
+    reduxMulticall.NEVER_RELOAD
+  )
+  var decimals = useSingleCallResult(
+    token ? undefined : tokenContract,
+    'decimals',
+    undefined,
+    reduxMulticall.NEVER_RELOAD
+  )
+  return React.useMemo(
+    function () {
+      var _a, _b, _c, _d
+      if (token) return token
+      if (tokenAddress === null) return null
+      if (!chainId || !address) return undefined
+      if (decimals.loading || symbol.loading || tokenName.loading) return null
+      if (decimals.result) {
+        return new sdkCore.Token(
+          chainId,
+          address,
+          decimals.result[0],
+          parseStringOrBytes32(
+            (_a = symbol.result) === null || _a === void 0 ? void 0 : _a[0],
+            (_b = symbolBytes32.result) === null || _b === void 0 ? void 0 : _b[0],
+            'UNKNOWN'
+          ),
+          parseStringOrBytes32(
+            (_c = tokenName.result) === null || _c === void 0 ? void 0 : _c[0],
+            (_d = tokenNameBytes32.result) === null || _d === void 0 ? void 0 : _d[0],
+            'Unknown Token'
+          )
+        )
+      }
+      return undefined
+    },
+    [
+      address,
+      chainId,
+      decimals.loading,
+      decimals.result,
+      symbol.loading,
+      symbol.result,
+      symbolBytes32.result,
+      token,
+      tokenAddress,
+      tokenName.loading,
+      tokenName.result,
+      tokenNameBytes32.result,
+    ]
+  )
 }
 /**
  * Returns a Currency from the currencyId.
@@ -7044,1341 +7779,1187 @@ function useTokenFromMap(tokens, tokenAddress) {
  * Returns undefined if currencyId is invalid or token does not exist.
  */
 function useCurrencyFromMap(tokens, currencyId) {
-    var _a;
-    var nativeCurrency = useNativeCurrency();
-    var isNative = Boolean(nativeCurrency && (currencyId === null || currencyId === void 0 ? void 0 : currencyId.toUpperCase()) === 'ETH');
-    var token = useTokenFromMap(tokens, isNative ? undefined : currencyId);
-    if (currencyId === null || currencyId === undefined)
-        return currencyId;
-    // this case so we use our builtin wrapped token instead of wrapped tokens on token lists
-    var wrappedNative = nativeCurrency === null || nativeCurrency === void 0 ? void 0 : nativeCurrency.wrapped;
-    if (((_a = wrappedNative === null || wrappedNative === void 0 ? void 0 : wrappedNative.address) === null || _a === void 0 ? void 0 : _a.toUpperCase()) === (currencyId === null || currencyId === void 0 ? void 0 : currencyId.toUpperCase()))
-        return wrappedNative;
-    return isNative ? nativeCurrency : token;
+  var _a
+  var nativeCurrency = useNativeCurrency()
+  var isNative = Boolean(
+    nativeCurrency && (currencyId === null || currencyId === void 0 ? void 0 : currencyId.toUpperCase()) === 'ETH'
+  )
+  var token = useTokenFromMap(tokens, isNative ? undefined : currencyId)
+  if (currencyId === null || currencyId === undefined) return currencyId
+  // this case so we use our builtin wrapped token instead of wrapped tokens on token lists
+  var wrappedNative = nativeCurrency === null || nativeCurrency === void 0 ? void 0 : nativeCurrency.wrapped
+  if (
+    ((_a = wrappedNative === null || wrappedNative === void 0 ? void 0 : wrappedNative.address) === null ||
+    _a === void 0
+      ? void 0
+      : _a.toUpperCase()) === (currencyId === null || currencyId === void 0 ? void 0 : currencyId.toUpperCase())
+  )
+    return wrappedNative
+  return isNative ? nativeCurrency : token
 }
 
 var DEFAULT_LIST_PRIORITIES = DEFAULT_LIST_OF_LISTS.reduce(function (memo, listUrl, index) {
-    memo[listUrl] = index + 1;
-    return memo;
-}, {});
+  memo[listUrl] = index + 1
+  return memo
+}, {})
 // use ordering of default list of lists to assign priority
 function sortByListPriority(urlA, urlB) {
-    if (DEFAULT_LIST_PRIORITIES[urlA] && DEFAULT_LIST_PRIORITIES[urlB]) {
-        return DEFAULT_LIST_PRIORITIES[urlA] - DEFAULT_LIST_PRIORITIES[urlB];
-    }
-    return 0;
+  if (DEFAULT_LIST_PRIORITIES[urlA] && DEFAULT_LIST_PRIORITIES[urlB]) {
+    return DEFAULT_LIST_PRIORITIES[urlA] - DEFAULT_LIST_PRIORITIES[urlB]
+  }
+  return 0
 }
 
-var name$1 = "Broken Token List";
-var timestamp$1 = "2021-01-05T20:47:02.923Z";
+var name$1 = 'Broken Token List'
+var timestamp$1 = '2021-01-05T20:47:02.923Z'
 var version$1 = {
-	major: 1,
-	minor: 0,
-	patch: 0
-};
-var tags$1 = {
-};
-var logoURI$1 = "ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir";
-var keywords$1 = [
-	"uniswap",
-	"broken"
-];
+  major: 1,
+  minor: 0,
+  patch: 0,
+}
+var tags$1 = {}
+var logoURI$1 = 'ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir'
+var keywords$1 = ['uniswap', 'broken']
 var tokens$1 = [
-	{
-		name: "UNI HODL",
-		address: "0x4bf5dc91E2555449293D7824028Eb8Fe5879B689",
-		symbol: "UniH",
-		decimals: 18,
-		chainId: 1,
-		logoURI: ""
-	}
-];
+  {
+    name: 'UNI HODL',
+    address: '0x4bf5dc91E2555449293D7824028Eb8Fe5879B689',
+    symbol: 'UniH',
+    decimals: 18,
+    chainId: 1,
+    logoURI: '',
+  },
+]
 var BROKEN_LIST = {
-	name: name$1,
-	timestamp: timestamp$1,
-	version: version$1,
-	tags: tags$1,
-	logoURI: logoURI$1,
-	keywords: keywords$1,
-	tokens: tokens$1
-};
+  name: name$1,
+  timestamp: timestamp$1,
+  version: version$1,
+  tags: tags$1,
+  logoURI: logoURI$1,
+  keywords: keywords$1,
+  tokens: tokens$1,
+}
 
-var name = "Unsupported Tokens";
-var timestamp = "2021-01-05T20:47:02.923Z";
+var name = 'Unsupported Tokens'
+var timestamp = '2021-01-05T20:47:02.923Z'
 var version = {
-	major: 1,
-	minor: 0,
-	patch: 0
-};
-var tags = {
-};
-var logoURI = "ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir";
-var keywords = [
-	"uniswap",
-	"unsupported"
-];
+  major: 1,
+  minor: 0,
+  patch: 0,
+}
+var tags = {}
+var logoURI = 'ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir'
+var keywords = ['uniswap', 'unsupported']
 var tokens = [
-	{
-		name: "Gold Tether",
-		address: "0x4922a015c4407F87432B179bb209e125432E4a2A",
-		symbol: "XAUt",
-		decimals: 6,
-		chainId: 1,
-		logoURI: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4922a015c4407F87432B179bb209e125432E4a2A/logo.png"
-	},
-	{
-		name: "Grump Cat",
-		address: "0x93B2FfF814FCaEFFB01406e80B4Ecd89Ca6A021b",
-		symbol: "GRUMPY",
-		decimals: 9,
-		chainId: 1,
-		logoURI: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4922a015c4407F87432B179bb209e125432E4a2A/logo.png"
-	},
-	{
-		name: "apeUSD-UMA Synthetic USD (Dec 2021)",
-		address: "0xfA5e27893aee4805283D86e4283Da64F8c72dd56",
-		symbol: "apeUSD-UMA-DEC21",
-		decimals: 18,
-		chainId: 1,
-		logoURI: ""
-	},
-	{
-		chainId: 1,
-		address: "0xc6b11850241c5127eab73af4b6c68bc267cbbff4",
-		name: "oWETHp Put 360 DEC2520",
-		symbol: "oWETH-360P-12/25/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oYFIp Put 25000 OCT0220",
-		address: "0x452b421be5b30f0c6ad8c3f03c06bdaab4f5c56c",
-		symbol: "oYFI-25000P-10/02/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oWETHp Put 360 OCT3020",
-		address: "0x0578779e746d7186253a36cf651ea786acfcf087",
-		symbol: "oWETH-360P-10/30/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "ETHc Call 500 OCT3020",
-		address: "0xf9aba2e43fb19184408ea3b572a0fd672946f87b",
-		symbol: "oETH-500C-10/30/20",
-		decimals: 6
-	},
-	{
-		chainId: 1,
-		name: "oBALp Put 22 OCT0220",
-		address: "0xdb0991dfc7e828b5a2837dc82d68e16490562c8d",
-		symbol: "oBAL-22P-10/02/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oCOMPp Put 150 SEP2520",
-		address: "0xe951ebe6b4420ab3f4844cf36dedd263d095b416",
-		symbol: "oCOMP-150P-09/25/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oCRVp Put 3 SEP252020",
-		address: "0x9215bd49b59748419eac6bad9dbe247df06ebdb9",
-		symbol: "oCRV-3P-09/25/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oETHp Put 180 SEP2520",
-		address: "0xE3A2c34Fa2F59ffa95C4ACd1E5663633d45Bc3AD",
-		symbol: "oETH-180P-09/25/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oETHc Call 400 SEP2520",
-		address: "0x05977EBC26825C0CD6097E0Ad7204721516711Eb",
-		symbol: "oETH-400C-09/25/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oWETHp Put 380 SEP1820",
-		address: "0x31f88266301b08631f9f0e33fd5c43c2a5d1e5b2",
-		symbol: "oWETH-380P-09/18/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oYFIp Put 8500 SEP1820",
-		address: "0xd1cec2f67fdc4c60e0963515dfc3343f31e32e47",
-		symbol: "oYFI-8500P-09/18/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oWETHp Put 370 SEP1120",
-		address: "0x15844029b2c2bf24506e9937739a9a912f1e4354",
-		symbol: "oWETH-370P-09/11/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oWETHp Put 400 SEP0420",
-		address: "0x5562c33c383f6386be4f6dcdbd35a3a99bbcfde6",
-		symbol: "oWETH-400P-09/04/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "oETHp Put 200 AUG2820",
-		address: "0x3CBFC1397deF0602c2d211c70A1c0c38CEDB5448",
-		symbol: "oWETH-400P-09/04/20",
-		decimals: 7
-	},
-	{
-		chainId: 1,
-		name: "Opyn cDai Insurance",
-		symbol: "ocDai",
-		address: "0x98cc3bd6af1880fcfda17ac477b2f612980e5e33",
-		decimals: 8
-	},
-	{
-		chainId: 1,
-		name: "Opyn cUSDC Insurance",
-		symbol: "ocUSDC",
-		address: "0x8ED9f862363fFdFD3a07546e618214b6D59F03d4",
-		decimals: 8
-	},
-	{
-		chainId: 1,
-		address: "0x176C674Ee533C6139B0dc8b458D72A93dCB3e705",
-		symbol: "iAAVE",
-		name: "Synth Inverse Aave",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iAAVE.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x8A8079c7149B8A1611e5C5d978DCA3bE16545F83",
-		symbol: "iADA",
-		name: "Synth Inverse Cardano",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iADA.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xAFD870F32CE54EfdBF677466B612bf8ad164454B",
-		symbol: "iBNB",
-		name: "Synth Inverse Binance Coin",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iBNB.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xD6014EA05BDe904448B743833dDF07c3C7837481",
-		symbol: "iBTC",
-		name: "Synth Inverse Bitcoin",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iBTC.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x336213e1DDFC69f4701Fc3F86F4ef4A160c1159d",
-		symbol: "iCEX",
-		name: "Synth Inverse Centralised Exchange Index",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iCEX.svg",
-		tags: [
-			"index",
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x6345728B1ccE16E6f8C509950b5c84FFF88530d9",
-		symbol: "iCOMP",
-		name: "Synth Inverse Compound",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iCOMP.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xCB98f42221b2C251A4E74A1609722eE09f0cc08E",
-		symbol: "iDASH",
-		name: "Synth Inverse Dash",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iDASH.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x14d10003807AC60d07BB0ba82cAeaC8d2087c157",
-		symbol: "iDEFI",
-		name: "Synth Inverse DeFi Index",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iDEFI.svg",
-		tags: [
-			"index",
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x46a97629C9C1F58De6EC18C7F536e7E6d6A6ecDe",
-		symbol: "iDOT",
-		name: "Synth Inverse Polkadot",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iDOT.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xF4EebDD0704021eF2a6Bbe993fdf93030Cd784b4",
-		symbol: "iEOS",
-		name: "Synth Inverse EOS",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iEOS.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xd50c1746D835d2770dDA3703B69187bFfeB14126",
-		symbol: "iETC",
-		name: "Synth Inverse Ethereum Classic",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iETC.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xA9859874e1743A32409f75bB11549892138BBA1E",
-		symbol: "iETH",
-		name: "Synth Inverse Ether",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iETH.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x2d7aC061fc3db53c39fe1607fB8cec1B2C162B01",
-		symbol: "iLINK",
-		name: "Synth Inverse Chainlink",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iLINK.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x79da1431150C9b82D2E5dfc1C68B33216846851e",
-		symbol: "iLTC",
-		name: "Synth Inverse Litecoin",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iLTC.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xA5a5DF41883Cdc00c4cCC6E8097130535399d9a3",
-		symbol: "iOIL",
-		name: "Synth Inverse Perpetual Oil Futures",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iOIL.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x0fEd38108bdb8e62ef7b5680E8E0726E2F29e0De",
-		symbol: "iREN",
-		name: "Synth Inverse Ren",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iREN.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xC5807183a9661A533CB08CbC297594a0B864dc12",
-		symbol: "iTRX",
-		name: "Synth Inverse TRON",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iTRX.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x36A00FF9072570eF4B9292117850B8FE08d96cce",
-		symbol: "iUNI",
-		name: "Synth Inverse Uniswap",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iUNI.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x4AdF728E2Df4945082cDD6053869f51278fae196",
-		symbol: "iXMR",
-		name: "Synth Inverse Monero",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iXMR.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x27269b3e45A4D3E79A3D6BFeE0C8fB13d0D711A6",
-		symbol: "iXRP",
-		name: "Synth Inverse Ripple",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iXRP.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x8deef89058090ac5655A99EEB451a4f9183D1678",
-		symbol: "iXTZ",
-		name: "Synth Inverse Tezos",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iXTZ.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x592244301CeA952d6daB2fdC1fE6bd9E53917306",
-		symbol: "iYFI",
-		name: "Synth Inverse yearn.finance",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iYFI.svg",
-		tags: [
-			"inverse",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xcD39b5434a0A92cf47D1F567a7dF84bE356814F0",
-		symbol: "s1INCH",
-		name: "Synth 1inch",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/s1INCH.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x7537AAe01f3B218DAE75e10d952473823F961B87",
-		symbol: "sAAPL",
-		name: "Synth Apple",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAAPL.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xd2dF355C19471c8bd7D8A3aa27Ff4e26A21b4076",
-		symbol: "sAAVE",
-		name: "Synth Aave",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAAVE.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xe36E2D3c7c34281FA3bC737950a68571736880A1",
-		symbol: "sADA",
-		name: "Synth Cardano",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sADA.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x9CF7E61853ea30A41b02169391b393B901eac457",
-		symbol: "sAMZN",
-		name: "Synth Amazon",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAMZN.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xF48e200EAF9906362BB1442fca31e0835773b8B4",
-		symbol: "sAUD",
-		name: "Synth Australian Dollars",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAUD.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x617aeCB6137B5108D1E7D4918e3725C8cEbdB848",
-		symbol: "sBNB",
-		name: "Synth Binance Coin",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sBNB.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
-		symbol: "sBTC",
-		name: "Synth Bitcoin",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sBTC.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xeABACD844A196D7Faf3CE596edeBF9900341B420",
-		symbol: "sCEX",
-		name: "Synth Centralised Exchange Index",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCEX.svg",
-		tags: [
-			"index",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x0F83287FF768D1c1e17a42F44d644D7F22e8ee1d",
-		symbol: "sCHF",
-		name: "Synth Swiss Franc",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCHF.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x9EeF4CA7aB9fa8bc0650127341C2d3F707a40f8A",
-		symbol: "sCOIN",
-		name: "Synth Coinbase",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCOIN.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xEb029507d3e043DD6C87F2917C4E82B902c35618",
-		symbol: "sCOMP",
-		name: "Synth Compound",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCOMP.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xD38aEb759891882e78E957c80656572503D8c1B1",
-		symbol: "sCRV",
-		name: "Synth Curve DAO Token",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCRV.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xfE33ae95A9f0DA8A845aF33516EDc240DCD711d6",
-		symbol: "sDASH",
-		name: "Synth Dash",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sDASH.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xe1aFe1Fd76Fd88f78cBf599ea1846231B8bA3B6B",
-		symbol: "sDEFI",
-		name: "Synth DeFi Index",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sDEFI.svg",
-		tags: [
-			"index",
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x1715AC0743102BF5Cd58EfBB6Cf2dC2685d967b6",
-		symbol: "sDOT",
-		name: "Synth Polkadot",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sDOT.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x88C8Cf3A212c0369698D13FE98Fcb76620389841",
-		symbol: "sEOS",
-		name: "Synth EOS",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sEOS.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x22602469d704BfFb0936c7A7cfcD18f7aA269375",
-		symbol: "sETC",
-		name: "Synth Ethereum Classic",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sETC.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x5e74C9036fb86BD7eCdcb084a0673EFc32eA31cb",
-		symbol: "sETH",
-		name: "Synth Ether",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sETH.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xD71eCFF9342A5Ced620049e616c5035F1dB98620",
-		symbol: "sEUR",
-		name: "Synth Euros",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sEUR.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xf50B5e535F62a56A9BD2d8e2434204E726c027Fa",
-		symbol: "sFB",
-		name: "Synth Facebook",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sFB.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x23348160D7f5aca21195dF2b70f28Fce2B0be9fC",
-		symbol: "sFTSE",
-		name: "Synth FTSE 100 Index",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sFTSE.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x97fe22E7341a0Cd8Db6F6C021A24Dc8f4DAD855F",
-		symbol: "sGBP",
-		name: "Synth Pound Sterling",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sGBP.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xC63B8ECCE56aB9C46184eC6aB85e4771fEa4c8AD",
-		symbol: "sGOOG",
-		name: "Synth Alphabet",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sGOOG.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xF6b1C627e95BFc3c1b4c9B825a032Ff0fBf3e07d",
-		symbol: "sJPY",
-		name: "Synth Japanese Yen",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sJPY.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x269895a3dF4D73b077Fc823dD6dA1B95f72Aaf9B",
-		symbol: "sKRW",
-		name: "Synth South Korean Won",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sKRW.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xbBC455cb4F1B9e4bFC4B73970d360c8f032EfEE6",
-		symbol: "sLINK",
-		name: "Synth Chainlink",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sLINK.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xC14103C2141E842e228FBaC594579e798616ce7A",
-		symbol: "sLTC",
-		name: "Synth Litecoin",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sLTC.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x745a824D6aBBD236AA794b5530062778A6Ad7523",
-		symbol: "sMSFT",
-		name: "Synth Microsoft",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sMSFT.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x5A7E3c07604EB515C16b36cd51906a65f021F609",
-		symbol: "sNFLX",
-		name: "Synth Netflix",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sNFLX.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x757de3ac6B830a931eF178C6634c5C551773155c",
-		symbol: "sNIKKEI",
-		name: "Synth Nikkei 225 Index",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sNIKKEI.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x6d16cF3EC5F763d4d99cB0B0b110eefD93B11B56",
-		symbol: "sOIL",
-		name: "Synth Perpetual Oil Futures",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sOIL.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xD31533E8d0f3DF62060e94B3F1318137bB6E3525",
-		symbol: "sREN",
-		name: "Synth Ren",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sREN.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x0352557B007A4Aae1511C114409b932F06F9E2f4",
-		symbol: "sRUNE",
-		name: "Synth THORChain",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sRUNE.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xf2E08356588EC5cd9E437552Da87C0076b4970B0",
-		symbol: "sTRX",
-		name: "Synth TRON",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sTRX.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x918dA91Ccbc32B7a6A0cc4eCd5987bbab6E31e6D",
-		symbol: "sTSLA",
-		name: "Synth Tesla",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sTSLA.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x30635297E450b930f8693297eBa160D9e6c8eBcf",
-		symbol: "sUNI",
-		name: "Synth Uniswap",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sUNI.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x6A22e5e94388464181578Aa7A6B869e00fE27846",
-		symbol: "sXAG",
-		name: "Synth Silver Ounce",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXAG.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x261EfCdD24CeA98652B9700800a13DfBca4103fF",
-		symbol: "sXAU",
-		name: "Synth Gold Ounce",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXAU.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x5299d6F7472DCc137D7f3C4BcfBBB514BaBF341A",
-		symbol: "sXMR",
-		name: "Synth Monero",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXMR.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0xa2B0fDe6D710e201d0d608e924A484d1A5fEd57c",
-		symbol: "sXRP",
-		name: "Synth Ripple",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXRP.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x2e59005c5c0f0a4D77CcA82653d48b46322EE5Cd",
-		symbol: "sXTZ",
-		name: "Synth Tezos",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXTZ.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x992058B7DB08F9734d84485bfbC243C4ee6954A7",
-		symbol: "sYFI",
-		name: "Synth yearn.finance",
-		decimals: 18,
-		logoURI: "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sYFI.svg",
-		tags: [
-			"synth"
-		]
-	},
-	{
-		chainId: 1,
-		address: "0x81ab848898b5ffD3354dbbEfb333D5D183eEDcB5",
-		name: "yUSD Synthetic Expiring 1 September 2020",
-		symbol: "yUSDSEP20",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xB2FdD60AD80ca7bA89B9BAb3b5336c2601C020b4",
-		name: "yUSD Synthetic Expiring 1 October 2020",
-		symbol: "yUSDOCT20",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x208d174775dc39fe18b1b374972f77ddec6c0f73",
-		name: "uUSDrBTC Synthetic Expiring 1 Oct 2020",
-		symbol: "uUSDrBTC-OCT",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xf06ddacf71e2992e2122a1a0168c6967afdf63ce",
-		name: "uUSDrBTC Synthetic Expiring 31 Dec 2020",
-		symbol: "uUSDrBTC-DEC",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xd16c79c8a39d44b2f3eb45d2019cd6a42b03e2a9",
-		name: "uUSDwETH Synthetic Expiring 31 Dec 2020",
-		symbol: "uUSDwETH-DEC",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x3d995510f8d82c2ea341845932b5ddde0bead9a3",
-		name: "uGAS-JAN21 Token Expiring 31 Jan 2021",
-		symbol: "uGAS-JAN21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x90f802c7e8fb5d40b0de583e34c065a3bd2020d8",
-		name: "YD-ETH-MAR21 Token Expiring 31 Mar 2021",
-		symbol: "YD-ETH-MAR21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x002f0b1a71c5730cf2f4da1970a889207bdb6d0d",
-		name: "YD-BTC-MAR21 Token Expiring 31 Mar 2021",
-		symbol: "YD-BTC-MAR21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x1062ad0e59fa67fa0b27369113098cc941dd0d5f",
-		name: "UMA 35 Call Expirying 30 Apr 2021",
-		symbol: "UMAc35-0421",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xf93340b1a3adf7eedcaec25fae8171d4b736e89f",
-		name: "pxUSD Synthetic USD Expiring 1 April 2021",
-		symbol: "pxUSD_MAR2021",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x84bd083b1c8bf929f39c98bc17cf518f40154f58",
-		name: "Mario Cash Synthetic Token Expiring 15 January 2021",
-		symbol: "Mario Cash-JAN-2021",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x81fab276aec924fbde190cf379783526d413cf70",
-		name: "uGAS-FEB21 Token Expiring 28 Feb 2021",
-		symbol: "uGAS-FEB21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x4e110603e70b0b5f1c403ee543b37e1f1244cf28",
-		name: "uGAS-MAR21 Token Expiring 31 Mar 2021",
-		symbol: "uGAS-MAR21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xcf55a7f92d5e0c6683debbc1fc20c0a6e056df13",
-		name: "Zelda Elastic Cash",
-		symbol: "Zelda Elastic Cash",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x654eebac62240e6c56bab5f6adf7cfa74a894510",
-		name: "Zelda Spring Nuts Cash",
-		symbol: "Zelda Spring Nuts Cash",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xa48920cc1ad85d8ea13af5d7be180c0338c306dd",
-		name: "Zelda Summer Nuts Cash",
-		symbol: "Zelda Summer Nuts Cash",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x249a198d59b57fda5dda90630febc86fd8c7594c",
-		name: "Zelda Whirlwind Cash",
-		symbol: "Zelda Whirlwind Cash",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x5ed1406873c9eb91f6f9a67ac4e152387c1132e7",
-		name: "Zelda Reinforced Cash",
-		symbol: "Zelda Reinforced Cash",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x8104c9f13118320eefe5fbea8a44d600b85981ef",
-		name: "Mini Mario Summer Cash",
-		symbol: "Mini Mario Summer Cash",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x69746c719e59674b147df25f50e7cfa0673cb625",
-		name: "Mini Mario Spring Cash",
-		symbol: "Mini Mario Spring Cash",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x6b1257641d18791141f025eab36fb567c4b564ff",
-		name: "Bitcoin Dominance Token 31 March 2021",
-		symbol: "BTCDOM-MAR2021",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x4e83b6287588a96321b2661c5e041845ff7814af",
-		name: "Altcoin Dominance Token 31 March 2021",
-		symbol: "ALTDOM-MAR2021",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x59fec83ec709c893aedd1a144cf1828eb04127cd",
-		name: "pxGOLD Synthetic GOLD Expiring 31 May 2021",
-		symbol: "pxGOLD_MAY2021",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x89337BFb7938804c3776C9FB921EccAf5ab76758",
-		name: "Compound Annualized Rate Future Expiring 28 March 2021",
-		symbol: "CAR-USDC-MAR21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xec58d3aefc9aaa2e0036fa65f70d569f49d9d1ed",
-		name: "uSTONKS Index Token April 2021",
-		symbol: "uSTONKS_APR21",
-		decimals: 6
-	},
-	{
-		chainId: 1,
-		address: "0xa6B9d7E3d76cF23549293Fb22c488E0Ea591A44e",
-		name: "uGAS-JUN21 Token Expiring 30 Jun 2021",
-		symbol: "uGAS-JUN21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xe813b65da6c38a04591aed3f082d32db7d53c382",
-		name: "Yield Dollar [WETH Dec 2021]",
-		symbol: "YD-ETH-DEC21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x4b606e9eb2228c70f44453afe5a73e1fea258ce1",
-		name: "pxUSD Synthetic USD Expiring 31 Mar 2022",
-		symbol: "pxUSD_MAR2022",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x5247c0db4044fb6f97f32c7e1b48758019a5a912",
-		name: "pxGOLD Synthetic Gold Expiring 31 Mar 2022",
-		symbol: "pxGOLD_MAR2022",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x56fb1acaff95c0b6ebcd17c8361a63d98b1a5a11",
-		name: "uForex CNYUSD Synthetic Token April 2021",
-		symbol: "uCNYUSD-APR",
-		decimals: 6
-	},
-	{
-		chainId: 1,
-		address: "0xd49fa405dce086c65d66ca1ca41f8e98583812b4",
-		name: "uForex EURUSD Synthetic Token April 2021",
-		symbol: "uEURUSD-APR",
-		decimals: 6
-	},
-	{
-		chainId: 1,
-		address: "0x29dddacba3b231ee8d673dd0f0fa759ea145561b",
-		name: "DEFI_PULSE_TOTAL_TVL Synthetic Token Expiring 15 April 2021",
-		symbol: "TVL_ALL_APRIL15",
-		decimals: 6
-	},
-	{
-		chainId: 1,
-		address: "0xcbe430927370e95b4b10cfc702c6017ec7abefc3",
-		name: "Yield Dollar [WETH Jun 2021]",
-		symbol: "YD-ETH-JUN21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x4b7fb448df91c8ed973494f8c8c4f12daf3a8521",
-		name: "Yield Dollar [renBTC Jun 2021]",
-		symbol: "YD-BTC-JUN21",
-		decimals: 8
-	},
-	{
-		chainId: 1,
-		address: "0x3108c33b6fb38efedaefd8b5f7ca01d5f5c7372d",
-		name: "Yield Dollar UMA 21",
-		symbol: "yUMA21",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x0cae9e4d663793c2a2A0b211c1Cf4bBca2B9cAa7",
-		name: "Mirrored Amazon",
-		symbol: "MAMZN",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x31c63146a635EB7465e5853020b39713AC356991",
-		name: "M US Oil",
-		symbol: "MUSO",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x59A921Db27Dd6d4d974745B7FfC5c33932653442",
-		name: "M Google",
-		symbol: "MGOOGL",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xf72FCd9DCF0190923Fadd44811E240Ef4533fc86",
-		name: "Mirrored ProShares",
-		symbol: "MVIXY",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x56aA298a19C93c6801FDde870fA63EF75Cc0aF72",
-		name: "Mirrored Alibaba",
-		symbol: "MBABA",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x0e99cC0535BB6251F6679Fa6E65d6d3b430e840B",
-		name: "Mirrored Facebook",
-		symbol: "MFB",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x13B02c8dE71680e71F0820c996E4bE43c2F57d15",
-		name: "Mirrored Invesco QQ",
-		symbol: "MQQQ",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x41BbEDd7286dAab5910a1f15d12CBda839852BD7",
-		name: "Mirrored Microsoft",
-		symbol: "MMSFT",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x9d1555d8cB3C846Bb4f7D5B1B1080872c3166676",
-		name: "Mirrored iShares Si",
-		symbol: "MSLV",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x21cA39943E91d704678F5D00b6616650F066fD63",
-		name: "Mirrored Tesla",
-		symbol: "MTSLA",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xe82bbB62fA81d0701643d1675FB50ec52fD3Df92",
-		name: "DYDX Token",
-		symbol: "DYDX",
-		decimals: 18
-	},
-	{
-		chainId: 10,
-		address: "0xE405de8F52ba7559f9df3C368500B6E6ae6Cee49",
-		name: "sETH",
-		symbol: "Synth Ether",
-		decimals: 18
-	},
-	{
-		chainId: 10,
-		address: "0x298B9B95708152ff6968aafd889c6586e9169f1D",
-		name: "sBTC",
-		symbol: "Synth Bitcoin",
-		decimals: 18
-	},
-	{
-		chainId: 10,
-		address: "0xc5Db22719A06418028A40A9B5E9A7c02959D0d08",
-		name: "sLINK",
-		symbol: "Synth Link",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x6B60eE11b73230045cF9095E6e43AE9Ea638e172",
-		name: "Shatner",
-		symbol: "SHAT",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x7277a44D1325D81Ac58893002a1B40a41bea43fe",
-		name: "FAANG Index",
-		symbol: "FAANG",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0x76175599887730786bdA1545D0D7AcE8737fEBB1",
-		name: "ENS DAO",
-		symbol: "ENS",
-		decimals: 18
-	},
-	{
-		chainId: 1,
-		address: "0xa82AA729AE2F0d78e961D66db53949e27a9E866d",
-		name: "BMEX",
-		symbol: "BMEX",
-		decimals: 18
-	}
-];
+  {
+    name: 'Gold Tether',
+    address: '0x4922a015c4407F87432B179bb209e125432E4a2A',
+    symbol: 'XAUt',
+    decimals: 6,
+    chainId: 1,
+    logoURI:
+      'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4922a015c4407F87432B179bb209e125432E4a2A/logo.png',
+  },
+  {
+    name: 'Grump Cat',
+    address: '0x93B2FfF814FCaEFFB01406e80B4Ecd89Ca6A021b',
+    symbol: 'GRUMPY',
+    decimals: 9,
+    chainId: 1,
+    logoURI:
+      'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x4922a015c4407F87432B179bb209e125432E4a2A/logo.png',
+  },
+  {
+    name: 'apeUSD-UMA Synthetic USD (Dec 2021)',
+    address: '0xfA5e27893aee4805283D86e4283Da64F8c72dd56',
+    symbol: 'apeUSD-UMA-DEC21',
+    decimals: 18,
+    chainId: 1,
+    logoURI: '',
+  },
+  {
+    chainId: 1,
+    address: '0xc6b11850241c5127eab73af4b6c68bc267cbbff4',
+    name: 'oWETHp Put 360 DEC2520',
+    symbol: 'oWETH-360P-12/25/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oYFIp Put 25000 OCT0220',
+    address: '0x452b421be5b30f0c6ad8c3f03c06bdaab4f5c56c',
+    symbol: 'oYFI-25000P-10/02/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oWETHp Put 360 OCT3020',
+    address: '0x0578779e746d7186253a36cf651ea786acfcf087',
+    symbol: 'oWETH-360P-10/30/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'ETHc Call 500 OCT3020',
+    address: '0xf9aba2e43fb19184408ea3b572a0fd672946f87b',
+    symbol: 'oETH-500C-10/30/20',
+    decimals: 6,
+  },
+  {
+    chainId: 1,
+    name: 'oBALp Put 22 OCT0220',
+    address: '0xdb0991dfc7e828b5a2837dc82d68e16490562c8d',
+    symbol: 'oBAL-22P-10/02/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oCOMPp Put 150 SEP2520',
+    address: '0xe951ebe6b4420ab3f4844cf36dedd263d095b416',
+    symbol: 'oCOMP-150P-09/25/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oCRVp Put 3 SEP252020',
+    address: '0x9215bd49b59748419eac6bad9dbe247df06ebdb9',
+    symbol: 'oCRV-3P-09/25/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oETHp Put 180 SEP2520',
+    address: '0xE3A2c34Fa2F59ffa95C4ACd1E5663633d45Bc3AD',
+    symbol: 'oETH-180P-09/25/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oETHc Call 400 SEP2520',
+    address: '0x05977EBC26825C0CD6097E0Ad7204721516711Eb',
+    symbol: 'oETH-400C-09/25/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oWETHp Put 380 SEP1820',
+    address: '0x31f88266301b08631f9f0e33fd5c43c2a5d1e5b2',
+    symbol: 'oWETH-380P-09/18/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oYFIp Put 8500 SEP1820',
+    address: '0xd1cec2f67fdc4c60e0963515dfc3343f31e32e47',
+    symbol: 'oYFI-8500P-09/18/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oWETHp Put 370 SEP1120',
+    address: '0x15844029b2c2bf24506e9937739a9a912f1e4354',
+    symbol: 'oWETH-370P-09/11/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oWETHp Put 400 SEP0420',
+    address: '0x5562c33c383f6386be4f6dcdbd35a3a99bbcfde6',
+    symbol: 'oWETH-400P-09/04/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'oETHp Put 200 AUG2820',
+    address: '0x3CBFC1397deF0602c2d211c70A1c0c38CEDB5448',
+    symbol: 'oWETH-400P-09/04/20',
+    decimals: 7,
+  },
+  {
+    chainId: 1,
+    name: 'Opyn cDai Insurance',
+    symbol: 'ocDai',
+    address: '0x98cc3bd6af1880fcfda17ac477b2f612980e5e33',
+    decimals: 8,
+  },
+  {
+    chainId: 1,
+    name: 'Opyn cUSDC Insurance',
+    symbol: 'ocUSDC',
+    address: '0x8ED9f862363fFdFD3a07546e618214b6D59F03d4',
+    decimals: 8,
+  },
+  {
+    chainId: 1,
+    address: '0x176C674Ee533C6139B0dc8b458D72A93dCB3e705',
+    symbol: 'iAAVE',
+    name: 'Synth Inverse Aave',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iAAVE.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x8A8079c7149B8A1611e5C5d978DCA3bE16545F83',
+    symbol: 'iADA',
+    name: 'Synth Inverse Cardano',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iADA.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xAFD870F32CE54EfdBF677466B612bf8ad164454B',
+    symbol: 'iBNB',
+    name: 'Synth Inverse Binance Coin',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iBNB.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xD6014EA05BDe904448B743833dDF07c3C7837481',
+    symbol: 'iBTC',
+    name: 'Synth Inverse Bitcoin',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iBTC.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x336213e1DDFC69f4701Fc3F86F4ef4A160c1159d',
+    symbol: 'iCEX',
+    name: 'Synth Inverse Centralised Exchange Index',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iCEX.svg',
+    tags: ['index', 'inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x6345728B1ccE16E6f8C509950b5c84FFF88530d9',
+    symbol: 'iCOMP',
+    name: 'Synth Inverse Compound',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iCOMP.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xCB98f42221b2C251A4E74A1609722eE09f0cc08E',
+    symbol: 'iDASH',
+    name: 'Synth Inverse Dash',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iDASH.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x14d10003807AC60d07BB0ba82cAeaC8d2087c157',
+    symbol: 'iDEFI',
+    name: 'Synth Inverse DeFi Index',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iDEFI.svg',
+    tags: ['index', 'inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x46a97629C9C1F58De6EC18C7F536e7E6d6A6ecDe',
+    symbol: 'iDOT',
+    name: 'Synth Inverse Polkadot',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iDOT.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xF4EebDD0704021eF2a6Bbe993fdf93030Cd784b4',
+    symbol: 'iEOS',
+    name: 'Synth Inverse EOS',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iEOS.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xd50c1746D835d2770dDA3703B69187bFfeB14126',
+    symbol: 'iETC',
+    name: 'Synth Inverse Ethereum Classic',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iETC.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xA9859874e1743A32409f75bB11549892138BBA1E',
+    symbol: 'iETH',
+    name: 'Synth Inverse Ether',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iETH.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x2d7aC061fc3db53c39fe1607fB8cec1B2C162B01',
+    symbol: 'iLINK',
+    name: 'Synth Inverse Chainlink',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iLINK.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x79da1431150C9b82D2E5dfc1C68B33216846851e',
+    symbol: 'iLTC',
+    name: 'Synth Inverse Litecoin',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iLTC.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xA5a5DF41883Cdc00c4cCC6E8097130535399d9a3',
+    symbol: 'iOIL',
+    name: 'Synth Inverse Perpetual Oil Futures',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iOIL.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x0fEd38108bdb8e62ef7b5680E8E0726E2F29e0De',
+    symbol: 'iREN',
+    name: 'Synth Inverse Ren',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iREN.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xC5807183a9661A533CB08CbC297594a0B864dc12',
+    symbol: 'iTRX',
+    name: 'Synth Inverse TRON',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iTRX.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x36A00FF9072570eF4B9292117850B8FE08d96cce',
+    symbol: 'iUNI',
+    name: 'Synth Inverse Uniswap',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iUNI.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x4AdF728E2Df4945082cDD6053869f51278fae196',
+    symbol: 'iXMR',
+    name: 'Synth Inverse Monero',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iXMR.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x27269b3e45A4D3E79A3D6BFeE0C8fB13d0D711A6',
+    symbol: 'iXRP',
+    name: 'Synth Inverse Ripple',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iXRP.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x8deef89058090ac5655A99EEB451a4f9183D1678',
+    symbol: 'iXTZ',
+    name: 'Synth Inverse Tezos',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iXTZ.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x592244301CeA952d6daB2fdC1fE6bd9E53917306',
+    symbol: 'iYFI',
+    name: 'Synth Inverse yearn.finance',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iYFI.svg',
+    tags: ['inverse', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xcD39b5434a0A92cf47D1F567a7dF84bE356814F0',
+    symbol: 's1INCH',
+    name: 'Synth 1inch',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/s1INCH.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x7537AAe01f3B218DAE75e10d952473823F961B87',
+    symbol: 'sAAPL',
+    name: 'Synth Apple',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAAPL.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xd2dF355C19471c8bd7D8A3aa27Ff4e26A21b4076',
+    symbol: 'sAAVE',
+    name: 'Synth Aave',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAAVE.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xe36E2D3c7c34281FA3bC737950a68571736880A1',
+    symbol: 'sADA',
+    name: 'Synth Cardano',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sADA.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x9CF7E61853ea30A41b02169391b393B901eac457',
+    symbol: 'sAMZN',
+    name: 'Synth Amazon',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAMZN.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xF48e200EAF9906362BB1442fca31e0835773b8B4',
+    symbol: 'sAUD',
+    name: 'Synth Australian Dollars',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAUD.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x617aeCB6137B5108D1E7D4918e3725C8cEbdB848',
+    symbol: 'sBNB',
+    name: 'Synth Binance Coin',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sBNB.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6',
+    symbol: 'sBTC',
+    name: 'Synth Bitcoin',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sBTC.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xeABACD844A196D7Faf3CE596edeBF9900341B420',
+    symbol: 'sCEX',
+    name: 'Synth Centralised Exchange Index',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCEX.svg',
+    tags: ['index', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x0F83287FF768D1c1e17a42F44d644D7F22e8ee1d',
+    symbol: 'sCHF',
+    name: 'Synth Swiss Franc',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCHF.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x9EeF4CA7aB9fa8bc0650127341C2d3F707a40f8A',
+    symbol: 'sCOIN',
+    name: 'Synth Coinbase',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCOIN.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xEb029507d3e043DD6C87F2917C4E82B902c35618',
+    symbol: 'sCOMP',
+    name: 'Synth Compound',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCOMP.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xD38aEb759891882e78E957c80656572503D8c1B1',
+    symbol: 'sCRV',
+    name: 'Synth Curve DAO Token',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sCRV.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xfE33ae95A9f0DA8A845aF33516EDc240DCD711d6',
+    symbol: 'sDASH',
+    name: 'Synth Dash',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sDASH.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xe1aFe1Fd76Fd88f78cBf599ea1846231B8bA3B6B',
+    symbol: 'sDEFI',
+    name: 'Synth DeFi Index',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sDEFI.svg',
+    tags: ['index', 'synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x1715AC0743102BF5Cd58EfBB6Cf2dC2685d967b6',
+    symbol: 'sDOT',
+    name: 'Synth Polkadot',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sDOT.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x88C8Cf3A212c0369698D13FE98Fcb76620389841',
+    symbol: 'sEOS',
+    name: 'Synth EOS',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sEOS.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x22602469d704BfFb0936c7A7cfcD18f7aA269375',
+    symbol: 'sETC',
+    name: 'Synth Ethereum Classic',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sETC.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x5e74C9036fb86BD7eCdcb084a0673EFc32eA31cb',
+    symbol: 'sETH',
+    name: 'Synth Ether',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sETH.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xD71eCFF9342A5Ced620049e616c5035F1dB98620',
+    symbol: 'sEUR',
+    name: 'Synth Euros',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sEUR.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xf50B5e535F62a56A9BD2d8e2434204E726c027Fa',
+    symbol: 'sFB',
+    name: 'Synth Facebook',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sFB.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x23348160D7f5aca21195dF2b70f28Fce2B0be9fC',
+    symbol: 'sFTSE',
+    name: 'Synth FTSE 100 Index',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sFTSE.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x97fe22E7341a0Cd8Db6F6C021A24Dc8f4DAD855F',
+    symbol: 'sGBP',
+    name: 'Synth Pound Sterling',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sGBP.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xC63B8ECCE56aB9C46184eC6aB85e4771fEa4c8AD',
+    symbol: 'sGOOG',
+    name: 'Synth Alphabet',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sGOOG.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xF6b1C627e95BFc3c1b4c9B825a032Ff0fBf3e07d',
+    symbol: 'sJPY',
+    name: 'Synth Japanese Yen',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sJPY.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x269895a3dF4D73b077Fc823dD6dA1B95f72Aaf9B',
+    symbol: 'sKRW',
+    name: 'Synth South Korean Won',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sKRW.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xbBC455cb4F1B9e4bFC4B73970d360c8f032EfEE6',
+    symbol: 'sLINK',
+    name: 'Synth Chainlink',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sLINK.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xC14103C2141E842e228FBaC594579e798616ce7A',
+    symbol: 'sLTC',
+    name: 'Synth Litecoin',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sLTC.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x745a824D6aBBD236AA794b5530062778A6Ad7523',
+    symbol: 'sMSFT',
+    name: 'Synth Microsoft',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sMSFT.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x5A7E3c07604EB515C16b36cd51906a65f021F609',
+    symbol: 'sNFLX',
+    name: 'Synth Netflix',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sNFLX.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x757de3ac6B830a931eF178C6634c5C551773155c',
+    symbol: 'sNIKKEI',
+    name: 'Synth Nikkei 225 Index',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sNIKKEI.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x6d16cF3EC5F763d4d99cB0B0b110eefD93B11B56',
+    symbol: 'sOIL',
+    name: 'Synth Perpetual Oil Futures',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sOIL.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xD31533E8d0f3DF62060e94B3F1318137bB6E3525',
+    symbol: 'sREN',
+    name: 'Synth Ren',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sREN.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x0352557B007A4Aae1511C114409b932F06F9E2f4',
+    symbol: 'sRUNE',
+    name: 'Synth THORChain',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sRUNE.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xf2E08356588EC5cd9E437552Da87C0076b4970B0',
+    symbol: 'sTRX',
+    name: 'Synth TRON',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sTRX.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x918dA91Ccbc32B7a6A0cc4eCd5987bbab6E31e6D',
+    symbol: 'sTSLA',
+    name: 'Synth Tesla',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sTSLA.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x30635297E450b930f8693297eBa160D9e6c8eBcf',
+    symbol: 'sUNI',
+    name: 'Synth Uniswap',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sUNI.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x6A22e5e94388464181578Aa7A6B869e00fE27846',
+    symbol: 'sXAG',
+    name: 'Synth Silver Ounce',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXAG.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x261EfCdD24CeA98652B9700800a13DfBca4103fF',
+    symbol: 'sXAU',
+    name: 'Synth Gold Ounce',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXAU.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x5299d6F7472DCc137D7f3C4BcfBBB514BaBF341A',
+    symbol: 'sXMR',
+    name: 'Synth Monero',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXMR.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0xa2B0fDe6D710e201d0d608e924A484d1A5fEd57c',
+    symbol: 'sXRP',
+    name: 'Synth Ripple',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXRP.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x2e59005c5c0f0a4D77CcA82653d48b46322EE5Cd',
+    symbol: 'sXTZ',
+    name: 'Synth Tezos',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sXTZ.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x992058B7DB08F9734d84485bfbC243C4ee6954A7',
+    symbol: 'sYFI',
+    name: 'Synth yearn.finance',
+    decimals: 18,
+    logoURI: 'https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sYFI.svg',
+    tags: ['synth'],
+  },
+  {
+    chainId: 1,
+    address: '0x81ab848898b5ffD3354dbbEfb333D5D183eEDcB5',
+    name: 'yUSD Synthetic Expiring 1 September 2020',
+    symbol: 'yUSDSEP20',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xB2FdD60AD80ca7bA89B9BAb3b5336c2601C020b4',
+    name: 'yUSD Synthetic Expiring 1 October 2020',
+    symbol: 'yUSDOCT20',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x208d174775dc39fe18b1b374972f77ddec6c0f73',
+    name: 'uUSDrBTC Synthetic Expiring 1 Oct 2020',
+    symbol: 'uUSDrBTC-OCT',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xf06ddacf71e2992e2122a1a0168c6967afdf63ce',
+    name: 'uUSDrBTC Synthetic Expiring 31 Dec 2020',
+    symbol: 'uUSDrBTC-DEC',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xd16c79c8a39d44b2f3eb45d2019cd6a42b03e2a9',
+    name: 'uUSDwETH Synthetic Expiring 31 Dec 2020',
+    symbol: 'uUSDwETH-DEC',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x3d995510f8d82c2ea341845932b5ddde0bead9a3',
+    name: 'uGAS-JAN21 Token Expiring 31 Jan 2021',
+    symbol: 'uGAS-JAN21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x90f802c7e8fb5d40b0de583e34c065a3bd2020d8',
+    name: 'YD-ETH-MAR21 Token Expiring 31 Mar 2021',
+    symbol: 'YD-ETH-MAR21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x002f0b1a71c5730cf2f4da1970a889207bdb6d0d',
+    name: 'YD-BTC-MAR21 Token Expiring 31 Mar 2021',
+    symbol: 'YD-BTC-MAR21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x1062ad0e59fa67fa0b27369113098cc941dd0d5f',
+    name: 'UMA 35 Call Expirying 30 Apr 2021',
+    symbol: 'UMAc35-0421',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xf93340b1a3adf7eedcaec25fae8171d4b736e89f',
+    name: 'pxUSD Synthetic USD Expiring 1 April 2021',
+    symbol: 'pxUSD_MAR2021',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x84bd083b1c8bf929f39c98bc17cf518f40154f58',
+    name: 'Mario Cash Synthetic Token Expiring 15 January 2021',
+    symbol: 'Mario Cash-JAN-2021',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x81fab276aec924fbde190cf379783526d413cf70',
+    name: 'uGAS-FEB21 Token Expiring 28 Feb 2021',
+    symbol: 'uGAS-FEB21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x4e110603e70b0b5f1c403ee543b37e1f1244cf28',
+    name: 'uGAS-MAR21 Token Expiring 31 Mar 2021',
+    symbol: 'uGAS-MAR21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xcf55a7f92d5e0c6683debbc1fc20c0a6e056df13',
+    name: 'Zelda Elastic Cash',
+    symbol: 'Zelda Elastic Cash',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x654eebac62240e6c56bab5f6adf7cfa74a894510',
+    name: 'Zelda Spring Nuts Cash',
+    symbol: 'Zelda Spring Nuts Cash',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xa48920cc1ad85d8ea13af5d7be180c0338c306dd',
+    name: 'Zelda Summer Nuts Cash',
+    symbol: 'Zelda Summer Nuts Cash',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x249a198d59b57fda5dda90630febc86fd8c7594c',
+    name: 'Zelda Whirlwind Cash',
+    symbol: 'Zelda Whirlwind Cash',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x5ed1406873c9eb91f6f9a67ac4e152387c1132e7',
+    name: 'Zelda Reinforced Cash',
+    symbol: 'Zelda Reinforced Cash',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x8104c9f13118320eefe5fbea8a44d600b85981ef',
+    name: 'Mini Mario Summer Cash',
+    symbol: 'Mini Mario Summer Cash',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x69746c719e59674b147df25f50e7cfa0673cb625',
+    name: 'Mini Mario Spring Cash',
+    symbol: 'Mini Mario Spring Cash',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x6b1257641d18791141f025eab36fb567c4b564ff',
+    name: 'Bitcoin Dominance Token 31 March 2021',
+    symbol: 'BTCDOM-MAR2021',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x4e83b6287588a96321b2661c5e041845ff7814af',
+    name: 'Altcoin Dominance Token 31 March 2021',
+    symbol: 'ALTDOM-MAR2021',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x59fec83ec709c893aedd1a144cf1828eb04127cd',
+    name: 'pxGOLD Synthetic GOLD Expiring 31 May 2021',
+    symbol: 'pxGOLD_MAY2021',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x89337BFb7938804c3776C9FB921EccAf5ab76758',
+    name: 'Compound Annualized Rate Future Expiring 28 March 2021',
+    symbol: 'CAR-USDC-MAR21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xec58d3aefc9aaa2e0036fa65f70d569f49d9d1ed',
+    name: 'uSTONKS Index Token April 2021',
+    symbol: 'uSTONKS_APR21',
+    decimals: 6,
+  },
+  {
+    chainId: 1,
+    address: '0xa6B9d7E3d76cF23549293Fb22c488E0Ea591A44e',
+    name: 'uGAS-JUN21 Token Expiring 30 Jun 2021',
+    symbol: 'uGAS-JUN21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xe813b65da6c38a04591aed3f082d32db7d53c382',
+    name: 'Yield Dollar [WETH Dec 2021]',
+    symbol: 'YD-ETH-DEC21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x4b606e9eb2228c70f44453afe5a73e1fea258ce1',
+    name: 'pxUSD Synthetic USD Expiring 31 Mar 2022',
+    symbol: 'pxUSD_MAR2022',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x5247c0db4044fb6f97f32c7e1b48758019a5a912',
+    name: 'pxGOLD Synthetic Gold Expiring 31 Mar 2022',
+    symbol: 'pxGOLD_MAR2022',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x56fb1acaff95c0b6ebcd17c8361a63d98b1a5a11',
+    name: 'uForex CNYUSD Synthetic Token April 2021',
+    symbol: 'uCNYUSD-APR',
+    decimals: 6,
+  },
+  {
+    chainId: 1,
+    address: '0xd49fa405dce086c65d66ca1ca41f8e98583812b4',
+    name: 'uForex EURUSD Synthetic Token April 2021',
+    symbol: 'uEURUSD-APR',
+    decimals: 6,
+  },
+  {
+    chainId: 1,
+    address: '0x29dddacba3b231ee8d673dd0f0fa759ea145561b',
+    name: 'DEFI_PULSE_TOTAL_TVL Synthetic Token Expiring 15 April 2021',
+    symbol: 'TVL_ALL_APRIL15',
+    decimals: 6,
+  },
+  {
+    chainId: 1,
+    address: '0xcbe430927370e95b4b10cfc702c6017ec7abefc3',
+    name: 'Yield Dollar [WETH Jun 2021]',
+    symbol: 'YD-ETH-JUN21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x4b7fb448df91c8ed973494f8c8c4f12daf3a8521',
+    name: 'Yield Dollar [renBTC Jun 2021]',
+    symbol: 'YD-BTC-JUN21',
+    decimals: 8,
+  },
+  {
+    chainId: 1,
+    address: '0x3108c33b6fb38efedaefd8b5f7ca01d5f5c7372d',
+    name: 'Yield Dollar UMA 21',
+    symbol: 'yUMA21',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x0cae9e4d663793c2a2A0b211c1Cf4bBca2B9cAa7',
+    name: 'Mirrored Amazon',
+    symbol: 'MAMZN',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x31c63146a635EB7465e5853020b39713AC356991',
+    name: 'M US Oil',
+    symbol: 'MUSO',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x59A921Db27Dd6d4d974745B7FfC5c33932653442',
+    name: 'M Google',
+    symbol: 'MGOOGL',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xf72FCd9DCF0190923Fadd44811E240Ef4533fc86',
+    name: 'Mirrored ProShares',
+    symbol: 'MVIXY',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x56aA298a19C93c6801FDde870fA63EF75Cc0aF72',
+    name: 'Mirrored Alibaba',
+    symbol: 'MBABA',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x0e99cC0535BB6251F6679Fa6E65d6d3b430e840B',
+    name: 'Mirrored Facebook',
+    symbol: 'MFB',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x13B02c8dE71680e71F0820c996E4bE43c2F57d15',
+    name: 'Mirrored Invesco QQ',
+    symbol: 'MQQQ',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x41BbEDd7286dAab5910a1f15d12CBda839852BD7',
+    name: 'Mirrored Microsoft',
+    symbol: 'MMSFT',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x9d1555d8cB3C846Bb4f7D5B1B1080872c3166676',
+    name: 'Mirrored iShares Si',
+    symbol: 'MSLV',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x21cA39943E91d704678F5D00b6616650F066fD63',
+    name: 'Mirrored Tesla',
+    symbol: 'MTSLA',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xe82bbB62fA81d0701643d1675FB50ec52fD3Df92',
+    name: 'DYDX Token',
+    symbol: 'DYDX',
+    decimals: 18,
+  },
+  {
+    chainId: 10,
+    address: '0xE405de8F52ba7559f9df3C368500B6E6ae6Cee49',
+    name: 'sETH',
+    symbol: 'Synth Ether',
+    decimals: 18,
+  },
+  {
+    chainId: 10,
+    address: '0x298B9B95708152ff6968aafd889c6586e9169f1D',
+    name: 'sBTC',
+    symbol: 'Synth Bitcoin',
+    decimals: 18,
+  },
+  {
+    chainId: 10,
+    address: '0xc5Db22719A06418028A40A9B5E9A7c02959D0d08',
+    name: 'sLINK',
+    symbol: 'Synth Link',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x6B60eE11b73230045cF9095E6e43AE9Ea638e172',
+    name: 'Shatner',
+    symbol: 'SHAT',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x7277a44D1325D81Ac58893002a1B40a41bea43fe',
+    name: 'FAANG Index',
+    symbol: 'FAANG',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0x76175599887730786bdA1545D0D7AcE8737fEBB1',
+    name: 'ENS DAO',
+    symbol: 'ENS',
+    decimals: 18,
+  },
+  {
+    chainId: 1,
+    address: '0xa82AA729AE2F0d78e961D66db53949e27a9E866d',
+    name: 'BMEX',
+    symbol: 'BMEX',
+    decimals: 18,
+  },
+]
 var UNSUPPORTED_TOKEN_LIST = {
-	name: name,
-	timestamp: timestamp,
-	version: version,
-	tags: tags,
-	logoURI: logoURI,
-	keywords: keywords,
-	tokens: tokens
-};
+  name,
+  timestamp,
+  version,
+  tags,
+  logoURI,
+  keywords,
+  tokens,
+}
 
 function useAllLists() {
-    return useAppSelector(function (state) { return state.lists.byUrl; });
+  return useAppSelector(function (state) {
+    return state.lists.byUrl
+  })
 }
 /**
  * Combine the tokens in map2 with the tokens on map1, where tokens on map1 take precedence
@@ -8386,701 +8967,1118 @@ function useAllLists() {
  * @param map2 the map of additioanl tokens to add to the base map
  */
 function combineMaps(map1, map2) {
-    var chainIds = Object.keys(Object.keys(map1)
-        .concat(Object.keys(map2))
-        .reduce(function (memo, value) {
-        memo[value] = true;
-        return memo;
-    }, {})).map(function (id) { return parseInt(id); });
-    return chainIds.reduce(function (memo, chainId) {
-        memo[chainId] = __assign(__assign({}, map2[chainId]), map1[chainId]);
-        return memo;
-    }, {});
+  var chainIds = Object.keys(
+    Object.keys(map1)
+      .concat(Object.keys(map2))
+      .reduce(function (memo, value) {
+        memo[value] = true
+        return memo
+      }, {})
+  ).map(function (id) {
+    return parseInt(id)
+  })
+  return chainIds.reduce(function (memo, chainId) {
+    memo[chainId] = __assign(__assign({}, map2[chainId]), map1[chainId])
+    return memo
+  }, {})
 }
 // merge tokens contained within lists from urls
 function useCombinedTokenMapFromUrls(urls) {
-    var lists = useAllLists();
-    return React.useMemo(function () {
-        if (!urls)
-            return {};
-        return (urls
-            .slice()
-            // sort by priority so top priority goes last
-            .sort(sortByListPriority)
-            .reduce(function (allTokens, currentUrl) {
-            var _a;
-            var current = (_a = lists[currentUrl]) === null || _a === void 0 ? void 0 : _a.current;
-            if (!current)
-                return allTokens;
+  var lists = useAllLists()
+  return React.useMemo(
+    function () {
+      if (!urls) return {}
+      return (
+        urls
+          .slice()
+          // sort by priority so top priority goes last
+          .sort(sortByListPriority)
+          .reduce(function (allTokens, currentUrl) {
+            var _a
+            var current = (_a = lists[currentUrl]) === null || _a === void 0 ? void 0 : _a.current
+            if (!current) return allTokens
             try {
-                return combineMaps(allTokens, tokensToChainTokenMap(current));
+              return combineMaps(allTokens, tokensToChainTokenMap(current))
+            } catch (error) {
+              console.error('Could not show token list due to error', error)
+              return allTokens
             }
-            catch (error) {
-                console.error('Could not show token list due to error', error);
-                return allTokens;
-            }
-        }, {}));
-    }, [lists, urls]);
+          }, {})
+      )
+    },
+    [lists, urls]
+  )
 }
 // filter out unsupported lists
 function useActiveListUrls() {
-    var activeListUrls = useAppSelector(function (state) { return state.lists.activeListUrls; });
-    return React.useMemo(function () { return activeListUrls === null || activeListUrls === void 0 ? void 0 : activeListUrls.filter(function (url) { return !UNSUPPORTED_LIST_URLS.includes(url); }); }, [activeListUrls]);
+  var activeListUrls = useAppSelector(function (state) {
+    return state.lists.activeListUrls
+  })
+  return React.useMemo(
+    function () {
+      return activeListUrls === null || activeListUrls === void 0
+        ? void 0
+        : activeListUrls.filter(function (url) {
+            return !UNSUPPORTED_LIST_URLS.includes(url)
+          })
+    },
+    [activeListUrls]
+  )
 }
 function useInactiveListUrls() {
-    var lists = useAllLists();
-    var allActiveListUrls = useActiveListUrls();
-    return React.useMemo(function () { return Object.keys(lists).filter(function (url) { return !(allActiveListUrls === null || allActiveListUrls === void 0 ? void 0 : allActiveListUrls.includes(url)) && !UNSUPPORTED_LIST_URLS.includes(url); }); }, [lists, allActiveListUrls]);
+  var lists = useAllLists()
+  var allActiveListUrls = useActiveListUrls()
+  return React.useMemo(
+    function () {
+      return Object.keys(lists).filter(function (url) {
+        return (
+          !(allActiveListUrls === null || allActiveListUrls === void 0 ? void 0 : allActiveListUrls.includes(url)) &&
+          !UNSUPPORTED_LIST_URLS.includes(url)
+        )
+      })
+    },
+    [lists, allActiveListUrls]
+  )
 }
 // get all the tokens from active lists, combine with local default tokens
 function useCombinedActiveList() {
-    var activeListUrls = useActiveListUrls();
-    var activeTokens = useCombinedTokenMapFromUrls(activeListUrls);
-    return activeTokens;
+  var activeListUrls = useActiveListUrls()
+  var activeTokens = useCombinedTokenMapFromUrls(activeListUrls)
+  return activeTokens
 }
 // list of tokens not supported on interface for various reasons, used to show warnings and prevent swaps and adds
 function useUnsupportedTokenList() {
-    // get hard-coded broken tokens
-    var brokenListMap = React.useMemo(function () { return tokensToChainTokenMap(BROKEN_LIST); }, []);
-    // get hard-coded list of unsupported tokens
-    var localUnsupportedListMap = React.useMemo(function () { return tokensToChainTokenMap(UNSUPPORTED_TOKEN_LIST); }, []);
-    // get dynamic list of unsupported tokens
-    var loadedUnsupportedListMap = useCombinedTokenMapFromUrls(UNSUPPORTED_LIST_URLS);
-    // format into one token address map
-    return React.useMemo(function () { return combineMaps(brokenListMap, combineMaps(localUnsupportedListMap, loadedUnsupportedListMap)); }, [brokenListMap, localUnsupportedListMap, loadedUnsupportedListMap]);
+  // get hard-coded broken tokens
+  var brokenListMap = React.useMemo(function () {
+    return tokensToChainTokenMap(BROKEN_LIST)
+  }, [])
+  // get hard-coded list of unsupported tokens
+  var localUnsupportedListMap = React.useMemo(function () {
+    return tokensToChainTokenMap(UNSUPPORTED_TOKEN_LIST)
+  }, [])
+  // get dynamic list of unsupported tokens
+  var loadedUnsupportedListMap = useCombinedTokenMapFromUrls(UNSUPPORTED_LIST_URLS)
+  // format into one token address map
+  return React.useMemo(
+    function () {
+      return combineMaps(brokenListMap, combineMaps(localUnsupportedListMap, loadedUnsupportedListMap))
+    },
+    [brokenListMap, localUnsupportedListMap, loadedUnsupportedListMap]
+  )
 }
 function useIsListActive(url) {
-    var activeListUrls = useActiveListUrls();
-    return Boolean(activeListUrls === null || activeListUrls === void 0 ? void 0 : activeListUrls.includes(url));
+  var activeListUrls = useActiveListUrls()
+  return Boolean(activeListUrls === null || activeListUrls === void 0 ? void 0 : activeListUrls.includes(url))
 }
 
 // reduce token map into standard address <-> Token mapping, optionally include user added tokens
 function useTokensFromMap(tokenMap, includeUserAdded) {
-    var chainId = useActiveWeb3React().chainId;
-    var userAddedTokens = useUserAddedTokens();
-    return React.useMemo(function () {
-        var _a;
-        if (!chainId)
-            return {};
-        // reduce to just tokens
-        var mapWithoutUrls = Object.keys((_a = tokenMap[chainId]) !== null && _a !== void 0 ? _a : {}).reduce(function (newMap, address) {
-            newMap[address] = tokenMap[chainId][address].token;
-            return newMap;
-        }, {});
-        if (includeUserAdded) {
-            return (userAddedTokens
-                // reduce into all ALL_TOKENS filtered by the current chain
-                .reduce(function (tokenMap, token) {
-                tokenMap[token.address] = token;
-                return tokenMap;
-            }, __assign({}, mapWithoutUrls)));
-        }
-        return mapWithoutUrls;
-    }, [chainId, userAddedTokens, tokenMap, includeUserAdded]);
+  var chainId = useActiveWeb3React().chainId
+  var userAddedTokens = useUserAddedTokens()
+  return React.useMemo(
+    function () {
+      var _a
+      if (!chainId) return {}
+      // reduce to just tokens
+      var mapWithoutUrls = Object.keys((_a = tokenMap[chainId]) !== null && _a !== void 0 ? _a : {}).reduce(function (
+        newMap,
+        address
+      ) {
+        newMap[address] = tokenMap[chainId][address].token
+        return newMap
+      },
+      {})
+      if (includeUserAdded) {
+        return (
+          userAddedTokens
+            // reduce into all ALL_TOKENS filtered by the current chain
+            .reduce(function (tokenMap, token) {
+              tokenMap[token.address] = token
+              return tokenMap
+            }, __assign({}, mapWithoutUrls))
+        )
+      }
+      return mapWithoutUrls
+    },
+    [chainId, userAddedTokens, tokenMap, includeUserAdded]
+  )
 }
 function useAllTokens() {
-    var allTokens = useCombinedActiveList();
-    return useTokensFromMap(allTokens, true);
+  var allTokens = useCombinedActiveList()
+  return useTokensFromMap(allTokens, true)
 }
 function useUnsupportedTokens() {
-    var chainId = useActiveWeb3React().chainId;
-    var listsByUrl = useAllLists();
-    var unsupportedTokensMap = useUnsupportedTokenList();
-    var unsupportedTokens = useTokensFromMap(unsupportedTokensMap, false);
-    // checks the default L2 lists to see if `bridgeInfo` has an L1 address value that is unsupported
-    var l2InferredBlockedTokens = React.useMemo(function () {
-        if (!chainId || !L2_CHAIN_IDS.includes(chainId)) {
-            return {};
+  var chainId = useActiveWeb3React().chainId
+  var listsByUrl = useAllLists()
+  var unsupportedTokensMap = useUnsupportedTokenList()
+  var unsupportedTokens = useTokensFromMap(unsupportedTokensMap, false)
+  // checks the default L2 lists to see if `bridgeInfo` has an L1 address value that is unsupported
+  var l2InferredBlockedTokens = React.useMemo(
+    function () {
+      if (!chainId || !L2_CHAIN_IDS.includes(chainId)) {
+        return {}
+      }
+      if (!listsByUrl) {
+        return {}
+      }
+      var listUrl = CHAIN_INFO[chainId].defaultListUrl
+      var list = listsByUrl[listUrl].current
+      if (!list) {
+        return {}
+      }
+      var unsupportedSet = new Set(Object.keys(unsupportedTokens))
+      return list.tokens.reduce(function (acc, tokenInfo) {
+        var _a
+        var _b
+        var bridgeInfo = (_b = tokenInfo.extensions) === null || _b === void 0 ? void 0 : _b.bridgeInfo
+        if (
+          bridgeInfo &&
+          bridgeInfo[SupportedChainId.MAINNET] &&
+          bridgeInfo[SupportedChainId.MAINNET].tokenAddress &&
+          unsupportedSet.has(bridgeInfo[SupportedChainId.MAINNET].tokenAddress)
+        ) {
+          var address = bridgeInfo[SupportedChainId.MAINNET].tokenAddress
+          // don't rely on decimals--it's possible that a token could be bridged w/ different decimals on the L2
+          return __assign(
+            __assign({}, acc),
+            ((_a = {}), (_a[address] = new sdkCore.Token(SupportedChainId.MAINNET, address, tokenInfo.decimals)), _a)
+          )
         }
-        if (!listsByUrl) {
-            return {};
-        }
-        var listUrl = CHAIN_INFO[chainId].defaultListUrl;
-        var list = listsByUrl[listUrl].current;
-        if (!list) {
-            return {};
-        }
-        var unsupportedSet = new Set(Object.keys(unsupportedTokens));
-        return list.tokens.reduce(function (acc, tokenInfo) {
-            var _a;
-            var _b;
-            var bridgeInfo = (_b = tokenInfo.extensions) === null || _b === void 0 ? void 0 : _b.bridgeInfo;
-            if (bridgeInfo &&
-                bridgeInfo[SupportedChainId.MAINNET] &&
-                bridgeInfo[SupportedChainId.MAINNET].tokenAddress &&
-                unsupportedSet.has(bridgeInfo[SupportedChainId.MAINNET].tokenAddress)) {
-                var address = bridgeInfo[SupportedChainId.MAINNET].tokenAddress;
-                // don't rely on decimals--it's possible that a token could be bridged w/ different decimals on the L2
-                return __assign(__assign({}, acc), (_a = {}, _a[address] = new sdkCore.Token(SupportedChainId.MAINNET, address, tokenInfo.decimals), _a));
-            }
-            return acc;
-        }, {});
-    }, [chainId, listsByUrl, unsupportedTokens]);
-    return __assign(__assign({}, unsupportedTokens), l2InferredBlockedTokens);
+        return acc
+      }, {})
+    },
+    [chainId, listsByUrl, unsupportedTokens]
+  )
+  return __assign(__assign({}, unsupportedTokens), l2InferredBlockedTokens)
 }
 function useSearchInactiveTokenLists(search, minResults) {
-    if (minResults === void 0) { minResults = 10; }
-    var lists = useAllLists();
-    var inactiveUrls = useInactiveListUrls();
-    var chainId = useActiveWeb3React().chainId;
-    var activeTokens = useAllTokens();
-    return React.useMemo(function () {
-        var e_1, _a, e_2, _b;
-        if (!search || search.trim().length === 0)
-            return [];
-        var tokenFilter = getTokenFilter(search);
-        var result = [];
-        var addressSet = {};
-        try {
-            for (var inactiveUrls_1 = __values(inactiveUrls), inactiveUrls_1_1 = inactiveUrls_1.next(); !inactiveUrls_1_1.done; inactiveUrls_1_1 = inactiveUrls_1.next()) {
-                var url = inactiveUrls_1_1.value;
-                var list = lists[url].current;
-                if (!list)
-                    continue;
-                try {
-                    for (var _c = (e_2 = void 0, __values(list.tokens)), _d = _c.next(); !_d.done; _d = _c.next()) {
-                        var tokenInfo = _d.value;
-                        if (tokenInfo.chainId === chainId && tokenFilter(tokenInfo)) {
-                            var wrapped = new WrappedTokenInfo(tokenInfo, list);
-                            if (!(wrapped.address in activeTokens) && !addressSet[wrapped.address]) {
-                                addressSet[wrapped.address] = true;
-                                result.push(wrapped);
-                                if (result.length >= minResults)
-                                    return result;
-                            }
-                        }
-                    }
+  if (minResults === void 0) {
+    minResults = 10
+  }
+  var lists = useAllLists()
+  var inactiveUrls = useInactiveListUrls()
+  var chainId = useActiveWeb3React().chainId
+  var activeTokens = useAllTokens()
+  return React.useMemo(
+    function () {
+      var e_1, _a, e_2, _b
+      if (!search || search.trim().length === 0) return []
+      var tokenFilter = getTokenFilter(search)
+      var result = []
+      var addressSet = {}
+      try {
+        for (
+          var inactiveUrls_1 = __values(inactiveUrls), inactiveUrls_1_1 = inactiveUrls_1.next();
+          !inactiveUrls_1_1.done;
+          inactiveUrls_1_1 = inactiveUrls_1.next()
+        ) {
+          var url = inactiveUrls_1_1.value
+          var list = lists[url].current
+          if (!list) continue
+          try {
+            for (var _c = ((e_2 = void 0), __values(list.tokens)), _d = _c.next(); !_d.done; _d = _c.next()) {
+              var tokenInfo = _d.value
+              if (tokenInfo.chainId === chainId && tokenFilter(tokenInfo)) {
+                var wrapped = new WrappedTokenInfo(tokenInfo, list)
+                if (!(wrapped.address in activeTokens) && !addressSet[wrapped.address]) {
+                  addressSet[wrapped.address] = true
+                  result.push(wrapped)
+                  if (result.length >= minResults) return result
                 }
-                catch (e_2_1) { e_2 = { error: e_2_1 }; }
-                finally {
-                    try {
-                        if (_d && !_d.done && (_b = _c.return)) _b.call(_c);
-                    }
-                    finally { if (e_2) throw e_2.error; }
-                }
+              }
             }
-        }
-        catch (e_1_1) { e_1 = { error: e_1_1 }; }
-        finally {
+          } catch (e_2_1) {
+            e_2 = { error: e_2_1 }
+          } finally {
             try {
-                if (inactiveUrls_1_1 && !inactiveUrls_1_1.done && (_a = inactiveUrls_1.return)) _a.call(inactiveUrls_1);
+              if (_d && !_d.done && (_b = _c.return)) _b.call(_c)
+            } finally {
+              if (e_2) throw e_2.error
             }
-            finally { if (e_1) throw e_1.error; }
+          }
         }
-        return result;
-    }, [activeTokens, chainId, inactiveUrls, lists, minResults, search]);
+      } catch (e_1_1) {
+        e_1 = { error: e_1_1 }
+      } finally {
+        try {
+          if (inactiveUrls_1_1 && !inactiveUrls_1_1.done && (_a = inactiveUrls_1.return)) _a.call(inactiveUrls_1)
+        } finally {
+          if (e_1) throw e_1.error
+        }
+      }
+      return result
+    },
+    [activeTokens, chainId, inactiveUrls, lists, minResults, search]
+  )
 }
 function useIsTokenActive(token) {
-    var activeTokens = useAllTokens();
-    if (!activeTokens || !token) {
-        return false;
-    }
-    return !!activeTokens[token.address];
+  var activeTokens = useAllTokens()
+  if (!activeTokens || !token) {
+    return false
+  }
+  return !!activeTokens[token.address]
 }
 // Check if currency is included in custom list from user storage
 function useIsUserAddedToken(currency) {
-    var userAddedTokens = useUserAddedTokens();
-    if (!currency) {
-        return false;
-    }
-    return !!userAddedTokens.find(function (token) { return currency.equals(token); });
+  var userAddedTokens = useUserAddedTokens()
+  if (!currency) {
+    return false
+  }
+  return !!userAddedTokens.find(function (token) {
+    return currency.equals(token)
+  })
 }
 // undefined if invalid or does not exist
 // null if loading or null was passed
 // otherwise returns the token
 function useToken(tokenAddress) {
-    var tokens = useAllTokens();
-    return useTokenFromMap(tokens, tokenAddress);
+  var tokens = useAllTokens()
+  return useTokenFromMap(tokens, tokenAddress)
 }
 function useCurrency(currencyId) {
-    var tokens = useAllTokens();
-    return useCurrencyFromMap(tokens, currencyId);
+  var tokens = useAllTokens()
+  return useCurrencyFromMap(tokens, currencyId)
 }
 
 function serializeToken(token) {
-    return {
-        chainId: token.chainId,
-        address: token.address,
-        decimals: token.decimals,
-        symbol: token.symbol,
-        name: token.name,
-    };
+  return {
+    chainId: token.chainId,
+    address: token.address,
+    decimals: token.decimals,
+    symbol: token.symbol,
+    name: token.name,
+  }
 }
 function deserializeToken(serializedToken) {
-    return new sdkCore.Token(serializedToken.chainId, serializedToken.address, serializedToken.decimals, serializedToken.symbol, serializedToken.name);
+  return new sdkCore.Token(
+    serializedToken.chainId,
+    serializedToken.address,
+    serializedToken.decimals,
+    serializedToken.symbol,
+    serializedToken.name
+  )
 }
 function useIsDarkMode() {
-    var _a = useAppSelector(function (_a) {
-        var _b = _a.user, matchesDarkMode = _b.matchesDarkMode, userDarkMode = _b.userDarkMode;
-        return ({
-            userDarkMode: userDarkMode,
-            matchesDarkMode: matchesDarkMode,
-        });
-    }, reactRedux.shallowEqual), userDarkMode = _a.userDarkMode, matchesDarkMode = _a.matchesDarkMode;
-    return userDarkMode === null ? matchesDarkMode : userDarkMode;
+  var _a = useAppSelector(function (_a) {
+      var _b = _a.user,
+        matchesDarkMode = _b.matchesDarkMode,
+        userDarkMode = _b.userDarkMode
+      return {
+        userDarkMode,
+        matchesDarkMode,
+      }
+    }, reactRedux.shallowEqual),
+    userDarkMode = _a.userDarkMode,
+    matchesDarkMode = _a.matchesDarkMode
+  return userDarkMode === null ? matchesDarkMode : userDarkMode
 }
 function useDarkModeManager() {
-    var dispatch = useAppDispatch();
-    var darkMode = useIsDarkMode();
-    var toggleSetDarkMode = React.useCallback(function () {
-        dispatch(updateUserDarkMode({ userDarkMode: !darkMode }));
-    }, [darkMode, dispatch]);
-    return [darkMode, toggleSetDarkMode];
+  var dispatch = useAppDispatch()
+  var darkMode = useIsDarkMode()
+  var toggleSetDarkMode = React.useCallback(
+    function () {
+      dispatch(updateUserDarkMode({ userDarkMode: !darkMode }))
+    },
+    [darkMode, dispatch]
+  )
+  return [darkMode, toggleSetDarkMode]
 }
 function useUserLocale() {
-    return useAppSelector(function (state) { return state.user.userLocale; });
+  return useAppSelector(function (state) {
+    return state.user.userLocale
+  })
 }
 function useUserLocaleManager() {
-    var dispatch = useAppDispatch();
-    var locale = useUserLocale();
-    var setLocale = React.useCallback(function (newLocale) {
-        dispatch(updateUserLocale({ userLocale: newLocale }));
-    }, [dispatch]);
-    return [locale, setLocale];
+  var dispatch = useAppDispatch()
+  var locale = useUserLocale()
+  var setLocale = React.useCallback(
+    function (newLocale) {
+      dispatch(updateUserLocale({ userLocale: newLocale }))
+    },
+    [dispatch]
+  )
+  return [locale, setLocale]
 }
 function useIsExpertMode() {
-    return useAppSelector(function (state) { return state.user.userExpertMode; });
+  return useAppSelector(function (state) {
+    return state.user.userExpertMode
+  })
 }
 function useExpertModeManager() {
-    var dispatch = useAppDispatch();
-    var expertMode = useIsExpertMode();
-    var toggleSetExpertMode = React.useCallback(function () {
-        dispatch(updateUserExpertMode({ userExpertMode: !expertMode }));
-    }, [expertMode, dispatch]);
-    return [expertMode, toggleSetExpertMode];
+  var dispatch = useAppDispatch()
+  var expertMode = useIsExpertMode()
+  var toggleSetExpertMode = React.useCallback(
+    function () {
+      dispatch(updateUserExpertMode({ userExpertMode: !expertMode }))
+    },
+    [expertMode, dispatch]
+  )
+  return [expertMode, toggleSetExpertMode]
 }
 function useShowSurveyPopup() {
-    var dispatch = useAppDispatch();
-    var showSurveyPopup = useAppSelector(function (state) { return state.user.showSurveyPopup; });
-    var toggleShowSurveyPopup = React.useCallback(function (showPopup) {
-        dispatch(updateShowSurveyPopup({ showSurveyPopup: showPopup }));
-    }, [dispatch]);
-    return [showSurveyPopup, toggleShowSurveyPopup];
+  var dispatch = useAppDispatch()
+  var showSurveyPopup = useAppSelector(function (state) {
+    return state.user.showSurveyPopup
+  })
+  var toggleShowSurveyPopup = React.useCallback(
+    function (showPopup) {
+      dispatch(updateShowSurveyPopup({ showSurveyPopup: showPopup }))
+    },
+    [dispatch]
+  )
+  return [showSurveyPopup, toggleShowSurveyPopup]
 }
 function useClientSideRouter() {
-    var dispatch = useAppDispatch();
-    var clientSideRouter = useAppSelector(function (state) { return Boolean(state.user.userClientSideRouter); });
-    var setClientSideRouter = React.useCallback(function (newClientSideRouter) {
-        dispatch(updateUserClientSideRouter({ userClientSideRouter: newClientSideRouter }));
-    }, [dispatch]);
-    return [clientSideRouter, setClientSideRouter];
+  var dispatch = useAppDispatch()
+  var clientSideRouter = useAppSelector(function (state) {
+    return Boolean(state.user.userClientSideRouter)
+  })
+  var setClientSideRouter = React.useCallback(
+    function (newClientSideRouter) {
+      dispatch(updateUserClientSideRouter({ userClientSideRouter: newClientSideRouter }))
+    },
+    [dispatch]
+  )
+  return [clientSideRouter, setClientSideRouter]
 }
 function useSetUserSlippageTolerance() {
-    var dispatch = useAppDispatch();
-    return React.useCallback(function (userSlippageTolerance) {
-        var value;
-        try {
-            value =
-                userSlippageTolerance === 'auto' ? 'auto' : JSBI__default["default"].toNumber(userSlippageTolerance.multiply(10000).quotient);
-        }
-        catch (error) {
-            value = 'auto';
-        }
-        dispatch(updateUserSlippageTolerance({
-            userSlippageTolerance: value,
-        }));
-    }, [dispatch]);
+  var dispatch = useAppDispatch()
+  return React.useCallback(
+    function (userSlippageTolerance) {
+      var value
+      try {
+        value =
+          userSlippageTolerance === 'auto'
+            ? 'auto'
+            : JSBI__default['default'].toNumber(userSlippageTolerance.multiply(10000).quotient)
+      } catch (error) {
+        value = 'auto'
+      }
+      dispatch(
+        updateUserSlippageTolerance({
+          userSlippageTolerance: value,
+        })
+      )
+    },
+    [dispatch]
+  )
 }
 /**
  * Return the user's slippage tolerance, from the redux store, and a function to update the slippage tolerance
  */
 function useUserSlippageTolerance() {
-    var userSlippageTolerance = useAppSelector(function (state) {
-        return state.user.userSlippageTolerance;
-    });
-    return React.useMemo(function () { return (userSlippageTolerance === 'auto' ? 'auto' : new sdkCore.Percent(userSlippageTolerance, 10000)); }, [userSlippageTolerance]);
+  var userSlippageTolerance = useAppSelector(function (state) {
+    return state.user.userSlippageTolerance
+  })
+  return React.useMemo(
+    function () {
+      return userSlippageTolerance === 'auto' ? 'auto' : new sdkCore.Percent(userSlippageTolerance, 10000)
+    },
+    [userSlippageTolerance]
+  )
 }
 /**
  * Same as above but replaces the auto with a default value
  * @param defaultSlippageTolerance the default value to replace auto with
  */
 function useUserSlippageToleranceWithDefault(defaultSlippageTolerance) {
-    var allowedSlippage = useUserSlippageTolerance();
-    return React.useMemo(function () { return (allowedSlippage === 'auto' ? defaultSlippageTolerance : allowedSlippage); }, [allowedSlippage, defaultSlippageTolerance]);
+  var allowedSlippage = useUserSlippageTolerance()
+  return React.useMemo(
+    function () {
+      return allowedSlippage === 'auto' ? defaultSlippageTolerance : allowedSlippage
+    },
+    [allowedSlippage, defaultSlippageTolerance]
+  )
 }
 function useUserTransactionTTL() {
-    var chainId = useActiveWeb3React().chainId;
-    var dispatch = useAppDispatch();
-    var userDeadline = useAppSelector(function (state) { return state.user.userDeadline; });
-    var onL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId));
-    var deadline = onL2 ? L2_DEADLINE_FROM_NOW : userDeadline;
-    var setUserDeadline = React.useCallback(function (userDeadline) {
-        dispatch(updateUserDeadline({ userDeadline: userDeadline }));
-    }, [dispatch]);
-    return [deadline, setUserDeadline];
+  var chainId = useActiveWeb3React().chainId
+  var dispatch = useAppDispatch()
+  var userDeadline = useAppSelector(function (state) {
+    return state.user.userDeadline
+  })
+  var onL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId))
+  var deadline = onL2 ? L2_DEADLINE_FROM_NOW : userDeadline
+  var setUserDeadline = React.useCallback(
+    function (userDeadline) {
+      dispatch(updateUserDeadline({ userDeadline }))
+    },
+    [dispatch]
+  )
+  return [deadline, setUserDeadline]
 }
 function useAddUserToken() {
-    var dispatch = useAppDispatch();
-    return React.useCallback(function (token) {
-        dispatch(addSerializedToken({ serializedToken: serializeToken(token) }));
-    }, [dispatch]);
+  var dispatch = useAppDispatch()
+  return React.useCallback(
+    function (token) {
+      dispatch(addSerializedToken({ serializedToken: serializeToken(token) }))
+    },
+    [dispatch]
+  )
 }
 function useRemoveUserAddedToken() {
-    var dispatch = useAppDispatch();
-    return React.useCallback(function (chainId, address) {
-        dispatch(removeSerializedToken({ chainId: chainId, address: address }));
-    }, [dispatch]);
+  var dispatch = useAppDispatch()
+  return React.useCallback(
+    function (chainId, address) {
+      dispatch(removeSerializedToken({ chainId, address }))
+    },
+    [dispatch]
+  )
 }
 function useUserAddedTokens() {
-    var chainId = useActiveWeb3React().chainId;
-    var serializedTokensMap = useAppSelector(function (_a) {
-        var tokens = _a.user.tokens;
-        return tokens;
-    });
-    return React.useMemo(function () {
-        if (!chainId)
-            return [];
-        var tokenMap = (serializedTokensMap === null || serializedTokensMap === void 0 ? void 0 : serializedTokensMap[chainId])
-            ? Object.values(serializedTokensMap[chainId]).map(deserializeToken)
-            : [];
-        return tokenMap;
-    }, [serializedTokensMap, chainId]);
+  var chainId = useActiveWeb3React().chainId
+  var serializedTokensMap = useAppSelector(function (_a) {
+    var tokens = _a.user.tokens
+    return tokens
+  })
+  return React.useMemo(
+    function () {
+      if (!chainId) return []
+      var tokenMap = (
+        serializedTokensMap === null || serializedTokensMap === void 0 ? void 0 : serializedTokensMap[chainId]
+      )
+        ? Object.values(serializedTokensMap[chainId]).map(deserializeToken)
+        : []
+      return tokenMap
+    },
+    [serializedTokensMap, chainId]
+  )
 }
 function useURLWarningVisible() {
-    return useAppSelector(function (state) { return state.user.URLWarningVisible; });
+  return useAppSelector(function (state) {
+    return state.user.URLWarningVisible
+  })
 }
 
 var EXPLORER_HOSTNAMES = {
-    'etherscan.io': true,
-    'ropsten.etherscan.io': true,
-    'rinkeby.etherscan.io': true,
-    'kovan.etherscan.io': true,
-    'goerli.etherscan.io': true,
-    'optimistic.etherscan.io': true,
-    'kovan-optimistic.etherscan.io': true,
-    'rinkeby-explorer.arbitrum.io': true,
-    'arbiscan.io': true,
-};
+  'etherscan.io': true,
+  'ropsten.etherscan.io': true,
+  'rinkeby.etherscan.io': true,
+  'kovan.etherscan.io': true,
+  'goerli.etherscan.io': true,
+  'optimistic.etherscan.io': true,
+  'kovan-optimistic.etherscan.io': true,
+  'rinkeby-explorer.arbitrum.io': true,
+  'arbiscan.io': true,
+}
 /**
  * Returns the anonymized version of the given href, i.e. one that does not leak user information
  * @param href the link to anonymize, i.e. remove any personal data from
  * @return string anonymized version of the given href
  */
 function anonymizeLink(href) {
-    try {
-        var url = new URL(href);
-        if (EXPLORER_HOSTNAMES[url.hostname]) {
-            var pathPieces = url.pathname.split('/');
-            var anonymizedPath = pathPieces.map(function (pc) { return (/0x[a-fA-F0-9]+/.test(pc) ? '***' : pc); }).join('/');
-            return url.protocol + "//" + url.hostname + anonymizedPath;
-        }
-        return href;
+  try {
+    var url = new URL(href)
+    if (EXPLORER_HOSTNAMES[url.hostname]) {
+      var pathPieces = url.pathname.split('/')
+      var anonymizedPath = pathPieces
+        .map(function (pc) {
+          return /0x[a-fA-F0-9]+/.test(pc) ? '***' : pc
+        })
+        .join('/')
+      return url.protocol + '//' + url.hostname + anonymizedPath
     }
-    catch (error) {
-        return href;
-    }
+    return href
+  } catch (error) {
+    return href
+  }
 }
 
-var ButtonText = styled__default["default"].button(templateObject_1$1l || (templateObject_1$1l = __makeTemplateObject(["\n  outline: none;\n  border: none;\n  font-size: inherit;\n  padding: 0;\n  margin: 0;\n  background: none;\n  cursor: pointer;\n\n  :hover {\n    opacity: 0.7;\n  }\n\n  :focus {\n    text-decoration: underline;\n  }\n"], ["\n  outline: none;\n  border: none;\n  font-size: inherit;\n  padding: 0;\n  margin: 0;\n  background: none;\n  cursor: pointer;\n\n  :hover {\n    opacity: 0.7;\n  }\n\n  :focus {\n    text-decoration: underline;\n  }\n"])));
-var CloseIcon$2 = styled__default["default"](reactFeather.X)(templateObject_2$$ || (templateObject_2$$ = __makeTemplateObject(["\n  cursor: pointer;\n"], ["\n  cursor: pointer;\n"
-    // for wrapper react feather icons
-])));
+var ButtonText = styled__default['default'].button(
+  templateObject_1$1l ||
+    (templateObject_1$1l = __makeTemplateObject(
+      [
+        '\n  outline: none;\n  border: none;\n  font-size: inherit;\n  padding: 0;\n  margin: 0;\n  background: none;\n  cursor: pointer;\n\n  :hover {\n    opacity: 0.7;\n  }\n\n  :focus {\n    text-decoration: underline;\n  }\n',
+      ],
+      [
+        '\n  outline: none;\n  border: none;\n  font-size: inherit;\n  padding: 0;\n  margin: 0;\n  background: none;\n  cursor: pointer;\n\n  :hover {\n    opacity: 0.7;\n  }\n\n  :focus {\n    text-decoration: underline;\n  }\n',
+      ]
+    ))
+)
+var CloseIcon$2 = styled__default['default'](reactFeather.X)(
+  templateObject_2$$ ||
+    (templateObject_2$$ = __makeTemplateObject(
+      ['\n  cursor: pointer;\n'],
+      [
+        '\n  cursor: pointer;\n',
+        // for wrapper react feather icons
+      ]
+    ))
+)
 // for wrapper react feather icons
-var IconWrapper$4 = styled__default["default"].div(templateObject_3$S || (templateObject_3$S = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: ", ";\n  height: ", ";\n  margin-right: ", ";\n  margin-left: ", ";\n  & > * {\n    stroke: ", ";\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: ", ";\n  height: ", ";\n  margin-right: ", ";\n  margin-left: ", ";\n  & > * {\n    stroke: ", ";\n  }\n"
-    // A button that triggers some onClick result, but looks like a link.
-])), function (_a) {
-    var size = _a.size;
-    return size !== null && size !== void 0 ? size : '20px';
-}, function (_a) {
-    var size = _a.size;
-    return size !== null && size !== void 0 ? size : '20px';
-}, function (_a) {
-    var marginRight = _a.marginRight;
-    return marginRight !== null && marginRight !== void 0 ? marginRight : 0;
-}, function (_a) {
-    var marginLeft = _a.marginLeft;
-    return marginLeft !== null && marginLeft !== void 0 ? marginLeft : 0;
-}, function (_a) {
-    var theme = _a.theme, stroke = _a.stroke;
-    return stroke !== null && stroke !== void 0 ? stroke : theme.blue1;
-});
+var IconWrapper$4 = styled__default['default'].div(
+  templateObject_3$S ||
+    (templateObject_3$S = __makeTemplateObject(
+      [
+        '\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: ',
+        ';\n  height: ',
+        ';\n  margin-right: ',
+        ';\n  margin-left: ',
+        ';\n  & > * {\n    stroke: ',
+        ';\n  }\n',
+      ],
+      [
+        '\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: ',
+        ';\n  height: ',
+        ';\n  margin-right: ',
+        ';\n  margin-left: ',
+        ';\n  & > * {\n    stroke: ',
+        ';\n  }\n',
+        // A button that triggers some onClick result, but looks like a link.
+      ]
+    )),
+  function (_a) {
+    var size = _a.size
+    return size !== null && size !== void 0 ? size : '20px'
+  },
+  function (_a) {
+    var size = _a.size
+    return size !== null && size !== void 0 ? size : '20px'
+  },
+  function (_a) {
+    var marginRight = _a.marginRight
+    return marginRight !== null && marginRight !== void 0 ? marginRight : 0
+  },
+  function (_a) {
+    var marginLeft = _a.marginLeft
+    return marginLeft !== null && marginLeft !== void 0 ? marginLeft : 0
+  },
+  function (_a) {
+    var theme = _a.theme,
+      stroke = _a.stroke
+    return stroke !== null && stroke !== void 0 ? stroke : theme.blue1
+  }
+)
 // A button that triggers some onClick result, but looks like a link.
-var LinkStyledButton = styled__default["default"].button(templateObject_4$G || (templateObject_4$G = __makeTemplateObject(["\n  border: none;\n  text-decoration: none;\n  background: none;\n\n  cursor: ", ";\n  color: ", ";\n  font-weight: 500;\n\n  :hover {\n    text-decoration: ", ";\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: ", ";\n  }\n\n  :active {\n    text-decoration: none;\n  }\n"], ["\n  border: none;\n  text-decoration: none;\n  background: none;\n\n  cursor: ", ";\n  color: ", ";\n  font-weight: 500;\n\n  :hover {\n    text-decoration: ", ";\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: ", ";\n  }\n\n  :active {\n    text-decoration: none;\n  }\n"
-    // An internal link from the react-router-dom library that is correctly styled
-])), function (_a) {
-    var disabled = _a.disabled;
-    return (disabled ? 'default' : 'pointer');
-}, function (_a) {
-    var theme = _a.theme, disabled = _a.disabled;
-    return (disabled ? theme.text2 : theme.primary1);
-}, function (_a) {
-    var disabled = _a.disabled;
-    return (disabled ? null : 'underline');
-}, function (_a) {
-    var disabled = _a.disabled;
-    return (disabled ? null : 'underline');
-});
+var LinkStyledButton = styled__default['default'].button(
+  templateObject_4$G ||
+    (templateObject_4$G = __makeTemplateObject(
+      [
+        '\n  border: none;\n  text-decoration: none;\n  background: none;\n\n  cursor: ',
+        ';\n  color: ',
+        ';\n  font-weight: 500;\n\n  :hover {\n    text-decoration: ',
+        ';\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: ',
+        ';\n  }\n\n  :active {\n    text-decoration: none;\n  }\n',
+      ],
+      [
+        '\n  border: none;\n  text-decoration: none;\n  background: none;\n\n  cursor: ',
+        ';\n  color: ',
+        ';\n  font-weight: 500;\n\n  :hover {\n    text-decoration: ',
+        ';\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: ',
+        ';\n  }\n\n  :active {\n    text-decoration: none;\n  }\n',
+        // An internal link from the react-router-dom library that is correctly styled
+      ]
+    )),
+  function (_a) {
+    var disabled = _a.disabled
+    return disabled ? 'default' : 'pointer'
+  },
+  function (_a) {
+    var theme = _a.theme,
+      disabled = _a.disabled
+    return disabled ? theme.text2 : theme.primary1
+  },
+  function (_a) {
+    var disabled = _a.disabled
+    return disabled ? null : 'underline'
+  },
+  function (_a) {
+    var disabled = _a.disabled
+    return disabled ? null : 'underline'
+  }
+)
 // An internal link from the react-router-dom library that is correctly styled
-var StyledInternalLink = styled__default["default"](reactRouterDom.Link)(templateObject_5$x || (templateObject_5$x = __makeTemplateObject(["\n  text-decoration: none;\n  cursor: pointer;\n  color: ", ";\n  font-weight: 500;\n\n  :hover {\n    text-decoration: underline;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: underline;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n"], ["\n  text-decoration: none;\n  cursor: pointer;\n  color: ", ";\n  font-weight: 500;\n\n  :hover {\n    text-decoration: underline;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: underline;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary1;
-});
-var StyledLink = styled__default["default"].a(templateObject_6$o || (templateObject_6$o = __makeTemplateObject(["\n  text-decoration: none;\n  cursor: pointer;\n  color: ", ";\n  font-weight: 500;\n\n  :hover {\n    text-decoration: underline;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: underline;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n"], ["\n  text-decoration: none;\n  cursor: pointer;\n  color: ", ";\n  font-weight: 500;\n\n  :hover {\n    text-decoration: underline;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: underline;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary1;
-});
-var LinkIconWrapper = styled__default["default"].a(templateObject_7$k || (templateObject_7$k = __makeTemplateObject(["\n  text-decoration: none;\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  display: flex;\n\n  :hover {\n    text-decoration: none;\n    opacity: 0.7;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: none;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n"], ["\n  text-decoration: none;\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  display: flex;\n\n  :hover {\n    text-decoration: none;\n    opacity: 0.7;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: none;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n"])));
-var LinkIcon = styled__default["default"](reactFeather.ExternalLink)(templateObject_8$h || (templateObject_8$h = __makeTemplateObject(["\n  height: 16px;\n  width: 18px;\n  margin-left: 10px;\n  stroke: ", ";\n"], ["\n  height: 16px;\n  width: 18px;\n  margin-left: 10px;\n  stroke: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.blue1;
-});
-var TrashIcon = styled__default["default"](reactFeather.Trash)(templateObject_9$g || (templateObject_9$g = __makeTemplateObject(["\n  height: 16px;\n  width: 18px;\n  margin-left: 10px;\n  stroke: ", ";\n\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  display: flex;\n\n  :hover {\n    opacity: 0.7;\n  }\n"], ["\n  height: 16px;\n  width: 18px;\n  margin-left: 10px;\n  stroke: ", ";\n\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  display: flex;\n\n  :hover {\n    opacity: 0.7;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.text3;
-});
-var rotateImg = styled.keyframes(templateObject_10$c || (templateObject_10$c = __makeTemplateObject(["\n  0% {\n    transform: perspective(1000px) rotateY(0deg);\n  }\n\n  100% {\n    transform: perspective(1000px) rotateY(360deg);\n  }\n"], ["\n  0% {\n    transform: perspective(1000px) rotateY(0deg);\n  }\n\n  100% {\n    transform: perspective(1000px) rotateY(360deg);\n  }\n"])));
-var UniTokenAnimated = styled__default["default"].img(templateObject_11$a || (templateObject_11$a = __makeTemplateObject(["\n  animation: ", " 5s cubic-bezier(0.83, 0, 0.17, 1) infinite;\n  padding: 2rem 0 0 0;\n  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));\n"], ["\n  animation: ", " 5s cubic-bezier(0.83, 0, 0.17, 1) infinite;\n  padding: 2rem 0 0 0;\n  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));\n"])), rotateImg);
+var StyledInternalLink = styled__default['default'](reactRouterDom.Link)(
+  templateObject_5$x ||
+    (templateObject_5$x = __makeTemplateObject(
+      [
+        '\n  text-decoration: none;\n  cursor: pointer;\n  color: ',
+        ';\n  font-weight: 500;\n\n  :hover {\n    text-decoration: underline;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: underline;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n',
+      ],
+      [
+        '\n  text-decoration: none;\n  cursor: pointer;\n  color: ',
+        ';\n  font-weight: 500;\n\n  :hover {\n    text-decoration: underline;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: underline;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary1
+  }
+)
+var StyledLink = styled__default['default'].a(
+  templateObject_6$o ||
+    (templateObject_6$o = __makeTemplateObject(
+      [
+        '\n  text-decoration: none;\n  cursor: pointer;\n  color: ',
+        ';\n  font-weight: 500;\n\n  :hover {\n    text-decoration: underline;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: underline;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n',
+      ],
+      [
+        '\n  text-decoration: none;\n  cursor: pointer;\n  color: ',
+        ';\n  font-weight: 500;\n\n  :hover {\n    text-decoration: underline;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: underline;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary1
+  }
+)
+var LinkIconWrapper = styled__default['default'].a(
+  templateObject_7$k ||
+    (templateObject_7$k = __makeTemplateObject(
+      [
+        '\n  text-decoration: none;\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  display: flex;\n\n  :hover {\n    text-decoration: none;\n    opacity: 0.7;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: none;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n',
+      ],
+      [
+        '\n  text-decoration: none;\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  display: flex;\n\n  :hover {\n    text-decoration: none;\n    opacity: 0.7;\n  }\n\n  :focus {\n    outline: none;\n    text-decoration: none;\n  }\n\n  :active {\n    text-decoration: none;\n  }\n',
+      ]
+    ))
+)
+var LinkIcon = styled__default['default'](reactFeather.ExternalLink)(
+  templateObject_8$h ||
+    (templateObject_8$h = __makeTemplateObject(
+      ['\n  height: 16px;\n  width: 18px;\n  margin-left: 10px;\n  stroke: ', ';\n'],
+      ['\n  height: 16px;\n  width: 18px;\n  margin-left: 10px;\n  stroke: ', ';\n']
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.blue1
+  }
+)
+var TrashIcon = styled__default['default'](reactFeather.Trash)(
+  templateObject_9$g ||
+    (templateObject_9$g = __makeTemplateObject(
+      [
+        '\n  height: 16px;\n  width: 18px;\n  margin-left: 10px;\n  stroke: ',
+        ';\n\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  display: flex;\n\n  :hover {\n    opacity: 0.7;\n  }\n',
+      ],
+      [
+        '\n  height: 16px;\n  width: 18px;\n  margin-left: 10px;\n  stroke: ',
+        ';\n\n  cursor: pointer;\n  align-items: center;\n  justify-content: center;\n  display: flex;\n\n  :hover {\n    opacity: 0.7;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.text3
+  }
+)
+var rotateImg = styled.keyframes(
+  templateObject_10$c ||
+    (templateObject_10$c = __makeTemplateObject(
+      [
+        '\n  0% {\n    transform: perspective(1000px) rotateY(0deg);\n  }\n\n  100% {\n    transform: perspective(1000px) rotateY(360deg);\n  }\n',
+      ],
+      [
+        '\n  0% {\n    transform: perspective(1000px) rotateY(0deg);\n  }\n\n  100% {\n    transform: perspective(1000px) rotateY(360deg);\n  }\n',
+      ]
+    ))
+)
+var UniTokenAnimated = styled__default['default'].img(
+  templateObject_11$a ||
+    (templateObject_11$a = __makeTemplateObject(
+      [
+        '\n  animation: ',
+        ' 5s cubic-bezier(0.83, 0, 0.17, 1) infinite;\n  padding: 2rem 0 0 0;\n  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));\n',
+      ],
+      [
+        '\n  animation: ',
+        ' 5s cubic-bezier(0.83, 0, 0.17, 1) infinite;\n  padding: 2rem 0 0 0;\n  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));\n',
+      ]
+    )),
+  rotateImg
+)
 function handleClickExternalLink(event) {
-    var _a = event.currentTarget, target = _a.target, href = _a.href;
-    var anonymizedHref = anonymizeLink(href);
-    // don't prevent default, don't redirect if it's a new tab
-    if (target === '_blank' || event.ctrlKey || event.metaKey) {
-        ReactGA__default["default"].outboundLink({ label: anonymizedHref }, function () {
-            console.debug('Fired outbound link event', anonymizedHref);
-        });
-    }
-    else {
-        event.preventDefault();
-        // send a ReactGA event and then trigger a location change
-        ReactGA__default["default"].outboundLink({ label: anonymizedHref }, function () {
-            window.location.href = anonymizedHref;
-        });
-    }
+  var _a = event.currentTarget,
+    target = _a.target,
+    href = _a.href
+  var anonymizedHref = anonymizeLink(href)
+  // don't prevent default, don't redirect if it's a new tab
+  if (target === '_blank' || event.ctrlKey || event.metaKey) {
+    ReactGA__default['default'].outboundLink({ label: anonymizedHref }, function () {
+      console.debug('Fired outbound link event', anonymizedHref)
+    })
+  } else {
+    event.preventDefault()
+    // send a ReactGA event and then trigger a location change
+    ReactGA__default['default'].outboundLink({ label: anonymizedHref }, function () {
+      window.location.href = anonymizedHref
+    })
+  }
 }
 /**
  * Outbound link that handles firing google analytics events
  */
 function ExternalLink(_a) {
-    var _b = _a.target, target = _b === void 0 ? '_blank' : _b, href = _a.href, _c = _a.rel, rel = _c === void 0 ? 'noopener noreferrer' : _c, rest = __rest(_a, ["target", "href", "rel"]);
-    return jsxRuntime.jsx(StyledLink, __assign({ target: target, rel: rel, href: href, onClick: handleClickExternalLink }, rest), void 0);
+  var _b = _a.target,
+    target = _b === void 0 ? '_blank' : _b,
+    href = _a.href,
+    _c = _a.rel,
+    rel = _c === void 0 ? 'noopener noreferrer' : _c,
+    rest = __rest(_a, ['target', 'href', 'rel'])
+  return jsxRuntime.jsx(StyledLink, __assign({ target, rel, href, onClick: handleClickExternalLink }, rest), void 0)
 }
 function ExternalLinkIcon(_a) {
-    var _b = _a.target, target = _b === void 0 ? '_blank' : _b, href = _a.href, _c = _a.rel, rel = _c === void 0 ? 'noopener noreferrer' : _c, rest = __rest(_a, ["target", "href", "rel"]);
-    return (jsxRuntime.jsx(LinkIconWrapper, __assign({ target: target, rel: rel, href: href, onClick: handleClickExternalLink }, rest, { children: jsxRuntime.jsx(LinkIcon, {}, void 0) }), void 0));
+  var _b = _a.target,
+    target = _b === void 0 ? '_blank' : _b,
+    href = _a.href,
+    _c = _a.rel,
+    rel = _c === void 0 ? 'noopener noreferrer' : _c,
+    rest = __rest(_a, ['target', 'href', 'rel'])
+  return jsxRuntime.jsx(
+    LinkIconWrapper,
+    __assign({ target, rel, href, onClick: handleClickExternalLink }, rest, {
+      children: jsxRuntime.jsx(LinkIcon, {}, void 0),
+    }),
+    void 0
+  )
 }
-var rotate$1 = styled.keyframes(templateObject_12$a || (templateObject_12$a = __makeTemplateObject(["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"], ["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"])));
-var Spinner$2 = styled__default["default"].img(templateObject_13$6 || (templateObject_13$6 = __makeTemplateObject(["\n  animation: 2s ", " linear infinite;\n  width: 16px;\n  height: 16px;\n"], ["\n  animation: 2s ", " linear infinite;\n  width: 16px;\n  height: 16px;\n"])), rotate$1);
-styled__default["default"](StyledInternalLink)(templateObject_14$6 || (templateObject_14$6 = __makeTemplateObject(["\n  color: ", ";\n"], ["\n  color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.text1;
-});
-var CustomLightSpinner = styled__default["default"](Spinner$2)(templateObject_15$4 || (templateObject_15$4 = __makeTemplateObject(["\n  height: ", ";\n  width: ", ";\n"], ["\n  height: ", ";\n  width: ", ";\n"])), function (_a) {
-    var size = _a.size;
-    return size;
-}, function (_a) {
-    var size = _a.size;
-    return size;
-});
-var HideSmall = styled__default["default"].span(templateObject_17$2 || (templateObject_17$2 = __makeTemplateObject(["\n  ", ";\n"], ["\n  ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.mediaWidth.upToSmall(templateObject_16$3 || (templateObject_16$3 = __makeTemplateObject(["\n    display: none;\n  "], ["\n    display: none;\n  "])));
-});
-styled__default["default"].span(templateObject_19$2 || (templateObject_19$2 = __makeTemplateObject(["\n  ", ";\n"], ["\n  ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.mediaWidth.upToExtraSmall(templateObject_18$2 || (templateObject_18$2 = __makeTemplateObject(["\n    display: none;\n  "], ["\n    display: none;\n  "])));
-});
-styled__default["default"].span(templateObject_21$1 || (templateObject_21$1 = __makeTemplateObject(["\n  display: none;\n  ", ";\n"], ["\n  display: none;\n  ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.mediaWidth.upToSmall(templateObject_20$1 || (templateObject_20$1 = __makeTemplateObject(["\n    display: block;\n  "], ["\n    display: block;\n  "])));
-});
-var Separator$1 = styled__default["default"].div(templateObject_22 || (templateObject_22 = __makeTemplateObject(["\n  width: 100%;\n  height: 1px;\n  background-color: ", ";\n"], ["\n  width: 100%;\n  height: 1px;\n  background-color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg2;
-});
-var templateObject_1$1l, templateObject_2$$, templateObject_3$S, templateObject_4$G, templateObject_5$x, templateObject_6$o, templateObject_7$k, templateObject_8$h, templateObject_9$g, templateObject_10$c, templateObject_11$a, templateObject_12$a, templateObject_13$6, templateObject_14$6, templateObject_15$4, templateObject_16$3, templateObject_17$2, templateObject_18$2, templateObject_19$2, templateObject_20$1, templateObject_21$1, templateObject_22;
+var rotate$1 = styled.keyframes(
+  templateObject_12$a ||
+    (templateObject_12$a = __makeTemplateObject(
+      ['\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n'],
+      ['\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n']
+    ))
+)
+var Spinner$2 = styled__default['default'].img(
+  templateObject_13$6 ||
+    (templateObject_13$6 = __makeTemplateObject(
+      ['\n  animation: 2s ', ' linear infinite;\n  width: 16px;\n  height: 16px;\n'],
+      ['\n  animation: 2s ', ' linear infinite;\n  width: 16px;\n  height: 16px;\n']
+    )),
+  rotate$1
+)
+styled__default['default'](StyledInternalLink)(
+  templateObject_14$6 || (templateObject_14$6 = __makeTemplateObject(['\n  color: ', ';\n'], ['\n  color: ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.text1
+  }
+)
+var CustomLightSpinner = styled__default['default'](Spinner$2)(
+  templateObject_15$4 ||
+    (templateObject_15$4 = __makeTemplateObject(
+      ['\n  height: ', ';\n  width: ', ';\n'],
+      ['\n  height: ', ';\n  width: ', ';\n']
+    )),
+  function (_a) {
+    var size = _a.size
+    return size
+  },
+  function (_a) {
+    var size = _a.size
+    return size
+  }
+)
+var HideSmall = styled__default['default'].span(
+  templateObject_17$2 || (templateObject_17$2 = __makeTemplateObject(['\n  ', ';\n'], ['\n  ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.mediaWidth.upToSmall(
+      templateObject_16$3 ||
+        (templateObject_16$3 = __makeTemplateObject(['\n    display: none;\n  '], ['\n    display: none;\n  ']))
+    )
+  }
+)
+styled__default['default'].span(
+  templateObject_19$2 || (templateObject_19$2 = __makeTemplateObject(['\n  ', ';\n'], ['\n  ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.mediaWidth.upToExtraSmall(
+      templateObject_18$2 ||
+        (templateObject_18$2 = __makeTemplateObject(['\n    display: none;\n  '], ['\n    display: none;\n  ']))
+    )
+  }
+)
+styled__default['default'].span(
+  templateObject_21$1 ||
+    (templateObject_21$1 = __makeTemplateObject(['\n  display: none;\n  ', ';\n'], ['\n  display: none;\n  ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.mediaWidth.upToSmall(
+      templateObject_20$1 ||
+        (templateObject_20$1 = __makeTemplateObject(['\n    display: block;\n  '], ['\n    display: block;\n  ']))
+    )
+  }
+)
+var Separator$1 = styled__default['default'].div(
+  templateObject_22 ||
+    (templateObject_22 = __makeTemplateObject(
+      ['\n  width: 100%;\n  height: 1px;\n  background-color: ', ';\n'],
+      ['\n  width: 100%;\n  height: 1px;\n  background-color: ', ';\n']
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg2
+  }
+)
+var templateObject_1$1l,
+  templateObject_2$$,
+  templateObject_3$S,
+  templateObject_4$G,
+  templateObject_5$x,
+  templateObject_6$o,
+  templateObject_7$k,
+  templateObject_8$h,
+  templateObject_9$g,
+  templateObject_10$c,
+  templateObject_11$a,
+  templateObject_12$a,
+  templateObject_13$6,
+  templateObject_14$6,
+  templateObject_15$4,
+  templateObject_16$3,
+  templateObject_17$2,
+  templateObject_18$2,
+  templateObject_19$2,
+  templateObject_20$1,
+  templateObject_21$1,
+  templateObject_22
 
 var MEDIA_WIDTHS = {
-    upToExtraSmall: 500,
-    upToSmall: 720,
-    upToMedium: 960,
-    upToLarge: 1280,
-};
+  upToExtraSmall: 500,
+  upToSmall: 720,
+  upToMedium: 960,
+  upToLarge: 1280,
+}
 // Migrating to a standard z-index system https://getbootstrap.com/docs/5.0/layout/z-index/
 // Please avoid using deprecated numbers
-var Z_INDEX;
-(function (Z_INDEX) {
-    Z_INDEX[Z_INDEX["deprecated_zero"] = 0] = "deprecated_zero";
-    Z_INDEX[Z_INDEX["deprecated_content"] = 1] = "deprecated_content";
-    Z_INDEX[Z_INDEX["dropdown"] = 1000] = "dropdown";
-    Z_INDEX[Z_INDEX["sticky"] = 1020] = "sticky";
-    Z_INDEX[Z_INDEX["fixed"] = 1030] = "fixed";
-    Z_INDEX[Z_INDEX["modalBackdrop"] = 1040] = "modalBackdrop";
-    Z_INDEX[Z_INDEX["offcanvas"] = 1050] = "offcanvas";
-    Z_INDEX[Z_INDEX["modal"] = 1060] = "modal";
-    Z_INDEX[Z_INDEX["popover"] = 1070] = "popover";
-    Z_INDEX[Z_INDEX["tooltip"] = 1080] = "tooltip";
-})(Z_INDEX || (Z_INDEX = {}));
+var Z_INDEX
+;(function (Z_INDEX) {
+  Z_INDEX[(Z_INDEX['deprecated_zero'] = 0)] = 'deprecated_zero'
+  Z_INDEX[(Z_INDEX['deprecated_content'] = 1)] = 'deprecated_content'
+  Z_INDEX[(Z_INDEX['dropdown'] = 1000)] = 'dropdown'
+  Z_INDEX[(Z_INDEX['sticky'] = 1020)] = 'sticky'
+  Z_INDEX[(Z_INDEX['fixed'] = 1030)] = 'fixed'
+  Z_INDEX[(Z_INDEX['modalBackdrop'] = 1040)] = 'modalBackdrop'
+  Z_INDEX[(Z_INDEX['offcanvas'] = 1050)] = 'offcanvas'
+  Z_INDEX[(Z_INDEX['modal'] = 1060)] = 'modal'
+  Z_INDEX[(Z_INDEX['popover'] = 1070)] = 'popover'
+  Z_INDEX[(Z_INDEX['tooltip'] = 1080)] = 'tooltip'
+})(Z_INDEX || (Z_INDEX = {}))
 var mediaWidthTemplates = Object.keys(MEDIA_WIDTHS).reduce(function (accumulator, size) {
-    accumulator[size] = function (a, b, c) { return styled.css(templateObject_1$1k || (templateObject_1$1k = __makeTemplateObject(["\n      @media (max-width: ", "px) {\n        ", "\n      }\n    "], ["\n      @media (max-width: ", "px) {\n        ", "\n      }\n    "])), MEDIA_WIDTHS[size], styled.css(a, b, c)); };
-    return accumulator;
-}, {});
-var white = '#FFFFFF';
-var black = '#000000';
+  accumulator[size] = function (a, b, c) {
+    return styled.css(
+      templateObject_1$1k ||
+        (templateObject_1$1k = __makeTemplateObject(
+          ['\n      @media (max-width: ', 'px) {\n        ', '\n      }\n    '],
+          ['\n      @media (max-width: ', 'px) {\n        ', '\n      }\n    ']
+        )),
+      MEDIA_WIDTHS[size],
+      styled.css(a, b, c)
+    )
+  }
+  return accumulator
+}, {})
+var white = '#FFFFFF'
+var black = '#000000'
 function colors$2(darkMode) {
-    return {
-        darkMode: darkMode,
-        // base
-        white: white,
-        black: black,
-        // text
-        text1: darkMode ? '#FFFFFF' : '#000000',
-        text2: darkMode ? '#C3C5CB' : '#565A69',
-        text3: darkMode ? '#8F96AC' : '#6E727D',
-        text4: darkMode ? '#B2B9D2' : '#C3C5CB',
-        text5: darkMode ? '#2C2F36' : '#EDEEF2',
-        // backgrounds / greys
-        bg0: darkMode ? '#191B1F' : '#FFF',
-        bg1: darkMode ? '#212429' : '#F7F8FA',
-        bg2: darkMode ? '#2C2F36' : '#EDEEF2',
-        bg3: darkMode ? '#40444F' : '#CED0D9',
-        bg4: darkMode ? '#565A69' : '#888D9B',
-        bg5: darkMode ? '#6C7284' : '#888D9B',
-        bg6: darkMode ? '#1A2028' : '#6C7284',
-        //specialty colors
-        modalBG: darkMode ? 'rgba(0,0,0,.425)' : 'rgba(0,0,0,0.3)',
-        advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
-        //primary colors
-        primary1: darkMode ? '#2172E5' : '#E8006F',
-        primary2: darkMode ? '#3680E7' : '#FF8CC3',
-        primary3: darkMode ? '#4D8FEA' : '#FF99C9',
-        primary4: darkMode ? '#376bad70' : '#F6DDE8',
-        primary5: darkMode ? '#153d6f70' : '#FDEAF1',
-        // color text
-        primaryText1: darkMode ? '#5090ea' : '#D50066',
-        // secondary colors
-        secondary1: darkMode ? '#2172E5' : '#E8006F',
-        secondary2: darkMode ? '#17000b26' : '#F6DDE8',
-        secondary3: darkMode ? '#17000b26' : '#FDEAF1',
-        // other
-        red1: darkMode ? '#FF4343' : '#DA2D2B',
-        red2: darkMode ? '#F82D3A' : '#DF1F38',
-        red3: '#D60000',
-        green1: darkMode ? '#27AE60' : '#007D35',
-        yellow1: '#E3A507',
-        yellow2: '#FF8F00',
-        yellow3: '#F3B71E',
-        blue1: darkMode ? '#2172E5' : '#0068FC',
-        blue2: darkMode ? '#5199FF' : '#0068FC',
-        error: darkMode ? '#FD4040' : '#DF1F38',
-        success: darkMode ? '#27AE60' : '#007D35',
-        warning: '#FF8F00',
-        // dont wanna forget these blue yet
-        blue4: darkMode ? '#153d6f70' : '#C4D9F8',
-        // blue5: darkMode ? '#153d6f70' : '#EBF4FF',
-    };
+  return {
+    darkMode,
+    // base
+    white,
+    black,
+    // text
+    text1: darkMode ? '#FFFFFF' : '#000000',
+    text2: darkMode ? '#C3C5CB' : '#565A69',
+    text3: darkMode ? '#8F96AC' : '#6E727D',
+    text4: darkMode ? '#B2B9D2' : '#C3C5CB',
+    text5: darkMode ? '#2C2F36' : '#EDEEF2',
+    // backgrounds / greys
+    bg0: darkMode ? '#191B1F' : '#FFF',
+    bg1: darkMode ? '#212429' : '#F7F8FA',
+    bg2: darkMode ? '#2C2F36' : '#EDEEF2',
+    bg3: darkMode ? '#40444F' : '#CED0D9',
+    bg4: darkMode ? '#565A69' : '#888D9B',
+    bg5: darkMode ? '#6C7284' : '#888D9B',
+    bg6: darkMode ? '#1A2028' : '#6C7284',
+    //specialty colors
+    modalBG: darkMode ? 'rgba(0,0,0,.425)' : 'rgba(0,0,0,0.3)',
+    advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
+    //primary colors
+    primary1: darkMode ? '#2172E5' : '#E8006F',
+    primary2: darkMode ? '#3680E7' : '#FF8CC3',
+    primary3: darkMode ? '#4D8FEA' : '#FF99C9',
+    primary4: darkMode ? '#376bad70' : '#F6DDE8',
+    primary5: darkMode ? '#153d6f70' : '#FDEAF1',
+    // color text
+    primaryText1: darkMode ? '#5090ea' : '#D50066',
+    // secondary colors
+    secondary1: darkMode ? '#2172E5' : '#E8006F',
+    secondary2: darkMode ? '#17000b26' : '#F6DDE8',
+    secondary3: darkMode ? '#17000b26' : '#FDEAF1',
+    // other
+    red1: darkMode ? '#FF4343' : '#DA2D2B',
+    red2: darkMode ? '#F82D3A' : '#DF1F38',
+    red3: '#D60000',
+    green1: darkMode ? '#27AE60' : '#007D35',
+    yellow1: '#E3A507',
+    yellow2: '#FF8F00',
+    yellow3: '#F3B71E',
+    blue1: darkMode ? '#2172E5' : '#0068FC',
+    blue2: darkMode ? '#5199FF' : '#0068FC',
+    error: darkMode ? '#FD4040' : '#DF1F38',
+    success: darkMode ? '#27AE60' : '#007D35',
+    warning: '#FF8F00',
+    // dont wanna forget these blue yet
+    blue4: darkMode ? '#153d6f70' : '#C4D9F8',
+    // blue5: darkMode ? '#153d6f70' : '#EBF4FF',
+  }
 }
 function theme(darkMode) {
-    return __assign(__assign({}, colors$2(darkMode)), { grids: {
-            sm: 8,
-            md: 12,
-            lg: 24,
-        }, 
-        //shadows
-        shadow1: darkMode ? '#000' : '#2F80ED', 
-        // media queries
-        mediaWidth: mediaWidthTemplates, 
-        // css snippets
-        flexColumnNoWrap: styled.css(templateObject_2$_ || (templateObject_2$_ = __makeTemplateObject(["\n      display: flex;\n      flex-flow: column nowrap;\n    "], ["\n      display: flex;\n      flex-flow: column nowrap;\n    "]))), flexRowNoWrap: styled.css(templateObject_3$R || (templateObject_3$R = __makeTemplateObject(["\n      display: flex;\n      flex-flow: row nowrap;\n    "], ["\n      display: flex;\n      flex-flow: row nowrap;\n    "]))) });
+  return __assign(__assign({}, colors$2(darkMode)), {
+    grids: {
+      sm: 8,
+      md: 12,
+      lg: 24,
+    },
+    //shadows
+    shadow1: darkMode ? '#000' : '#2F80ED',
+    // media queries
+    mediaWidth: mediaWidthTemplates,
+    // css snippets
+    flexColumnNoWrap: styled.css(
+      templateObject_2$_ ||
+        (templateObject_2$_ = __makeTemplateObject(
+          ['\n      display: flex;\n      flex-flow: column nowrap;\n    '],
+          ['\n      display: flex;\n      flex-flow: column nowrap;\n    ']
+        ))
+    ),
+    flexRowNoWrap: styled.css(
+      templateObject_3$R ||
+        (templateObject_3$R = __makeTemplateObject(
+          ['\n      display: flex;\n      flex-flow: row nowrap;\n    '],
+          ['\n      display: flex;\n      flex-flow: row nowrap;\n    ']
+        ))
+    ),
+  })
 }
 function ThemeProvider(_a) {
-    var children = _a.children;
-    var darkMode = useIsDarkMode();
-    var themeObject = React.useMemo(function () { return theme(darkMode); }, [darkMode]);
-    return jsxRuntime.jsx(styled.ThemeProvider, __assign({ theme: themeObject }, { children: children }), void 0);
+  var children = _a.children
+  var darkMode = useIsDarkMode()
+  var themeObject = React.useMemo(
+    function () {
+      return theme(darkMode)
+    },
+    [darkMode]
+  )
+  return jsxRuntime.jsx(styled.ThemeProvider, __assign({ theme: themeObject }, { children }), void 0)
 }
-var TextWrapper$1 = styled__default["default"](rebass.Text)(templateObject_4$F || (templateObject_4$F = __makeTemplateObject(["\n  color: ", ";\n"], ["\n  color: ", ";\n"
-    /**
-     * Preset styles of the Rebass Text component
-     */
-])), function (_a) {
-    var color = _a.color, theme = _a.theme;
-    return theme[color];
-});
+var TextWrapper$1 = styled__default['default'](rebass.Text)(
+  templateObject_4$F ||
+    (templateObject_4$F = __makeTemplateObject(
+      ['\n  color: ', ';\n'],
+      [
+        '\n  color: ',
+        ';\n',
+        /**
+         * Preset styles of the Rebass Text component
+         */
+      ]
+    )),
+  function (_a) {
+    var color = _a.color,
+      theme = _a.theme
+    return theme[color]
+  }
+)
 /**
  * Preset styles of the Rebass Text component
  */
 var ThemedText = {
-    Main: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'text2' }, props), void 0);
-    },
-    Link: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'primary1' }, props), void 0);
-    },
-    Label: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 600, color: 'text1' }, props), void 0);
-    },
-    Black: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'text1' }, props), void 0);
-    },
-    White: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'white' }, props), void 0);
-    },
-    Body: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 400, fontSize: 16, color: 'text1' }, props), void 0);
-    },
-    LargeHeader: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 600, fontSize: 24 }, props), void 0);
-    },
-    MediumHeader: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, fontSize: 20 }, props), void 0);
-    },
-    SubHeader: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 400, fontSize: 14 }, props), void 0);
-    },
-    Small: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, fontSize: 11 }, props), void 0);
-    },
-    Blue: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'blue1' }, props), void 0);
-    },
-    Yellow: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'yellow3' }, props), void 0);
-    },
-    DarkGray: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'text3' }, props), void 0);
-    },
-    Gray: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'bg3' }, props), void 0);
-    },
-    Italic: function (props) {
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, fontSize: 12, fontStyle: 'italic', color: 'text2' }, props), void 0);
-    },
-    Error: function (_a) {
-        var error = _a.error, props = __rest(_a, ["error"]);
-        return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: error ? 'red1' : 'text2' }, props), void 0);
-    },
-};
-var ThemedGlobalStyle = styled.createGlobalStyle(templateObject_5$w || (templateObject_5$w = __makeTemplateObject(["\nhtml {\n  color: ", ";\n  background-color: ", " !important;\n}\n\na {\n color: ", "; \n}\n"], ["\nhtml {\n  color: ", ";\n  background-color: ", " !important;\n}\n\na {\n color: ", "; \n}\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.text1;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.blue1;
-});
-var templateObject_1$1k, templateObject_2$_, templateObject_3$R, templateObject_4$F, templateObject_5$w;
+  Main(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'text2' }, props), void 0)
+  },
+  Link(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'primary1' }, props), void 0)
+  },
+  Label(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 600, color: 'text1' }, props), void 0)
+  },
+  Black(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'text1' }, props), void 0)
+  },
+  White(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'white' }, props), void 0)
+  },
+  Body(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 400, fontSize: 16, color: 'text1' }, props), void 0)
+  },
+  LargeHeader(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 600, fontSize: 24 }, props), void 0)
+  },
+  MediumHeader(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, fontSize: 20 }, props), void 0)
+  },
+  SubHeader(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 400, fontSize: 14 }, props), void 0)
+  },
+  Small(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, fontSize: 11 }, props), void 0)
+  },
+  Blue(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'blue1' }, props), void 0)
+  },
+  Yellow(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'yellow3' }, props), void 0)
+  },
+  DarkGray(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'text3' }, props), void 0)
+  },
+  Gray(props) {
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: 'bg3' }, props), void 0)
+  },
+  Italic(props) {
+    return jsxRuntime.jsx(
+      TextWrapper$1,
+      __assign({ fontWeight: 500, fontSize: 12, fontStyle: 'italic', color: 'text2' }, props),
+      void 0
+    )
+  },
+  Error(_a) {
+    var error = _a.error,
+      props = __rest(_a, ['error'])
+    return jsxRuntime.jsx(TextWrapper$1, __assign({ fontWeight: 500, color: error ? 'red1' : 'text2' }, props), void 0)
+  },
+}
+var ThemedGlobalStyle = styled.createGlobalStyle(
+  templateObject_5$w ||
+    (templateObject_5$w = __makeTemplateObject(
+      ['\nhtml {\n  color: ', ';\n  background-color: ', ' !important;\n}\n\na {\n color: ', '; \n}\n'],
+      ['\nhtml {\n  color: ', ';\n  background-color: ', ' !important;\n}\n\na {\n color: ', '; \n}\n']
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.text1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.blue1
+  }
+)
+var templateObject_1$1k, templateObject_2$_, templateObject_3$R, templateObject_4$F, templateObject_5$w
 
-var _a$b;
-var ETHERSCAN_PREFIXES = (_a$b = {},
-    _a$b[SupportedChainId.MAINNET] = 'https://etherscan.io',
-    _a$b[SupportedChainId.ROPSTEN] = 'https://ropsten.etherscan.io',
-    _a$b[SupportedChainId.RINKEBY] = 'https://rinkeby.etherscan.io',
-    _a$b[SupportedChainId.GOERLI] = 'https://goerli.etherscan.io',
-    _a$b[SupportedChainId.KOVAN] = 'https://kovan.etherscan.io',
-    _a$b[SupportedChainId.OPTIMISM] = 'https://optimistic.etherscan.io',
-    _a$b[SupportedChainId.OPTIMISTIC_KOVAN] = 'https://kovan-optimistic.etherscan.io',
-    _a$b[SupportedChainId.POLYGON_MUMBAI] = 'https://mumbai.polygonscan.com',
-    _a$b[SupportedChainId.POLYGON] = 'https://polygonscan.com',
-    _a$b);
-var ExplorerDataType;
-(function (ExplorerDataType) {
-    ExplorerDataType["TRANSACTION"] = "transaction";
-    ExplorerDataType["TOKEN"] = "token";
-    ExplorerDataType["ADDRESS"] = "address";
-    ExplorerDataType["BLOCK"] = "block";
-})(ExplorerDataType || (ExplorerDataType = {}));
+var _a$b
+var ETHERSCAN_PREFIXES =
+  ((_a$b = {}),
+  (_a$b[SupportedChainId.MAINNET] = 'https://etherscan.io'),
+  (_a$b[SupportedChainId.ROPSTEN] = 'https://ropsten.etherscan.io'),
+  (_a$b[SupportedChainId.RINKEBY] = 'https://rinkeby.etherscan.io'),
+  (_a$b[SupportedChainId.GOERLI] = 'https://goerli.etherscan.io'),
+  (_a$b[SupportedChainId.KOVAN] = 'https://kovan.etherscan.io'),
+  (_a$b[SupportedChainId.OPTIMISM] = 'https://optimistic.etherscan.io'),
+  (_a$b[SupportedChainId.OPTIMISTIC_KOVAN] = 'https://kovan-optimistic.etherscan.io'),
+  (_a$b[SupportedChainId.POLYGON_MUMBAI] = 'https://mumbai.polygonscan.com'),
+  (_a$b[SupportedChainId.POLYGON] = 'https://polygonscan.com'),
+  _a$b)
+var ExplorerDataType
+;(function (ExplorerDataType) {
+  ExplorerDataType['TRANSACTION'] = 'transaction'
+  ExplorerDataType['TOKEN'] = 'token'
+  ExplorerDataType['ADDRESS'] = 'address'
+  ExplorerDataType['BLOCK'] = 'block'
+})(ExplorerDataType || (ExplorerDataType = {}))
 /**
  * Return the explorer link for the given data and data type
  * @param chainId the ID of the chain for which to return the data
@@ -9088,1209 +10086,2644 @@ var ExplorerDataType;
  * @param type the type of the data
  */
 function getExplorerLink(chainId, data, type) {
-    var _a;
-    if (chainId === SupportedChainId.ARBITRUM_ONE) {
-        switch (type) {
-            case ExplorerDataType.TRANSACTION:
-                return "https://arbiscan.io/tx/" + data;
-            case ExplorerDataType.ADDRESS:
-            case ExplorerDataType.TOKEN:
-                return "https://arbiscan.io/address/" + data;
-            case ExplorerDataType.BLOCK:
-                return "https://arbiscan.io/block/" + data;
-            default:
-                return "https://arbiscan.io/";
-        }
-    }
-    if (chainId === SupportedChainId.ARBITRUM_RINKEBY) {
-        switch (type) {
-            case ExplorerDataType.TRANSACTION:
-                return "https://rinkeby-explorer.arbitrum.io/tx/" + data;
-            case ExplorerDataType.ADDRESS:
-            case ExplorerDataType.TOKEN:
-                return "https://rinkeby-explorer.arbitrum.io/address/" + data;
-            case ExplorerDataType.BLOCK:
-                return "https://rinkeby-explorer.arbitrum.io/block/" + data;
-            default:
-                return "https://rinkeby-explorer.arbitrum.io/";
-        }
-    }
-    var prefix = (_a = ETHERSCAN_PREFIXES[chainId]) !== null && _a !== void 0 ? _a : 'https://etherscan.io';
+  var _a
+  if (chainId === SupportedChainId.ARBITRUM_ONE) {
     switch (type) {
-        case ExplorerDataType.TRANSACTION:
-            return prefix + "/tx/" + data;
-        case ExplorerDataType.TOKEN:
-            return prefix + "/token/" + data;
-        case ExplorerDataType.BLOCK:
-            if (chainId === SupportedChainId.OPTIMISM || chainId === SupportedChainId.OPTIMISTIC_KOVAN) {
-                return prefix + "/tx/" + data;
-            }
-            return prefix + "/block/" + data;
-        case ExplorerDataType.ADDRESS:
-            return prefix + "/address/" + data;
-        default:
-            return "" + prefix;
+      case ExplorerDataType.TRANSACTION:
+        return 'https://arbiscan.io/tx/' + data
+      case ExplorerDataType.ADDRESS:
+      case ExplorerDataType.TOKEN:
+        return 'https://arbiscan.io/address/' + data
+      case ExplorerDataType.BLOCK:
+        return 'https://arbiscan.io/block/' + data
+      default:
+        return 'https://arbiscan.io/'
     }
+  }
+  if (chainId === SupportedChainId.ARBITRUM_RINKEBY) {
+    switch (type) {
+      case ExplorerDataType.TRANSACTION:
+        return 'https://rinkeby-explorer.arbitrum.io/tx/' + data
+      case ExplorerDataType.ADDRESS:
+      case ExplorerDataType.TOKEN:
+        return 'https://rinkeby-explorer.arbitrum.io/address/' + data
+      case ExplorerDataType.BLOCK:
+        return 'https://rinkeby-explorer.arbitrum.io/block/' + data
+      default:
+        return 'https://rinkeby-explorer.arbitrum.io/'
+    }
+  }
+  var prefix = (_a = ETHERSCAN_PREFIXES[chainId]) !== null && _a !== void 0 ? _a : 'https://etherscan.io'
+  switch (type) {
+    case ExplorerDataType.TRANSACTION:
+      return prefix + '/tx/' + data
+    case ExplorerDataType.TOKEN:
+      return prefix + '/token/' + data
+    case ExplorerDataType.BLOCK:
+      if (chainId === SupportedChainId.OPTIMISM || chainId === SupportedChainId.OPTIMISTIC_KOVAN) {
+        return prefix + '/tx/' + data
+      }
+      return prefix + '/block/' + data
+    case ExplorerDataType.ADDRESS:
+      return prefix + '/address/' + data
+    default:
+      return '' + prefix
+  }
 }
 
-var Column = styled__default["default"].div(templateObject_1$1j || (templateObject_1$1j = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n"], ["\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n"])));
-var ColumnCenter = styled__default["default"](Column)(templateObject_2$Z || (templateObject_2$Z = __makeTemplateObject(["\n  width: 100%;\n  align-items: center;\n"], ["\n  width: 100%;\n  align-items: center;\n"])));
-var AutoColumn = styled__default["default"].div(templateObject_3$Q || (templateObject_3$Q = __makeTemplateObject(["\n  display: grid;\n  grid-auto-rows: auto;\n  grid-row-gap: ", ";\n  justify-items: ", ";\n"], ["\n  display: grid;\n  grid-auto-rows: auto;\n  grid-row-gap: ", ";\n  justify-items: ", ";\n"])), function (_a) {
-    var gap = _a.gap;
-    return (gap === 'sm' && '8px') || (gap === 'md' && '12px') || (gap === 'lg' && '24px') || gap;
-}, function (_a) {
-    var justify = _a.justify;
-    return justify && justify;
-});
-var templateObject_1$1j, templateObject_2$Z, templateObject_3$Q;
+var Column = styled__default['default'].div(
+  templateObject_1$1j ||
+    (templateObject_1$1j = __makeTemplateObject(
+      ['\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n'],
+      ['\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n']
+    ))
+)
+var ColumnCenter = styled__default['default'](Column)(
+  templateObject_2$Z ||
+    (templateObject_2$Z = __makeTemplateObject(
+      ['\n  width: 100%;\n  align-items: center;\n'],
+      ['\n  width: 100%;\n  align-items: center;\n']
+    ))
+)
+var AutoColumn = styled__default['default'].div(
+  templateObject_3$Q ||
+    (templateObject_3$Q = __makeTemplateObject(
+      ['\n  display: grid;\n  grid-auto-rows: auto;\n  grid-row-gap: ', ';\n  justify-items: ', ';\n'],
+      ['\n  display: grid;\n  grid-auto-rows: auto;\n  grid-row-gap: ', ';\n  justify-items: ', ';\n']
+    )),
+  function (_a) {
+    var gap = _a.gap
+    return (gap === 'sm' && '8px') || (gap === 'md' && '12px') || (gap === 'lg' && '24px') || gap
+  },
+  function (_a) {
+    var justify = _a.justify
+    return justify && justify
+  }
+)
+var templateObject_1$1j, templateObject_2$Z, templateObject_3$Q
 
-var Row$1 = styled__default["default"](styledComponents.Box)(templateObject_1$1i || (templateObject_1$1i = __makeTemplateObject(["\n  width: ", ";\n  display: flex;\n  padding: 0;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", ";\n  border: ", ";\n  border-radius: ", ";\n"], ["\n  width: ", ";\n  display: flex;\n  padding: 0;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", ";\n  border: ", ";\n  border-radius: ", ";\n"])), function (_a) {
-    var width = _a.width;
-    return width !== null && width !== void 0 ? width : '100%';
-}, function (_a) {
-    var align = _a.align;
-    return align !== null && align !== void 0 ? align : 'center';
-}, function (_a) {
-    var justify = _a.justify;
-    return justify !== null && justify !== void 0 ? justify : 'flex-start';
-}, function (_a) {
-    var padding = _a.padding;
-    return padding;
-}, function (_a) {
-    var border = _a.border;
-    return border;
-}, function (_a) {
-    var borderRadius = _a.borderRadius;
-    return borderRadius;
-});
-var RowBetween = styled__default["default"](Row$1)(templateObject_2$Y || (templateObject_2$Y = __makeTemplateObject(["\n  justify-content: space-between;\n"], ["\n  justify-content: space-between;\n"])));
-styled__default["default"].div(templateObject_3$P || (templateObject_3$P = __makeTemplateObject(["\n  display: flex;\n  align-items: flex-end;\n"], ["\n  display: flex;\n  align-items: flex-end;\n"])));
-var AutoRow = styled__default["default"](Row$1)(templateObject_4$E || (templateObject_4$E = __makeTemplateObject(["\n  flex-wrap: wrap;\n  margin: ", ";\n  justify-content: ", ";\n\n  & > * {\n    margin: ", " !important;\n  }\n"], ["\n  flex-wrap: wrap;\n  margin: ", ";\n  justify-content: ", ";\n\n  & > * {\n    margin: ", " !important;\n  }\n"])), function (_a) {
-    var gap = _a.gap;
-    return gap && "-" + gap;
-}, function (_a) {
-    var justify = _a.justify;
-    return justify && justify;
-}, function (_a) {
-    var gap = _a.gap;
-    return gap;
-});
-var RowFixed = styled__default["default"](Row$1)(templateObject_5$v || (templateObject_5$v = __makeTemplateObject(["\n  width: fit-content;\n  margin: ", ";\n"], ["\n  width: fit-content;\n  margin: ", ";\n"])), function (_a) {
-    var gap = _a.gap;
-    return gap && "-" + gap;
-});
-var templateObject_1$1i, templateObject_2$Y, templateObject_3$P, templateObject_4$E, templateObject_5$v;
+var Row$1 = styled__default['default'](styledComponents.Box)(
+  templateObject_1$1i ||
+    (templateObject_1$1i = __makeTemplateObject(
+      [
+        '\n  width: ',
+        ';\n  display: flex;\n  padding: 0;\n  align-items: ',
+        ';\n  justify-content: ',
+        ';\n  padding: ',
+        ';\n  border: ',
+        ';\n  border-radius: ',
+        ';\n',
+      ],
+      [
+        '\n  width: ',
+        ';\n  display: flex;\n  padding: 0;\n  align-items: ',
+        ';\n  justify-content: ',
+        ';\n  padding: ',
+        ';\n  border: ',
+        ';\n  border-radius: ',
+        ';\n',
+      ]
+    )),
+  function (_a) {
+    var width = _a.width
+    return width !== null && width !== void 0 ? width : '100%'
+  },
+  function (_a) {
+    var align = _a.align
+    return align !== null && align !== void 0 ? align : 'center'
+  },
+  function (_a) {
+    var justify = _a.justify
+    return justify !== null && justify !== void 0 ? justify : 'flex-start'
+  },
+  function (_a) {
+    var padding = _a.padding
+    return padding
+  },
+  function (_a) {
+    var border = _a.border
+    return border
+  },
+  function (_a) {
+    var borderRadius = _a.borderRadius
+    return borderRadius
+  }
+)
+var RowBetween = styled__default['default'](Row$1)(
+  templateObject_2$Y ||
+    (templateObject_2$Y = __makeTemplateObject(
+      ['\n  justify-content: space-between;\n'],
+      ['\n  justify-content: space-between;\n']
+    ))
+)
+styled__default['default'].div(
+  templateObject_3$P ||
+    (templateObject_3$P = __makeTemplateObject(
+      ['\n  display: flex;\n  align-items: flex-end;\n'],
+      ['\n  display: flex;\n  align-items: flex-end;\n']
+    ))
+)
+var AutoRow = styled__default['default'](Row$1)(
+  templateObject_4$E ||
+    (templateObject_4$E = __makeTemplateObject(
+      [
+        '\n  flex-wrap: wrap;\n  margin: ',
+        ';\n  justify-content: ',
+        ';\n\n  & > * {\n    margin: ',
+        ' !important;\n  }\n',
+      ],
+      [
+        '\n  flex-wrap: wrap;\n  margin: ',
+        ';\n  justify-content: ',
+        ';\n\n  & > * {\n    margin: ',
+        ' !important;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var gap = _a.gap
+    return gap && '-' + gap
+  },
+  function (_a) {
+    var justify = _a.justify
+    return justify && justify
+  },
+  function (_a) {
+    var gap = _a.gap
+    return gap
+  }
+)
+var RowFixed = styled__default['default'](Row$1)(
+  templateObject_5$v ||
+    (templateObject_5$v = __makeTemplateObject(
+      ['\n  width: fit-content;\n  margin: ', ';\n'],
+      ['\n  width: fit-content;\n  margin: ', ';\n']
+    )),
+  function (_a) {
+    var gap = _a.gap
+    return gap && '-' + gap
+  }
+)
+var templateObject_1$1i, templateObject_2$Y, templateObject_3$P, templateObject_4$E, templateObject_5$v
 
-var InputPanel$1 = styled__default["default"].div(templateObject_1$1h || (templateObject_1$1h = __makeTemplateObject(["\n  ", "\n  position: relative;\n  border-radius: 1.25rem;\n  background-color: ", ";\n  z-index: 1;\n  width: 100%;\n"], ["\n  ", "\n  position: relative;\n  border-radius: 1.25rem;\n  background-color: ", ";\n  z-index: 1;\n  width: 100%;\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.flexColumnNoWrap;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-});
-var ContainerRow = styled__default["default"].div(templateObject_2$X || (templateObject_2$X = __makeTemplateObject(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 1.25rem;\n  border: 1px solid ", ";\n  transition: border-color 300ms ", ",\n    color 500ms ", ";\n  background-color: ", ";\n"], ["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 1.25rem;\n  border: 1px solid ", ";\n  transition: border-color 300ms ", ",\n    color 500ms ", ";\n  background-color: ", ";\n"])), function (_a) {
-    var error = _a.error, theme = _a.theme;
-    return (error ? theme.red1 : theme.bg2);
-}, function (_a) {
-    var error = _a.error;
-    return (error ? 'step-end' : 'step-start');
-}, function (_a) {
-    var error = _a.error;
-    return (error ? 'step-end' : 'step-start');
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-});
-var InputContainer = styled__default["default"].div(templateObject_3$O || (templateObject_3$O = __makeTemplateObject(["\n  flex: 1;\n  padding: 1rem;\n"], ["\n  flex: 1;\n  padding: 1rem;\n"])));
-var Input$2 = styled__default["default"].input(templateObject_4$D || (templateObject_4$D = __makeTemplateObject(["\n  font-size: 1.25rem;\n  outline: none;\n  border: none;\n  flex: 1 1 auto;\n  width: 0;\n  background-color: ", ";\n  transition: color 300ms ", ";\n  color: ", ";\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-weight: 500;\n  width: 100%;\n  ::placeholder {\n    color: ", ";\n  }\n  padding: 0px;\n  -webkit-appearance: textfield;\n\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n\n  ::-webkit-outer-spin-button,\n  ::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n\n  ::placeholder {\n    color: ", ";\n  }\n"], ["\n  font-size: 1.25rem;\n  outline: none;\n  border: none;\n  flex: 1 1 auto;\n  width: 0;\n  background-color: ", ";\n  transition: color 300ms ", ";\n  color: ", ";\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-weight: 500;\n  width: 100%;\n  ::placeholder {\n    color: ", ";\n  }\n  padding: 0px;\n  -webkit-appearance: textfield;\n\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n\n  ::-webkit-outer-spin-button,\n  ::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n\n  ::placeholder {\n    color: ", ";\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-}, function (_a) {
-    var error = _a.error;
-    return (error ? 'step-end' : 'step-start');
-}, function (_a) {
-    var error = _a.error, theme = _a.theme;
-    return (error ? theme.red1 : theme.text1);
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text4;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text4;
-});
+var InputPanel$1 = styled__default['default'].div(
+  templateObject_1$1h ||
+    (templateObject_1$1h = __makeTemplateObject(
+      [
+        '\n  ',
+        '\n  position: relative;\n  border-radius: 1.25rem;\n  background-color: ',
+        ';\n  z-index: 1;\n  width: 100%;\n',
+      ],
+      [
+        '\n  ',
+        '\n  position: relative;\n  border-radius: 1.25rem;\n  background-color: ',
+        ';\n  z-index: 1;\n  width: 100%;\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.flexColumnNoWrap
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg1
+  }
+)
+var ContainerRow = styled__default['default'].div(
+  templateObject_2$X ||
+    (templateObject_2$X = __makeTemplateObject(
+      [
+        '\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 1.25rem;\n  border: 1px solid ',
+        ';\n  transition: border-color 300ms ',
+        ',\n    color 500ms ',
+        ';\n  background-color: ',
+        ';\n',
+      ],
+      [
+        '\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 1.25rem;\n  border: 1px solid ',
+        ';\n  transition: border-color 300ms ',
+        ',\n    color 500ms ',
+        ';\n  background-color: ',
+        ';\n',
+      ]
+    )),
+  function (_a) {
+    var error = _a.error,
+      theme = _a.theme
+    return error ? theme.red1 : theme.bg2
+  },
+  function (_a) {
+    var error = _a.error
+    return error ? 'step-end' : 'step-start'
+  },
+  function (_a) {
+    var error = _a.error
+    return error ? 'step-end' : 'step-start'
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg1
+  }
+)
+var InputContainer = styled__default['default'].div(
+  templateObject_3$O ||
+    (templateObject_3$O = __makeTemplateObject(
+      ['\n  flex: 1;\n  padding: 1rem;\n'],
+      ['\n  flex: 1;\n  padding: 1rem;\n']
+    ))
+)
+var Input$2 = styled__default['default'].input(
+  templateObject_4$D ||
+    (templateObject_4$D = __makeTemplateObject(
+      [
+        '\n  font-size: 1.25rem;\n  outline: none;\n  border: none;\n  flex: 1 1 auto;\n  width: 0;\n  background-color: ',
+        ';\n  transition: color 300ms ',
+        ';\n  color: ',
+        ';\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-weight: 500;\n  width: 100%;\n  ::placeholder {\n    color: ',
+        ';\n  }\n  padding: 0px;\n  -webkit-appearance: textfield;\n\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n\n  ::-webkit-outer-spin-button,\n  ::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n\n  ::placeholder {\n    color: ',
+        ';\n  }\n',
+      ],
+      [
+        '\n  font-size: 1.25rem;\n  outline: none;\n  border: none;\n  flex: 1 1 auto;\n  width: 0;\n  background-color: ',
+        ';\n  transition: color 300ms ',
+        ';\n  color: ',
+        ';\n  overflow: hidden;\n  text-overflow: ellipsis;\n  font-weight: 500;\n  width: 100%;\n  ::placeholder {\n    color: ',
+        ';\n  }\n  padding: 0px;\n  -webkit-appearance: textfield;\n\n  ::-webkit-search-decoration {\n    -webkit-appearance: none;\n  }\n\n  ::-webkit-outer-spin-button,\n  ::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n  }\n\n  ::placeholder {\n    color: ',
+        ';\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg1
+  },
+  function (_a) {
+    var error = _a.error
+    return error ? 'step-end' : 'step-start'
+  },
+  function (_a) {
+    var error = _a.error,
+      theme = _a.theme
+    return error ? theme.red1 : theme.text1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.text4
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.text4
+  }
+)
 function AddressInputPanel(_a) {
-    var id = _a.id, _b = _a.className, className = _b === void 0 ? 'recipient-address-input' : _b, label = _a.label, placeholder = _a.placeholder, value = _a.value, onChange = _a.onChange;
-    var chainId = useActiveWeb3React().chainId;
-    var theme = React.useContext(styled.ThemeContext);
-    var _c = useENS(value), address = _c.address, loading = _c.loading, name = _c.name;
-    var handleInput = React.useCallback(function (event) {
-        var input = event.target.value;
-        var withoutSpaces = input.replace(/\s+/g, '');
-        onChange(withoutSpaces);
-    }, [onChange]);
-    var error = Boolean(value.length > 0 && !loading && !address);
-    return (jsxRuntime.jsx(InputPanel$1, __assign({ id: id }, { children: jsxRuntime.jsx(ContainerRow, __assign({ error: error }, { children: jsxRuntime.jsx(InputContainer, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: "md" }, { children: [jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.Black, __assign({ color: theme.text2, fontWeight: 500, fontSize: 14 }, { children: label !== null && label !== void 0 ? label : jsxRuntime.jsx(macro.Trans, { children: "Recipient" }, void 0) }), void 0), address && chainId && (jsxRuntime.jsx(ExternalLink, __assign({ href: getExplorerLink(chainId, name !== null && name !== void 0 ? name : address, ExplorerDataType.ADDRESS), style: { fontSize: '14px' } }, { children: jsxRuntime.jsx(macro.Trans, { children: "(View on Explorer)" }, void 0) }), void 0))] }, void 0), jsxRuntime.jsx(Input$2, { className: className, type: "text", autoComplete: "off", autoCorrect: "off", autoCapitalize: "off", spellCheck: "false", placeholder: placeholder !== null && placeholder !== void 0 ? placeholder : macro.t(templateObject_5$u || (templateObject_5$u = __makeTemplateObject(["Wallet Address or ENS name"], ["Wallet Address or ENS name"]))), error: error, pattern: "^(0x[a-fA-F0-9]{40})$", onChange: handleInput, value: value }, void 0)] }), void 0) }, void 0) }), void 0) }), void 0));
+  var id = _a.id,
+    _b = _a.className,
+    className = _b === void 0 ? 'recipient-address-input' : _b,
+    label = _a.label,
+    placeholder = _a.placeholder,
+    value = _a.value,
+    onChange = _a.onChange
+  var chainId = useActiveWeb3React().chainId
+  var theme = React.useContext(styled.ThemeContext)
+  var _c = useENS(value),
+    address = _c.address,
+    loading = _c.loading,
+    name = _c.name
+  var handleInput = React.useCallback(
+    function (event) {
+      var input = event.target.value
+      var withoutSpaces = input.replace(/\s+/g, '')
+      onChange(withoutSpaces)
+    },
+    [onChange]
+  )
+  var error = Boolean(value.length > 0 && !loading && !address)
+  return jsxRuntime.jsx(
+    InputPanel$1,
+    __assign(
+      { id },
+      {
+        children: jsxRuntime.jsx(
+          ContainerRow,
+          __assign(
+            { error },
+            {
+              children: jsxRuntime.jsx(
+                InputContainer,
+                {
+                  children: jsxRuntime.jsxs(
+                    AutoColumn,
+                    __assign(
+                      { gap: 'md' },
+                      {
+                        children: [
+                          jsxRuntime.jsxs(
+                            RowBetween,
+                            {
+                              children: [
+                                jsxRuntime.jsx(
+                                  ThemedText.Black,
+                                  __assign(
+                                    { color: theme.text2, fontWeight: 500, fontSize: 14 },
+                                    {
+                                      children:
+                                        label !== null && label !== void 0
+                                          ? label
+                                          : jsxRuntime.jsx(macro.Trans, { children: 'Recipient' }, void 0),
+                                    }
+                                  ),
+                                  void 0
+                                ),
+                                address &&
+                                  chainId &&
+                                  jsxRuntime.jsx(
+                                    ExternalLink,
+                                    __assign(
+                                      {
+                                        href: getExplorerLink(
+                                          chainId,
+                                          name !== null && name !== void 0 ? name : address,
+                                          ExplorerDataType.ADDRESS
+                                        ),
+                                        style: { fontSize: '14px' },
+                                      },
+                                      {
+                                        children: jsxRuntime.jsx(
+                                          macro.Trans,
+                                          { children: '(View on Explorer)' },
+                                          void 0
+                                        ),
+                                      }
+                                    ),
+                                    void 0
+                                  ),
+                              ],
+                            },
+                            void 0
+                          ),
+                          jsxRuntime.jsx(
+                            Input$2,
+                            {
+                              className,
+                              type: 'text',
+                              autoComplete: 'off',
+                              autoCorrect: 'off',
+                              autoCapitalize: 'off',
+                              spellCheck: 'false',
+                              placeholder:
+                                placeholder !== null && placeholder !== void 0
+                                  ? placeholder
+                                  : macro.t(
+                                      templateObject_5$u ||
+                                        (templateObject_5$u = __makeTemplateObject(
+                                          ['Wallet Address or ENS name'],
+                                          ['Wallet Address or ENS name']
+                                        ))
+                                    ),
+                              error,
+                              pattern: '^(0x[a-fA-F0-9]{40})$',
+                              onChange: handleInput,
+                              value,
+                            },
+                            void 0
+                          ),
+                        ],
+                      }
+                    ),
+                    void 0
+                  ),
+                },
+                void 0
+              ),
+            }
+          ),
+          void 0
+        ),
+      }
+    ),
+    void 0
+  )
 }
-var templateObject_1$1h, templateObject_2$X, templateObject_3$O, templateObject_4$D, templateObject_5$u;
+var templateObject_1$1h, templateObject_2$X, templateObject_3$O, templateObject_4$D, templateObject_5$u
 
 function useTheme() {
-    return React.useContext(styled.ThemeContext);
+  return React.useContext(styled.ThemeContext)
 }
 
-var BaseButton = styled__default["default"](styledComponents.Button)(templateObject_1$1g || (templateObject_1$1g = __makeTemplateObject(["\n  padding: ", ";\n  width: ", ";\n  font-weight: 500;\n  text-align: center;\n  border-radius: ", ";\n  outline: none;\n  border: 1px solid transparent;\n  color: ", ";\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  flex-wrap: nowrap;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n  z-index: 1;\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    pointer-events: none;\n  }\n\n  will-change: transform;\n  transition: transform 450ms ease;\n  transform: perspective(1px) translateZ(0);\n\n  > * {\n    user-select: none;\n  }\n\n  > a {\n    text-decoration: none;\n  }\n"], ["\n  padding: ", ";\n  width: ", ";\n  font-weight: 500;\n  text-align: center;\n  border-radius: ", ";\n  outline: none;\n  border: 1px solid transparent;\n  color: ", ";\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  flex-wrap: nowrap;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n  z-index: 1;\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    pointer-events: none;\n  }\n\n  will-change: transform;\n  transition: transform 450ms ease;\n  transform: perspective(1px) translateZ(0);\n\n  > * {\n    user-select: none;\n  }\n\n  > a {\n    text-decoration: none;\n  }\n"])), function (_a) {
-    var padding = _a.padding;
-    return padding !== null && padding !== void 0 ? padding : '16px';
-}, function (_a) {
-    var width = _a.width;
-    return width !== null && width !== void 0 ? width : '100%';
-}, function (_a) {
-    var $borderRadius = _a.$borderRadius;
-    return $borderRadius !== null && $borderRadius !== void 0 ? $borderRadius : '20px';
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text1;
-});
-var ButtonPrimary = styled__default["default"](BaseButton)(templateObject_2$W || (templateObject_2$W = __makeTemplateObject(["\n  background-color: ", ";\n  color: white;\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n    cursor: auto;\n    box-shadow: none;\n    border: 1px solid transparent;\n    outline: none;\n  }\n"], ["\n  background-color: ", ";\n  color: white;\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    color: ", ";\n    cursor: auto;\n    box-shadow: none;\n    border: 1px solid transparent;\n    outline: none;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary1;
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.primary1);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.primary1);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.primary1);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.1, theme.primary1);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.1, theme.primary1);
-}, function (_a) {
-    var theme = _a.theme, altDisabledStyle = _a.altDisabledStyle, disabled = _a.disabled;
-    return altDisabledStyle ? (disabled ? theme.primary1 : theme.bg2) : theme.bg2;
-}, function (_a) {
-    var altDisabledStyle = _a.altDisabledStyle, disabled = _a.disabled, theme = _a.theme;
-    return altDisabledStyle ? (disabled ? theme.white : theme.text2) : theme.text2;
-});
-var ButtonLight = styled__default["default"](BaseButton)(templateObject_3$N || (templateObject_3$N = __makeTemplateObject(["\n  background-color: ", ";\n  color: ", ";\n  font-size: 16px;\n  font-weight: 500;\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  :disabled {\n    opacity: 0.4;\n    :hover {\n      cursor: auto;\n      background-color: ", ";\n      box-shadow: none;\n      border: 1px solid transparent;\n      outline: none;\n    }\n  }\n"], ["\n  background-color: ", ";\n  color: ", ";\n  font-size: 16px;\n  font-weight: 500;\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  :disabled {\n    opacity: 0.4;\n    :hover {\n      cursor: auto;\n      background-color: ", ";\n      box-shadow: none;\n      border: 1px solid transparent;\n      outline: none;\n    }\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary5;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primaryText1;
-}, function (_a) {
-    var theme = _a.theme, disabled = _a.disabled;
-    return !disabled && polished.darken(0.03, theme.primary5);
-}, function (_a) {
-    var theme = _a.theme, disabled = _a.disabled;
-    return !disabled && polished.darken(0.03, theme.primary5);
-}, function (_a) {
-    var theme = _a.theme, disabled = _a.disabled;
-    return !disabled && polished.darken(0.03, theme.primary5);
-}, function (_a) {
-    var theme = _a.theme, disabled = _a.disabled;
-    return !disabled && polished.darken(0.05, theme.primary5);
-}, function (_a) {
-    var theme = _a.theme, disabled = _a.disabled;
-    return !disabled && polished.darken(0.05, theme.primary5);
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primary5;
-});
-var ButtonGray = styled__default["default"](BaseButton)(templateObject_4$C || (templateObject_4$C = __makeTemplateObject(["\n  background-color: ", ";\n  color: ", ";\n  font-size: 16px;\n  font-weight: 500;\n\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    background-color: ", ";\n  }\n"], ["\n  background-color: ", ";\n  color: ", ";\n  font-size: 16px;\n  font-weight: 500;\n\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    background-color: ", ";\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text2;
-}, function (_a) {
-    var theme = _a.theme, disabled = _a.disabled;
-    return !disabled && polished.darken(0.05, theme.bg2);
-}, function (_a) {
-    var theme = _a.theme, disabled = _a.disabled;
-    return !disabled && polished.darken(0.1, theme.bg2);
-});
-var ButtonSecondary = styled__default["default"](BaseButton)(templateObject_5$t || (templateObject_5$t = __makeTemplateObject(["\n  border: 1px solid ", ";\n  color: ", ";\n  background-color: transparent;\n  font-size: 16px;\n  border-radius: 12px;\n  padding: ", ";\n\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    border: 1px solid ", ";\n  }\n  &:hover {\n    border: 1px solid ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    border: 1px solid ", ";\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n  a:hover {\n    text-decoration: none;\n  }\n"], ["\n  border: 1px solid ", ";\n  color: ", ";\n  background-color: transparent;\n  font-size: 16px;\n  border-radius: 12px;\n  padding: ", ";\n\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    border: 1px solid ", ";\n  }\n  &:hover {\n    border: 1px solid ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    border: 1px solid ", ";\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n  a:hover {\n    text-decoration: none;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary4;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primary1;
-}, function (_a) {
-    var padding = _a.padding;
-    return (padding ? padding : '10px');
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primary4;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primary3;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primary3;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primary4;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primary3;
-});
-var ButtonOutlined = styled__default["default"](BaseButton)(templateObject_6$n || (templateObject_6$n = __makeTemplateObject(["\n  border: 1px solid ", ";\n  background-color: transparent;\n  color: ", ";\n  &:focus {\n    box-shadow: 0 0 0 1px ", ";\n  }\n  &:hover {\n    box-shadow: 0 0 0 1px ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1px ", ";\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n"], ["\n  border: 1px solid ", ";\n  background-color: transparent;\n  color: ", ";\n  &:focus {\n    box-shadow: 0 0 0 1px ", ";\n  }\n  &:hover {\n    box-shadow: 0 0 0 1px ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1px ", ";\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg2;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text1;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg4;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg4;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg4;
-});
-styled__default["default"](BaseButton)(templateObject_7$j || (templateObject_7$j = __makeTemplateObject(["\n  background-color: ", ";\n  color: white;\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    opacity: 50%;\n    cursor: auto;\n  }\n"], ["\n  background-color: ", ";\n  color: white;\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:disabled {\n    background-color: ", ";\n    opacity: 50%;\n    cursor: auto;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.yellow3;
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.yellow3);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.yellow3);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.yellow3);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.1, theme.yellow3);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.1, theme.yellow3);
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.yellow3;
-});
-var ButtonEmpty = styled__default["default"](BaseButton)(templateObject_8$g || (templateObject_8$g = __makeTemplateObject(["\n  background-color: transparent;\n  color: ", ";\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  &:focus {\n    text-decoration: underline;\n  }\n  &:hover {\n    text-decoration: none;\n  }\n  &:active {\n    text-decoration: none;\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n"], ["\n  background-color: transparent;\n  color: ", ";\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  &:focus {\n    text-decoration: underline;\n  }\n  &:hover {\n    text-decoration: none;\n  }\n  &:active {\n    text-decoration: none;\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary1;
-});
-styled__default["default"](BaseButton)(templateObject_9$f || (templateObject_9$f = __makeTemplateObject(["\n  padding: 0;\n  width: fit-content;\n  background: none;\n  text-decoration: none;\n  &:focus {\n    // eslint-disable-next-line @typescript-eslint/no-unused-vars\n    text-decoration: underline;\n  }\n  &:hover {\n    // text-decoration: underline;\n    opacity: 0.9;\n  }\n  &:active {\n    text-decoration: underline;\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n"], ["\n  padding: 0;\n  width: fit-content;\n  background: none;\n  text-decoration: none;\n  &:focus {\n    // eslint-disable-next-line @typescript-eslint/no-unused-vars\n    text-decoration: underline;\n  }\n  &:hover {\n    // text-decoration: underline;\n    opacity: 0.9;\n  }\n  &:active {\n    text-decoration: underline;\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n"])));
-var ButtonConfirmedStyle = styled__default["default"](BaseButton)(templateObject_10$b || (templateObject_10$b = __makeTemplateObject(["\n  background-color: ", ";\n  color: ", ";\n  /* border: 1px solid ", "; */\n\n  &:disabled {\n    opacity: 50%;\n    background-color: ", ";\n    color: ", ";\n    cursor: auto;\n  }\n"], ["\n  background-color: ", ";\n  color: ", ";\n  /* border: 1px solid ", "; */\n\n  &:disabled {\n    opacity: 50%;\n    background-color: ", ";\n    color: ", ";\n    cursor: auto;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg3;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text1;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.green1;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg2;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text2;
-});
-var ButtonErrorStyle = styled__default["default"](BaseButton)(templateObject_11$9 || (templateObject_11$9 = __makeTemplateObject(["\n  background-color: ", ";\n  border: 1px solid ", ";\n\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    box-shadow: none;\n    background-color: ", ";\n    border: 1px solid ", ";\n  }\n"], ["\n  background-color: ", ";\n  border: 1px solid ", ";\n\n  &:focus {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:hover {\n    background-color: ", ";\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ", ";\n    background-color: ", ";\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    box-shadow: none;\n    background-color: ", ";\n    border: 1px solid ", ";\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.red1;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.red1;
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.red1);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.red1);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.05, theme.red1);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.1, theme.red1);
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.darken(0.1, theme.red1);
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.red1;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.red1;
-});
+var BaseButton = styled__default['default'](styledComponents.Button)(
+  templateObject_1$1g ||
+    (templateObject_1$1g = __makeTemplateObject(
+      [
+        '\n  padding: ',
+        ';\n  width: ',
+        ';\n  font-weight: 500;\n  text-align: center;\n  border-radius: ',
+        ';\n  outline: none;\n  border: 1px solid transparent;\n  color: ',
+        ';\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  flex-wrap: nowrap;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n  z-index: 1;\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    pointer-events: none;\n  }\n\n  will-change: transform;\n  transition: transform 450ms ease;\n  transform: perspective(1px) translateZ(0);\n\n  > * {\n    user-select: none;\n  }\n\n  > a {\n    text-decoration: none;\n  }\n',
+      ],
+      [
+        '\n  padding: ',
+        ';\n  width: ',
+        ';\n  font-weight: 500;\n  text-align: center;\n  border-radius: ',
+        ';\n  outline: none;\n  border: 1px solid transparent;\n  color: ',
+        ';\n  text-decoration: none;\n  display: flex;\n  justify-content: center;\n  flex-wrap: nowrap;\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n  z-index: 1;\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    pointer-events: none;\n  }\n\n  will-change: transform;\n  transition: transform 450ms ease;\n  transform: perspective(1px) translateZ(0);\n\n  > * {\n    user-select: none;\n  }\n\n  > a {\n    text-decoration: none;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var padding = _a.padding
+    return padding !== null && padding !== void 0 ? padding : '16px'
+  },
+  function (_a) {
+    var width = _a.width
+    return width !== null && width !== void 0 ? width : '100%'
+  },
+  function (_a) {
+    var $borderRadius = _a.$borderRadius
+    return $borderRadius !== null && $borderRadius !== void 0 ? $borderRadius : '20px'
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.text1
+  }
+)
+var ButtonPrimary = styled__default['default'](BaseButton)(
+  templateObject_2$W ||
+    (templateObject_2$W = __makeTemplateObject(
+      [
+        '\n  background-color: ',
+        ';\n  color: white;\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:disabled {\n    background-color: ',
+        ';\n    color: ',
+        ';\n    cursor: auto;\n    box-shadow: none;\n    border: 1px solid transparent;\n    outline: none;\n  }\n',
+      ],
+      [
+        '\n  background-color: ',
+        ';\n  color: white;\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:disabled {\n    background-color: ',
+        ';\n    color: ',
+        ';\n    cursor: auto;\n    box-shadow: none;\n    border: 1px solid transparent;\n    outline: none;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.primary1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.primary1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.primary1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.1, theme.primary1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.1, theme.primary1)
+  },
+  function (_a) {
+    var theme = _a.theme,
+      altDisabledStyle = _a.altDisabledStyle,
+      disabled = _a.disabled
+    return altDisabledStyle ? (disabled ? theme.primary1 : theme.bg2) : theme.bg2
+  },
+  function (_a) {
+    var altDisabledStyle = _a.altDisabledStyle,
+      disabled = _a.disabled,
+      theme = _a.theme
+    return altDisabledStyle ? (disabled ? theme.white : theme.text2) : theme.text2
+  }
+)
+var ButtonLight = styled__default['default'](BaseButton)(
+  templateObject_3$N ||
+    (templateObject_3$N = __makeTemplateObject(
+      [
+        '\n  background-color: ',
+        ';\n  color: ',
+        ';\n  font-size: 16px;\n  font-weight: 500;\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  :disabled {\n    opacity: 0.4;\n    :hover {\n      cursor: auto;\n      background-color: ',
+        ';\n      box-shadow: none;\n      border: 1px solid transparent;\n      outline: none;\n    }\n  }\n',
+      ],
+      [
+        '\n  background-color: ',
+        ';\n  color: ',
+        ';\n  font-size: 16px;\n  font-weight: 500;\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  :disabled {\n    opacity: 0.4;\n    :hover {\n      cursor: auto;\n      background-color: ',
+        ';\n      box-shadow: none;\n      border: 1px solid transparent;\n      outline: none;\n    }\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary5
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primaryText1
+  },
+  function (_a) {
+    var theme = _a.theme,
+      disabled = _a.disabled
+    return !disabled && polished.darken(0.03, theme.primary5)
+  },
+  function (_a) {
+    var theme = _a.theme,
+      disabled = _a.disabled
+    return !disabled && polished.darken(0.03, theme.primary5)
+  },
+  function (_a) {
+    var theme = _a.theme,
+      disabled = _a.disabled
+    return !disabled && polished.darken(0.03, theme.primary5)
+  },
+  function (_a) {
+    var theme = _a.theme,
+      disabled = _a.disabled
+    return !disabled && polished.darken(0.05, theme.primary5)
+  },
+  function (_a) {
+    var theme = _a.theme,
+      disabled = _a.disabled
+    return !disabled && polished.darken(0.05, theme.primary5)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary5
+  }
+)
+var ButtonGray = styled__default['default'](BaseButton)(
+  templateObject_4$C ||
+    (templateObject_4$C = __makeTemplateObject(
+      [
+        '\n  background-color: ',
+        ';\n  color: ',
+        ';\n  font-size: 16px;\n  font-weight: 500;\n\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    background-color: ',
+        ';\n  }\n',
+      ],
+      [
+        '\n  background-color: ',
+        ';\n  color: ',
+        ';\n  font-size: 16px;\n  font-weight: 500;\n\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    background-color: ',
+        ';\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.text2
+  },
+  function (_a) {
+    var theme = _a.theme,
+      disabled = _a.disabled
+    return !disabled && polished.darken(0.05, theme.bg2)
+  },
+  function (_a) {
+    var theme = _a.theme,
+      disabled = _a.disabled
+    return !disabled && polished.darken(0.1, theme.bg2)
+  }
+)
+var ButtonSecondary = styled__default['default'](BaseButton)(
+  templateObject_5$t ||
+    (templateObject_5$t = __makeTemplateObject(
+      [
+        '\n  border: 1px solid ',
+        ';\n  color: ',
+        ';\n  background-color: transparent;\n  font-size: 16px;\n  border-radius: 12px;\n  padding: ',
+        ';\n\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    border: 1px solid ',
+        ';\n  }\n  &:hover {\n    border: 1px solid ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    border: 1px solid ',
+        ';\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n  a:hover {\n    text-decoration: none;\n  }\n',
+      ],
+      [
+        '\n  border: 1px solid ',
+        ';\n  color: ',
+        ';\n  background-color: transparent;\n  font-size: 16px;\n  border-radius: 12px;\n  padding: ',
+        ';\n\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    border: 1px solid ',
+        ';\n  }\n  &:hover {\n    border: 1px solid ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    border: 1px solid ',
+        ';\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n  a:hover {\n    text-decoration: none;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary4
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary1
+  },
+  function (_a) {
+    var padding = _a.padding
+    return padding ? padding : '10px'
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary4
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary3
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary3
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary4
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary3
+  }
+)
+var ButtonOutlined = styled__default['default'](BaseButton)(
+  templateObject_6$n ||
+    (templateObject_6$n = __makeTemplateObject(
+      [
+        '\n  border: 1px solid ',
+        ';\n  background-color: transparent;\n  color: ',
+        ';\n  &:focus {\n    box-shadow: 0 0 0 1px ',
+        ';\n  }\n  &:hover {\n    box-shadow: 0 0 0 1px ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1px ',
+        ';\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n',
+      ],
+      [
+        '\n  border: 1px solid ',
+        ';\n  background-color: transparent;\n  color: ',
+        ';\n  &:focus {\n    box-shadow: 0 0 0 1px ',
+        ';\n  }\n  &:hover {\n    box-shadow: 0 0 0 1px ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1px ',
+        ';\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg2
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.text1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg4
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg4
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg4
+  }
+)
+styled__default['default'](BaseButton)(
+  templateObject_7$j ||
+    (templateObject_7$j = __makeTemplateObject(
+      [
+        '\n  background-color: ',
+        ';\n  color: white;\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:disabled {\n    background-color: ',
+        ';\n    opacity: 50%;\n    cursor: auto;\n  }\n',
+      ],
+      [
+        '\n  background-color: ',
+        ';\n  color: white;\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:disabled {\n    background-color: ',
+        ';\n    opacity: 50%;\n    cursor: auto;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.yellow3
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.yellow3)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.yellow3)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.yellow3)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.1, theme.yellow3)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.1, theme.yellow3)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.yellow3
+  }
+)
+var ButtonEmpty = styled__default['default'](BaseButton)(
+  templateObject_8$g ||
+    (templateObject_8$g = __makeTemplateObject(
+      [
+        '\n  background-color: transparent;\n  color: ',
+        ';\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  &:focus {\n    text-decoration: underline;\n  }\n  &:hover {\n    text-decoration: none;\n  }\n  &:active {\n    text-decoration: none;\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n',
+      ],
+      [
+        '\n  background-color: transparent;\n  color: ',
+        ';\n  display: flex;\n  justify-content: center;\n  align-items: center;\n\n  &:focus {\n    text-decoration: underline;\n  }\n  &:hover {\n    text-decoration: none;\n  }\n  &:active {\n    text-decoration: none;\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary1
+  }
+)
+styled__default['default'](BaseButton)(
+  templateObject_9$f ||
+    (templateObject_9$f = __makeTemplateObject(
+      [
+        '\n  padding: 0;\n  width: fit-content;\n  background: none;\n  text-decoration: none;\n  &:focus {\n    // eslint-disable-next-line @typescript-eslint/no-unused-vars\n    text-decoration: underline;\n  }\n  &:hover {\n    // text-decoration: underline;\n    opacity: 0.9;\n  }\n  &:active {\n    text-decoration: underline;\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n',
+      ],
+      [
+        '\n  padding: 0;\n  width: fit-content;\n  background: none;\n  text-decoration: none;\n  &:focus {\n    // eslint-disable-next-line @typescript-eslint/no-unused-vars\n    text-decoration: underline;\n  }\n  &:hover {\n    // text-decoration: underline;\n    opacity: 0.9;\n  }\n  &:active {\n    text-decoration: underline;\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n  }\n',
+      ]
+    ))
+)
+var ButtonConfirmedStyle = styled__default['default'](BaseButton)(
+  templateObject_10$b ||
+    (templateObject_10$b = __makeTemplateObject(
+      [
+        '\n  background-color: ',
+        ';\n  color: ',
+        ';\n  /* border: 1px solid ',
+        '; */\n\n  &:disabled {\n    opacity: 50%;\n    background-color: ',
+        ';\n    color: ',
+        ';\n    cursor: auto;\n  }\n',
+      ],
+      [
+        '\n  background-color: ',
+        ';\n  color: ',
+        ';\n  /* border: 1px solid ',
+        '; */\n\n  &:disabled {\n    opacity: 50%;\n    background-color: ',
+        ';\n    color: ',
+        ';\n    cursor: auto;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg3
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.text1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.green1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg2
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.text2
+  }
+)
+var ButtonErrorStyle = styled__default['default'](BaseButton)(
+  templateObject_11$9 ||
+    (templateObject_11$9 = __makeTemplateObject(
+      [
+        '\n  background-color: ',
+        ';\n  border: 1px solid ',
+        ';\n\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    box-shadow: none;\n    background-color: ',
+        ';\n    border: 1px solid ',
+        ';\n  }\n',
+      ],
+      [
+        '\n  background-color: ',
+        ';\n  border: 1px solid ',
+        ';\n\n  &:focus {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:hover {\n    background-color: ',
+        ';\n  }\n  &:active {\n    box-shadow: 0 0 0 1pt ',
+        ';\n    background-color: ',
+        ';\n  }\n  &:disabled {\n    opacity: 50%;\n    cursor: auto;\n    box-shadow: none;\n    background-color: ',
+        ';\n    border: 1px solid ',
+        ';\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.red1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.red1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.red1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.red1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.05, theme.red1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.1, theme.red1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.darken(0.1, theme.red1)
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.red1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.red1
+  }
+)
 function ButtonConfirmed(_a) {
-    var confirmed = _a.confirmed, altDisabledStyle = _a.altDisabledStyle, rest = __rest(_a, ["confirmed", "altDisabledStyle"]);
-    if (confirmed) {
-        return jsxRuntime.jsx(ButtonConfirmedStyle, __assign({}, rest), void 0);
-    }
-    else {
-        return jsxRuntime.jsx(ButtonPrimary, __assign({}, rest, { altDisabledStyle: altDisabledStyle }), void 0);
-    }
+  var confirmed = _a.confirmed,
+    altDisabledStyle = _a.altDisabledStyle,
+    rest = __rest(_a, ['confirmed', 'altDisabledStyle'])
+  if (confirmed) {
+    return jsxRuntime.jsx(ButtonConfirmedStyle, __assign({}, rest), void 0)
+  } else {
+    return jsxRuntime.jsx(ButtonPrimary, __assign({}, rest, { altDisabledStyle }), void 0)
+  }
 }
 function ButtonError(_a) {
-    var error = _a.error, rest = __rest(_a, ["error"]);
-    if (error) {
-        return jsxRuntime.jsx(ButtonErrorStyle, __assign({}, rest), void 0);
-    }
-    else {
-        return jsxRuntime.jsx(ButtonPrimary, __assign({}, rest), void 0);
-    }
+  var error = _a.error,
+    rest = __rest(_a, ['error'])
+  if (error) {
+    return jsxRuntime.jsx(ButtonErrorStyle, __assign({}, rest), void 0)
+  } else {
+    return jsxRuntime.jsx(ButtonPrimary, __assign({}, rest), void 0)
+  }
 }
-styled__default["default"](ButtonOutlined)(templateObject_12$9 || (templateObject_12$9 = __makeTemplateObject(["\n  border: 1px solid;\n  border-color: ", ";\n"], ["\n  border: 1px solid;\n  border-color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary1;
-});
-styled__default["default"].div(templateObject_13$5 || (templateObject_13$5 = __makeTemplateObject(["\n  height: 17px;\n  width: 17px;\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n"], ["\n  height: 17px;\n  width: 17px;\n  border-radius: 50%;\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  justify-content: center;\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary1;
-});
-styled__default["default"].div(templateObject_14$5 || (templateObject_14$5 = __makeTemplateObject(["\n  width: 20px;\n  padding: 0 10px;\n  position: absolute;\n  top: 11px;\n  right: 15px;\n"], ["\n  width: 20px;\n  padding: 0 10px;\n  position: absolute;\n  top: 11px;\n  right: 15px;\n"])));
-styled__default["default"](reactFeather.Check)(templateObject_15$3 || (templateObject_15$3 = __makeTemplateObject(["\n  size: 13px;\n"], ["\n  size: 13px;\n"])));
-var templateObject_1$1g, templateObject_2$W, templateObject_3$N, templateObject_4$C, templateObject_5$t, templateObject_6$n, templateObject_7$j, templateObject_8$g, templateObject_9$f, templateObject_10$b, templateObject_11$9, templateObject_12$9, templateObject_13$5, templateObject_14$5, templateObject_15$3;
+styled__default['default'](ButtonOutlined)(
+  templateObject_12$9 ||
+    (templateObject_12$9 = __makeTemplateObject(
+      ['\n  border: 1px solid;\n  border-color: ', ';\n'],
+      ['\n  border: 1px solid;\n  border-color: ', ';\n']
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary1
+  }
+)
+styled__default['default'].div(
+  templateObject_13$5 ||
+    (templateObject_13$5 = __makeTemplateObject(
+      [
+        '\n  height: 17px;\n  width: 17px;\n  border-radius: 50%;\n  background-color: ',
+        ';\n  display: flex;\n  align-items: center;\n  justify-content: center;\n',
+      ],
+      [
+        '\n  height: 17px;\n  width: 17px;\n  border-radius: 50%;\n  background-color: ',
+        ';\n  display: flex;\n  align-items: center;\n  justify-content: center;\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary1
+  }
+)
+styled__default['default'].div(
+  templateObject_14$5 ||
+    (templateObject_14$5 = __makeTemplateObject(
+      ['\n  width: 20px;\n  padding: 0 10px;\n  position: absolute;\n  top: 11px;\n  right: 15px;\n'],
+      ['\n  width: 20px;\n  padding: 0 10px;\n  position: absolute;\n  top: 11px;\n  right: 15px;\n']
+    ))
+)
+styled__default['default'](reactFeather.Check)(
+  templateObject_15$3 || (templateObject_15$3 = __makeTemplateObject(['\n  size: 13px;\n'], ['\n  size: 13px;\n']))
+)
+var templateObject_1$1g,
+  templateObject_2$W,
+  templateObject_3$N,
+  templateObject_4$C,
+  templateObject_5$t,
+  templateObject_6$n,
+  templateObject_7$j,
+  templateObject_8$g,
+  templateObject_9$f,
+  templateObject_10$b,
+  templateObject_11$9,
+  templateObject_12$9,
+  templateObject_13$5,
+  templateObject_14$5,
+  templateObject_15$3
 
-var isClient = typeof window === 'object';
+var isClient = typeof window === 'object'
 function getSize() {
-    return {
-        width: isClient ? window.innerWidth : undefined,
-        height: isClient ? window.innerHeight : undefined,
-    };
+  return {
+    width: isClient ? window.innerWidth : undefined,
+    height: isClient ? window.innerHeight : undefined,
+  }
 }
 // https://usehooks.com/useWindowSize/
 function useWindowSize() {
-    var _a = __read(React.useState(getSize), 2), windowSize = _a[0], setWindowSize = _a[1];
-    React.useEffect(function () {
-        function handleResize() {
-            setWindowSize(getSize());
-        }
-        if (isClient) {
-            window.addEventListener('resize', handleResize);
-            return function () {
-                window.removeEventListener('resize', handleResize);
-            };
-        }
-        return undefined;
-    }, []);
-    return windowSize;
+  var _a = __read(React.useState(getSize), 2),
+    windowSize = _a[0],
+    setWindowSize = _a[1]
+  React.useEffect(function () {
+    function handleResize() {
+      setWindowSize(getSize())
+    }
+    if (isClient) {
+      window.addEventListener('resize', handleResize)
+      return function () {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+    return undefined
+  }, [])
+  return windowSize
 }
 
 // eslint-disable-next-line react/prop-types
 function Confetti(_a) {
-    var start = _a.start, variant = _a.variant;
-    var _b = useWindowSize(), width = _b.width, height = _b.height;
-    var _variant = variant ? variant : height && width && height > 1.5 * width ? 'bottom' : variant;
-    return start && width && height ? (jsxRuntime.jsx(ReactConfetti__default["default"], { style: { zIndex: 1401 }, numberOfPieces: 400, recycle: false, run: true, width: width, height: height, confettiSource: {
+  var start = _a.start,
+    variant = _a.variant
+  var _b = useWindowSize(),
+    width = _b.width,
+    height = _b.height
+  var _variant = variant ? variant : height && width && height > 1.5 * width ? 'bottom' : variant
+  return start && width && height
+    ? jsxRuntime.jsx(
+        ReactConfetti__default['default'],
+        {
+          style: { zIndex: 1401 },
+          numberOfPieces: 400,
+          recycle: false,
+          run: true,
+          width,
+          height,
+          confettiSource: {
             h: height,
             w: width,
             x: 0,
             y: _variant === 'top' ? height * 0.25 : _variant === 'bottom' ? height * 0.75 : height * 0.5,
-        }, initialVelocityX: 15, initialVelocityY: 30, gravity: 0.45, tweenDuration: 100, wind: 0.05 }, void 0)) : null;
+          },
+          initialVelocityX: 15,
+          initialVelocityY: 30,
+          gravity: 0.45,
+          tweenDuration: 100,
+          wind: 0.05,
+        },
+        void 0
+      )
+    : null
 }
 
-var uImage = "10f062d02df4af77.png";
+var uImage = '10f062d02df4af77.png'
 
-var noise = "f158a440053a5ad2.png";
+var noise = 'f158a440053a5ad2.png'
 
-var xlUnicorn = "c2cd04251aa24c34.png";
+var xlUnicorn = 'c2cd04251aa24c34.png'
 
-var DataCard = styled__default["default"](AutoColumn)(templateObject_1$1f || (templateObject_1$1f = __makeTemplateObject(["\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #2172e5 100%);\n  border-radius: 12px;\n  width: 100%;\n  position: relative;\n  overflow: hidden;\n"], ["\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #2172e5 100%);\n  border-radius: 12px;\n  width: 100%;\n  position: relative;\n  overflow: hidden;\n"])));
-var CardBGImage = styled__default["default"].span(templateObject_2$V || (templateObject_2$V = __makeTemplateObject(["\n  background: url(", ");\n  width: 1000px;\n  height: 600px;\n  position: absolute;\n  border-radius: 12px;\n  opacity: 0.4;\n  top: -100px;\n  left: -100px;\n  transform: rotate(-15deg);\n  user-select: none;\n  ", "\n"], ["\n  background: url(", ");\n  width: 1000px;\n  height: 600px;\n  position: absolute;\n  border-radius: 12px;\n  opacity: 0.4;\n  top: -100px;\n  left: -100px;\n  transform: rotate(-15deg);\n  user-select: none;\n  ", "\n"])), uImage, function (_a) {
-    var desaturate = _a.desaturate;
-    return desaturate && "filter: saturate(0)";
-});
-var CardBGImageSmaller = styled__default["default"].span(templateObject_3$M || (templateObject_3$M = __makeTemplateObject(["\n  background: url(", ");\n  width: 1200px;\n  height: 1200px;\n  position: absolute;\n  border-radius: 12px;\n  top: -300px;\n  left: -300px;\n  opacity: 0.4;\n  user-select: none;\n\n  ", "\n"], ["\n  background: url(", ");\n  width: 1200px;\n  height: 1200px;\n  position: absolute;\n  border-radius: 12px;\n  top: -300px;\n  left: -300px;\n  opacity: 0.4;\n  user-select: none;\n\n  ", "\n"])), xlUnicorn, function (_a) {
-    var desaturate = _a.desaturate;
-    return desaturate && "filter: saturate(0)";
-});
-var CardNoise = styled__default["default"].span(templateObject_4$B || (templateObject_4$B = __makeTemplateObject(["\n  background: url(", ");\n  background-size: cover;\n  mix-blend-mode: overlay;\n  border-radius: 12px;\n  width: 100%;\n  height: 100%;\n  opacity: 0.15;\n  position: absolute;\n  top: 0;\n  left: 0;\n  user-select: none;\n"], ["\n  background: url(", ");\n  background-size: cover;\n  mix-blend-mode: overlay;\n  border-radius: 12px;\n  width: 100%;\n  height: 100%;\n  opacity: 0.15;\n  position: absolute;\n  top: 0;\n  left: 0;\n  user-select: none;\n"])), noise);
-var CardSection = styled__default["default"](AutoColumn)(templateObject_5$s || (templateObject_5$s = __makeTemplateObject(["\n  padding: 1rem;\n  z-index: 1;\n  opacity: ", ";\n"], ["\n  padding: 1rem;\n  z-index: 1;\n  opacity: ", ";\n"])), function (_a) {
-    var disabled = _a.disabled;
-    return disabled && '0.4';
-});
-var Break$1 = styled__default["default"].div(templateObject_6$m || (templateObject_6$m = __makeTemplateObject(["\n  width: 100%;\n  background-color: rgba(255, 255, 255, 0.2);\n  height: 1px;\n"], ["\n  width: 100%;\n  background-color: rgba(255, 255, 255, 0.2);\n  height: 1px;\n"])));
-var templateObject_1$1f, templateObject_2$V, templateObject_3$M, templateObject_4$B, templateObject_5$s, templateObject_6$m;
+var DataCard = styled__default['default'](AutoColumn)(
+  templateObject_1$1f ||
+    (templateObject_1$1f = __makeTemplateObject(
+      [
+        '\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #2172e5 100%);\n  border-radius: 12px;\n  width: 100%;\n  position: relative;\n  overflow: hidden;\n',
+      ],
+      [
+        '\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #2172e5 100%);\n  border-radius: 12px;\n  width: 100%;\n  position: relative;\n  overflow: hidden;\n',
+      ]
+    ))
+)
+var CardBGImage = styled__default['default'].span(
+  templateObject_2$V ||
+    (templateObject_2$V = __makeTemplateObject(
+      [
+        '\n  background: url(',
+        ');\n  width: 1000px;\n  height: 600px;\n  position: absolute;\n  border-radius: 12px;\n  opacity: 0.4;\n  top: -100px;\n  left: -100px;\n  transform: rotate(-15deg);\n  user-select: none;\n  ',
+        '\n',
+      ],
+      [
+        '\n  background: url(',
+        ');\n  width: 1000px;\n  height: 600px;\n  position: absolute;\n  border-radius: 12px;\n  opacity: 0.4;\n  top: -100px;\n  left: -100px;\n  transform: rotate(-15deg);\n  user-select: none;\n  ',
+        '\n',
+      ]
+    )),
+  uImage,
+  function (_a) {
+    var desaturate = _a.desaturate
+    return desaturate && 'filter: saturate(0)'
+  }
+)
+var CardBGImageSmaller = styled__default['default'].span(
+  templateObject_3$M ||
+    (templateObject_3$M = __makeTemplateObject(
+      [
+        '\n  background: url(',
+        ');\n  width: 1200px;\n  height: 1200px;\n  position: absolute;\n  border-radius: 12px;\n  top: -300px;\n  left: -300px;\n  opacity: 0.4;\n  user-select: none;\n\n  ',
+        '\n',
+      ],
+      [
+        '\n  background: url(',
+        ');\n  width: 1200px;\n  height: 1200px;\n  position: absolute;\n  border-radius: 12px;\n  top: -300px;\n  left: -300px;\n  opacity: 0.4;\n  user-select: none;\n\n  ',
+        '\n',
+      ]
+    )),
+  xlUnicorn,
+  function (_a) {
+    var desaturate = _a.desaturate
+    return desaturate && 'filter: saturate(0)'
+  }
+)
+var CardNoise = styled__default['default'].span(
+  templateObject_4$B ||
+    (templateObject_4$B = __makeTemplateObject(
+      [
+        '\n  background: url(',
+        ');\n  background-size: cover;\n  mix-blend-mode: overlay;\n  border-radius: 12px;\n  width: 100%;\n  height: 100%;\n  opacity: 0.15;\n  position: absolute;\n  top: 0;\n  left: 0;\n  user-select: none;\n',
+      ],
+      [
+        '\n  background: url(',
+        ');\n  background-size: cover;\n  mix-blend-mode: overlay;\n  border-radius: 12px;\n  width: 100%;\n  height: 100%;\n  opacity: 0.15;\n  position: absolute;\n  top: 0;\n  left: 0;\n  user-select: none;\n',
+      ]
+    )),
+  noise
+)
+var CardSection = styled__default['default'](AutoColumn)(
+  templateObject_5$s ||
+    (templateObject_5$s = __makeTemplateObject(
+      ['\n  padding: 1rem;\n  z-index: 1;\n  opacity: ', ';\n'],
+      ['\n  padding: 1rem;\n  z-index: 1;\n  opacity: ', ';\n']
+    )),
+  function (_a) {
+    var disabled = _a.disabled
+    return disabled && '0.4'
+  }
+)
+var Break$1 = styled__default['default'].div(
+  templateObject_6$m ||
+    (templateObject_6$m = __makeTemplateObject(
+      ['\n  width: 100%;\n  background-color: rgba(255, 255, 255, 0.2);\n  height: 1px;\n'],
+      ['\n  width: 100%;\n  background-color: rgba(255, 255, 255, 0.2);\n  height: 1px;\n']
+    ))
+)
+var templateObject_1$1f,
+  templateObject_2$V,
+  templateObject_3$M,
+  templateObject_4$B,
+  templateObject_5$s,
+  templateObject_6$m
 
-var parser = new uaParserJs.UAParser(window.navigator.userAgent);
-var type$1 = parser.getDevice().type;
-var userAgent = parser.getResult();
-var isMobile = type$1 === 'mobile' || type$1 === 'tablet';
+var parser = new uaParserJs.UAParser(window.navigator.userAgent)
+var type$1 = parser.getDevice().type
+var userAgent = parser.getResult()
+var isMobile = type$1 === 'mobile' || type$1 === 'tablet'
 
-var AnimatedDialogOverlay = reactSpring.animated(dialog.DialogOverlay);
+var AnimatedDialogOverlay = reactSpring.animated(dialog.DialogOverlay)
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-var StyledDialogOverlay = styled__default["default"](AnimatedDialogOverlay)(templateObject_1$1e || (templateObject_1$1e = __makeTemplateObject(["\n  &[data-reach-dialog-overlay] {\n    z-index: 2;\n    background-color: transparent;\n    overflow: hidden;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background-color: ", ";\n  }\n"], ["\n  &[data-reach-dialog-overlay] {\n    z-index: 2;\n    background-color: transparent;\n    overflow: hidden;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background-color: ", ";\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.modalBG;
-});
-var AnimatedDialogContent = reactSpring.animated(dialog.DialogContent);
+var StyledDialogOverlay = styled__default['default'](AnimatedDialogOverlay)(
+  templateObject_1$1e ||
+    (templateObject_1$1e = __makeTemplateObject(
+      [
+        '\n  &[data-reach-dialog-overlay] {\n    z-index: 2;\n    background-color: transparent;\n    overflow: hidden;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background-color: ',
+        ';\n  }\n',
+      ],
+      [
+        '\n  &[data-reach-dialog-overlay] {\n    z-index: 2;\n    background-color: transparent;\n    overflow: hidden;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background-color: ',
+        ';\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.modalBG
+  }
+)
+var AnimatedDialogContent = reactSpring.animated(dialog.DialogContent)
 // destructure to not pass custom props to Dialog DOM element
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-var StyledDialogContent = styled__default["default"](function (_a) {
-    _a.minHeight; _a.maxHeight; _a.mobile; _a.isOpen; var rest = __rest(_a, ["minHeight", "maxHeight", "mobile", "isOpen"]);
-    return (jsxRuntime.jsx(AnimatedDialogContent, __assign({}, rest), void 0));
+var StyledDialogContent = styled__default['default'](function (_a) {
+  _a.minHeight
+  _a.maxHeight
+  _a.mobile
+  _a.isOpen
+  var rest = __rest(_a, ['minHeight', 'maxHeight', 'mobile', 'isOpen'])
+  return jsxRuntime.jsx(AnimatedDialogContent, __assign({}, rest), void 0)
 }).attrs({
-    'aria-label': 'dialog',
-})(templateObject_7$i || (templateObject_7$i = __makeTemplateObject(["\n  overflow-y: auto;\n\n  &[data-reach-dialog-content] {\n    margin: 0 0 2rem 0;\n    background-color: ", ";\n    border: 1px solid ", ";\n    box-shadow: 0 4px 8px 0 ", ";\n    padding: 0px;\n    width: 50vw;\n    overflow-y: auto;\n    overflow-x: hidden;\n\n    align-self: ", ";\n\n    max-width: 420px;\n    ", "\n    ", "\n    display: flex;\n    border-radius: 20px;\n    ", "\n    ", "\n  }\n"], ["\n  overflow-y: auto;\n\n  &[data-reach-dialog-content] {\n    margin: 0 0 2rem 0;\n    background-color: ", ";\n    border: 1px solid ", ";\n    box-shadow: 0 4px 8px 0 ", ";\n    padding: 0px;\n    width: 50vw;\n    overflow-y: auto;\n    overflow-x: hidden;\n\n    align-self: ", ";\n\n    max-width: 420px;\n    ", "\n    ", "\n    display: flex;\n    border-radius: 20px;\n    ", "\n    ", "\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg0;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-}, function (_a) {
-    var theme = _a.theme;
-    return polished.transparentize(0.95, theme.shadow1);
-}, function (_a) {
-    var mobile = _a.mobile;
-    return (mobile ? 'flex-end' : 'center');
-}, function (_a) {
-    var maxHeight = _a.maxHeight;
-    return maxHeight && styled.css(templateObject_2$U || (templateObject_2$U = __makeTemplateObject(["\n        max-height: ", "vh;\n      "], ["\n        max-height: ", "vh;\n      "])), maxHeight);
-}, function (_a) {
-    var minHeight = _a.minHeight;
-    return minHeight && styled.css(templateObject_3$L || (templateObject_3$L = __makeTemplateObject(["\n        min-height: ", "vh;\n      "], ["\n        min-height: ", "vh;\n      "])), minHeight);
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.mediaWidth.upToMedium(templateObject_4$A || (templateObject_4$A = __makeTemplateObject(["\n      width: 65vw;\n      margin: 0;\n    "], ["\n      width: 65vw;\n      margin: 0;\n    "])));
-}, function (_a) {
-    var theme = _a.theme, mobile = _a.mobile;
-    return theme.mediaWidth.upToSmall(templateObject_6$l || (templateObject_6$l = __makeTemplateObject(["\n      width:  85vw;\n      ", "\n    "], ["\n      width:  85vw;\n      ", "\n    "])), mobile && styled.css(templateObject_5$r || (templateObject_5$r = __makeTemplateObject(["\n          width: 100vw;\n          border-radius: 20px;\n          border-bottom-left-radius: 0;\n          border-bottom-right-radius: 0;\n        "], ["\n          width: 100vw;\n          border-radius: 20px;\n          border-bottom-left-radius: 0;\n          border-bottom-right-radius: 0;\n        "]))));
-});
+  'aria-label': 'dialog',
+})(
+  templateObject_7$i ||
+    (templateObject_7$i = __makeTemplateObject(
+      [
+        '\n  overflow-y: auto;\n\n  &[data-reach-dialog-content] {\n    margin: 0 0 2rem 0;\n    background-color: ',
+        ';\n    border: 1px solid ',
+        ';\n    box-shadow: 0 4px 8px 0 ',
+        ';\n    padding: 0px;\n    width: 50vw;\n    overflow-y: auto;\n    overflow-x: hidden;\n\n    align-self: ',
+        ';\n\n    max-width: 420px;\n    ',
+        '\n    ',
+        '\n    display: flex;\n    border-radius: 20px;\n    ',
+        '\n    ',
+        '\n  }\n',
+      ],
+      [
+        '\n  overflow-y: auto;\n\n  &[data-reach-dialog-content] {\n    margin: 0 0 2rem 0;\n    background-color: ',
+        ';\n    border: 1px solid ',
+        ';\n    box-shadow: 0 4px 8px 0 ',
+        ';\n    padding: 0px;\n    width: 50vw;\n    overflow-y: auto;\n    overflow-x: hidden;\n\n    align-self: ',
+        ';\n\n    max-width: 420px;\n    ',
+        '\n    ',
+        '\n    display: flex;\n    border-radius: 20px;\n    ',
+        '\n    ',
+        '\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg0
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg1
+  },
+  function (_a) {
+    var theme = _a.theme
+    return polished.transparentize(0.95, theme.shadow1)
+  },
+  function (_a) {
+    var mobile = _a.mobile
+    return mobile ? 'flex-end' : 'center'
+  },
+  function (_a) {
+    var maxHeight = _a.maxHeight
+    return (
+      maxHeight &&
+      styled.css(
+        templateObject_2$U ||
+          (templateObject_2$U = __makeTemplateObject(
+            ['\n        max-height: ', 'vh;\n      '],
+            ['\n        max-height: ', 'vh;\n      ']
+          )),
+        maxHeight
+      )
+    )
+  },
+  function (_a) {
+    var minHeight = _a.minHeight
+    return (
+      minHeight &&
+      styled.css(
+        templateObject_3$L ||
+          (templateObject_3$L = __makeTemplateObject(
+            ['\n        min-height: ', 'vh;\n      '],
+            ['\n        min-height: ', 'vh;\n      ']
+          )),
+        minHeight
+      )
+    )
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.mediaWidth.upToMedium(
+      templateObject_4$A ||
+        (templateObject_4$A = __makeTemplateObject(
+          ['\n      width: 65vw;\n      margin: 0;\n    '],
+          ['\n      width: 65vw;\n      margin: 0;\n    ']
+        ))
+    )
+  },
+  function (_a) {
+    var theme = _a.theme,
+      mobile = _a.mobile
+    return theme.mediaWidth.upToSmall(
+      templateObject_6$l ||
+        (templateObject_6$l = __makeTemplateObject(
+          ['\n      width:  85vw;\n      ', '\n    '],
+          ['\n      width:  85vw;\n      ', '\n    ']
+        )),
+      mobile &&
+        styled.css(
+          templateObject_5$r ||
+            (templateObject_5$r = __makeTemplateObject(
+              [
+                '\n          width: 100vw;\n          border-radius: 20px;\n          border-bottom-left-radius: 0;\n          border-bottom-right-radius: 0;\n        ',
+              ],
+              [
+                '\n          width: 100vw;\n          border-radius: 20px;\n          border-bottom-left-radius: 0;\n          border-bottom-right-radius: 0;\n        ',
+              ]
+            ))
+        )
+    )
+  }
+)
 function Modal(_a) {
-    var isOpen = _a.isOpen, onDismiss = _a.onDismiss, _b = _a.minHeight, minHeight = _b === void 0 ? false : _b, _c = _a.maxHeight, maxHeight = _c === void 0 ? 90 : _c, initialFocusRef = _a.initialFocusRef, children = _a.children;
-    var fadeTransition = reactSpring.useTransition(isOpen, null, {
-        config: { duration: 200 },
-        from: { opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
-    });
-    var _d = __read(reactSpring.useSpring(function () { return ({ y: 0, config: { mass: 1, tension: 210, friction: 20 } }); }), 2), y = _d[0].y, set = _d[1];
-    var bind = reactUseGesture.useGesture({
-        onDrag: function (state) {
-            set({
-                y: state.down ? state.movement[1] : 0,
-            });
-            if (state.movement[1] > 300 || (state.velocity > 3 && state.direction[1] > 0)) {
-                onDismiss();
-            }
-        },
-    });
-    return (jsxRuntime.jsx(jsxRuntime.Fragment, { children: fadeTransition.map(function (_a) {
-            var item = _a.item, key = _a.key, props = _a.props;
-            return item && (jsxRuntime.jsx(StyledDialogOverlay, __assign({ style: props, onDismiss: onDismiss, initialFocusRef: initialFocusRef, unstable_lockFocusAcrossFrames: false }, { children: jsxRuntime.jsxs(StyledDialogContent, __assign({}, (isMobile
-                    ? __assign(__assign({}, bind()), { style: { transform: y.interpolate(function (y) { return "translateY(" + (y > 0 ? y : 0) + "px)"; }) } }) : {}), { "aria-label": "dialog content", minHeight: minHeight, maxHeight: maxHeight, mobile: isMobile }, { children: [!initialFocusRef && isMobile ? jsxRuntime.jsx("div", { tabIndex: 1 }, void 0) : null, children] }), void 0) }), key));
-        }) }, void 0));
-}
-var templateObject_1$1e, templateObject_2$U, templateObject_3$L, templateObject_4$A, templateObject_5$r, templateObject_6$l, templateObject_7$i;
-
-var ContentWrapper$4 = styled__default["default"](AutoColumn)(templateObject_1$1d || (templateObject_1$1d = __makeTemplateObject(["\n  width: 100%;\n"], ["\n  width: 100%;\n"])));
-var ModalUpper$1 = styled__default["default"](DataCard)(templateObject_2$T || (templateObject_2$T = __makeTemplateObject(["\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);\n"], ["\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);\n"])));
-var ConfirmOrLoadingWrapper$1 = styled__default["default"].div(templateObject_3$K || (templateObject_3$K = __makeTemplateObject(["\n  width: 100%;\n  padding: 24px;\n  position: relative;\n  background: ", ";\n"], ["\n  width: 100%;\n  padding: 24px;\n  position: relative;\n  background: ", ";\n"])), function (_a) {
-    var activeBG = _a.activeBG;
-    return activeBG &&
-        'radial-gradient(76.02% 75.41% at 1.84% 0%, rgba(255, 0, 122, 0.2) 0%, rgba(33, 114, 229, 0.2) 100%), #FFFFFF;';
-});
-var ConfirmedIcon$2 = styled__default["default"](ColumnCenter)(templateObject_4$z || (templateObject_4$z = __makeTemplateObject(["\n  padding: 60px 0;\n"], ["\n  padding: 60px 0;\n"])));
-function AddressClaimModal(_a) {
-    var _b, _c;
-    var isOpen = _a.isOpen, onDismiss = _a.onDismiss;
-    var chainId = useActiveWeb3React().chainId;
-    // state for smart contract input
-    var _d = __read(React.useState(''), 2), typed = _d[0], setTyped = _d[1];
-    function handleRecipientType(val) {
-        setTyped(val);
-    }
-    // monitor for third party recipient of claim
-    var parsedAddress = useENS(typed).address;
-    // used for UI loading states
-    var _e = __read(React.useState(false), 2), attempting = _e[0], setAttempting = _e[1];
-    // monitor the status of the claim from contracts and txns
-    var claimCallback = useClaimCallback(parsedAddress).claimCallback;
-    var unclaimedAmount = useUserUnclaimedAmount(parsedAddress);
-    // check if the user has something available
-    var hasAvailableClaim = useUserHasAvailableClaim(parsedAddress);
-    var _f = __read(React.useState(), 2), hash = _f[0], setHash = _f[1];
-    // monitor the status of the claim from contracts and txns
-    var claimPending = useIsTransactionPending(hash !== null && hash !== void 0 ? hash : '');
-    var claimConfirmed = hash && !claimPending;
-    // use the hash to monitor this txn
-    function onClaim() {
-        setAttempting(true);
-        claimCallback()
-            .then(function (hash) {
-            setHash(hash);
-        })
-            // reset modal and log error
-            .catch(function (error) {
-            setAttempting(false);
-            console.log(error);
-        });
-    }
-    function wrappedOnDismiss() {
-        setAttempting(false);
-        setHash(undefined);
-        setTyped('');
-        onDismiss();
-    }
-    return (jsxRuntime.jsxs(Modal, __assign({ isOpen: isOpen, onDismiss: wrappedOnDismiss, maxHeight: 90 }, { children: [jsxRuntime.jsx(Confetti, { start: Boolean(isOpen && claimConfirmed && attempting) }, void 0), !attempting && (jsxRuntime.jsxs(ContentWrapper$4, __assign({ gap: "lg" }, { children: [jsxRuntime.jsxs(ModalUpper$1, { children: [jsxRuntime.jsx(CardBGImage, {}, void 0), jsxRuntime.jsx(CardNoise, {}, void 0), jsxRuntime.jsxs(CardSection, __assign({ gap: "md" }, { children: [jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.White, __assign({ fontWeight: 500 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Claim UNI Token" }, void 0) }), void 0), jsxRuntime.jsx(CloseIcon$2, { onClick: wrappedOnDismiss, style: { zIndex: 99 }, stroke: "white" }, void 0)] }, void 0), jsxRuntime.jsx(ThemedText.White, __assign({ fontWeight: 700, fontSize: 36 }, { children: jsxRuntime.jsxs(macro.Trans, { children: [unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_b = { groupSeparator: ',' }) !== null && _b !== void 0 ? _b : '-'), " UNI"] }, void 0) }), void 0)] }), void 0), jsxRuntime.jsx(Break$1, {}, void 0)] }, void 0), jsxRuntime.jsxs(AutoColumn, __assign({ gap: "md", style: { padding: '1rem', paddingTop: '0' }, justify: "center" }, { children: [jsxRuntime.jsx(ThemedText.SubHeader, __assign({ fontWeight: 500 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on submission." }, void 0) }), void 0), jsxRuntime.jsx(AddressInputPanel, { value: typed, onChange: handleRecipientType }, void 0), parsedAddress && !hasAvailableClaim && (jsxRuntime.jsx(ThemedText.Error, __assign({ error: true }, { children: jsxRuntime.jsx(macro.Trans, { children: "Address has no available claim" }, void 0) }), void 0)), jsxRuntime.jsx(ButtonPrimary, __assign({ disabled: !address.isAddress(parsedAddress !== null && parsedAddress !== void 0 ? parsedAddress : '') || !hasAvailableClaim, padding: "16px 16px", width: "100%", "$borderRadius": "12px", mt: "1rem", onClick: onClaim }, { children: jsxRuntime.jsx(macro.Trans, { children: "Claim UNI" }, void 0) }), void 0)] }), void 0)] }), void 0)), (attempting || claimConfirmed) && (jsxRuntime.jsxs(ConfirmOrLoadingWrapper$1, __assign({ activeBG: true }, { children: [jsxRuntime.jsx(CardNoise, {}, void 0), jsxRuntime.jsx(CardBGImageSmaller, { desaturate: true }, void 0), jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx("div", {}, void 0), jsxRuntime.jsx(CloseIcon$2, { onClick: wrappedOnDismiss, style: { zIndex: 99 }, stroke: "black" }, void 0)] }, void 0), jsxRuntime.jsx(ConfirmedIcon$2, { children: !claimConfirmed ? (jsxRuntime.jsx(CustomLightSpinner, { src: Circle$1, alt: "loader", size: '90px' }, void 0)) : (jsxRuntime.jsx(UniTokenAnimated, { width: "72px", src: tokenLogo, alt: "UNI logo" }, void 0)) }, void 0), jsxRuntime.jsxs(AutoColumn, __assign({ gap: "100px", justify: 'center' }, { children: [jsxRuntime.jsxs(AutoColumn, __assign({ gap: "12px", justify: 'center' }, { children: [jsxRuntime.jsx(ThemedText.LargeHeader, __assign({ fontWeight: 600, color: "black" }, { children: claimConfirmed ? jsxRuntime.jsx(macro.Trans, { children: "Claimed" }, void 0) : jsxRuntime.jsx(macro.Trans, { children: "Claiming" }, void 0) }), void 0), !claimConfirmed && (jsxRuntime.jsx(rebass.Text, __assign({ fontSize: 36, color: '#ff007a', fontWeight: 800 }, { children: jsxRuntime.jsxs(macro.Trans, { children: [unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_c = { groupSeparator: ',' }) !== null && _c !== void 0 ? _c : '-'), " UNI"] }, void 0) }), void 0)), parsedAddress && (jsxRuntime.jsx(ThemedText.LargeHeader, __assign({ fontWeight: 600, color: "black" }, { children: jsxRuntime.jsxs(macro.Trans, { children: ["for ", shortenAddress(parsedAddress)] }, void 0) }), void 0))] }), void 0), claimConfirmed && (jsxRuntime.jsx(jsxRuntime.Fragment, { children: jsxRuntime.jsxs(ThemedText.SubHeader, __assign({ fontWeight: 500, color: "black" }, { children: [jsxRuntime.jsxs("span", __assign({ role: "img", "aria-label": "party-hat" }, { children: ["\uD83C\uDF89", ' '] }), void 0), jsxRuntime.jsx(macro.Trans, { children: "Welcome to team Unicorn :) " }, void 0), jsxRuntime.jsx("span", __assign({ role: "img", "aria-label": "party-hat" }, { children: "\uD83C\uDF89" }), void 0)] }), void 0) }, void 0)), attempting && !hash && (jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: "black" }, { children: jsxRuntime.jsx(macro.Trans, { children: "Confirm this transaction in your wallet" }, void 0) }), void 0)), attempting && hash && !claimConfirmed && chainId && hash && (jsxRuntime.jsx(ExternalLink, __assign({ href: getExplorerLink(chainId, hash, ExplorerDataType.TRANSACTION), style: { zIndex: 99 } }, { children: jsxRuntime.jsx(macro.Trans, { children: "View transaction on Explorer" }, void 0) }), void 0))] }), void 0)] }), void 0))] }), void 0));
-}
-var templateObject_1$1d, templateObject_2$T, templateObject_3$K, templateObject_4$z;
-
-var _a$a;
-var ApplicationModal;
-(function (ApplicationModal) {
-    ApplicationModal[ApplicationModal["WALLET"] = 0] = "WALLET";
-    ApplicationModal[ApplicationModal["SETTINGS"] = 1] = "SETTINGS";
-    ApplicationModal[ApplicationModal["SELF_CLAIM"] = 2] = "SELF_CLAIM";
-    ApplicationModal[ApplicationModal["ADDRESS_CLAIM"] = 3] = "ADDRESS_CLAIM";
-    ApplicationModal[ApplicationModal["CLAIM_POPUP"] = 4] = "CLAIM_POPUP";
-    ApplicationModal[ApplicationModal["MENU"] = 5] = "MENU";
-    ApplicationModal[ApplicationModal["DELEGATE"] = 6] = "DELEGATE";
-    ApplicationModal[ApplicationModal["VOTE"] = 7] = "VOTE";
-    ApplicationModal[ApplicationModal["POOL_OVERVIEW_OPTIONS"] = 8] = "POOL_OVERVIEW_OPTIONS";
-    ApplicationModal[ApplicationModal["NETWORK_SELECTOR"] = 9] = "NETWORK_SELECTOR";
-    ApplicationModal[ApplicationModal["PRIVACY_POLICY"] = 10] = "PRIVACY_POLICY";
-})(ApplicationModal || (ApplicationModal = {}));
-var initialState$8 = {
-    chainId: null,
-    openModal: null,
-    popupList: [],
-};
-var applicationSlice = toolkit.createSlice({
-    name: 'application',
-    initialState: initialState$8,
-    reducers: {
-        updateChainId: function (state, action) {
-            var chainId = action.payload.chainId;
-            state.chainId = chainId;
-        },
-        setOpenModal: function (state, action) {
-            state.openModal = action.payload;
-        },
-        addPopup: function (state, _a) {
-            var _b = _a.payload, content = _b.content, key = _b.key, _c = _b.removeAfterMs, removeAfterMs = _c === void 0 ? DEFAULT_TXN_DISMISS_MS : _c;
-            state.popupList = (key ? state.popupList.filter(function (popup) { return popup.key !== key; }) : state.popupList).concat([
-                {
-                    key: key || toolkit.nanoid(),
-                    show: true,
-                    content: content,
-                    removeAfterMs: removeAfterMs,
-                },
-            ]);
-        },
-        removePopup: function (state, _a) {
-            var key = _a.payload.key;
-            state.popupList.forEach(function (p) {
-                if (p.key === key) {
-                    p.show = false;
-                }
-            });
-        },
+  var isOpen = _a.isOpen,
+    onDismiss = _a.onDismiss,
+    _b = _a.minHeight,
+    minHeight = _b === void 0 ? false : _b,
+    _c = _a.maxHeight,
+    maxHeight = _c === void 0 ? 90 : _c,
+    initialFocusRef = _a.initialFocusRef,
+    children = _a.children
+  var fadeTransition = reactSpring.useTransition(isOpen, null, {
+    config: { duration: 200 },
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  })
+  var _d = __read(
+      reactSpring.useSpring(function () {
+        return { y: 0, config: { mass: 1, tension: 210, friction: 20 } }
+      }),
+      2
+    ),
+    y = _d[0].y,
+    set = _d[1]
+  var bind = reactUseGesture.useGesture({
+    onDrag(state) {
+      set({
+        y: state.down ? state.movement[1] : 0,
+      })
+      if (state.movement[1] > 300 || (state.velocity > 3 && state.direction[1] > 0)) {
+        onDismiss()
+      }
     },
-});
-var updateChainId = (_a$a = applicationSlice.actions, _a$a.updateChainId), setOpenModal = _a$a.setOpenModal, addPopup = _a$a.addPopup, removePopup = _a$a.removePopup;
-var application = applicationSlice.reducer;
+  })
+  return jsxRuntime.jsx(
+    jsxRuntime.Fragment,
+    {
+      children: fadeTransition.map(function (_a) {
+        var item = _a.item,
+          key = _a.key,
+          props = _a.props
+        return (
+          item &&
+          jsxRuntime.jsx(
+            StyledDialogOverlay,
+            __assign(
+              {
+                style: props,
+                onDismiss,
+                initialFocusRef,
+                unstable_lockFocusAcrossFrames: false,
+              },
+              {
+                children: jsxRuntime.jsxs(
+                  StyledDialogContent,
+                  __assign(
+                    {},
+                    isMobile
+                      ? __assign(__assign({}, bind()), {
+                          style: {
+                            transform: y.interpolate(function (y) {
+                              return 'translateY(' + (y > 0 ? y : 0) + 'px)'
+                            }),
+                          },
+                        })
+                      : {},
+                    { 'aria-label': 'dialog content', minHeight, maxHeight, mobile: isMobile },
+                    {
+                      children: [
+                        !initialFocusRef && isMobile ? jsxRuntime.jsx('div', { tabIndex: 1 }, void 0) : null,
+                        children,
+                      ],
+                    }
+                  ),
+                  void 0
+                ),
+              }
+            ),
+            key
+          )
+        )
+      }),
+    },
+    void 0
+  )
+}
+var templateObject_1$1e,
+  templateObject_2$U,
+  templateObject_3$L,
+  templateObject_4$A,
+  templateObject_5$r,
+  templateObject_6$l,
+  templateObject_7$i
 
-var Field$3;
-(function (Field) {
-    Field["LIQUIDITY_PERCENT"] = "LIQUIDITY_PERCENT";
-    Field["LIQUIDITY"] = "LIQUIDITY";
-    Field["CURRENCY_A"] = "CURRENCY_A";
-    Field["CURRENCY_B"] = "CURRENCY_B";
-})(Field$3 || (Field$3 = {}));
-var typeInput$3 = toolkit.createAction('burn/typeInputBurn');
+var ContentWrapper$4 = styled__default['default'](AutoColumn)(
+  templateObject_1$1d || (templateObject_1$1d = __makeTemplateObject(['\n  width: 100%;\n'], ['\n  width: 100%;\n']))
+)
+var ModalUpper$1 = styled__default['default'](DataCard)(
+  templateObject_2$T ||
+    (templateObject_2$T = __makeTemplateObject(
+      [
+        '\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);\n',
+      ],
+      [
+        '\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);\n',
+      ]
+    ))
+)
+var ConfirmOrLoadingWrapper$1 = styled__default['default'].div(
+  templateObject_3$K ||
+    (templateObject_3$K = __makeTemplateObject(
+      ['\n  width: 100%;\n  padding: 24px;\n  position: relative;\n  background: ', ';\n'],
+      ['\n  width: 100%;\n  padding: 24px;\n  position: relative;\n  background: ', ';\n']
+    )),
+  function (_a) {
+    var activeBG = _a.activeBG
+    return (
+      activeBG &&
+      'radial-gradient(76.02% 75.41% at 1.84% 0%, rgba(255, 0, 122, 0.2) 0%, rgba(33, 114, 229, 0.2) 100%), #FFFFFF;'
+    )
+  }
+)
+var ConfirmedIcon$2 = styled__default['default'](ColumnCenter)(
+  templateObject_4$z ||
+    (templateObject_4$z = __makeTemplateObject(['\n  padding: 60px 0;\n'], ['\n  padding: 60px 0;\n']))
+)
+function AddressClaimModal(_a) {
+  var _b, _c
+  var isOpen = _a.isOpen,
+    onDismiss = _a.onDismiss
+  var chainId = useActiveWeb3React().chainId
+  // state for smart contract input
+  var _d = __read(React.useState(''), 2),
+    typed = _d[0],
+    setTyped = _d[1]
+  function handleRecipientType(val) {
+    setTyped(val)
+  }
+  // monitor for third party recipient of claim
+  var parsedAddress = useENS(typed).address
+  // used for UI loading states
+  var _e = __read(React.useState(false), 2),
+    attempting = _e[0],
+    setAttempting = _e[1]
+  // monitor the status of the claim from contracts and txns
+  var claimCallback = useClaimCallback(parsedAddress).claimCallback
+  var unclaimedAmount = useUserUnclaimedAmount(parsedAddress)
+  // check if the user has something available
+  var hasAvailableClaim = useUserHasAvailableClaim(parsedAddress)
+  var _f = __read(React.useState(), 2),
+    hash = _f[0],
+    setHash = _f[1]
+  // monitor the status of the claim from contracts and txns
+  var claimPending = useIsTransactionPending(hash !== null && hash !== void 0 ? hash : '')
+  var claimConfirmed = hash && !claimPending
+  // use the hash to monitor this txn
+  function onClaim() {
+    setAttempting(true)
+    claimCallback()
+      .then(function (hash) {
+        setHash(hash)
+      })
+      // reset modal and log error
+      .catch(function (error) {
+        setAttempting(false)
+        console.log(error)
+      })
+  }
+  function wrappedOnDismiss() {
+    setAttempting(false)
+    setHash(undefined)
+    setTyped('')
+    onDismiss()
+  }
+  return jsxRuntime.jsxs(
+    Modal,
+    __assign(
+      { isOpen, onDismiss: wrappedOnDismiss, maxHeight: 90 },
+      {
+        children: [
+          jsxRuntime.jsx(Confetti, { start: Boolean(isOpen && claimConfirmed && attempting) }, void 0),
+          !attempting &&
+            jsxRuntime.jsxs(
+              ContentWrapper$4,
+              __assign(
+                { gap: 'lg' },
+                {
+                  children: [
+                    jsxRuntime.jsxs(
+                      ModalUpper$1,
+                      {
+                        children: [
+                          jsxRuntime.jsx(CardBGImage, {}, void 0),
+                          jsxRuntime.jsx(CardNoise, {}, void 0),
+                          jsxRuntime.jsxs(
+                            CardSection,
+                            __assign(
+                              { gap: 'md' },
+                              {
+                                children: [
+                                  jsxRuntime.jsxs(
+                                    RowBetween,
+                                    {
+                                      children: [
+                                        jsxRuntime.jsx(
+                                          ThemedText.White,
+                                          __assign(
+                                            { fontWeight: 500 },
+                                            {
+                                              children: jsxRuntime.jsx(
+                                                macro.Trans,
+                                                { children: 'Claim UNI Token' },
+                                                void 0
+                                              ),
+                                            }
+                                          ),
+                                          void 0
+                                        ),
+                                        jsxRuntime.jsx(
+                                          CloseIcon$2,
+                                          { onClick: wrappedOnDismiss, style: { zIndex: 99 }, stroke: 'white' },
+                                          void 0
+                                        ),
+                                      ],
+                                    },
+                                    void 0
+                                  ),
+                                  jsxRuntime.jsx(
+                                    ThemedText.White,
+                                    __assign(
+                                      { fontWeight: 700, fontSize: 36 },
+                                      {
+                                        children: jsxRuntime.jsxs(
+                                          macro.Trans,
+                                          {
+                                            children: [
+                                              unclaimedAmount === null || unclaimedAmount === void 0
+                                                ? void 0
+                                                : unclaimedAmount.toFixed(
+                                                    0,
+                                                    (_b = { groupSeparator: ',' }) !== null && _b !== void 0 ? _b : '-'
+                                                  ),
+                                              ' UNI',
+                                            ],
+                                          },
+                                          void 0
+                                        ),
+                                      }
+                                    ),
+                                    void 0
+                                  ),
+                                ],
+                              }
+                            ),
+                            void 0
+                          ),
+                          jsxRuntime.jsx(Break$1, {}, void 0),
+                        ],
+                      },
+                      void 0
+                    ),
+                    jsxRuntime.jsxs(
+                      AutoColumn,
+                      __assign(
+                        { gap: 'md', style: { padding: '1rem', paddingTop: '0' }, justify: 'center' },
+                        {
+                          children: [
+                            jsxRuntime.jsx(
+                              ThemedText.SubHeader,
+                              __assign(
+                                { fontWeight: 500 },
+                                {
+                                  children: jsxRuntime.jsx(
+                                    macro.Trans,
+                                    {
+                                      children:
+                                        'Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on submission.',
+                                    },
+                                    void 0
+                                  ),
+                                }
+                              ),
+                              void 0
+                            ),
+                            jsxRuntime.jsx(AddressInputPanel, { value: typed, onChange: handleRecipientType }, void 0),
+                            parsedAddress &&
+                              !hasAvailableClaim &&
+                              jsxRuntime.jsx(
+                                ThemedText.Error,
+                                __assign(
+                                  { error: true },
+                                  {
+                                    children: jsxRuntime.jsx(
+                                      macro.Trans,
+                                      { children: 'Address has no available claim' },
+                                      void 0
+                                    ),
+                                  }
+                                ),
+                                void 0
+                              ),
+                            jsxRuntime.jsx(
+                              ButtonPrimary,
+                              __assign(
+                                {
+                                  disabled:
+                                    !address.isAddress(
+                                      parsedAddress !== null && parsedAddress !== void 0 ? parsedAddress : ''
+                                    ) || !hasAvailableClaim,
+                                  padding: '16px 16px',
+                                  width: '100%',
+                                  $borderRadius: '12px',
+                                  mt: '1rem',
+                                  onClick: onClaim,
+                                },
+                                { children: jsxRuntime.jsx(macro.Trans, { children: 'Claim UNI' }, void 0) }
+                              ),
+                              void 0
+                            ),
+                          ],
+                        }
+                      ),
+                      void 0
+                    ),
+                  ],
+                }
+              ),
+              void 0
+            ),
+          (attempting || claimConfirmed) &&
+            jsxRuntime.jsxs(
+              ConfirmOrLoadingWrapper$1,
+              __assign(
+                { activeBG: true },
+                {
+                  children: [
+                    jsxRuntime.jsx(CardNoise, {}, void 0),
+                    jsxRuntime.jsx(CardBGImageSmaller, { desaturate: true }, void 0),
+                    jsxRuntime.jsxs(
+                      RowBetween,
+                      {
+                        children: [
+                          jsxRuntime.jsx('div', {}, void 0),
+                          jsxRuntime.jsx(
+                            CloseIcon$2,
+                            { onClick: wrappedOnDismiss, style: { zIndex: 99 }, stroke: 'black' },
+                            void 0
+                          ),
+                        ],
+                      },
+                      void 0
+                    ),
+                    jsxRuntime.jsx(
+                      ConfirmedIcon$2,
+                      {
+                        children: !claimConfirmed
+                          ? jsxRuntime.jsx(CustomLightSpinner, { src: Circle$1, alt: 'loader', size: '90px' }, void 0)
+                          : jsxRuntime.jsx(
+                              UniTokenAnimated,
+                              { width: '72px', src: tokenLogo, alt: 'UNI logo' },
+                              void 0
+                            ),
+                      },
+                      void 0
+                    ),
+                    jsxRuntime.jsxs(
+                      AutoColumn,
+                      __assign(
+                        { gap: '100px', justify: 'center' },
+                        {
+                          children: [
+                            jsxRuntime.jsxs(
+                              AutoColumn,
+                              __assign(
+                                { gap: '12px', justify: 'center' },
+                                {
+                                  children: [
+                                    jsxRuntime.jsx(
+                                      ThemedText.LargeHeader,
+                                      __assign(
+                                        { fontWeight: 600, color: 'black' },
+                                        {
+                                          children: claimConfirmed
+                                            ? jsxRuntime.jsx(macro.Trans, { children: 'Claimed' }, void 0)
+                                            : jsxRuntime.jsx(macro.Trans, { children: 'Claiming' }, void 0),
+                                        }
+                                      ),
+                                      void 0
+                                    ),
+                                    !claimConfirmed &&
+                                      jsxRuntime.jsx(
+                                        rebass.Text,
+                                        __assign(
+                                          { fontSize: 36, color: '#ff007a', fontWeight: 800 },
+                                          {
+                                            children: jsxRuntime.jsxs(
+                                              macro.Trans,
+                                              {
+                                                children: [
+                                                  unclaimedAmount === null || unclaimedAmount === void 0
+                                                    ? void 0
+                                                    : unclaimedAmount.toFixed(
+                                                        0,
+                                                        (_c = { groupSeparator: ',' }) !== null && _c !== void 0
+                                                          ? _c
+                                                          : '-'
+                                                      ),
+                                                  ' UNI',
+                                                ],
+                                              },
+                                              void 0
+                                            ),
+                                          }
+                                        ),
+                                        void 0
+                                      ),
+                                    parsedAddress &&
+                                      jsxRuntime.jsx(
+                                        ThemedText.LargeHeader,
+                                        __assign(
+                                          { fontWeight: 600, color: 'black' },
+                                          {
+                                            children: jsxRuntime.jsxs(
+                                              macro.Trans,
+                                              { children: ['for ', shortenAddress(parsedAddress)] },
+                                              void 0
+                                            ),
+                                          }
+                                        ),
+                                        void 0
+                                      ),
+                                  ],
+                                }
+                              ),
+                              void 0
+                            ),
+                            claimConfirmed &&
+                              jsxRuntime.jsx(
+                                jsxRuntime.Fragment,
+                                {
+                                  children: jsxRuntime.jsxs(
+                                    ThemedText.SubHeader,
+                                    __assign(
+                                      { fontWeight: 500, color: 'black' },
+                                      {
+                                        children: [
+                                          jsxRuntime.jsxs(
+                                            'span',
+                                            __assign(
+                                              { role: 'img', 'aria-label': 'party-hat' },
+                                              { children: ['\uD83C\uDF89', ' '] }
+                                            ),
+                                            void 0
+                                          ),
+                                          jsxRuntime.jsx(
+                                            macro.Trans,
+                                            { children: 'Welcome to team Unicorn :) ' },
+                                            void 0
+                                          ),
+                                          jsxRuntime.jsx(
+                                            'span',
+                                            __assign(
+                                              { role: 'img', 'aria-label': 'party-hat' },
+                                              { children: '\uD83C\uDF89' }
+                                            ),
+                                            void 0
+                                          ),
+                                        ],
+                                      }
+                                    ),
+                                    void 0
+                                  ),
+                                },
+                                void 0
+                              ),
+                            attempting &&
+                              !hash &&
+                              jsxRuntime.jsx(
+                                ThemedText.SubHeader,
+                                __assign(
+                                  { color: 'black' },
+                                  {
+                                    children: jsxRuntime.jsx(
+                                      macro.Trans,
+                                      { children: 'Confirm this transaction in your wallet' },
+                                      void 0
+                                    ),
+                                  }
+                                ),
+                                void 0
+                              ),
+                            attempting &&
+                              hash &&
+                              !claimConfirmed &&
+                              chainId &&
+                              hash &&
+                              jsxRuntime.jsx(
+                                ExternalLink,
+                                __assign(
+                                  {
+                                    href: getExplorerLink(chainId, hash, ExplorerDataType.TRANSACTION),
+                                    style: { zIndex: 99 },
+                                  },
+                                  {
+                                    children: jsxRuntime.jsx(
+                                      macro.Trans,
+                                      { children: 'View transaction on Explorer' },
+                                      void 0
+                                    ),
+                                  }
+                                ),
+                                void 0
+                              ),
+                          ],
+                        }
+                      ),
+                      void 0
+                    ),
+                  ],
+                }
+              ),
+              void 0
+            ),
+        ],
+      }
+    ),
+    void 0
+  )
+}
+var templateObject_1$1d, templateObject_2$T, templateObject_3$K, templateObject_4$z
+
+var _a$a
+var ApplicationModal
+;(function (ApplicationModal) {
+  ApplicationModal[(ApplicationModal['WALLET'] = 0)] = 'WALLET'
+  ApplicationModal[(ApplicationModal['SETTINGS'] = 1)] = 'SETTINGS'
+  ApplicationModal[(ApplicationModal['SELF_CLAIM'] = 2)] = 'SELF_CLAIM'
+  ApplicationModal[(ApplicationModal['ADDRESS_CLAIM'] = 3)] = 'ADDRESS_CLAIM'
+  ApplicationModal[(ApplicationModal['CLAIM_POPUP'] = 4)] = 'CLAIM_POPUP'
+  ApplicationModal[(ApplicationModal['MENU'] = 5)] = 'MENU'
+  ApplicationModal[(ApplicationModal['DELEGATE'] = 6)] = 'DELEGATE'
+  ApplicationModal[(ApplicationModal['VOTE'] = 7)] = 'VOTE'
+  ApplicationModal[(ApplicationModal['POOL_OVERVIEW_OPTIONS'] = 8)] = 'POOL_OVERVIEW_OPTIONS'
+  ApplicationModal[(ApplicationModal['NETWORK_SELECTOR'] = 9)] = 'NETWORK_SELECTOR'
+  ApplicationModal[(ApplicationModal['PRIVACY_POLICY'] = 10)] = 'PRIVACY_POLICY'
+})(ApplicationModal || (ApplicationModal = {}))
+var initialState$8 = {
+  chainId: null,
+  openModal: null,
+  popupList: [],
+}
+var applicationSlice = toolkit.createSlice({
+  name: 'application',
+  initialState: initialState$8,
+  reducers: {
+    updateChainId(state, action) {
+      var chainId = action.payload.chainId
+      state.chainId = chainId
+    },
+    setOpenModal(state, action) {
+      state.openModal = action.payload
+    },
+    addPopup(state, _a) {
+      var _b = _a.payload,
+        content = _b.content,
+        key = _b.key,
+        _c = _b.removeAfterMs,
+        removeAfterMs = _c === void 0 ? DEFAULT_TXN_DISMISS_MS : _c
+      state.popupList = (
+        key
+          ? state.popupList.filter(function (popup) {
+              return popup.key !== key
+            })
+          : state.popupList
+      ).concat([
+        {
+          key: key || toolkit.nanoid(),
+          show: true,
+          content,
+          removeAfterMs,
+        },
+      ])
+    },
+    removePopup(state, _a) {
+      var key = _a.payload.key
+      state.popupList.forEach(function (p) {
+        if (p.key === key) {
+          p.show = false
+        }
+      })
+    },
+  },
+})
+var updateChainId = ((_a$a = applicationSlice.actions), _a$a.updateChainId),
+  setOpenModal = _a$a.setOpenModal,
+  addPopup = _a$a.addPopup,
+  removePopup = _a$a.removePopup
+var application = applicationSlice.reducer
+
+var Field$3
+;(function (Field) {
+  Field['LIQUIDITY_PERCENT'] = 'LIQUIDITY_PERCENT'
+  Field['LIQUIDITY'] = 'LIQUIDITY'
+  Field['CURRENCY_A'] = 'CURRENCY_A'
+  Field['CURRENCY_B'] = 'CURRENCY_B'
+})(Field$3 || (Field$3 = {}))
+var typeInput$3 = toolkit.createAction('burn/typeInputBurn')
 
 var initialState$7 = {
-    independentField: Field$3.LIQUIDITY_PERCENT,
-    typedValue: '0',
-};
+  independentField: Field$3.LIQUIDITY_PERCENT,
+  typedValue: '0',
+}
 var burn = toolkit.createReducer(initialState$7, function (builder) {
-    return builder.addCase(typeInput$3, function (state, _a) {
-        var _b = _a.payload, field = _b.field, typedValue = _b.typedValue;
-        return __assign(__assign({}, state), { independentField: field, typedValue: typedValue });
-    });
-});
+  return builder.addCase(typeInput$3, function (state, _a) {
+    var _b = _a.payload,
+      field = _b.field,
+      typedValue = _b.typedValue
+    return __assign(__assign({}, state), { independentField: field, typedValue })
+  })
+})
 
-var selectPercent = toolkit.createAction('burnV3/selectBurnPercent');
+var selectPercent = toolkit.createAction('burnV3/selectBurnPercent')
 
 var initialState$6 = {
-    percent: 0,
-};
+  percent: 0,
+}
 var burnV3 = toolkit.createReducer(initialState$6, function (builder) {
-    return builder.addCase(selectPercent, function (state, _a) {
-        var percent = _a.payload.percent;
-        return __assign(__assign({}, state), { percent: percent });
-    });
-});
+  return builder.addCase(selectPercent, function (state, _a) {
+    var percent = _a.payload.percent
+    return __assign(__assign({}, state), { percent })
+  })
+})
 
-var _a$9;
+var _a$9
 // List of supported subgraphs. Note that the app currently only support one active subgraph at a time
-var CHAIN_SUBGRAPH_URL = (_a$9 = {},
-    _a$9[SupportedChainId.MAINNET] = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
-    _a$9[SupportedChainId.RINKEBY] = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
-    _a$9[SupportedChainId.ARBITRUM_ONE] = 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
-    _a$9[SupportedChainId.OPTIMISM] = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-optimism-dev',
-    _a$9[SupportedChainId.POLYGON] = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
-    _a$9);
+var CHAIN_SUBGRAPH_URL =
+  ((_a$9 = {}),
+  (_a$9[SupportedChainId.MAINNET] = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3'),
+  (_a$9[SupportedChainId.RINKEBY] = 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3'),
+  (_a$9[SupportedChainId.ARBITRUM_ONE] = 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal'),
+  (_a$9[SupportedChainId.OPTIMISM] = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-optimism-dev'),
+  (_a$9[SupportedChainId.POLYGON] = 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon'),
+  _a$9)
 var api$1 = react.createApi({
-    reducerPath: 'dataApi',
-    baseQuery: graphqlRequestBaseQuery(),
-    endpoints: function (builder) { return ({
-        allV3Ticks: builder.query({
-            query: function (_a) {
-                var poolAddress = _a.poolAddress, _b = _a.skip, skip = _b === void 0 ? 0 : _b;
-                return ({
-                    document: graphqlRequest.gql(templateObject_1$1c || (templateObject_1$1c = __makeTemplateObject(["\n          query allV3Ticks($poolAddress: String!, $skip: Int!) {\n            ticks(first: 1000, skip: $skip, where: { poolAddress: $poolAddress }, orderBy: tickIdx) {\n              tick: tickIdx\n              liquidityNet\n              price0\n              price1\n            }\n          }\n        "], ["\n          query allV3Ticks($poolAddress: String!, $skip: Int!) {\n            ticks(first: 1000, skip: $skip, where: { poolAddress: $poolAddress }, orderBy: tickIdx) {\n              tick: tickIdx\n              liquidityNet\n              price0\n              price1\n            }\n          }\n        "]))),
-                    variables: {
-                        poolAddress: poolAddress,
-                        skip: skip,
-                    },
-                });
+  reducerPath: 'dataApi',
+  baseQuery: graphqlRequestBaseQuery(),
+  endpoints(builder) {
+    return {
+      allV3Ticks: builder.query({
+        query(_a) {
+          var poolAddress = _a.poolAddress,
+            _b = _a.skip,
+            skip = _b === void 0 ? 0 : _b
+          return {
+            document: graphqlRequest.gql(
+              templateObject_1$1c ||
+                (templateObject_1$1c = __makeTemplateObject(
+                  [
+                    '\n          query allV3Ticks($poolAddress: String!, $skip: Int!) {\n            ticks(first: 1000, skip: $skip, where: { poolAddress: $poolAddress }, orderBy: tickIdx) {\n              tick: tickIdx\n              liquidityNet\n              price0\n              price1\n            }\n          }\n        ',
+                  ],
+                  [
+                    '\n          query allV3Ticks($poolAddress: String!, $skip: Int!) {\n            ticks(first: 1000, skip: $skip, where: { poolAddress: $poolAddress }, orderBy: tickIdx) {\n              tick: tickIdx\n              liquidityNet\n              price0\n              price1\n            }\n          }\n        ',
+                  ]
+                ))
+            ),
+            variables: {
+              poolAddress,
+              skip,
             },
-        }),
-        feeTierDistribution: builder.query({
-            query: function (_a) {
-                var token0 = _a.token0, token1 = _a.token1;
-                return ({
-                    document: graphqlRequest.gql(templateObject_2$S || (templateObject_2$S = __makeTemplateObject(["\n          query feeTierDistribution($token0: String!, $token1: String!) {\n            _meta {\n              block {\n                number\n              }\n            }\n            asToken0: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token0, token1: $token1 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n            asToken1: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token1, token1: $token0 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n          }\n        "], ["\n          query feeTierDistribution($token0: String!, $token1: String!) {\n            _meta {\n              block {\n                number\n              }\n            }\n            asToken0: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token0, token1: $token1 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n            asToken1: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token1, token1: $token0 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n          }\n        "]))),
-                    variables: {
-                        token0: token0,
-                        token1: token1,
-                    },
-                });
+          }
+        },
+      }),
+      feeTierDistribution: builder.query({
+        query(_a) {
+          var token0 = _a.token0,
+            token1 = _a.token1
+          return {
+            document: graphqlRequest.gql(
+              templateObject_2$S ||
+                (templateObject_2$S = __makeTemplateObject(
+                  [
+                    '\n          query feeTierDistribution($token0: String!, $token1: String!) {\n            _meta {\n              block {\n                number\n              }\n            }\n            asToken0: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token0, token1: $token1 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n            asToken1: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token1, token1: $token0 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n          }\n        ',
+                  ],
+                  [
+                    '\n          query feeTierDistribution($token0: String!, $token1: String!) {\n            _meta {\n              block {\n                number\n              }\n            }\n            asToken0: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token0, token1: $token1 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n            asToken1: pools(\n              orderBy: totalValueLockedToken0\n              orderDirection: desc\n              where: { token0: $token1, token1: $token0 }\n            ) {\n              feeTier\n              totalValueLockedToken0\n              totalValueLockedToken1\n            }\n          }\n        ',
+                  ]
+                ))
+            ),
+            variables: {
+              token0,
+              token1,
             },
-        }),
-    }); },
-});
+          }
+        },
+      }),
+    }
+  },
+})
 // Graphql query client wrapper that builds a dynamic url based on chain id
 function graphqlRequestBaseQuery() {
-    var _this = this;
-    return function (_a, _b) {
-        var document = _a.document, variables = _a.variables;
-        var getState = _b.getState;
-        return __awaiter(_this, void 0, void 0, function () {
-            var chainId, subgraphUrl, error_1, name_1, message, stack, request, response;
-            var _c;
-            return __generator(this, function (_d) {
-                switch (_d.label) {
-                    case 0:
-                        _d.trys.push([0, 2, , 3]);
-                        chainId = getState().application.chainId;
-                        subgraphUrl = chainId ? CHAIN_SUBGRAPH_URL[chainId] : undefined;
-                        if (!subgraphUrl) {
-                            return [2 /*return*/, {
-                                    error: {
-                                        name: 'UnsupportedChainId',
-                                        message: "Subgraph queries against ChainId " + chainId + " are not supported.",
-                                        stack: '',
-                                    },
-                                }];
-                        }
-                        _c = {};
-                        return [4 /*yield*/, new graphqlRequest.GraphQLClient(subgraphUrl).request(document, variables)];
-                    case 1: return [2 /*return*/, (_c.data = _d.sent(), _c.meta = {}, _c)];
-                    case 2:
-                        error_1 = _d.sent();
-                        if (error_1 instanceof graphqlRequest.ClientError) {
-                            name_1 = error_1.name, message = error_1.message, stack = error_1.stack, request = error_1.request, response = error_1.response;
-                            return [2 /*return*/, { error: { name: name_1, message: message, stack: stack }, meta: { request: request, response: response } }];
-                        }
-                        throw error_1;
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
+  var _this = this
+  return function (_a, _b) {
+    var document = _a.document,
+      variables = _a.variables
+    var getState = _b.getState
+    return __awaiter(_this, void 0, void 0, function () {
+      var chainId, subgraphUrl, error_1, name_1, message, stack, request, response
+      var _c
+      return __generator(this, function (_d) {
+        switch (_d.label) {
+          case 0:
+            _d.trys.push([0, 2, , 3])
+            chainId = getState().application.chainId
+            subgraphUrl = chainId ? CHAIN_SUBGRAPH_URL[chainId] : undefined
+            if (!subgraphUrl) {
+              return [
+                2 /*return*/,
+                {
+                  error: {
+                    name: 'UnsupportedChainId',
+                    message: 'Subgraph queries against ChainId ' + chainId + ' are not supported.',
+                    stack: '',
+                  },
+                },
+              ]
+            }
+            _c = {}
+            return [4 /*yield*/, new graphqlRequest.GraphQLClient(subgraphUrl).request(document, variables)]
+          case 1:
+            return [2 /*return*/, ((_c.data = _d.sent()), (_c.meta = {}), _c)]
+          case 2:
+            error_1 = _d.sent()
+            if (error_1 instanceof graphqlRequest.ClientError) {
+              ;(name_1 = error_1.name),
+                (message = error_1.message),
+                (stack = error_1.stack),
+                (request = error_1.request),
+                (response = error_1.response)
+              return [
+                2 /*return*/,
+                {
+                  error: { name: name_1, message, stack },
+                  meta: { request, response },
+                },
+              ]
+            }
+            throw error_1
+          case 3:
+            return [2 /*return*/]
+        }
+      })
+    })
+  }
 }
-var templateObject_1$1c, templateObject_2$S;
+var templateObject_1$1c, templateObject_2$S
 
 // fired once when the app reloads but before the app renders
 // allows any updates to be applied to store data loaded from localStorage
-var updateVersion = toolkit.createAction('global/updateVersion');
+var updateVersion = toolkit.createAction('global/updateVersion')
 
 var fetchTokenList = {
-    pending: toolkit.createAction('lists/fetchTokenList/pending'),
-    fulfilled: toolkit.createAction('lists/fetchTokenList/fulfilled'),
-    rejected: toolkit.createAction('lists/fetchTokenList/rejected'),
-};
+  pending: toolkit.createAction('lists/fetchTokenList/pending'),
+  fulfilled: toolkit.createAction('lists/fetchTokenList/fulfilled'),
+  rejected: toolkit.createAction('lists/fetchTokenList/rejected'),
+}
 // add and remove from list options
-var addList = toolkit.createAction('lists/addList');
-var removeList = toolkit.createAction('lists/removeList');
+var addList = toolkit.createAction('lists/addList')
+var removeList = toolkit.createAction('lists/removeList')
 // select which lists to search across from loaded lists
-var enableList = toolkit.createAction('lists/enableList');
-var disableList = toolkit.createAction('lists/disableList');
+var enableList = toolkit.createAction('lists/enableList')
+var disableList = toolkit.createAction('lists/disableList')
 // versioning
-var acceptListUpdate = toolkit.createAction('lists/acceptListUpdate');
+var acceptListUpdate = toolkit.createAction('lists/acceptListUpdate')
 
 var NEW_LIST_STATE = {
-    error: null,
-    current: null,
-    loadingRequestId: null,
-    pendingUpdate: null,
-};
+  error: null,
+  current: null,
+  loadingRequestId: null,
+  pendingUpdate: null,
+}
 var initialState$5 = {
-    lastInitializedDefaultListOfLists: DEFAULT_LIST_OF_LISTS,
-    byUrl: __assign({}, DEFAULT_LIST_OF_LISTS.reduce(function (memo, listUrl) {
-        memo[listUrl] = NEW_LIST_STATE;
-        return memo;
-    }, {})),
-    activeListUrls: DEFAULT_ACTIVE_LIST_URLS,
-};
+  lastInitializedDefaultListOfLists: DEFAULT_LIST_OF_LISTS,
+  byUrl: __assign(
+    {},
+    DEFAULT_LIST_OF_LISTS.reduce(function (memo, listUrl) {
+      memo[listUrl] = NEW_LIST_STATE
+      return memo
+    }, {})
+  ),
+  activeListUrls: DEFAULT_ACTIVE_LIST_URLS,
+}
 var lists = toolkit.createReducer(initialState$5, function (builder) {
-    return builder
-        .addCase(fetchTokenList.pending, function (state, _a) {
-        var _b, _c, _d, _e;
-        var _f = _a.payload, requestId = _f.requestId, url = _f.url;
-        var current = (_c = (_b = state.byUrl[url]) === null || _b === void 0 ? void 0 : _b.current) !== null && _c !== void 0 ? _c : null;
-        var pendingUpdate = (_e = (_d = state.byUrl[url]) === null || _d === void 0 ? void 0 : _d.pendingUpdate) !== null && _e !== void 0 ? _e : null;
-        state.byUrl[url] = {
-            current: current,
-            pendingUpdate: pendingUpdate,
-            loadingRequestId: requestId,
-            error: null,
-        };
+  return builder
+    .addCase(fetchTokenList.pending, function (state, _a) {
+      var _b, _c, _d, _e
+      var _f = _a.payload,
+        requestId = _f.requestId,
+        url = _f.url
+      var current =
+        (_c = (_b = state.byUrl[url]) === null || _b === void 0 ? void 0 : _b.current) !== null && _c !== void 0
+          ? _c
+          : null
+      var pendingUpdate =
+        (_e = (_d = state.byUrl[url]) === null || _d === void 0 ? void 0 : _d.pendingUpdate) !== null && _e !== void 0
+          ? _e
+          : null
+      state.byUrl[url] = {
+        current,
+        pendingUpdate,
+        loadingRequestId: requestId,
+        error: null,
+      }
     })
-        .addCase(fetchTokenList.fulfilled, function (state, _a) {
-        var _b, _c, _d;
-        var _e = _a.payload, requestId = _e.requestId, tokenList = _e.tokenList, url = _e.url;
-        var current = (_b = state.byUrl[url]) === null || _b === void 0 ? void 0 : _b.current;
-        var loadingRequestId = (_c = state.byUrl[url]) === null || _c === void 0 ? void 0 : _c.loadingRequestId;
-        // no-op if update does nothing
-        if (current) {
-            var upgradeType = tokenLists.getVersionUpgrade(current.version, tokenList.version);
-            if (upgradeType === tokenLists.VersionUpgrade.NONE)
-                return;
-            if (loadingRequestId === null || loadingRequestId === requestId) {
-                state.byUrl[url] = {
-                    current: current,
-                    pendingUpdate: tokenList,
-                    loadingRequestId: null,
-                    error: null,
-                };
-            }
-        }
-        else {
-            // activate if on default active
-            if (DEFAULT_ACTIVE_LIST_URLS.includes(url)) {
-                (_d = state.activeListUrls) === null || _d === void 0 ? void 0 : _d.push(url);
-            }
-            state.byUrl[url] = {
-                current: tokenList,
-                pendingUpdate: null,
-                loadingRequestId: null,
-                error: null,
-            };
-        }
-    })
-        .addCase(fetchTokenList.rejected, function (state, _a) {
-        var _b;
-        var _c = _a.payload, url = _c.url, requestId = _c.requestId, errorMessage = _c.errorMessage;
-        if (((_b = state.byUrl[url]) === null || _b === void 0 ? void 0 : _b.loadingRequestId) !== requestId) {
-            // no-op since it's not the latest request
-            return;
-        }
-        state.byUrl[url] = {
-            current: state.byUrl[url].current ? state.byUrl[url].current : null,
-            pendingUpdate: null,
+    .addCase(fetchTokenList.fulfilled, function (state, _a) {
+      var _b, _c, _d
+      var _e = _a.payload,
+        requestId = _e.requestId,
+        tokenList = _e.tokenList,
+        url = _e.url
+      var current = (_b = state.byUrl[url]) === null || _b === void 0 ? void 0 : _b.current
+      var loadingRequestId = (_c = state.byUrl[url]) === null || _c === void 0 ? void 0 : _c.loadingRequestId
+      // no-op if update does nothing
+      if (current) {
+        var upgradeType = tokenLists.getVersionUpgrade(current.version, tokenList.version)
+        if (upgradeType === tokenLists.VersionUpgrade.NONE) return
+        if (loadingRequestId === null || loadingRequestId === requestId) {
+          state.byUrl[url] = {
+            current,
+            pendingUpdate: tokenList,
             loadingRequestId: null,
-            error: errorMessage,
-        };
+            error: null,
+          }
+        }
+      } else {
+        // activate if on default active
+        if (DEFAULT_ACTIVE_LIST_URLS.includes(url)) {
+          ;(_d = state.activeListUrls) === null || _d === void 0 ? void 0 : _d.push(url)
+        }
+        state.byUrl[url] = {
+          current: tokenList,
+          pendingUpdate: null,
+          loadingRequestId: null,
+          error: null,
+        }
+      }
     })
-        .addCase(addList, function (state, _a) {
-        var url = _a.payload;
-        if (!state.byUrl[url]) {
-            state.byUrl[url] = NEW_LIST_STATE;
-        }
+    .addCase(fetchTokenList.rejected, function (state, _a) {
+      var _b
+      var _c = _a.payload,
+        url = _c.url,
+        requestId = _c.requestId,
+        errorMessage = _c.errorMessage
+      if (((_b = state.byUrl[url]) === null || _b === void 0 ? void 0 : _b.loadingRequestId) !== requestId) {
+        // no-op since it's not the latest request
+        return
+      }
+      state.byUrl[url] = {
+        current: state.byUrl[url].current ? state.byUrl[url].current : null,
+        pendingUpdate: null,
+        loadingRequestId: null,
+        error: errorMessage,
+      }
     })
-        .addCase(removeList, function (state, _a) {
-        var url = _a.payload;
-        if (state.byUrl[url]) {
-            delete state.byUrl[url];
-        }
-        // remove list from active urls if needed
-        if (state.activeListUrls && state.activeListUrls.includes(url)) {
-            state.activeListUrls = state.activeListUrls.filter(function (u) { return u !== url; });
-        }
+    .addCase(addList, function (state, _a) {
+      var url = _a.payload
+      if (!state.byUrl[url]) {
+        state.byUrl[url] = NEW_LIST_STATE
+      }
     })
-        .addCase(enableList, function (state, _a) {
-        var url = _a.payload;
-        if (!state.byUrl[url]) {
-            state.byUrl[url] = NEW_LIST_STATE;
-        }
-        if (state.activeListUrls && !state.activeListUrls.includes(url)) {
-            state.activeListUrls.push(url);
-        }
-        if (!state.activeListUrls) {
-            state.activeListUrls = [url];
-        }
+    .addCase(removeList, function (state, _a) {
+      var url = _a.payload
+      if (state.byUrl[url]) {
+        delete state.byUrl[url]
+      }
+      // remove list from active urls if needed
+      if (state.activeListUrls && state.activeListUrls.includes(url)) {
+        state.activeListUrls = state.activeListUrls.filter(function (u) {
+          return u !== url
+        })
+      }
     })
-        .addCase(disableList, function (state, _a) {
-        var url = _a.payload;
-        if (state.activeListUrls && state.activeListUrls.includes(url)) {
-            state.activeListUrls = state.activeListUrls.filter(function (u) { return u !== url; });
-        }
+    .addCase(enableList, function (state, _a) {
+      var url = _a.payload
+      if (!state.byUrl[url]) {
+        state.byUrl[url] = NEW_LIST_STATE
+      }
+      if (state.activeListUrls && !state.activeListUrls.includes(url)) {
+        state.activeListUrls.push(url)
+      }
+      if (!state.activeListUrls) {
+        state.activeListUrls = [url]
+      }
     })
-        .addCase(acceptListUpdate, function (state, _a) {
-        var _b;
-        var url = _a.payload;
-        if (!((_b = state.byUrl[url]) === null || _b === void 0 ? void 0 : _b.pendingUpdate)) {
-            throw new Error('accept list update called without pending update');
-        }
-        state.byUrl[url] = __assign(__assign({}, state.byUrl[url]), { current: state.byUrl[url].pendingUpdate, pendingUpdate: null });
+    .addCase(disableList, function (state, _a) {
+      var url = _a.payload
+      if (state.activeListUrls && state.activeListUrls.includes(url)) {
+        state.activeListUrls = state.activeListUrls.filter(function (u) {
+          return u !== url
+        })
+      }
     })
-        .addCase(updateVersion, function (state) {
-        // state loaded from localStorage, but new lists have never been initialized
-        if (!state.lastInitializedDefaultListOfLists) {
-            state.byUrl = initialState$5.byUrl;
-            state.activeListUrls = initialState$5.activeListUrls;
-        }
-        else if (state.lastInitializedDefaultListOfLists) {
-            var lastInitializedSet_1 = state.lastInitializedDefaultListOfLists.reduce(function (s, l) { return s.add(l); }, new Set());
-            var newListOfListsSet_1 = DEFAULT_LIST_OF_LISTS.reduce(function (s, l) { return s.add(l); }, new Set());
-            DEFAULT_LIST_OF_LISTS.forEach(function (listUrl) {
-                if (!lastInitializedSet_1.has(listUrl)) {
-                    state.byUrl[listUrl] = NEW_LIST_STATE;
-                }
-            });
-            state.lastInitializedDefaultListOfLists.forEach(function (listUrl) {
-                if (!newListOfListsSet_1.has(listUrl)) {
-                    delete state.byUrl[listUrl];
-                }
-            });
-        }
-        state.lastInitializedDefaultListOfLists = DEFAULT_LIST_OF_LISTS;
-        // if no active lists, activate defaults
-        if (!state.activeListUrls) {
-            state.activeListUrls = DEFAULT_ACTIVE_LIST_URLS;
-            // for each list on default list, initialize if needed
-            DEFAULT_ACTIVE_LIST_URLS.map(function (listUrl) {
-                if (!state.byUrl[listUrl]) {
-                    state.byUrl[listUrl] = NEW_LIST_STATE;
-                }
-                return true;
-            });
-        }
-    });
-});
+    .addCase(acceptListUpdate, function (state, _a) {
+      var _b
+      var url = _a.payload
+      if (!((_b = state.byUrl[url]) === null || _b === void 0 ? void 0 : _b.pendingUpdate)) {
+        throw new Error('accept list update called without pending update')
+      }
+      state.byUrl[url] = __assign(__assign({}, state.byUrl[url]), {
+        current: state.byUrl[url].pendingUpdate,
+        pendingUpdate: null,
+      })
+    })
+    .addCase(updateVersion, function (state) {
+      // state loaded from localStorage, but new lists have never been initialized
+      if (!state.lastInitializedDefaultListOfLists) {
+        state.byUrl = initialState$5.byUrl
+        state.activeListUrls = initialState$5.activeListUrls
+      } else if (state.lastInitializedDefaultListOfLists) {
+        var lastInitializedSet_1 = state.lastInitializedDefaultListOfLists.reduce(function (s, l) {
+          return s.add(l)
+        }, new Set())
+        var newListOfListsSet_1 = DEFAULT_LIST_OF_LISTS.reduce(function (s, l) {
+          return s.add(l)
+        }, new Set())
+        DEFAULT_LIST_OF_LISTS.forEach(function (listUrl) {
+          if (!lastInitializedSet_1.has(listUrl)) {
+            state.byUrl[listUrl] = NEW_LIST_STATE
+          }
+        })
+        state.lastInitializedDefaultListOfLists.forEach(function (listUrl) {
+          if (!newListOfListsSet_1.has(listUrl)) {
+            delete state.byUrl[listUrl]
+          }
+        })
+      }
+      state.lastInitializedDefaultListOfLists = DEFAULT_LIST_OF_LISTS
+      // if no active lists, activate defaults
+      if (!state.activeListUrls) {
+        state.activeListUrls = DEFAULT_ACTIVE_LIST_URLS
+        // for each list on default list, initialize if needed
+        DEFAULT_ACTIVE_LIST_URLS.map(function (listUrl) {
+          if (!state.byUrl[listUrl]) {
+            state.byUrl[listUrl] = NEW_LIST_STATE
+          }
+          return true
+        })
+      }
+    })
+})
 
 /**
  * Converts a filter to the corresponding string key
  * @param filter the filter to convert
  */
 function filterToKey(filter) {
-    var _a, _b, _c, _d;
-    return ((_a = filter.address) !== null && _a !== void 0 ? _a : '') + ":" + ((_d = (_c = (_b = filter.topics) === null || _b === void 0 ? void 0 : _b.map(function (topic) { return (topic ? (Array.isArray(topic) ? topic.join(';') : topic) : '\0'); })) === null || _c === void 0 ? void 0 : _c.join('-')) !== null && _d !== void 0 ? _d : '');
+  var _a, _b, _c, _d
+  return (
+    ((_a = filter.address) !== null && _a !== void 0 ? _a : '') +
+    ':' +
+    ((_d =
+      (_c =
+        (_b = filter.topics) === null || _b === void 0
+          ? void 0
+          : _b.map(function (topic) {
+              return topic ? (Array.isArray(topic) ? topic.join(';') : topic) : '\0'
+            })) === null || _c === void 0
+        ? void 0
+        : _c.join('-')) !== null && _d !== void 0
+      ? _d
+      : '')
+  )
 }
 /**
  * Convert a filter key to the corresponding filter
  * @param key key to convert
  */
 function keyToFilter(key) {
-    var pcs = key.split(':');
-    var address = pcs[0];
-    var topics = pcs[1].split('-').map(function (topic) {
-        if (topic === '\0')
-            return null;
-        var parts = topic.split(';');
-        if (parts.length === 1)
-            return parts[0];
-        return parts;
-    });
-    return {
-        address: address.length === 0 ? undefined : address,
-        topics: topics,
-    };
+  var pcs = key.split(':')
+  var address = pcs[0]
+  var topics = pcs[1].split('-').map(function (topic) {
+    if (topic === '\0') return null
+    var parts = topic.split(';')
+    if (parts.length === 1) return parts[0]
+    return parts
+  })
+  return {
+    address: address.length === 0 ? undefined : address,
+    topics,
+  }
 }
 
-var _a$8;
+var _a$8
 var slice = toolkit.createSlice({
-    name: 'logs',
-    initialState: {},
-    reducers: {
-        addListener: function (state, _a) {
-            var _b = _a.payload, chainId = _b.chainId, filter = _b.filter;
-            if (!state[chainId])
-                state[chainId] = {};
-            var key = filterToKey(filter);
-            if (!state[chainId][key])
-                state[chainId][key] = {
-                    listeners: 1,
-                };
-            else
-                state[chainId][key].listeners++;
-        },
-        fetchingLogs: function (state, _a) {
-            var e_1, _b;
-            var _c = _a.payload, chainId = _c.chainId, filters = _c.filters, blockNumber = _c.blockNumber;
-            if (!state[chainId])
-                return;
-            try {
-                for (var filters_1 = __values(filters), filters_1_1 = filters_1.next(); !filters_1_1.done; filters_1_1 = filters_1.next()) {
-                    var filter = filters_1_1.value;
-                    var key = filterToKey(filter);
-                    if (!state[chainId][key])
-                        continue;
-                    state[chainId][key].fetchingBlockNumber = blockNumber;
-                }
-            }
-            catch (e_1_1) { e_1 = { error: e_1_1 }; }
-            finally {
-                try {
-                    if (filters_1_1 && !filters_1_1.done && (_b = filters_1.return)) _b.call(filters_1);
-                }
-                finally { if (e_1) throw e_1.error; }
-            }
-        },
-        fetchedLogs: function (state, _a) {
-            var _b = _a.payload, chainId = _b.chainId, filter = _b.filter, results = _b.results;
-            if (!state[chainId])
-                return;
-            var key = filterToKey(filter);
-            var fetchState = state[chainId][key];
-            if (!fetchState || (fetchState.results && fetchState.results.blockNumber > results.blockNumber))
-                return;
-            fetchState.results = results;
-        },
-        fetchedLogsError: function (state, _a) {
-            var _b = _a.payload, chainId = _b.chainId, filter = _b.filter, blockNumber = _b.blockNumber;
-            if (!state[chainId])
-                return;
-            var key = filterToKey(filter);
-            var fetchState = state[chainId][key];
-            if (!fetchState || (fetchState.results && fetchState.results.blockNumber > blockNumber))
-                return;
-            fetchState.results = {
-                blockNumber: blockNumber,
-                error: true,
-            };
-        },
-        removeListener: function (state, _a) {
-            var _b = _a.payload, chainId = _b.chainId, filter = _b.filter;
-            if (!state[chainId])
-                return;
-            var key = filterToKey(filter);
-            if (!state[chainId][key])
-                return;
-            state[chainId][key].listeners--;
-        },
+  name: 'logs',
+  initialState: {},
+  reducers: {
+    addListener(state, _a) {
+      var _b = _a.payload,
+        chainId = _b.chainId,
+        filter = _b.filter
+      if (!state[chainId]) state[chainId] = {}
+      var key = filterToKey(filter)
+      if (!state[chainId][key])
+        state[chainId][key] = {
+          listeners: 1,
+        }
+      else state[chainId][key].listeners++
     },
-});
-var logs = slice.reducer;
-(_a$8 = slice.actions, _a$8.addListener); _a$8.removeListener; var fetchedLogs = _a$8.fetchedLogs, fetchedLogsError = _a$8.fetchedLogsError, fetchingLogs = _a$8.fetchingLogs;
+    fetchingLogs(state, _a) {
+      var e_1, _b
+      var _c = _a.payload,
+        chainId = _c.chainId,
+        filters = _c.filters,
+        blockNumber = _c.blockNumber
+      if (!state[chainId]) return
+      try {
+        for (
+          var filters_1 = __values(filters), filters_1_1 = filters_1.next();
+          !filters_1_1.done;
+          filters_1_1 = filters_1.next()
+        ) {
+          var filter = filters_1_1.value
+          var key = filterToKey(filter)
+          if (!state[chainId][key]) continue
+          state[chainId][key].fetchingBlockNumber = blockNumber
+        }
+      } catch (e_1_1) {
+        e_1 = { error: e_1_1 }
+      } finally {
+        try {
+          if (filters_1_1 && !filters_1_1.done && (_b = filters_1.return)) _b.call(filters_1)
+        } finally {
+          if (e_1) throw e_1.error
+        }
+      }
+    },
+    fetchedLogs(state, _a) {
+      var _b = _a.payload,
+        chainId = _b.chainId,
+        filter = _b.filter,
+        results = _b.results
+      if (!state[chainId]) return
+      var key = filterToKey(filter)
+      var fetchState = state[chainId][key]
+      if (!fetchState || (fetchState.results && fetchState.results.blockNumber > results.blockNumber)) return
+      fetchState.results = results
+    },
+    fetchedLogsError(state, _a) {
+      var _b = _a.payload,
+        chainId = _b.chainId,
+        filter = _b.filter,
+        blockNumber = _b.blockNumber
+      if (!state[chainId]) return
+      var key = filterToKey(filter)
+      var fetchState = state[chainId][key]
+      if (!fetchState || (fetchState.results && fetchState.results.blockNumber > blockNumber)) return
+      fetchState.results = {
+        blockNumber,
+        error: true,
+      }
+    },
+    removeListener(state, _a) {
+      var _b = _a.payload,
+        chainId = _b.chainId,
+        filter = _b.filter
+      if (!state[chainId]) return
+      var key = filterToKey(filter)
+      if (!state[chainId][key]) return
+      state[chainId][key].listeners--
+    },
+  },
+})
+var logs = slice.reducer
+;(_a$8 = slice.actions), _a$8.addListener
+_a$8.removeListener
+var fetchedLogs = _a$8.fetchedLogs,
+  fetchedLogsError = _a$8.fetchedLogsError,
+  fetchingLogs = _a$8.fetchingLogs
 
-var Field$2;
-(function (Field) {
-    Field["CURRENCY_A"] = "CURRENCY_A";
-    Field["CURRENCY_B"] = "CURRENCY_B";
-})(Field$2 || (Field$2 = {}));
-var typeInput$2 = toolkit.createAction('mint/typeInputMint');
-var resetMintState$1 = toolkit.createAction('mint/resetMintState');
+var Field$2
+;(function (Field) {
+  Field['CURRENCY_A'] = 'CURRENCY_A'
+  Field['CURRENCY_B'] = 'CURRENCY_B'
+})(Field$2 || (Field$2 = {}))
+var typeInput$2 = toolkit.createAction('mint/typeInputMint')
+var resetMintState$1 = toolkit.createAction('mint/resetMintState')
 
 var initialState$4 = {
-    independentField: Field$2.CURRENCY_A,
-    typedValue: '',
-    otherTypedValue: '',
-    startPriceTypedValue: '',
-    leftRangeTypedValue: '',
-    rightRangeTypedValue: '',
-};
+  independentField: Field$2.CURRENCY_A,
+  typedValue: '',
+  otherTypedValue: '',
+  startPriceTypedValue: '',
+  leftRangeTypedValue: '',
+  rightRangeTypedValue: '',
+}
 var mint = toolkit.createReducer(initialState$4, function (builder) {
-    return builder
-        .addCase(resetMintState$1, function () { return initialState$4; })
-        .addCase(typeInput$2, function (state, _a) {
-        var _b = _a.payload, field = _b.field, typedValue = _b.typedValue, noLiquidity = _b.noLiquidity;
-        if (noLiquidity) {
-            // they're typing into the field they've last typed in
-            if (field === state.independentField) {
-                return __assign(__assign({}, state), { independentField: field, typedValue: typedValue });
-            }
-            // they're typing into a new field, store the other value
-            else {
-                return __assign(__assign({}, state), { independentField: field, typedValue: typedValue, otherTypedValue: state.typedValue });
-            }
+  return builder
+    .addCase(resetMintState$1, function () {
+      return initialState$4
+    })
+    .addCase(typeInput$2, function (state, _a) {
+      var _b = _a.payload,
+        field = _b.field,
+        typedValue = _b.typedValue,
+        noLiquidity = _b.noLiquidity
+      if (noLiquidity) {
+        // they're typing into the field they've last typed in
+        if (field === state.independentField) {
+          return __assign(__assign({}, state), { independentField: field, typedValue })
         }
+        // they're typing into a new field, store the other value
         else {
-            return __assign(__assign({}, state), { independentField: field, typedValue: typedValue, otherTypedValue: '' });
+          return __assign(__assign({}, state), {
+            independentField: field,
+            typedValue,
+            otherTypedValue: state.typedValue,
+          })
         }
-    });
-});
+      } else {
+        return __assign(__assign({}, state), { independentField: field, typedValue, otherTypedValue: '' })
+      }
+    })
+})
 
-var Field$1;
-(function (Field) {
-    Field["CURRENCY_A"] = "CURRENCY_A";
-    Field["CURRENCY_B"] = "CURRENCY_B";
-})(Field$1 || (Field$1 = {}));
-var Bound;
-(function (Bound) {
-    Bound["LOWER"] = "LOWER";
-    Bound["UPPER"] = "UPPER";
-})(Bound || (Bound = {}));
-var typeInput$1 = toolkit.createAction('mintV3/typeInputMint');
-var typeStartPriceInput = toolkit.createAction('mintV3/typeStartPriceInput');
-var typeLeftRangeInput = toolkit.createAction('mintV3/typeLeftRangeInput');
-var typeRightRangeInput = toolkit.createAction('mintV3/typeRightRangeInput');
-var resetMintState = toolkit.createAction('mintV3/resetMintState');
-var setFullRange = toolkit.createAction('mintV3/setFullRange');
+var Field$1
+;(function (Field) {
+  Field['CURRENCY_A'] = 'CURRENCY_A'
+  Field['CURRENCY_B'] = 'CURRENCY_B'
+})(Field$1 || (Field$1 = {}))
+var Bound
+;(function (Bound) {
+  Bound['LOWER'] = 'LOWER'
+  Bound['UPPER'] = 'UPPER'
+})(Bound || (Bound = {}))
+var typeInput$1 = toolkit.createAction('mintV3/typeInputMint')
+var typeStartPriceInput = toolkit.createAction('mintV3/typeStartPriceInput')
+var typeLeftRangeInput = toolkit.createAction('mintV3/typeLeftRangeInput')
+var typeRightRangeInput = toolkit.createAction('mintV3/typeRightRangeInput')
+var resetMintState = toolkit.createAction('mintV3/resetMintState')
+var setFullRange = toolkit.createAction('mintV3/setFullRange')
 
 var initialState$3 = {
-    independentField: Field$1.CURRENCY_A,
-    typedValue: '',
-    startPriceTypedValue: '',
-    leftRangeTypedValue: '',
-    rightRangeTypedValue: '',
-};
+  independentField: Field$1.CURRENCY_A,
+  typedValue: '',
+  startPriceTypedValue: '',
+  leftRangeTypedValue: '',
+  rightRangeTypedValue: '',
+}
 var mintV3 = toolkit.createReducer(initialState$3, function (builder) {
-    return builder
-        .addCase(resetMintState, function () { return initialState$3; })
-        .addCase(setFullRange, function (state) {
-        return __assign(__assign({}, state), { leftRangeTypedValue: true, rightRangeTypedValue: true });
+  return builder
+    .addCase(resetMintState, function () {
+      return initialState$3
     })
-        .addCase(typeStartPriceInput, function (state, _a) {
-        var typedValue = _a.payload.typedValue;
-        return __assign(__assign({}, state), { startPriceTypedValue: typedValue });
+    .addCase(setFullRange, function (state) {
+      return __assign(__assign({}, state), { leftRangeTypedValue: true, rightRangeTypedValue: true })
     })
-        .addCase(typeLeftRangeInput, function (state, _a) {
-        var typedValue = _a.payload.typedValue;
-        return __assign(__assign({}, state), { leftRangeTypedValue: typedValue });
+    .addCase(typeStartPriceInput, function (state, _a) {
+      var typedValue = _a.payload.typedValue
+      return __assign(__assign({}, state), { startPriceTypedValue: typedValue })
     })
-        .addCase(typeRightRangeInput, function (state, _a) {
-        var typedValue = _a.payload.typedValue;
-        return __assign(__assign({}, state), { rightRangeTypedValue: typedValue });
+    .addCase(typeLeftRangeInput, function (state, _a) {
+      var typedValue = _a.payload.typedValue
+      return __assign(__assign({}, state), { leftRangeTypedValue: typedValue })
     })
-        .addCase(typeInput$1, function (state, _a) {
-        var _b = _a.payload, field = _b.field, typedValue = _b.typedValue, noLiquidity = _b.noLiquidity;
-        if (noLiquidity) {
-            // they're typing into the field they've last typed in
-            if (field === state.independentField) {
-                return __assign(__assign({}, state), { independentField: field, typedValue: typedValue });
-            }
-            // they're typing into a new field, store the other value
-            else {
-                return __assign(__assign({}, state), { independentField: field, typedValue: typedValue });
-            }
+    .addCase(typeRightRangeInput, function (state, _a) {
+      var typedValue = _a.payload.typedValue
+      return __assign(__assign({}, state), { rightRangeTypedValue: typedValue })
+    })
+    .addCase(typeInput$1, function (state, _a) {
+      var _b = _a.payload,
+        field = _b.field,
+        typedValue = _b.typedValue,
+        noLiquidity = _b.noLiquidity
+      if (noLiquidity) {
+        // they're typing into the field they've last typed in
+        if (field === state.independentField) {
+          return __assign(__assign({}, state), { independentField: field, typedValue })
         }
+        // they're typing into a new field, store the other value
         else {
-            return __assign(__assign({}, state), { independentField: field, typedValue: typedValue });
+          return __assign(__assign({}, state), { independentField: field, typedValue })
         }
-    });
-});
+      } else {
+        return __assign(__assign({}, state), { independentField: field, typedValue })
+      }
+    })
+})
 
-var protocols = [routerSdk.Protocol.V2, routerSdk.Protocol.V3];
+var protocols = [routerSdk.Protocol.V2, routerSdk.Protocol.V3]
 var DEFAULT_QUERY_PARAMS = {
-    protocols: protocols.map(function (p) { return p.toLowerCase(); }).join(','),
-    // example other params
-    // forceCrossProtocol: 'true',
-    // minSplits: '5',
-};
+  protocols: protocols
+    .map(function (p) {
+      return p.toLowerCase()
+    })
+    .join(','),
+  // example other params
+  // forceCrossProtocol: 'true',
+  // minSplits: '5',
+}
 function getClientSideQuote(_a) {
-    var tokenInAddress = _a.tokenInAddress, tokenInChainId = _a.tokenInChainId, tokenInDecimals = _a.tokenInDecimals, tokenInSymbol = _a.tokenInSymbol, tokenOutAddress = _a.tokenOutAddress, tokenOutChainId = _a.tokenOutChainId, tokenOutDecimals = _a.tokenOutDecimals, tokenOutSymbol = _a.tokenOutSymbol, amount = _a.amount, type = _a.type;
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, Promise.resolve().then(function () { return index; })];
-                case 1: return [2 /*return*/, (_b.sent()).getQuote({
-                        type: type,
-                        chainId: tokenInChainId,
-                        tokenIn: {
-                            address: tokenInAddress,
-                            chainId: tokenInChainId,
-                            decimals: tokenInDecimals,
-                            symbol: tokenInSymbol,
-                        },
-                        tokenOut: {
-                            address: tokenOutAddress,
-                            chainId: tokenOutChainId,
-                            decimals: tokenOutDecimals,
-                            symbol: tokenOutSymbol,
-                        },
-                        amount: amount,
-                    }, { protocols: protocols })];
-            }
-        });
-    });
+  var tokenInAddress = _a.tokenInAddress,
+    tokenInChainId = _a.tokenInChainId,
+    tokenInDecimals = _a.tokenInDecimals,
+    tokenInSymbol = _a.tokenInSymbol,
+    tokenOutAddress = _a.tokenOutAddress,
+    tokenOutChainId = _a.tokenOutChainId,
+    tokenOutDecimals = _a.tokenOutDecimals,
+    tokenOutSymbol = _a.tokenOutSymbol,
+    amount = _a.amount,
+    type = _a.type
+  return __awaiter(this, void 0, void 0, function () {
+    return __generator(this, function (_b) {
+      switch (_b.label) {
+        case 0:
+          return [
+            4 /*yield*/,
+            Promise.resolve().then(function () {
+              return index
+            }),
+          ]
+        case 1:
+          return [
+            2 /*return*/,
+            _b.sent().getQuote(
+              {
+                type,
+                chainId: tokenInChainId,
+                tokenIn: {
+                  address: tokenInAddress,
+                  chainId: tokenInChainId,
+                  decimals: tokenInDecimals,
+                  symbol: tokenInSymbol,
+                },
+                tokenOut: {
+                  address: tokenOutAddress,
+                  chainId: tokenOutChainId,
+                  decimals: tokenOutDecimals,
+                  symbol: tokenOutSymbol,
+                },
+                amount,
+              },
+              { protocols }
+            ),
+          ]
+      }
+    })
+  })
 }
 var routingApi = react.createApi({
-    reducerPath: 'routingApi',
-    baseQuery: react.fetchBaseQuery({
-        baseUrl: 'https://api.uniswap.org/v1/',
-    }),
-    endpoints: function (build) { return ({
-        getQuote: build.query({
-            queryFn: function (args, _api, _extraOptions, fetch) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var tokenInAddress, tokenInChainId, tokenOutAddress, tokenOutChainId, amount, useClientSideRouter, type, result, query, e_1;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                tokenInAddress = args.tokenInAddress, tokenInChainId = args.tokenInChainId, tokenOutAddress = args.tokenOutAddress, tokenOutChainId = args.tokenOutChainId, amount = args.amount, useClientSideRouter = args.useClientSideRouter, type = args.type;
-                                _a.label = 1;
-                            case 1:
-                                _a.trys.push([1, 6, , 7]);
-                                if (!useClientSideRouter) return [3 /*break*/, 3];
-                                return [4 /*yield*/, getClientSideQuote(args)];
-                            case 2:
-                                result = _a.sent();
-                                return [3 /*break*/, 5];
-                            case 3:
-                                query = qs__default["default"].stringify(__assign(__assign({}, DEFAULT_QUERY_PARAMS), { tokenInAddress: tokenInAddress, tokenInChainId: tokenInChainId, tokenOutAddress: tokenOutAddress, tokenOutChainId: tokenOutChainId, amount: amount, type: type }));
-                                return [4 /*yield*/, fetch("quote?" + query)];
-                            case 4:
-                                result = _a.sent();
-                                _a.label = 5;
-                            case 5: return [2 /*return*/, { data: result.data }];
-                            case 6:
-                                e_1 = _a.sent();
-                                // TODO: fall back to client-side quoter when auto router fails.
-                                // deprecate 'legacy' v2/v3 routers first.
-                                return [2 /*return*/, { error: e_1 }];
-                            case 7: return [2 /*return*/];
-                        }
-                    });
-                });
-            },
-            keepUnusedDataFor: ms__default["default"](templateObject_1$1b || (templateObject_1$1b = __makeTemplateObject(["10s"], ["10s"]))),
-            extraOptions: {
-                maxRetries: 0,
-            },
-        }),
-    }); },
-});
-var useGetQuoteQuery = routingApi.useGetQuoteQuery;
-var templateObject_1$1b;
+  reducerPath: 'routingApi',
+  baseQuery: react.fetchBaseQuery({
+    baseUrl: 'https://api.uniswap.org/v1/',
+  }),
+  endpoints(build) {
+    return {
+      getQuote: build.query({
+        queryFn(args, _api, _extraOptions, fetch) {
+          return __awaiter(this, void 0, void 0, function () {
+            var tokenInAddress,
+              tokenInChainId,
+              tokenOutAddress,
+              tokenOutChainId,
+              amount,
+              useClientSideRouter,
+              type,
+              result,
+              query,
+              e_1
+            return __generator(this, function (_a) {
+              switch (_a.label) {
+                case 0:
+                  ;(tokenInAddress = args.tokenInAddress),
+                    (tokenInChainId = args.tokenInChainId),
+                    (tokenOutAddress = args.tokenOutAddress),
+                    (tokenOutChainId = args.tokenOutChainId),
+                    (amount = args.amount),
+                    (useClientSideRouter = args.useClientSideRouter),
+                    (type = args.type)
+                  _a.label = 1
+                case 1:
+                  _a.trys.push([1, 6, , 7])
+                  if (!useClientSideRouter) return [3 /*break*/, 3]
+                  return [4 /*yield*/, getClientSideQuote(args)]
+                case 2:
+                  result = _a.sent()
+                  return [3 /*break*/, 5]
+                case 3:
+                  query = qs__default['default'].stringify(
+                    __assign(__assign({}, DEFAULT_QUERY_PARAMS), {
+                      tokenInAddress,
+                      tokenInChainId,
+                      tokenOutAddress,
+                      tokenOutChainId,
+                      amount,
+                      type,
+                    })
+                  )
+                  return [4 /*yield*/, fetch('quote?' + query)]
+                case 4:
+                  result = _a.sent()
+                  _a.label = 5
+                case 5:
+                  return [2 /*return*/, { data: result.data }]
+                case 6:
+                  e_1 = _a.sent()
+                  // TODO: fall back to client-side quoter when auto router fails.
+                  // deprecate 'legacy' v2/v3 routers first.
+                  return [2 /*return*/, { error: e_1 }]
+                case 7:
+                  return [2 /*return*/]
+              }
+            })
+          })
+        },
+        keepUnusedDataFor: ms__default['default'](
+          templateObject_1$1b || (templateObject_1$1b = __makeTemplateObject(['10s'], ['10s']))
+        ),
+        extraOptions: {
+          maxRetries: 0,
+        },
+      }),
+    }
+  },
+})
+var useGetQuoteQuery = routingApi.useGetQuoteQuery
+var templateObject_1$1b
 
-var Field;
-(function (Field) {
-    Field["INPUT"] = "INPUT";
-    Field["OUTPUT"] = "OUTPUT";
-})(Field || (Field = {}));
-var selectCurrency = toolkit.createAction('swap/selectCurrency');
-var switchCurrencies = toolkit.createAction('swap/switchCurrencies');
-var typeInput = toolkit.createAction('swap/typeInput');
-var replaceSwapState = toolkit.createAction('swap/replaceSwapState');
-var setRecipient = toolkit.createAction('swap/setRecipient');
+var Field
+;(function (Field) {
+  Field['INPUT'] = 'INPUT'
+  Field['OUTPUT'] = 'OUTPUT'
+})(Field || (Field = {}))
+var selectCurrency = toolkit.createAction('swap/selectCurrency')
+var switchCurrencies = toolkit.createAction('swap/switchCurrencies')
+var typeInput = toolkit.createAction('swap/typeInput')
+var replaceSwapState = toolkit.createAction('swap/replaceSwapState')
+var setRecipient = toolkit.createAction('swap/setRecipient')
 
 var CHAIN_DATA_ABI = [
-    {
-        inputs: [],
-        name: 'latestAnswer',
-        outputs: [{ internalType: 'int256', name: '', type: 'int256' }],
-        stateMutability: 'view',
-        type: 'function',
-    },
-];
+  {
+    inputs: [],
+    name: 'latestAnswer',
+    outputs: [{ internalType: 'int256', name: '', type: 'int256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 /**
  * Returns the price of 1 gas in WEI for the currently selected network using the chainlink fast gas price oracle
  */
 function useGasPrice() {
-    var _a, _b;
-    var address = useENSAddress('fast-gas-gwei.data.eth').address;
-    var contract = useContract(address !== null && address !== void 0 ? address : undefined, CHAIN_DATA_ABI, false);
-    var resultStr = (_b = (_a = useSingleCallResult(contract, 'latestAnswer').result) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.toString();
-    return typeof resultStr === 'string' ? JSBI__default["default"].BigInt(resultStr) : undefined;
+  var _a, _b
+  var address = useENSAddress('fast-gas-gwei.data.eth').address
+  var contract = useContract(address !== null && address !== void 0 ? address : undefined, CHAIN_DATA_ABI, false)
+  var resultStr =
+    (_b = (_a = useSingleCallResult(contract, 'latestAnswer').result) === null || _a === void 0 ? void 0 : _a[0]) ===
+      null || _b === void 0
+      ? void 0
+      : _b.toString()
+  return typeof resultStr === 'string' ? JSBI__default['default'].BigInt(resultStr) : undefined
 }
 
 /**
@@ -10298,169 +12731,279 @@ function useGasPrice() {
  * Returns the CurrencyAmount, or undefined if parsing fails.
  */
 function tryParseCurrencyAmount(value, currency) {
-    if (!value || !currency) {
-        return undefined;
+  if (!value || !currency) {
+    return undefined
+  }
+  try {
+    var typedValueParsed = units.parseUnits(value, currency.decimals).toString()
+    if (typedValueParsed !== '0') {
+      return sdkCore.CurrencyAmount.fromRawAmount(currency, JSBI__default['default'].BigInt(typedValueParsed))
     }
-    try {
-        var typedValueParsed = units.parseUnits(value, currency.decimals).toString();
-        if (typedValueParsed !== '0') {
-            return sdkCore.CurrencyAmount.fromRawAmount(currency, JSBI__default["default"].BigInt(typedValueParsed));
-        }
-    }
-    catch (error) {
-        // fails if the user specifies too many decimal places of precision (or maybe exceed max uint?)
-        console.debug("Failed to parse input amount: \"" + value + "\"", error);
-    }
-    return undefined;
+  } catch (error) {
+    // fails if the user specifies too many decimal places of precision (or maybe exceed max uint?)
+    console.debug('Failed to parse input amount: "' + value + '"', error)
+  }
+  return undefined
 }
 
 // returns whether tradeB is better than tradeA by at least a threshold percentage amount
 // only used by v2 hooks
 function isTradeBetter(tradeA, tradeB, minimumDelta) {
-    if (minimumDelta === void 0) { minimumDelta = ZERO_PERCENT; }
-    if (tradeA && !tradeB)
-        return false;
-    if (tradeB && !tradeA)
-        return true;
-    if (!tradeA || !tradeB)
-        return undefined;
-    if (tradeA.tradeType !== tradeB.tradeType ||
-        !tradeA.inputAmount.currency.equals(tradeB.inputAmount.currency) ||
-        !tradeA.outputAmount.currency.equals(tradeB.outputAmount.currency)) {
-        throw new Error('Comparing incomparable trades');
-    }
-    if (minimumDelta.equalTo(ZERO_PERCENT)) {
-        return tradeA.executionPrice.lessThan(tradeB.executionPrice);
-    }
-    else {
-        return tradeA.executionPrice.asFraction
-            .multiply(minimumDelta.add(ONE_HUNDRED_PERCENT))
-            .lessThan(tradeB.executionPrice);
-    }
+  if (minimumDelta === void 0) {
+    minimumDelta = ZERO_PERCENT
+  }
+  if (tradeA && !tradeB) return false
+  if (tradeB && !tradeA) return true
+  if (!tradeA || !tradeB) return undefined
+  if (
+    tradeA.tradeType !== tradeB.tradeType ||
+    !tradeA.inputAmount.currency.equals(tradeB.inputAmount.currency) ||
+    !tradeA.outputAmount.currency.equals(tradeB.outputAmount.currency)
+  ) {
+    throw new Error('Comparing incomparable trades')
+  }
+  if (minimumDelta.equalTo(ZERO_PERCENT)) {
+    return tradeA.executionPrice.lessThan(tradeB.executionPrice)
+  } else {
+    return tradeA.executionPrice.asFraction
+      .multiply(minimumDelta.add(ONE_HUNDRED_PERCENT))
+      .lessThan(tradeB.executionPrice)
+  }
 }
 
 function useAllCurrencyCombinations(currencyA, currencyB) {
-    var chainId = currencyA === null || currencyA === void 0 ? void 0 : currencyA.chainId;
-    var _a = __read(chainId ? [currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped, currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped] : [undefined, undefined], 2), tokenA = _a[0], tokenB = _a[1];
-    var bases = React.useMemo(function () {
-        var _a, _b, _c, _d, _e;
-        if (!chainId || chainId !== (tokenB === null || tokenB === void 0 ? void 0 : tokenB.chainId))
-            return [];
-        var common = (_a = BASES_TO_CHECK_TRADES_AGAINST[chainId]) !== null && _a !== void 0 ? _a : [];
-        var additionalA = tokenA ? (_c = (_b = ADDITIONAL_BASES[chainId]) === null || _b === void 0 ? void 0 : _b[tokenA.address]) !== null && _c !== void 0 ? _c : [] : [];
-        var additionalB = tokenB ? (_e = (_d = ADDITIONAL_BASES[chainId]) === null || _d === void 0 ? void 0 : _d[tokenB.address]) !== null && _e !== void 0 ? _e : [] : [];
-        return __spreadArray(__spreadArray(__spreadArray([], __read(common), false), __read(additionalA), false), __read(additionalB), false);
-    }, [chainId, tokenA, tokenB]);
-    var basePairs = React.useMemo(function () {
-        return bases
-            .flatMap(function (base) { return bases.map(function (otherBase) { return [base, otherBase]; }); })
-            // though redundant with the first filter below, that expression runs more often, so this is probably worthwhile
+  var chainId = currencyA === null || currencyA === void 0 ? void 0 : currencyA.chainId
+  var _a = __read(
+      chainId
+        ? [
+            currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped,
+            currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped,
+          ]
+        : [undefined, undefined],
+      2
+    ),
+    tokenA = _a[0],
+    tokenB = _a[1]
+  var bases = React.useMemo(
+    function () {
+      var _a, _b, _c, _d, _e
+      if (!chainId || chainId !== (tokenB === null || tokenB === void 0 ? void 0 : tokenB.chainId)) return []
+      var common = (_a = BASES_TO_CHECK_TRADES_AGAINST[chainId]) !== null && _a !== void 0 ? _a : []
+      var additionalA = tokenA
+        ? (_c = (_b = ADDITIONAL_BASES[chainId]) === null || _b === void 0 ? void 0 : _b[tokenA.address]) !== null &&
+          _c !== void 0
+          ? _c
+          : []
+        : []
+      var additionalB = tokenB
+        ? (_e = (_d = ADDITIONAL_BASES[chainId]) === null || _d === void 0 ? void 0 : _d[tokenB.address]) !== null &&
+          _e !== void 0
+          ? _e
+          : []
+        : []
+      return __spreadArray(
+        __spreadArray(__spreadArray([], __read(common), false), __read(additionalA), false),
+        __read(additionalB),
+        false
+      )
+    },
+    [chainId, tokenA, tokenB]
+  )
+  var basePairs = React.useMemo(
+    function () {
+      return (
+        bases
+          .flatMap(function (base) {
+            return bases.map(function (otherBase) {
+              return [base, otherBase]
+            })
+          })
+          // though redundant with the first filter below, that expression runs more often, so this is probably worthwhile
+          .filter(function (_a) {
+            var _b = __read(_a, 2),
+              t0 = _b[0],
+              t1 = _b[1]
+            return !t0.equals(t1)
+          })
+      )
+    },
+    [bases]
+  )
+  return React.useMemo(
+    function () {
+      return tokenA && tokenB
+        ? __spreadArray(
+            __spreadArray(
+              __spreadArray(
+                [
+                  // the direct pair
+                  [tokenA, tokenB],
+                ],
+                __read(
+                  bases.map(function (base) {
+                    return [tokenA, base]
+                  })
+                ),
+                false
+              ),
+              __read(
+                bases.map(function (base) {
+                  return [tokenB, base]
+                })
+              ),
+              false
+            ),
+            __read(basePairs),
+            false
+          )
             .filter(function (_a) {
-            var _b = __read(_a, 2), t0 = _b[0], t1 = _b[1];
-            return !t0.equals(t1);
-        });
-    }, [bases]);
-    return React.useMemo(function () {
-        return tokenA && tokenB
-            ? __spreadArray(__spreadArray(__spreadArray([
-                // the direct pair
-                [tokenA, tokenB]
-            ], __read(bases.map(function (base) { return [tokenA, base]; })), false), __read(bases.map(function (base) { return [tokenB, base]; })), false), __read(basePairs), false).filter(function (_a) {
-                var _b = __read(_a, 2), t0 = _b[0], t1 = _b[1];
-                return !t0.equals(t1);
+              var _b = __read(_a, 2),
+                t0 = _b[0],
+                t1 = _b[1]
+              return !t0.equals(t1)
             })
-                // filter out duplicate pairs
-                .filter(function (_a, i, otherPairs) {
-                var _b = __read(_a, 2), t0 = _b[0], t1 = _b[1];
-                // find the first index in the array at which there are the same 2 tokens as the current
-                var firstIndexInOtherPairs = otherPairs.findIndex(function (_a) {
-                    var _b = __read(_a, 2), t0Other = _b[0], t1Other = _b[1];
-                    return (t0.equals(t0Other) && t1.equals(t1Other)) || (t0.equals(t1Other) && t1.equals(t0Other));
-                });
-                // only accept the first occurrence of the same 2 tokens
-                return firstIndexInOtherPairs === i;
+            // filter out duplicate pairs
+            .filter(function (_a, i, otherPairs) {
+              var _b = __read(_a, 2),
+                t0 = _b[0],
+                t1 = _b[1]
+              // find the first index in the array at which there are the same 2 tokens as the current
+              var firstIndexInOtherPairs = otherPairs.findIndex(function (_a) {
+                var _b = __read(_a, 2),
+                  t0Other = _b[0],
+                  t1Other = _b[1]
+                return (t0.equals(t0Other) && t1.equals(t1Other)) || (t0.equals(t1Other) && t1.equals(t0Other))
+              })
+              // only accept the first occurrence of the same 2 tokens
+              return firstIndexInOtherPairs === i
             })
-                // optionally filter out some pairs for tokens with custom bases defined
-                .filter(function (_a) {
-                var _b = __read(_a, 2), tokenA = _b[0], tokenB = _b[1];
-                if (!chainId)
-                    return true;
-                var customBases = CUSTOM_BASES[chainId];
-                var customBasesA = customBases === null || customBases === void 0 ? void 0 : customBases[tokenA.address];
-                var customBasesB = customBases === null || customBases === void 0 ? void 0 : customBases[tokenB.address];
-                if (!customBasesA && !customBasesB)
-                    return true;
-                if (customBasesA && !customBasesA.find(function (base) { return tokenB.equals(base); }))
-                    return false;
-                if (customBasesB && !customBasesB.find(function (base) { return tokenA.equals(base); }))
-                    return false;
-                return true;
+            // optionally filter out some pairs for tokens with custom bases defined
+            .filter(function (_a) {
+              var _b = __read(_a, 2),
+                tokenA = _b[0],
+                tokenB = _b[1]
+              if (!chainId) return true
+              var customBases = CUSTOM_BASES[chainId]
+              var customBasesA = customBases === null || customBases === void 0 ? void 0 : customBases[tokenA.address]
+              var customBasesB = customBases === null || customBases === void 0 ? void 0 : customBases[tokenB.address]
+              if (!customBasesA && !customBasesB) return true
+              if (
+                customBasesA &&
+                !customBasesA.find(function (base) {
+                  return tokenB.equals(base)
+                })
+              )
+                return false
+              if (
+                customBasesB &&
+                !customBasesB.find(function (base) {
+                  return tokenA.equals(base)
+                })
+              )
+                return false
+              return true
             })
-            : [];
-    }, [tokenA, tokenB, bases, basePairs, chainId]);
+        : []
+    },
+    [tokenA, tokenB, bases, basePairs, chainId]
+  )
 }
 
-var PAIR_INTERFACE = new abi$7.Interface(abi$4);
-var PairState;
-(function (PairState) {
-    PairState[PairState["LOADING"] = 0] = "LOADING";
-    PairState[PairState["NOT_EXISTS"] = 1] = "NOT_EXISTS";
-    PairState[PairState["EXISTS"] = 2] = "EXISTS";
-    PairState[PairState["INVALID"] = 3] = "INVALID";
-})(PairState || (PairState = {}));
+var PAIR_INTERFACE = new abi$7.Interface(abi$4)
+var PairState
+;(function (PairState) {
+  PairState[(PairState['LOADING'] = 0)] = 'LOADING'
+  PairState[(PairState['NOT_EXISTS'] = 1)] = 'NOT_EXISTS'
+  PairState[(PairState['EXISTS'] = 2)] = 'EXISTS'
+  PairState[(PairState['INVALID'] = 3)] = 'INVALID'
+})(PairState || (PairState = {}))
 function useV2Pairs(currencies) {
-    var tokens = React.useMemo(function () { return currencies.map(function (_a) {
-        var _b = __read(_a, 2), currencyA = _b[0], currencyB = _b[1];
-        return [currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped, currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped];
-    }); }, [currencies]);
-    var pairAddresses = React.useMemo(function () {
-        return tokens.map(function (_a) {
-            var _b = __read(_a, 2), tokenA = _b[0], tokenB = _b[1];
-            return tokenA &&
-                tokenB &&
-                tokenA.chainId === tokenB.chainId &&
-                !tokenA.equals(tokenB) &&
-                V2_FACTORY_ADDRESSES[tokenA.chainId]
-                ? v2Sdk.computePairAddress({ factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId], tokenA: tokenA, tokenB: tokenB })
-                : undefined;
-        });
-    }, [tokens]);
-    var results = useMultipleContractSingleData(pairAddresses, PAIR_INTERFACE, 'getReserves');
-    return React.useMemo(function () {
-        return results.map(function (result, i) {
-            var reserves = result.result, loading = result.loading;
-            var tokenA = tokens[i][0];
-            var tokenB = tokens[i][1];
-            if (loading)
-                return [PairState.LOADING, null];
-            if (!tokenA || !tokenB || tokenA.equals(tokenB))
-                return [PairState.INVALID, null];
-            if (!reserves)
-                return [PairState.NOT_EXISTS, null];
-            var reserve0 = reserves.reserve0, reserve1 = reserves.reserve1;
-            var _a = __read(tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA], 2), token0 = _a[0], token1 = _a[1];
-            return [
-                PairState.EXISTS,
-                new v2Sdk.Pair(sdkCore.CurrencyAmount.fromRawAmount(token0, reserve0.toString()), sdkCore.CurrencyAmount.fromRawAmount(token1, reserve1.toString())),
-            ];
-        });
-    }, [results, tokens]);
+  var tokens = React.useMemo(
+    function () {
+      return currencies.map(function (_a) {
+        var _b = __read(_a, 2),
+          currencyA = _b[0],
+          currencyB = _b[1]
+        return [
+          currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped,
+          currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped,
+        ]
+      })
+    },
+    [currencies]
+  )
+  var pairAddresses = React.useMemo(
+    function () {
+      return tokens.map(function (_a) {
+        var _b = __read(_a, 2),
+          tokenA = _b[0],
+          tokenB = _b[1]
+        return tokenA &&
+          tokenB &&
+          tokenA.chainId === tokenB.chainId &&
+          !tokenA.equals(tokenB) &&
+          V2_FACTORY_ADDRESSES[tokenA.chainId]
+          ? v2Sdk.computePairAddress({
+              factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId],
+              tokenA,
+              tokenB,
+            })
+          : undefined
+      })
+    },
+    [tokens]
+  )
+  var results = useMultipleContractSingleData(pairAddresses, PAIR_INTERFACE, 'getReserves')
+  return React.useMemo(
+    function () {
+      return results.map(function (result, i) {
+        var reserves = result.result,
+          loading = result.loading
+        var tokenA = tokens[i][0]
+        var tokenB = tokens[i][1]
+        if (loading) return [PairState.LOADING, null]
+        if (!tokenA || !tokenB || tokenA.equals(tokenB)) return [PairState.INVALID, null]
+        if (!reserves) return [PairState.NOT_EXISTS, null]
+        var reserve0 = reserves.reserve0,
+          reserve1 = reserves.reserve1
+        var _a = __read(tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA], 2),
+          token0 = _a[0],
+          token1 = _a[1]
+        return [
+          PairState.EXISTS,
+          new v2Sdk.Pair(
+            sdkCore.CurrencyAmount.fromRawAmount(token0, reserve0.toString()),
+            sdkCore.CurrencyAmount.fromRawAmount(token1, reserve1.toString())
+          ),
+        ]
+      })
+    },
+    [results, tokens]
+  )
 }
 
 function useAllCommonPairs(currencyA, currencyB) {
-    var allCurrencyCombinations = useAllCurrencyCombinations(currencyA, currencyB);
-    var allPairs = useV2Pairs(allCurrencyCombinations);
-    return React.useMemo(function () {
-        return Object.values(allPairs
-            // filter out invalid pairs
-            .filter(function (result) { return Boolean(result[0] === PairState.EXISTS && result[1]); })
-            .map(function (_a) {
-            var _b = __read(_a, 2), pair = _b[1];
-            return pair;
-        }));
-    }, [allPairs]);
+  var allCurrencyCombinations = useAllCurrencyCombinations(currencyA, currencyB)
+  var allPairs = useV2Pairs(allCurrencyCombinations)
+  return React.useMemo(
+    function () {
+      return Object.values(
+        allPairs
+          // filter out invalid pairs
+          .filter(function (result) {
+            return Boolean(result[0] === PairState.EXISTS && result[1])
+          })
+          .map(function (_a) {
+            var _b = __read(_a, 2),
+              pair = _b[1]
+            return pair
+          })
+      )
+    },
+    [allPairs]
+  )
 }
-var MAX_HOPS = 3;
+var MAX_HOPS = 3
 /**
  * Returns the best v2 trade for a desired swap
  * @param tradeType whether the swap is an exact in/out
@@ -10468,387 +13011,428 @@ var MAX_HOPS = 3;
  * @param otherCurrency the desired output/payment currency
  */
 function useBestV2Trade(tradeType, amountSpecified, otherCurrency, _a) {
-    var _b = _a === void 0 ? {} : _a, _c = _b.maxHops, maxHops = _c === void 0 ? MAX_HOPS : _c;
-    var _d = __read(React.useMemo(function () {
-        return tradeType === sdkCore.TradeType.EXACT_INPUT
-            ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency]
-            : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency];
-    }, [tradeType, amountSpecified, otherCurrency]), 2), currencyIn = _d[0], currencyOut = _d[1];
-    var allowedPairs = useAllCommonPairs(currencyIn, currencyOut);
-    return React.useMemo(function () {
-        var _a, _b, _c, _d;
-        if (amountSpecified && currencyIn && currencyOut && allowedPairs.length > 0) {
-            if (maxHops === 1) {
-                var options = { maxHops: 1, maxNumResults: 1 };
-                if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
-                    var amountIn = amountSpecified;
-                    return (_a = v2Sdk.Trade.bestTradeExactIn(allowedPairs, amountIn, currencyOut, options)[0]) !== null && _a !== void 0 ? _a : null;
-                }
-                else {
-                    var amountOut = amountSpecified;
-                    return (_b = v2Sdk.Trade.bestTradeExactOut(allowedPairs, currencyIn, amountOut, options)[0]) !== null && _b !== void 0 ? _b : null;
-                }
-            }
-            // search through trades with varying hops, find best trade out of them
-            var bestTradeSoFar = null;
-            for (var i = 1; i <= maxHops; i++) {
-                var options = { maxHops: i, maxNumResults: 1 };
-                var currentTrade = void 0;
-                if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
-                    var amountIn = amountSpecified;
-                    currentTrade = (_c = v2Sdk.Trade.bestTradeExactIn(allowedPairs, amountIn, currencyOut, options)[0]) !== null && _c !== void 0 ? _c : null;
-                }
-                else {
-                    var amountOut = amountSpecified;
-                    currentTrade = (_d = v2Sdk.Trade.bestTradeExactOut(allowedPairs, currencyIn, amountOut, options)[0]) !== null && _d !== void 0 ? _d : null;
-                }
-                // if current trade is best yet, save it
-                if (isTradeBetter(bestTradeSoFar, currentTrade, BETTER_TRADE_LESS_HOPS_THRESHOLD)) {
-                    bestTradeSoFar = currentTrade;
-                }
-            }
-            return bestTradeSoFar;
+  var _b = _a === void 0 ? {} : _a,
+    _c = _b.maxHops,
+    maxHops = _c === void 0 ? MAX_HOPS : _c
+  var _d = __read(
+      React.useMemo(
+        function () {
+          return tradeType === sdkCore.TradeType.EXACT_INPUT
+            ? [
+                amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency,
+                otherCurrency,
+              ]
+            : [
+                otherCurrency,
+                amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency,
+              ]
+        },
+        [tradeType, amountSpecified, otherCurrency]
+      ),
+      2
+    ),
+    currencyIn = _d[0],
+    currencyOut = _d[1]
+  var allowedPairs = useAllCommonPairs(currencyIn, currencyOut)
+  return React.useMemo(
+    function () {
+      var _a, _b, _c, _d
+      if (amountSpecified && currencyIn && currencyOut && allowedPairs.length > 0) {
+        if (maxHops === 1) {
+          var options = { maxHops: 1, maxNumResults: 1 }
+          if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
+            var amountIn = amountSpecified
+            return (_a = v2Sdk.Trade.bestTradeExactIn(allowedPairs, amountIn, currencyOut, options)[0]) !== null &&
+              _a !== void 0
+              ? _a
+              : null
+          } else {
+            var amountOut = amountSpecified
+            return (_b = v2Sdk.Trade.bestTradeExactOut(allowedPairs, currencyIn, amountOut, options)[0]) !== null &&
+              _b !== void 0
+              ? _b
+              : null
+          }
         }
-        return null;
-    }, [tradeType, amountSpecified, currencyIn, currencyOut, allowedPairs, maxHops]);
+        // search through trades with varying hops, find best trade out of them
+        var bestTradeSoFar = null
+        for (var i = 1; i <= maxHops; i++) {
+          var options = { maxHops: i, maxNumResults: 1 }
+          var currentTrade = void 0
+          if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
+            var amountIn = amountSpecified
+            currentTrade =
+              (_c = v2Sdk.Trade.bestTradeExactIn(allowedPairs, amountIn, currencyOut, options)[0]) !== null &&
+              _c !== void 0
+                ? _c
+                : null
+          } else {
+            var amountOut = amountSpecified
+            currentTrade =
+              (_d = v2Sdk.Trade.bestTradeExactOut(allowedPairs, currencyIn, amountOut, options)[0]) !== null &&
+              _d !== void 0
+                ? _d
+                : null
+          }
+          // if current trade is best yet, save it
+          if (isTradeBetter(bestTradeSoFar, currentTrade, BETTER_TRADE_LESS_HOPS_THRESHOLD)) {
+            bestTradeSoFar = currentTrade
+          }
+        }
+        return bestTradeSoFar
+      }
+      return null
+    },
+    [tradeType, amountSpecified, currencyIn, currencyOut, allowedPairs, maxHops]
+  )
 }
 
-var TradeState;
-(function (TradeState) {
-    TradeState[TradeState["LOADING"] = 0] = "LOADING";
-    TradeState[TradeState["INVALID"] = 1] = "INVALID";
-    TradeState[TradeState["NO_ROUTE_FOUND"] = 2] = "NO_ROUTE_FOUND";
-    TradeState[TradeState["VALID"] = 3] = "VALID";
-    TradeState[TradeState["SYNCING"] = 4] = "SYNCING";
-})(TradeState || (TradeState = {}));
+var TradeState
+;(function (TradeState) {
+  TradeState[(TradeState['LOADING'] = 0)] = 'LOADING'
+  TradeState[(TradeState['INVALID'] = 1)] = 'INVALID'
+  TradeState[(TradeState['NO_ROUTE_FOUND'] = 2)] = 'NO_ROUTE_FOUND'
+  TradeState[(TradeState['VALID'] = 3)] = 'VALID'
+  TradeState[(TradeState['SYNCING'] = 4)] = 'SYNCING'
+})(TradeState || (TradeState = {}))
 var InterfaceTrade = /** @class */ (function (_super) {
-    __extends(InterfaceTrade, _super);
-    function InterfaceTrade(_a) {
-        var gasUseEstimateUSD = _a.gasUseEstimateUSD, routes = __rest(_a, ["gasUseEstimateUSD"]);
-        var _this = _super.call(this, routes) || this;
-        _this.gasUseEstimateUSD = gasUseEstimateUSD;
-        return _this;
-    }
-    return InterfaceTrade;
-}(routerSdk.Trade));
+  __extends(InterfaceTrade, _super)
+  function InterfaceTrade(_a) {
+    var gasUseEstimateUSD = _a.gasUseEstimateUSD,
+      routes = __rest(_a, ['gasUseEstimateUSD'])
+    var _this = _super.call(this, routes) || this
+    _this.gasUseEstimateUSD = gasUseEstimateUSD
+    return _this
+  }
+  return InterfaceTrade
+})(routerSdk.Trade)
 
 var abi = [
-	{
-		inputs: [
-		],
-		name: "feeGrowthGlobal0X128",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "feeGrowthGlobal1X128",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "liquidity",
-		outputs: [
-			{
-				internalType: "uint128",
-				name: "",
-				type: "uint128"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "uint256",
-				name: "index",
-				type: "uint256"
-			}
-		],
-		name: "observations",
-		outputs: [
-			{
-				internalType: "uint32",
-				name: "blockTimestamp",
-				type: "uint32"
-			},
-			{
-				internalType: "int56",
-				name: "tickCumulative",
-				type: "int56"
-			},
-			{
-				internalType: "uint160",
-				name: "secondsPerLiquidityCumulativeX128",
-				type: "uint160"
-			},
-			{
-				internalType: "bool",
-				name: "initialized",
-				type: "bool"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "bytes32",
-				name: "key",
-				type: "bytes32"
-			}
-		],
-		name: "positions",
-		outputs: [
-			{
-				internalType: "uint128",
-				name: "_liquidity",
-				type: "uint128"
-			},
-			{
-				internalType: "uint256",
-				name: "feeGrowthInside0LastX128",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "feeGrowthInside1LastX128",
-				type: "uint256"
-			},
-			{
-				internalType: "uint128",
-				name: "tokensOwed0",
-				type: "uint128"
-			},
-			{
-				internalType: "uint128",
-				name: "tokensOwed1",
-				type: "uint128"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "protocolFees",
-		outputs: [
-			{
-				internalType: "uint128",
-				name: "token0",
-				type: "uint128"
-			},
-			{
-				internalType: "uint128",
-				name: "token1",
-				type: "uint128"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-		],
-		name: "slot0",
-		outputs: [
-			{
-				internalType: "uint160",
-				name: "sqrtPriceX96",
-				type: "uint160"
-			},
-			{
-				internalType: "int24",
-				name: "tick",
-				type: "int24"
-			},
-			{
-				internalType: "uint16",
-				name: "observationIndex",
-				type: "uint16"
-			},
-			{
-				internalType: "uint16",
-				name: "observationCardinality",
-				type: "uint16"
-			},
-			{
-				internalType: "uint16",
-				name: "observationCardinalityNext",
-				type: "uint16"
-			},
-			{
-				internalType: "uint8",
-				name: "feeProtocol",
-				type: "uint8"
-			},
-			{
-				internalType: "bool",
-				name: "unlocked",
-				type: "bool"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "int16",
-				name: "wordPosition",
-				type: "int16"
-			}
-		],
-		name: "tickBitmap",
-		outputs: [
-			{
-				internalType: "uint256",
-				name: "",
-				type: "uint256"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	},
-	{
-		inputs: [
-			{
-				internalType: "int24",
-				name: "tick",
-				type: "int24"
-			}
-		],
-		name: "ticks",
-		outputs: [
-			{
-				internalType: "uint128",
-				name: "liquidityGross",
-				type: "uint128"
-			},
-			{
-				internalType: "int128",
-				name: "liquidityNet",
-				type: "int128"
-			},
-			{
-				internalType: "uint256",
-				name: "feeGrowthOutside0X128",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "feeGrowthOutside1X128",
-				type: "uint256"
-			},
-			{
-				internalType: "int56",
-				name: "tickCumulativeOutside",
-				type: "int56"
-			},
-			{
-				internalType: "uint160",
-				name: "secondsPerLiquidityOutsideX128",
-				type: "uint160"
-			},
-			{
-				internalType: "uint32",
-				name: "secondsOutside",
-				type: "uint32"
-			},
-			{
-				internalType: "bool",
-				name: "initialized",
-				type: "bool"
-			}
-		],
-		stateMutability: "view",
-		type: "function"
-	}
-];
+  {
+    inputs: [],
+    name: 'feeGrowthGlobal0X128',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'feeGrowthGlobal1X128',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'liquidity',
+    outputs: [
+      {
+        internalType: 'uint128',
+        name: '',
+        type: 'uint128',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'index',
+        type: 'uint256',
+      },
+    ],
+    name: 'observations',
+    outputs: [
+      {
+        internalType: 'uint32',
+        name: 'blockTimestamp',
+        type: 'uint32',
+      },
+      {
+        internalType: 'int56',
+        name: 'tickCumulative',
+        type: 'int56',
+      },
+      {
+        internalType: 'uint160',
+        name: 'secondsPerLiquidityCumulativeX128',
+        type: 'uint160',
+      },
+      {
+        internalType: 'bool',
+        name: 'initialized',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'key',
+        type: 'bytes32',
+      },
+    ],
+    name: 'positions',
+    outputs: [
+      {
+        internalType: 'uint128',
+        name: '_liquidity',
+        type: 'uint128',
+      },
+      {
+        internalType: 'uint256',
+        name: 'feeGrowthInside0LastX128',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'feeGrowthInside1LastX128',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint128',
+        name: 'tokensOwed0',
+        type: 'uint128',
+      },
+      {
+        internalType: 'uint128',
+        name: 'tokensOwed1',
+        type: 'uint128',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'protocolFees',
+    outputs: [
+      {
+        internalType: 'uint128',
+        name: 'token0',
+        type: 'uint128',
+      },
+      {
+        internalType: 'uint128',
+        name: 'token1',
+        type: 'uint128',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'slot0',
+    outputs: [
+      {
+        internalType: 'uint160',
+        name: 'sqrtPriceX96',
+        type: 'uint160',
+      },
+      {
+        internalType: 'int24',
+        name: 'tick',
+        type: 'int24',
+      },
+      {
+        internalType: 'uint16',
+        name: 'observationIndex',
+        type: 'uint16',
+      },
+      {
+        internalType: 'uint16',
+        name: 'observationCardinality',
+        type: 'uint16',
+      },
+      {
+        internalType: 'uint16',
+        name: 'observationCardinalityNext',
+        type: 'uint16',
+      },
+      {
+        internalType: 'uint8',
+        name: 'feeProtocol',
+        type: 'uint8',
+      },
+      {
+        internalType: 'bool',
+        name: 'unlocked',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'int16',
+        name: 'wordPosition',
+        type: 'int16',
+      },
+    ],
+    name: 'tickBitmap',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'int24',
+        name: 'tick',
+        type: 'int24',
+      },
+    ],
+    name: 'ticks',
+    outputs: [
+      {
+        internalType: 'uint128',
+        name: 'liquidityGross',
+        type: 'uint128',
+      },
+      {
+        internalType: 'int128',
+        name: 'liquidityNet',
+        type: 'int128',
+      },
+      {
+        internalType: 'uint256',
+        name: 'feeGrowthOutside0X128',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'feeGrowthOutside1X128',
+        type: 'uint256',
+      },
+      {
+        internalType: 'int56',
+        name: 'tickCumulativeOutside',
+        type: 'int56',
+      },
+      {
+        internalType: 'uint160',
+        name: 'secondsPerLiquidityOutsideX128',
+        type: 'uint160',
+      },
+      {
+        internalType: 'uint32',
+        name: 'secondsOutside',
+        type: 'uint32',
+      },
+      {
+        internalType: 'bool',
+        name: 'initialized',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
 
-var POOL_STATE_INTERFACE = new abi$7.Interface(abi);
-var PoolState;
-(function (PoolState) {
-    PoolState[PoolState["LOADING"] = 0] = "LOADING";
-    PoolState[PoolState["NOT_EXISTS"] = 1] = "NOT_EXISTS";
-    PoolState[PoolState["EXISTS"] = 2] = "EXISTS";
-    PoolState[PoolState["INVALID"] = 3] = "INVALID";
-})(PoolState || (PoolState = {}));
+var POOL_STATE_INTERFACE = new abi$7.Interface(abi)
+var PoolState
+;(function (PoolState) {
+  PoolState[(PoolState['LOADING'] = 0)] = 'LOADING'
+  PoolState[(PoolState['NOT_EXISTS'] = 1)] = 'NOT_EXISTS'
+  PoolState[(PoolState['EXISTS'] = 2)] = 'EXISTS'
+  PoolState[(PoolState['INVALID'] = 3)] = 'INVALID'
+})(PoolState || (PoolState = {}))
 function usePools(poolKeys) {
-    var chainId = useActiveWeb3React().chainId;
-    var transformed = React.useMemo(function () {
-        return poolKeys.map(function (_a) {
-            var _b = __read(_a, 3), currencyA = _b[0], currencyB = _b[1], feeAmount = _b[2];
-            if (!chainId || !currencyA || !currencyB || !feeAmount)
-                return null;
-            var tokenA = currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped;
-            var tokenB = currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped;
-            if (!tokenA || !tokenB || tokenA.equals(tokenB))
-                return null;
-            var _c = __read(tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA], 2), token0 = _c[0], token1 = _c[1];
-            return [token0, token1, feeAmount];
-        });
-    }, [chainId, poolKeys]);
-    var poolAddresses = React.useMemo(function () {
-        var v3CoreFactoryAddress = chainId && V3_CORE_FACTORY_ADDRESSES[chainId];
-        return transformed.map(function (value) {
-            if (!v3CoreFactoryAddress || !value)
-                return undefined;
-            return v3Sdk.computePoolAddress({
-                factoryAddress: v3CoreFactoryAddress,
-                tokenA: value[0],
-                tokenB: value[1],
-                fee: value[2],
-            });
-        });
-    }, [chainId, transformed]);
-    var slot0s = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'slot0');
-    var liquidities = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'liquidity');
-    return React.useMemo(function () {
-        return poolKeys.map(function (_key, index) {
-            var _a;
-            var _b = __read((_a = transformed[index]) !== null && _a !== void 0 ? _a : [], 3), token0 = _b[0], token1 = _b[1], fee = _b[2];
-            if (!token0 || !token1 || !fee)
-                return [PoolState.INVALID, null];
-            var _c = slot0s[index], slot0 = _c.result, slot0Loading = _c.loading, slot0Valid = _c.valid;
-            var _d = liquidities[index], liquidity = _d.result, liquidityLoading = _d.loading, liquidityValid = _d.valid;
-            if (!slot0Valid || !liquidityValid)
-                return [PoolState.INVALID, null];
-            if (slot0Loading || liquidityLoading)
-                return [PoolState.LOADING, null];
-            if (!slot0 || !liquidity)
-                return [PoolState.NOT_EXISTS, null];
-            if (!slot0.sqrtPriceX96 || slot0.sqrtPriceX96.eq(0))
-                return [PoolState.NOT_EXISTS, null];
-            try {
-                return [PoolState.EXISTS, new v3Sdk.Pool(token0, token1, fee, slot0.sqrtPriceX96, liquidity[0], slot0.tick)];
-            }
-            catch (error) {
-                console.error('Error when constructing the pool', error);
-                return [PoolState.NOT_EXISTS, null];
-            }
-        });
-    }, [liquidities, poolKeys, slot0s, transformed]);
+  var chainId = useActiveWeb3React().chainId
+  var transformed = React.useMemo(
+    function () {
+      return poolKeys.map(function (_a) {
+        var _b = __read(_a, 3),
+          currencyA = _b[0],
+          currencyB = _b[1],
+          feeAmount = _b[2]
+        if (!chainId || !currencyA || !currencyB || !feeAmount) return null
+        var tokenA = currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped
+        var tokenB = currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped
+        if (!tokenA || !tokenB || tokenA.equals(tokenB)) return null
+        var _c = __read(tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA], 2),
+          token0 = _c[0],
+          token1 = _c[1]
+        return [token0, token1, feeAmount]
+      })
+    },
+    [chainId, poolKeys]
+  )
+  var poolAddresses = React.useMemo(
+    function () {
+      var v3CoreFactoryAddress = chainId && V3_CORE_FACTORY_ADDRESSES[chainId]
+      return transformed.map(function (value) {
+        if (!v3CoreFactoryAddress || !value) return undefined
+        return v3Sdk.computePoolAddress({
+          factoryAddress: v3CoreFactoryAddress,
+          tokenA: value[0],
+          tokenB: value[1],
+          fee: value[2],
+        })
+      })
+    },
+    [chainId, transformed]
+  )
+  var slot0s = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'slot0')
+  var liquidities = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'liquidity')
+  return React.useMemo(
+    function () {
+      return poolKeys.map(function (_key, index) {
+        var _a
+        var _b = __read((_a = transformed[index]) !== null && _a !== void 0 ? _a : [], 3),
+          token0 = _b[0],
+          token1 = _b[1],
+          fee = _b[2]
+        if (!token0 || !token1 || !fee) return [PoolState.INVALID, null]
+        var _c = slot0s[index],
+          slot0 = _c.result,
+          slot0Loading = _c.loading,
+          slot0Valid = _c.valid
+        var _d = liquidities[index],
+          liquidity = _d.result,
+          liquidityLoading = _d.loading,
+          liquidityValid = _d.valid
+        if (!slot0Valid || !liquidityValid) return [PoolState.INVALID, null]
+        if (slot0Loading || liquidityLoading) return [PoolState.LOADING, null]
+        if (!slot0 || !liquidity) return [PoolState.NOT_EXISTS, null]
+        if (!slot0.sqrtPriceX96 || slot0.sqrtPriceX96.eq(0)) return [PoolState.NOT_EXISTS, null]
+        try {
+          return [PoolState.EXISTS, new v3Sdk.Pool(token0, token1, fee, slot0.sqrtPriceX96, liquidity[0], slot0.tick)]
+        } catch (error) {
+          console.error('Error when constructing the pool', error)
+          return [PoolState.NOT_EXISTS, null]
+        }
+      })
+    },
+    [liquidities, poolKeys, slot0s, transformed]
+  )
 }
 
 /**
@@ -10857,42 +13441,52 @@ function usePools(poolKeys) {
  * @param currencyOut the output currency
  */
 function useV3SwapPools(currencyIn, currencyOut) {
-    var chainId = useActiveWeb3React().chainId;
-    var allCurrencyCombinations = useAllCurrencyCombinations(currencyIn, currencyOut);
-    var allCurrencyCombinationsWithAllFees = React.useMemo(function () {
-        return allCurrencyCombinations.reduce(function (list, _a) {
-            var _b = __read(_a, 2), tokenA = _b[0], tokenB = _b[1];
-            return chainId === SupportedChainId.MAINNET
-                ? list.concat([
-                    [tokenA, tokenB, v3Sdk.FeeAmount.LOW],
-                    [tokenA, tokenB, v3Sdk.FeeAmount.MEDIUM],
-                    [tokenA, tokenB, v3Sdk.FeeAmount.HIGH],
-                ])
-                : list.concat([
-                    [tokenA, tokenB, v3Sdk.FeeAmount.LOWEST],
-                    [tokenA, tokenB, v3Sdk.FeeAmount.LOW],
-                    [tokenA, tokenB, v3Sdk.FeeAmount.MEDIUM],
-                    [tokenA, tokenB, v3Sdk.FeeAmount.HIGH],
-                ]);
-        }, []);
-    }, [allCurrencyCombinations, chainId]);
-    var pools = usePools(allCurrencyCombinationsWithAllFees);
-    return React.useMemo(function () {
-        return {
-            pools: pools
-                .filter(function (tuple) {
-                return tuple[0] === PoolState.EXISTS && tuple[1] !== null;
-            })
-                .map(function (_a) {
-                var _b = __read(_a, 2), pool = _b[1];
-                return pool;
-            }),
-            loading: pools.some(function (_a) {
-                var _b = __read(_a, 1), state = _b[0];
-                return state === PoolState.LOADING;
-            }),
-        };
-    }, [pools]);
+  var chainId = useActiveWeb3React().chainId
+  var allCurrencyCombinations = useAllCurrencyCombinations(currencyIn, currencyOut)
+  var allCurrencyCombinationsWithAllFees = React.useMemo(
+    function () {
+      return allCurrencyCombinations.reduce(function (list, _a) {
+        var _b = __read(_a, 2),
+          tokenA = _b[0],
+          tokenB = _b[1]
+        return chainId === SupportedChainId.MAINNET
+          ? list.concat([
+              [tokenA, tokenB, v3Sdk.FeeAmount.LOW],
+              [tokenA, tokenB, v3Sdk.FeeAmount.MEDIUM],
+              [tokenA, tokenB, v3Sdk.FeeAmount.HIGH],
+            ])
+          : list.concat([
+              [tokenA, tokenB, v3Sdk.FeeAmount.LOWEST],
+              [tokenA, tokenB, v3Sdk.FeeAmount.LOW],
+              [tokenA, tokenB, v3Sdk.FeeAmount.MEDIUM],
+              [tokenA, tokenB, v3Sdk.FeeAmount.HIGH],
+            ])
+      }, [])
+    },
+    [allCurrencyCombinations, chainId]
+  )
+  var pools = usePools(allCurrencyCombinationsWithAllFees)
+  return React.useMemo(
+    function () {
+      return {
+        pools: pools
+          .filter(function (tuple) {
+            return tuple[0] === PoolState.EXISTS && tuple[1] !== null
+          })
+          .map(function (_a) {
+            var _b = __read(_a, 2),
+              pool = _b[1]
+            return pool
+          }),
+        loading: pools.some(function (_a) {
+          var _b = __read(_a, 1),
+            state = _b[0]
+          return state === PoolState.LOADING
+        }),
+      }
+    },
+    [pools]
+  )
 }
 
 /**
@@ -10901,44 +13495,73 @@ function useV3SwapPools(currencyIn, currencyOut) {
  * @param poolB the other pool
  */
 function poolEquals(poolA, poolB) {
-    return (poolA === poolB ||
-        (poolA.token0.equals(poolB.token0) && poolA.token1.equals(poolB.token1) && poolA.fee === poolB.fee));
+  return (
+    poolA === poolB ||
+    (poolA.token0.equals(poolB.token0) && poolA.token1.equals(poolB.token1) && poolA.fee === poolB.fee)
+  )
 }
 function computeAllRoutes(currencyIn, currencyOut, pools, chainId, currentPath, allPaths, startCurrencyIn, maxHops) {
-    var e_1, _a;
-    if (currentPath === void 0) { currentPath = []; }
-    if (allPaths === void 0) { allPaths = []; }
-    if (startCurrencyIn === void 0) { startCurrencyIn = currencyIn; }
-    if (maxHops === void 0) { maxHops = 2; }
-    var tokenIn = currencyIn === null || currencyIn === void 0 ? void 0 : currencyIn.wrapped;
-    var tokenOut = currencyOut === null || currencyOut === void 0 ? void 0 : currencyOut.wrapped;
-    if (!tokenIn || !tokenOut)
-        throw new Error('Missing tokenIn/tokenOut');
-    var _loop_1 = function (pool) {
-        if (!pool.involvesToken(tokenIn) || currentPath.find(function (pathPool) { return poolEquals(pool, pathPool); }))
-            return "continue";
-        var outputToken = pool.token0.equals(tokenIn) ? pool.token1 : pool.token0;
-        if (outputToken.equals(tokenOut)) {
-            allPaths.push(new v3Sdk.Route(__spreadArray(__spreadArray([], __read(currentPath), false), [pool], false), startCurrencyIn, currencyOut));
-        }
-        else if (maxHops > 1) {
-            computeAllRoutes(outputToken, currencyOut, pools, chainId, __spreadArray(__spreadArray([], __read(currentPath), false), [pool], false), allPaths, startCurrencyIn, maxHops - 1);
-        }
-    };
+  var e_1, _a
+  if (currentPath === void 0) {
+    currentPath = []
+  }
+  if (allPaths === void 0) {
+    allPaths = []
+  }
+  if (startCurrencyIn === void 0) {
+    startCurrencyIn = currencyIn
+  }
+  if (maxHops === void 0) {
+    maxHops = 2
+  }
+  var tokenIn = currencyIn === null || currencyIn === void 0 ? void 0 : currencyIn.wrapped
+  var tokenOut = currencyOut === null || currencyOut === void 0 ? void 0 : currencyOut.wrapped
+  if (!tokenIn || !tokenOut) throw new Error('Missing tokenIn/tokenOut')
+  var _loop_1 = function (pool) {
+    if (
+      !pool.involvesToken(tokenIn) ||
+      currentPath.find(function (pathPool) {
+        return poolEquals(pool, pathPool)
+      })
+    )
+      return 'continue'
+    var outputToken = pool.token0.equals(tokenIn) ? pool.token1 : pool.token0
+    if (outputToken.equals(tokenOut)) {
+      allPaths.push(
+        new v3Sdk.Route(
+          __spreadArray(__spreadArray([], __read(currentPath), false), [pool], false),
+          startCurrencyIn,
+          currencyOut
+        )
+      )
+    } else if (maxHops > 1) {
+      computeAllRoutes(
+        outputToken,
+        currencyOut,
+        pools,
+        chainId,
+        __spreadArray(__spreadArray([], __read(currentPath), false), [pool], false),
+        allPaths,
+        startCurrencyIn,
+        maxHops - 1
+      )
+    }
+  }
+  try {
+    for (var pools_1 = __values(pools), pools_1_1 = pools_1.next(); !pools_1_1.done; pools_1_1 = pools_1.next()) {
+      var pool = pools_1_1.value
+      _loop_1(pool)
+    }
+  } catch (e_1_1) {
+    e_1 = { error: e_1_1 }
+  } finally {
     try {
-        for (var pools_1 = __values(pools), pools_1_1 = pools_1.next(); !pools_1_1.done; pools_1_1 = pools_1.next()) {
-            var pool = pools_1_1.value;
-            _loop_1(pool);
-        }
+      if (pools_1_1 && !pools_1_1.done && (_a = pools_1.return)) _a.call(pools_1)
+    } finally {
+      if (e_1) throw e_1.error
     }
-    catch (e_1_1) { e_1 = { error: e_1_1 }; }
-    finally {
-        try {
-            if (pools_1_1 && !pools_1_1.done && (_a = pools_1.return)) _a.call(pools_1);
-        }
-        finally { if (e_1) throw e_1.error; }
-    }
-    return allPaths;
+  }
+  return allPaths
 }
 /**
  * Returns all the routes from an input currency to an output currency
@@ -10946,22 +13569,27 @@ function computeAllRoutes(currencyIn, currencyOut, pools, chainId, currentPath, 
  * @param currencyOut the output currency
  */
 function useAllV3Routes(currencyIn, currencyOut) {
-    var chainId = useActiveWeb3React().chainId;
-    var _a = useV3SwapPools(currencyIn, currencyOut), pools = _a.pools, poolsLoading = _a.loading;
-    return React.useMemo(function () {
-        if (poolsLoading || !chainId || !pools || !currencyIn || !currencyOut)
-            return { loading: true, routes: [] };
-        var routes = computeAllRoutes(currencyIn, currencyOut, pools, chainId, [], [], currencyIn, 2);
-        return { loading: false, routes: routes };
-    }, [chainId, currencyIn, currencyOut, pools, poolsLoading]);
+  var chainId = useActiveWeb3React().chainId
+  var _a = useV3SwapPools(currencyIn, currencyOut),
+    pools = _a.pools,
+    poolsLoading = _a.loading
+  return React.useMemo(
+    function () {
+      if (poolsLoading || !chainId || !pools || !currencyIn || !currencyOut) return { loading: true, routes: [] }
+      var routes = computeAllRoutes(currencyIn, currencyOut, pools, chainId, [], [], currencyIn, 2)
+      return { loading: false, routes }
+    },
+    [chainId, currencyIn, currencyOut, pools, poolsLoading]
+  )
 }
 
-var _a$7;
-var QUOTE_GAS_OVERRIDES = (_a$7 = {},
-    _a$7[SupportedChainId.ARBITRUM_ONE] = 25000000,
-    _a$7[SupportedChainId.ARBITRUM_RINKEBY] = 25000000,
-    _a$7);
-var DEFAULT_GAS_QUOTE = 2000000;
+var _a$7
+var QUOTE_GAS_OVERRIDES =
+  ((_a$7 = {}),
+  (_a$7[SupportedChainId.ARBITRUM_ONE] = 25000000),
+  (_a$7[SupportedChainId.ARBITRUM_RINKEBY] = 25000000),
+  _a$7)
+var DEFAULT_GAS_QUOTE = 2000000
 /**
  * Returns the best v3 trade for a desired swap
  * @param tradeType whether the swap is an exact in/out
@@ -10969,154 +13597,206 @@ var DEFAULT_GAS_QUOTE = 2000000;
  * @param otherCurrency the desired output/payment currency
  */
 function useClientSideV3Trade(tradeType, amountSpecified, otherCurrency) {
-    var _a;
-    var _b = __read(React.useMemo(function () {
-        return tradeType === sdkCore.TradeType.EXACT_INPUT
-            ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency]
-            : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency];
-    }, [tradeType, amountSpecified, otherCurrency]), 2), currencyIn = _b[0], currencyOut = _b[1];
-    var _c = useAllV3Routes(currencyIn, currencyOut), routes = _c.routes, routesLoading = _c.loading;
-    var quoter = useV3Quoter();
-    var chainId = useActiveWeb3React().chainId;
-    var quotesResults = useSingleContractWithCallData(quoter, amountSpecified
-        ? routes.map(function (route) { return v3Sdk.SwapQuoter.quoteCallParameters(route, amountSpecified, tradeType).calldata; })
-        : [], {
-        gasRequired: chainId ? (_a = QUOTE_GAS_OVERRIDES[chainId]) !== null && _a !== void 0 ? _a : DEFAULT_GAS_QUOTE : undefined,
-    });
-    return React.useMemo(function () {
-        if (!amountSpecified ||
-            !currencyIn ||
-            !currencyOut ||
-            quotesResults.some(function (_a) {
-                var valid = _a.valid;
-                return !valid;
-            }) ||
-            // skip when tokens are the same
-            (tradeType === sdkCore.TradeType.EXACT_INPUT
-                ? amountSpecified.currency.equals(currencyOut)
-                : amountSpecified.currency.equals(currencyIn))) {
-            return {
-                state: TradeState.INVALID,
-                trade: undefined,
-            };
+  var _a
+  var _b = __read(
+      React.useMemo(
+        function () {
+          return tradeType === sdkCore.TradeType.EXACT_INPUT
+            ? [
+                amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency,
+                otherCurrency,
+              ]
+            : [
+                otherCurrency,
+                amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency,
+              ]
+        },
+        [tradeType, amountSpecified, otherCurrency]
+      ),
+      2
+    ),
+    currencyIn = _b[0],
+    currencyOut = _b[1]
+  var _c = useAllV3Routes(currencyIn, currencyOut),
+    routes = _c.routes,
+    routesLoading = _c.loading
+  var quoter = useV3Quoter()
+  var chainId = useActiveWeb3React().chainId
+  var quotesResults = useSingleContractWithCallData(
+    quoter,
+    amountSpecified
+      ? routes.map(function (route) {
+          return v3Sdk.SwapQuoter.quoteCallParameters(route, amountSpecified, tradeType).calldata
+        })
+      : [],
+    {
+      gasRequired: chainId
+        ? (_a = QUOTE_GAS_OVERRIDES[chainId]) !== null && _a !== void 0
+          ? _a
+          : DEFAULT_GAS_QUOTE
+        : undefined,
+    }
+  )
+  return React.useMemo(
+    function () {
+      if (
+        !amountSpecified ||
+        !currencyIn ||
+        !currencyOut ||
+        quotesResults.some(function (_a) {
+          var valid = _a.valid
+          return !valid
+        }) ||
+        // skip when tokens are the same
+        (tradeType === sdkCore.TradeType.EXACT_INPUT
+          ? amountSpecified.currency.equals(currencyOut)
+          : amountSpecified.currency.equals(currencyIn))
+      ) {
+        return {
+          state: TradeState.INVALID,
+          trade: undefined,
         }
-        if (routesLoading || quotesResults.some(function (_a) {
-            var loading = _a.loading;
-            return loading;
-        })) {
-            return {
-                state: TradeState.LOADING,
-                trade: undefined,
-            };
+      }
+      if (
+        routesLoading ||
+        quotesResults.some(function (_a) {
+          var loading = _a.loading
+          return loading
+        })
+      ) {
+        return {
+          state: TradeState.LOADING,
+          trade: undefined,
         }
-        var _a = quotesResults.reduce(function (currentBest, _a, i) {
-            var result = _a.result;
-            if (!result)
-                return currentBest;
+      }
+      var _a = quotesResults.reduce(
+          function (currentBest, _a, i) {
+            var result = _a.result
+            if (!result) return currentBest
             // overwrite the current best if it's not defined or if this route is better
             if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
-                var amountOut_1 = sdkCore.CurrencyAmount.fromRawAmount(currencyOut, result.amountOut.toString());
-                if (currentBest.amountOut === null || JSBI__default["default"].lessThan(currentBest.amountOut.quotient, amountOut_1.quotient)) {
-                    return {
-                        bestRoute: routes[i],
-                        amountIn: amountSpecified,
-                        amountOut: amountOut_1,
-                    };
+              var amountOut_1 = sdkCore.CurrencyAmount.fromRawAmount(currencyOut, result.amountOut.toString())
+              if (
+                currentBest.amountOut === null ||
+                JSBI__default['default'].lessThan(currentBest.amountOut.quotient, amountOut_1.quotient)
+              ) {
+                return {
+                  bestRoute: routes[i],
+                  amountIn: amountSpecified,
+                  amountOut: amountOut_1,
                 }
-            }
-            else {
-                var amountIn_1 = sdkCore.CurrencyAmount.fromRawAmount(currencyIn, result.amountIn.toString());
-                if (currentBest.amountIn === null || JSBI__default["default"].greaterThan(currentBest.amountIn.quotient, amountIn_1.quotient)) {
-                    return {
-                        bestRoute: routes[i],
-                        amountIn: amountIn_1,
-                        amountOut: amountSpecified,
-                    };
+              }
+            } else {
+              var amountIn_1 = sdkCore.CurrencyAmount.fromRawAmount(currencyIn, result.amountIn.toString())
+              if (
+                currentBest.amountIn === null ||
+                JSBI__default['default'].greaterThan(currentBest.amountIn.quotient, amountIn_1.quotient)
+              ) {
+                return {
+                  bestRoute: routes[i],
+                  amountIn: amountIn_1,
+                  amountOut: amountSpecified,
                 }
+              }
             }
-            return currentBest;
-        }, {
+            return currentBest
+          },
+          {
             bestRoute: null,
             amountIn: null,
             amountOut: null,
-        }), bestRoute = _a.bestRoute, amountIn = _a.amountIn, amountOut = _a.amountOut;
-        if (!bestRoute || !amountIn || !amountOut) {
-            return {
-                state: TradeState.NO_ROUTE_FOUND,
-                trade: undefined,
-            };
-        }
+          }
+        ),
+        bestRoute = _a.bestRoute,
+        amountIn = _a.amountIn,
+        amountOut = _a.amountOut
+      if (!bestRoute || !amountIn || !amountOut) {
         return {
-            state: TradeState.VALID,
-            trade: new InterfaceTrade({
-                v2Routes: [],
-                v3Routes: [
-                    {
-                        routev3: bestRoute,
-                        inputAmount: amountIn,
-                        outputAmount: amountOut,
-                    },
-                ],
-                tradeType: tradeType,
-            }),
-        };
-    }, [amountSpecified, currencyIn, currencyOut, quotesResults, routes, routesLoading, tradeType]);
+          state: TradeState.NO_ROUTE_FOUND,
+          trade: undefined,
+        }
+      }
+      return {
+        state: TradeState.VALID,
+        trade: new InterfaceTrade({
+          v2Routes: [],
+          v3Routes: [
+            {
+              routev3: bestRoute,
+              inputAmount: amountIn,
+              outputAmount: amountOut,
+            },
+          ],
+          tradeType,
+        }),
+      }
+    },
+    [amountSpecified, currencyIn, currencyOut, quotesResults, routes, routesLoading, tradeType]
+  )
 }
 
-var _a$6;
+var _a$6
 // Stablecoin amounts used when calculating spot price for a given currency.
 // The amount is large enough to filter low liquidity pairs.
-var STABLECOIN_AMOUNT_OUT = (_a$6 = {},
-    _a$6[SupportedChainId.MAINNET] = sdkCore.CurrencyAmount.fromRawAmount(USDC, 100000000000),
-    _a$6[SupportedChainId.ARBITRUM_ONE] = sdkCore.CurrencyAmount.fromRawAmount(USDC_ARBITRUM, 10000000000),
-    _a$6[SupportedChainId.OPTIMISM] = sdkCore.CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 1e+22),
-    _a$6[SupportedChainId.POLYGON] = sdkCore.CurrencyAmount.fromRawAmount(USDC_POLYGON, 10000000000),
-    _a$6);
+var STABLECOIN_AMOUNT_OUT =
+  ((_a$6 = {}),
+  (_a$6[SupportedChainId.MAINNET] = sdkCore.CurrencyAmount.fromRawAmount(USDC, 100000000000)),
+  (_a$6[SupportedChainId.ARBITRUM_ONE] = sdkCore.CurrencyAmount.fromRawAmount(USDC_ARBITRUM, 10000000000)),
+  (_a$6[SupportedChainId.OPTIMISM] = sdkCore.CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 1e22)),
+  (_a$6[SupportedChainId.POLYGON] = sdkCore.CurrencyAmount.fromRawAmount(USDC_POLYGON, 10000000000)),
+  _a$6)
 /**
  * Returns the price in USDC of the input currency
  * @param currency currency to compute the USDC price of
  */
 function useUSDCPrice(currency) {
-    var chainId = currency === null || currency === void 0 ? void 0 : currency.chainId;
-    var amountOut = chainId ? STABLECOIN_AMOUNT_OUT[chainId] : undefined;
-    var stablecoin = amountOut === null || amountOut === void 0 ? void 0 : amountOut.currency;
-    // TODO(#2808): remove dependency on useBestV2Trade
-    var v2USDCTrade = useBestV2Trade(sdkCore.TradeType.EXACT_OUTPUT, amountOut, currency, {
-        maxHops: 2,
-    });
-    var v3USDCTrade = useClientSideV3Trade(sdkCore.TradeType.EXACT_OUTPUT, amountOut, currency);
-    return React.useMemo(function () {
-        if (!currency || !stablecoin) {
-            return undefined;
-        }
-        // handle usdc
-        if (currency === null || currency === void 0 ? void 0 : currency.wrapped.equals(stablecoin)) {
-            return new sdkCore.Price(stablecoin, stablecoin, '1', '1');
-        }
-        // use v2 price if available, v3 as fallback
-        if (v2USDCTrade) {
-            var _a = v2USDCTrade.route.midPrice, numerator = _a.numerator, denominator = _a.denominator;
-            return new sdkCore.Price(currency, stablecoin, denominator, numerator);
-        }
-        else if (v3USDCTrade.trade) {
-            var _b = v3USDCTrade.trade.routes[0].midPrice, numerator = _b.numerator, denominator = _b.denominator;
-            return new sdkCore.Price(currency, stablecoin, denominator, numerator);
-        }
-        return undefined;
-    }, [currency, stablecoin, v2USDCTrade, v3USDCTrade.trade]);
+  var chainId = currency === null || currency === void 0 ? void 0 : currency.chainId
+  var amountOut = chainId ? STABLECOIN_AMOUNT_OUT[chainId] : undefined
+  var stablecoin = amountOut === null || amountOut === void 0 ? void 0 : amountOut.currency
+  // TODO(#2808): remove dependency on useBestV2Trade
+  var v2USDCTrade = useBestV2Trade(sdkCore.TradeType.EXACT_OUTPUT, amountOut, currency, {
+    maxHops: 2,
+  })
+  var v3USDCTrade = useClientSideV3Trade(sdkCore.TradeType.EXACT_OUTPUT, amountOut, currency)
+  return React.useMemo(
+    function () {
+      if (!currency || !stablecoin) {
+        return undefined
+      }
+      // handle usdc
+      if (currency === null || currency === void 0 ? void 0 : currency.wrapped.equals(stablecoin)) {
+        return new sdkCore.Price(stablecoin, stablecoin, '1', '1')
+      }
+      // use v2 price if available, v3 as fallback
+      if (v2USDCTrade) {
+        var _a = v2USDCTrade.route.midPrice,
+          numerator = _a.numerator,
+          denominator = _a.denominator
+        return new sdkCore.Price(currency, stablecoin, denominator, numerator)
+      } else if (v3USDCTrade.trade) {
+        var _b = v3USDCTrade.trade.routes[0].midPrice,
+          numerator = _b.numerator,
+          denominator = _b.denominator
+        return new sdkCore.Price(currency, stablecoin, denominator, numerator)
+      }
+      return undefined
+    },
+    [currency, stablecoin, v2USDCTrade, v3USDCTrade.trade]
+  )
 }
 function useUSDCValue(currencyAmount) {
-    var price = useUSDCPrice(currencyAmount === null || currencyAmount === void 0 ? void 0 : currencyAmount.currency);
-    return React.useMemo(function () {
-        if (!price || !currencyAmount)
-            return null;
-        try {
-            return price.quote(currencyAmount);
-        }
-        catch (error) {
-            return null;
-        }
-    }, [currencyAmount, price]);
+  var price = useUSDCPrice(currencyAmount === null || currencyAmount === void 0 ? void 0 : currencyAmount.currency)
+  return React.useMemo(
+    function () {
+      if (!price || !currencyAmount) return null
+      try {
+        return price.quote(currencyAmount)
+      } catch (error) {
+        return null
+      }
+    },
+    [currencyAmount, price]
+  )
 }
 /**
  *
@@ -11124,76 +13804,92 @@ function useUSDCValue(currencyAmount) {
  * @returns CurrencyAmount where currency is stablecoin on active chain
  */
 function useStablecoinAmountFromFiatValue(fiatValue) {
-    var _a;
-    var chainId = useActiveWeb3React().chainId;
-    var stablecoin = chainId ? (_a = STABLECOIN_AMOUNT_OUT[chainId]) === null || _a === void 0 ? void 0 : _a.currency : undefined;
-    if (fiatValue === null || fiatValue === undefined || !chainId || !stablecoin) {
-        return undefined;
-    }
-    // trim for decimal precision when parsing
-    var parsedForDecimals = parseFloat(fiatValue).toFixed(stablecoin.decimals).toString();
-    try {
-        // parse USD string into CurrencyAmount based on stablecoin decimals
-        return tryParseCurrencyAmount(parsedForDecimals, stablecoin);
-    }
-    catch (error) {
-        return undefined;
-    }
+  var _a
+  var chainId = useActiveWeb3React().chainId
+  var stablecoin = chainId
+    ? (_a = STABLECOIN_AMOUNT_OUT[chainId]) === null || _a === void 0
+      ? void 0
+      : _a.currency
+    : undefined
+  if (fiatValue === null || fiatValue === undefined || !chainId || !stablecoin) {
+    return undefined
+  }
+  // trim for decimal precision when parsing
+  var parsedForDecimals = parseFloat(fiatValue).toFixed(stablecoin.decimals).toString()
+  try {
+    // parse USD string into CurrencyAmount based on stablecoin decimals
+    return tryParseCurrencyAmount(parsedForDecimals, stablecoin)
+  } catch (error) {
+    return undefined
+  }
 }
 
-var V3_SWAP_DEFAULT_SLIPPAGE = new sdkCore.Percent(50, 10000); // .50%
-var ONE_TENTHS_PERCENT = new sdkCore.Percent(10, 10000); // .10%
+var V3_SWAP_DEFAULT_SLIPPAGE = new sdkCore.Percent(50, 10000) // .50%
+var ONE_TENTHS_PERCENT = new sdkCore.Percent(10, 10000) // .10%
 /**
  * Return a guess of the gas cost used in computing slippage tolerance for a given trade
  * @param trade the trade for which to _guess_ the amount of gas it would cost to execute
  */
 function guesstimateGas(trade) {
-    if (!!trade) {
-        return 100000 + trade.swaps.reduce(function (memo, swap) { return swap.route.pools.length + memo; }, 0) * 30000;
-    }
-    return undefined;
+  if (!!trade) {
+    return (
+      100000 +
+      trade.swaps.reduce(function (memo, swap) {
+        return swap.route.pools.length + memo
+      }, 0) *
+        30000
+    )
+  }
+  return undefined
 }
-var MIN_AUTO_SLIPPAGE_TOLERANCE = new sdkCore.Percent(5, 1000); // 0.5%
-var MAX_AUTO_SLIPPAGE_TOLERANCE = new sdkCore.Percent(25, 100); // 25%
+var MIN_AUTO_SLIPPAGE_TOLERANCE = new sdkCore.Percent(5, 1000) // 0.5%
+var MAX_AUTO_SLIPPAGE_TOLERANCE = new sdkCore.Percent(25, 100) // 25%
 /**
  * Returns slippage tolerance based on values from current trade, gas estimates from api, and active network.
  */
 function useAutoSlippageTolerance(trade) {
-    var chainId = useActiveWeb3React().chainId;
-    var onL2 = chainId && L2_CHAIN_IDS.includes(chainId);
-    var outputDollarValue = useUSDCValue(trade === null || trade === void 0 ? void 0 : trade.outputAmount);
-    var nativeGasPrice = useGasPrice();
-    var gasEstimate = guesstimateGas(trade);
-    var nativeCurrency = useNativeCurrency();
-    var nativeCurrencyPrice = useUSDCPrice(nativeCurrency !== null && nativeCurrency !== void 0 ? nativeCurrency : undefined);
-    return React.useMemo(function () {
-        if (!trade || onL2)
-            return ONE_TENTHS_PERCENT;
-        var nativeGasCost = nativeGasPrice && typeof gasEstimate === 'number'
-            ? JSBI__default["default"].multiply(nativeGasPrice, JSBI__default["default"].BigInt(gasEstimate))
-            : undefined;
-        var dollarGasCost = nativeCurrency && nativeGasCost && nativeCurrencyPrice
-            ? nativeCurrencyPrice.quote(sdkCore.CurrencyAmount.fromRawAmount(nativeCurrency, nativeGasCost))
-            : undefined;
-        // if valid estimate from api and using api trade, use gas estimate from api
-        // NOTE - dont use gas estimate for L2s yet - need to verify accuracy
-        // if not, use local heuristic
-        var dollarCostToUse = chainId && SUPPORTED_GAS_ESTIMATE_CHAIN_IDS.includes(chainId) && (trade === null || trade === void 0 ? void 0 : trade.gasUseEstimateUSD)
-            ? trade.gasUseEstimateUSD
-            : dollarGasCost;
-        if (outputDollarValue && dollarCostToUse) {
-            // the rationale is that a user will not want their trade to fail for a loss due to slippage that is less than
-            // the cost of the gas of the failed transaction
-            var fraction = dollarCostToUse.asFraction.divide(outputDollarValue.asFraction);
-            var result = new sdkCore.Percent(fraction.numerator, fraction.denominator);
-            if (result.greaterThan(MAX_AUTO_SLIPPAGE_TOLERANCE))
-                return MAX_AUTO_SLIPPAGE_TOLERANCE;
-            if (result.lessThan(MIN_AUTO_SLIPPAGE_TOLERANCE))
-                return MIN_AUTO_SLIPPAGE_TOLERANCE;
-            return result;
-        }
-        return V3_SWAP_DEFAULT_SLIPPAGE;
-    }, [trade, onL2, nativeGasPrice, gasEstimate, nativeCurrency, nativeCurrencyPrice, chainId, outputDollarValue]);
+  var chainId = useActiveWeb3React().chainId
+  var onL2 = chainId && L2_CHAIN_IDS.includes(chainId)
+  var outputDollarValue = useUSDCValue(trade === null || trade === void 0 ? void 0 : trade.outputAmount)
+  var nativeGasPrice = useGasPrice()
+  var gasEstimate = guesstimateGas(trade)
+  var nativeCurrency = useNativeCurrency()
+  var nativeCurrencyPrice = useUSDCPrice(
+    nativeCurrency !== null && nativeCurrency !== void 0 ? nativeCurrency : undefined
+  )
+  return React.useMemo(
+    function () {
+      if (!trade || onL2) return ONE_TENTHS_PERCENT
+      var nativeGasCost =
+        nativeGasPrice && typeof gasEstimate === 'number'
+          ? JSBI__default['default'].multiply(nativeGasPrice, JSBI__default['default'].BigInt(gasEstimate))
+          : undefined
+      var dollarGasCost =
+        nativeCurrency && nativeGasCost && nativeCurrencyPrice
+          ? nativeCurrencyPrice.quote(sdkCore.CurrencyAmount.fromRawAmount(nativeCurrency, nativeGasCost))
+          : undefined
+      // if valid estimate from api and using api trade, use gas estimate from api
+      // NOTE - dont use gas estimate for L2s yet - need to verify accuracy
+      // if not, use local heuristic
+      var dollarCostToUse =
+        chainId &&
+        SUPPORTED_GAS_ESTIMATE_CHAIN_IDS.includes(chainId) &&
+        (trade === null || trade === void 0 ? void 0 : trade.gasUseEstimateUSD)
+          ? trade.gasUseEstimateUSD
+          : dollarGasCost
+      if (outputDollarValue && dollarCostToUse) {
+        // the rationale is that a user will not want their trade to fail for a loss due to slippage that is less than
+        // the cost of the gas of the failed transaction
+        var fraction = dollarCostToUse.asFraction.divide(outputDollarValue.asFraction)
+        var result = new sdkCore.Percent(fraction.numerator, fraction.denominator)
+        if (result.greaterThan(MAX_AUTO_SLIPPAGE_TOLERANCE)) return MAX_AUTO_SLIPPAGE_TOLERANCE
+        if (result.lessThan(MIN_AUTO_SLIPPAGE_TOLERANCE)) return MIN_AUTO_SLIPPAGE_TOLERANCE
+        return result
+      }
+      return V3_SWAP_DEFAULT_SLIPPAGE
+    },
+    [trade, onL2, nativeGasPrice, gasEstimate, nativeCurrency, nativeCurrencyPrice, chainId, outputDollarValue]
+  )
 }
 
 /**
@@ -11201,109 +13897,155 @@ function useAutoSlippageTolerance(trade) {
  * a `Trade`.
  */
 function computeRoutes(currencyIn, currencyOut, tradeType, quoteResult) {
-    if (!quoteResult || !quoteResult.route || !currencyIn || !currencyOut)
-        return undefined;
-    if (quoteResult.route.length === 0)
-        return [];
-    var parsedTokenIn = parseToken(quoteResult.route[0][0].tokenIn);
-    var parsedTokenOut = parseToken(quoteResult.route[0][quoteResult.route[0].length - 1].tokenOut);
-    if (parsedTokenIn.address !== currencyIn.wrapped.address)
-        return undefined;
-    if (parsedTokenOut.address !== currencyOut.wrapped.address)
-        return undefined;
-    var parsedCurrencyIn = currencyIn.isNative ? nativeOnChain(currencyIn.chainId) : parsedTokenIn;
-    var parsedCurrencyOut = currencyOut.isNative ? nativeOnChain(currencyOut.chainId) : parsedTokenOut;
-    try {
-        return quoteResult.route.map(function (route) {
-            if (route.length === 0) {
-                throw new Error('Expected route to have at least one pair or pool');
-            }
-            var rawAmountIn = route[0].amountIn;
-            var rawAmountOut = route[route.length - 1].amountOut;
-            if (!rawAmountIn || !rawAmountOut) {
-                throw new Error('Expected both amountIn and amountOut to be present');
-            }
-            return {
-                routev3: isV3Route(route) ? new v3Sdk.Route(route.map(parsePool), parsedCurrencyIn, parsedCurrencyOut) : null,
-                routev2: !isV3Route(route) ? new v2Sdk.Route(route.map(parsePair), parsedCurrencyIn, parsedCurrencyOut) : null,
-                inputAmount: sdkCore.CurrencyAmount.fromRawAmount(parsedCurrencyIn, rawAmountIn),
-                outputAmount: sdkCore.CurrencyAmount.fromRawAmount(parsedCurrencyOut, rawAmountOut),
-            };
-        });
-    }
-    catch (e) {
-        // `Route` constructor may throw if inputs/outputs are temporarily out of sync
-        // (RTK-Query always returns the latest data which may not be the right inputs/outputs)
-        // This is not fatal and will fix itself in future render cycles
-        console.error(e);
-        return undefined;
-    }
+  if (!quoteResult || !quoteResult.route || !currencyIn || !currencyOut) return undefined
+  if (quoteResult.route.length === 0) return []
+  var parsedTokenIn = parseToken(quoteResult.route[0][0].tokenIn)
+  var parsedTokenOut = parseToken(quoteResult.route[0][quoteResult.route[0].length - 1].tokenOut)
+  if (parsedTokenIn.address !== currencyIn.wrapped.address) return undefined
+  if (parsedTokenOut.address !== currencyOut.wrapped.address) return undefined
+  var parsedCurrencyIn = currencyIn.isNative ? nativeOnChain(currencyIn.chainId) : parsedTokenIn
+  var parsedCurrencyOut = currencyOut.isNative ? nativeOnChain(currencyOut.chainId) : parsedTokenOut
+  try {
+    return quoteResult.route.map(function (route) {
+      if (route.length === 0) {
+        throw new Error('Expected route to have at least one pair or pool')
+      }
+      var rawAmountIn = route[0].amountIn
+      var rawAmountOut = route[route.length - 1].amountOut
+      if (!rawAmountIn || !rawAmountOut) {
+        throw new Error('Expected both amountIn and amountOut to be present')
+      }
+      return {
+        routev3: isV3Route(route) ? new v3Sdk.Route(route.map(parsePool), parsedCurrencyIn, parsedCurrencyOut) : null,
+        routev2: !isV3Route(route) ? new v2Sdk.Route(route.map(parsePair), parsedCurrencyIn, parsedCurrencyOut) : null,
+        inputAmount: sdkCore.CurrencyAmount.fromRawAmount(parsedCurrencyIn, rawAmountIn),
+        outputAmount: sdkCore.CurrencyAmount.fromRawAmount(parsedCurrencyOut, rawAmountOut),
+      }
+    })
+  } catch (e) {
+    // `Route` constructor may throw if inputs/outputs are temporarily out of sync
+    // (RTK-Query always returns the latest data which may not be the right inputs/outputs)
+    // This is not fatal and will fix itself in future render cycles
+    console.error(e)
+    return undefined
+  }
 }
 function transformRoutesToTrade(route, tradeType, gasUseEstimateUSD) {
-    var _a, _b;
-    return new InterfaceTrade({
-        v2Routes: (_a = route === null || route === void 0 ? void 0 : route.filter(function (r) { return r.routev2 !== null; }).map(function (_a) {
-            var routev2 = _a.routev2, inputAmount = _a.inputAmount, outputAmount = _a.outputAmount;
-            return ({ routev2: routev2, inputAmount: inputAmount, outputAmount: outputAmount });
-        })) !== null && _a !== void 0 ? _a : [],
-        v3Routes: (_b = route === null || route === void 0 ? void 0 : route.filter(function (r) { return r.routev3 !== null; }).map(function (_a) {
-            var routev3 = _a.routev3, inputAmount = _a.inputAmount, outputAmount = _a.outputAmount;
-            return ({ routev3: routev3, inputAmount: inputAmount, outputAmount: outputAmount });
-        })) !== null && _b !== void 0 ? _b : [],
-        tradeType: tradeType,
-        gasUseEstimateUSD: gasUseEstimateUSD,
-    });
+  var _a, _b
+  return new InterfaceTrade({
+    v2Routes:
+      (_a =
+        route === null || route === void 0
+          ? void 0
+          : route
+              .filter(function (r) {
+                return r.routev2 !== null
+              })
+              .map(function (_a) {
+                var routev2 = _a.routev2,
+                  inputAmount = _a.inputAmount,
+                  outputAmount = _a.outputAmount
+                return { routev2, inputAmount, outputAmount }
+              })) !== null && _a !== void 0
+        ? _a
+        : [],
+    v3Routes:
+      (_b =
+        route === null || route === void 0
+          ? void 0
+          : route
+              .filter(function (r) {
+                return r.routev3 !== null
+              })
+              .map(function (_a) {
+                var routev3 = _a.routev3,
+                  inputAmount = _a.inputAmount,
+                  outputAmount = _a.outputAmount
+                return { routev3, inputAmount, outputAmount }
+              })) !== null && _b !== void 0
+        ? _b
+        : [],
+    tradeType,
+    gasUseEstimateUSD,
+  })
 }
 var parseToken = function (_a) {
-    var address = _a.address, chainId = _a.chainId, decimals = _a.decimals, symbol = _a.symbol;
-    return new sdkCore.Token(chainId, address, parseInt(decimals.toString()), symbol);
-};
+  var address = _a.address,
+    chainId = _a.chainId,
+    decimals = _a.decimals,
+    symbol = _a.symbol
+  return new sdkCore.Token(chainId, address, parseInt(decimals.toString()), symbol)
+}
 var parsePool = function (_a) {
-    var fee = _a.fee, sqrtRatioX96 = _a.sqrtRatioX96, liquidity = _a.liquidity, tickCurrent = _a.tickCurrent, tokenIn = _a.tokenIn, tokenOut = _a.tokenOut;
-    return new v3Sdk.Pool(parseToken(tokenIn), parseToken(tokenOut), parseInt(fee), sqrtRatioX96, liquidity, parseInt(tickCurrent));
-};
+  var fee = _a.fee,
+    sqrtRatioX96 = _a.sqrtRatioX96,
+    liquidity = _a.liquidity,
+    tickCurrent = _a.tickCurrent,
+    tokenIn = _a.tokenIn,
+    tokenOut = _a.tokenOut
+  return new v3Sdk.Pool(
+    parseToken(tokenIn),
+    parseToken(tokenOut),
+    parseInt(fee),
+    sqrtRatioX96,
+    liquidity,
+    parseInt(tickCurrent)
+  )
+}
 var parsePair = function (_a) {
-    var reserve0 = _a.reserve0, reserve1 = _a.reserve1;
-    return new v2Sdk.Pair(sdkCore.CurrencyAmount.fromRawAmount(parseToken(reserve0.token), reserve0.quotient), sdkCore.CurrencyAmount.fromRawAmount(parseToken(reserve1.token), reserve1.quotient));
-};
+  var reserve0 = _a.reserve0,
+    reserve1 = _a.reserve1
+  return new v2Sdk.Pair(
+    sdkCore.CurrencyAmount.fromRawAmount(parseToken(reserve0.token), reserve0.quotient),
+    sdkCore.CurrencyAmount.fromRawAmount(parseToken(reserve1.token), reserve1.quotient)
+  )
+}
 function isV3Route(route) {
-    return route[0].type === 'v3-pool';
+  return route[0].type === 'v3-pool'
 }
 
 function useFreshData(data, dataBlockNumber, maxBlockAge) {
-    if (maxBlockAge === void 0) { maxBlockAge = 10; }
-    var localBlockNumber = useBlockNumber();
-    if (!localBlockNumber)
-        return undefined;
-    if (localBlockNumber - dataBlockNumber > maxBlockAge) {
-        return undefined;
-    }
-    return data;
+  if (maxBlockAge === void 0) {
+    maxBlockAge = 10
+  }
+  var localBlockNumber = useBlockNumber()
+  if (!localBlockNumber) return undefined
+  if (localBlockNumber - dataBlockNumber > maxBlockAge) {
+    return undefined
+  }
+  return data
 }
 /**
  * Returns query arguments for the Routing API query or undefined if the
  * query should be skipped.
  */
 function useRoutingAPIArguments(_a) {
-    var tokenIn = _a.tokenIn, tokenOut = _a.tokenOut, amount = _a.amount, tradeType = _a.tradeType;
-    var _b = __read(useClientSideRouter(), 1), clientSideRouter = _b[0];
-    return React.useMemo(function () {
-        return !tokenIn || !tokenOut || !amount || tokenIn.equals(tokenOut)
-            ? undefined
-            : {
-                amount: amount.quotient.toString(),
-                tokenInAddress: tokenIn.wrapped.address,
-                tokenInChainId: tokenIn.wrapped.chainId,
-                tokenInDecimals: tokenIn.wrapped.decimals,
-                tokenInSymbol: tokenIn.wrapped.symbol,
-                tokenOutAddress: tokenOut.wrapped.address,
-                tokenOutChainId: tokenOut.wrapped.chainId,
-                tokenOutDecimals: tokenOut.wrapped.decimals,
-                tokenOutSymbol: tokenOut.wrapped.symbol,
-                useClientSideRouter: clientSideRouter,
-                type: (tradeType === sdkCore.TradeType.EXACT_INPUT ? 'exactIn' : 'exactOut'),
-            };
-    }, [amount, clientSideRouter, tokenIn, tokenOut, tradeType]);
+  var tokenIn = _a.tokenIn,
+    tokenOut = _a.tokenOut,
+    amount = _a.amount,
+    tradeType = _a.tradeType
+  var _b = __read(useClientSideRouter(), 1),
+    clientSideRouter = _b[0]
+  return React.useMemo(
+    function () {
+      return !tokenIn || !tokenOut || !amount || tokenIn.equals(tokenOut)
+        ? undefined
+        : {
+            amount: amount.quotient.toString(),
+            tokenInAddress: tokenIn.wrapped.address,
+            tokenInChainId: tokenIn.wrapped.chainId,
+            tokenInDecimals: tokenIn.wrapped.decimals,
+            tokenInSymbol: tokenIn.wrapped.symbol,
+            tokenOutAddress: tokenOut.wrapped.address,
+            tokenOutChainId: tokenOut.wrapped.chainId,
+            tokenOutDecimals: tokenOut.wrapped.decimals,
+            tokenOutSymbol: tokenOut.wrapped.symbol,
+            useClientSideRouter: clientSideRouter,
+            type: tradeType === sdkCore.TradeType.EXACT_INPUT ? 'exactIn' : 'exactOut',
+          }
+    },
+    [amount, clientSideRouter, tokenIn, tokenOut, tradeType]
+  )
 }
 /**
  * Returns the best trade by invoking the routing api or the smart order router on the client
@@ -11312,74 +14054,106 @@ function useRoutingAPIArguments(_a) {
  * @param otherCurrency the desired output/payment currency
  */
 function useRoutingAPITrade(tradeType, amountSpecified, otherCurrency) {
-    var _a;
-    var _b = __read(React.useMemo(function () {
-        return tradeType === sdkCore.TradeType.EXACT_INPUT
-            ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency]
-            : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency];
-    }, [amountSpecified, otherCurrency, tradeType]), 2), currencyIn = _b[0], currencyOut = _b[1];
-    var queryArgs = useRoutingAPIArguments({
-        tokenIn: currencyIn,
-        tokenOut: currencyOut,
-        amount: amountSpecified,
-        tradeType: tradeType,
-    });
-    var _c = useGetQuoteQuery(queryArgs !== null && queryArgs !== void 0 ? queryArgs : react.skipToken, {
-        pollingInterval: ms__default["default"](templateObject_1$1a || (templateObject_1$1a = __makeTemplateObject(["15s"], ["15s"]))),
-        refetchOnFocus: true,
-    }), isLoading = _c.isLoading, isError = _c.isError, data = _c.data;
-    var quoteResult = useFreshData(data, Number(data === null || data === void 0 ? void 0 : data.blockNumber) || 0);
-    var route = React.useMemo(function () { return computeRoutes(currencyIn, currencyOut, tradeType, quoteResult); }, [currencyIn, currencyOut, quoteResult, tradeType]);
-    // get USD gas cost of trade in active chains stablecoin amount
-    var gasUseEstimateUSD = (_a = useStablecoinAmountFromFiatValue(quoteResult === null || quoteResult === void 0 ? void 0 : quoteResult.gasUseEstimateUSD)) !== null && _a !== void 0 ? _a : null;
-    return React.useMemo(function () {
-        if (!currencyIn || !currencyOut) {
-            return {
-                state: TradeState.INVALID,
-                trade: undefined,
-            };
+  var _a
+  var _b = __read(
+      React.useMemo(
+        function () {
+          return tradeType === sdkCore.TradeType.EXACT_INPUT
+            ? [
+                amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency,
+                otherCurrency,
+              ]
+            : [
+                otherCurrency,
+                amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency,
+              ]
+        },
+        [amountSpecified, otherCurrency, tradeType]
+      ),
+      2
+    ),
+    currencyIn = _b[0],
+    currencyOut = _b[1]
+  var queryArgs = useRoutingAPIArguments({
+    tokenIn: currencyIn,
+    tokenOut: currencyOut,
+    amount: amountSpecified,
+    tradeType,
+  })
+  var _c = useGetQuoteQuery(queryArgs !== null && queryArgs !== void 0 ? queryArgs : react.skipToken, {
+      pollingInterval: ms__default['default'](
+        templateObject_1$1a || (templateObject_1$1a = __makeTemplateObject(['15s'], ['15s']))
+      ),
+      refetchOnFocus: true,
+    }),
+    isLoading = _c.isLoading,
+    isError = _c.isError,
+    data = _c.data
+  var quoteResult = useFreshData(data, Number(data === null || data === void 0 ? void 0 : data.blockNumber) || 0)
+  var route = React.useMemo(
+    function () {
+      return computeRoutes(currencyIn, currencyOut, tradeType, quoteResult)
+    },
+    [currencyIn, currencyOut, quoteResult, tradeType]
+  )
+  // get USD gas cost of trade in active chains stablecoin amount
+  var gasUseEstimateUSD =
+    (_a = useStablecoinAmountFromFiatValue(
+      quoteResult === null || quoteResult === void 0 ? void 0 : quoteResult.gasUseEstimateUSD
+    )) !== null && _a !== void 0
+      ? _a
+      : null
+  return React.useMemo(
+    function () {
+      if (!currencyIn || !currencyOut) {
+        return {
+          state: TradeState.INVALID,
+          trade: undefined,
         }
-        if (isLoading && !quoteResult) {
-            // only on first hook render
-            return {
-                state: TradeState.LOADING,
-                trade: undefined,
-            };
+      }
+      if (isLoading && !quoteResult) {
+        // only on first hook render
+        return {
+          state: TradeState.LOADING,
+          trade: undefined,
         }
-        var otherAmount = tradeType === sdkCore.TradeType.EXACT_INPUT
-            ? currencyOut && quoteResult
-                ? sdkCore.CurrencyAmount.fromRawAmount(currencyOut, quoteResult.quote)
-                : undefined
-            : currencyIn && quoteResult
-                ? sdkCore.CurrencyAmount.fromRawAmount(currencyIn, quoteResult.quote)
-                : undefined;
-        if (isError || !otherAmount || !route || route.length === 0 || !queryArgs) {
-            return {
-                state: TradeState.NO_ROUTE_FOUND,
-                trade: undefined,
-            };
+      }
+      var otherAmount =
+        tradeType === sdkCore.TradeType.EXACT_INPUT
+          ? currencyOut && quoteResult
+            ? sdkCore.CurrencyAmount.fromRawAmount(currencyOut, quoteResult.quote)
+            : undefined
+          : currencyIn && quoteResult
+          ? sdkCore.CurrencyAmount.fromRawAmount(currencyIn, quoteResult.quote)
+          : undefined
+      if (isError || !otherAmount || !route || route.length === 0 || !queryArgs) {
+        return {
+          state: TradeState.NO_ROUTE_FOUND,
+          trade: undefined,
         }
-        try {
-            var trade = transformRoutesToTrade(route, tradeType, gasUseEstimateUSD);
-            return {
-                // always return VALID regardless of isFetching status
-                state: TradeState.VALID,
-                trade: trade,
-            };
+      }
+      try {
+        var trade = transformRoutesToTrade(route, tradeType, gasUseEstimateUSD)
+        return {
+          // always return VALID regardless of isFetching status
+          state: TradeState.VALID,
+          trade,
         }
-        catch (e) {
-            console.debug('transformRoutesToTrade failed: ', e);
-            return { state: TradeState.INVALID, trade: undefined };
-        }
-    }, [currencyIn, currencyOut, isLoading, quoteResult, tradeType, isError, route, queryArgs, gasUseEstimateUSD]);
+      } catch (e) {
+        console.debug('transformRoutesToTrade failed: ', e)
+        return { state: TradeState.INVALID, trade: undefined }
+      }
+    },
+    [currencyIn, currencyOut, isLoading, quoteResult, tradeType, isError, route, queryArgs, gasUseEstimateUSD]
+  )
 }
-var templateObject_1$1a;
+var templateObject_1$1a
 
-var AUTO_ROUTER_SUPPORTED_CHAINS = Object.values(smartOrderRouter.ChainId);
+var AUTO_ROUTER_SUPPORTED_CHAINS = Object.values(smartOrderRouter.ChainId)
 
 function useAutoRouterSupported() {
-    var chainId = useActiveWeb3React().chainId;
-    return Boolean(chainId && AUTO_ROUTER_SUPPORTED_CHAINS.includes(chainId));
+  var chainId = useActiveWeb3React().chainId
+  return Boolean(chainId && AUTO_ROUTER_SUPPORTED_CHAINS.includes(chainId))
 }
 
 /**
@@ -11389,838 +14163,2213 @@ function useAutoRouterSupported() {
  * @param otherCurrency the desired output/payment currency
  */
 function useBestTrade(tradeType, amountSpecified, otherCurrency) {
-    var autoRouterSupported = useAutoRouterSupported();
-    var isWindowVisible = useIsWindowVisible();
-    var _a = __read(useDebounce(React.useMemo(function () { return [amountSpecified, otherCurrency]; }, [amountSpecified, otherCurrency]), 200), 2), debouncedAmount = _a[0], debouncedOtherCurrency = _a[1];
-    var routingAPITrade = useRoutingAPITrade(tradeType, autoRouterSupported && isWindowVisible ? debouncedAmount : undefined, debouncedOtherCurrency);
-    var isLoading = amountSpecified !== undefined && debouncedAmount === undefined;
-    // consider trade debouncing when inputs/outputs do not match
-    var debouncing = routingAPITrade.trade &&
-        amountSpecified &&
-        (tradeType === sdkCore.TradeType.EXACT_INPUT
-            ? !routingAPITrade.trade.inputAmount.equalTo(amountSpecified) ||
-                !amountSpecified.currency.equals(routingAPITrade.trade.inputAmount.currency) ||
-                !(debouncedOtherCurrency === null || debouncedOtherCurrency === void 0 ? void 0 : debouncedOtherCurrency.equals(routingAPITrade.trade.outputAmount.currency))
-            : !routingAPITrade.trade.outputAmount.equalTo(amountSpecified) ||
-                !amountSpecified.currency.equals(routingAPITrade.trade.outputAmount.currency) ||
-                !(debouncedOtherCurrency === null || debouncedOtherCurrency === void 0 ? void 0 : debouncedOtherCurrency.equals(routingAPITrade.trade.inputAmount.currency)));
-    var useFallback = !autoRouterSupported || (!debouncing && routingAPITrade.state === TradeState.NO_ROUTE_FOUND);
-    // only use client side router if routing api trade failed or is not supported
-    var bestV3Trade = useClientSideV3Trade(tradeType, useFallback ? debouncedAmount : undefined, useFallback ? debouncedOtherCurrency : undefined);
-    // only return gas estimate from api if routing api trade is used
-    return React.useMemo(function () { return (__assign(__assign(__assign({}, (useFallback ? bestV3Trade : routingAPITrade)), (debouncing ? { state: TradeState.SYNCING } : {})), (isLoading ? { state: TradeState.LOADING } : {}))); }, [bestV3Trade, debouncing, isLoading, routingAPITrade, useFallback]);
+  var autoRouterSupported = useAutoRouterSupported()
+  var isWindowVisible = useIsWindowVisible()
+  var _a = __read(
+      useDebounce(
+        React.useMemo(
+          function () {
+            return [amountSpecified, otherCurrency]
+          },
+          [amountSpecified, otherCurrency]
+        ),
+        200
+      ),
+      2
+    ),
+    debouncedAmount = _a[0],
+    debouncedOtherCurrency = _a[1]
+  var routingAPITrade = useRoutingAPITrade(
+    tradeType,
+    autoRouterSupported && isWindowVisible ? debouncedAmount : undefined,
+    debouncedOtherCurrency
+  )
+  var isLoading = amountSpecified !== undefined && debouncedAmount === undefined
+  // consider trade debouncing when inputs/outputs do not match
+  var debouncing =
+    routingAPITrade.trade &&
+    amountSpecified &&
+    (tradeType === sdkCore.TradeType.EXACT_INPUT
+      ? !routingAPITrade.trade.inputAmount.equalTo(amountSpecified) ||
+        !amountSpecified.currency.equals(routingAPITrade.trade.inputAmount.currency) ||
+        !(debouncedOtherCurrency === null || debouncedOtherCurrency === void 0
+          ? void 0
+          : debouncedOtherCurrency.equals(routingAPITrade.trade.outputAmount.currency))
+      : !routingAPITrade.trade.outputAmount.equalTo(amountSpecified) ||
+        !amountSpecified.currency.equals(routingAPITrade.trade.outputAmount.currency) ||
+        !(debouncedOtherCurrency === null || debouncedOtherCurrency === void 0
+          ? void 0
+          : debouncedOtherCurrency.equals(routingAPITrade.trade.inputAmount.currency)))
+  var useFallback = !autoRouterSupported || (!debouncing && routingAPITrade.state === TradeState.NO_ROUTE_FOUND)
+  // only use client side router if routing api trade failed or is not supported
+  var bestV3Trade = useClientSideV3Trade(
+    tradeType,
+    useFallback ? debouncedAmount : undefined,
+    useFallback ? debouncedOtherCurrency : undefined
+  )
+  // only return gas estimate from api if routing api trade is used
+  return React.useMemo(
+    function () {
+      return __assign(
+        __assign(
+          __assign({}, useFallback ? bestV3Trade : routingAPITrade),
+          debouncing ? { state: TradeState.SYNCING } : {}
+        ),
+        isLoading ? { state: TradeState.LOADING } : {}
+      )
+    },
+    [bestV3Trade, debouncing, isLoading, routingAPITrade, useFallback]
+  )
 }
 
 // gets the current timestamp from the blockchain
 function useCurrentBlockTimestamp() {
-    var _a, _b;
-    var multicall = useInterfaceMulticall();
-    return (_b = (_a = useSingleCallResult(multicall, 'getCurrentBlockTimestamp')) === null || _a === void 0 ? void 0 : _a.result) === null || _b === void 0 ? void 0 : _b[0];
+  var _a, _b
+  var multicall = useInterfaceMulticall()
+  return (_b =
+    (_a = useSingleCallResult(multicall, 'getCurrentBlockTimestamp')) === null || _a === void 0
+      ? void 0
+      : _a.result) === null || _b === void 0
+    ? void 0
+    : _b[0]
 }
 
-new abi$7.Interface(abi$6);
-({
-    1: [
-        {
-            tokens: [WRAPPED_NATIVE_CURRENCY[1], DAI],
-            stakingRewardAddress: '0xa1484C3aa22a66C62b77E0AE78E15258bd0cB711',
-        },
-        {
-            tokens: [WRAPPED_NATIVE_CURRENCY[1], USDC],
-            stakingRewardAddress: '0x7FBa4B8Dc5E7616e59622806932DBea72537A56b',
-        },
-        {
-            tokens: [WRAPPED_NATIVE_CURRENCY[1], USDT],
-            stakingRewardAddress: '0x6C3e4cb2E96B01F4b866965A91ed4437839A121a',
-        },
-        {
-            tokens: [WRAPPED_NATIVE_CURRENCY[1], WBTC],
-            stakingRewardAddress: '0xCA35e32e7926b96A9988f61d510E038108d8068e',
-        },
-    ],
-});
+new abi$7.Interface(abi$6)
+;({
+  1: [
+    {
+      tokens: [WRAPPED_NATIVE_CURRENCY[1], DAI],
+      stakingRewardAddress: '0xa1484C3aa22a66C62b77E0AE78E15258bd0cB711',
+    },
+    {
+      tokens: [WRAPPED_NATIVE_CURRENCY[1], USDC],
+      stakingRewardAddress: '0x7FBa4B8Dc5E7616e59622806932DBea72537A56b',
+    },
+    {
+      tokens: [WRAPPED_NATIVE_CURRENCY[1], USDT],
+      stakingRewardAddress: '0x6C3e4cb2E96B01F4b866965A91ed4437839A121a',
+    },
+    {
+      tokens: [WRAPPED_NATIVE_CURRENCY[1], WBTC],
+      stakingRewardAddress: '0xCA35e32e7926b96A9988f61d510E038108d8068e',
+    },
+  ],
+})
 
 // mimics useAllBalances
 function useAllTokenBalances() {
-    var account = useActiveWeb3React().account;
-    var allTokens = useAllTokens();
-    var allTokensArray = React.useMemo(function () { return Object.values(allTokens !== null && allTokens !== void 0 ? allTokens : {}); }, [allTokens]);
-    var balances = useTokenBalances(account !== null && account !== void 0 ? account : undefined, allTokensArray);
-    return balances !== null && balances !== void 0 ? balances : {};
+  var account = useActiveWeb3React().account
+  var allTokens = useAllTokens()
+  var allTokensArray = React.useMemo(
+    function () {
+      return Object.values(allTokens !== null && allTokens !== void 0 ? allTokens : {})
+    },
+    [allTokens]
+  )
+  var balances = useTokenBalances(account !== null && account !== void 0 ? account : undefined, allTokensArray)
+  return balances !== null && balances !== void 0 ? balances : {}
 }
 
 function useSwapState() {
-    return useAppSelector(function (state) { return state.swap; });
+  return useAppSelector(function (state) {
+    return state.swap
+  })
 }
 function useSwapActionHandlers() {
-    var dispatch = useAppDispatch();
-    var onCurrencySelection = React.useCallback(function (field, currency) {
-        dispatch(selectCurrency({
-            field: field,
-            currencyId: currency.isToken ? currency.address : currency.isNative ? 'ETH' : '',
-        }));
-    }, [dispatch]);
-    var onSwitchTokens = React.useCallback(function () {
-        dispatch(switchCurrencies());
-    }, [dispatch]);
-    var onUserInput = React.useCallback(function (field, typedValue) {
-        dispatch(typeInput({ field: field, typedValue: typedValue }));
-    }, [dispatch]);
-    var onChangeRecipient = React.useCallback(function (recipient) {
-        dispatch(setRecipient({ recipient: recipient }));
-    }, [dispatch]);
-    return {
-        onSwitchTokens: onSwitchTokens,
-        onCurrencySelection: onCurrencySelection,
-        onUserInput: onUserInput,
-        onChangeRecipient: onChangeRecipient,
-    };
+  var dispatch = useAppDispatch()
+  var onCurrencySelection = React.useCallback(
+    function (field, currency) {
+      dispatch(
+        selectCurrency({
+          field,
+          currencyId: currency.isToken ? currency.address : currency.isNative ? 'ETH' : '',
+        })
+      )
+    },
+    [dispatch]
+  )
+  var onSwitchTokens = React.useCallback(
+    function () {
+      dispatch(switchCurrencies())
+    },
+    [dispatch]
+  )
+  var onUserInput = React.useCallback(
+    function (field, typedValue) {
+      dispatch(typeInput({ field, typedValue }))
+    },
+    [dispatch]
+  )
+  var onChangeRecipient = React.useCallback(
+    function (recipient) {
+      dispatch(setRecipient({ recipient }))
+    },
+    [dispatch]
+  )
+  return {
+    onSwitchTokens,
+    onCurrencySelection,
+    onUserInput,
+    onChangeRecipient,
+  }
 }
 var BAD_RECIPIENT_ADDRESSES = {
-    '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f': true,
-    '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a': true,
-    '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D': true, // v2 router 02
-};
+  '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f': true,
+  '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a': true,
+  '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D': true, // v2 router 02
+}
 // from the current swap inputs, compute the best trade and return it.
 function useDerivedSwapInfo() {
-    var _a, _b;
-    var account = useActiveWeb3React().account;
-    var _c = useSwapState(), independentField = _c.independentField, typedValue = _c.typedValue, _d = Field.INPUT, inputCurrencyId = _c[_d].currencyId, _e = Field.OUTPUT, outputCurrencyId = _c[_e].currencyId, recipient = _c.recipient;
-    var inputCurrency = useCurrency(inputCurrencyId);
-    var outputCurrency = useCurrency(outputCurrencyId);
-    var recipientLookup = useENS(recipient !== null && recipient !== void 0 ? recipient : undefined);
-    var to = (_a = (recipient === null ? account : recipientLookup.address)) !== null && _a !== void 0 ? _a : null;
-    var relevantTokenBalances = useCurrencyBalances(account !== null && account !== void 0 ? account : undefined, React.useMemo(function () { return [inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : undefined, outputCurrency !== null && outputCurrency !== void 0 ? outputCurrency : undefined]; }, [inputCurrency, outputCurrency]));
-    var isExactIn = independentField === Field.INPUT;
-    var parsedAmount = React.useMemo(function () { var _a; return tryParseCurrencyAmount(typedValue, (_a = (isExactIn ? inputCurrency : outputCurrency)) !== null && _a !== void 0 ? _a : undefined); }, [inputCurrency, isExactIn, outputCurrency, typedValue]);
-    var trade = useBestTrade(isExactIn ? sdkCore.TradeType.EXACT_INPUT : sdkCore.TradeType.EXACT_OUTPUT, parsedAmount, (_b = (isExactIn ? outputCurrency : inputCurrency)) !== null && _b !== void 0 ? _b : undefined);
-    var currencyBalances = React.useMemo(function () {
-        var _a;
-        return (_a = {},
-            _a[Field.INPUT] = relevantTokenBalances[0],
-            _a[Field.OUTPUT] = relevantTokenBalances[1],
-            _a);
-    }, [relevantTokenBalances]);
-    var currencies = React.useMemo(function () {
-        var _a;
-        return (_a = {},
-            _a[Field.INPUT] = inputCurrency,
-            _a[Field.OUTPUT] = outputCurrency,
-            _a);
-    }, [inputCurrency, outputCurrency]);
-    // allowed slippage is either auto slippage, or custom user defined slippage if auto slippage disabled
-    var autoSlippageTolerance = useAutoSlippageTolerance(trade.trade);
-    var allowedSlippage = useUserSlippageToleranceWithDefault(autoSlippageTolerance);
-    var inputError = React.useMemo(function () {
-        var _a;
-        var inputError;
-        if (!account) {
-            inputError = jsxRuntime.jsx(macro.Trans, { children: "Connect Wallet" }, void 0);
+  var _a, _b
+  var account = useActiveWeb3React().account
+  var _c = useSwapState(),
+    independentField = _c.independentField,
+    typedValue = _c.typedValue,
+    _d = Field.INPUT,
+    inputCurrencyId = _c[_d].currencyId,
+    _e = Field.OUTPUT,
+    outputCurrencyId = _c[_e].currencyId,
+    recipient = _c.recipient
+  var inputCurrency = useCurrency(inputCurrencyId)
+  var outputCurrency = useCurrency(outputCurrencyId)
+  var recipientLookup = useENS(recipient !== null && recipient !== void 0 ? recipient : undefined)
+  var to = (_a = recipient === null ? account : recipientLookup.address) !== null && _a !== void 0 ? _a : null
+  var relevantTokenBalances = useCurrencyBalances(
+    account !== null && account !== void 0 ? account : undefined,
+    React.useMemo(
+      function () {
+        return [
+          inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : undefined,
+          outputCurrency !== null && outputCurrency !== void 0 ? outputCurrency : undefined,
+        ]
+      },
+      [inputCurrency, outputCurrency]
+    )
+  )
+  var isExactIn = independentField === Field.INPUT
+  var parsedAmount = React.useMemo(
+    function () {
+      var _a
+      return tryParseCurrencyAmount(
+        typedValue,
+        (_a = isExactIn ? inputCurrency : outputCurrency) !== null && _a !== void 0 ? _a : undefined
+      )
+    },
+    [inputCurrency, isExactIn, outputCurrency, typedValue]
+  )
+  var trade = useBestTrade(
+    isExactIn ? sdkCore.TradeType.EXACT_INPUT : sdkCore.TradeType.EXACT_OUTPUT,
+    parsedAmount,
+    (_b = isExactIn ? outputCurrency : inputCurrency) !== null && _b !== void 0 ? _b : undefined
+  )
+  var currencyBalances = React.useMemo(
+    function () {
+      var _a
+      return (_a = {}), (_a[Field.INPUT] = relevantTokenBalances[0]), (_a[Field.OUTPUT] = relevantTokenBalances[1]), _a
+    },
+    [relevantTokenBalances]
+  )
+  var currencies = React.useMemo(
+    function () {
+      var _a
+      return (_a = {}), (_a[Field.INPUT] = inputCurrency), (_a[Field.OUTPUT] = outputCurrency), _a
+    },
+    [inputCurrency, outputCurrency]
+  )
+  // allowed slippage is either auto slippage, or custom user defined slippage if auto slippage disabled
+  var autoSlippageTolerance = useAutoSlippageTolerance(trade.trade)
+  var allowedSlippage = useUserSlippageToleranceWithDefault(autoSlippageTolerance)
+  var inputError = React.useMemo(
+    function () {
+      var _a
+      var inputError
+      if (!account) {
+        inputError = jsxRuntime.jsx(macro.Trans, { children: 'Connect Wallet' }, void 0)
+      }
+      if (!currencies[Field.INPUT] || !currencies[Field.OUTPUT]) {
+        inputError =
+          inputError !== null && inputError !== void 0
+            ? inputError
+            : jsxRuntime.jsx(macro.Trans, { children: 'Select a token' }, void 0)
+      }
+      if (!parsedAmount) {
+        inputError =
+          inputError !== null && inputError !== void 0
+            ? inputError
+            : jsxRuntime.jsx(macro.Trans, { children: 'Enter an amount' }, void 0)
+      }
+      var formattedTo = isAddress(to)
+      if (!to || !formattedTo) {
+        inputError =
+          inputError !== null && inputError !== void 0
+            ? inputError
+            : jsxRuntime.jsx(macro.Trans, { children: 'Enter a recipient' }, void 0)
+      } else {
+        if (BAD_RECIPIENT_ADDRESSES[formattedTo]) {
+          inputError =
+            inputError !== null && inputError !== void 0
+              ? inputError
+              : jsxRuntime.jsx(macro.Trans, { children: 'Invalid recipient' }, void 0)
         }
-        if (!currencies[Field.INPUT] || !currencies[Field.OUTPUT]) {
-            inputError = inputError !== null && inputError !== void 0 ? inputError : jsxRuntime.jsx(macro.Trans, { children: "Select a token" }, void 0);
-        }
-        if (!parsedAmount) {
-            inputError = inputError !== null && inputError !== void 0 ? inputError : jsxRuntime.jsx(macro.Trans, { children: "Enter an amount" }, void 0);
-        }
-        var formattedTo = isAddress(to);
-        if (!to || !formattedTo) {
-            inputError = inputError !== null && inputError !== void 0 ? inputError : jsxRuntime.jsx(macro.Trans, { children: "Enter a recipient" }, void 0);
-        }
-        else {
-            if (BAD_RECIPIENT_ADDRESSES[formattedTo]) {
-                inputError = inputError !== null && inputError !== void 0 ? inputError : jsxRuntime.jsx(macro.Trans, { children: "Invalid recipient" }, void 0);
-            }
-        }
-        // compare input balance to max input based on version
-        var _b = __read([currencyBalances[Field.INPUT], (_a = trade.trade) === null || _a === void 0 ? void 0 : _a.maximumAmountIn(allowedSlippage)], 2), balanceIn = _b[0], amountIn = _b[1];
-        if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
-            inputError = jsxRuntime.jsxs(macro.Trans, { children: ["Insufficient ", amountIn.currency.symbol, " balance"] }, void 0);
-        }
-        return inputError;
-    }, [account, allowedSlippage, currencies, currencyBalances, parsedAmount, to, trade.trade]);
-    return React.useMemo(function () { return ({
-        currencies: currencies,
-        currencyBalances: currencyBalances,
-        parsedAmount: parsedAmount,
-        inputError: inputError,
-        trade: trade,
-        allowedSlippage: allowedSlippage,
-    }); }, [allowedSlippage, currencies, currencyBalances, inputError, parsedAmount, trade]);
+      }
+      // compare input balance to max input based on version
+      var _b = __read(
+          [
+            currencyBalances[Field.INPUT],
+            (_a = trade.trade) === null || _a === void 0 ? void 0 : _a.maximumAmountIn(allowedSlippage),
+          ],
+          2
+        ),
+        balanceIn = _b[0],
+        amountIn = _b[1]
+      if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
+        inputError = jsxRuntime.jsxs(
+          macro.Trans,
+          { children: ['Insufficient ', amountIn.currency.symbol, ' balance'] },
+          void 0
+        )
+      }
+      return inputError
+    },
+    [account, allowedSlippage, currencies, currencyBalances, parsedAmount, to, trade.trade]
+  )
+  return React.useMemo(
+    function () {
+      return {
+        currencies,
+        currencyBalances,
+        parsedAmount,
+        inputError,
+        trade,
+        allowedSlippage,
+      }
+    },
+    [allowedSlippage, currencies, currencyBalances, inputError, parsedAmount, trade]
+  )
 }
 function parseCurrencyFromURLParameter(urlParam) {
-    if (typeof urlParam === 'string') {
-        var valid = isAddress(urlParam);
-        if (valid)
-            return valid;
-        if (urlParam.toUpperCase() === 'ETH')
-            return 'ETH';
-    }
-    return '';
+  if (typeof urlParam === 'string') {
+    var valid = isAddress(urlParam)
+    if (valid) return valid
+    if (urlParam.toUpperCase() === 'ETH') return 'ETH'
+  }
+  return ''
 }
 function parseTokenAmountURLParameter(urlParam) {
-    return typeof urlParam === 'string' && !isNaN(parseFloat(urlParam)) ? urlParam : '';
+  return typeof urlParam === 'string' && !isNaN(parseFloat(urlParam)) ? urlParam : ''
 }
 function parseIndependentFieldURLParameter(urlParam) {
-    return typeof urlParam === 'string' && urlParam.toLowerCase() === 'output' ? Field.OUTPUT : Field.INPUT;
+  return typeof urlParam === 'string' && urlParam.toLowerCase() === 'output' ? Field.OUTPUT : Field.INPUT
 }
-var ENS_NAME_REGEX = /^[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)?$/;
-var ADDRESS_REGEX = /^0x[a-fA-F0-9]{40}$/;
+var ENS_NAME_REGEX = /^[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)?$/
+var ADDRESS_REGEX = /^0x[a-fA-F0-9]{40}$/
 function validatedRecipient(recipient) {
-    if (typeof recipient !== 'string')
-        return null;
-    var address = isAddress(recipient);
-    if (address)
-        return address;
-    if (ENS_NAME_REGEX.test(recipient))
-        return recipient;
-    if (ADDRESS_REGEX.test(recipient))
-        return recipient;
-    return null;
+  if (typeof recipient !== 'string') return null
+  var address = isAddress(recipient)
+  if (address) return address
+  if (ENS_NAME_REGEX.test(recipient)) return recipient
+  if (ADDRESS_REGEX.test(recipient)) return recipient
+  return null
 }
 function queryParametersToSwapState(parsedQs) {
-    var _a;
-    var inputCurrency = parseCurrencyFromURLParameter(parsedQs.inputCurrency);
-    var outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency);
-    if (inputCurrency === '' && outputCurrency === '') {
-        // default to ETH input
-        inputCurrency = 'ETH';
-    }
-    else if (inputCurrency === outputCurrency) {
-        // clear output if identical
-        outputCurrency = '';
-    }
-    var recipient = validatedRecipient(parsedQs.recipient);
-    return _a = {},
-        _a[Field.INPUT] = {
-            currencyId: inputCurrency === '' ? null : inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : null,
-        },
-        _a[Field.OUTPUT] = {
-            currencyId: outputCurrency === '' ? null : outputCurrency !== null && outputCurrency !== void 0 ? outputCurrency : null,
-        },
-        _a.typedValue = parseTokenAmountURLParameter(parsedQs.exactAmount),
-        _a.independentField = parseIndependentFieldURLParameter(parsedQs.exactField),
-        _a.recipient = recipient,
-        _a;
+  var _a
+  var inputCurrency = parseCurrencyFromURLParameter(parsedQs.inputCurrency)
+  var outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency)
+  if (inputCurrency === '' && outputCurrency === '') {
+    // default to ETH input
+    inputCurrency = 'ETH'
+  } else if (inputCurrency === outputCurrency) {
+    // clear output if identical
+    outputCurrency = ''
+  }
+  var recipient = validatedRecipient(parsedQs.recipient)
+  return (
+    (_a = {}),
+    (_a[Field.INPUT] = {
+      currencyId:
+        inputCurrency === '' ? null : inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : null,
+    }),
+    (_a[Field.OUTPUT] = {
+      currencyId:
+        outputCurrency === '' ? null : outputCurrency !== null && outputCurrency !== void 0 ? outputCurrency : null,
+    }),
+    (_a.typedValue = parseTokenAmountURLParameter(parsedQs.exactAmount)),
+    (_a.independentField = parseIndependentFieldURLParameter(parsedQs.exactField)),
+    (_a.recipient = recipient),
+    _a
+  )
 }
 // updates the swap state to use the defaults for a given network
 function useDefaultsFromURLSearch() {
-    var chainId = useActiveWeb3React().chainId;
-    var dispatch = useAppDispatch();
-    var parsedQs = useParsedQueryString();
-    var _a = __read(React.useState(), 2), result = _a[0], setResult = _a[1];
-    React.useEffect(function () {
-        var _a, _b;
-        if (!chainId)
-            return;
-        var parsed = queryParametersToSwapState(parsedQs);
-        var inputCurrencyId = (_a = parsed[Field.INPUT].currencyId) !== null && _a !== void 0 ? _a : undefined;
-        var outputCurrencyId = (_b = parsed[Field.OUTPUT].currencyId) !== null && _b !== void 0 ? _b : undefined;
-        dispatch(replaceSwapState({
-            typedValue: parsed.typedValue,
-            field: parsed.independentField,
-            inputCurrencyId: inputCurrencyId,
-            outputCurrencyId: outputCurrencyId,
-            recipient: parsed.recipient,
-        }));
-        setResult({ inputCurrencyId: inputCurrencyId, outputCurrencyId: outputCurrencyId });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dispatch, chainId]);
-    return result;
+  var chainId = useActiveWeb3React().chainId
+  var dispatch = useAppDispatch()
+  var parsedQs = useParsedQueryString()
+  var _a = __read(React.useState(), 2),
+    result = _a[0],
+    setResult = _a[1]
+  React.useEffect(
+    function () {
+      var _a, _b
+      if (!chainId) return
+      var parsed = queryParametersToSwapState(parsedQs)
+      var inputCurrencyId = (_a = parsed[Field.INPUT].currencyId) !== null && _a !== void 0 ? _a : undefined
+      var outputCurrencyId = (_b = parsed[Field.OUTPUT].currencyId) !== null && _b !== void 0 ? _b : undefined
+      dispatch(
+        replaceSwapState({
+          typedValue: parsed.typedValue,
+          field: parsed.independentField,
+          inputCurrencyId,
+          outputCurrencyId,
+          recipient: parsed.recipient,
+        })
+      )
+      setResult({ inputCurrencyId, outputCurrencyId })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [dispatch, chainId]
+  )
+  return result
 }
 
-var initialState$2 = queryParametersToSwapState(parsedQueryString());
+var initialState$2 = queryParametersToSwapState(parsedQueryString())
 var swap = toolkit.createReducer(initialState$2, function (builder) {
-    return builder
-        .addCase(replaceSwapState, function (state, _a) {
-        var _b;
-        var _c = _a.payload, typedValue = _c.typedValue, recipient = _c.recipient, field = _c.field, inputCurrencyId = _c.inputCurrencyId, outputCurrencyId = _c.outputCurrencyId;
-        return _b = {},
-            _b[Field.INPUT] = {
-                currencyId: inputCurrencyId !== null && inputCurrencyId !== void 0 ? inputCurrencyId : null,
-            },
-            _b[Field.OUTPUT] = {
-                currencyId: outputCurrencyId !== null && outputCurrencyId !== void 0 ? outputCurrencyId : null,
-            },
-            _b.independentField = field,
-            _b.typedValue = typedValue,
-            _b.recipient = recipient,
-            _b;
+  return builder
+    .addCase(replaceSwapState, function (state, _a) {
+      var _b
+      var _c = _a.payload,
+        typedValue = _c.typedValue,
+        recipient = _c.recipient,
+        field = _c.field,
+        inputCurrencyId = _c.inputCurrencyId,
+        outputCurrencyId = _c.outputCurrencyId
+      return (
+        (_b = {}),
+        (_b[Field.INPUT] = {
+          currencyId: inputCurrencyId !== null && inputCurrencyId !== void 0 ? inputCurrencyId : null,
+        }),
+        (_b[Field.OUTPUT] = {
+          currencyId: outputCurrencyId !== null && outputCurrencyId !== void 0 ? outputCurrencyId : null,
+        }),
+        (_b.independentField = field),
+        (_b.typedValue = typedValue),
+        (_b.recipient = recipient),
+        _b
+      )
     })
-        .addCase(selectCurrency, function (state, _a) {
-        var _b, _c;
-        var _d = _a.payload, currencyId = _d.currencyId, field = _d.field;
-        var otherField = field === Field.INPUT ? Field.OUTPUT : Field.INPUT;
-        if (currencyId === state[otherField].currencyId) {
-            // the case where we have to swap the order
-            return __assign(__assign({}, state), (_b = { independentField: state.independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT }, _b[field] = { currencyId: currencyId }, _b[otherField] = { currencyId: state[field].currencyId }, _b));
-        }
-        else {
-            // the normal case
-            return __assign(__assign({}, state), (_c = {}, _c[field] = { currencyId: currencyId }, _c));
-        }
+    .addCase(selectCurrency, function (state, _a) {
+      var _b, _c
+      var _d = _a.payload,
+        currencyId = _d.currencyId,
+        field = _d.field
+      var otherField = field === Field.INPUT ? Field.OUTPUT : Field.INPUT
+      if (currencyId === state[otherField].currencyId) {
+        // the case where we have to swap the order
+        return __assign(
+          __assign({}, state),
+          ((_b = { independentField: state.independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT }),
+          (_b[field] = { currencyId }),
+          (_b[otherField] = { currencyId: state[field].currencyId }),
+          _b)
+        )
+      } else {
+        // the normal case
+        return __assign(__assign({}, state), ((_c = {}), (_c[field] = { currencyId }), _c))
+      }
     })
-        .addCase(switchCurrencies, function (state) {
-        var _a;
-        return __assign(__assign({}, state), (_a = { independentField: state.independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT }, _a[Field.INPUT] = { currencyId: state[Field.OUTPUT].currencyId }, _a[Field.OUTPUT] = { currencyId: state[Field.INPUT].currencyId }, _a));
+    .addCase(switchCurrencies, function (state) {
+      var _a
+      return __assign(
+        __assign({}, state),
+        ((_a = { independentField: state.independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT }),
+        (_a[Field.INPUT] = { currencyId: state[Field.OUTPUT].currencyId }),
+        (_a[Field.OUTPUT] = { currencyId: state[Field.INPUT].currencyId }),
+        _a)
+      )
     })
-        .addCase(typeInput, function (state, _a) {
-        var _b = _a.payload, field = _b.field, typedValue = _b.typedValue;
-        return __assign(__assign({}, state), { independentField: field, typedValue: typedValue });
+    .addCase(typeInput, function (state, _a) {
+      var _b = _a.payload,
+        field = _b.field,
+        typedValue = _b.typedValue
+      return __assign(__assign({}, state), { independentField: field, typedValue })
     })
-        .addCase(setRecipient, function (state, _a) {
-        var recipient = _a.payload.recipient;
-        state.recipient = recipient;
-    });
-});
+    .addCase(setRecipient, function (state, _a) {
+      var recipient = _a.payload.recipient
+      state.recipient = recipient
+    })
+})
 
-var now = function () { return new Date().getTime(); };
-var initialState$1 = {};
+var now = function () {
+  return new Date().getTime()
+}
+var initialState$1 = {}
 var transactions = toolkit.createReducer(initialState$1, function (builder) {
-    return builder
-        .addCase(updateVersion, function (transactions) {
-        // in case there are any transactions in the store with the old format, remove them
-        Object.keys(transactions).forEach(function (chainId) {
-            var chainTransactions = transactions[chainId];
-            Object.keys(chainTransactions).forEach(function (hash) {
-                if (!('info' in chainTransactions[hash])) {
-                    // clear old transactions that don't have the right format
-                    delete chainTransactions[hash];
-                }
-            });
-        });
+  return builder
+    .addCase(updateVersion, function (transactions) {
+      // in case there are any transactions in the store with the old format, remove them
+      Object.keys(transactions).forEach(function (chainId) {
+        var chainTransactions = transactions[chainId]
+        Object.keys(chainTransactions).forEach(function (hash) {
+          if (!('info' in chainTransactions[hash])) {
+            // clear old transactions that don't have the right format
+            delete chainTransactions[hash]
+          }
+        })
+      })
     })
-        .addCase(addTransaction, function (transactions, _a) {
-        var _b, _c;
-        var _d = _a.payload, chainId = _d.chainId, from = _d.from, hash = _d.hash, info = _d.info;
-        if ((_b = transactions[chainId]) === null || _b === void 0 ? void 0 : _b[hash]) {
-            throw Error('Attempted to add existing transaction.');
-        }
-        var txs = (_c = transactions[chainId]) !== null && _c !== void 0 ? _c : {};
-        txs[hash] = { hash: hash, info: info, from: from, addedTime: now() };
-        transactions[chainId] = txs;
+    .addCase(addTransaction, function (transactions, _a) {
+      var _b, _c
+      var _d = _a.payload,
+        chainId = _d.chainId,
+        from = _d.from,
+        hash = _d.hash,
+        info = _d.info
+      if ((_b = transactions[chainId]) === null || _b === void 0 ? void 0 : _b[hash]) {
+        throw Error('Attempted to add existing transaction.')
+      }
+      var txs = (_c = transactions[chainId]) !== null && _c !== void 0 ? _c : {}
+      txs[hash] = { hash, info, from, addedTime: now() }
+      transactions[chainId] = txs
     })
-        .addCase(clearAllTransactions, function (transactions, _a) {
-        var chainId = _a.payload.chainId;
-        if (!transactions[chainId])
-            return;
-        transactions[chainId] = {};
+    .addCase(clearAllTransactions, function (transactions, _a) {
+      var chainId = _a.payload.chainId
+      if (!transactions[chainId]) return
+      transactions[chainId] = {}
     })
-        .addCase(checkedTransaction, function (transactions, _a) {
-        var _b;
-        var _c = _a.payload, chainId = _c.chainId, hash = _c.hash, blockNumber = _c.blockNumber;
-        var tx = (_b = transactions[chainId]) === null || _b === void 0 ? void 0 : _b[hash];
-        if (!tx) {
-            return;
-        }
-        if (!tx.lastCheckedBlockNumber) {
-            tx.lastCheckedBlockNumber = blockNumber;
-        }
-        else {
-            tx.lastCheckedBlockNumber = Math.max(blockNumber, tx.lastCheckedBlockNumber);
-        }
+    .addCase(checkedTransaction, function (transactions, _a) {
+      var _b
+      var _c = _a.payload,
+        chainId = _c.chainId,
+        hash = _c.hash,
+        blockNumber = _c.blockNumber
+      var tx = (_b = transactions[chainId]) === null || _b === void 0 ? void 0 : _b[hash]
+      if (!tx) {
+        return
+      }
+      if (!tx.lastCheckedBlockNumber) {
+        tx.lastCheckedBlockNumber = blockNumber
+      } else {
+        tx.lastCheckedBlockNumber = Math.max(blockNumber, tx.lastCheckedBlockNumber)
+      }
     })
-        .addCase(finalizeTransaction, function (transactions, _a) {
-        var _b;
-        var _c = _a.payload, hash = _c.hash, chainId = _c.chainId, receipt = _c.receipt;
-        var tx = (_b = transactions[chainId]) === null || _b === void 0 ? void 0 : _b[hash];
-        if (!tx) {
-            return;
-        }
-        tx.receipt = receipt;
-        tx.confirmedTime = now();
-    });
-});
+    .addCase(finalizeTransaction, function (transactions, _a) {
+      var _b
+      var _c = _a.payload,
+        hash = _c.hash,
+        chainId = _c.chainId,
+        receipt = _c.receipt
+      var tx = (_b = transactions[chainId]) === null || _b === void 0 ? void 0 : _b[hash]
+      if (!tx) {
+        return
+      }
+      tx.receipt = receipt
+      tx.confirmedTime = now()
+    })
+})
 
-var currentTimestamp = function () { return new Date().getTime(); };
+var currentTimestamp = function () {
+  return new Date().getTime()
+}
 function pairKey(token0Address, token1Address) {
-    return token0Address + ";" + token1Address;
+  return token0Address + ';' + token1Address
 }
 var initialState = {
-    matchesDarkMode: false,
-    userDarkMode: null,
-    userExpertMode: false,
-    userLocale: null,
-    userClientSideRouter: false,
-    userHideClosedPositions: false,
-    userSlippageTolerance: 'auto',
-    userSlippageToleranceHasBeenMigratedToAuto: true,
-    userDeadline: DEFAULT_DEADLINE_FROM_NOW,
-    tokens: {},
-    pairs: {},
-    timestamp: currentTimestamp(),
-    URLWarningVisible: true,
-    showSurveyPopup: undefined,
-};
+  matchesDarkMode: false,
+  userDarkMode: null,
+  userExpertMode: false,
+  userLocale: null,
+  userClientSideRouter: false,
+  userHideClosedPositions: false,
+  userSlippageTolerance: 'auto',
+  userSlippageToleranceHasBeenMigratedToAuto: true,
+  userDeadline: DEFAULT_DEADLINE_FROM_NOW,
+  tokens: {},
+  pairs: {},
+  timestamp: currentTimestamp(),
+  URLWarningVisible: true,
+  showSurveyPopup: undefined,
+}
 var user = toolkit.createReducer(initialState, function (builder) {
-    return builder
-        .addCase(updateVersion, function (state) {
-        // slippage isnt being tracked in local storage, reset to default
-        // noinspection SuspiciousTypeOfGuard
-        if (typeof state.userSlippageTolerance !== 'number' ||
-            !Number.isInteger(state.userSlippageTolerance) ||
-            state.userSlippageTolerance < 0 ||
-            state.userSlippageTolerance > 5000) {
-            state.userSlippageTolerance = 'auto';
+  return builder
+    .addCase(updateVersion, function (state) {
+      // slippage isnt being tracked in local storage, reset to default
+      // noinspection SuspiciousTypeOfGuard
+      if (
+        typeof state.userSlippageTolerance !== 'number' ||
+        !Number.isInteger(state.userSlippageTolerance) ||
+        state.userSlippageTolerance < 0 ||
+        state.userSlippageTolerance > 5000
+      ) {
+        state.userSlippageTolerance = 'auto'
+      } else {
+        if (
+          !state.userSlippageToleranceHasBeenMigratedToAuto &&
+          [10, 50, 100].indexOf(state.userSlippageTolerance) !== -1
+        ) {
+          state.userSlippageTolerance = 'auto'
+          state.userSlippageToleranceHasBeenMigratedToAuto = true
         }
-        else {
-            if (!state.userSlippageToleranceHasBeenMigratedToAuto &&
-                [10, 50, 100].indexOf(state.userSlippageTolerance) !== -1) {
-                state.userSlippageTolerance = 'auto';
-                state.userSlippageToleranceHasBeenMigratedToAuto = true;
-            }
-        }
-        // deadline isnt being tracked in local storage, reset to default
-        // noinspection SuspiciousTypeOfGuard
-        if (typeof state.userDeadline !== 'number' ||
-            !Number.isInteger(state.userDeadline) ||
-            state.userDeadline < 60 ||
-            state.userDeadline > 180 * 60) {
-            state.userDeadline = DEFAULT_DEADLINE_FROM_NOW;
-        }
-        state.lastUpdateVersionTimestamp = currentTimestamp();
+      }
+      // deadline isnt being tracked in local storage, reset to default
+      // noinspection SuspiciousTypeOfGuard
+      if (
+        typeof state.userDeadline !== 'number' ||
+        !Number.isInteger(state.userDeadline) ||
+        state.userDeadline < 60 ||
+        state.userDeadline > 180 * 60
+      ) {
+        state.userDeadline = DEFAULT_DEADLINE_FROM_NOW
+      }
+      state.lastUpdateVersionTimestamp = currentTimestamp()
     })
-        .addCase(updateUserDarkMode, function (state, action) {
-        state.userDarkMode = action.payload.userDarkMode;
-        state.timestamp = currentTimestamp();
+    .addCase(updateUserDarkMode, function (state, action) {
+      state.userDarkMode = action.payload.userDarkMode
+      state.timestamp = currentTimestamp()
     })
-        .addCase(updateMatchesDarkMode, function (state, action) {
-        state.matchesDarkMode = action.payload.matchesDarkMode;
-        state.timestamp = currentTimestamp();
+    .addCase(updateMatchesDarkMode, function (state, action) {
+      state.matchesDarkMode = action.payload.matchesDarkMode
+      state.timestamp = currentTimestamp()
     })
-        .addCase(updateUserExpertMode, function (state, action) {
-        state.userExpertMode = action.payload.userExpertMode;
-        state.timestamp = currentTimestamp();
+    .addCase(updateUserExpertMode, function (state, action) {
+      state.userExpertMode = action.payload.userExpertMode
+      state.timestamp = currentTimestamp()
     })
-        .addCase(updateUserLocale, function (state, action) {
-        state.userLocale = action.payload.userLocale;
-        state.timestamp = currentTimestamp();
+    .addCase(updateUserLocale, function (state, action) {
+      state.userLocale = action.payload.userLocale
+      state.timestamp = currentTimestamp()
     })
-        .addCase(updateUserSlippageTolerance, function (state, action) {
-        state.userSlippageTolerance = action.payload.userSlippageTolerance;
-        state.timestamp = currentTimestamp();
+    .addCase(updateUserSlippageTolerance, function (state, action) {
+      state.userSlippageTolerance = action.payload.userSlippageTolerance
+      state.timestamp = currentTimestamp()
     })
-        .addCase(updateUserDeadline, function (state, action) {
-        state.userDeadline = action.payload.userDeadline;
-        state.timestamp = currentTimestamp();
+    .addCase(updateUserDeadline, function (state, action) {
+      state.userDeadline = action.payload.userDeadline
+      state.timestamp = currentTimestamp()
     })
-        .addCase(updateUserClientSideRouter, function (state, action) {
-        state.userClientSideRouter = action.payload.userClientSideRouter;
+    .addCase(updateUserClientSideRouter, function (state, action) {
+      state.userClientSideRouter = action.payload.userClientSideRouter
     })
-        .addCase(updateHideClosedPositions, function (state, action) {
-        state.userHideClosedPositions = action.payload.userHideClosedPositions;
+    .addCase(updateHideClosedPositions, function (state, action) {
+      state.userHideClosedPositions = action.payload.userHideClosedPositions
     })
-        .addCase(updateShowSurveyPopup, function (state, action) {
-        state.showSurveyPopup = action.payload.showSurveyPopup;
+    .addCase(updateShowSurveyPopup, function (state, action) {
+      state.showSurveyPopup = action.payload.showSurveyPopup
     })
-        .addCase(addSerializedToken, function (state, _a) {
-        var serializedToken = _a.payload.serializedToken;
-        if (!state.tokens) {
-            state.tokens = {};
-        }
-        state.tokens[serializedToken.chainId] = state.tokens[serializedToken.chainId] || {};
-        state.tokens[serializedToken.chainId][serializedToken.address] = serializedToken;
-        state.timestamp = currentTimestamp();
+    .addCase(addSerializedToken, function (state, _a) {
+      var serializedToken = _a.payload.serializedToken
+      if (!state.tokens) {
+        state.tokens = {}
+      }
+      state.tokens[serializedToken.chainId] = state.tokens[serializedToken.chainId] || {}
+      state.tokens[serializedToken.chainId][serializedToken.address] = serializedToken
+      state.timestamp = currentTimestamp()
     })
-        .addCase(removeSerializedToken, function (state, _a) {
-        var _b = _a.payload, address = _b.address, chainId = _b.chainId;
-        if (!state.tokens) {
-            state.tokens = {};
-        }
-        state.tokens[chainId] = state.tokens[chainId] || {};
-        delete state.tokens[chainId][address];
-        state.timestamp = currentTimestamp();
+    .addCase(removeSerializedToken, function (state, _a) {
+      var _b = _a.payload,
+        address = _b.address,
+        chainId = _b.chainId
+      if (!state.tokens) {
+        state.tokens = {}
+      }
+      state.tokens[chainId] = state.tokens[chainId] || {}
+      delete state.tokens[chainId][address]
+      state.timestamp = currentTimestamp()
     })
-        .addCase(addSerializedPair, function (state, _a) {
-        var serializedPair = _a.payload.serializedPair;
-        if (serializedPair.token0.chainId === serializedPair.token1.chainId &&
-            serializedPair.token0.address !== serializedPair.token1.address) {
-            var chainId = serializedPair.token0.chainId;
-            state.pairs[chainId] = state.pairs[chainId] || {};
-            state.pairs[chainId][pairKey(serializedPair.token0.address, serializedPair.token1.address)] = serializedPair;
-        }
-        state.timestamp = currentTimestamp();
+    .addCase(addSerializedPair, function (state, _a) {
+      var serializedPair = _a.payload.serializedPair
+      if (
+        serializedPair.token0.chainId === serializedPair.token1.chainId &&
+        serializedPair.token0.address !== serializedPair.token1.address
+      ) {
+        var chainId = serializedPair.token0.chainId
+        state.pairs[chainId] = state.pairs[chainId] || {}
+        state.pairs[chainId][pairKey(serializedPair.token0.address, serializedPair.token1.address)] = serializedPair
+      }
+      state.timestamp = currentTimestamp()
     })
-        .addCase(removeSerializedPair, function (state, _a) {
-        var _b = _a.payload, chainId = _b.chainId, tokenAAddress = _b.tokenAAddress, tokenBAddress = _b.tokenBAddress;
-        if (state.pairs[chainId]) {
-            // just delete both keys if either exists
-            delete state.pairs[chainId][pairKey(tokenAAddress, tokenBAddress)];
-            delete state.pairs[chainId][pairKey(tokenBAddress, tokenAAddress)];
-        }
-        state.timestamp = currentTimestamp();
-    });
-});
+    .addCase(removeSerializedPair, function (state, _a) {
+      var _b = _a.payload,
+        chainId = _b.chainId,
+        tokenAAddress = _b.tokenAAddress,
+        tokenBAddress = _b.tokenBAddress
+      if (state.pairs[chainId]) {
+        // just delete both keys if either exists
+        delete state.pairs[chainId][pairKey(tokenAAddress, tokenBAddress)]
+        delete state.pairs[chainId][pairKey(tokenBAddress, tokenAAddress)]
+      }
+      state.timestamp = currentTimestamp()
+    })
+})
 
-var _a$5;
-var PERSISTED_KEYS = ['user', 'transactions', 'lists'];
+var _a$5
+var PERSISTED_KEYS = ['user', 'transactions', 'lists']
 var store = toolkit.configureStore({
-    reducer: (_a$5 = {
-            application: application,
-            user: user,
-            transactions: transactions,
-            swap: swap,
-            mint: mint,
-            mintV3: mintV3,
-            burn: burn,
-            burnV3: burnV3,
-            multicall: multicall.reducer,
-            lists: lists,
-            logs: logs
-        },
-        _a$5[api$1.reducerPath] = api$1.reducer,
-        _a$5[routingApi.reducerPath] = routingApi.reducer,
-        _a$5),
-    middleware: function (getDefaultMiddleware) {
-        return getDefaultMiddleware({ thunk: true })
-            .concat(api$1.middleware)
-            .concat(routingApi.middleware)
-            .concat(reduxLocalstorageSimple.save({ states: PERSISTED_KEYS, debounce: 1000 }));
-    },
-    preloadedState: reduxLocalstorageSimple.load({ states: PERSISTED_KEYS, disableWarnings: process.env.NODE_ENV === 'test' }),
-});
-store.dispatch(updateVersion());
-react.setupListeners(store.dispatch);
+  reducer:
+    ((_a$5 = {
+      application,
+      user,
+      transactions,
+      swap,
+      mint,
+      mintV3,
+      burn,
+      burnV3,
+      multicall: multicall.reducer,
+      lists,
+      logs,
+    }),
+    (_a$5[api$1.reducerPath] = api$1.reducer),
+    (_a$5[routingApi.reducerPath] = routingApi.reducer),
+    _a$5),
+  middleware(getDefaultMiddleware) {
+    return getDefaultMiddleware({ thunk: true })
+      .concat(api$1.middleware)
+      .concat(routingApi.middleware)
+      .concat(reduxLocalstorageSimple.save({ states: PERSISTED_KEYS, debounce: 1000 }))
+  },
+  preloadedState: reduxLocalstorageSimple.load({
+    states: PERSISTED_KEYS,
+    disableWarnings: process.env.NODE_ENV === 'test',
+  }),
+})
+store.dispatch(updateVersion())
+react.setupListeners(store.dispatch)
 
-var FallbackWrapper = styled__default["default"].div(templateObject_1$19 || (templateObject_1$19 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  align-items: center;\n  z-index: 1;\n"], ["\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  align-items: center;\n  z-index: 1;\n"])));
-var BodyWrapper$2 = styled__default["default"].div(templateObject_2$R || (templateObject_2$R = __makeTemplateObject(["\n  padding: 1rem;\n  width: 100%;\n  white-space: ;\n"], ["\n  padding: 1rem;\n  width: 100%;\n  white-space: ;\n"])));
-var CodeBlockWrapper = styled__default["default"].div(templateObject_3$J || (templateObject_3$J = __makeTemplateObject(["\n  background: ", ";\n  overflow: auto;\n  white-space: pre;\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 24px;\n  padding: 18px 24px;\n  color: ", ";\n"], ["\n  background: ", ";\n  overflow: auto;\n  white-space: pre;\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 24px;\n  padding: 18px 24px;\n  color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg0;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.text1;
-});
-var LinkWrapper = styled__default["default"].div(templateObject_4$y || (templateObject_4$y = __makeTemplateObject(["\n  color: ", ";\n  padding: 6px 24px;\n"], ["\n  color: ", ";\n  padding: 6px 24px;\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.blue1;
-});
-var SomethingWentWrongWrapper = styled__default["default"].div(templateObject_5$q || (templateObject_5$q = __makeTemplateObject(["\n  padding: 6px 24px;\n"], ["\n  padding: 6px 24px;\n"])));
-var IS_UNISWAP = window.location.hostname === 'app.uniswap.org';
+var FallbackWrapper = styled__default['default'].div(
+  templateObject_1$19 ||
+    (templateObject_1$19 = __makeTemplateObject(
+      ['\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  align-items: center;\n  z-index: 1;\n'],
+      ['\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  align-items: center;\n  z-index: 1;\n']
+    ))
+)
+var BodyWrapper$2 = styled__default['default'].div(
+  templateObject_2$R ||
+    (templateObject_2$R = __makeTemplateObject(
+      ['\n  padding: 1rem;\n  width: 100%;\n  white-space: ;\n'],
+      ['\n  padding: 1rem;\n  width: 100%;\n  white-space: ;\n']
+    ))
+)
+var CodeBlockWrapper = styled__default['default'].div(
+  templateObject_3$J ||
+    (templateObject_3$J = __makeTemplateObject(
+      [
+        '\n  background: ',
+        ';\n  overflow: auto;\n  white-space: pre;\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 24px;\n  padding: 18px 24px;\n  color: ',
+        ';\n',
+      ],
+      [
+        '\n  background: ',
+        ';\n  overflow: auto;\n  white-space: pre;\n  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),\n    0px 24px 32px rgba(0, 0, 0, 0.01);\n  border-radius: 24px;\n  padding: 18px 24px;\n  color: ',
+        ';\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg0
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.text1
+  }
+)
+var LinkWrapper = styled__default['default'].div(
+  templateObject_4$y ||
+    (templateObject_4$y = __makeTemplateObject(
+      ['\n  color: ', ';\n  padding: 6px 24px;\n'],
+      ['\n  color: ', ';\n  padding: 6px 24px;\n']
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.blue1
+  }
+)
+var SomethingWentWrongWrapper = styled__default['default'].div(
+  templateObject_5$q ||
+    (templateObject_5$q = __makeTemplateObject(['\n  padding: 6px 24px;\n'], ['\n  padding: 6px 24px;\n']))
+)
+var IS_UNISWAP = window.location.hostname === 'app.uniswap.org'
 var ErrorBoundary = /** @class */ (function (_super) {
-    __extends(ErrorBoundary, _super);
-    function ErrorBoundary(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = { error: null };
-        return _this;
+  __extends(ErrorBoundary, _super)
+  function ErrorBoundary(props) {
+    var _this = _super.call(this, props) || this
+    _this.state = { error: null }
+    return _this
+  }
+  ErrorBoundary.getDerivedStateFromError = function (error) {
+    return { error }
+  }
+  ErrorBoundary.prototype.componentDidCatch = function (error, errorInfo) {
+    ReactGA__default['default'].exception(__assign(__assign(__assign({}, error), errorInfo), { fatal: true }))
+  }
+  ErrorBoundary.prototype.render = function () {
+    var error = this.state.error
+    if (error !== null) {
+      var encodedBody = encodeURIComponent(issueBody(error))
+      return jsxRuntime.jsx(
+        FallbackWrapper,
+        {
+          children: jsxRuntime.jsx(
+            BodyWrapper$2,
+            {
+              children: jsxRuntime.jsxs(
+                AutoColumn,
+                __assign(
+                  { gap: 'md' },
+                  {
+                    children: [
+                      jsxRuntime.jsx(
+                        SomethingWentWrongWrapper,
+                        {
+                          children: jsxRuntime.jsx(
+                            ThemedText.Label,
+                            __assign(
+                              { fontSize: 24, fontWeight: 600 },
+                              { children: jsxRuntime.jsx(macro.Trans, { children: 'Something went wrong' }, void 0) }
+                            ),
+                            void 0
+                          ),
+                        },
+                        void 0
+                      ),
+                      jsxRuntime.jsx(
+                        CodeBlockWrapper,
+                        {
+                          children: jsxRuntime.jsx(
+                            'code',
+                            {
+                              children: jsxRuntime.jsx(
+                                ThemedText.Main,
+                                __assign({ fontSize: 10 }, { children: error.stack }),
+                                void 0
+                              ),
+                            },
+                            void 0
+                          ),
+                        },
+                        void 0
+                      ),
+                      IS_UNISWAP
+                        ? jsxRuntime.jsxs(
+                            AutoRow,
+                            {
+                              children: [
+                                jsxRuntime.jsx(
+                                  LinkWrapper,
+                                  {
+                                    children: jsxRuntime.jsx(
+                                      ExternalLink,
+                                      __assign(
+                                        {
+                                          id: 'create-github-issue-link',
+                                          href:
+                                            'https://github.com/Uniswap/uniswap-interface/issues/new?assignees=&labels=bug&body=' +
+                                            encodedBody +
+                                            '&title=' +
+                                            encodeURIComponent(
+                                              'Crash report: `' +
+                                                error.name +
+                                                (error.message && ': ' + error.message) +
+                                                '`'
+                                            ),
+                                          target: '_blank',
+                                        },
+                                        {
+                                          children: jsxRuntime.jsxs(
+                                            ThemedText.Link,
+                                            __assign(
+                                              { fontSize: 16 },
+                                              {
+                                                children: [
+                                                  jsxRuntime.jsx(
+                                                    macro.Trans,
+                                                    { children: 'Create an issue on GitHub' },
+                                                    void 0
+                                                  ),
+                                                  jsxRuntime.jsx('span', { children: '\u2197' }, void 0),
+                                                ],
+                                              }
+                                            ),
+                                            void 0
+                                          ),
+                                        }
+                                      ),
+                                      void 0
+                                    ),
+                                  },
+                                  void 0
+                                ),
+                                jsxRuntime.jsx(
+                                  LinkWrapper,
+                                  {
+                                    children: jsxRuntime.jsx(
+                                      ExternalLink,
+                                      __assign(
+                                        {
+                                          id: 'get-support-on-discord',
+                                          href: 'https://discord.gg/FCfyBSbCU5',
+                                          target: '_blank',
+                                        },
+                                        {
+                                          children: jsxRuntime.jsxs(
+                                            ThemedText.Link,
+                                            __assign(
+                                              { fontSize: 16 },
+                                              {
+                                                children: [
+                                                  jsxRuntime.jsx(
+                                                    macro.Trans,
+                                                    { children: 'Get support on Discord' },
+                                                    void 0
+                                                  ),
+                                                  jsxRuntime.jsx('span', { children: '\u2197' }, void 0),
+                                                ],
+                                              }
+                                            ),
+                                            void 0
+                                          ),
+                                        }
+                                      ),
+                                      void 0
+                                    ),
+                                  },
+                                  void 0
+                                ),
+                              ],
+                            },
+                            void 0
+                          )
+                        : null,
+                    ],
+                  }
+                ),
+                void 0
+              ),
+            },
+            void 0
+          ),
+        },
+        void 0
+      )
     }
-    ErrorBoundary.getDerivedStateFromError = function (error) {
-        return { error: error };
-    };
-    ErrorBoundary.prototype.componentDidCatch = function (error, errorInfo) {
-        ReactGA__default["default"].exception(__assign(__assign(__assign({}, error), errorInfo), { fatal: true }));
-    };
-    ErrorBoundary.prototype.render = function () {
-        var error = this.state.error;
-        if (error !== null) {
-            var encodedBody = encodeURIComponent(issueBody(error));
-            return (jsxRuntime.jsx(FallbackWrapper, { children: jsxRuntime.jsx(BodyWrapper$2, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: 'md' }, { children: [jsxRuntime.jsx(SomethingWentWrongWrapper, { children: jsxRuntime.jsx(ThemedText.Label, __assign({ fontSize: 24, fontWeight: 600 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Something went wrong" }, void 0) }), void 0) }, void 0), jsxRuntime.jsx(CodeBlockWrapper, { children: jsxRuntime.jsx("code", { children: jsxRuntime.jsx(ThemedText.Main, __assign({ fontSize: 10 }, { children: error.stack }), void 0) }, void 0) }, void 0), IS_UNISWAP ? (jsxRuntime.jsxs(AutoRow, { children: [jsxRuntime.jsx(LinkWrapper, { children: jsxRuntime.jsx(ExternalLink, __assign({ id: "create-github-issue-link", href: "https://github.com/Uniswap/uniswap-interface/issues/new?assignees=&labels=bug&body=" + encodedBody + "&title=" + encodeURIComponent("Crash report: `" + error.name + (error.message && ": " + error.message) + "`"), target: "_blank" }, { children: jsxRuntime.jsxs(ThemedText.Link, __assign({ fontSize: 16 }, { children: [jsxRuntime.jsx(macro.Trans, { children: "Create an issue on GitHub" }, void 0), jsxRuntime.jsx("span", { children: "\u2197" }, void 0)] }), void 0) }), void 0) }, void 0), jsxRuntime.jsx(LinkWrapper, { children: jsxRuntime.jsx(ExternalLink, __assign({ id: "get-support-on-discord", href: "https://discord.gg/FCfyBSbCU5", target: "_blank" }, { children: jsxRuntime.jsxs(ThemedText.Link, __assign({ fontSize: 16 }, { children: [jsxRuntime.jsx(macro.Trans, { children: "Get support on Discord" }, void 0), jsxRuntime.jsx("span", { children: "\u2197" }, void 0)] }), void 0) }), void 0) }, void 0)] }, void 0)) : null] }), void 0) }, void 0) }, void 0));
-        }
-        return this.props.children;
-    };
-    return ErrorBoundary;
-}(React__default["default"].Component));
+    return this.props.children
+  }
+  return ErrorBoundary
+})(React__default['default'].Component)
 function getRelevantState() {
-    var path = window.location.hash;
-    if (!path.startsWith('#/')) {
-        return null;
-    }
-    var pieces = path.substring(2).split(/[/\\?]/);
-    switch (pieces[0]) {
-        case 'swap':
-            return 'swap';
-        case 'add':
-            if (pieces[1] === 'v2')
-                return 'mint';
-            else
-                return 'mintV3';
-        case 'remove':
-            if (pieces[1] === 'v2')
-                return 'burn';
-            else
-                return 'burnV3';
-    }
-    return null;
+  var path = window.location.hash
+  if (!path.startsWith('#/')) {
+    return null
+  }
+  var pieces = path.substring(2).split(/[/\\?]/)
+  switch (pieces[0]) {
+    case 'swap':
+      return 'swap'
+    case 'add':
+      if (pieces[1] === 'v2') return 'mint'
+      else return 'mintV3'
+    case 'remove':
+      if (pieces[1] === 'v2') return 'burn'
+      else return 'burnV3'
+  }
+  return null
 }
 function issueBody(error) {
-    var relevantState = getRelevantState();
-    var deviceData = userAgent;
-    return "## URL\n  \n" + window.location.href + "\n\n" + (relevantState
-        ? "## `" + relevantState + "` state\n    \n```json\n" + JSON.stringify(store.getState()[relevantState], null, 2) + "\n```\n"
-        : '') + "\n" + (error.name &&
-        "## Error\n\n```\n" + error.name + (error.message && ": " + error.message) + "\n```\n") + "\n" + (error.stack &&
-        "## Stacktrace\n\n```\n" + error.stack + "\n```\n") + "\n" + (deviceData &&
-        "## Device data\n\n```json\n" + JSON.stringify(deviceData, null, 2) + "\n```\n") + "\n";
+  var relevantState = getRelevantState()
+  var deviceData = userAgent
+  return (
+    '## URL\n  \n' +
+    window.location.href +
+    '\n\n' +
+    (relevantState
+      ? '## `' +
+        relevantState +
+        '` state\n    \n```json\n' +
+        JSON.stringify(store.getState()[relevantState], null, 2) +
+        '\n```\n'
+      : '') +
+    '\n' +
+    (error.name && '## Error\n\n```\n' + error.name + (error.message && ': ' + error.message) + '\n```\n') +
+    '\n' +
+    (error.stack && '## Stacktrace\n\n```\n' + error.stack + '\n```\n') +
+    '\n' +
+    (deviceData && '## Device data\n\n```json\n' + JSON.stringify(deviceData, null, 2) + '\n```\n') +
+    '\n'
+  )
 }
-var templateObject_1$19, templateObject_2$R, templateObject_3$J, templateObject_4$y, templateObject_5$q;
+var templateObject_1$19, templateObject_2$R, templateObject_3$J, templateObject_4$y, templateObject_5$q
 
 function useModalOpen(modal) {
-    var openModal = useAppSelector(function (state) { return state.application.openModal; });
-    return openModal === modal;
+  var openModal = useAppSelector(function (state) {
+    return state.application.openModal
+  })
+  return openModal === modal
 }
 function useToggleModal(modal) {
-    var open = useModalOpen(modal);
-    var dispatch = useAppDispatch();
-    return React.useCallback(function () { return dispatch(setOpenModal(open ? null : modal)); }, [dispatch, modal, open]);
+  var open = useModalOpen(modal)
+  var dispatch = useAppDispatch()
+  return React.useCallback(
+    function () {
+      return dispatch(setOpenModal(open ? null : modal))
+    },
+    [dispatch, modal, open]
+  )
 }
 function useWalletModalToggle() {
-    return useToggleModal(ApplicationModal.WALLET);
+  return useToggleModal(ApplicationModal.WALLET)
 }
 function useToggleSettingsMenu() {
-    return useToggleModal(ApplicationModal.SETTINGS);
+  return useToggleModal(ApplicationModal.SETTINGS)
 }
 function useShowClaimPopup() {
-    return useModalOpen(ApplicationModal.CLAIM_POPUP);
+  return useModalOpen(ApplicationModal.CLAIM_POPUP)
 }
 function useToggleShowClaimPopup() {
-    return useToggleModal(ApplicationModal.CLAIM_POPUP);
+  return useToggleModal(ApplicationModal.CLAIM_POPUP)
 }
 function useToggleSelfClaimModal() {
-    return useToggleModal(ApplicationModal.SELF_CLAIM);
+  return useToggleModal(ApplicationModal.SELF_CLAIM)
 }
 function useTogglePrivacyPolicy() {
-    return useToggleModal(ApplicationModal.PRIVACY_POLICY);
+  return useToggleModal(ApplicationModal.PRIVACY_POLICY)
 }
 // returns a function that allows adding a popup
 function useAddPopup() {
-    var dispatch = useAppDispatch();
-    return React.useCallback(function (content, key, removeAfterMs) {
-        dispatch(addPopup({ content: content, key: key, removeAfterMs: removeAfterMs !== null && removeAfterMs !== void 0 ? removeAfterMs : DEFAULT_TXN_DISMISS_MS }));
-    }, [dispatch]);
+  var dispatch = useAppDispatch()
+  return React.useCallback(
+    function (content, key, removeAfterMs) {
+      dispatch(
+        addPopup({
+          content,
+          key,
+          removeAfterMs: removeAfterMs !== null && removeAfterMs !== void 0 ? removeAfterMs : DEFAULT_TXN_DISMISS_MS,
+        })
+      )
+    },
+    [dispatch]
+  )
 }
 // returns a function that allows removing a popup via its key
 function useRemovePopup() {
-    var dispatch = useAppDispatch();
-    return React.useCallback(function (key) {
-        dispatch(removePopup({ key: key }));
-    }, [dispatch]);
+  var dispatch = useAppDispatch()
+  return React.useCallback(
+    function (key) {
+      dispatch(removePopup({ key }))
+    },
+    [dispatch]
+  )
 }
 // get the list of active popups
 function useActivePopups() {
-    var list = useAppSelector(function (state) { return state.application.popupList; });
-    return React.useMemo(function () { return list.filter(function (item) { return item.show; }); }, [list]);
+  var list = useAppSelector(function (state) {
+    return state.application.popupList
+  })
+  return React.useMemo(
+    function () {
+      return list.filter(function (item) {
+        return item.show
+      })
+    },
+    [list]
+  )
 }
 
-var _path$5, _path2$2, _path3$1, _path4, _path5, _path6, _path7, _path8, _path9;
+var _path$5, _path2$2, _path3$1, _path4, _path5, _path6, _path7, _path8, _path9
 
-function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
+function _extends$7() {
+  _extends$7 =
+    Object.assign ||
+    function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i]
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key]
+          }
+        }
+      }
+      return target
+    }
+  return _extends$7.apply(this, arguments)
+}
 
 var SvgLogo = function SvgLogo(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$7({
-    width: 14,
-    height: 15,
-    viewBox: "0 0 14 15",
-    fill: "black",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, props), /*#__PURE__*/React__namespace.createElement("g", {
-    style: {
-      mixBlendMode: "darken"
-    }
-  }, _path$5 || (_path$5 = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M4.15217 1.55141C3.96412 1.52242 3.95619 1.51902 4.04468 1.5055C4.21427 1.47958 4.61472 1.51491 4.89067 1.58012C5.53489 1.73232 6.12109 2.12221 6.74683 2.81466L6.91307 2.99862L7.15088 2.96062C8.15274 2.8006 9.17194 2.92778 10.0244 3.31918C10.2589 3.42686 10.6287 3.64121 10.6749 3.69629C10.6896 3.71384 10.7166 3.82684 10.7349 3.94742C10.7982 4.36458 10.7665 4.68434 10.6382 4.92317C10.5683 5.05313 10.5644 5.09432 10.6114 5.20554C10.6489 5.2943 10.7534 5.35999 10.8569 5.35985C11.0687 5.35956 11.2968 5.0192 11.4024 4.54561L11.4444 4.3575L11.5275 4.45109C11.9835 4.96459 12.3417 5.66488 12.4032 6.16335L12.4192 6.29332L12.3426 6.17517C12.2107 5.97186 12.0781 5.83346 11.9084 5.72183C11.6024 5.52062 11.2789 5.45215 10.4222 5.40727C9.64839 5.36675 9.21045 5.30106 8.77621 5.16032C8.03738 4.9209 7.66493 4.60204 6.78729 3.4576C6.39748 2.94928 6.15654 2.66804 5.91687 2.44155C5.37228 1.92691 4.83716 1.65701 4.15217 1.55141Z"
-  })), _path2$2 || (_path2$2 = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M10.8494 2.68637C10.8689 2.34575 10.9153 2.12108 11.0088 1.9159C11.0458 1.83469 11.0804 1.76822 11.0858 1.76822C11.0911 1.76822 11.075 1.82816 11.05 1.90142C10.9821 2.10054 10.9709 2.3729 11.0177 2.68978C11.0771 3.09184 11.1109 3.14985 11.5385 3.58416C11.739 3.78788 11.9723 4.0448 12.0568 4.15511L12.2106 4.35568L12.0568 4.21234C11.8688 4.03705 11.4364 3.6952 11.3409 3.64633C11.2768 3.61356 11.2673 3.61413 11.2278 3.65321C11.1914 3.68922 11.1837 3.74333 11.1787 3.99915C11.1708 4.39786 11.1161 4.65377 10.9842 4.90965C10.9128 5.04805 10.9015 5.01851 10.9661 4.8623C11.0143 4.74566 11.0192 4.69439 11.0189 4.30842C11.0181 3.53291 10.9255 3.34647 10.3823 3.02709C10.2447 2.94618 10.0179 2.8295 9.87839 2.76778C9.73887 2.70606 9.62805 2.6523 9.63208 2.64828C9.64746 2.63307 10.1772 2.78675 10.3905 2.86828C10.7077 2.98954 10.76 3.00526 10.7985 2.99063C10.8244 2.98082 10.8369 2.90608 10.8494 2.68637Z"
-  })), _path3$1 || (_path3$1 = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M4.51745 4.01304C4.13569 3.49066 3.89948 2.68973 3.95062 2.091L3.96643 1.90572L4.05333 1.92148C4.21652 1.95106 4.49789 2.05515 4.62964 2.13469C4.9912 2.35293 5.14773 2.64027 5.30697 3.37811C5.35362 3.59423 5.41482 3.8388 5.44298 3.9216C5.48831 4.05487 5.65962 4.36617 5.7989 4.56834C5.89922 4.71395 5.83258 4.78295 5.61082 4.76305C5.27215 4.73267 4.8134 4.41799 4.51745 4.01304Z"
-  })), _path4 || (_path4 = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M10.3863 7.90088C8.60224 7.18693 7.97389 6.56721 7.97389 5.52157C7.97389 5.36769 7.97922 5.24179 7.98571 5.24179C7.99221 5.24179 8.06124 5.29257 8.1391 5.35465C8.50088 5.64305 8.906 5.76623 10.0275 5.92885C10.6875 6.02455 11.0589 6.10185 11.4015 6.21477C12.4904 6.57371 13.1641 7.30212 13.3248 8.29426C13.3715 8.58255 13.3441 9.12317 13.2684 9.4081C13.2087 9.63315 13.0263 10.0388 12.9779 10.0544C12.9645 10.0587 12.9514 10.0076 12.9479 9.93809C12.9296 9.56554 12.7402 9.20285 12.4221 8.93116C12.0604 8.62227 11.5745 8.37633 10.3863 7.90088Z"
-  })), _path5 || (_path5 = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M9.13385 8.19748C9.11149 8.06527 9.07272 7.89643 9.04769 7.82228L9.00217 7.68748L9.08672 7.7818C9.20374 7.91233 9.2962 8.07937 9.37457 8.30185C9.43438 8.47165 9.44111 8.52215 9.44066 8.79807C9.4402 9.06896 9.43273 9.12575 9.3775 9.27858C9.29042 9.51959 9.18233 9.69048 9.00097 9.87391C8.67507 10.2036 8.25607 10.3861 7.65143 10.4618C7.54633 10.4749 7.24 10.4971 6.97069 10.511C6.292 10.5461 5.84531 10.6186 5.44393 10.7587C5.38623 10.7788 5.3347 10.7911 5.32947 10.7859C5.31323 10.7698 5.58651 10.6079 5.81223 10.4998C6.1305 10.3474 6.44733 10.2643 7.15719 10.1468C7.50785 10.0887 7.86998 10.0183 7.96194 9.99029C8.83033 9.72566 9.27671 9.04276 9.13385 8.19748Z"
-  })), _path6 || (_path6 = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M9.95169 9.64109C9.71465 9.13463 9.66022 8.64564 9.79009 8.18961C9.80399 8.14088 9.82632 8.101 9.83976 8.101C9.85319 8.101 9.90913 8.13105 9.96404 8.16777C10.0733 8.24086 10.2924 8.36395 10.876 8.68023C11.6043 9.0749 12.0196 9.3805 12.302 9.72965C12.5493 10.0354 12.7023 10.3837 12.776 10.8084C12.8177 11.0489 12.7932 11.6277 12.7311 11.8699C12.5353 12.6337 12.0802 13.2336 11.4311 13.5837C11.336 13.635 11.2506 13.6771 11.2414 13.6773C11.2321 13.6775 11.2668 13.5899 11.3184 13.4827C11.5367 13.029 11.5616 12.5877 11.3965 12.0965C11.2954 11.7957 11.0893 11.4287 10.6732 10.8084C10.1893 10.0873 10.0707 9.89539 9.95169 9.64109Z"
-  })), _path7 || (_path7 = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M3.25046 12.3737C3.91252 11.8181 4.73629 11.4234 5.48666 11.3022C5.81005 11.25 6.34877 11.2707 6.64823 11.3469C7.12824 11.469 7.55763 11.7425 7.78094 12.0683C7.99918 12.3867 8.09281 12.6642 8.19029 13.2816C8.22875 13.5252 8.27057 13.7697 8.28323 13.8251C8.35644 14.1451 8.4989 14.4008 8.67544 14.5293C8.95583 14.7333 9.43865 14.7459 9.91362 14.5618C9.99423 14.5305 10.0642 14.5089 10.0691 14.5138C10.0864 14.5308 9.84719 14.6899 9.67847 14.7737C9.45143 14.8864 9.2709 14.93 9.03102 14.93C8.59601 14.93 8.23486 14.7101 7.9335 14.2616C7.87419 14.1733 7.7409 13.909 7.63729 13.6741C7.3191 12.9528 7.16199 12.7331 6.79255 12.4926C6.47104 12.2834 6.05641 12.2459 5.74449 12.3979C5.33475 12.5976 5.22043 13.118 5.51389 13.4478C5.63053 13.5789 5.84803 13.6919 6.02588 13.7139C6.35861 13.7551 6.64455 13.5035 6.64455 13.1696C6.64455 12.9528 6.56071 12.8291 6.34966 12.7344C6.0614 12.6051 5.75156 12.7562 5.75304 13.0254C5.75368 13.1402 5.80396 13.2122 5.91971 13.2643C5.99397 13.2977 5.99569 13.3003 5.93514 13.2878C5.67066 13.2333 5.6087 12.9164 5.82135 12.706C6.07667 12.4535 6.60461 12.5649 6.78591 12.9097C6.86208 13.0545 6.87092 13.3429 6.80451 13.517C6.6559 13.9068 6.22256 14.1117 5.78297 14.0002C5.48368 13.9242 5.36181 13.842 5.00097 13.4726C4.37395 12.8306 4.13053 12.7062 3.22657 12.566L3.05335 12.5391L3.25046 12.3737Z"
-  })), _path8 || (_path8 = /*#__PURE__*/React__namespace.createElement("path", {
-    fillRule: "evenodd",
-    clipRule: "evenodd",
-    d: "M0.308383 0.883984C2.40235 3.40996 3.84457 4.45213 4.00484 4.67231C4.13717 4.85412 4.08737 5.01757 3.86067 5.14567C3.7346 5.21689 3.47541 5.28905 3.34564 5.28905C3.19887 5.28905 3.14847 5.23278 3.14847 5.23278C3.06337 5.15255 3.01544 5.16658 2.5784 4.39555C1.97166 3.45981 1.46389 2.68357 1.45004 2.67057C1.41801 2.64052 1.41856 2.64153 2.51654 4.59413C2.69394 5.0011 2.55182 5.15049 2.55182 5.20845C2.55182 5.32636 2.51946 5.38834 2.37311 5.55059C2.12914 5.8211 2.02008 6.12505 1.94135 6.7541C1.8531 7.45926 1.60492 7.95737 0.917156 8.80989C0.514562 9.30893 0.448686 9.4004 0.3471 9.60153C0.219144 9.85482 0.183961 9.99669 0.169701 10.3165C0.154629 10.6547 0.183983 10.8732 0.287934 11.1965C0.378939 11.4796 0.473932 11.6665 0.716778 12.0403C0.926351 12.3629 1.04702 12.6027 1.04702 12.6965C1.04702 12.7711 1.06136 12.7712 1.38611 12.6983C2.16328 12.5239 2.79434 12.2171 3.14925 11.8411C3.36891 11.6084 3.42048 11.4799 3.42215 11.1611C3.42325 10.9525 3.41587 10.9088 3.35914 10.7888C3.2668 10.5935 3.09869 10.4311 2.72817 10.1794C2.2427 9.84953 2.03534 9.58398 1.97807 9.21878C1.93108 8.91913 1.98559 8.70771 2.25416 8.14825C2.53214 7.56916 2.60103 7.32239 2.64763 6.73869C2.67773 6.36158 2.71941 6.21286 2.82842 6.09348C2.94212 5.969 3.04447 5.92684 3.32584 5.88863C3.78457 5.82635 4.07667 5.70839 4.31677 5.48849C4.52505 5.29772 4.61221 5.11391 4.62558 4.8372L4.63574 4.62747L4.51934 4.49259C4.09783 4.00411 0.0261003 0.5 0.000160437 0.5C-0.00538105 0.5 0.133325 0.672804 0.308383 0.883984ZM1.28364 10.6992C1.37894 10.5314 1.3283 10.3158 1.16889 10.2104C1.01827 10.1109 0.78428 10.1578 0.78428 10.2875C0.78428 10.3271 0.806303 10.3559 0.855937 10.3813C0.939514 10.424 0.945581 10.4721 0.879823 10.5703C0.81323 10.6698 0.818604 10.7573 0.894991 10.8167C1.0181 10.9125 1.19237 10.8598 1.28364 10.6992Z"
-  })), _path9 || (_path9 = /*#__PURE__*/React__namespace.createElement("path", {
-    fillRule: "evenodd",
-    clipRule: "evenodd",
-    d: "M4.92523 5.99865C4.70988 6.06439 4.50054 6.29124 4.43574 6.5291C4.39621 6.67421 4.41864 6.92875 4.47785 7.00736C4.57351 7.13433 4.66602 7.16778 4.91651 7.16603C5.40693 7.16263 5.83327 6.95358 5.88284 6.69224C5.92347 6.47801 5.73622 6.18112 5.4783 6.05078C5.34521 5.98355 5.06217 5.95688 4.92523 5.99865ZM5.49853 6.44422C5.57416 6.33741 5.54107 6.22198 5.41245 6.14391C5.1675 5.99525 4.79708 6.11827 4.79708 6.34826C4.79708 6.46274 4.99025 6.58765 5.16731 6.58765C5.28516 6.58765 5.44644 6.5178 5.49853 6.44422Z"
-  }))));
-};
-var UNISWAP_LOGO_URL = "data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2215%22%20viewBox%3D%220%200%2014%2015%22%20fill%3D%22black%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20style%3D%22mix-blend-mode%3Adarken%22%3E%3Cpath%20d%3D%22M4.15217%201.55141C3.96412%201.52242%203.95619%201.51902%204.04468%201.5055C4.21427%201.47958%204.61472%201.51491%204.89067%201.58012C5.53489%201.73232%206.12109%202.12221%206.74683%202.81466L6.91307%202.99862L7.15088%202.96062C8.15274%202.8006%209.17194%202.92778%2010.0244%203.31918C10.2589%203.42686%2010.6287%203.64121%2010.6749%203.69629C10.6896%203.71384%2010.7166%203.82684%2010.7349%203.94742C10.7982%204.36458%2010.7665%204.68434%2010.6382%204.92317C10.5683%205.05313%2010.5644%205.09432%2010.6114%205.20554C10.6489%205.2943%2010.7534%205.35999%2010.8569%205.35985C11.0687%205.35956%2011.2968%205.0192%2011.4024%204.54561L11.4444%204.3575L11.5275%204.45109C11.9835%204.96459%2012.3417%205.66488%2012.4032%206.16335L12.4192%206.29332L12.3426%206.17517C12.2107%205.97186%2012.0781%205.83346%2011.9084%205.72183C11.6024%205.52062%2011.2789%205.45215%2010.4222%205.40727C9.64839%205.36675%209.21045%205.30106%208.77621%205.16032C8.03738%204.9209%207.66493%204.60204%206.78729%203.4576C6.39748%202.94928%206.15654%202.66804%205.91687%202.44155C5.37228%201.92691%204.83716%201.65701%204.15217%201.55141Z%22%2F%3E%3Cpath%20d%3D%22M10.8494%202.68637C10.8689%202.34575%2010.9153%202.12108%2011.0088%201.9159C11.0458%201.83469%2011.0804%201.76822%2011.0858%201.76822C11.0911%201.76822%2011.075%201.82816%2011.05%201.90142C10.9821%202.10054%2010.9709%202.3729%2011.0177%202.68978C11.0771%203.09184%2011.1109%203.14985%2011.5385%203.58416C11.739%203.78788%2011.9723%204.0448%2012.0568%204.15511L12.2106%204.35568L12.0568%204.21234C11.8688%204.03705%2011.4364%203.6952%2011.3409%203.64633C11.2768%203.61356%2011.2673%203.61413%2011.2278%203.65321C11.1914%203.68922%2011.1837%203.74333%2011.1787%203.99915C11.1708%204.39786%2011.1161%204.65377%2010.9842%204.90965C10.9128%205.04805%2010.9015%205.01851%2010.9661%204.8623C11.0143%204.74566%2011.0192%204.69439%2011.0189%204.30842C11.0181%203.53291%2010.9255%203.34647%2010.3823%203.02709C10.2447%202.94618%2010.0179%202.8295%209.87839%202.76778C9.73887%202.70606%209.62805%202.6523%209.63208%202.64828C9.64746%202.63307%2010.1772%202.78675%2010.3905%202.86828C10.7077%202.98954%2010.76%203.00526%2010.7985%202.99063C10.8244%202.98082%2010.8369%202.90608%2010.8494%202.68637Z%22%2F%3E%3Cpath%20d%3D%22M4.51745%204.01304C4.13569%203.49066%203.89948%202.68973%203.95062%202.091L3.96643%201.90572L4.05333%201.92148C4.21652%201.95106%204.49789%202.05515%204.62964%202.13469C4.9912%202.35293%205.14773%202.64027%205.30697%203.37811C5.35362%203.59423%205.41482%203.8388%205.44298%203.9216C5.48831%204.05487%205.65962%204.36617%205.7989%204.56834C5.89922%204.71395%205.83258%204.78295%205.61082%204.76305C5.27215%204.73267%204.8134%204.41799%204.51745%204.01304Z%22%2F%3E%3Cpath%20d%3D%22M10.3863%207.90088C8.60224%207.18693%207.97389%206.56721%207.97389%205.52157C7.97389%205.36769%207.97922%205.24179%207.98571%205.24179C7.99221%205.24179%208.06124%205.29257%208.1391%205.35465C8.50088%205.64305%208.906%205.76623%2010.0275%205.92885C10.6875%206.02455%2011.0589%206.10185%2011.4015%206.21477C12.4904%206.57371%2013.1641%207.30212%2013.3248%208.29426C13.3715%208.58255%2013.3441%209.12317%2013.2684%209.4081C13.2087%209.63315%2013.0263%2010.0388%2012.9779%2010.0544C12.9645%2010.0587%2012.9514%2010.0076%2012.9479%209.93809C12.9296%209.56554%2012.7402%209.20285%2012.4221%208.93116C12.0604%208.62227%2011.5745%208.37633%2010.3863%207.90088Z%22%2F%3E%3Cpath%20d%3D%22M9.13385%208.19748C9.11149%208.06527%209.07272%207.89643%209.04769%207.82228L9.00217%207.68748L9.08672%207.7818C9.20374%207.91233%209.2962%208.07937%209.37457%208.30185C9.43438%208.47165%209.44111%208.52215%209.44066%208.79807C9.4402%209.06896%209.43273%209.12575%209.3775%209.27858C9.29042%209.51959%209.18233%209.69048%209.00097%209.87391C8.67507%2010.2036%208.25607%2010.3861%207.65143%2010.4618C7.54633%2010.4749%207.24%2010.4971%206.97069%2010.511C6.292%2010.5461%205.84531%2010.6186%205.44393%2010.7587C5.38623%2010.7788%205.3347%2010.7911%205.32947%2010.7859C5.31323%2010.7698%205.58651%2010.6079%205.81223%2010.4998C6.1305%2010.3474%206.44733%2010.2643%207.15719%2010.1468C7.50785%2010.0887%207.86998%2010.0183%207.96194%209.99029C8.83033%209.72566%209.27671%209.04276%209.13385%208.19748Z%22%2F%3E%3Cpath%20d%3D%22M9.95169%209.64109C9.71465%209.13463%209.66022%208.64564%209.79009%208.18961C9.80399%208.14088%209.82632%208.101%209.83976%208.101C9.85319%208.101%209.90913%208.13105%209.96404%208.16777C10.0733%208.24086%2010.2924%208.36395%2010.876%208.68023C11.6043%209.0749%2012.0196%209.3805%2012.302%209.72965C12.5493%2010.0354%2012.7023%2010.3837%2012.776%2010.8084C12.8177%2011.0489%2012.7932%2011.6277%2012.7311%2011.8699C12.5353%2012.6337%2012.0802%2013.2336%2011.4311%2013.5837C11.336%2013.635%2011.2506%2013.6771%2011.2414%2013.6773C11.2321%2013.6775%2011.2668%2013.5899%2011.3184%2013.4827C11.5367%2013.029%2011.5616%2012.5877%2011.3965%2012.0965C11.2954%2011.7957%2011.0893%2011.4287%2010.6732%2010.8084C10.1893%2010.0873%2010.0707%209.89539%209.95169%209.64109Z%22%2F%3E%3Cpath%20d%3D%22M3.25046%2012.3737C3.91252%2011.8181%204.73629%2011.4234%205.48666%2011.3022C5.81005%2011.25%206.34877%2011.2707%206.64823%2011.3469C7.12824%2011.469%207.55763%2011.7425%207.78094%2012.0683C7.99918%2012.3867%208.09281%2012.6642%208.19029%2013.2816C8.22875%2013.5252%208.27057%2013.7697%208.28323%2013.8251C8.35644%2014.1451%208.4989%2014.4008%208.67544%2014.5293C8.95583%2014.7333%209.43865%2014.7459%209.91362%2014.5618C9.99423%2014.5305%2010.0642%2014.5089%2010.0691%2014.5138C10.0864%2014.5308%209.84719%2014.6899%209.67847%2014.7737C9.45143%2014.8864%209.2709%2014.93%209.03102%2014.93C8.59601%2014.93%208.23486%2014.7101%207.9335%2014.2616C7.87419%2014.1733%207.7409%2013.909%207.63729%2013.6741C7.3191%2012.9528%207.16199%2012.7331%206.79255%2012.4926C6.47104%2012.2834%206.05641%2012.2459%205.74449%2012.3979C5.33475%2012.5976%205.22043%2013.118%205.51389%2013.4478C5.63053%2013.5789%205.84803%2013.6919%206.02588%2013.7139C6.35861%2013.7551%206.64455%2013.5035%206.64455%2013.1696C6.64455%2012.9528%206.56071%2012.8291%206.34966%2012.7344C6.0614%2012.6051%205.75156%2012.7562%205.75304%2013.0254C5.75368%2013.1402%205.80396%2013.2122%205.91971%2013.2643C5.99397%2013.2977%205.99569%2013.3003%205.93514%2013.2878C5.67066%2013.2333%205.6087%2012.9164%205.82135%2012.706C6.07667%2012.4535%206.60461%2012.5649%206.78591%2012.9097C6.86208%2013.0545%206.87092%2013.3429%206.80451%2013.517C6.6559%2013.9068%206.22256%2014.1117%205.78297%2014.0002C5.48368%2013.9242%205.36181%2013.842%205.00097%2013.4726C4.37395%2012.8306%204.13053%2012.7062%203.22657%2012.566L3.05335%2012.5391L3.25046%2012.3737Z%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M0.308383%200.883984C2.40235%203.40996%203.84457%204.45213%204.00484%204.67231C4.13717%204.85412%204.08737%205.01757%203.86067%205.14567C3.7346%205.21689%203.47541%205.28905%203.34564%205.28905C3.19887%205.28905%203.14847%205.23278%203.14847%205.23278C3.06337%205.15255%203.01544%205.16658%202.5784%204.39555C1.97166%203.45981%201.46389%202.68357%201.45004%202.67057C1.41801%202.64052%201.41856%202.64153%202.51654%204.59413C2.69394%205.0011%202.55182%205.15049%202.55182%205.20845C2.55182%205.32636%202.51946%205.38834%202.37311%205.55059C2.12914%205.8211%202.02008%206.12505%201.94135%206.7541C1.8531%207.45926%201.60492%207.95737%200.917156%208.80989C0.514562%209.30893%200.448686%209.4004%200.3471%209.60153C0.219144%209.85482%200.183961%209.99669%200.169701%2010.3165C0.154629%2010.6547%200.183983%2010.8732%200.287934%2011.1965C0.378939%2011.4796%200.473932%2011.6665%200.716778%2012.0403C0.926351%2012.3629%201.04702%2012.6027%201.04702%2012.6965C1.04702%2012.7711%201.06136%2012.7712%201.38611%2012.6983C2.16328%2012.5239%202.79434%2012.2171%203.14925%2011.8411C3.36891%2011.6084%203.42048%2011.4799%203.42215%2011.1611C3.42325%2010.9525%203.41587%2010.9088%203.35914%2010.7888C3.2668%2010.5935%203.09869%2010.4311%202.72817%2010.1794C2.2427%209.84953%202.03534%209.58398%201.97807%209.21878C1.93108%208.91913%201.98559%208.70771%202.25416%208.14825C2.53214%207.56916%202.60103%207.32239%202.64763%206.73869C2.67773%206.36158%202.71941%206.21286%202.82842%206.09348C2.94212%205.969%203.04447%205.92684%203.32584%205.88863C3.78457%205.82635%204.07667%205.70839%204.31677%205.48849C4.52505%205.29772%204.61221%205.11391%204.62558%204.8372L4.63574%204.62747L4.51934%204.49259C4.09783%204.00411%200.0261003%200.5%200.000160437%200.5C-0.00538105%200.5%200.133325%200.672804%200.308383%200.883984ZM1.28364%2010.6992C1.37894%2010.5314%201.3283%2010.3158%201.16889%2010.2104C1.01827%2010.1109%200.78428%2010.1578%200.78428%2010.2875C0.78428%2010.3271%200.806303%2010.3559%200.855937%2010.3813C0.939514%2010.424%200.945581%2010.4721%200.879823%2010.5703C0.81323%2010.6698%200.818604%2010.7573%200.894991%2010.8167C1.0181%2010.9125%201.19237%2010.8598%201.28364%2010.6992Z%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M4.92523%205.99865C4.70988%206.06439%204.50054%206.29124%204.43574%206.5291C4.39621%206.67421%204.41864%206.92875%204.47785%207.00736C4.57351%207.13433%204.66602%207.16778%204.91651%207.16603C5.40693%207.16263%205.83327%206.95358%205.88284%206.69224C5.92347%206.47801%205.73622%206.18112%205.4783%206.05078C5.34521%205.98355%205.06217%205.95688%204.92523%205.99865ZM5.49853%206.44422C5.57416%206.33741%205.54107%206.22198%205.41245%206.14391C5.1675%205.99525%204.79708%206.11827%204.79708%206.34826C4.79708%206.46274%204.99025%206.58765%205.16731%206.58765C5.28516%206.58765%205.44644%206.5178%205.49853%206.44422Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E";
-
-var ContentWrapper$3 = styled__default["default"](AutoColumn)(templateObject_1$18 || (templateObject_1$18 = __makeTemplateObject(["\n  width: 100%;\n"], ["\n  width: 100%;\n"])));
-var ModalUpper = styled__default["default"](DataCard)(templateObject_2$Q || (templateObject_2$Q = __makeTemplateObject(["\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);\n"], ["\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);\n"])));
-var ConfirmOrLoadingWrapper = styled__default["default"].div(templateObject_3$I || (templateObject_3$I = __makeTemplateObject(["\n  width: 100%;\n  padding: 24px;\n  position: relative;\n  background: ", ";\n"], ["\n  width: 100%;\n  padding: 24px;\n  position: relative;\n  background: ", ";\n"])), function (_a) {
-    var activeBG = _a.activeBG;
-    return activeBG &&
-        'radial-gradient(76.02% 75.41% at 1.84% 0%, rgba(255, 0, 122, 0.2) 0%, rgba(33, 114, 229, 0.2) 100%), #FFFFFF;';
-});
-var ConfirmedIcon$1 = styled__default["default"](ColumnCenter)(templateObject_4$x || (templateObject_4$x = __makeTemplateObject(["\n  padding: 60px 0;\n"], ["\n  padding: 60px 0;\n"])));
-var SOCKS_AMOUNT = 1000;
-var USER_AMOUNT = 400;
-function ClaimModal() {
-    var _a, _b, _c, _d, _e, _f, _g;
-    var isOpen = useModalOpen(ApplicationModal.SELF_CLAIM);
-    var toggleClaimModal = useToggleSelfClaimModal();
-    var _h = useActiveWeb3React(), account = _h.account, chainId = _h.chainId;
-    // used for UI loading states
-    var _j = __read(React.useState(false), 2), attempting = _j[0], setAttempting = _j[1];
-    // get user claim data
-    var userClaimData = useUserClaimData(account);
-    // monitor the status of the claim from contracts and txns
-    var claimCallback = useClaimCallback(account).claimCallback;
-    var unclaimedAmount = useUserUnclaimedAmount(account);
-    var _k = useUserHasSubmittedClaim(account !== null && account !== void 0 ? account : undefined), claimSubmitted = _k.claimSubmitted, claimTxn = _k.claimTxn;
-    var claimConfirmed = Boolean(claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.receipt);
-    function onClaim() {
-        setAttempting(true);
-        claimCallback()
-            // reset modal and log error
-            .catch(function (error) {
-            setAttempting(false);
-            console.log(error);
-        });
-    }
-    // once confirmed txn is found, if modal is closed open, mark as not attempting regradless
-    React.useEffect(function () {
-        if (claimConfirmed && claimSubmitted && attempting) {
-            setAttempting(false);
-            if (!isOpen) {
-                toggleClaimModal();
-            }
-        }
-    }, [attempting, claimConfirmed, claimSubmitted, isOpen, toggleClaimModal]);
-    var nonLPAmount = JSBI__default["default"].multiply(JSBI__default["default"].BigInt((((_a = userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.flags) === null || _a === void 0 ? void 0 : _a.isSOCKS) ? SOCKS_AMOUNT : 0) + (((_b = userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.flags) === null || _b === void 0 ? void 0 : _b.isUser) ? USER_AMOUNT : 0)), JSBI__default["default"].exponentiate(JSBI__default["default"].BigInt(10), JSBI__default["default"].BigInt(18)));
-    return (jsxRuntime.jsxs(Modal, __assign({ isOpen: isOpen, onDismiss: toggleClaimModal, maxHeight: 90 }, { children: [jsxRuntime.jsx(Confetti, { start: Boolean(isOpen && claimConfirmed) }, void 0), !attempting && !claimConfirmed && (jsxRuntime.jsxs(ContentWrapper$3, __assign({ gap: "lg" }, { children: [jsxRuntime.jsxs(ModalUpper, { children: [jsxRuntime.jsx(CardBGImage, {}, void 0), jsxRuntime.jsx(CardNoise, {}, void 0), jsxRuntime.jsxs(CardSection, __assign({ gap: "md" }, { children: [jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.White, __assign({ fontWeight: 500 }, { children: jsxRuntime.jsx(macro.Trans, { children: "Claim UNI" }, void 0) }), void 0), jsxRuntime.jsx(CloseIcon$2, { onClick: toggleClaimModal, style: { zIndex: 99 }, color: "white" }, void 0)] }, void 0), jsxRuntime.jsx(ThemedText.White, __assign({ fontWeight: 700, fontSize: 36 }, { children: jsxRuntime.jsxs(macro.Trans, { children: [unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_c = { groupSeparator: ',' }) !== null && _c !== void 0 ? _c : '-'), " UNI"] }, void 0) }), void 0)] }), void 0), jsxRuntime.jsx(Break$1, {}, void 0), jsxRuntime.jsxs(CardSection, __assign({ gap: "sm" }, { children: [((_d = userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.flags) === null || _d === void 0 ? void 0 : _d.isSOCKS) && (jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: "white" }, { children: "SOCKS" }), void 0), jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: "white" }, { children: jsxRuntime.jsxs(macro.Trans, { children: [SOCKS_AMOUNT, " UNI"] }, void 0) }), void 0)] }, void 0)), ((_e = userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.flags) === null || _e === void 0 ? void 0 : _e.isLP) &&
-                                        unclaimedAmount &&
-                                        JSBI__default["default"].greaterThanOrEqual(unclaimedAmount.quotient, nonLPAmount) && (jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: "white" }, { children: jsxRuntime.jsx(macro.Trans, { children: "Liquidity" }, void 0) }), void 0), jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: "white" }, { children: jsxRuntime.jsxs(macro.Trans, { children: [unclaimedAmount
-                                                            .subtract(sdkCore.CurrencyAmount.fromRawAmount(unclaimedAmount.currency, nonLPAmount))
-                                                            .toFixed(0, { groupSeparator: ',' }), ' ', "UNI"] }, void 0) }), void 0)] }, void 0)), ((_f = userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.flags) === null || _f === void 0 ? void 0 : _f.isUser) && (jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: "white" }, { children: jsxRuntime.jsx(macro.Trans, { children: "User" }, void 0) }), void 0), jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: "white" }, { children: jsxRuntime.jsxs(macro.Trans, { children: [USER_AMOUNT, " UNI"] }, void 0) }), void 0)] }, void 0))] }), void 0)] }, void 0), jsxRuntime.jsxs(AutoColumn, __assign({ gap: "md", style: { padding: '1rem', paddingTop: '0' }, justify: "center" }, { children: [jsxRuntime.jsx(ThemedText.SubHeader, __assign({ fontWeight: 500 }, { children: jsxRuntime.jsxs(macro.Trans, { children: ["As a member of the Uniswap community you may claim UNI to be used for voting and governance.", jsxRuntime.jsx("br", {}, void 0), jsxRuntime.jsx("br", {}, void 0), jsxRuntime.jsx(ExternalLink, __assign({ href: "https://uniswap.org/blog/uni" }, { children: "Read more about UNI" }), void 0)] }, void 0) }), void 0), jsxRuntime.jsx(ButtonPrimary, __assign({ disabled: !address.isAddress(account !== null && account !== void 0 ? account : ''), padding: "16px 16px", width: "100%", "$borderRadius": "12px", mt: "1rem", onClick: onClaim }, { children: jsxRuntime.jsx(macro.Trans, { children: "Claim UNI" }, void 0) }), void 0)] }), void 0)] }), void 0)), (attempting || claimConfirmed) && (jsxRuntime.jsxs(ConfirmOrLoadingWrapper, __assign({ activeBG: true }, { children: [jsxRuntime.jsx(CardNoise, {}, void 0), jsxRuntime.jsx(CardBGImageSmaller, { desaturate: true }, void 0), jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsx("div", {}, void 0), jsxRuntime.jsx(CloseIcon$2, { onClick: toggleClaimModal, style: { zIndex: 99 }, stroke: "black" }, void 0)] }, void 0), jsxRuntime.jsx(ConfirmedIcon$1, { children: !claimConfirmed ? (jsxRuntime.jsx(CustomLightSpinner, { src: Circle$1, alt: "loader", size: '90px' }, void 0)) : (jsxRuntime.jsx(UniTokenAnimated, { width: "72px", src: tokenLogo, alt: "UNI" }, void 0)) }, void 0), jsxRuntime.jsxs(AutoColumn, __assign({ gap: "100px", justify: 'center' }, { children: [jsxRuntime.jsxs(AutoColumn, __assign({ gap: "12px", justify: 'center' }, { children: [jsxRuntime.jsx(ThemedText.LargeHeader, __assign({ fontWeight: 600, color: "black" }, { children: claimConfirmed ? jsxRuntime.jsx(macro.Trans, { children: "Claimed!" }, void 0) : jsxRuntime.jsx(macro.Trans, { children: "Claiming" }, void 0) }), void 0), !claimConfirmed && (jsxRuntime.jsx(rebass.Text, __assign({ fontSize: 36, color: '#ff007a', fontWeight: 800 }, { children: jsxRuntime.jsxs(macro.Trans, { children: [unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_g = { groupSeparator: ',' }) !== null && _g !== void 0 ? _g : '-'), " UNI"] }, void 0) }), void 0))] }), void 0), claimConfirmed && (jsxRuntime.jsx(jsxRuntime.Fragment, { children: jsxRuntime.jsx(ThemedText.SubHeader, __assign({ fontWeight: 500, color: "black" }, { children: jsxRuntime.jsxs(macro.Trans, { children: [jsxRuntime.jsxs("span", __assign({ role: "img", "aria-label": "party-hat" }, { children: ["\uD83C\uDF89", ' '] }), void 0), "Welcome to team Unicorn :)", ' ', jsxRuntime.jsx("span", __assign({ role: "img", "aria-label": "party-hat" }, { children: "\uD83C\uDF89" }), void 0)] }, void 0) }), void 0) }, void 0)), attempting && !claimSubmitted && (jsxRuntime.jsx(ThemedText.SubHeader, __assign({ color: "black" }, { children: jsxRuntime.jsx(macro.Trans, { children: "Confirm this transaction in your wallet" }, void 0) }), void 0)), attempting && claimSubmitted && !claimConfirmed && chainId && (claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.hash) && (jsxRuntime.jsx(ExternalLink, __assign({ href: getExplorerLink(chainId, claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.hash, ExplorerDataType.TRANSACTION), style: { zIndex: 99 } }, { children: jsxRuntime.jsx(macro.Trans, { children: "View transaction on Explorer" }, void 0) }), void 0))] }), void 0)] }), void 0))] }), void 0));
+  return /*#__PURE__*/ React__namespace.createElement(
+    'svg',
+    _extends$7(
+      {
+        width: 14,
+        height: 15,
+        viewBox: '0 0 14 15',
+        fill: 'black',
+        xmlns: 'http://www.w3.org/2000/svg',
+      },
+      props
+    ),
+    /*#__PURE__*/ React__namespace.createElement(
+      'g',
+      {
+        style: {
+          mixBlendMode: 'darken',
+        },
+      },
+      _path$5 ||
+        (_path$5 = /*#__PURE__*/ React__namespace.createElement('path', {
+          d: 'M4.15217 1.55141C3.96412 1.52242 3.95619 1.51902 4.04468 1.5055C4.21427 1.47958 4.61472 1.51491 4.89067 1.58012C5.53489 1.73232 6.12109 2.12221 6.74683 2.81466L6.91307 2.99862L7.15088 2.96062C8.15274 2.8006 9.17194 2.92778 10.0244 3.31918C10.2589 3.42686 10.6287 3.64121 10.6749 3.69629C10.6896 3.71384 10.7166 3.82684 10.7349 3.94742C10.7982 4.36458 10.7665 4.68434 10.6382 4.92317C10.5683 5.05313 10.5644 5.09432 10.6114 5.20554C10.6489 5.2943 10.7534 5.35999 10.8569 5.35985C11.0687 5.35956 11.2968 5.0192 11.4024 4.54561L11.4444 4.3575L11.5275 4.45109C11.9835 4.96459 12.3417 5.66488 12.4032 6.16335L12.4192 6.29332L12.3426 6.17517C12.2107 5.97186 12.0781 5.83346 11.9084 5.72183C11.6024 5.52062 11.2789 5.45215 10.4222 5.40727C9.64839 5.36675 9.21045 5.30106 8.77621 5.16032C8.03738 4.9209 7.66493 4.60204 6.78729 3.4576C6.39748 2.94928 6.15654 2.66804 5.91687 2.44155C5.37228 1.92691 4.83716 1.65701 4.15217 1.55141Z',
+        })),
+      _path2$2 ||
+        (_path2$2 = /*#__PURE__*/ React__namespace.createElement('path', {
+          d: 'M10.8494 2.68637C10.8689 2.34575 10.9153 2.12108 11.0088 1.9159C11.0458 1.83469 11.0804 1.76822 11.0858 1.76822C11.0911 1.76822 11.075 1.82816 11.05 1.90142C10.9821 2.10054 10.9709 2.3729 11.0177 2.68978C11.0771 3.09184 11.1109 3.14985 11.5385 3.58416C11.739 3.78788 11.9723 4.0448 12.0568 4.15511L12.2106 4.35568L12.0568 4.21234C11.8688 4.03705 11.4364 3.6952 11.3409 3.64633C11.2768 3.61356 11.2673 3.61413 11.2278 3.65321C11.1914 3.68922 11.1837 3.74333 11.1787 3.99915C11.1708 4.39786 11.1161 4.65377 10.9842 4.90965C10.9128 5.04805 10.9015 5.01851 10.9661 4.8623C11.0143 4.74566 11.0192 4.69439 11.0189 4.30842C11.0181 3.53291 10.9255 3.34647 10.3823 3.02709C10.2447 2.94618 10.0179 2.8295 9.87839 2.76778C9.73887 2.70606 9.62805 2.6523 9.63208 2.64828C9.64746 2.63307 10.1772 2.78675 10.3905 2.86828C10.7077 2.98954 10.76 3.00526 10.7985 2.99063C10.8244 2.98082 10.8369 2.90608 10.8494 2.68637Z',
+        })),
+      _path3$1 ||
+        (_path3$1 = /*#__PURE__*/ React__namespace.createElement('path', {
+          d: 'M4.51745 4.01304C4.13569 3.49066 3.89948 2.68973 3.95062 2.091L3.96643 1.90572L4.05333 1.92148C4.21652 1.95106 4.49789 2.05515 4.62964 2.13469C4.9912 2.35293 5.14773 2.64027 5.30697 3.37811C5.35362 3.59423 5.41482 3.8388 5.44298 3.9216C5.48831 4.05487 5.65962 4.36617 5.7989 4.56834C5.89922 4.71395 5.83258 4.78295 5.61082 4.76305C5.27215 4.73267 4.8134 4.41799 4.51745 4.01304Z',
+        })),
+      _path4 ||
+        (_path4 = /*#__PURE__*/ React__namespace.createElement('path', {
+          d: 'M10.3863 7.90088C8.60224 7.18693 7.97389 6.56721 7.97389 5.52157C7.97389 5.36769 7.97922 5.24179 7.98571 5.24179C7.99221 5.24179 8.06124 5.29257 8.1391 5.35465C8.50088 5.64305 8.906 5.76623 10.0275 5.92885C10.6875 6.02455 11.0589 6.10185 11.4015 6.21477C12.4904 6.57371 13.1641 7.30212 13.3248 8.29426C13.3715 8.58255 13.3441 9.12317 13.2684 9.4081C13.2087 9.63315 13.0263 10.0388 12.9779 10.0544C12.9645 10.0587 12.9514 10.0076 12.9479 9.93809C12.9296 9.56554 12.7402 9.20285 12.4221 8.93116C12.0604 8.62227 11.5745 8.37633 10.3863 7.90088Z',
+        })),
+      _path5 ||
+        (_path5 = /*#__PURE__*/ React__namespace.createElement('path', {
+          d: 'M9.13385 8.19748C9.11149 8.06527 9.07272 7.89643 9.04769 7.82228L9.00217 7.68748L9.08672 7.7818C9.20374 7.91233 9.2962 8.07937 9.37457 8.30185C9.43438 8.47165 9.44111 8.52215 9.44066 8.79807C9.4402 9.06896 9.43273 9.12575 9.3775 9.27858C9.29042 9.51959 9.18233 9.69048 9.00097 9.87391C8.67507 10.2036 8.25607 10.3861 7.65143 10.4618C7.54633 10.4749 7.24 10.4971 6.97069 10.511C6.292 10.5461 5.84531 10.6186 5.44393 10.7587C5.38623 10.7788 5.3347 10.7911 5.32947 10.7859C5.31323 10.7698 5.58651 10.6079 5.81223 10.4998C6.1305 10.3474 6.44733 10.2643 7.15719 10.1468C7.50785 10.0887 7.86998 10.0183 7.96194 9.99029C8.83033 9.72566 9.27671 9.04276 9.13385 8.19748Z',
+        })),
+      _path6 ||
+        (_path6 = /*#__PURE__*/ React__namespace.createElement('path', {
+          d: 'M9.95169 9.64109C9.71465 9.13463 9.66022 8.64564 9.79009 8.18961C9.80399 8.14088 9.82632 8.101 9.83976 8.101C9.85319 8.101 9.90913 8.13105 9.96404 8.16777C10.0733 8.24086 10.2924 8.36395 10.876 8.68023C11.6043 9.0749 12.0196 9.3805 12.302 9.72965C12.5493 10.0354 12.7023 10.3837 12.776 10.8084C12.8177 11.0489 12.7932 11.6277 12.7311 11.8699C12.5353 12.6337 12.0802 13.2336 11.4311 13.5837C11.336 13.635 11.2506 13.6771 11.2414 13.6773C11.2321 13.6775 11.2668 13.5899 11.3184 13.4827C11.5367 13.029 11.5616 12.5877 11.3965 12.0965C11.2954 11.7957 11.0893 11.4287 10.6732 10.8084C10.1893 10.0873 10.0707 9.89539 9.95169 9.64109Z',
+        })),
+      _path7 ||
+        (_path7 = /*#__PURE__*/ React__namespace.createElement('path', {
+          d: 'M3.25046 12.3737C3.91252 11.8181 4.73629 11.4234 5.48666 11.3022C5.81005 11.25 6.34877 11.2707 6.64823 11.3469C7.12824 11.469 7.55763 11.7425 7.78094 12.0683C7.99918 12.3867 8.09281 12.6642 8.19029 13.2816C8.22875 13.5252 8.27057 13.7697 8.28323 13.8251C8.35644 14.1451 8.4989 14.4008 8.67544 14.5293C8.95583 14.7333 9.43865 14.7459 9.91362 14.5618C9.99423 14.5305 10.0642 14.5089 10.0691 14.5138C10.0864 14.5308 9.84719 14.6899 9.67847 14.7737C9.45143 14.8864 9.2709 14.93 9.03102 14.93C8.59601 14.93 8.23486 14.7101 7.9335 14.2616C7.87419 14.1733 7.7409 13.909 7.63729 13.6741C7.3191 12.9528 7.16199 12.7331 6.79255 12.4926C6.47104 12.2834 6.05641 12.2459 5.74449 12.3979C5.33475 12.5976 5.22043 13.118 5.51389 13.4478C5.63053 13.5789 5.84803 13.6919 6.02588 13.7139C6.35861 13.7551 6.64455 13.5035 6.64455 13.1696C6.64455 12.9528 6.56071 12.8291 6.34966 12.7344C6.0614 12.6051 5.75156 12.7562 5.75304 13.0254C5.75368 13.1402 5.80396 13.2122 5.91971 13.2643C5.99397 13.2977 5.99569 13.3003 5.93514 13.2878C5.67066 13.2333 5.6087 12.9164 5.82135 12.706C6.07667 12.4535 6.60461 12.5649 6.78591 12.9097C6.86208 13.0545 6.87092 13.3429 6.80451 13.517C6.6559 13.9068 6.22256 14.1117 5.78297 14.0002C5.48368 13.9242 5.36181 13.842 5.00097 13.4726C4.37395 12.8306 4.13053 12.7062 3.22657 12.566L3.05335 12.5391L3.25046 12.3737Z',
+        })),
+      _path8 ||
+        (_path8 = /*#__PURE__*/ React__namespace.createElement('path', {
+          fillRule: 'evenodd',
+          clipRule: 'evenodd',
+          d: 'M0.308383 0.883984C2.40235 3.40996 3.84457 4.45213 4.00484 4.67231C4.13717 4.85412 4.08737 5.01757 3.86067 5.14567C3.7346 5.21689 3.47541 5.28905 3.34564 5.28905C3.19887 5.28905 3.14847 5.23278 3.14847 5.23278C3.06337 5.15255 3.01544 5.16658 2.5784 4.39555C1.97166 3.45981 1.46389 2.68357 1.45004 2.67057C1.41801 2.64052 1.41856 2.64153 2.51654 4.59413C2.69394 5.0011 2.55182 5.15049 2.55182 5.20845C2.55182 5.32636 2.51946 5.38834 2.37311 5.55059C2.12914 5.8211 2.02008 6.12505 1.94135 6.7541C1.8531 7.45926 1.60492 7.95737 0.917156 8.80989C0.514562 9.30893 0.448686 9.4004 0.3471 9.60153C0.219144 9.85482 0.183961 9.99669 0.169701 10.3165C0.154629 10.6547 0.183983 10.8732 0.287934 11.1965C0.378939 11.4796 0.473932 11.6665 0.716778 12.0403C0.926351 12.3629 1.04702 12.6027 1.04702 12.6965C1.04702 12.7711 1.06136 12.7712 1.38611 12.6983C2.16328 12.5239 2.79434 12.2171 3.14925 11.8411C3.36891 11.6084 3.42048 11.4799 3.42215 11.1611C3.42325 10.9525 3.41587 10.9088 3.35914 10.7888C3.2668 10.5935 3.09869 10.4311 2.72817 10.1794C2.2427 9.84953 2.03534 9.58398 1.97807 9.21878C1.93108 8.91913 1.98559 8.70771 2.25416 8.14825C2.53214 7.56916 2.60103 7.32239 2.64763 6.73869C2.67773 6.36158 2.71941 6.21286 2.82842 6.09348C2.94212 5.969 3.04447 5.92684 3.32584 5.88863C3.78457 5.82635 4.07667 5.70839 4.31677 5.48849C4.52505 5.29772 4.61221 5.11391 4.62558 4.8372L4.63574 4.62747L4.51934 4.49259C4.09783 4.00411 0.0261003 0.5 0.000160437 0.5C-0.00538105 0.5 0.133325 0.672804 0.308383 0.883984ZM1.28364 10.6992C1.37894 10.5314 1.3283 10.3158 1.16889 10.2104C1.01827 10.1109 0.78428 10.1578 0.78428 10.2875C0.78428 10.3271 0.806303 10.3559 0.855937 10.3813C0.939514 10.424 0.945581 10.4721 0.879823 10.5703C0.81323 10.6698 0.818604 10.7573 0.894991 10.8167C1.0181 10.9125 1.19237 10.8598 1.28364 10.6992Z',
+        })),
+      _path9 ||
+        (_path9 = /*#__PURE__*/ React__namespace.createElement('path', {
+          fillRule: 'evenodd',
+          clipRule: 'evenodd',
+          d: 'M4.92523 5.99865C4.70988 6.06439 4.50054 6.29124 4.43574 6.5291C4.39621 6.67421 4.41864 6.92875 4.47785 7.00736C4.57351 7.13433 4.66602 7.16778 4.91651 7.16603C5.40693 7.16263 5.83327 6.95358 5.88284 6.69224C5.92347 6.47801 5.73622 6.18112 5.4783 6.05078C5.34521 5.98355 5.06217 5.95688 4.92523 5.99865ZM5.49853 6.44422C5.57416 6.33741 5.54107 6.22198 5.41245 6.14391C5.1675 5.99525 4.79708 6.11827 4.79708 6.34826C4.79708 6.46274 4.99025 6.58765 5.16731 6.58765C5.28516 6.58765 5.44644 6.5178 5.49853 6.44422Z',
+        }))
+    )
+  )
 }
-var templateObject_1$18, templateObject_2$Q, templateObject_3$I, templateObject_4$x;
+var UNISWAP_LOGO_URL =
+  'data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2215%22%20viewBox%3D%220%200%2014%2015%22%20fill%3D%22black%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20style%3D%22mix-blend-mode%3Adarken%22%3E%3Cpath%20d%3D%22M4.15217%201.55141C3.96412%201.52242%203.95619%201.51902%204.04468%201.5055C4.21427%201.47958%204.61472%201.51491%204.89067%201.58012C5.53489%201.73232%206.12109%202.12221%206.74683%202.81466L6.91307%202.99862L7.15088%202.96062C8.15274%202.8006%209.17194%202.92778%2010.0244%203.31918C10.2589%203.42686%2010.6287%203.64121%2010.6749%203.69629C10.6896%203.71384%2010.7166%203.82684%2010.7349%203.94742C10.7982%204.36458%2010.7665%204.68434%2010.6382%204.92317C10.5683%205.05313%2010.5644%205.09432%2010.6114%205.20554C10.6489%205.2943%2010.7534%205.35999%2010.8569%205.35985C11.0687%205.35956%2011.2968%205.0192%2011.4024%204.54561L11.4444%204.3575L11.5275%204.45109C11.9835%204.96459%2012.3417%205.66488%2012.4032%206.16335L12.4192%206.29332L12.3426%206.17517C12.2107%205.97186%2012.0781%205.83346%2011.9084%205.72183C11.6024%205.52062%2011.2789%205.45215%2010.4222%205.40727C9.64839%205.36675%209.21045%205.30106%208.77621%205.16032C8.03738%204.9209%207.66493%204.60204%206.78729%203.4576C6.39748%202.94928%206.15654%202.66804%205.91687%202.44155C5.37228%201.92691%204.83716%201.65701%204.15217%201.55141Z%22%2F%3E%3Cpath%20d%3D%22M10.8494%202.68637C10.8689%202.34575%2010.9153%202.12108%2011.0088%201.9159C11.0458%201.83469%2011.0804%201.76822%2011.0858%201.76822C11.0911%201.76822%2011.075%201.82816%2011.05%201.90142C10.9821%202.10054%2010.9709%202.3729%2011.0177%202.68978C11.0771%203.09184%2011.1109%203.14985%2011.5385%203.58416C11.739%203.78788%2011.9723%204.0448%2012.0568%204.15511L12.2106%204.35568L12.0568%204.21234C11.8688%204.03705%2011.4364%203.6952%2011.3409%203.64633C11.2768%203.61356%2011.2673%203.61413%2011.2278%203.65321C11.1914%203.68922%2011.1837%203.74333%2011.1787%203.99915C11.1708%204.39786%2011.1161%204.65377%2010.9842%204.90965C10.9128%205.04805%2010.9015%205.01851%2010.9661%204.8623C11.0143%204.74566%2011.0192%204.69439%2011.0189%204.30842C11.0181%203.53291%2010.9255%203.34647%2010.3823%203.02709C10.2447%202.94618%2010.0179%202.8295%209.87839%202.76778C9.73887%202.70606%209.62805%202.6523%209.63208%202.64828C9.64746%202.63307%2010.1772%202.78675%2010.3905%202.86828C10.7077%202.98954%2010.76%203.00526%2010.7985%202.99063C10.8244%202.98082%2010.8369%202.90608%2010.8494%202.68637Z%22%2F%3E%3Cpath%20d%3D%22M4.51745%204.01304C4.13569%203.49066%203.89948%202.68973%203.95062%202.091L3.96643%201.90572L4.05333%201.92148C4.21652%201.95106%204.49789%202.05515%204.62964%202.13469C4.9912%202.35293%205.14773%202.64027%205.30697%203.37811C5.35362%203.59423%205.41482%203.8388%205.44298%203.9216C5.48831%204.05487%205.65962%204.36617%205.7989%204.56834C5.89922%204.71395%205.83258%204.78295%205.61082%204.76305C5.27215%204.73267%204.8134%204.41799%204.51745%204.01304Z%22%2F%3E%3Cpath%20d%3D%22M10.3863%207.90088C8.60224%207.18693%207.97389%206.56721%207.97389%205.52157C7.97389%205.36769%207.97922%205.24179%207.98571%205.24179C7.99221%205.24179%208.06124%205.29257%208.1391%205.35465C8.50088%205.64305%208.906%205.76623%2010.0275%205.92885C10.6875%206.02455%2011.0589%206.10185%2011.4015%206.21477C12.4904%206.57371%2013.1641%207.30212%2013.3248%208.29426C13.3715%208.58255%2013.3441%209.12317%2013.2684%209.4081C13.2087%209.63315%2013.0263%2010.0388%2012.9779%2010.0544C12.9645%2010.0587%2012.9514%2010.0076%2012.9479%209.93809C12.9296%209.56554%2012.7402%209.20285%2012.4221%208.93116C12.0604%208.62227%2011.5745%208.37633%2010.3863%207.90088Z%22%2F%3E%3Cpath%20d%3D%22M9.13385%208.19748C9.11149%208.06527%209.07272%207.89643%209.04769%207.82228L9.00217%207.68748L9.08672%207.7818C9.20374%207.91233%209.2962%208.07937%209.37457%208.30185C9.43438%208.47165%209.44111%208.52215%209.44066%208.79807C9.4402%209.06896%209.43273%209.12575%209.3775%209.27858C9.29042%209.51959%209.18233%209.69048%209.00097%209.87391C8.67507%2010.2036%208.25607%2010.3861%207.65143%2010.4618C7.54633%2010.4749%207.24%2010.4971%206.97069%2010.511C6.292%2010.5461%205.84531%2010.6186%205.44393%2010.7587C5.38623%2010.7788%205.3347%2010.7911%205.32947%2010.7859C5.31323%2010.7698%205.58651%2010.6079%205.81223%2010.4998C6.1305%2010.3474%206.44733%2010.2643%207.15719%2010.1468C7.50785%2010.0887%207.86998%2010.0183%207.96194%209.99029C8.83033%209.72566%209.27671%209.04276%209.13385%208.19748Z%22%2F%3E%3Cpath%20d%3D%22M9.95169%209.64109C9.71465%209.13463%209.66022%208.64564%209.79009%208.18961C9.80399%208.14088%209.82632%208.101%209.83976%208.101C9.85319%208.101%209.90913%208.13105%209.96404%208.16777C10.0733%208.24086%2010.2924%208.36395%2010.876%208.68023C11.6043%209.0749%2012.0196%209.3805%2012.302%209.72965C12.5493%2010.0354%2012.7023%2010.3837%2012.776%2010.8084C12.8177%2011.0489%2012.7932%2011.6277%2012.7311%2011.8699C12.5353%2012.6337%2012.0802%2013.2336%2011.4311%2013.5837C11.336%2013.635%2011.2506%2013.6771%2011.2414%2013.6773C11.2321%2013.6775%2011.2668%2013.5899%2011.3184%2013.4827C11.5367%2013.029%2011.5616%2012.5877%2011.3965%2012.0965C11.2954%2011.7957%2011.0893%2011.4287%2010.6732%2010.8084C10.1893%2010.0873%2010.0707%209.89539%209.95169%209.64109Z%22%2F%3E%3Cpath%20d%3D%22M3.25046%2012.3737C3.91252%2011.8181%204.73629%2011.4234%205.48666%2011.3022C5.81005%2011.25%206.34877%2011.2707%206.64823%2011.3469C7.12824%2011.469%207.55763%2011.7425%207.78094%2012.0683C7.99918%2012.3867%208.09281%2012.6642%208.19029%2013.2816C8.22875%2013.5252%208.27057%2013.7697%208.28323%2013.8251C8.35644%2014.1451%208.4989%2014.4008%208.67544%2014.5293C8.95583%2014.7333%209.43865%2014.7459%209.91362%2014.5618C9.99423%2014.5305%2010.0642%2014.5089%2010.0691%2014.5138C10.0864%2014.5308%209.84719%2014.6899%209.67847%2014.7737C9.45143%2014.8864%209.2709%2014.93%209.03102%2014.93C8.59601%2014.93%208.23486%2014.7101%207.9335%2014.2616C7.87419%2014.1733%207.7409%2013.909%207.63729%2013.6741C7.3191%2012.9528%207.16199%2012.7331%206.79255%2012.4926C6.47104%2012.2834%206.05641%2012.2459%205.74449%2012.3979C5.33475%2012.5976%205.22043%2013.118%205.51389%2013.4478C5.63053%2013.5789%205.84803%2013.6919%206.02588%2013.7139C6.35861%2013.7551%206.64455%2013.5035%206.64455%2013.1696C6.64455%2012.9528%206.56071%2012.8291%206.34966%2012.7344C6.0614%2012.6051%205.75156%2012.7562%205.75304%2013.0254C5.75368%2013.1402%205.80396%2013.2122%205.91971%2013.2643C5.99397%2013.2977%205.99569%2013.3003%205.93514%2013.2878C5.67066%2013.2333%205.6087%2012.9164%205.82135%2012.706C6.07667%2012.4535%206.60461%2012.5649%206.78591%2012.9097C6.86208%2013.0545%206.87092%2013.3429%206.80451%2013.517C6.6559%2013.9068%206.22256%2014.1117%205.78297%2014.0002C5.48368%2013.9242%205.36181%2013.842%205.00097%2013.4726C4.37395%2012.8306%204.13053%2012.7062%203.22657%2012.566L3.05335%2012.5391L3.25046%2012.3737Z%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M0.308383%200.883984C2.40235%203.40996%203.84457%204.45213%204.00484%204.67231C4.13717%204.85412%204.08737%205.01757%203.86067%205.14567C3.7346%205.21689%203.47541%205.28905%203.34564%205.28905C3.19887%205.28905%203.14847%205.23278%203.14847%205.23278C3.06337%205.15255%203.01544%205.16658%202.5784%204.39555C1.97166%203.45981%201.46389%202.68357%201.45004%202.67057C1.41801%202.64052%201.41856%202.64153%202.51654%204.59413C2.69394%205.0011%202.55182%205.15049%202.55182%205.20845C2.55182%205.32636%202.51946%205.38834%202.37311%205.55059C2.12914%205.8211%202.02008%206.12505%201.94135%206.7541C1.8531%207.45926%201.60492%207.95737%200.917156%208.80989C0.514562%209.30893%200.448686%209.4004%200.3471%209.60153C0.219144%209.85482%200.183961%209.99669%200.169701%2010.3165C0.154629%2010.6547%200.183983%2010.8732%200.287934%2011.1965C0.378939%2011.4796%200.473932%2011.6665%200.716778%2012.0403C0.926351%2012.3629%201.04702%2012.6027%201.04702%2012.6965C1.04702%2012.7711%201.06136%2012.7712%201.38611%2012.6983C2.16328%2012.5239%202.79434%2012.2171%203.14925%2011.8411C3.36891%2011.6084%203.42048%2011.4799%203.42215%2011.1611C3.42325%2010.9525%203.41587%2010.9088%203.35914%2010.7888C3.2668%2010.5935%203.09869%2010.4311%202.72817%2010.1794C2.2427%209.84953%202.03534%209.58398%201.97807%209.21878C1.93108%208.91913%201.98559%208.70771%202.25416%208.14825C2.53214%207.56916%202.60103%207.32239%202.64763%206.73869C2.67773%206.36158%202.71941%206.21286%202.82842%206.09348C2.94212%205.969%203.04447%205.92684%203.32584%205.88863C3.78457%205.82635%204.07667%205.70839%204.31677%205.48849C4.52505%205.29772%204.61221%205.11391%204.62558%204.8372L4.63574%204.62747L4.51934%204.49259C4.09783%204.00411%200.0261003%200.5%200.000160437%200.5C-0.00538105%200.5%200.133325%200.672804%200.308383%200.883984ZM1.28364%2010.6992C1.37894%2010.5314%201.3283%2010.3158%201.16889%2010.2104C1.01827%2010.1109%200.78428%2010.1578%200.78428%2010.2875C0.78428%2010.3271%200.806303%2010.3559%200.855937%2010.3813C0.939514%2010.424%200.945581%2010.4721%200.879823%2010.5703C0.81323%2010.6698%200.818604%2010.7573%200.894991%2010.8167C1.0181%2010.9125%201.19237%2010.8598%201.28364%2010.6992Z%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M4.92523%205.99865C4.70988%206.06439%204.50054%206.29124%204.43574%206.5291C4.39621%206.67421%204.41864%206.92875%204.47785%207.00736C4.57351%207.13433%204.66602%207.16778%204.91651%207.16603C5.40693%207.16263%205.83327%206.95358%205.88284%206.69224C5.92347%206.47801%205.73622%206.18112%205.4783%206.05078C5.34521%205.98355%205.06217%205.95688%204.92523%205.99865ZM5.49853%206.44422C5.57416%206.33741%205.54107%206.22198%205.41245%206.14391C5.1675%205.99525%204.79708%206.11827%204.79708%206.34826C4.79708%206.46274%204.99025%206.58765%205.16731%206.58765C5.28516%206.58765%205.44644%206.5178%205.49853%206.44422Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E'
 
-var Card = styled__default["default"](styledComponents.Box)(templateObject_1$17 || (templateObject_1$17 = __makeTemplateObject(["\n  width: ", ";\n  padding: ", ";\n  border-radius: ", ";\n  border: ", ";\n"], ["\n  width: ", ";\n  padding: ", ";\n  border-radius: ", ";\n  border: ", ";\n"])), function (_a) {
-    var width = _a.width;
-    return width !== null && width !== void 0 ? width : '100%';
-}, function (_a) {
-    var padding = _a.padding;
-    return padding !== null && padding !== void 0 ? padding : '1rem';
-}, function (_a) {
-    var $borderRadius = _a.$borderRadius;
-    return $borderRadius !== null && $borderRadius !== void 0 ? $borderRadius : '16px';
-}, function (_a) {
-    var border = _a.border;
-    return border;
-});
-var LightCard = styled__default["default"](Card)(templateObject_2$P || (templateObject_2$P = __makeTemplateObject(["\n  border: 1px solid ", ";\n  background-color: ", ";\n"], ["\n  border: 1px solid ", ";\n  background-color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg2;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.bg1;
-});
-var LightGreyCard = styled__default["default"](Card)(templateObject_3$H || (templateObject_3$H = __makeTemplateObject(["\n  background-color: ", ";\n"], ["\n  background-color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg2;
-});
-var GreyCard = styled__default["default"](Card)(templateObject_4$w || (templateObject_4$w = __makeTemplateObject(["\n  background-color: ", ";\n"], ["\n  background-color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg3;
-});
-var DarkGreyCard = styled__default["default"](Card)(templateObject_5$p || (templateObject_5$p = __makeTemplateObject(["\n  background-color: ", ";\n"], ["\n  background-color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg2;
-});
-styled__default["default"](Card)(templateObject_6$k || (templateObject_6$k = __makeTemplateObject(["\n  background-color: ", ";\n"], ["\n  background-color: ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg0;
-});
-var OutlineCard = styled__default["default"](Card)(templateObject_7$h || (templateObject_7$h = __makeTemplateObject(["\n  border: 1px solid ", ";\n"], ["\n  border: 1px solid ", ";\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.bg3;
-});
-styled__default["default"](Card)(templateObject_8$f || (templateObject_8$f = __makeTemplateObject(["\n  background-color: rgba(243, 132, 30, 0.05);\n  color: ", ";\n  font-weight: 500;\n"], ["\n  background-color: rgba(243, 132, 30, 0.05);\n  color: ", ";\n  font-weight: 500;\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.yellow3;
-});
-styled__default["default"](Card)(templateObject_9$e || (templateObject_9$e = __makeTemplateObject(["\n  background-color: ", ";\n  color: ", ";\n  border-radius: 12px;\n"], ["\n  background-color: ", ";\n  color: ", ";\n  border-radius: 12px;\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary5;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.blue2;
-});
-var templateObject_1$17, templateObject_2$P, templateObject_3$H, templateObject_4$w, templateObject_5$p, templateObject_6$k, templateObject_7$h, templateObject_8$f, templateObject_9$e;
+var ContentWrapper$3 = styled__default['default'](AutoColumn)(
+  templateObject_1$18 || (templateObject_1$18 = __makeTemplateObject(['\n  width: 100%;\n'], ['\n  width: 100%;\n']))
+)
+var ModalUpper = styled__default['default'](DataCard)(
+  templateObject_2$Q ||
+    (templateObject_2$Q = __makeTemplateObject(
+      [
+        '\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);\n',
+      ],
+      [
+        '\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);\n',
+      ]
+    ))
+)
+var ConfirmOrLoadingWrapper = styled__default['default'].div(
+  templateObject_3$I ||
+    (templateObject_3$I = __makeTemplateObject(
+      ['\n  width: 100%;\n  padding: 24px;\n  position: relative;\n  background: ', ';\n'],
+      ['\n  width: 100%;\n  padding: 24px;\n  position: relative;\n  background: ', ';\n']
+    )),
+  function (_a) {
+    var activeBG = _a.activeBG
+    return (
+      activeBG &&
+      'radial-gradient(76.02% 75.41% at 1.84% 0%, rgba(255, 0, 122, 0.2) 0%, rgba(33, 114, 229, 0.2) 100%), #FFFFFF;'
+    )
+  }
+)
+var ConfirmedIcon$1 = styled__default['default'](ColumnCenter)(
+  templateObject_4$x ||
+    (templateObject_4$x = __makeTemplateObject(['\n  padding: 60px 0;\n'], ['\n  padding: 60px 0;\n']))
+)
+var SOCKS_AMOUNT = 1000
+var USER_AMOUNT = 400
+function ClaimModal() {
+  var _a, _b, _c, _d, _e, _f, _g
+  var isOpen = useModalOpen(ApplicationModal.SELF_CLAIM)
+  var toggleClaimModal = useToggleSelfClaimModal()
+  var _h = useActiveWeb3React(),
+    account = _h.account,
+    chainId = _h.chainId
+  // used for UI loading states
+  var _j = __read(React.useState(false), 2),
+    attempting = _j[0],
+    setAttempting = _j[1]
+  // get user claim data
+  var userClaimData = useUserClaimData(account)
+  // monitor the status of the claim from contracts and txns
+  var claimCallback = useClaimCallback(account).claimCallback
+  var unclaimedAmount = useUserUnclaimedAmount(account)
+  var _k = useUserHasSubmittedClaim(account !== null && account !== void 0 ? account : undefined),
+    claimSubmitted = _k.claimSubmitted,
+    claimTxn = _k.claimTxn
+  var claimConfirmed = Boolean(claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.receipt)
+  function onClaim() {
+    setAttempting(true)
+    claimCallback()
+      // reset modal and log error
+      .catch(function (error) {
+        setAttempting(false)
+        console.log(error)
+      })
+  }
+  // once confirmed txn is found, if modal is closed open, mark as not attempting regradless
+  React.useEffect(
+    function () {
+      if (claimConfirmed && claimSubmitted && attempting) {
+        setAttempting(false)
+        if (!isOpen) {
+          toggleClaimModal()
+        }
+      }
+    },
+    [attempting, claimConfirmed, claimSubmitted, isOpen, toggleClaimModal]
+  )
+  var nonLPAmount = JSBI__default['default'].multiply(
+    JSBI__default['default'].BigInt(
+      ((
+        (_a = userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.flags) === null ||
+        _a === void 0
+          ? void 0
+          : _a.isSOCKS
+      )
+        ? SOCKS_AMOUNT
+        : 0) +
+        ((
+          (_b = userClaimData === null || userClaimData === void 0 ? void 0 : userClaimData.flags) === null ||
+          _b === void 0
+            ? void 0
+            : _b.isUser
+        )
+          ? USER_AMOUNT
+          : 0)
+    ),
+    JSBI__default['default'].exponentiate(JSBI__default['default'].BigInt(10), JSBI__default['default'].BigInt(18))
+  )
+  return jsxRuntime.jsxs(
+    Modal,
+    __assign(
+      { isOpen, onDismiss: toggleClaimModal, maxHeight: 90 },
+      {
+        children: [
+          jsxRuntime.jsx(Confetti, { start: Boolean(isOpen && claimConfirmed) }, void 0),
+          !attempting &&
+            !claimConfirmed &&
+            jsxRuntime.jsxs(
+              ContentWrapper$3,
+              __assign(
+                { gap: 'lg' },
+                {
+                  children: [
+                    jsxRuntime.jsxs(
+                      ModalUpper,
+                      {
+                        children: [
+                          jsxRuntime.jsx(CardBGImage, {}, void 0),
+                          jsxRuntime.jsx(CardNoise, {}, void 0),
+                          jsxRuntime.jsxs(
+                            CardSection,
+                            __assign(
+                              { gap: 'md' },
+                              {
+                                children: [
+                                  jsxRuntime.jsxs(
+                                    RowBetween,
+                                    {
+                                      children: [
+                                        jsxRuntime.jsx(
+                                          ThemedText.White,
+                                          __assign(
+                                            { fontWeight: 500 },
+                                            { children: jsxRuntime.jsx(macro.Trans, { children: 'Claim UNI' }, void 0) }
+                                          ),
+                                          void 0
+                                        ),
+                                        jsxRuntime.jsx(
+                                          CloseIcon$2,
+                                          { onClick: toggleClaimModal, style: { zIndex: 99 }, color: 'white' },
+                                          void 0
+                                        ),
+                                      ],
+                                    },
+                                    void 0
+                                  ),
+                                  jsxRuntime.jsx(
+                                    ThemedText.White,
+                                    __assign(
+                                      { fontWeight: 700, fontSize: 36 },
+                                      {
+                                        children: jsxRuntime.jsxs(
+                                          macro.Trans,
+                                          {
+                                            children: [
+                                              unclaimedAmount === null || unclaimedAmount === void 0
+                                                ? void 0
+                                                : unclaimedAmount.toFixed(
+                                                    0,
+                                                    (_c = { groupSeparator: ',' }) !== null && _c !== void 0 ? _c : '-'
+                                                  ),
+                                              ' UNI',
+                                            ],
+                                          },
+                                          void 0
+                                        ),
+                                      }
+                                    ),
+                                    void 0
+                                  ),
+                                ],
+                              }
+                            ),
+                            void 0
+                          ),
+                          jsxRuntime.jsx(Break$1, {}, void 0),
+                          jsxRuntime.jsxs(
+                            CardSection,
+                            __assign(
+                              { gap: 'sm' },
+                              {
+                                children: [
+                                  ((_d =
+                                    userClaimData === null || userClaimData === void 0
+                                      ? void 0
+                                      : userClaimData.flags) === null || _d === void 0
+                                    ? void 0
+                                    : _d.isSOCKS) &&
+                                    jsxRuntime.jsxs(
+                                      RowBetween,
+                                      {
+                                        children: [
+                                          jsxRuntime.jsx(
+                                            ThemedText.SubHeader,
+                                            __assign({ color: 'white' }, { children: 'SOCKS' }),
+                                            void 0
+                                          ),
+                                          jsxRuntime.jsx(
+                                            ThemedText.SubHeader,
+                                            __assign(
+                                              { color: 'white' },
+                                              {
+                                                children: jsxRuntime.jsxs(
+                                                  macro.Trans,
+                                                  { children: [SOCKS_AMOUNT, ' UNI'] },
+                                                  void 0
+                                                ),
+                                              }
+                                            ),
+                                            void 0
+                                          ),
+                                        ],
+                                      },
+                                      void 0
+                                    ),
+                                  ((_e =
+                                    userClaimData === null || userClaimData === void 0
+                                      ? void 0
+                                      : userClaimData.flags) === null || _e === void 0
+                                    ? void 0
+                                    : _e.isLP) &&
+                                    unclaimedAmount &&
+                                    JSBI__default['default'].greaterThanOrEqual(
+                                      unclaimedAmount.quotient,
+                                      nonLPAmount
+                                    ) &&
+                                    jsxRuntime.jsxs(
+                                      RowBetween,
+                                      {
+                                        children: [
+                                          jsxRuntime.jsx(
+                                            ThemedText.SubHeader,
+                                            __assign(
+                                              { color: 'white' },
+                                              {
+                                                children: jsxRuntime.jsx(
+                                                  macro.Trans,
+                                                  { children: 'Liquidity' },
+                                                  void 0
+                                                ),
+                                              }
+                                            ),
+                                            void 0
+                                          ),
+                                          jsxRuntime.jsx(
+                                            ThemedText.SubHeader,
+                                            __assign(
+                                              { color: 'white' },
+                                              {
+                                                children: jsxRuntime.jsxs(
+                                                  macro.Trans,
+                                                  {
+                                                    children: [
+                                                      unclaimedAmount
+                                                        .subtract(
+                                                          sdkCore.CurrencyAmount.fromRawAmount(
+                                                            unclaimedAmount.currency,
+                                                            nonLPAmount
+                                                          )
+                                                        )
+                                                        .toFixed(0, { groupSeparator: ',' }),
+                                                      ' ',
+                                                      'UNI',
+                                                    ],
+                                                  },
+                                                  void 0
+                                                ),
+                                              }
+                                            ),
+                                            void 0
+                                          ),
+                                        ],
+                                      },
+                                      void 0
+                                    ),
+                                  ((_f =
+                                    userClaimData === null || userClaimData === void 0
+                                      ? void 0
+                                      : userClaimData.flags) === null || _f === void 0
+                                    ? void 0
+                                    : _f.isUser) &&
+                                    jsxRuntime.jsxs(
+                                      RowBetween,
+                                      {
+                                        children: [
+                                          jsxRuntime.jsx(
+                                            ThemedText.SubHeader,
+                                            __assign(
+                                              { color: 'white' },
+                                              { children: jsxRuntime.jsx(macro.Trans, { children: 'User' }, void 0) }
+                                            ),
+                                            void 0
+                                          ),
+                                          jsxRuntime.jsx(
+                                            ThemedText.SubHeader,
+                                            __assign(
+                                              { color: 'white' },
+                                              {
+                                                children: jsxRuntime.jsxs(
+                                                  macro.Trans,
+                                                  { children: [USER_AMOUNT, ' UNI'] },
+                                                  void 0
+                                                ),
+                                              }
+                                            ),
+                                            void 0
+                                          ),
+                                        ],
+                                      },
+                                      void 0
+                                    ),
+                                ],
+                              }
+                            ),
+                            void 0
+                          ),
+                        ],
+                      },
+                      void 0
+                    ),
+                    jsxRuntime.jsxs(
+                      AutoColumn,
+                      __assign(
+                        { gap: 'md', style: { padding: '1rem', paddingTop: '0' }, justify: 'center' },
+                        {
+                          children: [
+                            jsxRuntime.jsx(
+                              ThemedText.SubHeader,
+                              __assign(
+                                { fontWeight: 500 },
+                                {
+                                  children: jsxRuntime.jsxs(
+                                    macro.Trans,
+                                    {
+                                      children: [
+                                        'As a member of the Uniswap community you may claim UNI to be used for voting and governance.',
+                                        jsxRuntime.jsx('br', {}, void 0),
+                                        jsxRuntime.jsx('br', {}, void 0),
+                                        jsxRuntime.jsx(
+                                          ExternalLink,
+                                          __assign(
+                                            { href: 'https://uniswap.org/blog/uni' },
+                                            { children: 'Read more about UNI' }
+                                          ),
+                                          void 0
+                                        ),
+                                      ],
+                                    },
+                                    void 0
+                                  ),
+                                }
+                              ),
+                              void 0
+                            ),
+                            jsxRuntime.jsx(
+                              ButtonPrimary,
+                              __assign(
+                                {
+                                  disabled: !address.isAddress(account !== null && account !== void 0 ? account : ''),
+                                  padding: '16px 16px',
+                                  width: '100%',
+                                  $borderRadius: '12px',
+                                  mt: '1rem',
+                                  onClick: onClaim,
+                                },
+                                { children: jsxRuntime.jsx(macro.Trans, { children: 'Claim UNI' }, void 0) }
+                              ),
+                              void 0
+                            ),
+                          ],
+                        }
+                      ),
+                      void 0
+                    ),
+                  ],
+                }
+              ),
+              void 0
+            ),
+          (attempting || claimConfirmed) &&
+            jsxRuntime.jsxs(
+              ConfirmOrLoadingWrapper,
+              __assign(
+                { activeBG: true },
+                {
+                  children: [
+                    jsxRuntime.jsx(CardNoise, {}, void 0),
+                    jsxRuntime.jsx(CardBGImageSmaller, { desaturate: true }, void 0),
+                    jsxRuntime.jsxs(
+                      RowBetween,
+                      {
+                        children: [
+                          jsxRuntime.jsx('div', {}, void 0),
+                          jsxRuntime.jsx(
+                            CloseIcon$2,
+                            { onClick: toggleClaimModal, style: { zIndex: 99 }, stroke: 'black' },
+                            void 0
+                          ),
+                        ],
+                      },
+                      void 0
+                    ),
+                    jsxRuntime.jsx(
+                      ConfirmedIcon$1,
+                      {
+                        children: !claimConfirmed
+                          ? jsxRuntime.jsx(CustomLightSpinner, { src: Circle$1, alt: 'loader', size: '90px' }, void 0)
+                          : jsxRuntime.jsx(UniTokenAnimated, { width: '72px', src: tokenLogo, alt: 'UNI' }, void 0),
+                      },
+                      void 0
+                    ),
+                    jsxRuntime.jsxs(
+                      AutoColumn,
+                      __assign(
+                        { gap: '100px', justify: 'center' },
+                        {
+                          children: [
+                            jsxRuntime.jsxs(
+                              AutoColumn,
+                              __assign(
+                                { gap: '12px', justify: 'center' },
+                                {
+                                  children: [
+                                    jsxRuntime.jsx(
+                                      ThemedText.LargeHeader,
+                                      __assign(
+                                        { fontWeight: 600, color: 'black' },
+                                        {
+                                          children: claimConfirmed
+                                            ? jsxRuntime.jsx(macro.Trans, { children: 'Claimed!' }, void 0)
+                                            : jsxRuntime.jsx(macro.Trans, { children: 'Claiming' }, void 0),
+                                        }
+                                      ),
+                                      void 0
+                                    ),
+                                    !claimConfirmed &&
+                                      jsxRuntime.jsx(
+                                        rebass.Text,
+                                        __assign(
+                                          { fontSize: 36, color: '#ff007a', fontWeight: 800 },
+                                          {
+                                            children: jsxRuntime.jsxs(
+                                              macro.Trans,
+                                              {
+                                                children: [
+                                                  unclaimedAmount === null || unclaimedAmount === void 0
+                                                    ? void 0
+                                                    : unclaimedAmount.toFixed(
+                                                        0,
+                                                        (_g = { groupSeparator: ',' }) !== null && _g !== void 0
+                                                          ? _g
+                                                          : '-'
+                                                      ),
+                                                  ' UNI',
+                                                ],
+                                              },
+                                              void 0
+                                            ),
+                                          }
+                                        ),
+                                        void 0
+                                      ),
+                                  ],
+                                }
+                              ),
+                              void 0
+                            ),
+                            claimConfirmed &&
+                              jsxRuntime.jsx(
+                                jsxRuntime.Fragment,
+                                {
+                                  children: jsxRuntime.jsx(
+                                    ThemedText.SubHeader,
+                                    __assign(
+                                      { fontWeight: 500, color: 'black' },
+                                      {
+                                        children: jsxRuntime.jsxs(
+                                          macro.Trans,
+                                          {
+                                            children: [
+                                              jsxRuntime.jsxs(
+                                                'span',
+                                                __assign(
+                                                  { role: 'img', 'aria-label': 'party-hat' },
+                                                  { children: ['\uD83C\uDF89', ' '] }
+                                                ),
+                                                void 0
+                                              ),
+                                              'Welcome to team Unicorn :)',
+                                              ' ',
+                                              jsxRuntime.jsx(
+                                                'span',
+                                                __assign(
+                                                  { role: 'img', 'aria-label': 'party-hat' },
+                                                  { children: '\uD83C\uDF89' }
+                                                ),
+                                                void 0
+                                              ),
+                                            ],
+                                          },
+                                          void 0
+                                        ),
+                                      }
+                                    ),
+                                    void 0
+                                  ),
+                                },
+                                void 0
+                              ),
+                            attempting &&
+                              !claimSubmitted &&
+                              jsxRuntime.jsx(
+                                ThemedText.SubHeader,
+                                __assign(
+                                  { color: 'black' },
+                                  {
+                                    children: jsxRuntime.jsx(
+                                      macro.Trans,
+                                      { children: 'Confirm this transaction in your wallet' },
+                                      void 0
+                                    ),
+                                  }
+                                ),
+                                void 0
+                              ),
+                            attempting &&
+                              claimSubmitted &&
+                              !claimConfirmed &&
+                              chainId &&
+                              (claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.hash) &&
+                              jsxRuntime.jsx(
+                                ExternalLink,
+                                __assign(
+                                  {
+                                    href: getExplorerLink(
+                                      chainId,
+                                      claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.hash,
+                                      ExplorerDataType.TRANSACTION
+                                    ),
+                                    style: { zIndex: 99 },
+                                  },
+                                  {
+                                    children: jsxRuntime.jsx(
+                                      macro.Trans,
+                                      { children: 'View transaction on Explorer' },
+                                      void 0
+                                    ),
+                                  }
+                                ),
+                                void 0
+                              ),
+                          ],
+                        }
+                      ),
+                      void 0
+                    ),
+                  ],
+                }
+              ),
+              void 0
+            ),
+        ],
+      }
+    ),
+    void 0
+  )
+}
+var templateObject_1$18, templateObject_2$Q, templateObject_3$I, templateObject_4$x
 
-var Wrapper$h = styled__default["default"].div(templateObject_1$16 || (templateObject_1$16 = __makeTemplateObject(["\n  max-height: 70vh;\n  overflow: auto;\n  padding: 0 1rem;\n"], ["\n  max-height: 70vh;\n  overflow: auto;\n  padding: 0 1rem;\n"])));
-var StyledExternalCard = styled__default["default"](Card)(templateObject_2$O || (templateObject_2$O = __makeTemplateObject(["\n  background-color: ", ";\n  padding: 0.5rem;\n  width: 100%;\n\n  :hover,\n  :focus,\n  :active {\n    background-color: ", ";\n  }\n"], ["\n  background-color: ", ";\n  padding: 0.5rem;\n  width: 100%;\n\n  :hover,\n  :focus,\n  :active {\n    background-color: ", ";\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.primary5;
-}, function (_a) {
-    var theme = _a.theme;
-    return theme.primary4;
-});
-var HoverText$1 = styled__default["default"].div(templateObject_3$G || (templateObject_3$G = __makeTemplateObject(["\n  text-decoration: none;\n  color: ", ";\n  display: flex;\n  align-items: center;\n\n  :hover {\n    cursor: pointer;\n  }\n"], ["\n  text-decoration: none;\n  color: ", ";\n  display: flex;\n  align-items: center;\n\n  :hover {\n    cursor: pointer;\n  }\n"])), function (_a) {
-    var theme = _a.theme;
-    return theme.text1;
-});
-var StyledLinkOut = styled__default["default"](reactFeather.ArrowDown)(templateObject_4$v || (templateObject_4$v = __makeTemplateObject(["\n  transform: rotate(230deg);\n"], ["\n  transform: rotate(230deg);\n"])));
+var Card = styled__default['default'](styledComponents.Box)(
+  templateObject_1$17 ||
+    (templateObject_1$17 = __makeTemplateObject(
+      ['\n  width: ', ';\n  padding: ', ';\n  border-radius: ', ';\n  border: ', ';\n'],
+      ['\n  width: ', ';\n  padding: ', ';\n  border-radius: ', ';\n  border: ', ';\n']
+    )),
+  function (_a) {
+    var width = _a.width
+    return width !== null && width !== void 0 ? width : '100%'
+  },
+  function (_a) {
+    var padding = _a.padding
+    return padding !== null && padding !== void 0 ? padding : '1rem'
+  },
+  function (_a) {
+    var $borderRadius = _a.$borderRadius
+    return $borderRadius !== null && $borderRadius !== void 0 ? $borderRadius : '16px'
+  },
+  function (_a) {
+    var border = _a.border
+    return border
+  }
+)
+var LightCard = styled__default['default'](Card)(
+  templateObject_2$P ||
+    (templateObject_2$P = __makeTemplateObject(
+      ['\n  border: 1px solid ', ';\n  background-color: ', ';\n'],
+      ['\n  border: 1px solid ', ';\n  background-color: ', ';\n']
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg2
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg1
+  }
+)
+var LightGreyCard = styled__default['default'](Card)(
+  templateObject_3$H ||
+    (templateObject_3$H = __makeTemplateObject(['\n  background-color: ', ';\n'], ['\n  background-color: ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg2
+  }
+)
+var GreyCard = styled__default['default'](Card)(
+  templateObject_4$w ||
+    (templateObject_4$w = __makeTemplateObject(['\n  background-color: ', ';\n'], ['\n  background-color: ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg3
+  }
+)
+var DarkGreyCard = styled__default['default'](Card)(
+  templateObject_5$p ||
+    (templateObject_5$p = __makeTemplateObject(['\n  background-color: ', ';\n'], ['\n  background-color: ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg2
+  }
+)
+styled__default['default'](Card)(
+  templateObject_6$k ||
+    (templateObject_6$k = __makeTemplateObject(['\n  background-color: ', ';\n'], ['\n  background-color: ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg0
+  }
+)
+var OutlineCard = styled__default['default'](Card)(
+  templateObject_7$h ||
+    (templateObject_7$h = __makeTemplateObject(['\n  border: 1px solid ', ';\n'], ['\n  border: 1px solid ', ';\n'])),
+  function (_a) {
+    var theme = _a.theme
+    return theme.bg3
+  }
+)
+styled__default['default'](Card)(
+  templateObject_8$f ||
+    (templateObject_8$f = __makeTemplateObject(
+      ['\n  background-color: rgba(243, 132, 30, 0.05);\n  color: ', ';\n  font-weight: 500;\n'],
+      ['\n  background-color: rgba(243, 132, 30, 0.05);\n  color: ', ';\n  font-weight: 500;\n']
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.yellow3
+  }
+)
+styled__default['default'](Card)(
+  templateObject_9$e ||
+    (templateObject_9$e = __makeTemplateObject(
+      ['\n  background-color: ', ';\n  color: ', ';\n  border-radius: 12px;\n'],
+      ['\n  background-color: ', ';\n  color: ', ';\n  border-radius: 12px;\n']
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary5
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.blue2
+  }
+)
+var templateObject_1$17,
+  templateObject_2$P,
+  templateObject_3$H,
+  templateObject_4$w,
+  templateObject_5$p,
+  templateObject_6$k,
+  templateObject_7$h,
+  templateObject_8$f,
+  templateObject_9$e
+
+var Wrapper$h = styled__default['default'].div(
+  templateObject_1$16 ||
+    (templateObject_1$16 = __makeTemplateObject(
+      ['\n  max-height: 70vh;\n  overflow: auto;\n  padding: 0 1rem;\n'],
+      ['\n  max-height: 70vh;\n  overflow: auto;\n  padding: 0 1rem;\n']
+    ))
+)
+var StyledExternalCard = styled__default['default'](Card)(
+  templateObject_2$O ||
+    (templateObject_2$O = __makeTemplateObject(
+      [
+        '\n  background-color: ',
+        ';\n  padding: 0.5rem;\n  width: 100%;\n\n  :hover,\n  :focus,\n  :active {\n    background-color: ',
+        ';\n  }\n',
+      ],
+      [
+        '\n  background-color: ',
+        ';\n  padding: 0.5rem;\n  width: 100%;\n\n  :hover,\n  :focus,\n  :active {\n    background-color: ',
+        ';\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary5
+  },
+  function (_a) {
+    var theme = _a.theme
+    return theme.primary4
+  }
+)
+var HoverText$1 = styled__default['default'].div(
+  templateObject_3$G ||
+    (templateObject_3$G = __makeTemplateObject(
+      [
+        '\n  text-decoration: none;\n  color: ',
+        ';\n  display: flex;\n  align-items: center;\n\n  :hover {\n    cursor: pointer;\n  }\n',
+      ],
+      [
+        '\n  text-decoration: none;\n  color: ',
+        ';\n  display: flex;\n  align-items: center;\n\n  :hover {\n    cursor: pointer;\n  }\n',
+      ]
+    )),
+  function (_a) {
+    var theme = _a.theme
+    return theme.text1
+  }
+)
+var StyledLinkOut = styled__default['default'](reactFeather.ArrowDown)(
+  templateObject_4$v ||
+    (templateObject_4$v = __makeTemplateObject(
+      ['\n  transform: rotate(230deg);\n'],
+      ['\n  transform: rotate(230deg);\n']
+    ))
+)
 var EXTERNAL_APIS = [
-    {
-        name: 'Auto Router',
-        description: jsxRuntime.jsx(macro.Trans, { children: "The app fetches the optimal trade route from a Uniswap Labs server." }, void 0),
-    },
-    {
-        name: 'Infura',
-        description: jsxRuntime.jsx(macro.Trans, { children: "The app fetches on-chain data and constructs contract calls with an Infura API." }, void 0),
-    },
-    {
-        name: 'TRM Labs',
-        description: (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx(macro.Trans, { children: "The app securely collects your wallet address and shares it with TRM Labs Inc. for risk and compliance reasons." }, void 0), ' ', jsxRuntime.jsx(ExternalLink, __assign({ href: "https://help.uniswap.org/en/articles/5675203-terms-of-service-faq" }, { children: jsxRuntime.jsx(macro.Trans, { children: "Learn more" }, void 0) }), void 0)] }, void 0)),
-    },
-    {
-        name: 'Google Analytics',
-        description: jsxRuntime.jsx(macro.Trans, { children: "The app logs anonymized usage statistics in order to improve over time." }, void 0),
-    },
-    {
-        name: 'The Graph',
-        description: jsxRuntime.jsx(macro.Trans, { children: "The app fetches blockchain data from The Graph\u2019s hosted service." }, void 0),
-    },
-];
+  {
+    name: 'Auto Router',
+    description: jsxRuntime.jsx(
+      macro.Trans,
+      { children: 'The app fetches the optimal trade route from a Uniswap Labs server.' },
+      void 0
+    ),
+  },
+  {
+    name: 'Infura',
+    description: jsxRuntime.jsx(
+      macro.Trans,
+      { children: 'The app fetches on-chain data and constructs contract calls with an Infura API.' },
+      void 0
+    ),
+  },
+  {
+    name: 'TRM Labs',
+    description: jsxRuntime.jsxs(
+      jsxRuntime.Fragment,
+      {
+        children: [
+          jsxRuntime.jsx(
+            macro.Trans,
+            {
+              children:
+                'The app securely collects your wallet address and shares it with TRM Labs Inc. for risk and compliance reasons.',
+            },
+            void 0
+          ),
+          ' ',
+          jsxRuntime.jsx(
+            ExternalLink,
+            __assign(
+              { href: 'https://help.uniswap.org/en/articles/5675203-terms-of-service-faq' },
+              { children: jsxRuntime.jsx(macro.Trans, { children: 'Learn more' }, void 0) }
+            ),
+            void 0
+          ),
+        ],
+      },
+      void 0
+    ),
+  },
+  {
+    name: 'Google Analytics',
+    description: jsxRuntime.jsx(
+      macro.Trans,
+      { children: 'The app logs anonymized usage statistics in order to improve over time.' },
+      void 0
+    ),
+  },
+  {
+    name: 'The Graph',
+    description: jsxRuntime.jsx(
+      macro.Trans,
+      { children: 'The app fetches blockchain data from The Graph\u2019s hosted service.' },
+      void 0
+    ),
+  },
+]
 function PrivacyPolicyModal() {
-    var node = React.useRef();
-    var open = useModalOpen(ApplicationModal.PRIVACY_POLICY);
-    var toggle = useTogglePrivacyPolicy();
-    React.useEffect(function () {
-        if (!open)
-            return;
-        ReactGA__default["default"].event({
-            category: 'Modal',
-            action: 'Show Legal',
-        });
-    }, [open]);
-    return (jsxRuntime.jsx(Modal, __assign({ isOpen: open, onDismiss: function () { return toggle(); } }, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: "12px", ref: node }, { children: [jsxRuntime.jsxs(RowBetween, __assign({ padding: "1rem 1rem 0.5rem 1rem" }, { children: [jsxRuntime.jsx(ThemedText.MediumHeader, { children: jsxRuntime.jsx(macro.Trans, { children: "Legal & Privacy" }, void 0) }, void 0), jsxRuntime.jsx(HoverText$1, __assign({ onClick: function () { return toggle(); } }, { children: jsxRuntime.jsx(reactFeather.X, { size: 24 }, void 0) }), void 0)] }), void 0), jsxRuntime.jsx(PrivacyPolicy, {}, void 0)] }), void 0) }), void 0));
+  var node = React.useRef()
+  var open = useModalOpen(ApplicationModal.PRIVACY_POLICY)
+  var toggle = useTogglePrivacyPolicy()
+  React.useEffect(
+    function () {
+      if (!open) return
+      ReactGA__default['default'].event({
+        category: 'Modal',
+        action: 'Show Legal',
+      })
+    },
+    [open]
+  )
+  return jsxRuntime.jsx(
+    Modal,
+    __assign(
+      {
+        isOpen: open,
+        onDismiss() {
+          return toggle()
+        },
+      },
+      {
+        children: jsxRuntime.jsxs(
+          AutoColumn,
+          __assign(
+            { gap: '12px', ref: node },
+            {
+              children: [
+                jsxRuntime.jsxs(
+                  RowBetween,
+                  __assign(
+                    { padding: '1rem 1rem 0.5rem 1rem' },
+                    {
+                      children: [
+                        jsxRuntime.jsx(
+                          ThemedText.MediumHeader,
+                          { children: jsxRuntime.jsx(macro.Trans, { children: 'Legal & Privacy' }, void 0) },
+                          void 0
+                        ),
+                        jsxRuntime.jsx(
+                          HoverText$1,
+                          __assign(
+                            {
+                              onClick() {
+                                return toggle()
+                              },
+                            },
+                            { children: jsxRuntime.jsx(reactFeather.X, { size: 24 }, void 0) }
+                          ),
+                          void 0
+                        ),
+                      ],
+                    }
+                  ),
+                  void 0
+                ),
+                jsxRuntime.jsx(PrivacyPolicy, {}, void 0),
+              ],
+            }
+          ),
+          void 0
+        ),
+      }
+    ),
+    void 0
+  )
 }
 function PrivacyPolicy() {
-    return (jsxRuntime.jsx(Wrapper$h, __assign({ draggable: "true", onTouchMove: function (e) {
-            // prevent modal gesture handler from dismissing modal when content is scrolling
-            if (isMobile) {
-                e.stopPropagation();
+  return jsxRuntime.jsx(
+    Wrapper$h,
+    __assign(
+      {
+        draggable: 'true',
+        onTouchMove(e) {
+          // prevent modal gesture handler from dismissing modal when content is scrolling
+          if (isMobile) {
+            e.stopPropagation()
+          }
+        },
+      },
+      {
+        children: jsxRuntime.jsxs(
+          AutoColumn,
+          __assign(
+            { gap: '16px' },
+            {
+              children: [
+                jsxRuntime.jsxs(
+                  AutoColumn,
+                  __assign(
+                    { gap: '8px', style: { width: '100%' } },
+                    {
+                      children: [
+                        jsxRuntime.jsx(
+                          StyledExternalCard,
+                          {
+                            children: jsxRuntime.jsx(
+                              ExternalLink,
+                              __assign(
+                                { href: 'https://uniswap.org/terms-of-service' },
+                                {
+                                  children: jsxRuntime.jsxs(
+                                    RowBetween,
+                                    {
+                                      children: [
+                                        jsxRuntime.jsxs(
+                                          AutoRow,
+                                          __assign(
+                                            { gap: '4px' },
+                                            {
+                                              children: [
+                                                jsxRuntime.jsx(reactFeather.Info, { size: 20 }, void 0),
+                                                jsxRuntime.jsx(
+                                                  ThemedText.Main,
+                                                  __assign(
+                                                    { fontSize: 14, color: 'primaryText1' },
+                                                    {
+                                                      children: jsxRuntime.jsx(
+                                                        macro.Trans,
+                                                        { children: "Uniswap Labs' Terms of Service" },
+                                                        void 0
+                                                      ),
+                                                    }
+                                                  ),
+                                                  void 0
+                                                ),
+                                              ],
+                                            }
+                                          ),
+                                          void 0
+                                        ),
+                                        jsxRuntime.jsx(StyledLinkOut, { size: 20 }, void 0),
+                                      ],
+                                    },
+                                    void 0
+                                  ),
+                                }
+                              ),
+                              void 0
+                            ),
+                          },
+                          void 0
+                        ),
+                        jsxRuntime.jsx(
+                          StyledExternalCard,
+                          {
+                            children: jsxRuntime.jsx(
+                              ExternalLink,
+                              __assign(
+                                { href: 'https://uniswap.org/disclaimer/' },
+                                {
+                                  children: jsxRuntime.jsxs(
+                                    RowBetween,
+                                    {
+                                      children: [
+                                        jsxRuntime.jsxs(
+                                          AutoRow,
+                                          __assign(
+                                            { gap: '4px' },
+                                            {
+                                              children: [
+                                                jsxRuntime.jsx(reactFeather.Info, { size: 20 }, void 0),
+                                                jsxRuntime.jsx(
+                                                  ThemedText.Main,
+                                                  __assign(
+                                                    { fontSize: 14, color: 'primaryText1' },
+                                                    {
+                                                      children: jsxRuntime.jsx(
+                                                        macro.Trans,
+                                                        { children: 'Protocol Disclaimer' },
+                                                        void 0
+                                                      ),
+                                                    }
+                                                  ),
+                                                  void 0
+                                                ),
+                                              ],
+                                            }
+                                          ),
+                                          void 0
+                                        ),
+                                        jsxRuntime.jsx(StyledLinkOut, { size: 20 }, void 0),
+                                      ],
+                                    },
+                                    void 0
+                                  ),
+                                }
+                              ),
+                              void 0
+                            ),
+                          },
+                          void 0
+                        ),
+                      ],
+                    }
+                  ),
+                  void 0
+                ),
+                jsxRuntime.jsx(
+                  ThemedText.Main,
+                  __assign(
+                    { fontSize: 14 },
+                    {
+                      children: jsxRuntime.jsx(
+                        macro.Trans,
+                        { children: 'This app uses the following third-party APIs:' },
+                        void 0
+                      ),
+                    }
+                  ),
+                  void 0
+                ),
+                jsxRuntime.jsxs(
+                  AutoColumn,
+                  __assign(
+                    { gap: '12px' },
+                    {
+                      children: [
+                        EXTERNAL_APIS.map(function (_a, i) {
+                          var name = _a.name,
+                            description = _a.description
+                          return jsxRuntime.jsx(
+                            DarkGreyCard,
+                            {
+                              children: jsxRuntime.jsxs(
+                                AutoColumn,
+                                __assign(
+                                  { gap: '8px' },
+                                  {
+                                    children: [
+                                      jsxRuntime.jsxs(
+                                        AutoRow,
+                                        __assign(
+                                          { gap: '4px' },
+                                          {
+                                            children: [
+                                              jsxRuntime.jsx(reactFeather.Info, { size: 18 }, void 0),
+                                              jsxRuntime.jsx(
+                                                ThemedText.Main,
+                                                __assign({ fontSize: 14, color: 'text1' }, { children: name }),
+                                                void 0
+                                              ),
+                                            ],
+                                          }
+                                        ),
+                                        void 0
+                                      ),
+                                      jsxRuntime.jsx(
+                                        ThemedText.Main,
+                                        __assign({ fontSize: 14 }, { children: description }),
+                                        void 0
+                                      ),
+                                    ],
+                                  }
+                                ),
+                                void 0
+                              ),
+                            },
+                            i
+                          )
+                        }),
+                        jsxRuntime.jsx(
+                          Row$1,
+                          __assign(
+                            { justify: 'center', marginBottom: '1rem' },
+                            {
+                              children: jsxRuntime.jsx(
+                                ExternalLink,
+                                __assign(
+                                  { href: 'https://help.uniswap.org/en/articles/5675203-terms-of-service-faq' },
+                                  { children: jsxRuntime.jsx(macro.Trans, { children: 'Learn more' }, void 0) }
+                                ),
+                                void 0
+                              ),
+                            }
+                          ),
+                          void 0
+                        ),
+                      ],
+                    }
+                  ),
+                  void 0
+                ),
+              ],
             }
-        } }, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: "16px" }, { children: [jsxRuntime.jsxs(AutoColumn, __assign({ gap: "8px", style: { width: '100%' } }, { children: [jsxRuntime.jsx(StyledExternalCard, { children: jsxRuntime.jsx(ExternalLink, __assign({ href: 'https://uniswap.org/terms-of-service' }, { children: jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsxs(AutoRow, __assign({ gap: "4px" }, { children: [jsxRuntime.jsx(reactFeather.Info, { size: 20 }, void 0), jsxRuntime.jsx(ThemedText.Main, __assign({ fontSize: 14, color: 'primaryText1' }, { children: jsxRuntime.jsx(macro.Trans, { children: "Uniswap Labs' Terms of Service" }, void 0) }), void 0)] }), void 0), jsxRuntime.jsx(StyledLinkOut, { size: 20 }, void 0)] }, void 0) }), void 0) }, void 0), jsxRuntime.jsx(StyledExternalCard, { children: jsxRuntime.jsx(ExternalLink, __assign({ href: 'https://uniswap.org/disclaimer/' }, { children: jsxRuntime.jsxs(RowBetween, { children: [jsxRuntime.jsxs(AutoRow, __assign({ gap: "4px" }, { children: [jsxRuntime.jsx(reactFeather.Info, { size: 20 }, void 0), jsxRuntime.jsx(ThemedText.Main, __assign({ fontSize: 14, color: 'primaryText1' }, { children: jsxRuntime.jsx(macro.Trans, { children: "Protocol Disclaimer" }, void 0) }), void 0)] }), void 0), jsxRuntime.jsx(StyledLinkOut, { size: 20 }, void 0)] }, void 0) }), void 0) }, void 0)] }), void 0), jsxRuntime.jsx(ThemedText.Main, __assign({ fontSize: 14 }, { children: jsxRuntime.jsx(macro.Trans, { children: "This app uses the following third-party APIs:" }, void 0) }), void 0), jsxRuntime.jsxs(AutoColumn, __assign({ gap: "12px" }, { children: [EXTERNAL_APIS.map(function (_a, i) {
-                            var name = _a.name, description = _a.description;
-                            return (jsxRuntime.jsx(DarkGreyCard, { children: jsxRuntime.jsxs(AutoColumn, __assign({ gap: "8px" }, { children: [jsxRuntime.jsxs(AutoRow, __assign({ gap: "4px" }, { children: [jsxRuntime.jsx(reactFeather.Info, { size: 18 }, void 0), jsxRuntime.jsx(ThemedText.Main, __assign({ fontSize: 14, color: 'text1' }, { children: name }), void 0)] }), void 0), jsxRuntime.jsx(ThemedText.Main, __assign({ fontSize: 14 }, { children: description }), void 0)] }), void 0) }, i));
-                        }), jsxRuntime.jsx(Row$1, __assign({ justify: "center", marginBottom: "1rem" }, { children: jsxRuntime.jsx(ExternalLink, __assign({ href: "https://help.uniswap.org/en/articles/5675203-terms-of-service-faq" }, { children: jsxRuntime.jsx(macro.Trans, { children: "Learn more" }, void 0) }), void 0) }), void 0)] }), void 0)] }), void 0) }), void 0));
+          ),
+          void 0
+        ),
+      }
+    ),
+    void 0
+  )
 }
-var templateObject_1$16, templateObject_2$O, templateObject_3$G, templateObject_4$v;
+var templateObject_1$16, templateObject_2$O, templateObject_3$G, templateObject_4$v
 
 function getAugmentedNamespace(n) {
-	if (n.__esModule) return n;
-	var a = Object.defineProperty({}, '__esModule', {value: true});
-	Object.keys(n).forEach(function (k) {
-		var d = Object.getOwnPropertyDescriptor(n, k);
-		Object.defineProperty(a, k, d.get ? d : {
-			enumerable: true,
-			get: function () {
-				return n[k];
-			}
-		});
-	});
-	return a;
+  if (n.__esModule) return n
+  var a = Object.defineProperty({}, '__esModule', { value: true })
+  Object.keys(n).forEach(function (k) {
+    var d = Object.getOwnPropertyDescriptor(n, k)
+    Object.defineProperty(
+      a,
+      k,
+      d.get
+        ? d
+        : {
+            enumerable: true,
+            get() {
+              return n[k]
+            },
+          }
+    )
+  })
+  return a
 }
 
 /*eslint-disable*/
