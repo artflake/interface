@@ -2,16 +2,12 @@
  * Bundles the widgets library, which is released independently of the interface application.
  * This library lives in src/lib, but shares code with the interface application.
  */
-require('dotenv').config()
 // import eslint from '@rollup/plugin-eslint'
 // import babel from '@rollup/plugin-babel'
-import commonjs from '@rollup/plugin-commonjs'
-import babel, { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import nodePolyfills from 'rollup-plugin-node-polyfills'
 
 // import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import json from '@rollup/plugin-json'
-import resolve from '@rollup/plugin-node-resolve'
 import url from '@rollup/plugin-url'
 import svgr from '@svgr/rollup'
 import dts from 'rollup-plugin-dts'
@@ -22,6 +18,7 @@ import typescript from 'rollup-plugin-typescript2'
 // import babel from '@rollup/plugin-babel'
 // import { DEFAULT_EXTENSIONS } from '@babel/core'
 import replace from '@rollup/plugin-replace'
+require('dotenv').config()
 // import external from 'rollup-plugin-peer-deps-external'
 
 // import { dependencies } from './package.json'
