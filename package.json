@@ -2,12 +2,12 @@
   "name": "@uniswap/interface",
   "description": "Uniswap Interface",
   "homepage": ".",
-  "main": "dist2/snowflake.js",
-  "types": "dist2/snowflake.d.ts",
+  "main": "dist2/snowflake.esm.js",
+  "module": "dist2/snowflake.esm.js",
   "files": [
     "dist2"
   ],
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "resolutions": {
     "@walletconnect/ethereum-provider": "1.7.1"
@@ -217,5 +217,8 @@
     "workbox-core": "^6.1.0",
     "workbox-precaching": "^6.1.0",
     "workbox-routing": "^6.1.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-node-polyfills": "^0.2.1"
   }
 }
