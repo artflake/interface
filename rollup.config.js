@@ -8,8 +8,9 @@
 // import nodePolyfills from 'rollup-plugin-node-polyfills'
 
 // import { getBabelOutputPlugin } from '@rollup/plugin-babel'
-import { DEFAULT_EXTENSIONS } from '@babel/core'
-import babel from '@rollup/plugin-babel'
+// import { DEFAULT_EXTENSIONS } from '@babel/core'
+// import babel from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import url from '@rollup/plugin-url'
 import svgr from '@svgr/rollup'
@@ -33,7 +34,7 @@ require('dotenv').config()
 // const ignore = ['styled-components']
 
 const library = {
-  external: ['@babel/runtime', '@metamask/jazzicon'],
+  external: ['@babel/runtime', '@metamask/jazzicon', '@lingui/**'],
   input: 'src/snowflake/index.ts',
   output: [
     // {
@@ -75,7 +76,7 @@ const library = {
     //   extensions,
     //   browser: true,
     // }),
-    // commonjs(),
+    commonjs(),
 
     // replace({ ...replacements, preventAssignment: true }),
 
@@ -86,23 +87,26 @@ const library = {
     //   babelHelpers: 'bundled',
     // }),
 
-    typescript({ tsconfig: './tsconfig.json', useTsconfigDeclarationDir: true }),
+    typescript({ tsconfig: './tsconfig.json', useTsconfigDeclarationDir: false }),
     // commonjs({ esmExternals: true, requireReturnsDefault: false }),
     // resolve(),
 
-    babel({
-      extensions: [...DEFAULT_EXTENSIONS, '.ts', 'tsx'],
-      babelHelpers: 'runtime',
-      exclude: /node_modules/,
-      presets: [
-        [
-          'react-app',
-          {
-            runtime: 'automatic',
-          },
-        ],
-      ],
-    }),
+    // babel({
+    //   extensions: [...DEFAULT_EXTENSIONS, '.ts', 'tsx'],
+    //   babelHelpers: 'runtime',
+    //   exclude: 'node_modules/**',
+    //   babelrc: false,
+    //   skipPreflightCheck: true,
+    //   presets: [
+    //     [
+    //       'react-app',
+    //       {
+    //         runtime: 'automatic',
+    //         typescript: true,
+    //       },
+    //     ],
+    //   ],
+    // }),
     // commonjs({ ignore: ['node_modules/styled-components/**/*.js'] }),
     // eslint({ include: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'] }),
     json(), // imports json
