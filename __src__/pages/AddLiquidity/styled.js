@@ -2,7 +2,7 @@ import _styled from "styled-components";
 import { AutoColumn } from "../../components/Column";
 import CurrencyInputPanel from "../../components/CurrencyInputPanel";
 import Input from "../../components/NumericalInput";
-import { BodyWrapper } from 'pages/AppBody';
+import { BodyWrapper } from "../AppBody";
 export const PageWrapper = _styled(BodyWrapper).withConfig({
   displayName: "styled__PageWrapper",
   componentId: "sc-dphd4z-0"

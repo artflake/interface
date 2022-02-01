@@ -1,5 +1,5 @@
 import _styled from "styled-components";
-import { MaxButton } from 'pages/Pool/styleds';
+import { MaxButton } from "../Pool/styleds";
 import { Text } from 'rebass';
 export const Wrapper = _styled.div.withConfig({
   displayName: "styled__Wrapper",

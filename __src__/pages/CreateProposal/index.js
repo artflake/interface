@@ -7,7 +7,7 @@ import { BlueCard } from "../../components/Card";
 import { AutoColumn } from "../../components/Column";
 import { useActiveWeb3React } from "../../hooks/web3";
 import JSBI from 'jsbi';
-import { Wrapper } from 'pages/Pool/styleds';
+import { Wrapper } from "../Pool/styleds";
 import React, { useCallback, useMemo, useState } from 'react';
 import { ProposalState, useCreateProposalCallback, useLatestProposalId, useProposalData, useProposalThreshold, useUserVotes } from "../../state/governance/hooks";
 import { tryParseAmount } from "../../state/swap/hooks";

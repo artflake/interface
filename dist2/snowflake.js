@@ -23755,7 +23755,7 @@ async function dynamicActivate(locale) {
     messages: messages$1
   } = locale === DEFAULT_LOCALE ? {
     messages: messages
-  } : await (function (t) { return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(t)); }); })(`locales/${locale}`);
+  } : await (function (t) { return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(t)); }); })(`./locales/${locale}`);
   core$1.i18n.load(locale, messages$1);
   core$1.i18n.activate(locale);
 }

@@ -1,4 +1,4 @@
-import CreateProposal from 'pages/CreateProposal';
+import CreateProposal from "../CreateProposal";
 import { Route } from 'react-router-dom';
 import Landing from "./Landing";
 import VotePage from "./VotePage";

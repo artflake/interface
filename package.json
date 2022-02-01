@@ -5,10 +5,11 @@
   "main": "dist2/snowflake.js",
   "module": "dist2/snowflake.esm.js",
   "files": [
-    "bundle",
-    "__src__"
+    "dist2",
+    "__src__",
+    "locales"
   ],
-  "version": "1.2.5",
+  "version": "1.2.7",
   "private": false,
   "devDependencies": {
     "@babel/cli": "^7.16.8",
