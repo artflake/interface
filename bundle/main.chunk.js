@@ -1,3 +1,4 @@
+module.exports =
 exports.ids = [32];
 exports.modules = [
 /* 0 */
@@ -3600,5 +3601,5 @@ module.exports = require("ajv");
 module.exports = require("@uniswap/token-lists/src/tokenlist.schema.json");
 
 /***/ })
-];;
+];["default"];
 //# sourceMappingURL=main.chunk.js.map
