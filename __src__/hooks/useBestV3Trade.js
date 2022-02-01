@@ -1,10 +1,10 @@
 import { TradeType } from '@uniswap/sdk-core';
-import { V3TradeState } from 'state/routing/types';
-import { useRoutingAPITrade } from 'state/routing/useRoutingAPITrade';
-import { useRoutingAPIEnabled } from 'state/user/hooks';
-import { useClientSideV3Trade } from './useClientSideV3Trade';
-import useDebounce from './useDebounce';
-import useIsWindowVisible from './useIsWindowVisible';
+import { V3TradeState } from "../state/routing/types";
+import { useRoutingAPITrade } from "../state/routing/useRoutingAPITrade";
+import { useRoutingAPIEnabled } from "../state/user/hooks";
+import { useClientSideV3Trade } from "./useClientSideV3Trade";
+import useDebounce from "./useDebounce";
+import useIsWindowVisible from "./useIsWindowVisible";
 /**
  * Returns the best v3 trade for a desired swap.
  * Uses optimized routes from the Routing API and falls back to the v3 router.

@@ -1,9 +1,9 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { CHAIN_INFO, SupportedChainId } from 'constants/chains';
-import { useActiveWeb3React } from 'hooks/web3';
+import { CHAIN_INFO, SupportedChainId } from "../../constants/chains";
+import { useActiveWeb3React } from "../../hooks/web3";
 import { AlertOctagon } from 'react-feather';
-import { ExternalLink, MEDIA_WIDTHS } from 'theme';
+import { ExternalLink, MEDIA_WIDTHS } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

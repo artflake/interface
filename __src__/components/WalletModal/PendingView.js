@@ -1,10 +1,10 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
 import { darken } from 'polished';
-import { injected } from '../../connectors';
-import { SUPPORTED_WALLETS } from '../../constants/wallet';
-import Loader from '../Loader';
-import Option from './Option';
+import { injected } from "../../connectors";
+import { SUPPORTED_WALLETS } from "../../constants/wallet";
+import Loader from "../Loader";
+import Option from "./Option";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";

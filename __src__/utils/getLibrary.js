@@ -1,5 +1,5 @@
 import { Web3Provider } from '@ethersproject/providers';
-import { SupportedChainId } from '../constants/chains';
+import { SupportedChainId } from "../constants/chains";
 const NETWORK_POLLING_INTERVALS = {
   [SupportedChainId.ARBITRUM_ONE]: 1000,
   [SupportedChainId.ARBITRUM_RINKEBY]: 1000,

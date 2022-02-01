@@ -1,6 +1,6 @@
 import { Percent } from '@uniswap/sdk-core';
 import JSBI from 'jsbi';
-import { ONE_HUNDRED_PERCENT } from '../constants/misc';
+import { ONE_HUNDRED_PERCENT } from "../constants/misc";
 export function computeFiatValuePriceImpact(fiatValueInput, fiatValueOutput) {
   if (!fiatValueOutput || !fiatValueInput) return undefined;
   if (!fiatValueInput.currency.equals(fiatValueOutput.currency)) return undefined;

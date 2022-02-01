@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Slash } from 'react-feather';
-import useTheme from '../../hooks/useTheme';
+import useTheme from "../../hooks/useTheme";
 import { jsx as _jsx } from "react/jsx-runtime";
 const BAD_SRCS = {};
 

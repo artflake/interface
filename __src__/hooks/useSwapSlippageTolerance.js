@@ -1,14 +1,14 @@
 import { CurrencyAmount, Percent } from '@uniswap/sdk-core';
 import { Trade as V2Trade } from '@uniswap/v2-sdk';
 import { Trade as V3Trade } from '@uniswap/v3-sdk';
-import { L2_CHAIN_IDS } from 'constants/chains';
+import { L2_CHAIN_IDS } from "../constants/chains";
 import JSBI from 'jsbi';
 import { useMemo } from 'react';
-import { useUserSlippageToleranceWithDefault } from '../state/user/hooks';
-import { useCurrency } from './Tokens';
-import useGasPrice from './useGasPrice';
-import useUSDCPrice, { useUSDCValue } from './useUSDCPrice';
-import { useActiveWeb3React } from './web3';
+import { useUserSlippageToleranceWithDefault } from "../state/user/hooks";
+import { useCurrency } from "./Tokens";
+import useGasPrice from "./useGasPrice";
+import useUSDCPrice, { useUSDCValue } from "./useUSDCPrice";
+import { useActiveWeb3React } from "./web3";
 const V2_SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10000); // .50%
 
 const V3_SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10000); // .50%

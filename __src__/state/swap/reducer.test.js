@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import { Field, selectCurrency } from './actions';
-import reducer from './reducer';
+import { Field, selectCurrency } from "./actions";
+import reducer from "./reducer";
 describe('swap reducer', () => {
   let store;
   beforeEach(() => {

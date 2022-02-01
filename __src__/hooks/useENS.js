@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { isAddress } from '../utils';
-import useENSAddress from './useENSAddress';
-import useENSName from './useENSName';
+import { isAddress } from "../utils";
+import useENSAddress from "./useENSAddress";
+import useENSName from "./useENSName";
 /**
  * Given a name or address, does a lookup to resolve to an address and name
  * @param nameOrAddress ENS name or address

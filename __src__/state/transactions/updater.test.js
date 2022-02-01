@@ -1,4 +1,4 @@
-import { shouldCheck } from './updater';
+import { shouldCheck } from "./updater";
 describe('transactions updater', () => {
   describe('shouldCheck', () => {
     it('returns true if no receipt and never checked', () => {

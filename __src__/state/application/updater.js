@@ -1,12 +1,12 @@
-import useDebounce from 'hooks/useDebounce';
-import useIsWindowVisible from 'hooks/useIsWindowVisible';
-import { useActiveWeb3React } from 'hooks/web3';
+import useDebounce from "../../hooks/useDebounce";
+import useIsWindowVisible from "../../hooks/useIsWindowVisible";
+import { useActiveWeb3React } from "../../hooks/web3";
 import { useCallback, useEffect, useState } from 'react';
-import { api, CHAIN_TAG } from 'state/data/enhanced';
-import { useAppDispatch, useAppSelector } from 'state/hooks';
-import { supportedChainId } from 'utils/supportedChainId';
-import { switchToNetwork } from 'utils/switchToNetwork';
-import { setImplements3085, updateBlockNumber, updateChainId } from './reducer';
+import { api, CHAIN_TAG } from "../data/enhanced";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { supportedChainId } from "../../utils/supportedChainId";
+import { switchToNetwork } from "../../utils/switchToNetwork";
+import { setImplements3085, updateBlockNumber, updateChainId } from "./reducer";
 
 function useQueryCacheInvalidator() {
   const dispatch = useAppDispatch(); // subscribe to `chainId` changes in the redux store rather than Web3

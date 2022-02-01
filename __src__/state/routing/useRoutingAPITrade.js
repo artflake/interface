@@ -2,10 +2,10 @@ import { skipToken } from '@reduxjs/toolkit/query/react';
 import { CurrencyAmount, TradeType } from '@uniswap/sdk-core';
 import { Trade } from '@uniswap/v3-sdk';
 import { useMemo } from 'react';
-import { useBlockNumber } from 'state/application/hooks';
-import { useGetQuoteQuery } from 'state/routing/slice';
-import { V3TradeState } from './types';
-import { computeRoutes } from './utils';
+import { useBlockNumber } from "../application/hooks";
+import { useGetQuoteQuery } from "./slice";
+import { V3TradeState } from "./types";
+import { computeRoutes } from "./utils";
 
 function useFreshData(data, dataBlockNumber) {
   let maxBlockAge = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10;

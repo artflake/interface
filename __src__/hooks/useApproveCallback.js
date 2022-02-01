@@ -2,13 +2,13 @@ import { MaxUint256 } from '@ethersproject/constants';
 import { Trade as V2Trade } from '@uniswap/v2-sdk';
 import { Trade as V3Trade } from '@uniswap/v3-sdk';
 import { useCallback, useMemo } from 'react';
-import { SWAP_ROUTER_ADDRESSES, V2_ROUTER_ADDRESS } from '../constants/addresses';
-import { TransactionType } from '../state/transactions/actions';
-import { useHasPendingApproval, useTransactionAdder } from '../state/transactions/hooks';
-import { calculateGasMargin } from '../utils/calculateGasMargin';
-import { useTokenContract } from './useContract';
-import { useTokenAllowance } from './useTokenAllowance';
-import { useActiveWeb3React } from './web3';
+import { SWAP_ROUTER_ADDRESSES, V2_ROUTER_ADDRESS } from "../constants/addresses";
+import { TransactionType } from "../state/transactions/actions";
+import { useHasPendingApproval, useTransactionAdder } from "../state/transactions/hooks";
+import { calculateGasMargin } from "../utils/calculateGasMargin";
+import { useTokenContract } from "./useContract";
+import { useTokenAllowance } from "./useTokenAllowance";
+import { useActiveWeb3React } from "./web3";
 export let ApprovalState; // returns a variable indicating the state of the approval and a function which approves if necessary or early returns
 
 (function (ApprovalState) {

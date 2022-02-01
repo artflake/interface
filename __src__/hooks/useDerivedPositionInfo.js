@@ -1,6 +1,6 @@
 import { Position } from '@uniswap/v3-sdk';
-import { usePool } from 'hooks/usePools';
-import { useCurrency } from './Tokens';
+import { usePool } from "./usePools";
+import { useCurrency } from "./Tokens";
 export function useDerivedPositionInfo(positionDetails) {
   const currency0 = useCurrency(positionDetails === null || positionDetails === void 0 ? void 0 : positionDetails.token0);
   const currency1 = useCurrency(positionDetails === null || positionDetails === void 0 ? void 0 : positionDetails.token1); // construct pool data

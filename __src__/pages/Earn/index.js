@@ -1,17 +1,17 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
 import JSBI from 'jsbi';
-import { OutlineCard } from '../../components/Card';
-import { AutoColumn } from '../../components/Column';
-import PoolCard from '../../components/earn/PoolCard';
-import { CardBGImage, CardNoise, CardSection, DataCard } from '../../components/earn/styled';
-import Loader from '../../components/Loader';
-import { RowBetween } from '../../components/Row';
-import { BIG_INT_ZERO } from '../../constants/misc';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { STAKING_REWARDS_INFO, useStakingInfo } from '../../state/stake/hooks';
-import { ExternalLink, ThemedText } from '../../theme';
-import { Countdown } from './Countdown';
+import { OutlineCard } from "../../components/Card";
+import { AutoColumn } from "../../components/Column";
+import PoolCard from "../../components/earn/PoolCard";
+import { CardBGImage, CardNoise, CardSection, DataCard } from "../../components/earn/styled";
+import Loader from "../../components/Loader";
+import { RowBetween } from "../../components/Row";
+import { BIG_INT_ZERO } from "../../constants/misc";
+import { useActiveWeb3React } from "../../hooks/web3";
+import { STAKING_REWARDS_INFO, useStakingInfo } from "../../state/stake/hooks";
+import { ExternalLink, ThemedText } from "../../theme";
+import { Countdown } from "./Countdown";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

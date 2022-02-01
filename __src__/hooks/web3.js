@@ -1,8 +1,8 @@
 import { useWeb3React } from '@web3-react/core';
 import { useEffect, useState } from 'react';
-import { gnosisSafe, injected } from '../connectors';
-import { IS_IN_IFRAME, NetworkContextName } from '../constants/misc';
-import { isMobile } from '../utils/userAgent';
+import { gnosisSafe, injected } from "../connectors";
+import { IS_IN_IFRAME, NetworkContextName } from "../constants/misc";
+import { isMobile } from "../utils/userAgent";
 export function useActiveWeb3React() {
   const context = useWeb3React();
   const contextNetwork = useWeb3React(NetworkContextName);

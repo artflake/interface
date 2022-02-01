@@ -1,8 +1,8 @@
 import _styled from "styled-components";
-import uImage from '../../assets/images/big_unicorn.png';
-import noise from '../../assets/images/noise.png';
-import xlUnicorn from '../../assets/images/xl_uni.png';
-import { AutoColumn } from '../Column';
+import uImage from "../../assets/images/big_unicorn.png";
+import noise from "../../assets/images/noise.png";
+import xlUnicorn from "../../assets/images/xl_uni.png";
+import { AutoColumn } from "../Column";
 export const DataCard = _styled(AutoColumn).withConfig({
   displayName: "styled__DataCard",
   componentId: "sc-5nm9ef-0"

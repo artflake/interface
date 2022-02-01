@@ -1,14 +1,14 @@
 import { css as _css } from "styled-components";
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ARBITRUM_HELP_CENTER_LINK, L2_CHAIN_IDS, OPTIMISM_HELP_CENTER_LINK, SupportedChainId } from 'constants/chains';
-import { useActiveWeb3React } from 'hooks/web3';
+import { ARBITRUM_HELP_CENTER_LINK, L2_CHAIN_IDS, OPTIMISM_HELP_CENTER_LINK, SupportedChainId } from "../../constants/chains";
+import { useActiveWeb3React } from "../../hooks/web3";
 import { useCallback, useState } from 'react';
 import { ArrowDownCircle, X } from 'react-feather';
-import { useArbitrumAlphaAlert, useDarkModeManager, useOptimismAlphaAlert } from 'state/user/hooks';
-import { useETHBalances } from 'state/wallet/hooks';
-import { ExternalLink, MEDIA_WIDTHS } from 'theme';
-import { CHAIN_INFO } from '../../constants/chains';
+import { useArbitrumAlphaAlert, useDarkModeManager, useOptimismAlphaAlert } from "../../state/user/hooks";
+import { useETHBalances } from "../../state/wallet/hooks";
+import { ExternalLink, MEDIA_WIDTHS } from "../../theme";
+import { CHAIN_INFO } from "../../constants/chains";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 export const DesktopTextBreak = _styled.div.withConfig({

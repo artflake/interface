@@ -2,9 +2,9 @@ import { Trans } from "@lingui/react";
 import { Trade as V2Trade } from '@uniswap/v2-sdk';
 import { Trade as V3Trade } from '@uniswap/v3-sdk';
 import { useCallback, useMemo } from 'react';
-import TransactionConfirmationModal, { ConfirmationModalContent, TransactionErrorContent } from '../TransactionConfirmationModal';
-import SwapModalFooter from './SwapModalFooter';
-import SwapModalHeader from './SwapModalHeader';
+import TransactionConfirmationModal, { ConfirmationModalContent, TransactionErrorContent } from "../TransactionConfirmationModal";
+import SwapModalFooter from "./SwapModalFooter";
+import SwapModalHeader from "./SwapModalHeader";
 /**
  * Returns true if the trade requires a confirmation of details before we can submit it
  * @param args either a pair of V2 trades or a pair of V3 trades

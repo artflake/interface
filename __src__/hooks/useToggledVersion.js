@@ -1,4 +1,4 @@
-import useParsedQueryString from './useParsedQueryString';
+import useParsedQueryString from "./useParsedQueryString";
 export let Version;
 
 (function (Version) {

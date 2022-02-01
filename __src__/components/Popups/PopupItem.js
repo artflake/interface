@@ -4,8 +4,8 @@ import { useCallback, useContext, useEffect } from 'react';
 import { X } from 'react-feather';
 import { animated } from 'react-spring';
 import { useSpring } from 'react-spring/web';
-import { useRemovePopup } from '../../state/application/hooks';
-import TransactionPopup from './TransactionPopup';
+import { useRemovePopup } from "../../state/application/hooks";
+import TransactionPopup from "./TransactionPopup";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

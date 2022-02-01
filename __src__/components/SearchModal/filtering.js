@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { isAddress } from '../../utils';
+import { isAddress } from "../../utils";
 
 const alwaysTrue = () => true;
 /**

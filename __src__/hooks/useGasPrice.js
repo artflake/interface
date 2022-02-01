@@ -1,7 +1,7 @@
 import JSBI from 'jsbi';
-import { useSingleCallResult } from '../state/multicall/hooks';
-import { useContract } from './useContract';
-import useENSAddress from './useENSAddress';
+import { useSingleCallResult } from "../state/multicall/hooks";
+import { useContract } from "./useContract";
+import useENSAddress from "./useENSAddress";
 const CHAIN_DATA_ABI = [{
   inputs: [],
   name: 'latestAnswer',

@@ -1,10 +1,10 @@
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
-import { DEFAULT_LOCALE, DEFAULT_MESSAGES } from 'constants/locales';
-import { initialLocale, useActiveLocale } from 'hooks/useActiveLocale';
+import { DEFAULT_LOCALE, DEFAULT_MESSAGES } from "./constants/locales";
+import { initialLocale, useActiveLocale } from "./hooks/useActiveLocale";
 import { af, ar, ca, cs, da, de, el, en, es, fi, fr, he, hu, id, it, ja, ko, nl, no, pl, pt, ro, ru, sr, sv, sw, tr, uk, vi, zh } from 'make-plural/plurals';
 import { useEffect } from 'react';
-import { useUserLocaleManager } from 'state/user/hooks';
+import { useUserLocaleManager } from "./state/user/hooks";
 import { jsx as _jsx } from "react/jsx-runtime";
 const plurals = {
   'af-ZA': af,

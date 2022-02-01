@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { Field, resetMintState, setFullRange, typeInput, typeLeftRangeInput, typeRightRangeInput, typeStartPriceInput } from './actions';
+import { Field, resetMintState, setFullRange, typeInput, typeLeftRangeInput, typeRightRangeInput, typeStartPriceInput } from "./actions";
 const initialState = {
   independentField: Field.CURRENCY_A,
   typedValue: '',

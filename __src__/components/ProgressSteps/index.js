@@ -1,8 +1,8 @@
 import { ThemeContext as _ThemeContext } from "styled-components";
 import _styled from "styled-components";
 import { useContext } from 'react';
-import { ThemedText } from '../../theme';
-import { AutoColumn } from '../Column';
+import { ThemedText } from "../../theme";
+import { AutoColumn } from "../Column";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

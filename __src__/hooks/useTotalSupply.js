@@ -1,6 +1,6 @@
 import { CurrencyAmount } from '@uniswap/sdk-core';
-import { useSingleCallResult } from '../state/multicall/hooks';
-import { useTokenContract } from './useContract'; // returns undefined if input token is undefined, or fails to get token contract,
+import { useSingleCallResult } from "../state/multicall/hooks";
+import { useTokenContract } from "./useContract"; // returns undefined if input token is undefined, or fails to get token contract,
 // or contract total supply cannot be fetched
 
 export function useTotalSupply(token) {

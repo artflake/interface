@@ -1,5 +1,5 @@
 import _styled from "styled-components";
-import { LoadingRows as BaseLoadingRows } from 'components/Loader/styled';
+import { LoadingRows as BaseLoadingRows } from "../../components/Loader/styled";
 import { Text } from 'rebass';
 export const Wrapper = _styled.div.withConfig({
   displayName: "styleds__Wrapper",

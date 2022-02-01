@@ -1,7 +1,7 @@
 import _styled from "styled-components";
 import React from 'react';
-import useHttpLocations from '../../hooks/useHttpLocations';
-import Logo from '../Logo';
+import useHttpLocations from "../../hooks/useHttpLocations";
+import Logo from "../Logo";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const StyledListLogo = _styled(Logo).withConfig({

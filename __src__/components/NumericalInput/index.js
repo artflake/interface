@@ -1,6 +1,6 @@
 import _styled from "styled-components";
 import React from 'react';
-import { escapeRegExp } from '../../utils';
+import { escapeRegExp } from "../../utils";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const StyledInput = _styled.input.withConfig({

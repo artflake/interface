@@ -1,7 +1,7 @@
-import { useActiveWeb3React } from 'hooks/web3';
+import { useActiveWeb3React } from "../../hooks/web3";
 import { Redirect } from 'react-router-dom';
-import { WETH9_EXTENDED } from '../../constants/tokens';
-import AddLiquidity from './index';
+import { WETH9_EXTENDED } from "../../constants/tokens";
+import AddLiquidity from "./index";
 import { jsx as _jsx } from "react/jsx-runtime";
 export function RedirectDuplicateTokenIds(props) {
   var _WETH9_EXTENDED$chain, _WETH9_EXTENDED$chain2;

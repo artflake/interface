@@ -1,18 +1,18 @@
 import { arrayify } from '@ethersproject/bytes';
 import { parseBytes32String } from '@ethersproject/strings';
 import { Token } from '@uniswap/sdk-core';
-import { CHAIN_INFO, L2_CHAIN_IDS, SupportedChainId } from 'constants/chains';
+import { CHAIN_INFO, L2_CHAIN_IDS, SupportedChainId } from "../constants/chains";
 import { useMemo } from 'react';
-import { createTokenFilterFunction } from '../components/SearchModal/filtering';
-import { ExtendedEther, WETH9_EXTENDED } from '../constants/tokens';
-import { useAllLists, useCombinedActiveList, useInactiveListUrls } from '../state/lists/hooks';
-import { WrappedTokenInfo } from '../state/lists/wrappedTokenInfo';
-import { NEVER_RELOAD, useSingleCallResult } from '../state/multicall/hooks';
-import { useUserAddedTokens } from '../state/user/hooks';
-import { isAddress } from '../utils';
-import { useUnsupportedTokenList } from './../state/lists/hooks';
-import { useBytes32TokenContract, useTokenContract } from './useContract';
-import { useActiveWeb3React } from './web3'; // reduce token map into standard address <-> Token mapping, optionally include user added tokens
+import { createTokenFilterFunction } from "../components/SearchModal/filtering";
+import { ExtendedEther, WETH9_EXTENDED } from "../constants/tokens";
+import { useAllLists, useCombinedActiveList, useInactiveListUrls } from "../state/lists/hooks";
+import { WrappedTokenInfo } from "../state/lists/wrappedTokenInfo";
+import { NEVER_RELOAD, useSingleCallResult } from "../state/multicall/hooks";
+import { useUserAddedTokens } from "../state/user/hooks";
+import { isAddress } from "../utils";
+import { useUnsupportedTokenList } from "./../state/lists/hooks";
+import { useBytes32TokenContract, useTokenContract } from "./useContract";
+import { useActiveWeb3React } from "./web3"; // reduce token map into standard address <-> Token mapping, optionally include user added tokens
 
 function useTokensFromMap(tokenMap, includeUserAdded) {
   const {

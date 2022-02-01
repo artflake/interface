@@ -3,13 +3,13 @@ import { Trade as V2Trade } from '@uniswap/v2-sdk';
 import { Trade as V3Trade } from '@uniswap/v3-sdk';
 import JSBI from 'jsbi';
 import { useMemo, useState } from 'react';
-import { SWAP_ROUTER_ADDRESSES } from '../constants/addresses';
-import { DAI, UNI, USDC } from '../constants/tokens';
-import { useSingleCallResult } from '../state/multicall/hooks';
-import { useEIP2612Contract } from './useContract';
-import useIsArgentWallet from './useIsArgentWallet';
-import useTransactionDeadline from './useTransactionDeadline';
-import { useActiveWeb3React } from './web3';
+import { SWAP_ROUTER_ADDRESSES } from "../constants/addresses";
+import { DAI, UNI, USDC } from "../constants/tokens";
+import { useSingleCallResult } from "../state/multicall/hooks";
+import { useEIP2612Contract } from "./useContract";
+import useIsArgentWallet from "./useIsArgentWallet";
+import useTransactionDeadline from "./useTransactionDeadline";
+import { useActiveWeb3React } from "./web3";
 var PermitType; // 20 minutes to submit after signing
 
 (function (PermitType) {

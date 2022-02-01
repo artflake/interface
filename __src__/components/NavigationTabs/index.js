@@ -1,16 +1,16 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import useTheme from 'hooks/useTheme';
+import useTheme from "../../hooks/useTheme";
 import { darken } from 'polished';
 import { ArrowLeft } from 'react-feather';
 import { Link as HistoryLink, NavLink, useLocation } from 'react-router-dom';
 import { Box } from 'rebass';
-import { useAppDispatch } from 'state/hooks';
-import { resetMintState } from 'state/mint/actions';
-import { resetMintState as resetMintV3State } from 'state/mint/v3/actions';
-import { ThemedText } from 'theme';
-import Row, { RowBetween } from '../Row';
-import SettingsTab from '../Settings';
+import { useAppDispatch } from "../../state/hooks";
+import { resetMintState } from "../../state/mint/actions";
+import { resetMintState as resetMintV3State } from "../../state/mint/v3/actions";
+import { ThemedText } from "../../theme";
+import Row, { RowBetween } from "../Row";
+import SettingsTab from "../Settings";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

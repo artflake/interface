@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import reducer, { addPopup, ApplicationModal, removePopup, setOpenModal, updateBlockNumber, updateChainId } from './reducer';
+import reducer, { addPopup, ApplicationModal, removePopup, setOpenModal, updateBlockNumber, updateChainId } from "./reducer";
 describe('application reducer', () => {
   let store;
   beforeEach(() => {

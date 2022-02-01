@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from 'react';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { useBlockNumber } from '../application/hooks';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { addListener, removeListener } from './slice';
-import { filterToKey } from './utils';
+import { useActiveWeb3React } from "../../hooks/web3";
+import { useBlockNumber } from "../application/hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { addListener, removeListener } from "./slice";
+import { filterToKey } from "./utils";
 export let LogsState;
 
 (function (LogsState) {

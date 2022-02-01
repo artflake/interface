@@ -1,6 +1,6 @@
 import _styled from "styled-components";
-import { AutoColumn } from '../Column';
-import { RowBetween } from '../Row';
+import { AutoColumn } from "../Column";
+import { RowBetween } from "../Row";
 export const TextDot = _styled.div.withConfig({
   displayName: "styleds__TextDot",
   componentId: "sc-1xp9ndq-0"

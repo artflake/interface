@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { DEFAULT_DEADLINE_FROM_NOW } from '../../constants/misc';
-import { updateVersion } from '../global/actions';
-import { addSerializedPair, addSerializedToken, removeSerializedPair, removeSerializedToken, updateArbitrumAlphaAcknowledged, updateHideClosedPositions, updateMatchesDarkMode, updateOptimismAlphaAcknowledged, updateUserClientSideRouter, updateUserDarkMode, updateUserDeadline, updateUserExpertMode, updateUserLocale, updateUserSlippageTolerance } from './actions';
+import { DEFAULT_DEADLINE_FROM_NOW } from "../../constants/misc";
+import { updateVersion } from "../global/actions";
+import { addSerializedPair, addSerializedToken, removeSerializedPair, removeSerializedToken, updateArbitrumAlphaAcknowledged, updateHideClosedPositions, updateMatchesDarkMode, updateOptimismAlphaAcknowledged, updateUserClientSideRouter, updateUserDarkMode, updateUserDeadline, updateUserExpertMode, updateUserLocale, updateUserSlippageTolerance } from "./actions";
 
 const currentTimestamp = () => new Date().getTime();
 

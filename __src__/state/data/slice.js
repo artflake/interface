@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { SupportedChainId } from 'constants/chains';
+import { SupportedChainId } from "../../constants/chains";
 import { ClientError, gql, GraphQLClient } from 'graphql-request';
 // List of supported subgraphs. Note that the app currently only support one active subgraph at a time
 const CHAIN_SUBGRAPH_URL = {

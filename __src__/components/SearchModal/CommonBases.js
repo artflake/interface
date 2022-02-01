@@ -1,13 +1,13 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { AutoColumn } from 'components/Column';
-import CurrencyLogo from 'components/CurrencyLogo';
-import QuestionHelper from 'components/QuestionHelper';
-import { AutoRow } from 'components/Row';
-import { COMMON_BASES } from 'constants/routing';
-import { useTokenInfoFromActiveList } from 'hooks/useTokenInfoFromActiveList';
+import { AutoColumn } from "../Column";
+import CurrencyLogo from "../CurrencyLogo";
+import QuestionHelper from "../QuestionHelper";
+import { AutoRow } from "../Row";
+import { COMMON_BASES } from "../../constants/routing";
+import { useTokenInfoFromActiveList } from "../../hooks/useTokenInfoFromActiveList";
 import { Text } from 'rebass';
-import { currencyId } from 'utils/currencyId';
+import { currencyId } from "../../utils/currencyId";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

@@ -1,4 +1,4 @@
-import { isAddress } from '../../utils';
+import { isAddress } from "../../utils";
 
 /**
  * Token instances created from token info on a token list.

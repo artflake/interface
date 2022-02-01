@@ -1,13 +1,13 @@
 import { keyframes as _keyframes } from "styled-components";
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ButtonGray } from 'components/Button';
-import { OutlineCard } from 'components/Card';
-import { AutoColumn } from 'components/Column';
+import { ButtonGray } from "../Button";
+import { OutlineCard } from "../Card";
+import { AutoColumn } from "../Column";
 import { useCallback, useEffect, useState } from 'react';
 import { Minus, Plus } from 'react-feather';
-import { ThemedText } from 'theme';
-import { Input as NumericalInput } from '../NumericalInput';
+import { ThemedText } from "../../theme";
+import { Input as NumericalInput } from "../NumericalInput";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

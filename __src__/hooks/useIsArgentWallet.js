@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { NEVER_RELOAD, useSingleCallResult } from '../state/multicall/hooks';
-import { useArgentWalletDetectorContract } from './useContract';
-import { useActiveWeb3React } from './web3';
+import { NEVER_RELOAD, useSingleCallResult } from "../state/multicall/hooks";
+import { useArgentWalletDetectorContract } from "./useContract";
+import { useActiveWeb3React } from "./web3";
 export default function useIsArgentWallet() {
   var _call$result$, _call$result;
 

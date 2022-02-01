@@ -1,10 +1,10 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { useLocationLinkProps } from 'hooks/useLocationLinkProps';
+import { useLocationLinkProps } from "../../hooks/useLocationLinkProps";
 import { useMemo } from 'react';
-import { DEFAULT_LOCALE, LOCALE_LABEL } from '../../constants/locales';
-import { navigatorLocale, useActiveLocale } from '../../hooks/useActiveLocale';
-import { StyledInternalLink, ThemedText } from '../../theme';
+import { DEFAULT_LOCALE, LOCALE_LABEL } from "../../constants/locales";
+import { navigatorLocale, useActiveLocale } from "../../hooks/useActiveLocale";
+import { StyledInternalLink, ThemedText } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const Container = _styled(ThemedText.Small).withConfig({

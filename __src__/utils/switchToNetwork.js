@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { hexStripZeros } from '@ethersproject/bytes';
-import { CHAIN_INFO } from 'constants/chains';
-import { addNetwork } from './addNetwork';
+import { CHAIN_INFO } from "../constants/chains";
+import { addNetwork } from "./addNetwork";
 // provider.request returns Promise<any>, but wallet_switchEthereumChain must return null or throw
 // see https://github.com/rekmarks/EIPs/blob/3326-create/EIPS/eip-3326.md for more info on wallet_switchEthereumChain
 export async function switchToNetwork(_ref) {

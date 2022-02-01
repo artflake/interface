@@ -1,7 +1,7 @@
-import ArgentWalletContractABI from '../abis/argent-wallet-contract.json';
-import { useContract } from './useContract';
-import useIsArgentWallet from './useIsArgentWallet';
-import { useActiveWeb3React } from './web3';
+import ArgentWalletContractABI from "../abis/argent-wallet-contract.json";
+import { useContract } from "./useContract";
+import useIsArgentWallet from "./useIsArgentWallet";
+import { useActiveWeb3React } from "./web3";
 export function useArgentWalletContract() {
   const {
     account

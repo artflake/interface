@@ -1,4 +1,4 @@
-import { anonymizeLink } from './anonymizeLink';
+import { anonymizeLink } from "./anonymizeLink";
 describe('#anonymizeLink', () => {
   it('does nothing to non-urls', () => {
     expect(anonymizeLink('not a link')).toEqual('not a link');

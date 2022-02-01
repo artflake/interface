@@ -1,5 +1,5 @@
 import { Redirect } from 'react-router-dom';
-import AddLiquidityV2 from './index';
+import AddLiquidityV2 from "./index";
 import { jsx as _jsx } from "react/jsx-runtime";
 export function RedirectDuplicateTokenIdsV2(props) {
   const {

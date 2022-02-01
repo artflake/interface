@@ -1,8 +1,8 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import Badge, { BadgeVariant } from 'components/Badge';
+import Badge, { BadgeVariant } from "./";
 import { AlertCircle } from 'react-feather';
-import { MouseoverTooltip } from '../../components/Tooltip';
+import { MouseoverTooltip } from "../../components/Tooltip";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { selectPercent } from './actions';
+import { selectPercent } from "./actions";
 const initialState = {
   percent: 0
 };

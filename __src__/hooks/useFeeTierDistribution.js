@@ -2,9 +2,9 @@ import { skipToken } from '@reduxjs/toolkit/query/react';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { useMemo } from 'react';
 import ReactGA from 'react-ga';
-import { useBlockNumber } from 'state/application/hooks';
-import { useFeeTierDistributionQuery } from 'state/data/enhanced';
-import { PoolState, usePool } from './usePools'; // maximum number of blocks past which we consider the data stale
+import { useBlockNumber } from "../state/application/hooks";
+import { useFeeTierDistributionQuery } from "../state/data/enhanced";
+import { PoolState, usePool } from "./usePools"; // maximum number of blocks past which we consider the data stale
 
 const MAX_DATA_BLOCK_AGE = 20;
 export function useFeeTierDistribution(currencyA, currencyB) {

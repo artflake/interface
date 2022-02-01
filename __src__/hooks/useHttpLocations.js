@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import contenthashToUri from '../utils/contenthashToUri';
-import { parseENSAddress } from '../utils/parseENSAddress';
-import uriToHttp from '../utils/uriToHttp';
-import useENSContentHash from './useENSContentHash';
+import contenthashToUri from "../utils/contenthashToUri";
+import { parseENSAddress } from "../utils/parseENSAddress";
+import uriToHttp from "../utils/uriToHttp";
+import useENSContentHash from "./useENSContentHash";
 export default function useHttpLocations(uri) {
   const ens = useMemo(() => uri ? parseENSAddress(uri) : undefined, [uri]);
   const resolvedContentHash = useENSContentHash(ens === null || ens === void 0 ? void 0 : ens.ensName);

@@ -1,11 +1,11 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ButtonRadioChecked } from 'components/Button';
-import { AutoColumn } from 'components/Column';
+import { ButtonRadioChecked } from "../Button";
+import { AutoColumn } from "../Column";
 import React from 'react';
-import { ThemedText } from 'theme';
-import { FeeTierPercentageBadge } from './FeeTierPercentageBadge';
-import { FEE_AMOUNT_DETAIL } from './shared';
+import { ThemedText } from "../../theme";
+import { FeeTierPercentageBadge } from "./FeeTierPercentageBadge";
+import { FEE_AMOUNT_DETAIL } from "./shared";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

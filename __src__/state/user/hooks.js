@@ -1,16 +1,16 @@
 import { Percent, Token } from '@uniswap/sdk-core';
 import { computePairAddress } from '@uniswap/v2-sdk';
-import { L2_CHAIN_IDS, SupportedChainId } from 'constants/chains';
-import { L2_DEADLINE_FROM_NOW } from 'constants/misc';
+import { L2_CHAIN_IDS, SupportedChainId } from "../../constants/chains";
+import { L2_DEADLINE_FROM_NOW } from "../../constants/misc";
 import JSBI from 'jsbi';
 import { useCallback, useMemo } from 'react';
 import { shallowEqual } from 'react-redux';
-import { useAppDispatch, useAppSelector } from 'state/hooks';
-import { V2_FACTORY_ADDRESSES } from '../../constants/addresses';
-import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from '../../constants/routing';
-import { useAllTokens } from '../../hooks/Tokens';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { addSerializedPair, addSerializedToken, removeSerializedToken, updateArbitrumAlphaAcknowledged, updateHideClosedPositions, updateOptimismAlphaAcknowledged, updateUserClientSideRouter, updateUserDarkMode, updateUserDeadline, updateUserExpertMode, updateUserLocale, updateUserSlippageTolerance } from './actions';
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { V2_FACTORY_ADDRESSES } from "../../constants/addresses";
+import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from "../../constants/routing";
+import { useAllTokens } from "../../hooks/Tokens";
+import { useActiveWeb3React } from "../../hooks/web3";
+import { addSerializedPair, addSerializedToken, removeSerializedToken, updateArbitrumAlphaAcknowledged, updateHideClosedPositions, updateOptimismAlphaAcknowledged, updateUserClientSideRouter, updateUserDarkMode, updateUserDeadline, updateUserExpertMode, updateUserLocale, updateUserSlippageTolerance } from "./actions";
 
 function serializeToken(token) {
   return {

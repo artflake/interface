@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { Field, typeInput } from './actions';
+import { Field, typeInput } from "./actions";
 const initialState = {
   independentField: Field.LIQUIDITY_PERCENT,
   typedValue: '0'

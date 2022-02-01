@@ -1,4 +1,4 @@
-import { ALL_SUPPORTED_CHAIN_IDS, SupportedChainId } from './chains';
+import { ALL_SUPPORTED_CHAIN_IDS, SupportedChainId } from "./chains";
 describe('chains', () => {
   describe('ALL_SUPPORTED_CHAIN_IDS', () => {
     it('contains all the values in the SupportedChainId enum', () => {

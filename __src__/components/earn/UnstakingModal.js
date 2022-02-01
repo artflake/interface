@@ -1,17 +1,17 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
 import { useState } from 'react';
-import { useStakingContract } from '../../hooks/useContract';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { TransactionType } from '../../state/transactions/actions';
-import { useTransactionAdder } from '../../state/transactions/hooks';
-import { CloseIcon, ThemedText } from '../../theme';
-import { ButtonError } from '../Button';
-import { AutoColumn } from '../Column';
-import FormattedCurrencyAmount from '../FormattedCurrencyAmount';
-import Modal from '../Modal';
-import { LoadingView, SubmittedView } from '../ModalViews';
-import { RowBetween } from '../Row';
+import { useStakingContract } from "../../hooks/useContract";
+import { useActiveWeb3React } from "../../hooks/web3";
+import { TransactionType } from "../../state/transactions/actions";
+import { useTransactionAdder } from "../../state/transactions/hooks";
+import { CloseIcon, ThemedText } from "../../theme";
+import { ButtonError } from "../Button";
+import { AutoColumn } from "../Column";
+import FormattedCurrencyAmount from "../FormattedCurrencyAmount";
+import Modal from "../Modal";
+import { LoadingView, SubmittedView } from "../ModalViews";
+import { RowBetween } from "../Row";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

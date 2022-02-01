@@ -1,14 +1,14 @@
 import { namehash } from '@ethersproject/hash';
 import { useEffect, useMemo, useState } from 'react';
-import { safeNamehash } from 'utils/safeNamehash';
-import uriToHttp from 'utils/uriToHttp';
-import { useSingleCallResult } from '../state/multicall/hooks';
-import { isAddress } from '../utils';
-import isZero from '../utils/isZero';
-import { useENSRegistrarContract, useENSResolverContract, useERC721Contract, useERC1155Contract } from './useContract';
-import useDebounce from './useDebounce';
-import useENSName from './useENSName';
-import { useActiveWeb3React } from './web3';
+import { safeNamehash } from "../utils/safeNamehash";
+import uriToHttp from "../utils/uriToHttp";
+import { useSingleCallResult } from "../state/multicall/hooks";
+import { isAddress } from "../utils";
+import isZero from "../utils/isZero";
+import { useENSRegistrarContract, useENSResolverContract, useERC721Contract, useERC1155Contract } from "./useContract";
+import useDebounce from "./useDebounce";
+import useENSName from "./useENSName";
+import { useActiveWeb3React } from "./web3";
 /**
  * Returns the ENS avatar URI, if available.
  * Spec: https://gist.github.com/Arachnid/9db60bd75277969ee1689c8742b75182.

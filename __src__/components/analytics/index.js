@@ -1,5 +1,5 @@
 import ReactGA from 'react-ga';
-import { isMobile } from 'utils/userAgent';
+import { isMobile } from "../../utils/userAgent";
 const GOOGLE_ANALYTICS_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
 
 if (typeof GOOGLE_ANALYTICS_ID === 'string') {

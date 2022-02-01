@@ -1,8 +1,8 @@
-import { DEFAULT_TXN_DISMISS_MS } from 'constants/misc';
+import { DEFAULT_TXN_DISMISS_MS } from "../../constants/misc";
 import { useCallback, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from 'state/hooks';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { addPopup, ApplicationModal, removePopup, setOpenModal } from './reducer';
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { useActiveWeb3React } from "../../hooks/web3";
+import { addPopup, ApplicationModal, removePopup, setOpenModal } from "./reducer";
 export function useBlockNumber() {
   const {
     chainId

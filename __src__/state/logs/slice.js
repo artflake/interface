@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { filterToKey } from './utils';
+import { filterToKey } from "./utils";
 const slice = createSlice({
   name: 'logs',
   initialState: {},

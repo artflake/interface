@@ -1,4 +1,4 @@
-import { useActiveWeb3React } from 'hooks/web3';
+import { useActiveWeb3React } from "../../hooks/web3";
 import { useEffect } from 'react';
 import ReactGA from 'react-ga';
 import { getCLS, getFCP, getFID, getLCP } from 'web-vitals';

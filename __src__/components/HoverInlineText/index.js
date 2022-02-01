@@ -1,5 +1,5 @@
 import _styled from "styled-components";
-import Tooltip from 'components/Tooltip';
+import Tooltip from "../Tooltip";
 import { useState } from 'react';
 import { jsx as _jsx } from "react/jsx-runtime";
 

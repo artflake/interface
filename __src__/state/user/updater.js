@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from 'state/hooks';
-import { updateMatchesDarkMode } from './actions';
+import { useAppDispatch } from "../hooks";
+import { updateMatchesDarkMode } from "./actions";
 export default function Updater() {
   const dispatch = useAppDispatch(); // keep dark mode in sync with the system
 

@@ -1,12 +1,12 @@
-import usePrevious from 'hooks/usePrevious';
+import usePrevious from "../../hooks/usePrevious";
 import { useCallback, useEffect, useState } from 'react';
-import useLast from '../../hooks/useLast';
-import { WrappedTokenInfo } from '../../state/lists/wrappedTokenInfo';
-import Modal from '../Modal';
-import { CurrencySearch } from './CurrencySearch';
-import { ImportList } from './ImportList';
-import { ImportToken } from './ImportToken';
-import Manage from './Manage';
+import useLast from "../../hooks/useLast";
+import { WrappedTokenInfo } from "../../state/lists/wrappedTokenInfo";
+import Modal from "../Modal";
+import { CurrencySearch } from "./CurrencySearch";
+import { ImportList } from "./ImportList";
+import { ImportToken } from "./ImportToken";
+import Manage from "./Manage";
 import { jsx as _jsx } from "react/jsx-runtime";
 export let CurrencyModalView;
 

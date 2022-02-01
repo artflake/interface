@@ -1,12 +1,12 @@
 import _styled from "styled-components";
 import { CheckCircle, Triangle } from 'react-feather';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { useAllTransactions } from '../../state/transactions/hooks';
-import { ExternalLink } from '../../theme';
-import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink';
-import Loader from '../Loader';
-import { RowFixed } from '../Row';
-import { TransactionSummary } from './TransactionSummary';
+import { useActiveWeb3React } from "../../hooks/web3";
+import { useAllTransactions } from "../../state/transactions/hooks";
+import { ExternalLink } from "../../theme";
+import { ExplorerDataType, getExplorerLink } from "../../utils/getExplorerLink";
+import Loader from "../Loader";
+import { RowFixed } from "../Row";
+import { TransactionSummary } from "./TransactionSummary";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

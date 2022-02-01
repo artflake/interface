@@ -1,6 +1,6 @@
 import _styled from "styled-components";
-import { AutoColumn } from 'components/Column';
-import { PositionPreview } from 'components/PositionPreview';
+import { AutoColumn } from "../../components/Column";
+import { PositionPreview } from "../../components/PositionPreview";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const Wrapper = _styled.div.withConfig({

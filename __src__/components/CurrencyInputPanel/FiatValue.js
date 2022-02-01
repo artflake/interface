@@ -1,9 +1,9 @@
 import { Trans } from "@lingui/react";
-import HoverInlineText from 'components/HoverInlineText';
+import HoverInlineText from "../HoverInlineText";
 import { useMemo } from 'react';
-import useTheme from '../../hooks/useTheme';
-import { ThemedText } from '../../theme';
-import { warningSeverity } from '../../utils/prices';
+import useTheme from "../../hooks/useTheme";
+import { ThemedText } from "../../theme";
+import { warningSeverity } from "../../utils/prices";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 export function FiatValue(_ref) {

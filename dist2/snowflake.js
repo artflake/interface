@@ -1,78 +1,117 @@
-import _styled, { keyframes, css, createGlobalStyle, ThemeProvider as ThemeProvider$1, ThemeContext, useTheme as useTheme$1 } from 'styled-components';
-import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
-import * as React from 'react';
-import React__default, { useMemo, useEffect, useState, useCallback, useContext, useRef, useLayoutEffect, memo, Suspense } from 'react';
-import { useDispatch, useSelector, shallowEqual, Provider } from 'react-redux';
-import { createAction, createSlice, nanoid, createReducer, configureStore } from '@reduxjs/toolkit';
-import qs, { parse, stringify } from 'qs';
-import { useLocation, Link as Link$1, NavLink, Redirect, Route as Route$2, Switch, HashRouter } from 'react-router-dom';
-import { Trans, I18nProvider } from '@lingui/react';
-import { getAddress, isAddress as isAddress$1 } from '@ethersproject/address';
-import { Text as Text$1, Box as Box$1 } from 'rebass';
-import { AddressZero, MaxUint256 } from '@ethersproject/constants';
-import { Contract } from '@ethersproject/contracts';
-import { namehash } from '@ethersproject/hash';
-import { useWeb3React, UnsupportedChainIdError, createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core';
-import { SafeAppConnector } from '@gnosis.pm/safe-apps-web3-react';
-import { InjectedConnector } from '@web3-react/injected-connector';
-import { PortisConnector } from '@web3-react/portis-connector';
-import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
-import { WalletLinkConnector } from '@web3-react/walletlink-connector';
-import { Web3Provider } from '@ethersproject/providers';
-import { FortmaticConnector as FortmaticConnector$1 } from '@web3-react/fortmatic-connector';
-import { AbstractConnector } from '@web3-react/abstract-connector';
-import invariant from 'tiny-invariant';
-import { Percent, Token, WETH9, Ether, CurrencyAmount, TradeType, Price, Fraction } from '@uniswap/sdk-core';
-import JSBI from 'jsbi';
-import { UAParser } from 'ua-parser-js';
-import { createMulticall, NEVER_RELOAD } from '@uniswap/redux-multicall';
-import '@uniswap/governance/build/GovernorAlpha.json';
-import '@uniswap/governance/build/Uni.json';
-import { abi as abi$6 } from '@uniswap/liquidity-staker/build/StakingRewards.json';
-import { abi as abi$1 } from '@uniswap/merkle-distributor/build/MerkleDistributor.json';
-import { abi as abi$4 } from '@uniswap/v2-core/build/IUniswapV2Pair.json';
-import { abi as abi$3 } from '@uniswap/v2-periphery/build/IUniswapV2Router02.json';
-import { abi as abi$2 } from '@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json';
-import { abi } from '@uniswap/v3-periphery/artifacts/contracts/lens/UniswapInterfaceMulticall.sol/UniswapInterfaceMulticall.json';
-import '@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json';
-import '@uniswap/v3-periphery/artifacts/contracts/V3Migrator.sol/V3Migrator.json';
-import { FACTORY_ADDRESS, Pair, computePairAddress, Trade, Router } from '@uniswap/v2-sdk';
-import { FACTORY_ADDRESS as FACTORY_ADDRESS$1, Route as Route$1, Pool as Pool$1, Trade as Trade$1, computePoolAddress, FeeAmount, SwapQuoter, toHex, SwapRouter } from '@uniswap/v3-sdk';
-import { initializeApp } from 'firebase/app';
-import { getDatabase, push, ref } from 'firebase/database';
-import { arrayify, hexStripZeros, splitSignature } from '@ethersproject/bytes';
-import { parseBytes32String } from '@ethersproject/strings';
-import { X, ExternalLink as ExternalLink$1, Trash, Check, ArrowDown, Info, HelpCircle, Coffee, MessageCircle, Globe, Moon, Sun, BookOpen, FileText, ChevronLeft, AlertTriangle, CheckCircle, Copy as Copy$1, Triangle, ArrowLeft, ArrowRight, Activity, ArrowDownCircle, ChevronDown, AlertOctagon, Heart, AlertCircle, Slash, Edit, Settings, Lock, ArrowUpCircle } from 'react-feather';
-import ReactGA from 'react-ga';
-import { i18n } from '@lingui/core';
-import { Box, Button as Button$1 } from 'rebass/styled-components';
-import { darken, transparentize, readableColor, shade } from 'polished';
-import ReactConfetti from 'react-confetti';
-import { DialogOverlay, DialogContent } from '@reach/dialog';
-import { animated, useTransition, useSpring } from 'react-spring';
-import { useGesture } from 'react-use-gesture';
-import { createApi, fetchBaseQuery, skipToken, setupListeners } from '@reduxjs/toolkit/query/react';
-import { save, load } from 'redux-localstorage-simple';
-import { GraphQLClient, ClientError, gql } from 'graphql-request';
-import { getVersionUpgrade, VersionUpgrade, minVersionBump } from '@uniswap/token-lists';
-import { parseUnits } from '@ethersproject/units';
-import { Interface } from '@ethersproject/abi';
-import { abi as abi$5 } from '@uniswap/v3-core/artifacts/contracts/interfaces/pool/IUniswapV3PoolState.sol/IUniswapV3PoolState.json';
-import useScrollPosition from '@react-hook/window-scroll';
-import Portal from '@reach/portal';
-import { usePopper } from 'react-popper';
-import jazzicon from '@metamask/jazzicon';
-import copy from 'copy-to-clipboard';
-import { BigNumber } from '@ethersproject/bignumber';
-import { useSpring as useSpring$1 } from 'react-spring/web';
-import CID from 'cids';
-import { getNameFromData, rmPrefix } from 'multicodec';
-import { decode, toB58String } from 'multihashes';
-import AutoSizer from 'react-virtualized-auto-sizer';
-import { FixedSizeList } from 'react-window';
-import Vibrant from 'node-vibrant/lib/bundle';
-import { hex } from 'wcag-contrast';
-import { af, ar, ca, cs, da, de, el, en, es, fi, fr, he, hu, id, it, ja, ko, nl, no, pl, pt, ro, ru, sr, sv, sw, tr, uk, vi, zh } from 'make-plural/plurals';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var _styled = require('styled-components');
+var jsxRuntime = require('react/jsx-runtime');
+var React = require('react');
+var reactRedux = require('react-redux');
+var toolkit = require('@reduxjs/toolkit');
+var qs = require('qs');
+var reactRouterDom = require('react-router-dom');
+var react = require('@lingui/react');
+var address = require('@ethersproject/address');
+var rebass = require('rebass');
+var constants = require('@ethersproject/constants');
+var contracts = require('@ethersproject/contracts');
+var hash = require('@ethersproject/hash');
+var core = require('@web3-react/core');
+var safeAppsWeb3React = require('@gnosis.pm/safe-apps-web3-react');
+var injectedConnector = require('@web3-react/injected-connector');
+var portisConnector = require('@web3-react/portis-connector');
+var walletconnectConnector = require('@web3-react/walletconnect-connector');
+var walletlinkConnector = require('@web3-react/walletlink-connector');
+var providers = require('@ethersproject/providers');
+var fortmaticConnector = require('@web3-react/fortmatic-connector');
+var abstractConnector = require('@web3-react/abstract-connector');
+var invariant = require('tiny-invariant');
+var sdkCore = require('@uniswap/sdk-core');
+var JSBI = require('jsbi');
+var uaParserJs = require('ua-parser-js');
+var reduxMulticall = require('@uniswap/redux-multicall');
+require('@uniswap/governance/build/GovernorAlpha.json');
+require('@uniswap/governance/build/Uni.json');
+var StakingRewards_json = require('@uniswap/liquidity-staker/build/StakingRewards.json');
+var MerkleDistributor_json = require('@uniswap/merkle-distributor/build/MerkleDistributor.json');
+var IUniswapV2Pair_json = require('@uniswap/v2-core/build/IUniswapV2Pair.json');
+var IUniswapV2Router02_json = require('@uniswap/v2-periphery/build/IUniswapV2Router02.json');
+var Quoter_json = require('@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json');
+var UniswapInterfaceMulticall_json = require('@uniswap/v3-periphery/artifacts/contracts/lens/UniswapInterfaceMulticall.sol/UniswapInterfaceMulticall.json');
+require('@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json');
+require('@uniswap/v3-periphery/artifacts/contracts/V3Migrator.sol/V3Migrator.json');
+var v2Sdk = require('@uniswap/v2-sdk');
+var v3Sdk = require('@uniswap/v3-sdk');
+var app = require('firebase/app');
+var database = require('firebase/database');
+var bytes = require('@ethersproject/bytes');
+var strings = require('@ethersproject/strings');
+var reactFeather = require('react-feather');
+var ReactGA = require('react-ga');
+var core$1 = require('@lingui/core');
+var styledComponents = require('rebass/styled-components');
+var polished = require('polished');
+var ReactConfetti = require('react-confetti');
+var dialog = require('@reach/dialog');
+var reactSpring = require('react-spring');
+var reactUseGesture = require('react-use-gesture');
+var react$1 = require('@reduxjs/toolkit/query/react');
+var reduxLocalstorageSimple = require('redux-localstorage-simple');
+var graphqlRequest = require('graphql-request');
+var tokenLists = require('@uniswap/token-lists');
+var units = require('@ethersproject/units');
+var abi = require('@ethersproject/abi');
+var IUniswapV3PoolState_json = require('@uniswap/v3-core/artifacts/contracts/interfaces/pool/IUniswapV3PoolState.sol/IUniswapV3PoolState.json');
+var useScrollPosition = require('@react-hook/window-scroll');
+var Portal = require('@reach/portal');
+var reactPopper = require('react-popper');
+var jazzicon = require('@metamask/jazzicon');
+var copy = require('copy-to-clipboard');
+var bignumber = require('@ethersproject/bignumber');
+var web = require('react-spring/web');
+var CID = require('cids');
+var multicodec = require('multicodec');
+var multihashes = require('multihashes');
+var AutoSizer = require('react-virtualized-auto-sizer');
+var reactWindow = require('react-window');
+var Vibrant = require('node-vibrant/lib/bundle');
+var wcagContrast = require('wcag-contrast');
+var plurals$1 = require('make-plural/plurals');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () { return e[k]; }
+        });
+      }
+    });
+  }
+  n["default"] = e;
+  return Object.freeze(n);
+}
+
+var _styled__default = /*#__PURE__*/_interopDefaultLegacy(_styled);
+var React__namespace = /*#__PURE__*/_interopNamespace(React);
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+var qs__default = /*#__PURE__*/_interopDefaultLegacy(qs);
+var invariant__default = /*#__PURE__*/_interopDefaultLegacy(invariant);
+var JSBI__default = /*#__PURE__*/_interopDefaultLegacy(JSBI);
+var ReactGA__default = /*#__PURE__*/_interopDefaultLegacy(ReactGA);
+var ReactConfetti__default = /*#__PURE__*/_interopDefaultLegacy(ReactConfetti);
+var useScrollPosition__default = /*#__PURE__*/_interopDefaultLegacy(useScrollPosition);
+var Portal__default = /*#__PURE__*/_interopDefaultLegacy(Portal);
+var jazzicon__default = /*#__PURE__*/_interopDefaultLegacy(jazzicon);
+var copy__default = /*#__PURE__*/_interopDefaultLegacy(copy);
+var CID__default = /*#__PURE__*/_interopDefaultLegacy(CID);
+var AutoSizer__default = /*#__PURE__*/_interopDefaultLegacy(AutoSizer);
+var Vibrant__default = /*#__PURE__*/_interopDefaultLegacy(Vibrant);
 
 // This optional code is used to register a service worker.
 // register() is not called by default.
@@ -197,7 +236,7 @@ var serviceWorkerRegistration = /*#__PURE__*/Object.freeze({
   unregister: unregister
 });
 
-const rotate$2 = keyframes`
+const rotate$2 = _styled.keyframes`
   from {
     transform: rotate(0deg);
   }
@@ -206,7 +245,7 @@ const rotate$2 = keyframes`
   }
 `;
 
-const StyledSVG = _styled.svg.withConfig({
+const StyledSVG = _styled__default["default"].svg.withConfig({
   displayName: "Loader__StyledSVG",
   componentId: "sc-x3cipg-0"
 })(["animation:2s ", " linear infinite;height:", ";width:", ";path{stroke:", ";}"], rotate$2, _ref => {
@@ -238,14 +277,14 @@ function Loader(_ref4) {
     stroke,
     ...rest
   } = _ref4;
-  return /*#__PURE__*/jsx(StyledSVG, {
+  return /*#__PURE__*/jsxRuntime.jsx(StyledSVG, {
     viewBox: "0 0 24 24",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg",
     size: size,
     stroke: stroke,
     ...rest,
-    children: /*#__PURE__*/jsx("path", {
+    children: /*#__PURE__*/jsxRuntime.jsx("path", {
       d: "M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 9.27455 20.9097 6.80375 19.1414 5",
       strokeWidth: "2.5",
       strokeLinecap: "round",
@@ -254,23 +293,23 @@ function Loader(_ref4) {
   });
 }
 
-const useAppDispatch = () => useDispatch();
-const useAppSelector = useSelector;
+const useAppDispatch = () => reactRedux.useDispatch();
+const useAppSelector = reactRedux.useSelector;
 
-const updateMatchesDarkMode = createAction('user/updateMatchesDarkMode');
-const updateArbitrumAlphaAcknowledged = createAction('user/updateArbitrumAlphaAcknowledged');
-const updateOptimismAlphaAcknowledged = createAction('user/updateOptimismAlphaAcknowledged');
-const updateUserDarkMode = createAction('user/updateUserDarkMode');
-const updateUserExpertMode = createAction('user/updateUserExpertMode');
-const updateUserLocale = createAction('user/updateUserLocale');
-const updateUserClientSideRouter = createAction('user/updateUserClientSideRouter');
-const updateHideClosedPositions = createAction('user/hideClosedPositions');
-const updateUserSlippageTolerance = createAction('user/updateUserSlippageTolerance');
-const updateUserDeadline = createAction('user/updateUserDeadline');
-const addSerializedToken = createAction('user/addSerializedToken');
-const removeSerializedToken = createAction('user/removeSerializedToken');
-const addSerializedPair = createAction('user/addSerializedPair');
-const removeSerializedPair = createAction('user/removeSerializedPair');
+const updateMatchesDarkMode = toolkit.createAction('user/updateMatchesDarkMode');
+const updateArbitrumAlphaAcknowledged = toolkit.createAction('user/updateArbitrumAlphaAcknowledged');
+const updateOptimismAlphaAcknowledged = toolkit.createAction('user/updateOptimismAlphaAcknowledged');
+const updateUserDarkMode = toolkit.createAction('user/updateUserDarkMode');
+const updateUserExpertMode = toolkit.createAction('user/updateUserExpertMode');
+const updateUserLocale = toolkit.createAction('user/updateUserLocale');
+const updateUserClientSideRouter = toolkit.createAction('user/updateUserClientSideRouter');
+const updateHideClosedPositions = toolkit.createAction('user/hideClosedPositions');
+const updateUserSlippageTolerance = toolkit.createAction('user/updateUserSlippageTolerance');
+const updateUserDeadline = toolkit.createAction('user/updateUserDeadline');
+const addSerializedToken = toolkit.createAction('user/addSerializedToken');
+const removeSerializedToken = toolkit.createAction('user/removeSerializedToken');
+const addSerializedPair = toolkit.createAction('user/addSerializedPair');
+const removeSerializedPair = toolkit.createAction('user/removeSerializedPair');
 
 function parsedQueryString(search) {
   if (!search) {
@@ -279,7 +318,7 @@ function parsedQueryString(search) {
     search = hash.substr(hash.indexOf('?'));
   }
 
-  return search && search.length > 1 ? parse(search, {
+  return search && search.length > 1 ? qs.parse(search, {
     parseArrays: false,
     ignoreQueryPrefix: true
   }) : {};
@@ -287,8 +326,8 @@ function parsedQueryString(search) {
 function useParsedQueryString() {
   const {
     search
-  } = useLocation();
-  return useMemo(() => parsedQueryString(search), [search]);
+  } = reactRouterDom.useLocation();
+  return React.useMemo(() => parsedQueryString(search), [search]);
 }
 
 function ApeModeQueryParamReader() {
@@ -301,7 +340,7 @@ function useApeModeQueryParamReader() {
   const {
     ape
   } = useParsedQueryString();
-  useEffect(() => {
+  React.useEffect(() => {
     if (typeof ape !== 'string') return;
 
     if (ape === '' || ape.toLowerCase() === 'true') {
@@ -319,7 +358,7 @@ var tokenLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAABJCAYAAABxc
 // returns the checksummed address if the address is valid, otherwise returns false
 function isAddress(value) {
   try {
-    return getAddress(value);
+    return address.getAddress(value);
   } catch {
     return false;
   }
@@ -347,11 +386,11 @@ function getProviderOrSigner(library, account) {
 
 
 function getContract(address, ABI, library, account) {
-  if (!isAddress(address) || address === AddressZero) {
+  if (!isAddress(address) || address === constants.AddressZero) {
     throw Error(`Invalid 'address' parameter '${address}'.`);
   }
 
-  return new Contract(address, ABI, getProviderOrSigner(library, account));
+  return new contracts.Contract(address, ABI, getProviderOrSigner(library, account));
 }
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -366,7 +405,7 @@ function safeNamehash(name) {
   if (name === undefined) return undefined;
 
   try {
-    return namehash(name);
+    return hash.namehash(name);
   } catch (error) {
     console.debug(error);
     return undefined;
@@ -377,35 +416,35 @@ var _path$4, _path2$1, _path3$1, _path4, _path5, _path6, _path7, _path8, _path9;
 
 function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
 
-const SvgLogo = props => /*#__PURE__*/React.createElement("svg", _extends$6({
+const SvgLogo = props => /*#__PURE__*/React__namespace.createElement("svg", _extends$6({
   width: 14,
   height: 15,
   viewBox: "0 0 14 15",
   fill: "black",
   xmlns: "http://www.w3.org/2000/svg"
-}, props), /*#__PURE__*/React.createElement("g", {
+}, props), /*#__PURE__*/React__namespace.createElement("g", {
   style: {
     mixBlendMode: "darken"
   }
-}, _path$4 || (_path$4 = /*#__PURE__*/React.createElement("path", {
+}, _path$4 || (_path$4 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M4.15217 1.55141C3.96412 1.52242 3.95619 1.51902 4.04468 1.5055C4.21427 1.47958 4.61472 1.51491 4.89067 1.58012C5.53489 1.73232 6.12109 2.12221 6.74683 2.81466L6.91307 2.99862L7.15088 2.96062C8.15274 2.8006 9.17194 2.92778 10.0244 3.31918C10.2589 3.42686 10.6287 3.64121 10.6749 3.69629C10.6896 3.71384 10.7166 3.82684 10.7349 3.94742C10.7982 4.36458 10.7665 4.68434 10.6382 4.92317C10.5683 5.05313 10.5644 5.09432 10.6114 5.20554C10.6489 5.2943 10.7534 5.35999 10.8569 5.35985C11.0687 5.35956 11.2968 5.0192 11.4024 4.54561L11.4444 4.3575L11.5275 4.45109C11.9835 4.96459 12.3417 5.66488 12.4032 6.16335L12.4192 6.29332L12.3426 6.17517C12.2107 5.97186 12.0781 5.83346 11.9084 5.72183C11.6024 5.52062 11.2789 5.45215 10.4222 5.40727C9.64839 5.36675 9.21045 5.30106 8.77621 5.16032C8.03738 4.9209 7.66493 4.60204 6.78729 3.4576C6.39748 2.94928 6.15654 2.66804 5.91687 2.44155C5.37228 1.92691 4.83716 1.65701 4.15217 1.55141Z"
-})), _path2$1 || (_path2$1 = /*#__PURE__*/React.createElement("path", {
+})), _path2$1 || (_path2$1 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M10.8494 2.68637C10.8689 2.34575 10.9153 2.12108 11.0088 1.9159C11.0458 1.83469 11.0804 1.76822 11.0858 1.76822C11.0911 1.76822 11.075 1.82816 11.05 1.90142C10.9821 2.10054 10.9709 2.3729 11.0177 2.68978C11.0771 3.09184 11.1109 3.14985 11.5385 3.58416C11.739 3.78788 11.9723 4.0448 12.0568 4.15511L12.2106 4.35568L12.0568 4.21234C11.8688 4.03705 11.4364 3.6952 11.3409 3.64633C11.2768 3.61356 11.2673 3.61413 11.2278 3.65321C11.1914 3.68922 11.1837 3.74333 11.1787 3.99915C11.1708 4.39786 11.1161 4.65377 10.9842 4.90965C10.9128 5.04805 10.9015 5.01851 10.9661 4.8623C11.0143 4.74566 11.0192 4.69439 11.0189 4.30842C11.0181 3.53291 10.9255 3.34647 10.3823 3.02709C10.2447 2.94618 10.0179 2.8295 9.87839 2.76778C9.73887 2.70606 9.62805 2.6523 9.63208 2.64828C9.64746 2.63307 10.1772 2.78675 10.3905 2.86828C10.7077 2.98954 10.76 3.00526 10.7985 2.99063C10.8244 2.98082 10.8369 2.90608 10.8494 2.68637Z"
-})), _path3$1 || (_path3$1 = /*#__PURE__*/React.createElement("path", {
+})), _path3$1 || (_path3$1 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M4.51745 4.01304C4.13569 3.49066 3.89948 2.68973 3.95062 2.091L3.96643 1.90572L4.05333 1.92148C4.21652 1.95106 4.49789 2.05515 4.62964 2.13469C4.9912 2.35293 5.14773 2.64027 5.30697 3.37811C5.35362 3.59423 5.41482 3.8388 5.44298 3.9216C5.48831 4.05487 5.65962 4.36617 5.7989 4.56834C5.89922 4.71395 5.83258 4.78295 5.61082 4.76305C5.27215 4.73267 4.8134 4.41799 4.51745 4.01304Z"
-})), _path4 || (_path4 = /*#__PURE__*/React.createElement("path", {
+})), _path4 || (_path4 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M10.3863 7.90088C8.60224 7.18693 7.97389 6.56721 7.97389 5.52157C7.97389 5.36769 7.97922 5.24179 7.98571 5.24179C7.99221 5.24179 8.06124 5.29257 8.1391 5.35465C8.50088 5.64305 8.906 5.76623 10.0275 5.92885C10.6875 6.02455 11.0589 6.10185 11.4015 6.21477C12.4904 6.57371 13.1641 7.30212 13.3248 8.29426C13.3715 8.58255 13.3441 9.12317 13.2684 9.4081C13.2087 9.63315 13.0263 10.0388 12.9779 10.0544C12.9645 10.0587 12.9514 10.0076 12.9479 9.93809C12.9296 9.56554 12.7402 9.20285 12.4221 8.93116C12.0604 8.62227 11.5745 8.37633 10.3863 7.90088Z"
-})), _path5 || (_path5 = /*#__PURE__*/React.createElement("path", {
+})), _path5 || (_path5 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M9.13385 8.19748C9.11149 8.06527 9.07272 7.89643 9.04769 7.82228L9.00217 7.68748L9.08672 7.7818C9.20374 7.91233 9.2962 8.07937 9.37457 8.30185C9.43438 8.47165 9.44111 8.52215 9.44066 8.79807C9.4402 9.06896 9.43273 9.12575 9.3775 9.27858C9.29042 9.51959 9.18233 9.69048 9.00097 9.87391C8.67507 10.2036 8.25607 10.3861 7.65143 10.4618C7.54633 10.4749 7.24 10.4971 6.97069 10.511C6.292 10.5461 5.84531 10.6186 5.44393 10.7587C5.38623 10.7788 5.3347 10.7911 5.32947 10.7859C5.31323 10.7698 5.58651 10.6079 5.81223 10.4998C6.1305 10.3474 6.44733 10.2643 7.15719 10.1468C7.50785 10.0887 7.86998 10.0183 7.96194 9.99029C8.83033 9.72566 9.27671 9.04276 9.13385 8.19748Z"
-})), _path6 || (_path6 = /*#__PURE__*/React.createElement("path", {
+})), _path6 || (_path6 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M9.95169 9.64109C9.71465 9.13463 9.66022 8.64564 9.79009 8.18961C9.80399 8.14088 9.82632 8.101 9.83976 8.101C9.85319 8.101 9.90913 8.13105 9.96404 8.16777C10.0733 8.24086 10.2924 8.36395 10.876 8.68023C11.6043 9.0749 12.0196 9.3805 12.302 9.72965C12.5493 10.0354 12.7023 10.3837 12.776 10.8084C12.8177 11.0489 12.7932 11.6277 12.7311 11.8699C12.5353 12.6337 12.0802 13.2336 11.4311 13.5837C11.336 13.635 11.2506 13.6771 11.2414 13.6773C11.2321 13.6775 11.2668 13.5899 11.3184 13.4827C11.5367 13.029 11.5616 12.5877 11.3965 12.0965C11.2954 11.7957 11.0893 11.4287 10.6732 10.8084C10.1893 10.0873 10.0707 9.89539 9.95169 9.64109Z"
-})), _path7 || (_path7 = /*#__PURE__*/React.createElement("path", {
+})), _path7 || (_path7 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M3.25046 12.3737C3.91252 11.8181 4.73629 11.4234 5.48666 11.3022C5.81005 11.25 6.34877 11.2707 6.64823 11.3469C7.12824 11.469 7.55763 11.7425 7.78094 12.0683C7.99918 12.3867 8.09281 12.6642 8.19029 13.2816C8.22875 13.5252 8.27057 13.7697 8.28323 13.8251C8.35644 14.1451 8.4989 14.4008 8.67544 14.5293C8.95583 14.7333 9.43865 14.7459 9.91362 14.5618C9.99423 14.5305 10.0642 14.5089 10.0691 14.5138C10.0864 14.5308 9.84719 14.6899 9.67847 14.7737C9.45143 14.8864 9.2709 14.93 9.03102 14.93C8.59601 14.93 8.23486 14.7101 7.9335 14.2616C7.87419 14.1733 7.7409 13.909 7.63729 13.6741C7.3191 12.9528 7.16199 12.7331 6.79255 12.4926C6.47104 12.2834 6.05641 12.2459 5.74449 12.3979C5.33475 12.5976 5.22043 13.118 5.51389 13.4478C5.63053 13.5789 5.84803 13.6919 6.02588 13.7139C6.35861 13.7551 6.64455 13.5035 6.64455 13.1696C6.64455 12.9528 6.56071 12.8291 6.34966 12.7344C6.0614 12.6051 5.75156 12.7562 5.75304 13.0254C5.75368 13.1402 5.80396 13.2122 5.91971 13.2643C5.99397 13.2977 5.99569 13.3003 5.93514 13.2878C5.67066 13.2333 5.6087 12.9164 5.82135 12.706C6.07667 12.4535 6.60461 12.5649 6.78591 12.9097C6.86208 13.0545 6.87092 13.3429 6.80451 13.517C6.6559 13.9068 6.22256 14.1117 5.78297 14.0002C5.48368 13.9242 5.36181 13.842 5.00097 13.4726C4.37395 12.8306 4.13053 12.7062 3.22657 12.566L3.05335 12.5391L3.25046 12.3737Z"
-})), _path8 || (_path8 = /*#__PURE__*/React.createElement("path", {
+})), _path8 || (_path8 = /*#__PURE__*/React__namespace.createElement("path", {
   fillRule: "evenodd",
   clipRule: "evenodd",
   d: "M0.308383 0.883984C2.40235 3.40996 3.84457 4.45213 4.00484 4.67231C4.13717 4.85412 4.08737 5.01757 3.86067 5.14567C3.7346 5.21689 3.47541 5.28905 3.34564 5.28905C3.19887 5.28905 3.14847 5.23278 3.14847 5.23278C3.06337 5.15255 3.01544 5.16658 2.5784 4.39555C1.97166 3.45981 1.46389 2.68357 1.45004 2.67057C1.41801 2.64052 1.41856 2.64153 2.51654 4.59413C2.69394 5.0011 2.55182 5.15049 2.55182 5.20845C2.55182 5.32636 2.51946 5.38834 2.37311 5.55059C2.12914 5.8211 2.02008 6.12505 1.94135 6.7541C1.8531 7.45926 1.60492 7.95737 0.917156 8.80989C0.514562 9.30893 0.448686 9.4004 0.3471 9.60153C0.219144 9.85482 0.183961 9.99669 0.169701 10.3165C0.154629 10.6547 0.183983 10.8732 0.287934 11.1965C0.378939 11.4796 0.473932 11.6665 0.716778 12.0403C0.926351 12.3629 1.04702 12.6027 1.04702 12.6965C1.04702 12.7711 1.06136 12.7712 1.38611 12.6983C2.16328 12.5239 2.79434 12.2171 3.14925 11.8411C3.36891 11.6084 3.42048 11.4799 3.42215 11.1611C3.42325 10.9525 3.41587 10.9088 3.35914 10.7888C3.2668 10.5935 3.09869 10.4311 2.72817 10.1794C2.2427 9.84953 2.03534 9.58398 1.97807 9.21878C1.93108 8.91913 1.98559 8.70771 2.25416 8.14825C2.53214 7.56916 2.60103 7.32239 2.64763 6.73869C2.67773 6.36158 2.71941 6.21286 2.82842 6.09348C2.94212 5.969 3.04447 5.92684 3.32584 5.88863C3.78457 5.82635 4.07667 5.70839 4.31677 5.48849C4.52505 5.29772 4.61221 5.11391 4.62558 4.8372L4.63574 4.62747L4.51934 4.49259C4.09783 4.00411 0.0261003 0.5 0.000160437 0.5C-0.00538105 0.5 0.133325 0.672804 0.308383 0.883984ZM1.28364 10.6992C1.37894 10.5314 1.3283 10.3158 1.16889 10.2104C1.01827 10.1109 0.78428 10.1578 0.78428 10.2875C0.78428 10.3271 0.806303 10.3559 0.855937 10.3813C0.939514 10.424 0.945581 10.4721 0.879823 10.5703C0.81323 10.6698 0.818604 10.7573 0.894991 10.8167C1.0181 10.9125 1.19237 10.8598 1.28364 10.6992Z"
-})), _path9 || (_path9 = /*#__PURE__*/React.createElement("path", {
+})), _path9 || (_path9 = /*#__PURE__*/React__namespace.createElement("path", {
   fillRule: "evenodd",
   clipRule: "evenodd",
   d: "M4.92523 5.99865C4.70988 6.06439 4.50054 6.29124 4.43574 6.5291C4.39621 6.67421 4.41864 6.92875 4.47785 7.00736C4.57351 7.13433 4.66602 7.16778 4.91651 7.16603C5.40693 7.16263 5.83327 6.95358 5.88284 6.69224C5.92347 6.47801 5.73622 6.18112 5.4783 6.05078C5.34521 5.98355 5.06217 5.95688 4.92523 5.99865ZM5.49853 6.44422C5.57416 6.33741 5.54107 6.22198 5.41245 6.14391C5.1675 5.99525 4.79708 6.11827 4.79708 6.34826C4.79708 6.46274 4.99025 6.58765 5.16731 6.58765C5.28516 6.58765 5.44644 6.5178 5.49853 6.44422Z"
@@ -589,7 +628,7 @@ const NETWORK_POLLING_INTERVALS = {
   [SupportedChainId.OPTIMISTIC_KOVAN]: 1000
 };
 function getLibrary(provider) {
-  const library = new Web3Provider(provider, typeof provider.chainId === 'number' ? provider.chainId : typeof provider.chainId === 'string' ? parseInt(provider.chainId) : 'any');
+  const library = new providers.Web3Provider(provider, typeof provider.chainId === 'number' ? provider.chainId : typeof provider.chainId === 'string' ? parseInt(provider.chainId) : 'any');
   library.pollingInterval = 15000;
   library.detectNetwork().then(network => {
     const networkPollingInterval = NETWORK_POLLING_INTERVALS[network.chainId];
@@ -609,12 +648,12 @@ const CHAIN_ID_NETWORK_ARGUMENT = {
   4: 'rinkeby',
   42: 'kovan'
 };
-class FortmaticConnector extends FortmaticConnector$1 {
+class FortmaticConnector extends fortmaticConnector.FortmaticConnector {
   async activate() {
     if (!this.fortmatic) {
       const {
         default: Fortmatic
-      } = await import('fortmatic');
+      } = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('fortmatic')); });
       const {
         apiKey,
         chainId
@@ -790,13 +829,13 @@ class MiniRpcProvider {
 
 }
 
-class NetworkConnector extends AbstractConnector {
+class NetworkConnector extends abstractConnector.AbstractConnector {
   constructor(_ref4) {
     let {
       urls,
       defaultChainId
     } = _ref4;
-    invariant(defaultChainId || Object.keys(urls).length === 1, 'defaultChainId is a required argument with >1 url');
+    invariant__default["default"](defaultChainId || Object.keys(urls).length === 1, 'defaultChainId is a required argument with >1 url');
     super({
       supportedChainIds: Object.keys(urls).map(k => Number(k))
     });
@@ -868,11 +907,11 @@ function getNetworkLibrary() {
 
   return networkLibrary = (_networkLibrary = networkLibrary) !== null && _networkLibrary !== void 0 ? _networkLibrary : getLibrary(network.provider);
 }
-const injected = new InjectedConnector({
+const injected = new injectedConnector.InjectedConnector({
   supportedChainIds: ALL_SUPPORTED_CHAIN_IDS
 });
-const gnosisSafe = new SafeAppConnector();
-const walletconnect = new WalletConnectConnector({
+const gnosisSafe = new safeAppsWeb3React.SafeAppConnector();
+const walletconnect = new walletconnectConnector.WalletConnectConnector({
   supportedChainIds: ALL_SUPPORTED_CHAIN_IDS,
   rpc: NETWORK_URLS,
   qrcode: true
@@ -883,12 +922,12 @@ const fortmatic = new FortmaticConnector({
   chainId: 1
 }); // mainnet only
 
-const portis = new PortisConnector({
+const portis = new portisConnector.PortisConnector({
   dAppId: PORTIS_ID !== null && PORTIS_ID !== void 0 ? PORTIS_ID : '',
   networks: [1]
 }); // mainnet only
 
-const walletlink = new WalletLinkConnector({
+const walletlink = new walletlinkConnector.WalletLinkConnector({
   url: NETWORK_URLS[SupportedChainId.MAINNET],
   appName: 'Uniswap',
   appLogoUrl: UNISWAP_LOGO_URL
@@ -903,30 +942,30 @@ const L2_DEADLINE_FROM_NOW = 60 * 5; // transaction popup dismisal amounts
 const DEFAULT_TXN_DISMISS_MS = 25000;
 const L2_TXN_DISMISS_MS = 5000; // used for rewards deadlines
 
-JSBI.BigInt(60 * 60 * 24 * 7);
-JSBI.BigInt(0); // one basis JSBI.BigInt
+JSBI__default["default"].BigInt(60 * 60 * 24 * 7);
+JSBI__default["default"].BigInt(0); // one basis JSBI.BigInt
 
-const BIPS_BASE = JSBI.BigInt(10000);
-new Percent(JSBI.BigInt(1), BIPS_BASE); // used for warning states
+const BIPS_BASE = JSBI__default["default"].BigInt(10000);
+new sdkCore.Percent(JSBI__default["default"].BigInt(1), BIPS_BASE); // used for warning states
 
-const ALLOWED_PRICE_IMPACT_LOW = new Percent(JSBI.BigInt(100), BIPS_BASE); // 1%
+const ALLOWED_PRICE_IMPACT_LOW = new sdkCore.Percent(JSBI__default["default"].BigInt(100), BIPS_BASE); // 1%
 
-const ALLOWED_PRICE_IMPACT_MEDIUM = new Percent(JSBI.BigInt(300), BIPS_BASE); // 3%
+const ALLOWED_PRICE_IMPACT_MEDIUM = new sdkCore.Percent(JSBI__default["default"].BigInt(300), BIPS_BASE); // 3%
 
-const ALLOWED_PRICE_IMPACT_HIGH = new Percent(JSBI.BigInt(500), BIPS_BASE); // 5%
+const ALLOWED_PRICE_IMPACT_HIGH = new sdkCore.Percent(JSBI__default["default"].BigInt(500), BIPS_BASE); // 5%
 // if the price slippage exceeds this number, force the user to type 'confirm' to execute
 
-const PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN = new Percent(JSBI.BigInt(1000), BIPS_BASE); // 10%
+const PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN = new sdkCore.Percent(JSBI__default["default"].BigInt(1000), BIPS_BASE); // 10%
 // for non expert mode disable swaps above this
 
-const BLOCKED_PRICE_IMPACT_NON_EXPERT = new Percent(JSBI.BigInt(1500), BIPS_BASE); // 15%
+const BLOCKED_PRICE_IMPACT_NON_EXPERT = new sdkCore.Percent(JSBI__default["default"].BigInt(1500), BIPS_BASE); // 15%
 
-const BETTER_TRADE_LESS_HOPS_THRESHOLD = new Percent(JSBI.BigInt(50), BIPS_BASE);
-const ZERO_PERCENT = new Percent('0');
-const TWO_PERCENT = new Percent(JSBI.BigInt(200), BIPS_BASE);
-const ONE_HUNDRED_PERCENT$1 = new Percent('1');
+const BETTER_TRADE_LESS_HOPS_THRESHOLD = new sdkCore.Percent(JSBI__default["default"].BigInt(50), BIPS_BASE);
+const ZERO_PERCENT = new sdkCore.Percent('0');
+const TWO_PERCENT = new sdkCore.Percent(JSBI__default["default"].BigInt(200), BIPS_BASE);
+const ONE_HUNDRED_PERCENT$1 = new sdkCore.Percent('1');
 
-const parser = new UAParser(window.navigator.userAgent);
+const parser = new uaParserJs.UAParser(window.navigator.userAgent);
 const {
   type
 } = parser.getDevice();
@@ -934,21 +973,21 @@ const userAgent = parser.getResult();
 const isMobile = type === 'mobile' || type === 'tablet';
 
 function useActiveWeb3React() {
-  const context = useWeb3React();
-  const contextNetwork = useWeb3React(NetworkContextName);
+  const context = core.useWeb3React();
+  const contextNetwork = core.useWeb3React(NetworkContextName);
   return context.active ? context : contextNetwork;
 }
 function useEagerConnect() {
   const {
     activate,
     active
-  } = useWeb3React();
-  const [tried, setTried] = useState(false); // gnosisSafe.isSafeApp() races a timeout against postMessage, so it delays pageload if we are not in a safe app;
+  } = core.useWeb3React();
+  const [tried, setTried] = React.useState(false); // gnosisSafe.isSafeApp() races a timeout against postMessage, so it delays pageload if we are not in a safe app;
   // if we are not embedded in an iframe, it is not worth checking
 
-  const [triedSafe, setTriedSafe] = useState(!IS_IN_IFRAME); // first, try connecting to a gnosis safe
+  const [triedSafe, setTriedSafe] = React.useState(!IS_IN_IFRAME); // first, try connecting to a gnosis safe
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!triedSafe) {
       gnosisSafe.isSafeApp().then(loadedInSafe => {
         if (loadedInSafe) {
@@ -962,7 +1001,7 @@ function useEagerConnect() {
     }
   }, [activate, setTriedSafe, triedSafe]); // then, if that fails, try connecting to an injected connector
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!active && triedSafe) {
       injected.isAuthorized().then(isAuthorized => {
         if (isAuthorized) {
@@ -982,7 +1021,7 @@ function useEagerConnect() {
     }
   }, [activate, active, triedSafe]); // wait until we get confirmation of a connection to flip the flag
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (active) {
       setTried(true);
     }
@@ -1000,8 +1039,8 @@ function useInactiveListener() {
     active,
     error,
     activate
-  } = useWeb3React();
-  useEffect(() => {
+  } = core.useWeb3React();
+  React.useEffect(() => {
     const {
       ethereum
     } = window;
@@ -1060,7 +1099,7 @@ const initialState$8 = {
   openModal: null,
   popupList: []
 };
-const applicationSlice = createSlice({
+const applicationSlice = toolkit.createSlice({
   name: 'application',
   initialState: initialState$8,
   reducers: {
@@ -1097,7 +1136,7 @@ const applicationSlice = createSlice({
         }
       } = _ref;
       state.popupList = (key ? state.popupList.filter(popup => popup.key !== key) : state.popupList).concat([{
-        key: key || nanoid(),
+        key: key || toolkit.nanoid(),
         show: true,
         content,
         removeAfterMs
@@ -1151,7 +1190,7 @@ function useModalOpen(modal) {
 function useToggleModal(modal) {
   const open = useModalOpen(modal);
   const dispatch = useAppDispatch();
-  return useCallback(() => dispatch(setOpenModal(open ? null : modal)), [dispatch, modal, open]);
+  return React.useCallback(() => dispatch(setOpenModal(open ? null : modal)), [dispatch, modal, open]);
 }
 function useWalletModalToggle() {
   return useToggleModal(ApplicationModal.WALLET);
@@ -1174,7 +1213,7 @@ function useTogglePrivacyPolicy() {
 
 function useAddPopup() {
   const dispatch = useAppDispatch();
-  return useCallback((content, key, removeAfterMs) => {
+  return React.useCallback((content, key, removeAfterMs) => {
     dispatch(addPopup({
       content,
       key,
@@ -1185,7 +1224,7 @@ function useAddPopup() {
 
 function useRemovePopup() {
   const dispatch = useAppDispatch();
-  return useCallback(key => {
+  return React.useCallback(key => {
     dispatch(removePopup({
       key
     }));
@@ -1194,10 +1233,10 @@ function useRemovePopup() {
 
 function useActivePopups() {
   const list = useAppSelector(state => state.application.popupList);
-  return useMemo(() => list.filter(item => item.show), [list]);
+  return React.useMemo(() => list.filter(item => item.show), [list]);
 }
 
-const multicall = createMulticall();
+const multicall = reduxMulticall.createMulticall();
 
 const {
   useMultipleContractSingleData: _useMultipleContractSingleData,
@@ -3443,7 +3482,7 @@ const MULTICALL_ADDRESS = { ...constructSameAddressMap('0x1F98415757620B543A52E6
   [SupportedChainId.ARBITRUM_ONE]: '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB',
   [SupportedChainId.ARBITRUM_RINKEBY]: '0xa501c031958F579dB7676fF1CE78AD305794d579'
 };
-const V2_FACTORY_ADDRESSES = constructSameAddressMap(FACTORY_ADDRESS);
+const V2_FACTORY_ADDRESSES = constructSameAddressMap(v2Sdk.FACTORY_ADDRESS);
 const V2_ROUTER_ADDRESS = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D');
 /**
  * The oldest V0 governance address
@@ -3471,7 +3510,7 @@ const MERKLE_DISTRIBUTOR_ADDRESS = {
 const ARGENT_WALLET_DETECTOR_ADDRESS = {
   [SupportedChainId.MAINNET]: '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8'
 };
-const V3_CORE_FACTORY_ADDRESSES = constructSameAddressMap(FACTORY_ADDRESS$1, [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN, SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_RINKEBY]);
+const V3_CORE_FACTORY_ADDRESSES = constructSameAddressMap(v3Sdk.FACTORY_ADDRESS, [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN, SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_RINKEBY]);
 const QUOTER_ADDRESSES = constructSameAddressMap('0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6', [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN, SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_RINKEBY]);
 constructSameAddressMap('0xC36442b4a4522E871399CD717aBDD847Ab11FE88', [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN, SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_RINKEBY]);
 const ENS_REGISTRAR_ADDRESSES = {
@@ -3486,42 +3525,42 @@ const SOCKS_CONTROLLER_ADDRESSES = {
 const SWAP_ROUTER_ADDRESSES = constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564', [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN, SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_RINKEBY]);
 constructSameAddressMap('0xA5644E29708357803b5A882D272c41cC0dF92B34', [SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_RINKEBY]);
 
-const AMPL = new Token(SupportedChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth');
-const DAI = new Token(SupportedChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin');
-const DAI_ARBITRUM_ONE = new Token(SupportedChainId.ARBITRUM_ONE, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai stable coin');
-const DAI_OPTIMISM = new Token(SupportedChainId.OPTIMISM, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai stable coin');
-const USDC = new Token(SupportedChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C');
-const USDC_ARBITRUM = new Token(SupportedChainId.ARBITRUM_ONE, '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', 6, 'USDC', 'USD//C');
-const USDC_OPTIMISM = new Token(SupportedChainId.OPTIMISM, '0x7F5c764cBc14f9669B88837ca1490cCa17c31607', 6, 'USDC', 'USD//C');
-const USDT = new Token(SupportedChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD');
-const USDT_ARBITRUM_ONE = new Token(SupportedChainId.ARBITRUM_ONE, '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9', 6, 'USDT', 'Tether USD');
-const USDT_OPTIMISM = new Token(SupportedChainId.OPTIMISM, '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58', 6, 'USDT', 'Tether USD');
-const WBTC = new Token(SupportedChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC');
-const WBTC_ARBITRUM_ONE = new Token(SupportedChainId.ARBITRUM_ONE, '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f', 8, 'WBTC', 'Wrapped BTC');
-const WBTC_OPTIMISM = new Token(SupportedChainId.OPTIMISM, '0x68f180fcCe6836688e9084f035309E29Bf0A2095', 8, 'WBTC', 'Wrapped BTC');
-const FEI = new Token(SupportedChainId.MAINNET, '0x956F47F50A910163D8BF957Cf5846D573E7f87CA', 18, 'FEI', 'Fei USD');
-const TRIBE = new Token(SupportedChainId.MAINNET, '0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B', 18, 'TRIBE', 'Tribe');
-const FRAX = new Token(SupportedChainId.MAINNET, '0x853d955aCEf822Db058eb8505911ED77F175b99e', 18, 'FRAX', 'Frax');
-const FXS = new Token(SupportedChainId.MAINNET, '0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0', 18, 'FXS', 'Frax Share');
-const renBTC = new Token(SupportedChainId.MAINNET, '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D', 8, 'renBTC', 'renBTC');
-const ETH2X_FLI = new Token(SupportedChainId.MAINNET, '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD', 18, 'ETH2x-FLI', 'ETH 2x Flexible Leverage Index');
-const sETH2 = new Token(SupportedChainId.MAINNET, '0xFe2e637202056d30016725477c5da089Ab0A043A', 18, 'sETH2', 'StakeWise Staked ETH2');
-const rETH2 = new Token(SupportedChainId.MAINNET, '0x20BC832ca081b91433ff6c17f85701B6e92486c5', 18, 'rETH2', 'StakeWise Reward ETH2');
-const SWISE = new Token(SupportedChainId.MAINNET, '0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2', 18, 'SWISE', 'StakeWise');
+const AMPL = new sdkCore.Token(SupportedChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth');
+const DAI = new sdkCore.Token(SupportedChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin');
+const DAI_ARBITRUM_ONE = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai stable coin');
+const DAI_OPTIMISM = new sdkCore.Token(SupportedChainId.OPTIMISM, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai stable coin');
+const USDC = new sdkCore.Token(SupportedChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C');
+const USDC_ARBITRUM = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', 6, 'USDC', 'USD//C');
+const USDC_OPTIMISM = new sdkCore.Token(SupportedChainId.OPTIMISM, '0x7F5c764cBc14f9669B88837ca1490cCa17c31607', 6, 'USDC', 'USD//C');
+const USDT = new sdkCore.Token(SupportedChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD');
+const USDT_ARBITRUM_ONE = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9', 6, 'USDT', 'Tether USD');
+const USDT_OPTIMISM = new sdkCore.Token(SupportedChainId.OPTIMISM, '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58', 6, 'USDT', 'Tether USD');
+const WBTC = new sdkCore.Token(SupportedChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC');
+const WBTC_ARBITRUM_ONE = new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f', 8, 'WBTC', 'Wrapped BTC');
+const WBTC_OPTIMISM = new sdkCore.Token(SupportedChainId.OPTIMISM, '0x68f180fcCe6836688e9084f035309E29Bf0A2095', 8, 'WBTC', 'Wrapped BTC');
+const FEI = new sdkCore.Token(SupportedChainId.MAINNET, '0x956F47F50A910163D8BF957Cf5846D573E7f87CA', 18, 'FEI', 'Fei USD');
+const TRIBE = new sdkCore.Token(SupportedChainId.MAINNET, '0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B', 18, 'TRIBE', 'Tribe');
+const FRAX = new sdkCore.Token(SupportedChainId.MAINNET, '0x853d955aCEf822Db058eb8505911ED77F175b99e', 18, 'FRAX', 'Frax');
+const FXS = new sdkCore.Token(SupportedChainId.MAINNET, '0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0', 18, 'FXS', 'Frax Share');
+const renBTC = new sdkCore.Token(SupportedChainId.MAINNET, '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D', 8, 'renBTC', 'renBTC');
+const ETH2X_FLI = new sdkCore.Token(SupportedChainId.MAINNET, '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD', 18, 'ETH2x-FLI', 'ETH 2x Flexible Leverage Index');
+const sETH2 = new sdkCore.Token(SupportedChainId.MAINNET, '0xFe2e637202056d30016725477c5da089Ab0A043A', 18, 'sETH2', 'StakeWise Staked ETH2');
+const rETH2 = new sdkCore.Token(SupportedChainId.MAINNET, '0x20BC832ca081b91433ff6c17f85701B6e92486c5', 18, 'rETH2', 'StakeWise Reward ETH2');
+const SWISE = new sdkCore.Token(SupportedChainId.MAINNET, '0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2', 18, 'SWISE', 'StakeWise');
 const UNI = {
-  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.KOVAN]: new Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap')
+  [SupportedChainId.MAINNET]: new sdkCore.Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
+  [SupportedChainId.RINKEBY]: new sdkCore.Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
+  [SupportedChainId.ROPSTEN]: new sdkCore.Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
+  [SupportedChainId.GOERLI]: new sdkCore.Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
+  [SupportedChainId.KOVAN]: new sdkCore.Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap')
 };
-const WETH9_EXTENDED = { ...WETH9,
-  [SupportedChainId.OPTIMISM]: new Token(SupportedChainId.OPTIMISM, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'),
-  [SupportedChainId.OPTIMISTIC_KOVAN]: new Token(SupportedChainId.OPTIMISTIC_KOVAN, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'),
-  [SupportedChainId.ARBITRUM_ONE]: new Token(SupportedChainId.ARBITRUM_ONE, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, 'WETH', 'Wrapped Ether'),
-  [SupportedChainId.ARBITRUM_RINKEBY]: new Token(SupportedChainId.ARBITRUM_RINKEBY, '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681', 18, 'WETH', 'Wrapped Ether')
+const WETH9_EXTENDED = { ...sdkCore.WETH9,
+  [SupportedChainId.OPTIMISM]: new sdkCore.Token(SupportedChainId.OPTIMISM, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'),
+  [SupportedChainId.OPTIMISTIC_KOVAN]: new sdkCore.Token(SupportedChainId.OPTIMISTIC_KOVAN, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'),
+  [SupportedChainId.ARBITRUM_ONE]: new sdkCore.Token(SupportedChainId.ARBITRUM_ONE, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, 'WETH', 'Wrapped Ether'),
+  [SupportedChainId.ARBITRUM_RINKEBY]: new sdkCore.Token(SupportedChainId.ARBITRUM_RINKEBY, '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681', 18, 'WETH', 'Wrapped Ether')
 };
-class ExtendedEther extends Ether {
+class ExtendedEther extends sdkCore.Ether {
   get wrapped() {
     if (this.chainId in WETH9_EXTENDED) return WETH9_EXTENDED[this.chainId];
     throw new Error('Unsupported chain ID');
@@ -3543,7 +3582,7 @@ function useContract(addressOrAddressMap, ABI) {
     account,
     chainId
   } = useActiveWeb3React();
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!addressOrAddressMap || !ABI || !library || !chainId) return null;
     let address;
     if (typeof addressOrAddressMap === 'string') address = addressOrAddressMap;else address = addressOrAddressMap[chainId];
@@ -3590,21 +3629,21 @@ function useEIP2612Contract(tokenAddress) {
   return useContract(tokenAddress, EIP_2612, false);
 }
 function useV2RouterContract() {
-  return useContract(V2_ROUTER_ADDRESS, abi$3, true);
+  return useContract(V2_ROUTER_ADDRESS, IUniswapV2Router02_json.abi, true);
 }
 function useMulticall2Contract() {
-  return useContract(MULTICALL_ADDRESS, abi, false);
+  return useContract(MULTICALL_ADDRESS, UniswapInterfaceMulticall_json.abi, false);
 }
 function useMerkleDistributorContract() {
-  return useContract(MERKLE_DISTRIBUTOR_ADDRESS, abi$1, true);
+  return useContract(MERKLE_DISTRIBUTOR_ADDRESS, MerkleDistributor_json.abi, true);
 }
 function useV3Quoter() {
-  return useContract(QUOTER_ADDRESSES, abi$2);
+  return useContract(QUOTER_ADDRESSES, Quoter_json.abi);
 }
 
 function useDebounce(value, delay) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-  useEffect(() => {
+  const [debouncedValue, setDebouncedValue] = React.useState(value);
+  React.useEffect(() => {
     // Update debounced value after delay
     const handler = setTimeout(() => {
       setDebouncedValue(value);
@@ -3627,14 +3666,14 @@ function useENSAddress(ensName) {
   var _resolverAddress$resu;
 
   const debouncedName = useDebounce(ensName, 200);
-  const ensNodeArgument = useMemo(() => [debouncedName === null ? undefined : safeNamehash(debouncedName)], [debouncedName]);
+  const ensNodeArgument = React.useMemo(() => [debouncedName === null ? undefined : safeNamehash(debouncedName)], [debouncedName]);
   const registrarContract = useENSRegistrarContract(false);
   const resolverAddress = useSingleCallResult(registrarContract, 'resolver', ensNodeArgument);
   const resolverAddressResult = (_resolverAddress$resu = resolverAddress.result) === null || _resolverAddress$resu === void 0 ? void 0 : _resolverAddress$resu[0];
   const resolverContract = useENSResolverContract(resolverAddressResult && !isZero(resolverAddressResult) ? resolverAddressResult : undefined, false);
   const addr = useSingleCallResult(resolverContract, 'addr', ensNodeArgument);
   const changed = debouncedName !== ensName;
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _addr$result$, _addr$result;
 
     return {
@@ -3653,9 +3692,9 @@ function useENSName(address) {
   var _resolverAddress$resu;
 
   const debouncedAddress = useDebounce(address, 200);
-  const ensNodeArgument = useMemo(() => {
+  const ensNodeArgument = React.useMemo(() => {
     if (!debouncedAddress || !isAddress(debouncedAddress)) return [undefined];
-    return [namehash(`${debouncedAddress.toLowerCase().substr(2)}.addr.reverse`)];
+    return [hash.namehash(`${debouncedAddress.toLowerCase().substr(2)}.addr.reverse`)];
   }, [debouncedAddress]);
   const registrarContract = useENSRegistrarContract(false);
   const resolverAddress = useSingleCallResult(registrarContract, 'resolver', ensNodeArgument);
@@ -3663,7 +3702,7 @@ function useENSName(address) {
   const resolverContract = useENSResolverContract(resolverAddressResult && !isZero(resolverAddressResult) ? resolverAddressResult : undefined, false);
   const name = useSingleCallResult(resolverContract, 'name', ensNodeArgument);
   const changed = debouncedAddress !== address;
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _name$result$, _name$result;
 
     return {
@@ -3682,7 +3721,7 @@ function useENS(nameOrAddress) {
   const validated = isAddress(nameOrAddress);
   const reverseLookup = useENSName(validated ? validated : undefined);
   const lookup = useENSAddress(nameOrAddress);
-  return useMemo(() => ({
+  return React.useMemo(() => ({
     loading: reverseLookup.loading || lookup.loading,
     address: validated ? validated : lookup.address,
     name: reverseLookup.ENSName ? reverseLookup.ENSName : !validated && lookup.address ? nameOrAddress || null : null
@@ -3721,10 +3760,10 @@ let TransactionType;
   TransactionType[TransactionType["SUBMIT_PROPOSAL"] = 14] = "SUBMIT_PROPOSAL";
 })(TransactionType || (TransactionType = {}));
 
-const addTransaction = createAction('transactions/addTransaction');
-const clearAllTransactions = createAction('transactions/clearAllTransactions');
-const finalizeTransaction = createAction('transactions/finalizeTransaction');
-const checkedTransaction = createAction('transactions/checkedTransaction');
+const addTransaction = toolkit.createAction('transactions/addTransaction');
+const clearAllTransactions = toolkit.createAction('transactions/clearAllTransactions');
+const finalizeTransaction = toolkit.createAction('transactions/finalizeTransaction');
+const checkedTransaction = toolkit.createAction('transactions/checkedTransaction');
 
 const SUPPORTED_TRANSACTION_TYPES = [TransactionType.ADD_LIQUIDITY_V2_POOL, TransactionType.ADD_LIQUIDITY_V3_POOL, TransactionType.CREATE_V3_POOL, TransactionType.REMOVE_LIQUIDITY_V3, TransactionType.SWAP];
 const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_KEY;
@@ -3735,13 +3774,13 @@ function useMonitoringEventCallback() {
   const {
     chainId
   } = useActiveWeb3React();
-  return useCallback(async function log(type, _ref) {
+  return React.useCallback(async function log(type, _ref) {
     let {
       transactionResponse,
       walletAddress
     } = _ref;
     if (!firebaseEnabled) return;
-    const db = getDatabase();
+    const db = database.getDatabase();
 
     if (!walletAddress) {
       console.debug('Wallet address required to log monitoring events.');
@@ -3749,7 +3788,7 @@ function useMonitoringEventCallback() {
     }
 
     try {
-      push(ref(db, 'trm'), {
+      database.push(database.ref(db, 'trm'), {
         chainId,
         origin: window.location.origin,
         timestamp: Date.now(),
@@ -3768,7 +3807,7 @@ function useTransactionMonitoringEventCallback() {
     account
   } = useActiveWeb3React();
   const log = useMonitoringEventCallback();
-  return useCallback((info, transactionResponse) => {
+  return React.useCallback((info, transactionResponse) => {
     if (SUPPORTED_TRANSACTION_TYPES.includes(info.type)) {
       log(TransactionType[info.type], {
         transactionResponse: (_ref2 => {
@@ -3792,7 +3831,7 @@ function useTransactionMonitoringEventCallback() {
 }
 function useWalletConnectMonitoringEventCallback() {
   const log = useMonitoringEventCallback();
-  return useCallback(walletAddress => {
+  return React.useCallback(walletAddress => {
     log('WALLET_CONNECTED', {
       transactionResponse: {
         hash: '',
@@ -3806,7 +3845,7 @@ function useWalletConnectMonitoringEventCallback() {
 }
 
 function initializeFirebase() {
-  initializeApp({
+  app.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: 'interface-monitoring.firebaseapp.com',
     databaseURL: 'https://interface-monitoring-default-rtdb.firebaseio.com',
@@ -3825,7 +3864,7 @@ function useTransactionAdder() {
   } = useActiveWeb3React();
   const dispatch = useAppDispatch();
   const logMonitoringEvent = useTransactionMonitoringEventCallback();
-  return useCallback((response, info) => {
+  return React.useCallback((response, info) => {
     if (!account) return;
     if (!chainId) return;
     const {
@@ -3885,7 +3924,7 @@ function isTransactionRecent(tx) {
 
 function useHasPendingApproval(tokenAddress, spender) {
   const allTransactions = useAllTransactions();
-  return useMemo(() => typeof tokenAddress === 'string' && typeof spender === 'string' && Object.keys(allTransactions).some(hash => {
+  return React.useMemo(() => typeof tokenAddress === 'string' && typeof spender === 'string' && Object.keys(allTransactions).some(hash => {
     const tx = allTransactions[hash];
     if (!tx) return false;
 
@@ -3902,7 +3941,7 @@ function useHasPendingApproval(tokenAddress, spender) {
 function useUserHasSubmittedClaim(account) {
   const allTransactions = useAllTransactions(); // get the txn if it has been submitted
 
-  const claimTxn = useMemo(() => {
+  const claimTxn = React.useMemo(() => {
     const txnIndex = Object.keys(allTransactions).find(hash => {
       const tx = allTransactions[hash];
       return tx.info.type === TransactionType.CLAIM && tx.info.recipient === account;
@@ -3975,8 +4014,8 @@ function useUserClaimData(account) {
   const {
     chainId
   } = useActiveWeb3React();
-  const [claimInfo, setClaimInfo] = useState({});
-  useEffect(() => {
+  const [claimInfo, setClaimInfo] = React.useState({});
+  React.useEffect(() => {
     if (!account || chainId !== 1) return;
     fetchClaim(account).then(accountClaimInfo => setClaimInfo(claimInfo => {
       return { ...claimInfo,
@@ -4012,10 +4051,10 @@ function useUserUnclaimedAmount(account) {
   if (!uni) return undefined;
 
   if (!canClaim || !userClaimData) {
-    return CurrencyAmount.fromRawAmount(uni, JSBI.BigInt(0));
+    return sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].BigInt(0));
   }
 
-  return CurrencyAmount.fromRawAmount(uni, JSBI.BigInt(userClaimData.amount));
+  return sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].BigInt(userClaimData.amount));
 }
 function useClaimCallback(account) {
   // get claim data for this account
@@ -4106,7 +4145,7 @@ const COMMON_BASES = {
   [SupportedChainId.MAINNET]: [...WETH_ONLY[SupportedChainId.MAINNET], DAI, USDC, USDT, WBTC]
 });
 ({
-  [SupportedChainId.MAINNET]: [[new Token(SupportedChainId.MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'), new Token(SupportedChainId.MAINNET, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin')], [USDC, USDT], [DAI, USDT]]
+  [SupportedChainId.MAINNET]: [[new sdkCore.Token(SupportedChainId.MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'), new sdkCore.Token(SupportedChainId.MAINNET, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin')], [USDC, USDT], [DAI, USDT]]
 });
 
 const alwaysTrue = () => true;
@@ -4144,7 +4183,7 @@ function filterTokens(tokens, search) {
   return tokens.filter(createTokenFilterFunction(search));
 }
 function useSortedTokensByQuery(tokens, searchQuery) {
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!tokens) {
       return [];
     }
@@ -5608,7 +5647,7 @@ function combineMaps(map1, map2) {
 
 function useCombinedTokenMapFromUrls(urls) {
   const lists = useAllLists();
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!urls) return {};
     return urls.slice() // sort by priority so top priority goes last
     .sort(sortByListPriority).reduce((allTokens, currentUrl) => {
@@ -5630,12 +5669,12 @@ function useCombinedTokenMapFromUrls(urls) {
 
 function useActiveListUrls() {
   const activeListUrls = useAppSelector(state => state.lists.activeListUrls);
-  return useMemo(() => activeListUrls === null || activeListUrls === void 0 ? void 0 : activeListUrls.filter(url => !UNSUPPORTED_LIST_URLS.includes(url)), [activeListUrls]);
+  return React.useMemo(() => activeListUrls === null || activeListUrls === void 0 ? void 0 : activeListUrls.filter(url => !UNSUPPORTED_LIST_URLS.includes(url)), [activeListUrls]);
 }
 function useInactiveListUrls() {
   const lists = useAllLists();
   const allActiveListUrls = useActiveListUrls();
-  return useMemo(() => Object.keys(lists).filter(url => !(allActiveListUrls !== null && allActiveListUrls !== void 0 && allActiveListUrls.includes(url)) && !UNSUPPORTED_LIST_URLS.includes(url)), [lists, allActiveListUrls]);
+  return React.useMemo(() => Object.keys(lists).filter(url => !(allActiveListUrls !== null && allActiveListUrls !== void 0 && allActiveListUrls.includes(url)) && !UNSUPPORTED_LIST_URLS.includes(url)), [lists, allActiveListUrls]);
 } // get all the tokens from active lists, combine with local default tokens
 
 function useCombinedActiveList() {
@@ -5646,13 +5685,13 @@ function useCombinedActiveList() {
 
 function useUnsupportedTokenList() {
   // get hard-coded broken tokens
-  const brokenListMap = useMemo(() => listToTokenMap(BROKEN_LIST), []); // get hard-coded list of unsupported tokens
+  const brokenListMap = React.useMemo(() => listToTokenMap(BROKEN_LIST), []); // get hard-coded list of unsupported tokens
 
-  const localUnsupportedListMap = useMemo(() => listToTokenMap(UNSUPPORTED_TOKEN_LIST), []); // get dynamic list of unsupported tokens
+  const localUnsupportedListMap = React.useMemo(() => listToTokenMap(UNSUPPORTED_TOKEN_LIST), []); // get dynamic list of unsupported tokens
 
   const loadedUnsupportedListMap = useCombinedTokenMapFromUrls(UNSUPPORTED_LIST_URLS); // format into one token address map
 
-  return useMemo(() => combineMaps(brokenListMap, combineMaps(localUnsupportedListMap, loadedUnsupportedListMap)), [brokenListMap, localUnsupportedListMap, loadedUnsupportedListMap]);
+  return React.useMemo(() => combineMaps(brokenListMap, combineMaps(localUnsupportedListMap, loadedUnsupportedListMap)), [brokenListMap, localUnsupportedListMap, loadedUnsupportedListMap]);
 }
 function useIsListActive(url) {
   const activeListUrls = useActiveListUrls();
@@ -5664,7 +5703,7 @@ function useTokensFromMap(tokenMap, includeUserAdded) {
     chainId
   } = useActiveWeb3React();
   const userAddedTokens = useUserAddedTokens();
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _tokenMap$chainId;
 
     if (!chainId) return {}; // reduce to just tokens
@@ -5701,7 +5740,7 @@ function useUnsupportedTokens() {
   const unsupportedTokensMap = useUnsupportedTokenList();
   const unsupportedTokens = useTokensFromMap(unsupportedTokensMap, false); // checks the default L2 lists to see if `bridgeInfo` has an L1 address value that is unsupported
 
-  const l2InferredBlockedTokens = useMemo(() => {
+  const l2InferredBlockedTokens = React.useMemo(() => {
     if (!chainId || !L2_CHAIN_IDS.includes(chainId)) {
       return {};
     }
@@ -5729,7 +5768,7 @@ function useUnsupportedTokens() {
         const address = bridgeInfo[SupportedChainId.MAINNET].tokenAddress; // don't rely on decimals--it's possible that a token could be bridged w/ different decimals on the L2
 
         return { ...acc,
-          [address]: new Token(SupportedChainId.MAINNET, address, tokenInfo.decimals)
+          [address]: new sdkCore.Token(SupportedChainId.MAINNET, address, tokenInfo.decimals)
         };
       }
 
@@ -5748,7 +5787,7 @@ function useSearchInactiveTokenLists(search) {
     chainId
   } = useActiveWeb3React();
   const activeTokens = useAllTokens();
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!search || search.trim().length === 0) return [];
     const tokenFilter = createTokenFilterFunction(search);
     const result = [];
@@ -5798,7 +5837,7 @@ const BYTES32_REGEX = /^0x[a-fA-F0-9]{64}$/;
 
 function parseStringOrBytes32(str, bytes32, defaultValue) {
   return str && str.length > 0 ? str : // need to check for proper bytes string and valid terminator
-  bytes32 && BYTES32_REGEX.test(bytes32) && arrayify(bytes32)[31] === 0 ? parseBytes32String(bytes32) : defaultValue;
+  bytes32 && BYTES32_REGEX.test(bytes32) && bytes.arrayify(bytes32)[31] === 0 ? strings.parseBytes32String(bytes32) : defaultValue;
 } // undefined if invalid or does not exist
 // null if loading or null was passed
 // otherwise returns the token
@@ -5813,12 +5852,12 @@ function useToken(tokenAddress) {
   const tokenContract = useTokenContract(address ? address : undefined, false);
   const tokenContractBytes32 = useBytes32TokenContract(address ? address : undefined, false);
   const token = address ? tokens[address] : undefined;
-  const tokenName = useSingleCallResult(token ? undefined : tokenContract, 'name', undefined, NEVER_RELOAD);
-  const tokenNameBytes32 = useSingleCallResult(token ? undefined : tokenContractBytes32, 'name', undefined, NEVER_RELOAD);
-  const symbol = useSingleCallResult(token ? undefined : tokenContract, 'symbol', undefined, NEVER_RELOAD);
-  const symbolBytes32 = useSingleCallResult(token ? undefined : tokenContractBytes32, 'symbol', undefined, NEVER_RELOAD);
-  const decimals = useSingleCallResult(token ? undefined : tokenContract, 'decimals', undefined, NEVER_RELOAD);
-  return useMemo(() => {
+  const tokenName = useSingleCallResult(token ? undefined : tokenContract, 'name', undefined, reduxMulticall.NEVER_RELOAD);
+  const tokenNameBytes32 = useSingleCallResult(token ? undefined : tokenContractBytes32, 'name', undefined, reduxMulticall.NEVER_RELOAD);
+  const symbol = useSingleCallResult(token ? undefined : tokenContract, 'symbol', undefined, reduxMulticall.NEVER_RELOAD);
+  const symbolBytes32 = useSingleCallResult(token ? undefined : tokenContractBytes32, 'symbol', undefined, reduxMulticall.NEVER_RELOAD);
+  const decimals = useSingleCallResult(token ? undefined : tokenContract, 'decimals', undefined, reduxMulticall.NEVER_RELOAD);
+  return React.useMemo(() => {
     if (token) return token;
     if (tokenAddress === null) return null;
     if (!chainId || !address) return undefined;
@@ -5827,7 +5866,7 @@ function useToken(tokenAddress) {
     if (decimals.result) {
       var _symbol$result, _symbolBytes32$result, _tokenName$result, _tokenNameBytes32$res;
 
-      return new Token(chainId, address, decimals.result[0], parseStringOrBytes32((_symbol$result = symbol.result) === null || _symbol$result === void 0 ? void 0 : _symbol$result[0], (_symbolBytes32$result = symbolBytes32.result) === null || _symbolBytes32$result === void 0 ? void 0 : _symbolBytes32$result[0], 'UNKNOWN'), parseStringOrBytes32((_tokenName$result = tokenName.result) === null || _tokenName$result === void 0 ? void 0 : _tokenName$result[0], (_tokenNameBytes32$res = tokenNameBytes32.result) === null || _tokenNameBytes32$res === void 0 ? void 0 : _tokenNameBytes32$res[0], 'Unknown Token'));
+      return new sdkCore.Token(chainId, address, decimals.result[0], parseStringOrBytes32((_symbol$result = symbol.result) === null || _symbol$result === void 0 ? void 0 : _symbol$result[0], (_symbolBytes32$result = symbolBytes32.result) === null || _symbolBytes32$result === void 0 ? void 0 : _symbolBytes32$result[0], 'UNKNOWN'), parseStringOrBytes32((_tokenName$result = tokenName.result) === null || _tokenName$result === void 0 ? void 0 : _tokenName$result[0], (_tokenNameBytes32$res = tokenNameBytes32.result) === null || _tokenNameBytes32$res === void 0 ? void 0 : _tokenNameBytes32$res[0], 'Unknown Token'));
     }
 
     return undefined;
@@ -5841,7 +5880,7 @@ function useCurrency(currencyId) {
   } = useActiveWeb3React();
   const isETH = (currencyId === null || currencyId === void 0 ? void 0 : currencyId.toUpperCase()) === 'ETH';
   const token = useToken(isETH ? undefined : currencyId);
-  const extendedEther = useMemo(() => chainId ? ExtendedEther.onChain(chainId) : // display mainnet when not connected
+  const extendedEther = React.useMemo(() => chainId ? ExtendedEther.onChain(chainId) : // display mainnet when not connected
   ExtendedEther.onChain(SupportedChainId.MAINNET), [chainId]);
   const weth = chainId ? WETH9_EXTENDED[chainId] : undefined;
   if (currencyId === null || currencyId === undefined) return currencyId;
@@ -5860,7 +5899,7 @@ function serializeToken(token) {
 }
 
 function deserializeToken(serializedToken) {
-  return new Token(serializedToken.chainId, serializedToken.address, serializedToken.decimals, serializedToken.symbol, serializedToken.name);
+  return new sdkCore.Token(serializedToken.chainId, serializedToken.address, serializedToken.decimals, serializedToken.symbol, serializedToken.name);
 }
 
 function useIsDarkMode() {
@@ -5878,13 +5917,13 @@ function useIsDarkMode() {
       userDarkMode,
       matchesDarkMode
     };
-  }, shallowEqual);
+  }, reactRedux.shallowEqual);
   return userDarkMode === null ? matchesDarkMode : userDarkMode;
 }
 function useDarkModeManager() {
   const dispatch = useAppDispatch();
   const darkMode = useIsDarkMode();
-  const toggleSetDarkMode = useCallback(() => {
+  const toggleSetDarkMode = React.useCallback(() => {
     dispatch(updateUserDarkMode({
       userDarkMode: !darkMode
     }));
@@ -5897,7 +5936,7 @@ function useUserLocale() {
 function useUserLocaleManager() {
   const dispatch = useAppDispatch();
   const locale = useUserLocale();
-  const setLocale = useCallback(newLocale => {
+  const setLocale = React.useCallback(newLocale => {
     dispatch(updateUserLocale({
       userLocale: newLocale
     }));
@@ -5910,7 +5949,7 @@ function useIsExpertMode() {
 function useExpertModeManager() {
   const dispatch = useAppDispatch();
   const expertMode = useIsExpertMode();
-  const toggleSetExpertMode = useCallback(() => {
+  const toggleSetExpertMode = React.useCallback(() => {
     dispatch(updateUserExpertMode({
       userExpertMode: !expertMode
     }));
@@ -5920,7 +5959,7 @@ function useExpertModeManager() {
 function useClientSideRouter() {
   const dispatch = useAppDispatch();
   const clientSideRouter = useAppSelector(state => Boolean(state.user.userClientSideRouter));
-  const setClientSideRouter = useCallback(newClientSideRouter => {
+  const setClientSideRouter = React.useCallback(newClientSideRouter => {
     dispatch(updateUserClientSideRouter({
       userClientSideRouter: newClientSideRouter
     }));
@@ -5936,11 +5975,11 @@ function useRoutingAPIEnabled() {
 }
 function useSetUserSlippageTolerance() {
   const dispatch = useAppDispatch();
-  return useCallback(userSlippageTolerance => {
+  return React.useCallback(userSlippageTolerance => {
     let value;
 
     try {
-      value = userSlippageTolerance === 'auto' ? 'auto' : JSBI.toNumber(userSlippageTolerance.multiply(10000).quotient);
+      value = userSlippageTolerance === 'auto' ? 'auto' : JSBI__default["default"].toNumber(userSlippageTolerance.multiply(10000).quotient);
     } catch (error) {
       value = 'auto';
     }
@@ -5958,7 +5997,7 @@ function useUserSlippageTolerance() {
   const userSlippageTolerance = useAppSelector(state => {
     return state.user.userSlippageTolerance;
   });
-  return useMemo(() => userSlippageTolerance === 'auto' ? 'auto' : new Percent(userSlippageTolerance, 10000), [userSlippageTolerance]);
+  return React.useMemo(() => userSlippageTolerance === 'auto' ? 'auto' : new sdkCore.Percent(userSlippageTolerance, 10000), [userSlippageTolerance]);
 }
 /**
  * Same as above but replaces the auto with a default value
@@ -5967,7 +6006,7 @@ function useUserSlippageTolerance() {
 
 function useUserSlippageToleranceWithDefault(defaultSlippageTolerance) {
   const allowedSlippage = useUserSlippageTolerance();
-  return useMemo(() => allowedSlippage === 'auto' ? defaultSlippageTolerance : allowedSlippage, [allowedSlippage, defaultSlippageTolerance]);
+  return React.useMemo(() => allowedSlippage === 'auto' ? defaultSlippageTolerance : allowedSlippage, [allowedSlippage, defaultSlippageTolerance]);
 }
 function useUserTransactionTTL() {
   const {
@@ -5977,7 +6016,7 @@ function useUserTransactionTTL() {
   const userDeadline = useAppSelector(state => state.user.userDeadline);
   const onL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId));
   const deadline = onL2 ? L2_DEADLINE_FROM_NOW : userDeadline;
-  const setUserDeadline = useCallback(userDeadline => {
+  const setUserDeadline = React.useCallback(userDeadline => {
     dispatch(updateUserDeadline({
       userDeadline
     }));
@@ -5986,7 +6025,7 @@ function useUserTransactionTTL() {
 }
 function useAddUserToken() {
   const dispatch = useAppDispatch();
-  return useCallback(token => {
+  return React.useCallback(token => {
     dispatch(addSerializedToken({
       serializedToken: serializeToken(token)
     }));
@@ -5994,7 +6033,7 @@ function useAddUserToken() {
 }
 function useRemoveUserAddedToken() {
   const dispatch = useAppDispatch();
-  return useCallback((chainId, address) => {
+  return React.useCallback((chainId, address) => {
     dispatch(removeSerializedToken({
       chainId,
       address
@@ -6013,7 +6052,7 @@ function useUserAddedTokens() {
     } = _ref2;
     return tokens;
   });
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _serializedTokensMap$;
 
     if (!chainId) return [];
@@ -6091,16 +6130,16 @@ function anonymizeLink(href) {
   }
 }
 
-const ButtonText = _styled.button.withConfig({
+const ButtonText = _styled__default["default"].button.withConfig({
   displayName: "components__ButtonText",
   componentId: "sc-1cchcrx-0"
 })(["outline:none;border:none;font-size:inherit;padding:0;margin:0;background:none;cursor:pointer;:hover{opacity:0.7;}:focus{text-decoration:underline;}"]);
-const CloseIcon$3 = _styled(X).withConfig({
+const CloseIcon$3 = _styled__default["default"](reactFeather.X).withConfig({
   displayName: "components__CloseIcon",
   componentId: "sc-1cchcrx-1"
 })(["cursor:pointer;"]); // for wrapper react feather icons
 
-const IconWrapper$4 = _styled.div.withConfig({
+const IconWrapper$4 = _styled__default["default"].div.withConfig({
   displayName: "components__IconWrapper",
   componentId: "sc-1cchcrx-2"
 })(["display:flex;align-items:center;justify-content:center;width:", ";height:", ";margin-right:", ";margin-left:", ";& > *{stroke:", ";}"], _ref => {
@@ -6131,7 +6170,7 @@ const IconWrapper$4 = _styled.div.withConfig({
   return stroke !== null && stroke !== void 0 ? stroke : theme.blue1;
 }); // A button that triggers some onClick result, but looks like a link.
 
-const LinkStyledButton = _styled.button.withConfig({
+const LinkStyledButton = _styled__default["default"].button.withConfig({
   displayName: "components__LinkStyledButton",
   componentId: "sc-1cchcrx-3"
 })(["border:none;text-decoration:none;background:none;cursor:", ";color:", ";font-weight:500;:hover{text-decoration:", ";}:focus{outline:none;text-decoration:", ";}:active{text-decoration:none;}"], _ref6 => {
@@ -6157,7 +6196,7 @@ const LinkStyledButton = _styled.button.withConfig({
   return disabled ? null : 'underline';
 }); // An internal link from the react-router-dom library that is correctly styled
 
-const StyledInternalLink = _styled(Link$1).withConfig({
+const StyledInternalLink = _styled__default["default"](reactRouterDom.Link).withConfig({
   displayName: "components__StyledInternalLink",
   componentId: "sc-1cchcrx-4"
 })(["text-decoration:none;cursor:pointer;color:", ";font-weight:500;:hover{text-decoration:underline;}:focus{outline:none;text-decoration:underline;}:active{text-decoration:none;}"], _ref10 => {
@@ -6167,7 +6206,7 @@ const StyledInternalLink = _styled(Link$1).withConfig({
   return theme.primary1;
 });
 
-const StyledLink = _styled.a.withConfig({
+const StyledLink = _styled__default["default"].a.withConfig({
   displayName: "components__StyledLink",
   componentId: "sc-1cchcrx-5"
 })(["text-decoration:none;cursor:pointer;color:", ";font-weight:500;:hover{text-decoration:underline;}:focus{outline:none;text-decoration:underline;}:active{text-decoration:none;}"], _ref11 => {
@@ -6177,12 +6216,12 @@ const StyledLink = _styled.a.withConfig({
   return theme.primary1;
 });
 
-const LinkIconWrapper = _styled.a.withConfig({
+const LinkIconWrapper = _styled__default["default"].a.withConfig({
   displayName: "components__LinkIconWrapper",
   componentId: "sc-1cchcrx-6"
 })(["text-decoration:none;cursor:pointer;align-items:center;justify-content:center;display:flex;:hover{text-decoration:none;opacity:0.7;}:focus{outline:none;text-decoration:none;}:active{text-decoration:none;}"]);
 
-const LinkIcon = _styled(ExternalLink$1).withConfig({
+const LinkIcon = _styled__default["default"](reactFeather.ExternalLink).withConfig({
   displayName: "components__LinkIcon",
   componentId: "sc-1cchcrx-7"
 })(["height:16px;width:18px;margin-left:10px;stroke:", ";"], _ref12 => {
@@ -6192,7 +6231,7 @@ const LinkIcon = _styled(ExternalLink$1).withConfig({
   return theme.blue1;
 });
 
-const TrashIcon = _styled(Trash).withConfig({
+const TrashIcon = _styled__default["default"](reactFeather.Trash).withConfig({
   displayName: "components__TrashIcon",
   componentId: "sc-1cchcrx-8"
 })(["height:16px;width:18px;margin-left:10px;stroke:", ";cursor:pointer;align-items:center;justify-content:center;display:flex;:hover{opacity:0.7;}"], _ref13 => {
@@ -6201,7 +6240,7 @@ const TrashIcon = _styled(Trash).withConfig({
   } = _ref13;
   return theme.text3;
 });
-const rotateImg = keyframes`
+const rotateImg = _styled.keyframes`
   0% {
     transform: perspective(1000px) rotateY(0deg);
   }
@@ -6210,7 +6249,7 @@ const rotateImg = keyframes`
     transform: perspective(1000px) rotateY(360deg);
   }
 `;
-const UniTokenAnimated = _styled.img.withConfig({
+const UniTokenAnimated = _styled__default["default"].img.withConfig({
   displayName: "components__UniTokenAnimated",
   componentId: "sc-1cchcrx-9"
 })(["animation:", " 5s cubic-bezier(0.83,0,0.17,1) infinite;padding:2rem 0 0 0;filter:drop-shadow(0px 2px 4px rgba(0,0,0,0.15));"], rotateImg);
@@ -6223,7 +6262,7 @@ function handleClickExternalLink(event) {
   const anonymizedHref = anonymizeLink(href); // don't prevent default, don't redirect if it's a new tab
 
   if (target === '_blank' || event.ctrlKey || event.metaKey) {
-    ReactGA.outboundLink({
+    ReactGA__default["default"].outboundLink({
       label: anonymizedHref
     }, () => {
       console.debug('Fired outbound link event', anonymizedHref);
@@ -6231,7 +6270,7 @@ function handleClickExternalLink(event) {
   } else {
     event.preventDefault(); // send a ReactGA event and then trigger a location change
 
-    ReactGA.outboundLink({
+    ReactGA__default["default"].outboundLink({
       label: anonymizedHref
     }, () => {
       window.location.href = anonymizedHref;
@@ -6250,7 +6289,7 @@ function ExternalLink(_ref14) {
     rel = 'noopener noreferrer',
     ...rest
   } = _ref14;
-  return /*#__PURE__*/jsx(StyledLink, {
+  return /*#__PURE__*/jsxRuntime.jsx(StyledLink, {
     target: target,
     rel: rel,
     href: href,
@@ -6265,16 +6304,16 @@ function ExternalLinkIcon(_ref15) {
     rel = 'noopener noreferrer',
     ...rest
   } = _ref15;
-  return /*#__PURE__*/jsx(LinkIconWrapper, {
+  return /*#__PURE__*/jsxRuntime.jsx(LinkIconWrapper, {
     target: target,
     rel: rel,
     href: href,
     onClick: handleClickExternalLink,
     ...rest,
-    children: /*#__PURE__*/jsx(LinkIcon, {})
+    children: /*#__PURE__*/jsxRuntime.jsx(LinkIcon, {})
   });
 }
-const rotate$1 = keyframes`
+const rotate$1 = _styled.keyframes`
   from {
     transform: rotate(0deg);
   }
@@ -6283,12 +6322,12 @@ const rotate$1 = keyframes`
   }
 `;
 
-const Spinner$1 = _styled.img.withConfig({
+const Spinner$1 = _styled__default["default"].img.withConfig({
   displayName: "components__Spinner",
   componentId: "sc-1cchcrx-10"
 })(["animation:2s ", " linear infinite;width:16px;height:16px;"], rotate$1);
 
-_styled(StyledInternalLink).withConfig({
+_styled__default["default"](StyledInternalLink).withConfig({
   displayName: "components__BackArrowLink",
   componentId: "sc-1cchcrx-11"
 })(["color:", ";"], _ref16 => {
@@ -6297,7 +6336,7 @@ _styled(StyledInternalLink).withConfig({
   } = _ref16;
   return theme.text1;
 });
-const CustomLightSpinner = _styled(Spinner$1).withConfig({
+const CustomLightSpinner = _styled__default["default"](Spinner$1).withConfig({
   displayName: "components__CustomLightSpinner",
   componentId: "sc-1cchcrx-12"
 })(["height:", ";width:", ";"], _ref18 => {
@@ -6311,7 +6350,7 @@ const CustomLightSpinner = _styled(Spinner$1).withConfig({
   } = _ref19;
   return size;
 });
-_styled.span.withConfig({
+_styled__default["default"].span.withConfig({
   displayName: "components__HideSmall",
   componentId: "sc-1cchcrx-13"
 })(["", ";"], _ref20 => {
@@ -6322,7 +6361,7 @@ _styled.span.withConfig({
     display: none;
   `;
 });
-_styled.span.withConfig({
+_styled__default["default"].span.withConfig({
   displayName: "components__HideExtraSmall",
   componentId: "sc-1cchcrx-14"
 })(["", ";"], _ref21 => {
@@ -6333,7 +6372,7 @@ _styled.span.withConfig({
     display: none;
   `;
 });
-_styled.span.withConfig({
+_styled__default["default"].span.withConfig({
   displayName: "components__SmallOnly",
   componentId: "sc-1cchcrx-15"
 })(["display:none;", ";"], _ref22 => {
@@ -6370,9 +6409,9 @@ let Z_INDEX;
 
 const mediaWidthTemplates = Object.keys(MEDIA_WIDTHS).reduce((accumulator, size) => {
 
-  accumulator[size] = (a, b, c) => css`
+  accumulator[size] = (a, b, c) => _styled.css`
       @media (max-width: ${MEDIA_WIDTHS[size]}px) {
-        ${css(a, b, c)}
+        ${_styled.css(a, b, c)}
       }
     `;
 
@@ -6447,11 +6486,11 @@ function theme(darkMode) {
     // media queries
     mediaWidth: mediaWidthTemplates,
     // css snippets
-    flexColumnNoWrap: css`
+    flexColumnNoWrap: _styled.css`
       display: flex;
       flex-flow: column nowrap;
     `,
-    flexRowNoWrap: css`
+    flexRowNoWrap: _styled.css`
       display: flex;
       flex-flow: row nowrap;
     `
@@ -6463,14 +6502,14 @@ function ThemeProvider(_ref) {
     children
   } = _ref;
   const darkMode = useIsDarkMode();
-  const themeObject = useMemo(() => theme(darkMode), [darkMode]);
-  return /*#__PURE__*/jsx(ThemeProvider$1, {
+  const themeObject = React.useMemo(() => theme(darkMode), [darkMode]);
+  return /*#__PURE__*/jsxRuntime.jsx(_styled.ThemeProvider, {
     theme: themeObject,
     children: children
   });
 }
 
-const TextWrapper$1 = _styled(Text$1).withConfig({
+const TextWrapper$1 = _styled__default["default"](rebass.Text).withConfig({
   displayName: "theme__TextWrapper",
   componentId: "sc-18nh1jk-0"
 })(["color:", ";"], _ref2 => {
@@ -6487,7 +6526,7 @@ const TextWrapper$1 = _styled(Text$1).withConfig({
 
 const ThemedText = {
   Main(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: 'text2',
       ...props
@@ -6495,7 +6534,7 @@ const ThemedText = {
   },
 
   Link(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: 'primary1',
       ...props
@@ -6503,7 +6542,7 @@ const ThemedText = {
   },
 
   Label(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 600,
       color: 'text1',
       ...props
@@ -6511,7 +6550,7 @@ const ThemedText = {
   },
 
   Black(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: 'text1',
       ...props
@@ -6519,7 +6558,7 @@ const ThemedText = {
   },
 
   White(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: 'white',
       ...props
@@ -6527,7 +6566,7 @@ const ThemedText = {
   },
 
   Body(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 400,
       fontSize: 16,
       color: 'text1',
@@ -6536,7 +6575,7 @@ const ThemedText = {
   },
 
   LargeHeader(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 600,
       fontSize: 24,
       ...props
@@ -6544,7 +6583,7 @@ const ThemedText = {
   },
 
   MediumHeader(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       fontSize: 20,
       ...props
@@ -6552,7 +6591,7 @@ const ThemedText = {
   },
 
   SubHeader(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 400,
       fontSize: 14,
       ...props
@@ -6560,7 +6599,7 @@ const ThemedText = {
   },
 
   Small(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       fontSize: 11,
       ...props
@@ -6568,7 +6607,7 @@ const ThemedText = {
   },
 
   Blue(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: 'blue1',
       ...props
@@ -6576,7 +6615,7 @@ const ThemedText = {
   },
 
   Yellow(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: 'yellow3',
       ...props
@@ -6584,7 +6623,7 @@ const ThemedText = {
   },
 
   DarkGray(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: 'text3',
       ...props
@@ -6592,7 +6631,7 @@ const ThemedText = {
   },
 
   Gray(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: 'bg3',
       ...props
@@ -6600,7 +6639,7 @@ const ThemedText = {
   },
 
   Italic(props) {
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       fontSize: 12,
       fontStyle: 'italic',
@@ -6614,7 +6653,7 @@ const ThemedText = {
       error,
       ...props
     } = _ref3;
-    return /*#__PURE__*/jsx(TextWrapper$1, {
+    return /*#__PURE__*/jsxRuntime.jsx(TextWrapper$1, {
       fontWeight: 500,
       color: error ? 'red1' : 'text2',
       ...props
@@ -6622,7 +6661,7 @@ const ThemedText = {
   }
 
 };
-const ThemedGlobalStyle = createGlobalStyle`
+const ThemedGlobalStyle = _styled.createGlobalStyle`
 html {
   color: ${_ref4 => {
   let {
@@ -6733,16 +6772,16 @@ function getExplorerLink(chainId, data, type) {
   }
 }
 
-const Column = _styled.div.withConfig({
+const Column = _styled__default["default"].div.withConfig({
   displayName: "Column",
   componentId: "sc-1kykgp9-0"
 })(["display:flex;flex-direction:column;justify-content:flex-start;"]);
 
-const ColumnCenter = _styled(Column).withConfig({
+const ColumnCenter = _styled__default["default"](Column).withConfig({
   displayName: "Column__ColumnCenter",
   componentId: "sc-1kykgp9-1"
 })(["width:100%;align-items:center;"]);
-const AutoColumn = _styled.div.withConfig({
+const AutoColumn = _styled__default["default"].div.withConfig({
   displayName: "Column__AutoColumn",
   componentId: "sc-1kykgp9-2"
 })(["display:grid;grid-auto-rows:auto;grid-row-gap:", ";justify-items:", ";"], _ref => {
@@ -6757,7 +6796,7 @@ const AutoColumn = _styled.div.withConfig({
   return justify && justify;
 });
 
-const Row = _styled(Box).withConfig({
+const Row = _styled__default["default"](styledComponents.Box).withConfig({
   displayName: "Row",
   componentId: "sc-nrd8cx-0"
 })(["width:", ";display:flex;padding:0;align-items:", ";justify-content:", ";padding:", ";border:", ";border-radius:", ";"], _ref => {
@@ -6792,15 +6831,15 @@ const Row = _styled(Box).withConfig({
   return borderRadius;
 });
 
-const RowBetween = _styled(Row).withConfig({
+const RowBetween = _styled__default["default"](Row).withConfig({
   displayName: "Row__RowBetween",
   componentId: "sc-nrd8cx-1"
 })(["justify-content:space-between;"]);
-_styled.div.withConfig({
+_styled__default["default"].div.withConfig({
   displayName: "Row__RowFlat",
   componentId: "sc-nrd8cx-2"
 })(["display:flex;align-items:flex-end;"]);
-const AutoRow = _styled(Row).withConfig({
+const AutoRow = _styled__default["default"](Row).withConfig({
   displayName: "Row__AutoRow",
   componentId: "sc-nrd8cx-3"
 })(["flex-wrap:wrap;margin:", ";justify-content:", ";& > *{margin:", " !important;}"], _ref7 => {
@@ -6819,7 +6858,7 @@ const AutoRow = _styled(Row).withConfig({
   } = _ref9;
   return gap;
 });
-const RowFixed = _styled(Row).withConfig({
+const RowFixed = _styled__default["default"](Row).withConfig({
   displayName: "Row__RowFixed",
   componentId: "sc-nrd8cx-4"
 })(["width:fit-content;margin:", ";"], _ref10 => {
@@ -6829,7 +6868,7 @@ const RowFixed = _styled(Row).withConfig({
   return gap && `-${gap}`;
 });
 
-const InputPanel$1 = _styled.div.withConfig({
+const InputPanel$1 = _styled__default["default"].div.withConfig({
   displayName: "AddressInputPanel__InputPanel",
   componentId: "sc-1bxpzjo-0"
 })(["", " position:relative;border-radius:1.25rem;background-color:", ";z-index:1;width:100%;"], _ref => {
@@ -6844,7 +6883,7 @@ const InputPanel$1 = _styled.div.withConfig({
   return theme.bg1;
 });
 
-const ContainerRow = _styled.div.withConfig({
+const ContainerRow = _styled__default["default"].div.withConfig({
   displayName: "AddressInputPanel__ContainerRow",
   componentId: "sc-1bxpzjo-1"
 })(["display:flex;justify-content:center;align-items:center;border-radius:1.25rem;border:1px solid ", ";transition:border-color 300ms ", ",color 500ms ", ";background-color:", ";"], _ref3 => {
@@ -6870,12 +6909,12 @@ const ContainerRow = _styled.div.withConfig({
   return theme.bg1;
 });
 
-const InputContainer = _styled.div.withConfig({
+const InputContainer = _styled__default["default"].div.withConfig({
   displayName: "AddressInputPanel__InputContainer",
   componentId: "sc-1bxpzjo-2"
 })(["flex:1;padding:1rem;"]);
 
-const Input$2 = _styled.input.withConfig({
+const Input$2 = _styled__default["default"].input.withConfig({
   displayName: "AddressInputPanel__Input",
   componentId: "sc-1bxpzjo-3"
 })(["font-size:1.25rem;outline:none;border:none;flex:1 1 auto;width:0;background-color:", ";transition:color 300ms ", ";color:", ";overflow:hidden;text-overflow:ellipsis;font-weight:500;width:100%;::placeholder{color:", ";}padding:0px;-webkit-appearance:textfield;::-webkit-search-decoration{-webkit-appearance:none;}::-webkit-outer-spin-button,::-webkit-inner-spin-button{-webkit-appearance:none;}::placeholder{color:", ";}"], _ref7 => {
@@ -6918,43 +6957,43 @@ function AddressInputPanel(_ref12) {
   const {
     chainId
   } = useActiveWeb3React();
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   const {
     address,
     loading,
     name
   } = useENS(value);
-  const handleInput = useCallback(event => {
+  const handleInput = React.useCallback(event => {
     const input = event.target.value;
     const withoutSpaces = input.replace(/\s+/g, '');
     onChange(withoutSpaces);
   }, [onChange]);
   const error = Boolean(value.length > 0 && !loading && !address);
-  return /*#__PURE__*/jsx(InputPanel$1, {
+  return /*#__PURE__*/jsxRuntime.jsx(InputPanel$1, {
     id: id,
-    children: /*#__PURE__*/jsx(ContainerRow, {
+    children: /*#__PURE__*/jsxRuntime.jsx(ContainerRow, {
       error: error,
-      children: /*#__PURE__*/jsx(InputContainer, {
-        children: /*#__PURE__*/jsxs(AutoColumn, {
+      children: /*#__PURE__*/jsxRuntime.jsx(InputContainer, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
           gap: "md",
-          children: [/*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.Black, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
               color: theme.text2,
               fontWeight: 500,
               fontSize: 14,
-              children: label !== null && label !== void 0 ? label : /*#__PURE__*/jsx(Trans, {
+              children: label !== null && label !== void 0 ? label : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Recipient"
               })
-            }), address && chainId && /*#__PURE__*/jsx(ExternalLink, {
+            }), address && chainId && /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
               href: getExplorerLink(chainId, name !== null && name !== void 0 ? name : address, ExplorerDataType.ADDRESS),
               style: {
                 fontSize: '14px'
               },
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "(View on Explorer)"
               })
             })]
-          }), /*#__PURE__*/jsx(Input$2, {
+          }), /*#__PURE__*/jsxRuntime.jsx(Input$2, {
             className: className,
             type: "text",
             autoComplete: "off",
@@ -6963,7 +7002,7 @@ function AddressInputPanel(_ref12) {
             spellCheck: "false",
             placeholder: placeholder !== null && placeholder !== void 0 ? placeholder :
             /*i18n*/
-            i18n._("Wallet Address or ENS name"),
+            core$1.i18n._("Wallet Address or ENS name"),
             error: error,
             pattern: "^(0x[a-fA-F0-9]{40})$",
             onChange: handleInput,
@@ -6976,10 +7015,10 @@ function AddressInputPanel(_ref12) {
 }
 
 function useTheme() {
-  return useContext(ThemeContext);
+  return React.useContext(_styled.ThemeContext);
 }
 
-const BaseButton = _styled(Button$1).withConfig({
+const BaseButton = _styled__default["default"](styledComponents.Button).withConfig({
   displayName: "Button__BaseButton",
   componentId: "sc-fwrjc2-0"
 })(["padding:", ";width:", ";font-weight:500;text-align:center;border-radius:", ";outline:none;border:1px solid transparent;color:white;text-decoration:none;display:flex;justify-content:center;flex-wrap:nowrap;align-items:center;cursor:pointer;position:relative;z-index:1;&:disabled{cursor:auto;pointer-events:none;}will-change:transform;transition:transform 450ms ease;transform:perspective(1px) translateZ(0);> *{user-select:none;}> a{text-decoration:none;}"], _ref => {
@@ -6998,7 +7037,7 @@ const BaseButton = _styled(Button$1).withConfig({
   } = _ref3;
   return $borderRadius !== null && $borderRadius !== void 0 ? $borderRadius : '20px';
 });
-const ButtonPrimary = _styled(BaseButton).withConfig({
+const ButtonPrimary = _styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonPrimary",
   componentId: "sc-fwrjc2-1"
 })(["background-color:", ";color:white;&:focus{box-shadow:0 0 0 1pt ", ";background-color:", ";}&:hover{background-color:", ";}&:active{box-shadow:0 0 0 1pt ", ";background-color:", ";}&:disabled{background-color:", ";color:", ";cursor:auto;box-shadow:none;border:1px solid transparent;outline:none;}"], _ref4 => {
@@ -7010,27 +7049,27 @@ const ButtonPrimary = _styled(BaseButton).withConfig({
   let {
     theme
   } = _ref5;
-  return darken(0.05, theme.primary1);
+  return polished.darken(0.05, theme.primary1);
 }, _ref6 => {
   let {
     theme
   } = _ref6;
-  return darken(0.05, theme.primary1);
+  return polished.darken(0.05, theme.primary1);
 }, _ref7 => {
   let {
     theme
   } = _ref7;
-  return darken(0.05, theme.primary1);
+  return polished.darken(0.05, theme.primary1);
 }, _ref8 => {
   let {
     theme
   } = _ref8;
-  return darken(0.1, theme.primary1);
+  return polished.darken(0.1, theme.primary1);
 }, _ref9 => {
   let {
     theme
   } = _ref9;
-  return darken(0.1, theme.primary1);
+  return polished.darken(0.1, theme.primary1);
 }, _ref10 => {
   let {
     theme,
@@ -7046,7 +7085,7 @@ const ButtonPrimary = _styled(BaseButton).withConfig({
   } = _ref11;
   return altDisabledStyle ? disabled ? theme.white : theme.text2 : theme.text2;
 });
-const ButtonLight = _styled(BaseButton).withConfig({
+const ButtonLight = _styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonLight",
   componentId: "sc-fwrjc2-2"
 })(["background-color:", ";color:", ";font-size:16px;font-weight:500;&:focus{box-shadow:0 0 0 1pt ", ";background-color:", ";}&:hover{background-color:", ";}&:active{box-shadow:0 0 0 1pt ", ";background-color:", ";}:disabled{opacity:0.4;:hover{cursor:auto;background-color:", ";box-shadow:none;border:1px solid transparent;outline:none;}}"], _ref12 => {
@@ -7064,38 +7103,38 @@ const ButtonLight = _styled(BaseButton).withConfig({
     theme,
     disabled
   } = _ref14;
-  return !disabled && darken(0.03, theme.primary5);
+  return !disabled && polished.darken(0.03, theme.primary5);
 }, _ref15 => {
   let {
     theme,
     disabled
   } = _ref15;
-  return !disabled && darken(0.03, theme.primary5);
+  return !disabled && polished.darken(0.03, theme.primary5);
 }, _ref16 => {
   let {
     theme,
     disabled
   } = _ref16;
-  return !disabled && darken(0.03, theme.primary5);
+  return !disabled && polished.darken(0.03, theme.primary5);
 }, _ref17 => {
   let {
     theme,
     disabled
   } = _ref17;
-  return !disabled && darken(0.05, theme.primary5);
+  return !disabled && polished.darken(0.05, theme.primary5);
 }, _ref18 => {
   let {
     theme,
     disabled
   } = _ref18;
-  return !disabled && darken(0.05, theme.primary5);
+  return !disabled && polished.darken(0.05, theme.primary5);
 }, _ref19 => {
   let {
     theme
   } = _ref19;
   return theme.primary5;
 });
-const ButtonGray = _styled(BaseButton).withConfig({
+const ButtonGray = _styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonGray",
   componentId: "sc-fwrjc2-3"
 })(["background-color:", ";color:", ";font-size:16px;font-weight:500;&:hover{background-color:", ";}&:active{background-color:", ";}"], _ref20 => {
@@ -7113,15 +7152,15 @@ const ButtonGray = _styled(BaseButton).withConfig({
     theme,
     disabled
   } = _ref22;
-  return !disabled && darken(0.05, theme.bg2);
+  return !disabled && polished.darken(0.05, theme.bg2);
 }, _ref23 => {
   let {
     theme,
     disabled
   } = _ref23;
-  return !disabled && darken(0.1, theme.bg2);
+  return !disabled && polished.darken(0.1, theme.bg2);
 });
-const ButtonSecondary = _styled(BaseButton).withConfig({
+const ButtonSecondary = _styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonSecondary",
   componentId: "sc-fwrjc2-4"
 })(["border:1px solid ", ";color:", ";background-color:transparent;font-size:16px;border-radius:12px;padding:", ";&:focus{box-shadow:0 0 0 1pt ", ";border:1px solid ", ";}&:hover{border:1px solid ", ";}&:active{box-shadow:0 0 0 1pt ", ";border:1px solid ", ";}&:disabled{opacity:50%;cursor:auto;}a:hover{text-decoration:none;}"], _ref24 => {
@@ -7165,7 +7204,7 @@ const ButtonSecondary = _styled(BaseButton).withConfig({
   } = _ref31;
   return theme.primary3;
 });
-const ButtonOutlined = _styled(BaseButton).withConfig({
+const ButtonOutlined = _styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonOutlined",
   componentId: "sc-fwrjc2-5"
 })(["border:1px solid ", ";background-color:transparent;color:", ";&:focus{box-shadow:0 0 0 1px ", ";}&:hover{box-shadow:0 0 0 1px ", ";}&:active{box-shadow:0 0 0 1px ", ";}&:disabled{opacity:50%;cursor:auto;}"], _ref32 => {
@@ -7194,7 +7233,7 @@ const ButtonOutlined = _styled(BaseButton).withConfig({
   } = _ref36;
   return theme.bg4;
 });
-_styled(BaseButton).withConfig({
+_styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonYellow",
   componentId: "sc-fwrjc2-6"
 })(["background-color:", ";color:white;&:focus{box-shadow:0 0 0 1pt ", ";background-color:", ";}&:hover{background-color:", ";}&:active{box-shadow:0 0 0 1pt ", ";background-color:", ";}&:disabled{background-color:", ";opacity:50%;cursor:auto;}"], _ref37 => {
@@ -7206,34 +7245,34 @@ _styled(BaseButton).withConfig({
   let {
     theme
   } = _ref38;
-  return darken(0.05, theme.yellow3);
+  return polished.darken(0.05, theme.yellow3);
 }, _ref39 => {
   let {
     theme
   } = _ref39;
-  return darken(0.05, theme.yellow3);
+  return polished.darken(0.05, theme.yellow3);
 }, _ref40 => {
   let {
     theme
   } = _ref40;
-  return darken(0.05, theme.yellow3);
+  return polished.darken(0.05, theme.yellow3);
 }, _ref41 => {
   let {
     theme
   } = _ref41;
-  return darken(0.1, theme.yellow3);
+  return polished.darken(0.1, theme.yellow3);
 }, _ref42 => {
   let {
     theme
   } = _ref42;
-  return darken(0.1, theme.yellow3);
+  return polished.darken(0.1, theme.yellow3);
 }, _ref43 => {
   let {
     theme
   } = _ref43;
   return theme.yellow3;
 });
-const ButtonEmpty = _styled(BaseButton).withConfig({
+const ButtonEmpty = _styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonEmpty",
   componentId: "sc-fwrjc2-7"
 })(["background-color:transparent;color:", ";display:flex;justify-content:center;align-items:center;&:focus{text-decoration:underline;}&:hover{text-decoration:none;}&:active{text-decoration:none;}&:disabled{opacity:50%;cursor:auto;}"], _ref44 => {
@@ -7242,12 +7281,12 @@ const ButtonEmpty = _styled(BaseButton).withConfig({
   } = _ref44;
   return theme.primary1;
 });
-_styled(BaseButton).withConfig({
+_styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonText",
   componentId: "sc-fwrjc2-8"
 })(["padding:0;width:fit-content;background:none;text-decoration:none;&:focus{text-decoration:underline;}&:hover{opacity:0.9;}&:active{text-decoration:underline;}&:disabled{opacity:50%;cursor:auto;}"]);
 
-const ButtonConfirmedStyle = _styled(BaseButton).withConfig({
+const ButtonConfirmedStyle = _styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonConfirmedStyle",
   componentId: "sc-fwrjc2-9"
 })(["background-color:", ";color:", ";&:disabled{background-color:", ";color:", ";cursor:auto;}"], _ref45 => {
@@ -7272,7 +7311,7 @@ const ButtonConfirmedStyle = _styled(BaseButton).withConfig({
   return theme.text2;
 });
 
-const ButtonErrorStyle = _styled(BaseButton).withConfig({
+const ButtonErrorStyle = _styled__default["default"](BaseButton).withConfig({
   displayName: "Button__ButtonErrorStyle",
   componentId: "sc-fwrjc2-10"
 })(["background-color:", ";border:1px solid ", ";&:focus{box-shadow:0 0 0 1pt ", ";background-color:", ";}&:hover{background-color:", ";}&:active{box-shadow:0 0 0 1pt ", ";background-color:", ";}&:disabled{opacity:50%;cursor:auto;box-shadow:none;background-color:", ";border:1px solid ", ";}"], _ref49 => {
@@ -7289,27 +7328,27 @@ const ButtonErrorStyle = _styled(BaseButton).withConfig({
   let {
     theme
   } = _ref51;
-  return darken(0.05, theme.red1);
+  return polished.darken(0.05, theme.red1);
 }, _ref52 => {
   let {
     theme
   } = _ref52;
-  return darken(0.05, theme.red1);
+  return polished.darken(0.05, theme.red1);
 }, _ref53 => {
   let {
     theme
   } = _ref53;
-  return darken(0.05, theme.red1);
+  return polished.darken(0.05, theme.red1);
 }, _ref54 => {
   let {
     theme
   } = _ref54;
-  return darken(0.1, theme.red1);
+  return polished.darken(0.1, theme.red1);
 }, _ref55 => {
   let {
     theme
   } = _ref55;
-  return darken(0.1, theme.red1);
+  return polished.darken(0.1, theme.red1);
 }, _ref56 => {
   let {
     theme
@@ -7330,10 +7369,10 @@ function ButtonConfirmed(_ref58) {
   } = _ref58;
 
   if (confirmed) {
-    return /*#__PURE__*/jsx(ButtonConfirmedStyle, { ...rest
+    return /*#__PURE__*/jsxRuntime.jsx(ButtonConfirmedStyle, { ...rest
     });
   } else {
-    return /*#__PURE__*/jsx(ButtonPrimary, { ...rest,
+    return /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, { ...rest,
       altDisabledStyle: altDisabledStyle
     });
   }
@@ -7345,15 +7384,15 @@ function ButtonError(_ref59) {
   } = _ref59;
 
   if (error) {
-    return /*#__PURE__*/jsx(ButtonErrorStyle, { ...rest
+    return /*#__PURE__*/jsxRuntime.jsx(ButtonErrorStyle, { ...rest
     });
   } else {
-    return /*#__PURE__*/jsx(ButtonPrimary, { ...rest
+    return /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, { ...rest
     });
   }
 }
 
-_styled(ButtonOutlined).withConfig({
+_styled__default["default"](ButtonOutlined).withConfig({
   displayName: "Button__ActiveOutlined",
   componentId: "sc-fwrjc2-11"
 })(["border:1px solid;border-color:", ";"], _ref62 => {
@@ -7363,7 +7402,7 @@ _styled(ButtonOutlined).withConfig({
   return theme.primary1;
 });
 
-_styled.div.withConfig({
+_styled__default["default"].div.withConfig({
   displayName: "Button__Circle",
   componentId: "sc-fwrjc2-12"
 })(["height:17px;width:17px;border-radius:50%;background-color:", ";display:flex;align-items:center;justify-content:center;"], _ref63 => {
@@ -7373,12 +7412,12 @@ _styled.div.withConfig({
   return theme.primary1;
 });
 
-_styled.div.withConfig({
+_styled__default["default"].div.withConfig({
   displayName: "Button__CheckboxWrapper",
   componentId: "sc-fwrjc2-13"
 })(["width:20px;padding:0 10px;position:absolute;top:11px;right:15px;"]);
 
-_styled(Check).withConfig({
+_styled__default["default"](reactFeather.Check).withConfig({
   displayName: "Button__ResponsiveCheck",
   componentId: "sc-fwrjc2-14"
 })(["size:13px;"]);
@@ -7394,8 +7433,8 @@ function getSize() {
 
 
 function useWindowSize() {
-  const [windowSize, setWindowSize] = useState(getSize);
-  useEffect(() => {
+  const [windowSize, setWindowSize] = React.useState(getSize);
+  React.useEffect(() => {
     function handleResize() {
       setWindowSize(getSize());
     }
@@ -7424,7 +7463,7 @@ function Confetti(_ref) {
 
   const _variant = variant ? variant : height && width && height > 1.5 * width ? 'bottom' : variant;
 
-  return start && width && height ? /*#__PURE__*/jsx(ReactConfetti, {
+  return start && width && height ? /*#__PURE__*/jsxRuntime.jsx(ReactConfetti__default["default"], {
     style: {
       zIndex: 1401
     },
@@ -7453,11 +7492,11 @@ var noise = "f158a440053a5ad2.png";
 
 var xlUnicorn = "c2cd04251aa24c34.png";
 
-const DataCard = _styled(AutoColumn).withConfig({
+const DataCard = _styled__default["default"](AutoColumn).withConfig({
   displayName: "styled__DataCard",
   componentId: "sc-5nm9ef-0"
 })(["background:radial-gradient(76.02% 75.41% at 1.84% 0%,#ff007a 0%,#2172e5 100%);border-radius:12px;width:100%;position:relative;overflow:hidden;"]);
-const CardBGImage = _styled.span.withConfig({
+const CardBGImage = _styled__default["default"].span.withConfig({
   displayName: "styled__CardBGImage",
   componentId: "sc-5nm9ef-1"
 })(["background:url(", ");width:1000px;height:600px;position:absolute;border-radius:12px;opacity:0.4;top:-100px;left:-100px;transform:rotate(-15deg);user-select:none;", ""], uImage, _ref => {
@@ -7466,7 +7505,7 @@ const CardBGImage = _styled.span.withConfig({
   } = _ref;
   return desaturate && `filter: saturate(0)`;
 });
-const CardBGImageSmaller = _styled.span.withConfig({
+const CardBGImageSmaller = _styled__default["default"].span.withConfig({
   displayName: "styled__CardBGImageSmaller",
   componentId: "sc-5nm9ef-2"
 })(["background:url(", ");width:1200px;height:1200px;position:absolute;border-radius:12px;top:-300px;left:-300px;opacity:0.4;user-select:none;", ""], xlUnicorn, _ref2 => {
@@ -7475,11 +7514,11 @@ const CardBGImageSmaller = _styled.span.withConfig({
   } = _ref2;
   return desaturate && `filter: saturate(0)`;
 });
-const CardNoise = _styled.span.withConfig({
+const CardNoise = _styled__default["default"].span.withConfig({
   displayName: "styled__CardNoise",
   componentId: "sc-5nm9ef-3"
 })(["background:url(", ");background-size:cover;mix-blend-mode:overlay;border-radius:12px;width:100%;height:100%;opacity:0.15;position:absolute;top:0;left:0;user-select:none;"], noise);
-const CardSection = _styled(AutoColumn).withConfig({
+const CardSection = _styled__default["default"](AutoColumn).withConfig({
   displayName: "styled__CardSection",
   componentId: "sc-5nm9ef-4"
 })(["padding:1rem;z-index:1;opacity:", ";"], _ref3 => {
@@ -7488,14 +7527,14 @@ const CardSection = _styled(AutoColumn).withConfig({
   } = _ref3;
   return disabled && '0.4';
 });
-const Break$1 = _styled.div.withConfig({
+const Break$1 = _styled__default["default"].div.withConfig({
   displayName: "styled__Break",
   componentId: "sc-5nm9ef-5"
 })(["width:100%;background-color:rgba(255,255,255,0.2);height:1px;"]);
 
-const AnimatedDialogOverlay = animated(DialogOverlay); // eslint-disable-next-line @typescript-eslint/no-unused-vars
+const AnimatedDialogOverlay = reactSpring.animated(dialog.DialogOverlay); // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-const StyledDialogOverlay = _styled(AnimatedDialogOverlay).withConfig({
+const StyledDialogOverlay = _styled__default["default"](AnimatedDialogOverlay).withConfig({
   displayName: "Modal__StyledDialogOverlay",
   componentId: "sc-jajvtp-0"
 })(["&[data-reach-dialog-overlay]{z-index:2;background-color:transparent;overflow:hidden;display:flex;align-items:center;justify-content:center;background-color:", ";}"], _ref => {
@@ -7505,10 +7544,10 @@ const StyledDialogOverlay = _styled(AnimatedDialogOverlay).withConfig({
   return theme.modalBG;
 });
 
-const AnimatedDialogContent = animated(DialogContent); // destructure to not pass custom props to Dialog DOM element
+const AnimatedDialogContent = reactSpring.animated(dialog.DialogContent); // destructure to not pass custom props to Dialog DOM element
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-const StyledDialogContent = _styled(_ref2 => {
+const StyledDialogContent = _styled__default["default"](_ref2 => {
   let {
     minHeight,
     maxHeight,
@@ -7516,7 +7555,7 @@ const StyledDialogContent = _styled(_ref2 => {
     isOpen,
     ...rest
   } = _ref2;
-  return /*#__PURE__*/jsx(AnimatedDialogContent, { ...rest
+  return /*#__PURE__*/jsxRuntime.jsx(AnimatedDialogContent, { ...rest
   });
 }).attrs({
   'aria-label': 'dialog'
@@ -7537,7 +7576,7 @@ const StyledDialogContent = _styled(_ref2 => {
   let {
     theme
   } = _ref5;
-  return transparentize(0.95, theme.shadow1);
+  return polished.transparentize(0.95, theme.shadow1);
 }, _ref6 => {
   let {
     mobile
@@ -7547,14 +7586,14 @@ const StyledDialogContent = _styled(_ref2 => {
   let {
     maxHeight
   } = _ref7;
-  return maxHeight && css`
+  return maxHeight && _styled.css`
         max-height: ${maxHeight}vh;
       `;
 }, _ref8 => {
   let {
     minHeight
   } = _ref8;
-  return minHeight && css`
+  return minHeight && _styled.css`
         min-height: ${minHeight}vh;
       `;
 }, _ref9 => {
@@ -7572,7 +7611,7 @@ const StyledDialogContent = _styled(_ref2 => {
   } = _ref10;
   return theme.mediaWidth.upToSmall`
       width:  85vw;
-      ${mobile && css`
+      ${mobile && _styled.css`
           width: 100vw;
           border-radius: 20px;
           border-bottom-left-radius: 0;
@@ -7590,7 +7629,7 @@ function Modal(_ref11) {
     initialFocusRef,
     children
   } = _ref11;
-  const fadeTransition = useTransition(isOpen, null, {
+  const fadeTransition = reactSpring.useTransition(isOpen, null, {
     config: {
       duration: 200
     },
@@ -7606,7 +7645,7 @@ function Modal(_ref11) {
   });
   const [{
     y
-  }, set] = useSpring(() => ({
+  }, set] = reactSpring.useSpring(() => ({
     y: 0,
     config: {
       mass: 1,
@@ -7614,7 +7653,7 @@ function Modal(_ref11) {
       friction: 20
     }
   }));
-  const bind = useGesture({
+  const bind = reactUseGesture.useGesture({
     onDrag: state => {
       set({
         y: state.down ? state.movement[1] : 0
@@ -7625,19 +7664,19 @@ function Modal(_ref11) {
       }
     }
   });
-  return /*#__PURE__*/jsx(Fragment, {
+  return /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
     children: fadeTransition.map(_ref12 => {
       let {
         item,
         key,
         props
       } = _ref12;
-      return item && /*#__PURE__*/jsx(StyledDialogOverlay, {
+      return item && /*#__PURE__*/jsxRuntime.jsx(StyledDialogOverlay, {
         style: props,
         onDismiss: onDismiss,
         initialFocusRef: initialFocusRef,
         unstable_lockFocusAcrossFrames: false,
-        children: /*#__PURE__*/jsxs(StyledDialogContent, { ...(isMobile ? { ...bind(),
+        children: /*#__PURE__*/jsxRuntime.jsxs(StyledDialogContent, { ...(isMobile ? { ...bind(),
             style: {
               transform: y.interpolate(y => `translateY(${y > 0 ? y : 0}px)`)
             }
@@ -7646,7 +7685,7 @@ function Modal(_ref11) {
           minHeight: minHeight,
           maxHeight: maxHeight,
           mobile: isMobile,
-          children: [!initialFocusRef && isMobile ? /*#__PURE__*/jsx("div", {
+          children: [!initialFocusRef && isMobile ? /*#__PURE__*/jsxRuntime.jsx("div", {
             tabIndex: 1
           }) : null, children]
         })
@@ -7655,17 +7694,17 @@ function Modal(_ref11) {
   });
 }
 
-const ContentWrapper$5 = _styled(AutoColumn).withConfig({
+const ContentWrapper$5 = _styled__default["default"](AutoColumn).withConfig({
   displayName: "AddressClaimModal__ContentWrapper",
   componentId: "sc-1qxvqh4-0"
 })(["width:100%;"]);
 
-const ModalUpper$2 = _styled(DataCard).withConfig({
+const ModalUpper$2 = _styled__default["default"](DataCard).withConfig({
   displayName: "AddressClaimModal__ModalUpper",
   componentId: "sc-1qxvqh4-1"
 })(["box-shadow:0px 4px 10px rgba(0,0,0,0.1);background:radial-gradient(76.02% 75.41% at 1.84% 0%,#ff007a 0%,#021d43 100%);"]);
 
-const ConfirmOrLoadingWrapper$1 = _styled.div.withConfig({
+const ConfirmOrLoadingWrapper$1 = _styled__default["default"].div.withConfig({
   displayName: "AddressClaimModal__ConfirmOrLoadingWrapper",
   componentId: "sc-1qxvqh4-2"
 })(["width:100%;padding:24px;position:relative;background:", ";"], _ref => {
@@ -7675,7 +7714,7 @@ const ConfirmOrLoadingWrapper$1 = _styled.div.withConfig({
   return activeBG && 'radial-gradient(76.02% 75.41% at 1.84% 0%, rgba(255, 0, 122, 0.2) 0%, rgba(33, 114, 229, 0.2) 100%), #FFFFFF;';
 });
 
-const ConfirmedIcon$2 = _styled(ColumnCenter).withConfig({
+const ConfirmedIcon$2 = _styled__default["default"](ColumnCenter).withConfig({
   displayName: "AddressClaimModal__ConfirmedIcon",
   componentId: "sc-1qxvqh4-3"
 })(["padding:60px 0;"]);
@@ -7691,7 +7730,7 @@ function AddressClaimModal(_ref2) {
     chainId
   } = useActiveWeb3React(); // state for smart contract input
 
-  const [typed, setTyped] = useState('');
+  const [typed, setTyped] = React.useState('');
 
   function handleRecipientType(val) {
     setTyped(val);
@@ -7702,7 +7741,7 @@ function AddressClaimModal(_ref2) {
     address: parsedAddress
   } = useENS(typed); // used for UI loading states
 
-  const [attempting, setAttempting] = useState(false); // monitor the status of the claim from contracts and txns
+  const [attempting, setAttempting] = React.useState(false); // monitor the status of the claim from contracts and txns
 
   const {
     claimCallback
@@ -7710,7 +7749,7 @@ function AddressClaimModal(_ref2) {
   const unclaimedAmount = useUserUnclaimedAmount(parsedAddress); // check if the user has something available
 
   const hasAvailableClaim = useUserHasAvailableClaim(parsedAddress);
-  const [hash, setHash] = useState(); // monitor the status of the claim from contracts and txns
+  const [hash, setHash] = React.useState(); // monitor the status of the claim from contracts and txns
 
   const claimPending = useIsTransactionPending(hash !== null && hash !== void 0 ? hash : '');
   const claimConfirmed = hash && !claimPending; // use the hash to monitor this txn
@@ -7733,34 +7772,34 @@ function AddressClaimModal(_ref2) {
     onDismiss();
   }
 
-  return /*#__PURE__*/jsxs(Modal, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Modal, {
     isOpen: isOpen,
     onDismiss: wrappedOnDismiss,
     maxHeight: 90,
-    children: [/*#__PURE__*/jsx(Confetti, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(Confetti, {
       start: Boolean(isOpen && claimConfirmed && attempting)
-    }), !attempting && /*#__PURE__*/jsxs(ContentWrapper$5, {
+    }), !attempting && /*#__PURE__*/jsxRuntime.jsxs(ContentWrapper$5, {
       gap: "lg",
-      children: [/*#__PURE__*/jsxs(ModalUpper$2, {
-        children: [/*#__PURE__*/jsx(CardBGImage, {}), /*#__PURE__*/jsx(CardNoise, {}), /*#__PURE__*/jsxs(CardSection, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(ModalUpper$2, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(CardBGImage, {}), /*#__PURE__*/jsxRuntime.jsx(CardNoise, {}), /*#__PURE__*/jsxRuntime.jsxs(CardSection, {
           gap: "md",
-          children: [/*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.White, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               fontWeight: 500,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Claim UNI Token"
               })
-            }), /*#__PURE__*/jsx(CloseIcon$3, {
+            }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
               onClick: wrappedOnDismiss,
               style: {
                 zIndex: 99
               },
               stroke: "white"
             })]
-          }), /*#__PURE__*/jsx(ThemedText.White, {
+          }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
             fontWeight: 700,
             fontSize: 36,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "{0} UNI",
               values: {
                 0: unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_groupSeparator = {
@@ -7769,80 +7808,80 @@ function AddressClaimModal(_ref2) {
               }
             })
           })]
-        }), /*#__PURE__*/jsx(Break$1, {})]
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+        }), /*#__PURE__*/jsxRuntime.jsx(Break$1, {})]
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "md",
         style: {
           padding: '1rem',
           paddingTop: '0'
         },
         justify: "center",
-        children: [/*#__PURE__*/jsx(ThemedText.SubHeader, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           fontWeight: 500,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on submission."
           })
-        }), /*#__PURE__*/jsx(AddressInputPanel, {
+        }), /*#__PURE__*/jsxRuntime.jsx(AddressInputPanel, {
           value: typed,
           onChange: handleRecipientType
-        }), parsedAddress && !hasAvailableClaim && /*#__PURE__*/jsx(ThemedText.Error, {
+        }), parsedAddress && !hasAvailableClaim && /*#__PURE__*/jsxRuntime.jsx(ThemedText.Error, {
           error: true,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Address has no available claim"
           })
-        }), /*#__PURE__*/jsx(ButtonPrimary, {
-          disabled: !isAddress$1(parsedAddress !== null && parsedAddress !== void 0 ? parsedAddress : '') || !hasAvailableClaim,
+        }), /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
+          disabled: !address.isAddress(parsedAddress !== null && parsedAddress !== void 0 ? parsedAddress : '') || !hasAvailableClaim,
           padding: "16px 16px",
           width: "100%",
           $borderRadius: "12px",
           mt: "1rem",
           onClick: onClaim,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Claim UNI"
           })
         })]
       })]
-    }), (attempting || claimConfirmed) && /*#__PURE__*/jsxs(ConfirmOrLoadingWrapper$1, {
+    }), (attempting || claimConfirmed) && /*#__PURE__*/jsxRuntime.jsxs(ConfirmOrLoadingWrapper$1, {
       activeBG: true,
-      children: [/*#__PURE__*/jsx(CardNoise, {}), /*#__PURE__*/jsx(CardBGImageSmaller, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CardNoise, {}), /*#__PURE__*/jsxRuntime.jsx(CardBGImageSmaller, {
         desaturate: true
-      }), /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx("div", {}), /*#__PURE__*/jsx(CloseIcon$3, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx("div", {}), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: wrappedOnDismiss,
           style: {
             zIndex: 99
           },
           stroke: "black"
         })]
-      }), /*#__PURE__*/jsx(ConfirmedIcon$2, {
-        children: !claimConfirmed ? /*#__PURE__*/jsx(CustomLightSpinner, {
+      }), /*#__PURE__*/jsxRuntime.jsx(ConfirmedIcon$2, {
+        children: !claimConfirmed ? /*#__PURE__*/jsxRuntime.jsx(CustomLightSpinner, {
           src: Circle$1,
           alt: "loader",
           size: '90px'
-        }) : /*#__PURE__*/jsx(UniTokenAnimated, {
+        }) : /*#__PURE__*/jsxRuntime.jsx(UniTokenAnimated, {
           width: "72px",
           src: tokenLogo,
           alt: "UNI logo"
         })
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "100px",
         justify: 'center',
-        children: [/*#__PURE__*/jsxs(AutoColumn, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
           gap: "12px",
           justify: 'center',
-          children: [/*#__PURE__*/jsx(ThemedText.LargeHeader, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.LargeHeader, {
             fontWeight: 600,
             color: "black",
-            children: claimConfirmed ? /*#__PURE__*/jsx(Trans, {
+            children: claimConfirmed ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Claimed"
-            }) : /*#__PURE__*/jsx(Trans, {
+            }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Claiming"
             })
-          }), !claimConfirmed && /*#__PURE__*/jsx(Text$1, {
+          }), !claimConfirmed && /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontSize: 36,
             color: '#ff007a',
             fontWeight: 800,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "{0} UNI",
               values: {
                 0: unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_groupSeparator2 = {
@@ -7850,43 +7889,43 @@ function AddressClaimModal(_ref2) {
                 }) !== null && _groupSeparator2 !== void 0 ? _groupSeparator2 : '-')
               }
             })
-          }), parsedAddress && /*#__PURE__*/jsx(ThemedText.LargeHeader, {
+          }), parsedAddress && /*#__PURE__*/jsxRuntime.jsx(ThemedText.LargeHeader, {
             fontWeight: 600,
             color: "black",
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "for {0}",
               values: {
                 0: shortenAddress(parsedAddress)
               }
             })
           })]
-        }), claimConfirmed && /*#__PURE__*/jsx(Fragment, {
-          children: /*#__PURE__*/jsxs(ThemedText.SubHeader, {
+        }), claimConfirmed && /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
+          children: /*#__PURE__*/jsxRuntime.jsxs(ThemedText.SubHeader, {
             fontWeight: 500,
             color: "black",
-            children: [/*#__PURE__*/jsxs("span", {
+            children: [/*#__PURE__*/jsxRuntime.jsxs("span", {
               role: "img",
               "aria-label": "party-hat",
               children: ["\uD83C\uDF89", ' ']
-            }), /*#__PURE__*/jsx(Trans, {
+            }), /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Welcome to team Unicorn :)"
-            }), /*#__PURE__*/jsx("span", {
+            }), /*#__PURE__*/jsxRuntime.jsx("span", {
               role: "img",
               "aria-label": "party-hat",
               children: "\uD83C\uDF89"
             })]
           })
-        }), attempting && !hash && /*#__PURE__*/jsx(ThemedText.SubHeader, {
+        }), attempting && !hash && /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           color: "black",
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Confirm this transaction in your wallet"
           })
-        }), attempting && hash && !claimConfirmed && chainId && hash && /*#__PURE__*/jsx(ExternalLink, {
+        }), attempting && hash && !claimConfirmed && chainId && hash && /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
           href: getExplorerLink(chainId, hash, ExplorerDataType.TRANSACTION),
           style: {
             zIndex: 99
           },
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "View transaction on Explorer"
           })
         })]
@@ -7904,13 +7943,13 @@ let Field$3;
   Field["CURRENCY_B"] = "CURRENCY_B";
 })(Field$3 || (Field$3 = {}));
 
-const typeInput$3 = createAction('burn/typeInputBurn');
+const typeInput$3 = toolkit.createAction('burn/typeInputBurn');
 
 const initialState$7 = {
   independentField: Field$3.LIQUIDITY_PERCENT,
   typedValue: '0'
 };
-var burn = createReducer(initialState$7, builder => builder.addCase(typeInput$3, (state, _ref) => {
+var burn = toolkit.createReducer(initialState$7, builder => builder.addCase(typeInput$3, (state, _ref) => {
   let {
     payload: {
       field,
@@ -7923,12 +7962,12 @@ var burn = createReducer(initialState$7, builder => builder.addCase(typeInput$3,
   };
 }));
 
-const selectPercent = createAction('burnV3/selectBurnPercent');
+const selectPercent = toolkit.createAction('burnV3/selectBurnPercent');
 
 const initialState$6 = {
   percent: 0
 };
-var burnV3 = createReducer(initialState$6, builder => builder.addCase(selectPercent, (state, _ref) => {
+var burnV3 = toolkit.createReducer(initialState$6, builder => builder.addCase(selectPercent, (state, _ref) => {
   let {
     payload: {
       percent
@@ -7946,7 +7985,7 @@ const CHAIN_SUBGRAPH_URL = {
   [SupportedChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
   [SupportedChainId.OPTIMISM]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-optimism-dev'
 };
-const api$1 = createApi({
+const api$1 = react$1.createApi({
   reducerPath: 'dataApi',
   baseQuery: graphqlRequestBaseQuery(),
   endpoints: builder => ({
@@ -7957,7 +7996,7 @@ const api$1 = createApi({
           skip = 0
         } = _ref;
         return {
-          document: gql`
+          document: graphqlRequest.gql`
           query allV3Ticks($poolAddress: String!, $skip: Int!) {
             ticks(first: 1000, skip: $skip, where: { poolAddress: $poolAddress }, orderBy: tickIdx) {
               tickIdx
@@ -7981,7 +8020,7 @@ const api$1 = createApi({
           token1
         } = _ref2;
         return {
-          document: gql`
+          document: graphqlRequest.gql`
           query feeTierDistribution($token0: String!, $token1: String!) {
             _meta {
               block {
@@ -8043,11 +8082,11 @@ function graphqlRequestBaseQuery() {
       }
 
       return {
-        data: await new GraphQLClient(subgraphUrl).request(document, variables),
+        data: await new graphqlRequest.GraphQLClient(subgraphUrl).request(document, variables),
         meta: {}
       };
     } catch (error) {
-      if (error instanceof ClientError) {
+      if (error instanceof graphqlRequest.ClientError) {
         const {
           name,
           message,
@@ -8075,21 +8114,21 @@ function graphqlRequestBaseQuery() {
 
 // allows any updates to be applied to store data loaded from localStorage
 
-const updateVersion = createAction('global/updateVersion');
+const updateVersion = toolkit.createAction('global/updateVersion');
 
 const fetchTokenList = {
-  pending: createAction('lists/fetchTokenList/pending'),
-  fulfilled: createAction('lists/fetchTokenList/fulfilled'),
-  rejected: createAction('lists/fetchTokenList/rejected')
+  pending: toolkit.createAction('lists/fetchTokenList/pending'),
+  fulfilled: toolkit.createAction('lists/fetchTokenList/fulfilled'),
+  rejected: toolkit.createAction('lists/fetchTokenList/rejected')
 }; // add and remove from list options
 
-const addList = createAction('lists/addList');
-const removeList = createAction('lists/removeList'); // select which lists to search across from loaded lists
+const addList = toolkit.createAction('lists/addList');
+const removeList = toolkit.createAction('lists/removeList'); // select which lists to search across from loaded lists
 
-const enableList = createAction('lists/enableList');
-const disableList = createAction('lists/disableList'); // versioning
+const enableList = toolkit.createAction('lists/enableList');
+const disableList = toolkit.createAction('lists/disableList'); // versioning
 
-const acceptListUpdate = createAction('lists/acceptListUpdate');
+const acceptListUpdate = toolkit.createAction('lists/acceptListUpdate');
 
 const NEW_LIST_STATE = {
   error: null,
@@ -8106,7 +8145,7 @@ const initialState$5 = {
   },
   activeListUrls: DEFAULT_ACTIVE_LIST_URLS
 };
-var lists = createReducer(initialState$5, builder => builder.addCase(fetchTokenList.pending, (state, _ref) => {
+var lists = toolkit.createReducer(initialState$5, builder => builder.addCase(fetchTokenList.pending, (state, _ref) => {
   var _state$byUrl$url$curr, _state$byUrl$url, _state$byUrl$url$pend, _state$byUrl$url2;
 
   let {
@@ -8137,8 +8176,8 @@ var lists = createReducer(initialState$5, builder => builder.addCase(fetchTokenL
   const loadingRequestId = (_state$byUrl$url4 = state.byUrl[url]) === null || _state$byUrl$url4 === void 0 ? void 0 : _state$byUrl$url4.loadingRequestId; // no-op if update does nothing
 
   if (current) {
-    const upgradeType = getVersionUpgrade(current.version, tokenList.version);
-    if (upgradeType === VersionUpgrade.NONE) return;
+    const upgradeType = tokenLists.getVersionUpgrade(current.version, tokenList.version);
+    if (upgradeType === tokenLists.VersionUpgrade.NONE) return;
 
     if (loadingRequestId === null || loadingRequestId === requestId) {
       state.byUrl[url] = {
@@ -8309,7 +8348,7 @@ function keyToFilter(key) {
   };
 }
 
-const slice = createSlice({
+const slice = toolkit.createSlice({
   name: 'logs',
   initialState: {},
   reducers: {
@@ -8408,8 +8447,8 @@ let Field$2;
   Field["CURRENCY_B"] = "CURRENCY_B";
 })(Field$2 || (Field$2 = {}));
 
-const typeInput$2 = createAction('mint/typeInputMint');
-const resetMintState$1 = createAction('mint/resetMintState');
+const typeInput$2 = toolkit.createAction('mint/typeInputMint');
+const resetMintState$1 = toolkit.createAction('mint/resetMintState');
 
 const initialState$4 = {
   independentField: Field$2.CURRENCY_A,
@@ -8419,7 +8458,7 @@ const initialState$4 = {
   leftRangeTypedValue: '',
   rightRangeTypedValue: ''
 };
-var mint = createReducer(initialState$4, builder => builder.addCase(resetMintState$1, () => initialState$4).addCase(typeInput$2, (state, _ref) => {
+var mint = toolkit.createReducer(initialState$4, builder => builder.addCase(resetMintState$1, () => initialState$4).addCase(typeInput$2, (state, _ref) => {
   let {
     payload: {
       field,
@@ -8466,12 +8505,12 @@ let Bound;
   Bound["UPPER"] = "UPPER";
 })(Bound || (Bound = {}));
 
-const typeInput$1 = createAction('mintV3/typeInputMint');
-const typeStartPriceInput = createAction('mintV3/typeStartPriceInput');
-const typeLeftRangeInput = createAction('mintV3/typeLeftRangeInput');
-const typeRightRangeInput = createAction('mintV3/typeRightRangeInput');
-const resetMintState = createAction('mintV3/resetMintState');
-const setFullRange = createAction('mintV3/setFullRange');
+const typeInput$1 = toolkit.createAction('mintV3/typeInputMint');
+const typeStartPriceInput = toolkit.createAction('mintV3/typeStartPriceInput');
+const typeLeftRangeInput = toolkit.createAction('mintV3/typeLeftRangeInput');
+const typeRightRangeInput = toolkit.createAction('mintV3/typeRightRangeInput');
+const resetMintState = toolkit.createAction('mintV3/resetMintState');
+const setFullRange = toolkit.createAction('mintV3/setFullRange');
 
 const initialState$3 = {
   independentField: Field$1.CURRENCY_A,
@@ -8480,7 +8519,7 @@ const initialState$3 = {
   leftRangeTypedValue: '',
   rightRangeTypedValue: ''
 };
-var mintV3 = createReducer(initialState$3, builder => builder.addCase(resetMintState, () => initialState$3).addCase(setFullRange, state => {
+var mintV3 = toolkit.createReducer(initialState$3, builder => builder.addCase(resetMintState, () => initialState$3).addCase(setFullRange, state => {
   return { ...state,
     leftRangeTypedValue: true,
     rightRangeTypedValue: true
@@ -8543,14 +8582,14 @@ var mintV3 = createReducer(initialState$3, builder => builder.addCase(resetMintS
   }
 }));
 
-const routingApi = createApi({
+const routingApi = react$1.createApi({
   reducerPath: 'routingApi',
-  baseQuery: fetchBaseQuery({
+  baseQuery: react$1.fetchBaseQuery({
     baseUrl: 'https://api.uniswap.org/v1/'
   }),
   endpoints: build => ({
     getQuote: build.query({
-      query: args => `quote?${qs.stringify({ ...args,
+      query: args => `quote?${qs__default["default"].stringify({ ...args,
         protocols: 'v3'
       })}`
     })
@@ -8567,11 +8606,11 @@ let Field;
   Field["OUTPUT"] = "OUTPUT";
 })(Field || (Field = {}));
 
-const selectCurrency = createAction('swap/selectCurrency');
-const switchCurrencies = createAction('swap/switchCurrencies');
-const typeInput = createAction('swap/typeInput');
-const replaceSwapState = createAction('swap/replaceSwapState');
-const setRecipient = createAction('swap/setRecipient');
+const selectCurrency = toolkit.createAction('swap/selectCurrency');
+const switchCurrencies = toolkit.createAction('swap/switchCurrencies');
+const typeInput = toolkit.createAction('swap/typeInput');
+const replaceSwapState = toolkit.createAction('swap/replaceSwapState');
+const setRecipient = toolkit.createAction('swap/setRecipient');
 
 function isTradeBetter(tradeA, tradeB) {
   let minimumDelta = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ZERO_PERCENT;
@@ -8593,7 +8632,7 @@ function isTradeBetter(tradeA, tradeB) {
 function useAllCurrencyCombinations(currencyA, currencyB) {
   const chainId = currencyA === null || currencyA === void 0 ? void 0 : currencyA.chainId;
   const [tokenA, tokenB] = chainId ? [currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped, currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped] : [undefined, undefined];
-  const bases = useMemo(() => {
+  const bases = React.useMemo(() => {
     var _BASES_TO_CHECK_TRADE, _ADDITIONAL_BASES$cha, _ADDITIONAL_BASES$cha2, _ADDITIONAL_BASES$cha3, _ADDITIONAL_BASES$cha4;
 
     if (!chainId || chainId !== (tokenB === null || tokenB === void 0 ? void 0 : tokenB.chainId)) return [];
@@ -8602,12 +8641,12 @@ function useAllCurrencyCombinations(currencyA, currencyB) {
     const additionalB = tokenB ? (_ADDITIONAL_BASES$cha3 = (_ADDITIONAL_BASES$cha4 = ADDITIONAL_BASES[chainId]) === null || _ADDITIONAL_BASES$cha4 === void 0 ? void 0 : _ADDITIONAL_BASES$cha4[tokenB.address]) !== null && _ADDITIONAL_BASES$cha3 !== void 0 ? _ADDITIONAL_BASES$cha3 : [] : [];
     return [...common, ...additionalA, ...additionalB];
   }, [chainId, tokenA, tokenB]);
-  const basePairs = useMemo(() => bases.flatMap(base => bases.map(otherBase => [base, otherBase])) // though redundant with the first filter below, that expression runs more often, so this is probably worthwhile
+  const basePairs = React.useMemo(() => bases.flatMap(base => bases.map(otherBase => [base, otherBase])) // though redundant with the first filter below, that expression runs more often, so this is probably worthwhile
   .filter(_ref => {
     let [t0, t1] = _ref;
     return !t0.equals(t1);
   }), [bases]);
-  return useMemo(() => tokenA && tokenB ? [// the direct pair
+  return React.useMemo(() => tokenA && tokenB ? [// the direct pair
   [tokenA, tokenB], // token A against all bases
   ...bases.map(base => [tokenA, base]), // token B against all bases
   ...bases.map(base => [tokenB, base]), // each base against all bases
@@ -8639,7 +8678,7 @@ function useAllCurrencyCombinations(currencyA, currencyB) {
   }) : [], [tokenA, tokenB, bases, basePairs, chainId]);
 }
 
-const PAIR_INTERFACE = new Interface(abi$4);
+const PAIR_INTERFACE = new abi.Interface(IUniswapV2Pair_json.abi);
 let PairState;
 
 (function (PairState) {
@@ -8650,20 +8689,20 @@ let PairState;
 })(PairState || (PairState = {}));
 
 function useV2Pairs(currencies) {
-  const tokens = useMemo(() => currencies.map(_ref => {
+  const tokens = React.useMemo(() => currencies.map(_ref => {
     let [currencyA, currencyB] = _ref;
     return [currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped, currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped];
   }), [currencies]);
-  const pairAddresses = useMemo(() => tokens.map(_ref2 => {
+  const pairAddresses = React.useMemo(() => tokens.map(_ref2 => {
     let [tokenA, tokenB] = _ref2;
-    return tokenA && tokenB && tokenA.chainId === tokenB.chainId && !tokenA.equals(tokenB) && V2_FACTORY_ADDRESSES[tokenA.chainId] ? computePairAddress({
+    return tokenA && tokenB && tokenA.chainId === tokenB.chainId && !tokenA.equals(tokenB) && V2_FACTORY_ADDRESSES[tokenA.chainId] ? v2Sdk.computePairAddress({
       factoryAddress: V2_FACTORY_ADDRESSES[tokenA.chainId],
       tokenA,
       tokenB
     }) : undefined;
   }), [tokens]);
   const results = useMultipleContractSingleData(pairAddresses, PAIR_INTERFACE, 'getReserves');
-  return useMemo(() => {
+  return React.useMemo(() => {
     return results.map((result, i) => {
       const {
         result: reserves,
@@ -8679,7 +8718,7 @@ function useV2Pairs(currencies) {
         reserve1
       } = reserves;
       const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA];
-      return [PairState.EXISTS, new Pair(CurrencyAmount.fromRawAmount(token0, reserve0.toString()), CurrencyAmount.fromRawAmount(token1, reserve1.toString()))];
+      return [PairState.EXISTS, new v2Sdk.Pair(sdkCore.CurrencyAmount.fromRawAmount(token0, reserve0.toString()), sdkCore.CurrencyAmount.fromRawAmount(token1, reserve1.toString()))];
     });
   }, [results, tokens]);
 }
@@ -8687,7 +8726,7 @@ function useV2Pairs(currencies) {
 function useAllCommonPairs(currencyA, currencyB) {
   const allCurrencyCombinations = useAllCurrencyCombinations(currencyA, currencyB);
   const allPairs = useV2Pairs(allCurrencyCombinations);
-  return useMemo(() => Object.values(allPairs // filter out invalid pairs
+  return React.useMemo(() => Object.values(allPairs // filter out invalid pairs
   .filter(result => Boolean(result[0] === PairState.EXISTS && result[1])).map(_ref => {
     let [, pair] = _ref;
     return pair;
@@ -8706,9 +8745,9 @@ function useBestV2Trade(tradeType, amountSpecified, otherCurrency) {
   let {
     maxHops = MAX_HOPS
   } = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-  const [currencyIn, currencyOut] = useMemo(() => tradeType === TradeType.EXACT_INPUT ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency] : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency], [tradeType, amountSpecified, otherCurrency]);
+  const [currencyIn, currencyOut] = React.useMemo(() => tradeType === sdkCore.TradeType.EXACT_INPUT ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency] : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency], [tradeType, amountSpecified, otherCurrency]);
   const allowedPairs = useAllCommonPairs(currencyIn, currencyOut);
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (amountSpecified && currencyIn && currencyOut && allowedPairs.length > 0) {
       if (maxHops === 1) {
         const options = {
@@ -8716,16 +8755,16 @@ function useBestV2Trade(tradeType, amountSpecified, otherCurrency) {
           maxNumResults: 1
         };
 
-        if (tradeType === TradeType.EXACT_INPUT) {
+        if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
           var _Trade$bestTradeExact;
 
           const amountIn = amountSpecified;
-          return (_Trade$bestTradeExact = Trade.bestTradeExactIn(allowedPairs, amountIn, currencyOut, options)[0]) !== null && _Trade$bestTradeExact !== void 0 ? _Trade$bestTradeExact : null;
+          return (_Trade$bestTradeExact = v2Sdk.Trade.bestTradeExactIn(allowedPairs, amountIn, currencyOut, options)[0]) !== null && _Trade$bestTradeExact !== void 0 ? _Trade$bestTradeExact : null;
         } else {
           var _Trade$bestTradeExact2;
 
           const amountOut = amountSpecified;
-          return (_Trade$bestTradeExact2 = Trade.bestTradeExactOut(allowedPairs, currencyIn, amountOut, options)[0]) !== null && _Trade$bestTradeExact2 !== void 0 ? _Trade$bestTradeExact2 : null;
+          return (_Trade$bestTradeExact2 = v2Sdk.Trade.bestTradeExactOut(allowedPairs, currencyIn, amountOut, options)[0]) !== null && _Trade$bestTradeExact2 !== void 0 ? _Trade$bestTradeExact2 : null;
         }
       } // search through trades with varying hops, find best trade out of them
 
@@ -8739,16 +8778,16 @@ function useBestV2Trade(tradeType, amountSpecified, otherCurrency) {
         };
         let currentTrade;
 
-        if (tradeType === TradeType.EXACT_INPUT) {
+        if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
           var _Trade$bestTradeExact3;
 
           const amountIn = amountSpecified;
-          currentTrade = (_Trade$bestTradeExact3 = Trade.bestTradeExactIn(allowedPairs, amountIn, currencyOut, options)[0]) !== null && _Trade$bestTradeExact3 !== void 0 ? _Trade$bestTradeExact3 : null;
+          currentTrade = (_Trade$bestTradeExact3 = v2Sdk.Trade.bestTradeExactIn(allowedPairs, amountIn, currencyOut, options)[0]) !== null && _Trade$bestTradeExact3 !== void 0 ? _Trade$bestTradeExact3 : null;
         } else {
           var _Trade$bestTradeExact4;
 
           const amountOut = amountSpecified;
-          currentTrade = (_Trade$bestTradeExact4 = Trade.bestTradeExactOut(allowedPairs, currencyIn, amountOut, options)[0]) !== null && _Trade$bestTradeExact4 !== void 0 ? _Trade$bestTradeExact4 : null;
+          currentTrade = (_Trade$bestTradeExact4 = v2Sdk.Trade.bestTradeExactOut(allowedPairs, currencyIn, amountOut, options)[0]) !== null && _Trade$bestTradeExact4 !== void 0 ? _Trade$bestTradeExact4 : null;
         } // if current trade is best yet, save it
 
 
@@ -8781,8 +8820,8 @@ let V3TradeState;
 function computeRoutes(currencyIn, currencyOut, quoteResult) {
   if (!quoteResult || !quoteResult.route || !currencyIn || !currencyOut) return undefined;
   if (quoteResult.route.length === 0) return [];
-  const parsedCurrencyIn = currencyIn.isNative ? Ether.onChain(currencyIn.chainId) : parseToken(quoteResult.route[0][0].tokenIn);
-  const parsedCurrencyOut = currencyOut.isNative ? Ether.onChain(currencyOut.chainId) : parseToken(quoteResult.route[0][quoteResult.route[0].length - 1].tokenOut);
+  const parsedCurrencyIn = currencyIn.isNative ? sdkCore.Ether.onChain(currencyIn.chainId) : parseToken(quoteResult.route[0][0].tokenIn);
+  const parsedCurrencyOut = currencyOut.isNative ? sdkCore.Ether.onChain(currencyOut.chainId) : parseToken(quoteResult.route[0][quoteResult.route[0].length - 1].tokenOut);
 
   try {
     return quoteResult.route.map(route => {
@@ -8794,9 +8833,9 @@ function computeRoutes(currencyIn, currencyOut, quoteResult) {
       }
 
       return {
-        route: new Route$1(route.map(parsePool), parsedCurrencyIn, parsedCurrencyOut),
-        inputAmount: CurrencyAmount.fromRawAmount(parsedCurrencyIn, rawAmountIn),
-        outputAmount: CurrencyAmount.fromRawAmount(parsedCurrencyOut, rawAmountOut)
+        route: new v3Sdk.Route(route.map(parsePool), parsedCurrencyIn, parsedCurrencyOut),
+        inputAmount: sdkCore.CurrencyAmount.fromRawAmount(parsedCurrencyIn, rawAmountIn),
+        outputAmount: sdkCore.CurrencyAmount.fromRawAmount(parsedCurrencyOut, rawAmountOut)
       };
     });
   } catch (e) {
@@ -8814,7 +8853,7 @@ const parseToken = _ref => {
     decimals,
     symbol
   } = _ref;
-  return new Token(chainId, address, parseInt(decimals.toString()), symbol);
+  return new sdkCore.Token(chainId, address, parseInt(decimals.toString()), symbol);
 };
 
 const parsePool = _ref2 => {
@@ -8826,7 +8865,7 @@ const parsePool = _ref2 => {
     tokenIn,
     tokenOut
   } = _ref2;
-  return new Pool$1(parseToken(tokenIn), parseToken(tokenOut), parseInt(fee), sqrtRatioX96, liquidity, parseInt(tickCurrent));
+  return new v3Sdk.Pool(parseToken(tokenIn), parseToken(tokenOut), parseInt(fee), sqrtRatioX96, liquidity, parseInt(tickCurrent));
 };
 
 function useFreshData(data, dataBlockNumber) {
@@ -8864,7 +8903,7 @@ function useRoutingAPIArguments(_ref) {
     tokenOutAddress: tokenOut.wrapped.address,
     tokenOutChainId: tokenOut.chainId,
     amount: amount.quotient.toString(),
-    type: tradeType === TradeType.EXACT_INPUT ? 'exactIn' : 'exactOut'
+    type: tradeType === sdkCore.TradeType.EXACT_INPUT ? 'exactIn' : 'exactOut'
   };
 }
 /**
@@ -8876,7 +8915,7 @@ function useRoutingAPIArguments(_ref) {
 
 
 function useRoutingAPITrade(tradeType, amountSpecified, otherCurrency) {
-  const [currencyIn, currencyOut] = useMemo(() => tradeType === TradeType.EXACT_INPUT ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency] : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency], [amountSpecified, otherCurrency, tradeType]);
+  const [currencyIn, currencyOut] = React.useMemo(() => tradeType === sdkCore.TradeType.EXACT_INPUT ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency] : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency], [amountSpecified, otherCurrency, tradeType]);
   const queryArgs = useRoutingAPIArguments({
     tokenIn: currencyIn,
     tokenOut: currencyOut,
@@ -8887,13 +8926,13 @@ function useRoutingAPITrade(tradeType, amountSpecified, otherCurrency) {
     isLoading,
     isError,
     data
-  } = useGetQuoteQuery(queryArgs !== null && queryArgs !== void 0 ? queryArgs : skipToken, {
+  } = useGetQuoteQuery(queryArgs !== null && queryArgs !== void 0 ? queryArgs : react$1.skipToken, {
     pollingInterval: 10000,
     refetchOnFocus: true
   });
   const quoteResult = useFreshData(data, Number(data === null || data === void 0 ? void 0 : data.blockNumber) || 0);
-  const routes = useMemo(() => computeRoutes(currencyIn, currencyOut, quoteResult), [currencyIn, currencyOut, quoteResult]);
-  return useMemo(() => {
+  const routes = React.useMemo(() => computeRoutes(currencyIn, currencyOut, quoteResult), [currencyIn, currencyOut, quoteResult]);
+  return React.useMemo(() => {
     if (!currencyIn || !currencyOut) {
       return {
         state: V3TradeState.INVALID,
@@ -8909,7 +8948,7 @@ function useRoutingAPITrade(tradeType, amountSpecified, otherCurrency) {
       };
     }
 
-    const otherAmount = tradeType === TradeType.EXACT_INPUT ? currencyOut && quoteResult ? CurrencyAmount.fromRawAmount(currencyOut, quoteResult.quote) : undefined : currencyIn && quoteResult ? CurrencyAmount.fromRawAmount(currencyIn, quoteResult.quote) : undefined;
+    const otherAmount = tradeType === sdkCore.TradeType.EXACT_INPUT ? currencyOut && quoteResult ? sdkCore.CurrencyAmount.fromRawAmount(currencyOut, quoteResult.quote) : undefined : currencyIn && quoteResult ? sdkCore.CurrencyAmount.fromRawAmount(currencyIn, quoteResult.quote) : undefined;
 
     if (isError || !otherAmount || !routes || routes.length === 0 || !queryArgs) {
       return {
@@ -8918,7 +8957,7 @@ function useRoutingAPITrade(tradeType, amountSpecified, otherCurrency) {
       };
     }
 
-    const trade = Trade$1.createUncheckedTradeWithMultipleRoutes({
+    const trade = v3Sdk.Trade.createUncheckedTradeWithMultipleRoutes({
       routes,
       tradeType
     });
@@ -8930,7 +8969,7 @@ function useRoutingAPITrade(tradeType, amountSpecified, otherCurrency) {
   }, [currencyIn, currencyOut, isLoading, quoteResult, isError, routes, queryArgs, tradeType]);
 }
 
-const POOL_STATE_INTERFACE = new Interface(abi$5);
+const POOL_STATE_INTERFACE = new abi.Interface(IUniswapV3PoolState_json.abi);
 let PoolState;
 
 (function (PoolState) {
@@ -8944,7 +8983,7 @@ function usePools(poolKeys) {
   const {
     chainId
   } = useActiveWeb3React();
-  const transformed = useMemo(() => {
+  const transformed = React.useMemo(() => {
     return poolKeys.map(_ref => {
       let [currencyA, currencyB, feeAmount] = _ref;
       if (!chainId || !currencyA || !currencyB || !feeAmount) return null;
@@ -8955,11 +8994,11 @@ function usePools(poolKeys) {
       return [token0, token1, feeAmount];
     });
   }, [chainId, poolKeys]);
-  const poolAddresses = useMemo(() => {
+  const poolAddresses = React.useMemo(() => {
     const v3CoreFactoryAddress = chainId && V3_CORE_FACTORY_ADDRESSES[chainId];
     return transformed.map(value => {
       if (!v3CoreFactoryAddress || !value) return undefined;
-      return computePoolAddress({
+      return v3Sdk.computePoolAddress({
         factoryAddress: v3CoreFactoryAddress,
         tokenA: value[0],
         tokenB: value[1],
@@ -8969,7 +9008,7 @@ function usePools(poolKeys) {
   }, [chainId, transformed]);
   const slot0s = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'slot0');
   const liquidities = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'liquidity');
-  return useMemo(() => {
+  return React.useMemo(() => {
     return poolKeys.map((_key, index) => {
       var _transformed$index;
 
@@ -8991,7 +9030,7 @@ function usePools(poolKeys) {
       if (!slot0.sqrtPriceX96 || slot0.sqrtPriceX96.eq(0)) return [PoolState.NOT_EXISTS, null];
 
       try {
-        return [PoolState.EXISTS, new Pool$1(token0, token1, fee, slot0.sqrtPriceX96, liquidity[0], slot0.tick)];
+        return [PoolState.EXISTS, new v3Sdk.Pool(token0, token1, fee, slot0.sqrtPriceX96, liquidity[0], slot0.tick)];
       } catch (error) {
         console.error('Error when constructing the pool', error);
         return [PoolState.NOT_EXISTS, null];
@@ -9011,12 +9050,12 @@ function useV3SwapPools(currencyIn, currencyOut) {
     chainId
   } = useActiveWeb3React();
   const allCurrencyCombinations = useAllCurrencyCombinations(currencyIn, currencyOut);
-  const allCurrencyCombinationsWithAllFees = useMemo(() => allCurrencyCombinations.reduce((list, _ref) => {
+  const allCurrencyCombinationsWithAllFees = React.useMemo(() => allCurrencyCombinations.reduce((list, _ref) => {
     let [tokenA, tokenB] = _ref;
-    return chainId === SupportedChainId.MAINNET ? list.concat([[tokenA, tokenB, FeeAmount.LOW], [tokenA, tokenB, FeeAmount.MEDIUM], [tokenA, tokenB, FeeAmount.HIGH]]) : list.concat([[tokenA, tokenB, FeeAmount.LOWEST], [tokenA, tokenB, FeeAmount.LOW], [tokenA, tokenB, FeeAmount.MEDIUM], [tokenA, tokenB, FeeAmount.HIGH]]);
+    return chainId === SupportedChainId.MAINNET ? list.concat([[tokenA, tokenB, v3Sdk.FeeAmount.LOW], [tokenA, tokenB, v3Sdk.FeeAmount.MEDIUM], [tokenA, tokenB, v3Sdk.FeeAmount.HIGH]]) : list.concat([[tokenA, tokenB, v3Sdk.FeeAmount.LOWEST], [tokenA, tokenB, v3Sdk.FeeAmount.LOW], [tokenA, tokenB, v3Sdk.FeeAmount.MEDIUM], [tokenA, tokenB, v3Sdk.FeeAmount.HIGH]]);
   }, []), [allCurrencyCombinations, chainId]);
   const pools = usePools(allCurrencyCombinationsWithAllFees);
-  return useMemo(() => {
+  return React.useMemo(() => {
     return {
       pools: pools.filter(tuple => {
         return tuple[0] === PoolState.EXISTS && tuple[1] !== null;
@@ -9056,7 +9095,7 @@ function computeAllRoutes(currencyIn, currencyOut, pools, chainId) {
     const outputToken = pool.token0.equals(tokenIn) ? pool.token1 : pool.token0;
 
     if (outputToken.equals(tokenOut)) {
-      allPaths.push(new Route$1([...currentPath, pool], startCurrencyIn, currencyOut));
+      allPaths.push(new v3Sdk.Route([...currentPath, pool], startCurrencyIn, currencyOut));
     } else if (maxHops > 1) {
       computeAllRoutes(outputToken, currencyOut, pools, chainId, [...currentPath, pool], allPaths, startCurrencyIn, maxHops - 1);
     }
@@ -9079,7 +9118,7 @@ function useAllV3Routes(currencyIn, currencyOut) {
     pools,
     loading: poolsLoading
   } = useV3SwapPools(currencyIn, currencyOut);
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (poolsLoading || !chainId || !pools || !currencyIn || !currencyOut) return {
       loading: true,
       routes: []
@@ -9107,7 +9146,7 @@ const DEFAULT_GAS_QUOTE = 2000000;
 function useClientSideV3Trade(tradeType, amountSpecified, otherCurrency) {
   var _QUOTE_GAS_OVERRIDES$;
 
-  const [currencyIn, currencyOut] = useMemo(() => tradeType === TradeType.EXACT_INPUT ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency] : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency], [tradeType, amountSpecified, otherCurrency]);
+  const [currencyIn, currencyOut] = React.useMemo(() => tradeType === sdkCore.TradeType.EXACT_INPUT ? [amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency, otherCurrency] : [otherCurrency, amountSpecified === null || amountSpecified === void 0 ? void 0 : amountSpecified.currency], [tradeType, amountSpecified, otherCurrency]);
   const {
     routes,
     loading: routesLoading
@@ -9116,17 +9155,17 @@ function useClientSideV3Trade(tradeType, amountSpecified, otherCurrency) {
   const {
     chainId
   } = useActiveWeb3React();
-  const quotesResults = useSingleContractWithCallData(quoter, amountSpecified ? routes.map(route => SwapQuoter.quoteCallParameters(route, amountSpecified, tradeType).calldata) : [], {
+  const quotesResults = useSingleContractWithCallData(quoter, amountSpecified ? routes.map(route => v3Sdk.SwapQuoter.quoteCallParameters(route, amountSpecified, tradeType).calldata) : [], {
     gasRequired: chainId ? (_QUOTE_GAS_OVERRIDES$ = QUOTE_GAS_OVERRIDES[chainId]) !== null && _QUOTE_GAS_OVERRIDES$ !== void 0 ? _QUOTE_GAS_OVERRIDES$ : DEFAULT_GAS_QUOTE : undefined
   });
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!amountSpecified || !currencyIn || !currencyOut || quotesResults.some(_ref => {
       let {
         valid
       } = _ref;
       return !valid;
     }) || ( // skip when tokens are the same
-    tradeType === TradeType.EXACT_INPUT ? amountSpecified.currency.equals(currencyOut) : amountSpecified.currency.equals(currencyIn))) {
+    tradeType === sdkCore.TradeType.EXACT_INPUT ? amountSpecified.currency.equals(currencyOut) : amountSpecified.currency.equals(currencyIn))) {
       return {
         state: V3TradeState.INVALID,
         trade: null
@@ -9155,10 +9194,10 @@ function useClientSideV3Trade(tradeType, amountSpecified, otherCurrency) {
       } = _ref3;
       if (!result) return currentBest; // overwrite the current best if it's not defined or if this route is better
 
-      if (tradeType === TradeType.EXACT_INPUT) {
-        const amountOut = CurrencyAmount.fromRawAmount(currencyOut, result.amountOut.toString());
+      if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
+        const amountOut = sdkCore.CurrencyAmount.fromRawAmount(currencyOut, result.amountOut.toString());
 
-        if (currentBest.amountOut === null || JSBI.lessThan(currentBest.amountOut.quotient, amountOut.quotient)) {
+        if (currentBest.amountOut === null || JSBI__default["default"].lessThan(currentBest.amountOut.quotient, amountOut.quotient)) {
           return {
             bestRoute: routes[i],
             amountIn: amountSpecified,
@@ -9166,9 +9205,9 @@ function useClientSideV3Trade(tradeType, amountSpecified, otherCurrency) {
           };
         }
       } else {
-        const amountIn = CurrencyAmount.fromRawAmount(currencyIn, result.amountIn.toString());
+        const amountIn = sdkCore.CurrencyAmount.fromRawAmount(currencyIn, result.amountIn.toString());
 
-        if (currentBest.amountIn === null || JSBI.greaterThan(currentBest.amountIn.quotient, amountIn.quotient)) {
+        if (currentBest.amountIn === null || JSBI__default["default"].greaterThan(currentBest.amountIn.quotient, amountIn.quotient)) {
           return {
             bestRoute: routes[i],
             amountIn,
@@ -9193,7 +9232,7 @@ function useClientSideV3Trade(tradeType, amountSpecified, otherCurrency) {
 
     return {
       state: V3TradeState.VALID,
-      trade: Trade$1.createUncheckedTrade({
+      trade: v3Sdk.Trade.createUncheckedTrade({
         route: bestRoute,
         tradeType,
         inputAmount: amountIn,
@@ -9214,11 +9253,11 @@ function isWindowVisible() {
 
 
 function useIsWindowVisible() {
-  const [focused, setFocused] = useState(isWindowVisible());
-  const listener = useCallback(() => {
+  const [focused, setFocused] = React.useState(isWindowVisible());
+  const listener = React.useCallback(() => {
     setFocused(isWindowVisible());
   }, [setFocused]);
-  useEffect(() => {
+  React.useEffect(() => {
     if (!VISIBILITY_STATE_SUPPORTED) return undefined;
     document.addEventListener('visibilitychange', listener);
     return () => {
@@ -9243,7 +9282,7 @@ function useBestV3Trade(tradeType, amountSpecified, otherCurrency) {
   const routingAPITrade = useRoutingAPITrade(tradeType, routingAPIEnabled && isWindowVisible ? debouncedAmount : undefined, debouncedOtherCurrency);
   const isLoading = amountSpecified !== undefined && debouncedAmount === undefined; // consider trade debouncing when inputs/outputs do not match
 
-  const debouncing = routingAPITrade.trade && amountSpecified && (tradeType === TradeType.EXACT_INPUT ? !routingAPITrade.trade.inputAmount.equalTo(amountSpecified) || !amountSpecified.currency.equals(routingAPITrade.trade.inputAmount.currency) || !(debouncedOtherCurrency !== null && debouncedOtherCurrency !== void 0 && debouncedOtherCurrency.equals(routingAPITrade.trade.outputAmount.currency)) : !routingAPITrade.trade.outputAmount.equalTo(amountSpecified) || !amountSpecified.currency.equals(routingAPITrade.trade.outputAmount.currency) || !(debouncedOtherCurrency !== null && debouncedOtherCurrency !== void 0 && debouncedOtherCurrency.equals(routingAPITrade.trade.inputAmount.currency)));
+  const debouncing = routingAPITrade.trade && amountSpecified && (tradeType === sdkCore.TradeType.EXACT_INPUT ? !routingAPITrade.trade.inputAmount.equalTo(amountSpecified) || !amountSpecified.currency.equals(routingAPITrade.trade.inputAmount.currency) || !(debouncedOtherCurrency !== null && debouncedOtherCurrency !== void 0 && debouncedOtherCurrency.equals(routingAPITrade.trade.outputAmount.currency)) : !routingAPITrade.trade.outputAmount.equalTo(amountSpecified) || !amountSpecified.currency.equals(routingAPITrade.trade.outputAmount.currency) || !(debouncedOtherCurrency !== null && debouncedOtherCurrency !== void 0 && debouncedOtherCurrency.equals(routingAPITrade.trade.inputAmount.currency)));
   const useFallback = !routingAPIEnabled || !debouncing && routingAPITrade.state === V3TradeState.NO_ROUTE_FOUND; // only use client side router if routing api trade failed
 
   const bestV3Trade = useClientSideV3Trade(tradeType, useFallback ? debouncedAmount : undefined, useFallback ? debouncedOtherCurrency : undefined);
@@ -9280,15 +9319,15 @@ function useGasPrice() {
   } = useENSAddress('fast-gas-gwei.data.eth');
   const contract = useContract(address !== null && address !== void 0 ? address : undefined, CHAIN_DATA_ABI, false);
   const resultStr = (_useSingleCallResult$ = useSingleCallResult(contract, 'latestAnswer').result) === null || _useSingleCallResult$ === void 0 ? void 0 : (_useSingleCallResult$2 = _useSingleCallResult$[0]) === null || _useSingleCallResult$2 === void 0 ? void 0 : _useSingleCallResult$2.toString();
-  return typeof resultStr === 'string' ? JSBI.BigInt(resultStr) : undefined;
+  return typeof resultStr === 'string' ? JSBI__default["default"].BigInt(resultStr) : undefined;
 }
 
 // The amount is large enough to filter low liquidity pairs.
 
 const STABLECOIN_AMOUNT_OUT = {
-  [SupportedChainId.MAINNET]: CurrencyAmount.fromRawAmount(USDC, 100000e6),
-  [SupportedChainId.ARBITRUM_ONE]: CurrencyAmount.fromRawAmount(USDC_ARBITRUM, 10000e6),
-  [SupportedChainId.OPTIMISM]: CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 10000e18)
+  [SupportedChainId.MAINNET]: sdkCore.CurrencyAmount.fromRawAmount(USDC, 100000e6),
+  [SupportedChainId.ARBITRUM_ONE]: sdkCore.CurrencyAmount.fromRawAmount(USDC_ARBITRUM, 10000e6),
+  [SupportedChainId.OPTIMISM]: sdkCore.CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 10000e18)
 };
 /**
  * Returns the price in USDC of the input currency
@@ -9301,18 +9340,18 @@ function useUSDCPrice(currency) {
   } = useActiveWeb3React();
   const amountOut = chainId ? STABLECOIN_AMOUNT_OUT[chainId] : undefined;
   const stablecoin = amountOut === null || amountOut === void 0 ? void 0 : amountOut.currency;
-  const v2USDCTrade = useBestV2Trade(TradeType.EXACT_OUTPUT, amountOut, currency, {
+  const v2USDCTrade = useBestV2Trade(sdkCore.TradeType.EXACT_OUTPUT, amountOut, currency, {
     maxHops: 2
   });
-  const v3USDCTrade = useClientSideV3Trade(TradeType.EXACT_OUTPUT, amountOut, currency);
-  return useMemo(() => {
+  const v3USDCTrade = useClientSideV3Trade(sdkCore.TradeType.EXACT_OUTPUT, amountOut, currency);
+  return React.useMemo(() => {
     if (!currency || !stablecoin) {
       return undefined;
     } // handle usdc
 
 
     if (currency !== null && currency !== void 0 && currency.wrapped.equals(stablecoin)) {
-      return new Price(stablecoin, stablecoin, '1', '1');
+      return new sdkCore.Price(stablecoin, stablecoin, '1', '1');
     } // use v2 price if available, v3 as fallback
 
 
@@ -9321,13 +9360,13 @@ function useUSDCPrice(currency) {
         numerator,
         denominator
       } = v2USDCTrade.route.midPrice;
-      return new Price(currency, stablecoin, denominator, numerator);
+      return new sdkCore.Price(currency, stablecoin, denominator, numerator);
     } else if (v3USDCTrade.trade) {
       const {
         numerator,
         denominator
       } = v3USDCTrade.trade.route.midPrice;
-      return new Price(currency, stablecoin, denominator, numerator);
+      return new sdkCore.Price(currency, stablecoin, denominator, numerator);
     }
 
     return undefined;
@@ -9335,7 +9374,7 @@ function useUSDCPrice(currency) {
 }
 function useUSDCValue(currencyAmount) {
   const price = useUSDCPrice(currencyAmount === null || currencyAmount === void 0 ? void 0 : currencyAmount.currency);
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!price || !currencyAmount) return null;
 
     try {
@@ -9346,11 +9385,11 @@ function useUSDCValue(currencyAmount) {
   }, [currencyAmount, price]);
 }
 
-const V2_SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10000); // .50%
+const V2_SWAP_DEFAULT_SLIPPAGE = new sdkCore.Percent(50, 10000); // .50%
 
-const V3_SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10000); // .50%
+const V3_SWAP_DEFAULT_SLIPPAGE = new sdkCore.Percent(50, 10000); // .50%
 
-const ONE_TENTHS_PERCENT = new Percent(10, 10000); // .10%
+const ONE_TENTHS_PERCENT = new sdkCore.Percent(10, 10000); // .10%
 
 /**
  * Return a guess of the gas cost used in computing slippage tolerance for a given trade
@@ -9358,18 +9397,18 @@ const ONE_TENTHS_PERCENT = new Percent(10, 10000); // .10%
  */
 
 function guesstimateGas(trade) {
-  if (trade instanceof Trade) {
+  if (trade instanceof v2Sdk.Trade) {
     return 90000 + trade.route.pairs.length * 30000;
-  } else if (trade instanceof Trade$1) {
+  } else if (trade instanceof v3Sdk.Trade) {
     return 100000 + trade.swaps.reduce((memo, swap) => swap.route.pools.length + memo, 0) * 30000;
   }
 
   return undefined;
 }
 
-const MIN_AUTO_SLIPPAGE_TOLERANCE = new Percent(5, 1000); // 0.5%
+const MIN_AUTO_SLIPPAGE_TOLERANCE = new sdkCore.Percent(5, 1000); // 0.5%
 
-const MAX_AUTO_SLIPPAGE_TOLERANCE = new Percent(25, 100); // 25%
+const MAX_AUTO_SLIPPAGE_TOLERANCE = new sdkCore.Percent(25, 100); // 25%
 
 function useSwapSlippageTolerance(trade) {
   const {
@@ -9381,22 +9420,22 @@ function useSwapSlippageTolerance(trade) {
   const gasEstimate = guesstimateGas(trade);
   const ether = useCurrency('ETH');
   const etherPrice = useUSDCPrice(ether !== null && ether !== void 0 ? ether : undefined);
-  const defaultSlippageTolerance = useMemo(() => {
+  const defaultSlippageTolerance = React.useMemo(() => {
     if (!trade || onL2) return ONE_TENTHS_PERCENT;
-    const ethGasCost = ethGasPrice && typeof gasEstimate === 'number' ? JSBI.multiply(ethGasPrice, JSBI.BigInt(gasEstimate)) : undefined;
-    const dollarGasCost = ether && ethGasCost && etherPrice ? etherPrice.quote(CurrencyAmount.fromRawAmount(ether, ethGasCost)) : undefined;
+    const ethGasCost = ethGasPrice && typeof gasEstimate === 'number' ? JSBI__default["default"].multiply(ethGasPrice, JSBI__default["default"].BigInt(gasEstimate)) : undefined;
+    const dollarGasCost = ether && ethGasCost && etherPrice ? etherPrice.quote(sdkCore.CurrencyAmount.fromRawAmount(ether, ethGasCost)) : undefined;
 
     if (outputDollarValue && dollarGasCost) {
       // the rationale is that a user will not want their trade to fail for a loss due to slippage that is less than
       // the cost of the gas of the failed transaction
       const fraction = dollarGasCost.asFraction.divide(outputDollarValue.asFraction);
-      const result = new Percent(fraction.numerator, fraction.denominator);
+      const result = new sdkCore.Percent(fraction.numerator, fraction.denominator);
       if (result.greaterThan(MAX_AUTO_SLIPPAGE_TOLERANCE)) return MAX_AUTO_SLIPPAGE_TOLERANCE;
       if (result.lessThan(MIN_AUTO_SLIPPAGE_TOLERANCE)) return MIN_AUTO_SLIPPAGE_TOLERANCE;
       return result;
     }
 
-    if (trade instanceof Trade) return V2_SWAP_DEFAULT_SLIPPAGE;
+    if (trade instanceof v2Sdk.Trade) return V2_SWAP_DEFAULT_SLIPPAGE;
     return V3_SWAP_DEFAULT_SLIPPAGE;
   }, [ethGasPrice, ether, etherPrice, gasEstimate, onL2, outputDollarValue, trade]);
   return useUserSlippageToleranceWithDefault(defaultSlippageTolerance);
@@ -9437,7 +9476,7 @@ function useCurrentBlockTimestamp() {
   return (_useSingleCallResult = useSingleCallResult(multicall, 'getCurrentBlockTimestamp')) === null || _useSingleCallResult === void 0 ? void 0 : (_useSingleCallResult$ = _useSingleCallResult.result) === null || _useSingleCallResult$ === void 0 ? void 0 : _useSingleCallResult$[0];
 }
 
-const STAKING_REWARDS_INTERFACE = new Interface(abi$6);
+const STAKING_REWARDS_INTERFACE = new abi.Interface(StakingRewards_json.abi);
 const STAKING_GENESIS = 1600387200;
 const STAKING_REWARDS_INFO = {
   1: [{
@@ -9462,27 +9501,27 @@ function useStakingInfo(pairToFilterBy) {
   } = useActiveWeb3React(); // detect if staking is ended
 
   const currentBlockTimestamp = useCurrentBlockTimestamp();
-  const info = useMemo(() => {
+  const info = React.useMemo(() => {
     var _STAKING_REWARDS_INFO, _STAKING_REWARDS_INFO2;
 
     return chainId ? (_STAKING_REWARDS_INFO = (_STAKING_REWARDS_INFO2 = STAKING_REWARDS_INFO[chainId]) === null || _STAKING_REWARDS_INFO2 === void 0 ? void 0 : _STAKING_REWARDS_INFO2.filter(stakingRewardInfo => pairToFilterBy === undefined ? true : pairToFilterBy === null ? false : pairToFilterBy.involvesToken(stakingRewardInfo.tokens[0]) && pairToFilterBy.involvesToken(stakingRewardInfo.tokens[1]))) !== null && _STAKING_REWARDS_INFO !== void 0 ? _STAKING_REWARDS_INFO : [] : [];
   }, [chainId, pairToFilterBy]);
   const uni = chainId ? UNI[chainId] : undefined;
-  const rewardsAddresses = useMemo(() => info.map(_ref => {
+  const rewardsAddresses = React.useMemo(() => info.map(_ref => {
     let {
       stakingRewardAddress
     } = _ref;
     return stakingRewardAddress;
   }), [info]);
-  const accountArg = useMemo(() => [account !== null && account !== void 0 ? account : undefined], [account]); // get all the info from the staking rewards contracts
+  const accountArg = React.useMemo(() => [account !== null && account !== void 0 ? account : undefined], [account]); // get all the info from the staking rewards contracts
 
   const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg);
   const earnedAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'earned', accountArg);
   const totalSupplies = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'totalSupply'); // tokens per second, constants
 
-  const rewardRates = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'rewardRate', undefined, NEVER_RELOAD);
-  const periodFinishes = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'periodFinish', undefined, NEVER_RELOAD);
-  return useMemo(() => {
+  const rewardRates = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'rewardRate', undefined, reduxMulticall.NEVER_RELOAD);
+  const periodFinishes = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'periodFinish', undefined, reduxMulticall.NEVER_RELOAD);
+  return React.useMemo(() => {
     if (!chainId || !uni) return [];
     return rewardsAddresses.reduce((memo, rewardsAddress, index) => {
       // these two are dependent on account
@@ -9505,14 +9544,14 @@ function useStakingInfo(pairToFilterBy) {
 
 
         const tokens = info[index].tokens;
-        const dummyPair = new Pair(CurrencyAmount.fromRawAmount(tokens[0], '0'), CurrencyAmount.fromRawAmount(tokens[1], '0')); // check for account, if no account set to 0
+        const dummyPair = new v2Sdk.Pair(sdkCore.CurrencyAmount.fromRawAmount(tokens[0], '0'), sdkCore.CurrencyAmount.fromRawAmount(tokens[1], '0')); // check for account, if no account set to 0
 
-        const stakedAmount = CurrencyAmount.fromRawAmount(dummyPair.liquidityToken, JSBI.BigInt((_balanceState$result$ = balanceState === null || balanceState === void 0 ? void 0 : (_balanceState$result = balanceState.result) === null || _balanceState$result === void 0 ? void 0 : _balanceState$result[0]) !== null && _balanceState$result$ !== void 0 ? _balanceState$result$ : 0));
-        const totalStakedAmount = CurrencyAmount.fromRawAmount(dummyPair.liquidityToken, JSBI.BigInt((_totalSupplyState$res = totalSupplyState.result) === null || _totalSupplyState$res === void 0 ? void 0 : _totalSupplyState$res[0]));
-        const totalRewardRate = CurrencyAmount.fromRawAmount(uni, JSBI.BigInt((_rewardRateState$resu = rewardRateState.result) === null || _rewardRateState$resu === void 0 ? void 0 : _rewardRateState$resu[0]));
+        const stakedAmount = sdkCore.CurrencyAmount.fromRawAmount(dummyPair.liquidityToken, JSBI__default["default"].BigInt((_balanceState$result$ = balanceState === null || balanceState === void 0 ? void 0 : (_balanceState$result = balanceState.result) === null || _balanceState$result === void 0 ? void 0 : _balanceState$result[0]) !== null && _balanceState$result$ !== void 0 ? _balanceState$result$ : 0));
+        const totalStakedAmount = sdkCore.CurrencyAmount.fromRawAmount(dummyPair.liquidityToken, JSBI__default["default"].BigInt((_totalSupplyState$res = totalSupplyState.result) === null || _totalSupplyState$res === void 0 ? void 0 : _totalSupplyState$res[0]));
+        const totalRewardRate = sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].BigInt((_rewardRateState$resu = rewardRateState.result) === null || _rewardRateState$resu === void 0 ? void 0 : _rewardRateState$resu[0]));
 
         const getHypotheticalRewardRate = (stakedAmount, totalStakedAmount, totalRewardRate) => {
-          return CurrencyAmount.fromRawAmount(uni, JSBI.greaterThan(totalStakedAmount.quotient, JSBI.BigInt(0)) ? JSBI.divide(JSBI.multiply(totalRewardRate.quotient, stakedAmount.quotient), totalStakedAmount.quotient) : JSBI.BigInt(0));
+          return sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].greaterThan(totalStakedAmount.quotient, JSBI__default["default"].BigInt(0)) ? JSBI__default["default"].divide(JSBI__default["default"].multiply(totalRewardRate.quotient, stakedAmount.quotient), totalStakedAmount.quotient) : JSBI__default["default"].BigInt(0));
         };
 
         const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate);
@@ -9524,7 +9563,7 @@ function useStakingInfo(pairToFilterBy) {
           stakingRewardAddress: rewardsAddress,
           tokens: info[index].tokens,
           periodFinish: periodFinishMs > 0 ? new Date(periodFinishMs) : undefined,
-          earnedAmount: CurrencyAmount.fromRawAmount(uni, JSBI.BigInt((_earnedAmountState$re = earnedAmountState === null || earnedAmountState === void 0 ? void 0 : (_earnedAmountState$re2 = earnedAmountState.result) === null || _earnedAmountState$re2 === void 0 ? void 0 : _earnedAmountState$re2[0]) !== null && _earnedAmountState$re !== void 0 ? _earnedAmountState$re : 0)),
+          earnedAmount: sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].BigInt((_earnedAmountState$re = earnedAmountState === null || earnedAmountState === void 0 ? void 0 : (_earnedAmountState$re2 = earnedAmountState.result) === null || _earnedAmountState$re2 === void 0 ? void 0 : _earnedAmountState$re2[0]) !== null && _earnedAmountState$re !== void 0 ? _earnedAmountState$re : 0)),
           rewardRate: individualRewardRate,
           totalRewardRate,
           stakedAmount,
@@ -9544,11 +9583,11 @@ function useTotalUniEarned() {
   } = useActiveWeb3React();
   const uni = chainId ? UNI[chainId] : undefined;
   const stakingInfos = useStakingInfo();
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _stakingInfos$reduce;
 
     if (!uni) return undefined;
-    return (_stakingInfos$reduce = stakingInfos === null || stakingInfos === void 0 ? void 0 : stakingInfos.reduce((accumulator, stakingInfo) => accumulator.add(stakingInfo.earnedAmount), CurrencyAmount.fromRawAmount(uni, '0'))) !== null && _stakingInfos$reduce !== void 0 ? _stakingInfos$reduce : CurrencyAmount.fromRawAmount(uni, '0');
+    return (_stakingInfos$reduce = stakingInfos === null || stakingInfos === void 0 ? void 0 : stakingInfos.reduce((accumulator, stakingInfo) => accumulator.add(stakingInfo.earnedAmount), sdkCore.CurrencyAmount.fromRawAmount(uni, '0'))) !== null && _stakingInfos$reduce !== void 0 ? _stakingInfos$reduce : sdkCore.CurrencyAmount.fromRawAmount(uni, '0');
   }, [stakingInfos, uni]);
 } // based on typed value
 
@@ -9561,17 +9600,17 @@ function useETHBalances(uncheckedAddresses) {
     chainId
   } = useActiveWeb3React();
   const multicallContract = useMulticall2Contract();
-  const addresses = useMemo(() => uncheckedAddresses ? uncheckedAddresses.map(isAddress).filter(a => a !== false).sort() : [], [uncheckedAddresses]);
+  const addresses = React.useMemo(() => uncheckedAddresses ? uncheckedAddresses.map(isAddress).filter(a => a !== false).sort() : [], [uncheckedAddresses]);
   const results = useSingleContractMultipleData(multicallContract, 'getEthBalance', addresses.map(address => [address]));
-  return useMemo(() => addresses.reduce((memo, address, i) => {
+  return React.useMemo(() => addresses.reduce((memo, address, i) => {
     var _results$i, _results$i$result;
 
     const value = results === null || results === void 0 ? void 0 : (_results$i = results[i]) === null || _results$i === void 0 ? void 0 : (_results$i$result = _results$i.result) === null || _results$i$result === void 0 ? void 0 : _results$i$result[0];
-    if (value && chainId) memo[address] = CurrencyAmount.fromRawAmount(Ether.onChain(chainId), JSBI.BigInt(value.toString()));
+    if (value && chainId) memo[address] = sdkCore.CurrencyAmount.fromRawAmount(sdkCore.Ether.onChain(chainId), JSBI__default["default"].BigInt(value.toString()));
     return memo;
   }, {}), [addresses, chainId, results]);
 }
-const ERC20Interface = new Interface(ERC20ABI);
+const ERC20Interface = new abi.Interface(ERC20ABI);
 const tokenBalancesGasRequirement = {
   gasRequired: 125000
 };
@@ -9580,22 +9619,22 @@ const tokenBalancesGasRequirement = {
  */
 
 function useTokenBalancesWithLoadingIndicator(address, tokens) {
-  const validatedTokens = useMemo(() => {
+  const validatedTokens = React.useMemo(() => {
     var _tokens$filter;
 
     return (_tokens$filter = tokens === null || tokens === void 0 ? void 0 : tokens.filter(t => isAddress(t === null || t === void 0 ? void 0 : t.address) !== false)) !== null && _tokens$filter !== void 0 ? _tokens$filter : [];
   }, [tokens]);
-  const validatedTokenAddresses = useMemo(() => validatedTokens.map(vt => vt.address), [validatedTokens]);
-  const balances = useMultipleContractSingleData(validatedTokenAddresses, ERC20Interface, 'balanceOf', useMemo(() => [address], [address]), tokenBalancesGasRequirement);
-  const anyLoading = useMemo(() => balances.some(callState => callState.loading), [balances]);
-  return useMemo(() => [address && validatedTokens.length > 0 ? validatedTokens.reduce((memo, token, i) => {
+  const validatedTokenAddresses = React.useMemo(() => validatedTokens.map(vt => vt.address), [validatedTokens]);
+  const balances = useMultipleContractSingleData(validatedTokenAddresses, ERC20Interface, 'balanceOf', React.useMemo(() => [address], [address]), tokenBalancesGasRequirement);
+  const anyLoading = React.useMemo(() => balances.some(callState => callState.loading), [balances]);
+  return React.useMemo(() => [address && validatedTokens.length > 0 ? validatedTokens.reduce((memo, token, i) => {
     var _balances$i, _balances$i$result;
 
     const value = balances === null || balances === void 0 ? void 0 : (_balances$i = balances[i]) === null || _balances$i === void 0 ? void 0 : (_balances$i$result = _balances$i.result) === null || _balances$i$result === void 0 ? void 0 : _balances$i$result[0];
-    const amount = value ? JSBI.BigInt(value.toString()) : undefined;
+    const amount = value ? JSBI__default["default"].BigInt(value.toString()) : undefined;
 
     if (amount) {
-      memo[token.address] = CurrencyAmount.fromRawAmount(token, amount);
+      memo[token.address] = sdkCore.CurrencyAmount.fromRawAmount(token, amount);
     }
 
     return memo;
@@ -9611,7 +9650,7 @@ function useTokenBalance(account, token) {
   return tokenBalances[token.address];
 }
 function useCurrencyBalances(account, currencies) {
-  const tokens = useMemo(() => {
+  const tokens = React.useMemo(() => {
     var _currencies$filter;
 
     return (_currencies$filter = currencies === null || currencies === void 0 ? void 0 : currencies.filter(currency => {
@@ -9621,13 +9660,13 @@ function useCurrencyBalances(account, currencies) {
     })) !== null && _currencies$filter !== void 0 ? _currencies$filter : [];
   }, [currencies]);
   const tokenBalances = useTokenBalances(account, tokens);
-  const containsETH = useMemo(() => {
+  const containsETH = React.useMemo(() => {
     var _currencies$some;
 
     return (_currencies$some = currencies === null || currencies === void 0 ? void 0 : currencies.some(currency => currency === null || currency === void 0 ? void 0 : currency.isNative)) !== null && _currencies$some !== void 0 ? _currencies$some : false;
   }, [currencies]);
   const ethBalance = useETHBalances(containsETH ? [account] : []);
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _currencies$map;
 
     return (_currencies$map = currencies === null || currencies === void 0 ? void 0 : currencies.map(currency => {
@@ -9639,7 +9678,7 @@ function useCurrencyBalances(account, currencies) {
   }, [account, currencies, ethBalance, tokenBalances]);
 }
 function useCurrencyBalance(account, currency) {
-  return useCurrencyBalances(account, useMemo(() => [currency], [currency]))[0];
+  return useCurrencyBalances(account, React.useMemo(() => [currency], [currency]))[0];
 } // mimics useAllBalances
 
 function useAllTokenBalances() {
@@ -9647,7 +9686,7 @@ function useAllTokenBalances() {
     account
   } = useActiveWeb3React();
   const allTokens = useAllTokens();
-  const allTokensArray = useMemo(() => Object.values(allTokens !== null && allTokens !== void 0 ? allTokens : {}), [allTokens]);
+  const allTokensArray = React.useMemo(() => Object.values(allTokens !== null && allTokens !== void 0 ? allTokens : {}), [allTokens]);
   const balances = useTokenBalances(account !== null && account !== void 0 ? account : undefined, allTokensArray);
   return balances !== null && balances !== void 0 ? balances : {};
 } // get the total owned, unclaimed, and unharvested UNI for account
@@ -9664,7 +9703,7 @@ function useAggregateUniBalance() {
   const uniUnclaimed = useUserUnclaimedAmount(account);
   const uniUnHarvested = useTotalUniEarned();
   if (!uni) return undefined;
-  return CurrencyAmount.fromRawAmount(uni, JSBI.add(JSBI.add((_uniBalance$quotient = uniBalance === null || uniBalance === void 0 ? void 0 : uniBalance.quotient) !== null && _uniBalance$quotient !== void 0 ? _uniBalance$quotient : JSBI.BigInt(0), (_uniUnclaimed$quotien = uniUnclaimed === null || uniUnclaimed === void 0 ? void 0 : uniUnclaimed.quotient) !== null && _uniUnclaimed$quotien !== void 0 ? _uniUnclaimed$quotien : JSBI.BigInt(0)), (_uniUnHarvested$quoti = uniUnHarvested === null || uniUnHarvested === void 0 ? void 0 : uniUnHarvested.quotient) !== null && _uniUnHarvested$quoti !== void 0 ? _uniUnHarvested$quoti : JSBI.BigInt(0)));
+  return sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].add(JSBI__default["default"].add((_uniBalance$quotient = uniBalance === null || uniBalance === void 0 ? void 0 : uniBalance.quotient) !== null && _uniBalance$quotient !== void 0 ? _uniBalance$quotient : JSBI__default["default"].BigInt(0), (_uniUnclaimed$quotien = uniUnclaimed === null || uniUnclaimed === void 0 ? void 0 : uniUnclaimed.quotient) !== null && _uniUnclaimed$quotien !== void 0 ? _uniUnclaimed$quotien : JSBI__default["default"].BigInt(0)), (_uniUnHarvested$quoti = uniUnHarvested === null || uniUnHarvested === void 0 ? void 0 : uniUnHarvested.quotient) !== null && _uniUnHarvested$quoti !== void 0 ? _uniUnHarvested$quoti : JSBI__default["default"].BigInt(0)));
 }
 
 function useSwapState() {
@@ -9672,22 +9711,22 @@ function useSwapState() {
 }
 function useSwapActionHandlers() {
   const dispatch = useAppDispatch();
-  const onCurrencySelection = useCallback((field, currency) => {
+  const onCurrencySelection = React.useCallback((field, currency) => {
     dispatch(selectCurrency({
       field,
       currencyId: currency.isToken ? currency.address : currency.isNative ? 'ETH' : ''
     }));
   }, [dispatch]);
-  const onSwitchTokens = useCallback(() => {
+  const onSwitchTokens = React.useCallback(() => {
     dispatch(switchCurrencies());
   }, [dispatch]);
-  const onUserInput = useCallback((field, typedValue) => {
+  const onUserInput = React.useCallback((field, typedValue) => {
     dispatch(typeInput({
       field,
       typedValue
     }));
   }, [dispatch]);
-  const onChangeRecipient = useCallback(recipient => {
+  const onChangeRecipient = React.useCallback(recipient => {
     dispatch(setRecipient({
       recipient
     }));
@@ -9706,10 +9745,10 @@ function tryParseAmount(value, currency) {
   }
 
   try {
-    const typedValueParsed = parseUnits(value, currency.decimals).toString();
+    const typedValueParsed = units.parseUnits(value, currency.decimals).toString();
 
     if (typedValueParsed !== '0') {
-      return CurrencyAmount.fromRawAmount(currency, JSBI.BigInt(typedValueParsed));
+      return sdkCore.CurrencyAmount.fromRawAmount(currency, JSBI__default["default"].BigInt(typedValueParsed));
     }
   } catch (error) {
     // should fail if the user specifies too many decimal places of precision (or maybe exceed max uint?)
@@ -9734,8 +9773,8 @@ const BAD_RECIPIENT_ADDRESSES = {
  */
 
 function involvesAddress(trade, checksummedAddress) {
-  const path = trade instanceof Trade ? trade.route.path : trade.route.tokenPath;
-  return path.some(token => token.address === checksummedAddress) || (trade instanceof Trade ? trade.route.pairs.some(pair => pair.liquidityToken.address === checksummedAddress) : false);
+  const path = trade instanceof v2Sdk.Trade ? trade.route.path : trade.route.tokenPath;
+  return path.some(token => token.address === checksummedAddress) || (trade instanceof v2Sdk.Trade ? trade.route.pairs.some(pair => pair.liquidityToken.address === checksummedAddress) : false);
 } // from the current swap inputs, compute the best trade and return it.
 
 
@@ -9760,18 +9799,18 @@ function useDerivedSwapInfo(toggledVersion) {
   const outputCurrency = useCurrency(outputCurrencyId);
   const recipientLookup = useENS(recipient !== null && recipient !== void 0 ? recipient : undefined);
   const to = (_ref = recipient === null ? account : recipientLookup.address) !== null && _ref !== void 0 ? _ref : null;
-  const relevantTokenBalances = useCurrencyBalances(account !== null && account !== void 0 ? account : undefined, useMemo(() => [inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : undefined, outputCurrency !== null && outputCurrency !== void 0 ? outputCurrency : undefined], [inputCurrency, outputCurrency]));
+  const relevantTokenBalances = useCurrencyBalances(account !== null && account !== void 0 ? account : undefined, React.useMemo(() => [inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : undefined, outputCurrency !== null && outputCurrency !== void 0 ? outputCurrency : undefined], [inputCurrency, outputCurrency]));
   const isExactIn = independentField === Field.INPUT;
-  const parsedAmount = useMemo(() => {
+  const parsedAmount = React.useMemo(() => {
     var _ref2;
 
     return tryParseAmount(typedValue, (_ref2 = isExactIn ? inputCurrency : outputCurrency) !== null && _ref2 !== void 0 ? _ref2 : undefined);
   }, [inputCurrency, isExactIn, outputCurrency, typedValue]); // get v2 and v3 quotes
   // skip if other version is toggled
 
-  const v2Trade = useBestV2Trade(isExactIn ? TradeType.EXACT_INPUT : TradeType.EXACT_OUTPUT, toggledVersion !== Version.v3 ? parsedAmount : undefined, (_ref3 = isExactIn ? outputCurrency : inputCurrency) !== null && _ref3 !== void 0 ? _ref3 : undefined);
-  const v3Trade = useBestV3Trade(isExactIn ? TradeType.EXACT_INPUT : TradeType.EXACT_OUTPUT, toggledVersion !== Version.v2 ? parsedAmount : undefined, (_ref4 = isExactIn ? outputCurrency : inputCurrency) !== null && _ref4 !== void 0 ? _ref4 : undefined);
-  const isV2TradeBetter = useMemo(() => {
+  const v2Trade = useBestV2Trade(isExactIn ? sdkCore.TradeType.EXACT_INPUT : sdkCore.TradeType.EXACT_OUTPUT, toggledVersion !== Version.v3 ? parsedAmount : undefined, (_ref3 = isExactIn ? outputCurrency : inputCurrency) !== null && _ref3 !== void 0 ? _ref3 : undefined);
+  const v3Trade = useBestV3Trade(isExactIn ? sdkCore.TradeType.EXACT_INPUT : sdkCore.TradeType.EXACT_OUTPUT, toggledVersion !== Version.v2 ? parsedAmount : undefined, (_ref4 = isExactIn ? outputCurrency : inputCurrency) !== null && _ref4 !== void 0 ? _ref4 : undefined);
+  const isV2TradeBetter = React.useMemo(() => {
     try {
       // avoids comparing trades when V3Trade is not in a ready state.
       return toggledVersion === Version.v2 || [V3TradeState.VALID, V3TradeState.SYNCING, V3TradeState.NO_ROUTE_FOUND].includes(v3Trade.state) ? isTradeBetter(v3Trade.trade, v2Trade, TWO_PERCENT) : undefined;
@@ -9793,7 +9832,7 @@ function useDerivedSwapInfo(toggledVersion) {
   let inputError;
 
   if (!account) {
-    inputError = /*#__PURE__*/jsx(Trans, {
+    inputError = /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Connect Wallet"
     });
   }
@@ -9801,7 +9840,7 @@ function useDerivedSwapInfo(toggledVersion) {
   if (!parsedAmount) {
     var _inputError;
 
-    inputError = (_inputError = inputError) !== null && _inputError !== void 0 ? _inputError : /*#__PURE__*/jsx(Trans, {
+    inputError = (_inputError = inputError) !== null && _inputError !== void 0 ? _inputError : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Enter an amount"
     });
   }
@@ -9809,7 +9848,7 @@ function useDerivedSwapInfo(toggledVersion) {
   if (!currencies[Field.INPUT] || !currencies[Field.OUTPUT]) {
     var _inputError2;
 
-    inputError = (_inputError2 = inputError) !== null && _inputError2 !== void 0 ? _inputError2 : /*#__PURE__*/jsx(Trans, {
+    inputError = (_inputError2 = inputError) !== null && _inputError2 !== void 0 ? _inputError2 : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Select a token"
     });
   }
@@ -9819,14 +9858,14 @@ function useDerivedSwapInfo(toggledVersion) {
   if (!to || !formattedTo) {
     var _inputError3;
 
-    inputError = (_inputError3 = inputError) !== null && _inputError3 !== void 0 ? _inputError3 : /*#__PURE__*/jsx(Trans, {
+    inputError = (_inputError3 = inputError) !== null && _inputError3 !== void 0 ? _inputError3 : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Enter a recipient"
     });
   } else {
     if (BAD_RECIPIENT_ADDRESSES[formattedTo] || v2Trade && involvesAddress(v2Trade, formattedTo)) {
       var _inputError4;
 
-      inputError = (_inputError4 = inputError) !== null && _inputError4 !== void 0 ? _inputError4 : /*#__PURE__*/jsx(Trans, {
+      inputError = (_inputError4 = inputError) !== null && _inputError4 !== void 0 ? _inputError4 : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Invalid recipient"
       });
     }
@@ -9837,7 +9876,7 @@ function useDerivedSwapInfo(toggledVersion) {
   const [balanceIn, amountIn] = [currencyBalances[Field.INPUT], bestTrade === null || bestTrade === void 0 ? void 0 : bestTrade.maximumAmountIn(allowedSlippage)];
 
   if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
-    inputError = /*#__PURE__*/jsx(Trans, {
+    inputError = /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Insufficient {0} balance",
       values: {
         0: amountIn.currency.symbol
@@ -9921,8 +9960,8 @@ function useDefaultsFromURLSearch() {
   } = useActiveWeb3React();
   const dispatch = useAppDispatch();
   const parsedQs = useParsedQueryString();
-  const [result, setResult] = useState();
-  useEffect(() => {
+  const [result, setResult] = React.useState();
+  React.useEffect(() => {
     var _parsed$Field$INPUT$c, _parsed$Field$OUTPUT$;
 
     if (!chainId) return;
@@ -9945,7 +9984,7 @@ function useDefaultsFromURLSearch() {
 }
 
 const initialState$2 = queryParametersToSwapState(parsedQueryString());
-var swap = createReducer(initialState$2, builder => builder.addCase(replaceSwapState, (state, _ref) => {
+var swap = toolkit.createReducer(initialState$2, builder => builder.addCase(replaceSwapState, (state, _ref) => {
   let {
     payload: {
       typedValue,
@@ -10027,7 +10066,7 @@ var swap = createReducer(initialState$2, builder => builder.addCase(replaceSwapS
 const now = () => new Date().getTime();
 
 const initialState$1 = {};
-var transactions = createReducer(initialState$1, builder => builder.addCase(updateVersion, transactions => {
+var transactions = toolkit.createReducer(initialState$1, builder => builder.addCase(updateVersion, transactions => {
   // in case there are any transactions in the store with the old format, remove them
   Object.keys(transactions).forEach(chainId => {
     const chainTransactions = transactions[chainId];
@@ -10134,7 +10173,7 @@ const initialState = {
   timestamp: currentTimestamp(),
   URLWarningVisible: true
 };
-var user = createReducer(initialState, builder => builder.addCase(updateVersion, state => {
+var user = toolkit.createReducer(initialState, builder => builder.addCase(updateVersion, state => {
   // slippage isnt being tracked in local storage, reset to default
   // noinspection SuspiciousTypeOfGuard
   if (typeof state.userSlippageTolerance !== 'number' || !Number.isInteger(state.userSlippageTolerance) || state.userSlippageTolerance < 0 || state.userSlippageTolerance > 5000) {
@@ -10241,7 +10280,7 @@ var user = createReducer(initialState, builder => builder.addCase(updateVersion,
 }));
 
 const PERSISTED_KEYS = ['user', 'transactions', 'lists'];
-const store = configureStore({
+const store = toolkit.configureStore({
   reducer: {
     application,
     user,
@@ -10259,29 +10298,29 @@ const store = configureStore({
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({
     thunk: true
-  }).concat(api$1.middleware).concat(routingApi.middleware).concat(save({
+  }).concat(api$1.middleware).concat(routingApi.middleware).concat(reduxLocalstorageSimple.save({
     states: PERSISTED_KEYS,
     debounce: 1000
   })),
-  preloadedState: load({
+  preloadedState: reduxLocalstorageSimple.load({
     states: PERSISTED_KEYS,
     disableWarnings: process.env.NODE_ENV === 'test'
   })
 });
 store.dispatch(updateVersion());
-setupListeners(store.dispatch);
+react$1.setupListeners(store.dispatch);
 
-const FallbackWrapper = _styled.div.withConfig({
+const FallbackWrapper = _styled__default["default"].div.withConfig({
   displayName: "ErrorBoundary__FallbackWrapper",
   componentId: "sc-n7dgia-0"
 })(["display:flex;flex-direction:column;width:100%;align-items:center;z-index:1;"]);
 
-const BodyWrapper$2 = _styled.div.withConfig({
+const BodyWrapper$2 = _styled__default["default"].div.withConfig({
   displayName: "ErrorBoundary__BodyWrapper",
   componentId: "sc-n7dgia-1"
 })(["padding:1rem;width:100%;white-space:;"]);
 
-const CodeBlockWrapper = _styled.div.withConfig({
+const CodeBlockWrapper = _styled__default["default"].div.withConfig({
   displayName: "ErrorBoundary__CodeBlockWrapper",
   componentId: "sc-n7dgia-2"
 })(["background:", ";overflow:auto;white-space:pre;box-shadow:0px 0px 1px rgba(0,0,0,0.01),0px 4px 8px rgba(0,0,0,0.04),0px 16px 24px rgba(0,0,0,0.04),0px 24px 32px rgba(0,0,0,0.01);border-radius:24px;padding:18px 24px;color:", ";"], _ref => {
@@ -10296,7 +10335,7 @@ const CodeBlockWrapper = _styled.div.withConfig({
   return theme.text1;
 });
 
-const LinkWrapper = _styled.div.withConfig({
+const LinkWrapper = _styled__default["default"].div.withConfig({
   displayName: "ErrorBoundary__LinkWrapper",
   componentId: "sc-n7dgia-3"
 })(["color:", ";padding:6px 24px;"], _ref3 => {
@@ -10306,13 +10345,13 @@ const LinkWrapper = _styled.div.withConfig({
   return theme.blue1;
 });
 
-const SomethingWentWrongWrapper = _styled.div.withConfig({
+const SomethingWentWrongWrapper = _styled__default["default"].div.withConfig({
   displayName: "ErrorBoundary__SomethingWentWrongWrapper",
   componentId: "sc-n7dgia-4"
 })(["padding:6px 24px;"]);
 
 const IS_UNISWAP = window.location.hostname === 'app.uniswap.org';
-class ErrorBoundary extends React__default.Component {
+class ErrorBoundary extends React__default["default"].Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10327,7 +10366,7 @@ class ErrorBoundary extends React__default.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    ReactGA.exception({ ...error,
+    ReactGA__default["default"].exception({ ...error,
       ...errorInfo,
       fatal: true
     });
@@ -10340,50 +10379,50 @@ class ErrorBoundary extends React__default.Component {
 
     if (error !== null) {
       const encodedBody = encodeURIComponent(issueBody(error));
-      return /*#__PURE__*/jsx(FallbackWrapper, {
-        children: /*#__PURE__*/jsx(BodyWrapper$2, {
-          children: /*#__PURE__*/jsxs(AutoColumn, {
+      return /*#__PURE__*/jsxRuntime.jsx(FallbackWrapper, {
+        children: /*#__PURE__*/jsxRuntime.jsx(BodyWrapper$2, {
+          children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
             gap: 'md',
-            children: [/*#__PURE__*/jsx(SomethingWentWrongWrapper, {
-              children: /*#__PURE__*/jsx(ThemedText.Label, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(SomethingWentWrongWrapper, {
+              children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Label, {
                 fontSize: 24,
                 fontWeight: 600,
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Something went wrong"
                 })
               })
-            }), /*#__PURE__*/jsx(CodeBlockWrapper, {
-              children: /*#__PURE__*/jsx("code", {
-                children: /*#__PURE__*/jsx(ThemedText.Main, {
+            }), /*#__PURE__*/jsxRuntime.jsx(CodeBlockWrapper, {
+              children: /*#__PURE__*/jsxRuntime.jsx("code", {
+                children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                   fontSize: 10,
                   children: error.stack
                 })
               })
-            }), IS_UNISWAP ? /*#__PURE__*/jsxs(AutoRow, {
-              children: [/*#__PURE__*/jsx(LinkWrapper, {
-                children: /*#__PURE__*/jsx(ExternalLink, {
+            }), IS_UNISWAP ? /*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(LinkWrapper, {
+                children: /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
                   id: "create-github-issue-link",
                   href: `https://github.com/Uniswap/uniswap-interface/issues/new?assignees=&labels=bug&body=${encodedBody}&title=${encodeURIComponent(`Crash report: \`${error.name}${error.message && `: ${error.message}`}\``)}`,
                   target: "_blank",
-                  children: /*#__PURE__*/jsxs(ThemedText.Link, {
+                  children: /*#__PURE__*/jsxRuntime.jsxs(ThemedText.Link, {
                     fontSize: 16,
-                    children: [/*#__PURE__*/jsx(Trans, {
+                    children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                       id: "Create an issue on GitHub"
-                    }), /*#__PURE__*/jsx("span", {
+                    }), /*#__PURE__*/jsxRuntime.jsx("span", {
                       children: "\u2197"
                     })]
                   })
                 })
-              }), /*#__PURE__*/jsx(LinkWrapper, {
-                children: /*#__PURE__*/jsx(ExternalLink, {
+              }), /*#__PURE__*/jsxRuntime.jsx(LinkWrapper, {
+                children: /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
                   id: "get-support-on-discord",
                   href: "https://discord.gg/FCfyBSbCU5",
                   target: "_blank",
-                  children: /*#__PURE__*/jsxs(ThemedText.Link, {
+                  children: /*#__PURE__*/jsxRuntime.jsxs(ThemedText.Link, {
                     fontSize: 16,
-                    children: [/*#__PURE__*/jsx(Trans, {
+                    children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                       id: "Get support on Discord"
-                    }), /*#__PURE__*/jsx("span", {
+                    }), /*#__PURE__*/jsxRuntime.jsx("span", {
                       children: "\u2197"
                     })]
                   })
@@ -10457,17 +10496,17 @@ ${JSON.stringify(deviceData, null, 2)}
 `;
 }
 
-const ContentWrapper$4 = _styled(AutoColumn).withConfig({
+const ContentWrapper$4 = _styled__default["default"](AutoColumn).withConfig({
   displayName: "ClaimModal__ContentWrapper",
   componentId: "sc-gtants-0"
 })(["width:100%;"]);
 
-const ModalUpper$1 = _styled(DataCard).withConfig({
+const ModalUpper$1 = _styled__default["default"](DataCard).withConfig({
   displayName: "ClaimModal__ModalUpper",
   componentId: "sc-gtants-1"
 })(["box-shadow:0px 4px 10px rgba(0,0,0,0.1);background:radial-gradient(76.02% 75.41% at 1.84% 0%,#ff007a 0%,#021d43 100%);"]);
 
-const ConfirmOrLoadingWrapper = _styled.div.withConfig({
+const ConfirmOrLoadingWrapper = _styled__default["default"].div.withConfig({
   displayName: "ClaimModal__ConfirmOrLoadingWrapper",
   componentId: "sc-gtants-2"
 })(["width:100%;padding:24px;position:relative;background:", ";"], _ref => {
@@ -10477,7 +10516,7 @@ const ConfirmOrLoadingWrapper = _styled.div.withConfig({
   return activeBG && 'radial-gradient(76.02% 75.41% at 1.84% 0%, rgba(255, 0, 122, 0.2) 0%, rgba(33, 114, 229, 0.2) 100%), #FFFFFF;';
 });
 
-const ConfirmedIcon$1 = _styled(ColumnCenter).withConfig({
+const ConfirmedIcon$1 = _styled__default["default"](ColumnCenter).withConfig({
   displayName: "ClaimModal__ConfirmedIcon",
   componentId: "sc-gtants-3"
 })(["padding:60px 0;"]);
@@ -10494,7 +10533,7 @@ function ClaimModal() {
     chainId
   } = useActiveWeb3React(); // used for UI loading states
 
-  const [attempting, setAttempting] = useState(false); // get user claim data
+  const [attempting, setAttempting] = React.useState(false); // get user claim data
 
   const userClaimData = useUserClaimData(account); // monitor the status of the claim from contracts and txns
 
@@ -10518,7 +10557,7 @@ function ClaimModal() {
   } // once confirmed txn is found, if modal is closed open, mark as not attempting regradless
 
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (claimConfirmed && claimSubmitted && attempting) {
       setAttempting(false);
 
@@ -10527,35 +10566,35 @@ function ClaimModal() {
       }
     }
   }, [attempting, claimConfirmed, claimSubmitted, isOpen, toggleClaimModal]);
-  const nonLPAmount = JSBI.multiply(JSBI.BigInt((userClaimData !== null && userClaimData !== void 0 && (_userClaimData$flags = userClaimData.flags) !== null && _userClaimData$flags !== void 0 && _userClaimData$flags.isSOCKS ? SOCKS_AMOUNT : 0) + (userClaimData !== null && userClaimData !== void 0 && (_userClaimData$flags2 = userClaimData.flags) !== null && _userClaimData$flags2 !== void 0 && _userClaimData$flags2.isUser ? USER_AMOUNT : 0)), JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(18)));
-  return /*#__PURE__*/jsxs(Modal, {
+  const nonLPAmount = JSBI__default["default"].multiply(JSBI__default["default"].BigInt((userClaimData !== null && userClaimData !== void 0 && (_userClaimData$flags = userClaimData.flags) !== null && _userClaimData$flags !== void 0 && _userClaimData$flags.isSOCKS ? SOCKS_AMOUNT : 0) + (userClaimData !== null && userClaimData !== void 0 && (_userClaimData$flags2 = userClaimData.flags) !== null && _userClaimData$flags2 !== void 0 && _userClaimData$flags2.isUser ? USER_AMOUNT : 0)), JSBI__default["default"].exponentiate(JSBI__default["default"].BigInt(10), JSBI__default["default"].BigInt(18)));
+  return /*#__PURE__*/jsxRuntime.jsxs(Modal, {
     isOpen: isOpen,
     onDismiss: toggleClaimModal,
     maxHeight: 90,
-    children: [/*#__PURE__*/jsx(Confetti, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(Confetti, {
       start: Boolean(isOpen && claimConfirmed)
-    }), !attempting && !claimConfirmed && /*#__PURE__*/jsxs(ContentWrapper$4, {
+    }), !attempting && !claimConfirmed && /*#__PURE__*/jsxRuntime.jsxs(ContentWrapper$4, {
       gap: "lg",
-      children: [/*#__PURE__*/jsxs(ModalUpper$1, {
-        children: [/*#__PURE__*/jsx(CardBGImage, {}), /*#__PURE__*/jsx(CardNoise, {}), /*#__PURE__*/jsxs(CardSection, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(ModalUpper$1, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(CardBGImage, {}), /*#__PURE__*/jsxRuntime.jsx(CardNoise, {}), /*#__PURE__*/jsxRuntime.jsxs(CardSection, {
           gap: "md",
-          children: [/*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.White, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               fontWeight: 500,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Claim UNI"
               })
-            }), /*#__PURE__*/jsx(CloseIcon$3, {
+            }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
               onClick: toggleClaimModal,
               style: {
                 zIndex: 99
               },
               color: "white"
             })]
-          }), /*#__PURE__*/jsx(ThemedText.White, {
+          }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
             fontWeight: 700,
             fontSize: 36,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "{0} UNI",
               values: {
                 0: unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_groupSeparator = {
@@ -10564,47 +10603,47 @@ function ClaimModal() {
               }
             })
           })]
-        }), /*#__PURE__*/jsx(Break$1, {}), /*#__PURE__*/jsxs(CardSection, {
+        }), /*#__PURE__*/jsxRuntime.jsx(Break$1, {}), /*#__PURE__*/jsxRuntime.jsxs(CardSection, {
           gap: "sm",
-          children: [(userClaimData === null || userClaimData === void 0 ? void 0 : (_userClaimData$flags3 = userClaimData.flags) === null || _userClaimData$flags3 === void 0 ? void 0 : _userClaimData$flags3.isSOCKS) && /*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.SubHeader, {
+          children: [(userClaimData === null || userClaimData === void 0 ? void 0 : (_userClaimData$flags3 = userClaimData.flags) === null || _userClaimData$flags3 === void 0 ? void 0 : _userClaimData$flags3.isSOCKS) && /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
               color: "white",
               children: "SOCKS"
-            }), /*#__PURE__*/jsx(ThemedText.SubHeader, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
               color: "white",
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "{SOCKS_AMOUNT} UNI",
                 values: {
                   SOCKS_AMOUNT: SOCKS_AMOUNT
                 }
               })
             })]
-          }), (userClaimData === null || userClaimData === void 0 ? void 0 : (_userClaimData$flags4 = userClaimData.flags) === null || _userClaimData$flags4 === void 0 ? void 0 : _userClaimData$flags4.isLP) && unclaimedAmount && JSBI.greaterThanOrEqual(unclaimedAmount.quotient, nonLPAmount) && /*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.SubHeader, {
+          }), (userClaimData === null || userClaimData === void 0 ? void 0 : (_userClaimData$flags4 = userClaimData.flags) === null || _userClaimData$flags4 === void 0 ? void 0 : _userClaimData$flags4.isLP) && unclaimedAmount && JSBI__default["default"].greaterThanOrEqual(unclaimedAmount.quotient, nonLPAmount) && /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
               color: "white",
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Liquidity"
               })
-            }), /*#__PURE__*/jsx(ThemedText.SubHeader, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
               color: "white",
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "{0} UNI",
                 values: {
-                  0: unclaimedAmount.subtract(CurrencyAmount.fromRawAmount(unclaimedAmount.currency, nonLPAmount)).toFixed(0, {
+                  0: unclaimedAmount.subtract(sdkCore.CurrencyAmount.fromRawAmount(unclaimedAmount.currency, nonLPAmount)).toFixed(0, {
                     groupSeparator: ','
                   })
                 }
               })
             })]
-          }), (userClaimData === null || userClaimData === void 0 ? void 0 : (_userClaimData$flags5 = userClaimData.flags) === null || _userClaimData$flags5 === void 0 ? void 0 : _userClaimData$flags5.isUser) && /*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.SubHeader, {
+          }), (userClaimData === null || userClaimData === void 0 ? void 0 : (_userClaimData$flags5 = userClaimData.flags) === null || _userClaimData$flags5 === void 0 ? void 0 : _userClaimData$flags5.isUser) && /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
               color: "white",
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "User"
               })
-            }), /*#__PURE__*/jsx(ThemedText.SubHeader, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
               color: "white",
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "{USER_AMOUNT} UNI",
                 values: {
                   USER_AMOUNT: USER_AMOUNT
@@ -10613,78 +10652,78 @@ function ClaimModal() {
             })]
           })]
         })]
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "md",
         style: {
           padding: '1rem',
           paddingTop: '0'
         },
         justify: "center",
-        children: [/*#__PURE__*/jsx(ThemedText.SubHeader, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           fontWeight: 500,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "As a member of the Uniswap community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>",
             components: {
-              0: /*#__PURE__*/jsx("br", {}),
-              1: /*#__PURE__*/jsx("br", {}),
-              2: /*#__PURE__*/jsx(ExternalLink, {
+              0: /*#__PURE__*/jsxRuntime.jsx("br", {}),
+              1: /*#__PURE__*/jsxRuntime.jsx("br", {}),
+              2: /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
                 href: "https://uniswap.org/blog/uni"
               })
             }
           })
-        }), /*#__PURE__*/jsx(ButtonPrimary, {
-          disabled: !isAddress$1(account !== null && account !== void 0 ? account : ''),
+        }), /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
+          disabled: !address.isAddress(account !== null && account !== void 0 ? account : ''),
           padding: "16px 16px",
           width: "100%",
           $borderRadius: "12px",
           mt: "1rem",
           onClick: onClaim,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Claim UNI"
           })
         })]
       })]
-    }), (attempting || claimConfirmed) && /*#__PURE__*/jsxs(ConfirmOrLoadingWrapper, {
+    }), (attempting || claimConfirmed) && /*#__PURE__*/jsxRuntime.jsxs(ConfirmOrLoadingWrapper, {
       activeBG: true,
-      children: [/*#__PURE__*/jsx(CardNoise, {}), /*#__PURE__*/jsx(CardBGImageSmaller, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CardNoise, {}), /*#__PURE__*/jsxRuntime.jsx(CardBGImageSmaller, {
         desaturate: true
-      }), /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx("div", {}), /*#__PURE__*/jsx(CloseIcon$3, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx("div", {}), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: toggleClaimModal,
           style: {
             zIndex: 99
           },
           stroke: "black"
         })]
-      }), /*#__PURE__*/jsx(ConfirmedIcon$1, {
-        children: !claimConfirmed ? /*#__PURE__*/jsx(CustomLightSpinner, {
+      }), /*#__PURE__*/jsxRuntime.jsx(ConfirmedIcon$1, {
+        children: !claimConfirmed ? /*#__PURE__*/jsxRuntime.jsx(CustomLightSpinner, {
           src: Circle$1,
           alt: "loader",
           size: '90px'
-        }) : /*#__PURE__*/jsx(UniTokenAnimated, {
+        }) : /*#__PURE__*/jsxRuntime.jsx(UniTokenAnimated, {
           width: "72px",
           src: tokenLogo,
           alt: "UNI"
         })
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "100px",
         justify: 'center',
-        children: [/*#__PURE__*/jsxs(AutoColumn, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
           gap: "12px",
           justify: 'center',
-          children: [/*#__PURE__*/jsx(ThemedText.LargeHeader, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.LargeHeader, {
             fontWeight: 600,
             color: "black",
-            children: claimConfirmed ? /*#__PURE__*/jsx(Trans, {
+            children: claimConfirmed ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Claimed!"
-            }) : /*#__PURE__*/jsx(Trans, {
+            }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Claiming"
             })
-          }), !claimConfirmed && /*#__PURE__*/jsx(Text$1, {
+          }), !claimConfirmed && /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontSize: 36,
             color: '#ff007a',
             fontWeight: 800,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "{0} UNI",
               values: {
                 0: unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_groupSeparator2 = {
@@ -10693,35 +10732,35 @@ function ClaimModal() {
               }
             })
           })]
-        }), claimConfirmed && /*#__PURE__*/jsx(Fragment, {
-          children: /*#__PURE__*/jsx(ThemedText.SubHeader, {
+        }), claimConfirmed && /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
+          children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
             fontWeight: 500,
             color: "black",
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "<0>\uD83C\uDF89 </0>Welcome to team Unicorn :) <1>\uD83C\uDF89</1>",
               components: {
-                0: /*#__PURE__*/jsx("span", {
+                0: /*#__PURE__*/jsxRuntime.jsx("span", {
                   role: "img",
                   "aria-label": "party-hat"
                 }),
-                1: /*#__PURE__*/jsx("span", {
+                1: /*#__PURE__*/jsxRuntime.jsx("span", {
                   role: "img",
                   "aria-label": "party-hat"
                 })
               }
             })
           })
-        }), attempting && !claimSubmitted && /*#__PURE__*/jsx(ThemedText.SubHeader, {
+        }), attempting && !claimSubmitted && /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           color: "black",
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Confirm this transaction in your wallet"
           })
-        }), attempting && claimSubmitted && !claimConfirmed && chainId && (claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.hash) && /*#__PURE__*/jsx(ExternalLink, {
+        }), attempting && claimSubmitted && !claimConfirmed && chainId && (claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.hash) && /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
           href: getExplorerLink(chainId, claimTxn === null || claimTxn === void 0 ? void 0 : claimTxn.hash, ExplorerDataType.TRANSACTION),
           style: {
             zIndex: 99
           },
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "View transaction on Explorer"
           })
         })]
@@ -10730,7 +10769,7 @@ function ClaimModal() {
   });
 }
 
-const Card = _styled(Box).withConfig({
+const Card = _styled__default["default"](styledComponents.Box).withConfig({
   displayName: "Card",
   componentId: "sc-57i8km-0"
 })(["width:", ";padding:", ";border-radius:", ";border:", ";"], _ref => {
@@ -10754,7 +10793,7 @@ const Card = _styled(Box).withConfig({
   } = _ref4;
   return border;
 });
-const LightCard = _styled(Card).withConfig({
+const LightCard = _styled__default["default"](Card).withConfig({
   displayName: "Card__LightCard",
   componentId: "sc-57i8km-1"
 })(["border:1px solid ", ";background-color:", ";"], _ref5 => {
@@ -10768,7 +10807,7 @@ const LightCard = _styled(Card).withConfig({
   } = _ref6;
   return theme.bg1;
 });
-const LightGreyCard = _styled(Card).withConfig({
+const LightGreyCard = _styled__default["default"](Card).withConfig({
   displayName: "Card__LightGreyCard",
   componentId: "sc-57i8km-2"
 })(["background-color:", ";"], _ref7 => {
@@ -10777,7 +10816,7 @@ const LightGreyCard = _styled(Card).withConfig({
   } = _ref7;
   return theme.bg2;
 });
-const GreyCard = _styled(Card).withConfig({
+const GreyCard = _styled__default["default"](Card).withConfig({
   displayName: "Card__GreyCard",
   componentId: "sc-57i8km-3"
 })(["background-color:", ";"], _ref8 => {
@@ -10786,7 +10825,7 @@ const GreyCard = _styled(Card).withConfig({
   } = _ref8;
   return theme.bg3;
 });
-const DarkGreyCard = _styled(Card).withConfig({
+const DarkGreyCard = _styled__default["default"](Card).withConfig({
   displayName: "Card__DarkGreyCard",
   componentId: "sc-57i8km-4"
 })(["background-color:", ";"], _ref9 => {
@@ -10795,7 +10834,7 @@ const DarkGreyCard = _styled(Card).withConfig({
   } = _ref9;
   return theme.bg2;
 });
-_styled(Card).withConfig({
+_styled__default["default"](Card).withConfig({
   displayName: "Card__DarkCard",
   componentId: "sc-57i8km-5"
 })(["background-color:", ";"], _ref10 => {
@@ -10804,7 +10843,7 @@ _styled(Card).withConfig({
   } = _ref10;
   return theme.bg0;
 });
-const OutlineCard = _styled(Card).withConfig({
+const OutlineCard = _styled__default["default"](Card).withConfig({
   displayName: "Card__OutlineCard",
   componentId: "sc-57i8km-6"
 })(["border:1px solid ", ";"], _ref11 => {
@@ -10813,7 +10852,7 @@ const OutlineCard = _styled(Card).withConfig({
   } = _ref11;
   return theme.bg3;
 });
-_styled(Card).withConfig({
+_styled__default["default"](Card).withConfig({
   displayName: "Card__YellowCard",
   componentId: "sc-57i8km-7"
 })(["background-color:rgba(243,132,30,0.05);color:", ";font-weight:500;"], _ref12 => {
@@ -10822,7 +10861,7 @@ _styled(Card).withConfig({
   } = _ref12;
   return theme.yellow3;
 });
-_styled(Card).withConfig({
+_styled__default["default"](Card).withConfig({
   displayName: "Card__BlueCard",
   componentId: "sc-57i8km-8"
 })(["background-color:", ";color:", ";border-radius:12px;"], _ref13 => {
@@ -10837,12 +10876,12 @@ _styled(Card).withConfig({
   return theme.blue2;
 });
 
-const Wrapper$e = _styled.div.withConfig({
+const Wrapper$e = _styled__default["default"].div.withConfig({
   displayName: "PrivacyPolicy__Wrapper",
   componentId: "sc-z1xxjf-0"
 })(["max-height:70vh;overflow:auto;padding:0 1rem;"]);
 
-const StyledExternalCard = _styled(Card).withConfig({
+const StyledExternalCard = _styled__default["default"](Card).withConfig({
   displayName: "PrivacyPolicy__StyledExternalCard",
   componentId: "sc-z1xxjf-1"
 })(["background-color:", ";padding:0.5rem;width:100%;:hover,:focus,:active{background-color:", ";}"], _ref => {
@@ -10857,7 +10896,7 @@ const StyledExternalCard = _styled(Card).withConfig({
   return theme.primary4;
 });
 
-const HoverText$1 = _styled.div.withConfig({
+const HoverText$1 = _styled__default["default"].div.withConfig({
   displayName: "PrivacyPolicy__HoverText",
   componentId: "sc-z1xxjf-2"
 })(["text-decoration:none;color:", ";display:flex;align-items:center;:hover{cursor:pointer;}"], _ref3 => {
@@ -10867,79 +10906,79 @@ const HoverText$1 = _styled.div.withConfig({
   return theme.text1;
 });
 
-const StyledLinkOut = _styled(ArrowDown).withConfig({
+const StyledLinkOut = _styled__default["default"](reactFeather.ArrowDown).withConfig({
   displayName: "PrivacyPolicy__StyledLinkOut",
   componentId: "sc-z1xxjf-3"
 })(["transform:rotate(230deg);"]);
 
 const EXTERNAL_APIS = [{
   name: 'Auto Router',
-  description: /*#__PURE__*/jsx(Trans, {
+  description: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "The app fetches the optimal trade route from a Uniswap Labs server."
   })
 }, {
   name: 'Infura',
-  description: /*#__PURE__*/jsx(Trans, {
+  description: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "The app fetches on-chain data and constructs contract calls with an Infura API."
   })
 }, {
   name: 'TRM Labs',
-  description: /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsx(Trans, {
+  description: /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "The app securely collects your wallet address and shares it with TRM Labs Inc. for risk and compliance reasons."
-    }), ' ', /*#__PURE__*/jsx(ExternalLink, {
+    }), ' ', /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
       href: "https://help.uniswap.org/en/articles/5675203-terms-of-service-faq",
-      children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Learn more"
       })
     })]
   })
 }, {
   name: 'Google Analytics',
-  description: /*#__PURE__*/jsx(Trans, {
+  description: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "The app logs anonymized usage statistics in order to improve over time."
   })
 }, {
   name: 'The Graph',
-  description: /*#__PURE__*/jsx(Trans, {
+  description: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "The app fetches blockchain data from The Graph\u2019s hosted service."
   })
 }];
 function PrivacyPolicyModal() {
-  const node = useRef();
+  const node = React.useRef();
   const open = useModalOpen(ApplicationModal.PRIVACY_POLICY);
   const toggle = useTogglePrivacyPolicy();
-  useEffect(() => {
+  React.useEffect(() => {
     if (!open) return;
-    ReactGA.event({
+    ReactGA__default["default"].event({
       category: 'Modal',
       action: 'Show Legal'
     });
   }, [open]);
-  return /*#__PURE__*/jsx(Modal, {
+  return /*#__PURE__*/jsxRuntime.jsx(Modal, {
     isOpen: open,
     onDismiss: () => toggle(),
-    children: /*#__PURE__*/jsxs(AutoColumn, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "12px",
       ref: node,
-      children: [/*#__PURE__*/jsxs(RowBetween, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
         padding: "1rem 1rem 0.5rem 1rem",
-        children: [/*#__PURE__*/jsx(ThemedText.MediumHeader, {
-          children: /*#__PURE__*/jsx(Trans, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.MediumHeader, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Legal & Privacy"
           })
-        }), /*#__PURE__*/jsx(HoverText$1, {
+        }), /*#__PURE__*/jsxRuntime.jsx(HoverText$1, {
           onClick: () => toggle(),
-          children: /*#__PURE__*/jsx(X, {
+          children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.X, {
             size: 24
           })
         })]
-      }), /*#__PURE__*/jsx(PrivacyPolicy, {})]
+      }), /*#__PURE__*/jsxRuntime.jsx(PrivacyPolicy, {})]
     })
   });
 }
 function PrivacyPolicy() {
-  return /*#__PURE__*/jsx(Wrapper$e, {
+  return /*#__PURE__*/jsxRuntime.jsx(Wrapper$e, {
     draggable: "true",
     onTouchMove: e => {
       // prevent modal gesture handler from dismissing modal when content is scrolling
@@ -10947,90 +10986,90 @@ function PrivacyPolicy() {
         e.stopPropagation();
       }
     },
-    children: /*#__PURE__*/jsxs(AutoColumn, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "16px",
-      children: [/*#__PURE__*/jsxs(AutoColumn, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "8px",
         style: {
           width: '100%'
         },
-        children: [/*#__PURE__*/jsx(StyledExternalCard, {
-          children: /*#__PURE__*/jsx(ExternalLink, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(StyledExternalCard, {
+          children: /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
             href: 'https://uniswap.org/terms-of-service',
-            children: /*#__PURE__*/jsxs(RowBetween, {
-              children: [/*#__PURE__*/jsxs(AutoRow, {
+            children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+              children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
                 gap: "4px",
-                children: [/*#__PURE__*/jsx(Info, {
+                children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.Info, {
                   size: 20
-                }), /*#__PURE__*/jsx(ThemedText.Main, {
+                }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                   fontSize: 14,
                   color: 'primaryText1',
-                  children: /*#__PURE__*/jsx(Trans, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Uniswap Labs' Terms of Service"
                   })
                 })]
-              }), /*#__PURE__*/jsx(StyledLinkOut, {
+              }), /*#__PURE__*/jsxRuntime.jsx(StyledLinkOut, {
                 size: 20
               })]
             })
           })
-        }), /*#__PURE__*/jsx(StyledExternalCard, {
-          children: /*#__PURE__*/jsx(ExternalLink, {
+        }), /*#__PURE__*/jsxRuntime.jsx(StyledExternalCard, {
+          children: /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
             href: 'https://uniswap.org/disclaimer/',
-            children: /*#__PURE__*/jsxs(RowBetween, {
-              children: [/*#__PURE__*/jsxs(AutoRow, {
+            children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+              children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
                 gap: "4px",
-                children: [/*#__PURE__*/jsx(Info, {
+                children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.Info, {
                   size: 20
-                }), /*#__PURE__*/jsx(ThemedText.Main, {
+                }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                   fontSize: 14,
                   color: 'primaryText1',
-                  children: /*#__PURE__*/jsx(Trans, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Protocol Disclaimer"
                   })
                 })]
-              }), /*#__PURE__*/jsx(StyledLinkOut, {
+              }), /*#__PURE__*/jsxRuntime.jsx(StyledLinkOut, {
                 size: 20
               })]
             })
           })
         })]
-      }), /*#__PURE__*/jsx(ThemedText.Main, {
+      }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
         fontSize: 14,
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "This app uses the following third-party APIs:"
         })
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "12px",
         children: [EXTERNAL_APIS.map((_ref4, i) => {
           let {
             name,
             description
           } = _ref4;
-          return /*#__PURE__*/jsx(DarkGreyCard, {
-            children: /*#__PURE__*/jsxs(AutoColumn, {
+          return /*#__PURE__*/jsxRuntime.jsx(DarkGreyCard, {
+            children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
               gap: "8px",
-              children: [/*#__PURE__*/jsxs(AutoRow, {
+              children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
                 gap: "4px",
-                children: [/*#__PURE__*/jsx(Info, {
+                children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.Info, {
                   size: 18
-                }), /*#__PURE__*/jsx(ThemedText.Main, {
+                }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                   fontSize: 14,
                   color: 'text1',
                   children: name
                 })]
-              }), /*#__PURE__*/jsx(ThemedText.Main, {
+              }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                 fontSize: 14,
                 children: description
               })]
             })
           }, i);
-        }), /*#__PURE__*/jsx(Row, {
+        }), /*#__PURE__*/jsxRuntime.jsx(Row, {
           justify: "center",
           marginBottom: "1rem",
-          children: /*#__PURE__*/jsx(ExternalLink, {
+          children: /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
             href: "https://help.uniswap.org/en/articles/5675203-terms-of-service-faq",
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Learn more"
             })
           })
@@ -11130,7 +11169,7 @@ function useUrlLocale() {
 function useActiveLocale() {
   const urlLocale = useUrlLocale();
   const userLocale = useUserLocale();
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _ref3, _ref4;
 
     return (_ref3 = (_ref4 = urlLocale !== null && urlLocale !== void 0 ? urlLocale : userLocale) !== null && _ref4 !== void 0 ? _ref4 : navigatorLocale()) !== null && _ref3 !== void 0 ? _ref3 : DEFAULT_LOCALE;
@@ -11138,48 +11177,48 @@ function useActiveLocale() {
 }
 
 function useLocationLinkProps(locale) {
-  const location = useLocation();
-  const qs = useParsedQueryString();
+  const location = reactRouterDom.useLocation();
+  const qs$1 = useParsedQueryString();
   const activeLocale = useActiveLocale();
-  return useMemo(() => !locale ? {} : {
+  return React.useMemo(() => !locale ? {} : {
     to: { ...location,
-      search: stringify({ ...qs,
+      search: qs.stringify({ ...qs$1,
         lng: locale
       })
     },
     onClick: () => {
-      ReactGA.event({
+      ReactGA__default["default"].event({
         category: 'Localization',
         action: 'Switch Locale',
         label: `${activeLocale} -> ${locale}`
       });
     }
-  }, [location, qs, activeLocale, locale]);
+  }, [location, qs$1, activeLocale, locale]);
 }
 
 var _path$3, _path2, _path3;
 
 function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
 
-const SvgMenu = props => /*#__PURE__*/React.createElement("svg", _extends$5({
+const SvgMenu = props => /*#__PURE__*/React__namespace.createElement("svg", _extends$5({
   width: 24,
   height: 24,
   viewBox: "0 0 24 24",
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
-}, props), _path$3 || (_path$3 = /*#__PURE__*/React.createElement("path", {
+}, props), _path$3 || (_path$3 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z",
   stroke: "black",
   strokeWidth: 2,
   strokeLinecap: "round",
   strokeLinejoin: "round"
-})), _path2 || (_path2 = /*#__PURE__*/React.createElement("path", {
+})), _path2 || (_path2 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z",
   stroke: "black",
   strokeWidth: 2,
   strokeLinecap: "round",
   strokeLinejoin: "round"
-})), _path3 || (_path3 = /*#__PURE__*/React.createElement("path", {
+})), _path3 || (_path3 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z",
   stroke: "black",
   strokeWidth: 2,
@@ -11188,11 +11227,11 @@ const SvgMenu = props => /*#__PURE__*/React.createElement("svg", _extends$5({
 })));
 
 function useOnClickOutside(node, handler) {
-  const handlerRef = useRef(handler);
-  useEffect(() => {
+  const handlerRef = React.useRef(handler);
+  React.useEffect(() => {
     handlerRef.current = handler;
   }, [handler]);
-  useEffect(() => {
+  React.useEffect(() => {
     const handleClickOutside = e => {
       var _node$current$contain, _node$current;
 
@@ -11217,7 +11256,7 @@ let FlyoutAlignment;
   FlyoutAlignment["RIGHT"] = "RIGHT";
 })(FlyoutAlignment || (FlyoutAlignment = {}));
 
-const StyledMenuIcon$1 = _styled(SvgMenu).withConfig({
+const StyledMenuIcon$1 = _styled__default["default"](SvgMenu).withConfig({
   displayName: "Menu__StyledMenuIcon",
   componentId: "sc-12ipqmu-0"
 })(["path{stroke:", ";}"], _ref => {
@@ -11227,7 +11266,7 @@ const StyledMenuIcon$1 = _styled(SvgMenu).withConfig({
   return theme.text1;
 });
 
-const StyledMenuButton$1 = _styled.button.withConfig({
+const StyledMenuButton$1 = _styled__default["default"].button.withConfig({
   displayName: "Menu__StyledMenuButton",
   componentId: "sc-12ipqmu-1"
 })(["width:100%;height:100%;border:none;background-color:transparent;margin:0;padding:0;height:38px;background-color:", ";border:1px solid ", ";padding:0.15rem 0.5rem;border-radius:12px;:hover,:focus{cursor:pointer;outline:none;border:1px solid ", ";}svg{margin-top:2px;}"], _ref2 => {
@@ -11247,7 +11286,7 @@ const StyledMenuButton$1 = _styled.button.withConfig({
   return theme.bg3;
 });
 
-const UNIbutton = _styled(ButtonPrimary).withConfig({
+const UNIbutton = _styled__default["default"](ButtonPrimary).withConfig({
   displayName: "Menu__UNIbutton",
   componentId: "sc-12ipqmu-2"
 })(["background-color:", ";background:radial-gradient(174.47% 188.91% at 1.84% 0%,#ff007a 0%,#2172e5 100%),#edeef2;border:none;"], _ref5 => {
@@ -11257,12 +11296,12 @@ const UNIbutton = _styled(ButtonPrimary).withConfig({
   return theme.bg3;
 });
 
-const StyledMenu$2 = _styled.div.withConfig({
+const StyledMenu$2 = _styled__default["default"].div.withConfig({
   displayName: "Menu__StyledMenu",
   componentId: "sc-12ipqmu-3"
 })(["display:flex;justify-content:center;align-items:center;position:relative;border:none;text-align:left;"]);
 
-const MenuFlyout$1 = _styled.span.withConfig({
+const MenuFlyout$1 = _styled__default["default"].span.withConfig({
   displayName: "Menu__MenuFlyout",
   componentId: "sc-12ipqmu-4"
 })(["min-width:196px;max-height:350px;overflow:auto;background-color:", ";box-shadow:0px 0px 1px rgba(0,0,0,0.01),0px 4px 8px rgba(0,0,0,0.04),0px 16px 24px rgba(0,0,0,0.04),0px 24px 32px rgba(0,0,0,0.01);border:1px solid ", ";border-radius:12px;padding:0.5rem;display:flex;flex-direction:column;font-size:16px;position:absolute;top:3rem;z-index:100;", ";", ";"], _ref6 => {
@@ -11279,9 +11318,9 @@ const MenuFlyout$1 = _styled.span.withConfig({
   let {
     flyoutAlignment = FlyoutAlignment.RIGHT
   } = _ref8;
-  return flyoutAlignment === FlyoutAlignment.RIGHT ? css`
+  return flyoutAlignment === FlyoutAlignment.RIGHT ? _styled.css`
           right: 0rem;
-        ` : css`
+        ` : _styled.css`
           left: 0rem;
         `;
 }, _ref9 => {
@@ -11295,7 +11334,7 @@ const MenuFlyout$1 = _styled.span.withConfig({
   `;
 });
 
-const MenuItem$1 = _styled(ExternalLink).withConfig({
+const MenuItem$1 = _styled__default["default"](ExternalLink).withConfig({
   displayName: "Menu__MenuItem",
   componentId: "sc-12ipqmu-5"
 })(["display:flex;flex:1;flex-direction:row;align-items:center;padding:0.5rem 0.5rem;justify-content:space-between;color:", ";:hover{color:", ";cursor:pointer;text-decoration:none;}"], _ref10 => {
@@ -11310,7 +11349,7 @@ const MenuItem$1 = _styled(ExternalLink).withConfig({
   return theme.text1;
 });
 
-const InternalMenuItem = _styled(Link$1).withConfig({
+const InternalMenuItem = _styled__default["default"](reactRouterDom.Link).withConfig({
   displayName: "Menu__InternalMenuItem",
   componentId: "sc-12ipqmu-6"
 })(["flex:1;padding:0.5rem 0.5rem;color:", ";:hover{color:", ";cursor:pointer;text-decoration:none;}> svg{margin-right:8px;}"], _ref12 => {
@@ -11325,7 +11364,7 @@ const InternalMenuItem = _styled(Link$1).withConfig({
   return theme.text1;
 });
 
-const InternalLinkMenuItem = _styled(InternalMenuItem).withConfig({
+const InternalLinkMenuItem = _styled__default["default"](InternalMenuItem).withConfig({
   displayName: "Menu__InternalLinkMenuItem",
   componentId: "sc-12ipqmu-7"
 })(["display:flex;flex-direction:row;align-items:center;padding:0.5rem 0.5rem;justify-content:space-between;text-decoration:none;:hover{color:", ";cursor:pointer;text-decoration:none;}"], _ref14 => {
@@ -11335,7 +11374,7 @@ const InternalLinkMenuItem = _styled(InternalMenuItem).withConfig({
   return theme.text1;
 });
 
-const ToggleMenuItem = _styled.button.withConfig({
+const ToggleMenuItem = _styled__default["default"].button.withConfig({
   displayName: "Menu__ToggleMenuItem",
   componentId: "sc-12ipqmu-8"
 })(["background-color:transparent;margin:0;padding:0;border:none;display:flex;flex:1;flex-direction:row;align-items:center;padding:0.5rem 0.5rem;justify-content:space-between;font-size:1rem;font-weight:500;color:", ";:hover{color:", ";cursor:pointer;text-decoration:none;}"], _ref15 => {
@@ -11361,12 +11400,12 @@ function LanguageMenuItem(_ref17) {
     onClick
   } = useLocationLinkProps(locale);
   if (!to) return null;
-  return /*#__PURE__*/jsxs(InternalLinkMenuItem, {
+  return /*#__PURE__*/jsxRuntime.jsxs(InternalLinkMenuItem, {
     onClick: onClick,
     to: to,
-    children: [/*#__PURE__*/jsx("div", {
+    children: [/*#__PURE__*/jsxRuntime.jsx("div", {
       children: LOCALE_LABEL[locale]
-    }), active && /*#__PURE__*/jsx(Check, {
+    }), active && /*#__PURE__*/jsxRuntime.jsx(reactFeather.Check, {
       opacity: 0.6,
       size: 16
     })]
@@ -11378,13 +11417,13 @@ function LanguageMenu(_ref18) {
     close
   } = _ref18;
   const activeLocale = useActiveLocale();
-  return /*#__PURE__*/jsxs(MenuFlyout$1, {
-    children: [/*#__PURE__*/jsx(ToggleMenuItem, {
+  return /*#__PURE__*/jsxRuntime.jsxs(MenuFlyout$1, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(ToggleMenuItem, {
       onClick: close,
-      children: /*#__PURE__*/jsx(ChevronLeft, {
+      children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.ChevronLeft, {
         size: 16
       })
-    }), SUPPORTED_LOCALES.map(locale => /*#__PURE__*/jsx(LanguageMenuItem, {
+    }), SUPPORTED_LOCALES.map(locale => /*#__PURE__*/jsxRuntime.jsx(LanguageMenuItem, {
       locale: locale,
       active: activeLocale === locale
     }, locale))]
@@ -11396,7 +11435,7 @@ function Menu() {
     account,
     chainId
   } = useActiveWeb3React();
-  const node = useRef();
+  const node = React.useRef();
   const open = useModalOpen(ApplicationModal.MENU);
   const toggleMenu = useToggleModal(ApplicationModal.MENU);
   useOnClickOutside(node, open ? toggleMenu : undefined);
@@ -11404,147 +11443,147 @@ function Menu() {
   const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM);
   const showUNIClaimOption = Boolean(!!account && !!chainId && !L2_CHAIN_IDS.includes(chainId));
   const [darkMode, toggleDarkMode] = useDarkModeManager();
-  const [menu, setMenu] = useState('main');
-  useEffect(() => {
+  const [menu, setMenu] = React.useState('main');
+  React.useEffect(() => {
     setMenu('main');
   }, [open]);
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsxs(StyledMenu$2, {
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(StyledMenu$2, {
       ref: node,
-      children: [/*#__PURE__*/jsx(StyledMenuButton$1, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(StyledMenuButton$1, {
         onClick: toggleMenu,
         "aria-label":
         /*i18n*/
-        i18n._("Menu"),
-        children: /*#__PURE__*/jsx(StyledMenuIcon$1, {})
+        core$1.i18n._("Menu"),
+        children: /*#__PURE__*/jsxRuntime.jsx(StyledMenuIcon$1, {})
       }), open && (() => {
         switch (menu) {
           case 'lang':
-            return /*#__PURE__*/jsx(LanguageMenu, {
+            return /*#__PURE__*/jsxRuntime.jsx(LanguageMenu, {
               close: () => setMenu('main')
             });
 
           case 'main':
           default:
-            return /*#__PURE__*/jsxs(MenuFlyout$1, {
-              children: [/*#__PURE__*/jsxs(MenuItem$1, {
+            return /*#__PURE__*/jsxRuntime.jsxs(MenuFlyout$1, {
+              children: [/*#__PURE__*/jsxRuntime.jsxs(MenuItem$1, {
                 href: "https://uniswap.org/",
-                children: [/*#__PURE__*/jsx("div", {
-                  children: /*#__PURE__*/jsx(Trans, {
+                children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "About"
                   })
-                }), /*#__PURE__*/jsx(Info, {
+                }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.Info, {
                   opacity: 0.6,
                   size: 16
                 })]
-              }), /*#__PURE__*/jsxs(MenuItem$1, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(MenuItem$1, {
                 href: "https://help.uniswap.org/",
-                children: [/*#__PURE__*/jsx("div", {
-                  children: /*#__PURE__*/jsx(Trans, {
+                children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Help Center"
                   })
-                }), /*#__PURE__*/jsx(HelpCircle, {
+                }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.HelpCircle, {
                   opacity: 0.6,
                   size: 16
                 })]
-              }), /*#__PURE__*/jsxs(MenuItem$1, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(MenuItem$1, {
                 href: "https://uniswap.canny.io/feature-requests",
-                children: [/*#__PURE__*/jsx("div", {
-                  children: /*#__PURE__*/jsx(Trans, {
+                children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Request Features"
                   })
-                }), /*#__PURE__*/jsx(Coffee, {
+                }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.Coffee, {
                   opacity: 0.6,
                   size: 16
                 })]
-              }), /*#__PURE__*/jsxs(MenuItem$1, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(MenuItem$1, {
                 href: "https://discord.gg/FCfyBSbCU5",
-                children: [/*#__PURE__*/jsx("div", {
-                  children: /*#__PURE__*/jsx(Trans, {
+                children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Discord"
                   })
-                }), /*#__PURE__*/jsx(MessageCircle, {
+                }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.MessageCircle, {
                   opacity: 0.6,
                   size: 16
                 })]
-              }), /*#__PURE__*/jsxs(ToggleMenuItem, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(ToggleMenuItem, {
                 onClick: () => setMenu('lang'),
-                children: [/*#__PURE__*/jsx("div", {
-                  children: /*#__PURE__*/jsx(Trans, {
+                children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Language"
                   })
-                }), /*#__PURE__*/jsx(Globe, {
+                }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.Globe, {
                   opacity: 0.6,
                   size: 16
                 })]
-              }), /*#__PURE__*/jsxs(ToggleMenuItem, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(ToggleMenuItem, {
                 onClick: () => toggleDarkMode(),
-                children: [/*#__PURE__*/jsx("div", {
-                  children: darkMode ? /*#__PURE__*/jsx(Trans, {
+                children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+                  children: darkMode ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Light Theme"
-                  }) : /*#__PURE__*/jsx(Trans, {
+                  }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Dark Theme"
                   })
-                }), darkMode ? /*#__PURE__*/jsx(Moon, {
+                }), darkMode ? /*#__PURE__*/jsxRuntime.jsx(reactFeather.Moon, {
                   opacity: 0.6,
                   size: 16
-                }) : /*#__PURE__*/jsx(Sun, {
+                }) : /*#__PURE__*/jsxRuntime.jsx(reactFeather.Sun, {
                   opacity: 0.6,
                   size: 16
                 })]
-              }), /*#__PURE__*/jsxs(MenuItem$1, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(MenuItem$1, {
                 href: "https://docs.uniswap.org/",
-                children: [/*#__PURE__*/jsx("div", {
-                  children: /*#__PURE__*/jsx(Trans, {
+                children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Docs"
                   })
-                }), /*#__PURE__*/jsx(BookOpen, {
+                }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.BookOpen, {
                   opacity: 0.6,
                   size: 16
                 })]
-              }), /*#__PURE__*/jsxs(ToggleMenuItem, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(ToggleMenuItem, {
                 onClick: () => togglePrivacyPolicy(),
-                children: [/*#__PURE__*/jsx("div", {
-                  children: /*#__PURE__*/jsx(Trans, {
+                children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Legal & Privacy"
                   })
-                }), /*#__PURE__*/jsx(FileText, {
+                }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.FileText, {
                   opacity: 0.6,
                   size: 16
                 })]
-              }), showUNIClaimOption && /*#__PURE__*/jsx(UNIbutton, {
+              }), showUNIClaimOption && /*#__PURE__*/jsxRuntime.jsx(UNIbutton, {
                 onClick: openClaimModal,
                 padding: "8px 16px",
                 width: "100%",
                 $borderRadius: "12px",
                 mt: "0.5rem",
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Claim UNI"
                 })
               })]
             });
         }
       })()]
-    }), /*#__PURE__*/jsx(PrivacyPolicyModal, {})]
+    }), /*#__PURE__*/jsxRuntime.jsx(PrivacyPolicyModal, {})]
   });
 }
 
-_styled(MenuFlyout$1).withConfig({
+_styled__default["default"](MenuFlyout$1).withConfig({
   displayName: "Menu__NewMenuFlyout",
   componentId: "sc-12ipqmu-9"
 })(["top:3rem !important;"]);
 
-_styled(InternalMenuItem).withConfig({
+_styled__default["default"](InternalMenuItem).withConfig({
   displayName: "Menu__NewMenuItem",
   componentId: "sc-12ipqmu-10"
 })(["width:max-content;text-decoration:none;"]);
 
-_styled(MenuItem$1).withConfig({
+_styled__default["default"](MenuItem$1).withConfig({
   displayName: "Menu__ExternalMenuItem",
   componentId: "sc-12ipqmu-11"
 })(["width:max-content;text-decoration:none;"]);
 
-const loadingAnimation = keyframes`
+const loadingAnimation = _styled.keyframes`
   0% {
     background-position: 100% 50%;
   }
@@ -11552,7 +11591,7 @@ const loadingAnimation = keyframes`
     background-position: 0% 50%;
   }
 `;
-const LoadingRows = _styled.div.withConfig({
+const LoadingRows = _styled__default["default"].div.withConfig({
   displayName: "styled__LoadingRows",
   componentId: "sc-u7b06n-0"
 })(["display:grid;& > div{animation:", " 1.5s infinite;animation-fill-mode:both;background:linear-gradient( to left,", " 25%,", " 50%,", " 75% );background-size:400%;border-radius:12px;height:2.4em;will-change:background-position;}"], loadingAnimation, _ref => {
@@ -11571,7 +11610,7 @@ const LoadingRows = _styled.div.withConfig({
   } = _ref3;
   return theme.bg1;
 });
-const loadingOpacityMixin = css`
+const loadingOpacityMixin = _styled.css`
   filter: ${_ref4 => {
   let {
     $loading
@@ -11586,20 +11625,20 @@ const loadingOpacityMixin = css`
 }};
   transition: opacity 0.2s ease-in-out;
 `;
-const LoadingOpacityContainer = _styled.div.withConfig({
+const LoadingOpacityContainer = _styled__default["default"].div.withConfig({
   displayName: "styled__LoadingOpacityContainer",
   componentId: "sc-u7b06n-1"
 })(["", ""], loadingOpacityMixin);
 
 function useInterval(callback, delay) {
   let leading = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-  const savedCallback = useRef(); // Remember the latest callback.
+  const savedCallback = React.useRef(); // Remember the latest callback.
 
-  useEffect(() => {
+  React.useEffect(() => {
     savedCallback.current = callback;
   }, [callback]); // Set up the interval.
 
-  useEffect(() => {
+  React.useEffect(() => {
     function tick() {
       const current = savedCallback.current;
       current && current();
@@ -11615,7 +11654,7 @@ function useInterval(callback, delay) {
   }, [delay, leading]);
 }
 
-const PopoverContainer$1 = _styled.div.withConfig({
+const PopoverContainer$1 = _styled__default["default"].div.withConfig({
   displayName: "Popover__PopoverContainer",
   componentId: "sc-d5tbhs-0"
 })(["z-index:9999;visibility:", ";opacity:", ";transition:visibility 150ms linear,opacity 150ms linear;color:", ";"], props => props.show ? 'visible' : 'hidden', props => props.show ? 1 : 0, _ref => {
@@ -11625,12 +11664,12 @@ const PopoverContainer$1 = _styled.div.withConfig({
   return theme.text2;
 });
 
-const ReferenceElement = _styled.div.withConfig({
+const ReferenceElement = _styled__default["default"].div.withConfig({
   displayName: "Popover__ReferenceElement",
   componentId: "sc-d5tbhs-1"
 })(["display:inline-block;"]);
 
-const Arrow = _styled.div.withConfig({
+const Arrow = _styled__default["default"].div.withConfig({
   displayName: "Popover__Arrow",
   componentId: "sc-d5tbhs-2"
 })(["width:8px;height:8px;z-index:9998;::before{position:absolute;width:8px;height:8px;z-index:9998;content:'';border:1px solid ", ";transform:rotate(45deg);background:", ";}&.arrow-top{bottom:-5px;::before{border-top:none;border-left:none;}}&.arrow-bottom{top:-5px;::before{border-bottom:none;border-right:none;}}&.arrow-left{right:-5px;::before{border-bottom:none;border-left:none;}}&.arrow-right{left:-5px;::before{border-right:none;border-top:none;}}"], _ref2 => {
@@ -11654,10 +11693,10 @@ function Popover(_ref4) {
     children,
     placement = 'auto'
   } = _ref4;
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  const [arrowElement, setArrowElement] = useState(null);
-  const options = useMemo(() => ({
+  const [referenceElement, setReferenceElement] = React.useState(null);
+  const [popperElement, setPopperElement] = React.useState(null);
+  const [arrowElement, setArrowElement] = React.useState(null);
+  const options = React.useMemo(() => ({
     placement,
     strategy: 'fixed',
     modifiers: [{
@@ -11681,22 +11720,22 @@ function Popover(_ref4) {
     styles,
     update,
     attributes
-  } = usePopper(referenceElement, popperElement, options);
-  const updateCallback = useCallback(() => {
+  } = reactPopper.usePopper(referenceElement, popperElement, options);
+  const updateCallback = React.useCallback(() => {
     update && update();
   }, [update]);
   useInterval(updateCallback, show ? 100 : null);
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsx(ReferenceElement, {
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(ReferenceElement, {
       ref: setReferenceElement,
       children: children
-    }), /*#__PURE__*/jsx(Portal, {
-      children: /*#__PURE__*/jsxs(PopoverContainer$1, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Portal__default["default"], {
+      children: /*#__PURE__*/jsxRuntime.jsxs(PopoverContainer$1, {
         show: show,
         ref: setPopperElement,
         style: styles.popper,
         ...attributes.popper,
-        children: [content, /*#__PURE__*/jsx(Arrow, {
+        children: [content, /*#__PURE__*/jsxRuntime.jsx(Arrow, {
           className: `arrow-${(_attributes$popper$da = (_attributes$popper = attributes.popper) === null || _attributes$popper === void 0 ? void 0 : _attributes$popper['data-popper-placement']) !== null && _attributes$popper$da !== void 0 ? _attributes$popper$da : ''}`,
           ref: setArrowElement,
           style: styles.arrow,
@@ -11707,7 +11746,7 @@ function Popover(_ref4) {
   });
 }
 
-const TooltipContainer = _styled.div.withConfig({
+const TooltipContainer = _styled__default["default"].div.withConfig({
   displayName: "Tooltip__TooltipContainer",
   componentId: "sc-1g1kijt-0"
 })(["width:256px;padding:0.6rem 1rem;font-weight:400;word-break:break-word;background:", ";border-radius:12px;border:1px solid ", ";box-shadow:0 4px 8px 0 ", ";"], _ref => {
@@ -11724,15 +11763,15 @@ const TooltipContainer = _styled.div.withConfig({
   let {
     theme
   } = _ref3;
-  return transparentize(0.9, theme.shadow1);
+  return polished.transparentize(0.9, theme.shadow1);
 });
 function Tooltip(_ref4) {
   let {
     text,
     ...rest
   } = _ref4;
-  return /*#__PURE__*/jsx(Popover, {
-    content: /*#__PURE__*/jsx(TooltipContainer, {
+  return /*#__PURE__*/jsxRuntime.jsx(Popover, {
+    content: /*#__PURE__*/jsxRuntime.jsx(TooltipContainer, {
       children: text
     }),
     ...rest
@@ -11745,8 +11784,8 @@ function TooltipContent(_ref5) {
     wrap = false,
     ...rest
   } = _ref5;
-  return /*#__PURE__*/jsx(Popover, {
-    content: wrap ? /*#__PURE__*/jsx(TooltipContainer, {
+  return /*#__PURE__*/jsxRuntime.jsx(Popover, {
+    content: wrap ? /*#__PURE__*/jsxRuntime.jsx(TooltipContainer, {
       children: content
     }) : content,
     ...rest
@@ -11758,12 +11797,12 @@ function MouseoverTooltip(_ref6) {
     children,
     ...rest
   } = _ref6;
-  const [show, setShow] = useState(false);
-  const open = useCallback(() => setShow(true), [setShow]);
-  const close = useCallback(() => setShow(false), [setShow]);
-  return /*#__PURE__*/jsx(Tooltip, { ...rest,
+  const [show, setShow] = React.useState(false);
+  const open = React.useCallback(() => setShow(true), [setShow]);
+  const close = React.useCallback(() => setShow(false), [setShow]);
+  return /*#__PURE__*/jsxRuntime.jsx(Tooltip, { ...rest,
     show: show,
-    children: /*#__PURE__*/jsx("div", {
+    children: /*#__PURE__*/jsxRuntime.jsx("div", {
       onMouseEnter: open,
       onMouseLeave: close,
       children: children
@@ -11777,16 +11816,16 @@ function MouseoverTooltipContent(_ref7) {
     onOpen: openCallback = undefined,
     ...rest
   } = _ref7;
-  const [show, setShow] = useState(false);
-  const open = useCallback(() => {
+  const [show, setShow] = React.useState(false);
+  const open = React.useCallback(() => {
     setShow(true);
     openCallback === null || openCallback === void 0 ? void 0 : openCallback();
   }, [openCallback]);
-  const close = useCallback(() => setShow(false), [setShow]);
-  return /*#__PURE__*/jsx(TooltipContent, { ...rest,
+  const close = React.useCallback(() => setShow(false), [setShow]);
+  return /*#__PURE__*/jsxRuntime.jsx(TooltipContent, { ...rest,
     show: show,
     content: content,
-    children: /*#__PURE__*/jsx("div", {
+    children: /*#__PURE__*/jsxRuntime.jsx("div", {
       style: {
         display: 'inline-block',
         lineHeight: 0,
@@ -11799,7 +11838,7 @@ function MouseoverTooltipContent(_ref7) {
   });
 }
 
-const StyledPriceContainer = _styled.button.withConfig({
+const StyledPriceContainer = _styled__default["default"].button.withConfig({
   displayName: "TradePrice__StyledPriceContainer",
   componentId: "sc-19ug97y-0"
 })(["align-items:center;background-color:transparent;border:none;cursor:pointer;display:grid;height:24px;justify-content:center;padding:0;grid-template-columns:1fr auto;grid-gap:0.25rem;"]);
@@ -11812,7 +11851,7 @@ function TradePrice(_ref) {
     showInverted,
     setShowInverted
   } = _ref;
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   const usdcPrice = useUSDCPrice(showInverted ? price.baseCurrency : price.quoteCurrency);
   let formattedPrice;
 
@@ -11826,18 +11865,18 @@ function TradePrice(_ref) {
 
   const label = showInverted ? `${(_price$quoteCurrency = price.quoteCurrency) === null || _price$quoteCurrency === void 0 ? void 0 : _price$quoteCurrency.symbol}` : `${(_price$baseCurrency = price.baseCurrency) === null || _price$baseCurrency === void 0 ? void 0 : _price$baseCurrency.symbol} `;
   const labelInverted = showInverted ? `${(_price$baseCurrency2 = price.baseCurrency) === null || _price$baseCurrency2 === void 0 ? void 0 : _price$baseCurrency2.symbol} ` : `${(_price$quoteCurrency2 = price.quoteCurrency) === null || _price$quoteCurrency2 === void 0 ? void 0 : _price$quoteCurrency2.symbol}`;
-  const flipPrice = useCallback(() => setShowInverted(!showInverted), [setShowInverted, showInverted]);
+  const flipPrice = React.useCallback(() => setShowInverted(!showInverted), [setShowInverted, showInverted]);
   const text = `${(_ref2 = '1 ' + labelInverted + ' = ' + formattedPrice) !== null && _ref2 !== void 0 ? _ref2 : '-'} ${label}`;
-  return /*#__PURE__*/jsxs(StyledPriceContainer, {
+  return /*#__PURE__*/jsxRuntime.jsxs(StyledPriceContainer, {
     onClick: flipPrice,
     title: text,
-    children: [/*#__PURE__*/jsx(Text$1, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
       fontWeight: 500,
       fontSize: 14,
       color: theme.text1,
       children: text
-    }), ' ', usdcPrice && /*#__PURE__*/jsx(ThemedText.DarkGray, {
-      children: /*#__PURE__*/jsx(Trans, {
+    }), ' ', usdcPrice && /*#__PURE__*/jsxRuntime.jsx(ThemedText.DarkGray, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "(${0})",
         values: {
           0: usdcPrice.toSignificant(6, {
@@ -11849,11 +11888,11 @@ function TradePrice(_ref) {
   });
 }
 
-const Wrapper$d = _styled.div.withConfig({
+const Wrapper$d = _styled__default["default"].div.withConfig({
   displayName: "styleds__Wrapper",
   componentId: "sc-11ce2lf-0"
 })(["position:relative;padding:8px;"]);
-const ArrowWrapper$1 = _styled.div.withConfig({
+const ArrowWrapper$1 = _styled__default["default"].div.withConfig({
   displayName: "styleds__ArrowWrapper",
   componentId: "sc-11ce2lf-1"
 })(["padding:4px;border-radius:12px;height:32px;width:32px;position:relative;margin-top:-14px;margin-bottom:-14px;left:calc(50% - 16px);background-color:", ";border:4px solid ", ";z-index:2;", ""], _ref => {
@@ -11870,14 +11909,14 @@ const ArrowWrapper$1 = _styled.div.withConfig({
   let {
     clickable
   } = _ref3;
-  return clickable ? css`
+  return clickable ? _styled.css`
           :hover {
             cursor: pointer;
             opacity: 0.8;
           }
         ` : null;
 });
-const SectionBreak = _styled.div.withConfig({
+const SectionBreak = _styled__default["default"].div.withConfig({
   displayName: "styleds__SectionBreak",
   componentId: "sc-11ce2lf-2"
 })(["height:1px;width:100%;background-color:", ";"], _ref4 => {
@@ -11886,7 +11925,7 @@ const SectionBreak = _styled.div.withConfig({
   } = _ref4;
   return theme.bg3;
 });
-const ErrorText = _styled(Text$1).withConfig({
+const ErrorText = _styled__default["default"](rebass.Text).withConfig({
   displayName: "styleds__ErrorText",
   componentId: "sc-11ce2lf-3"
 })(["color:", ";"], _ref5 => {
@@ -11896,24 +11935,24 @@ const ErrorText = _styled(Text$1).withConfig({
   } = _ref5;
   return severity === 3 || severity === 4 ? theme.red1 : severity === 2 ? theme.yellow2 : severity === 1 ? theme.text1 : theme.text2;
 });
-const TruncatedText = _styled(Text$1).withConfig({
+const TruncatedText = _styled__default["default"](rebass.Text).withConfig({
   displayName: "styleds__TruncatedText",
   componentId: "sc-11ce2lf-4"
 })(["text-overflow:ellipsis;max-width:220px;overflow:hidden;text-align:right;"]); // styles
 
-const Dots = _styled.span.withConfig({
+const Dots = _styled__default["default"].span.withConfig({
   displayName: "styleds__Dots",
   componentId: "sc-11ce2lf-5"
 })(["&::after{display:inline-block;animation:ellipsis 1.25s infinite;content:'.';width:1em;text-align:left;}@keyframes ellipsis{0%{content:'.';}33%{content:'..';}66%{content:'...';}}"]);
 
-const SwapCallbackErrorInner = _styled.div.withConfig({
+const SwapCallbackErrorInner = _styled__default["default"].div.withConfig({
   displayName: "styleds__SwapCallbackErrorInner",
   componentId: "sc-11ce2lf-6"
 })(["background-color:", ";border-radius:1rem;display:flex;align-items:center;font-size:0.825rem;width:100%;padding:3rem 1.25rem 1rem 1rem;margin-top:-2rem;color:", ";z-index:-1;p{padding:0;margin:0;font-weight:500;}"], _ref6 => {
   let {
     theme
   } = _ref6;
-  return transparentize(0.9, theme.red1);
+  return polished.transparentize(0.9, theme.red1);
 }, _ref7 => {
   let {
     theme
@@ -11921,26 +11960,26 @@ const SwapCallbackErrorInner = _styled.div.withConfig({
   return theme.red1;
 });
 
-const SwapCallbackErrorInnerAlertTriangle = _styled.div.withConfig({
+const SwapCallbackErrorInnerAlertTriangle = _styled__default["default"].div.withConfig({
   displayName: "styleds__SwapCallbackErrorInnerAlertTriangle",
   componentId: "sc-11ce2lf-7"
 })(["background-color:", ";display:flex;align-items:center;justify-content:center;margin-right:12px;border-radius:12px;min-width:48px;height:48px;"], _ref8 => {
   let {
     theme
   } = _ref8;
-  return transparentize(0.9, theme.red1);
+  return polished.transparentize(0.9, theme.red1);
 });
 
 function SwapCallbackError(_ref9) {
   let {
     error
   } = _ref9;
-  return /*#__PURE__*/jsxs(SwapCallbackErrorInner, {
-    children: [/*#__PURE__*/jsx(SwapCallbackErrorInnerAlertTriangle, {
-      children: /*#__PURE__*/jsx(AlertTriangle, {
+  return /*#__PURE__*/jsxRuntime.jsxs(SwapCallbackErrorInner, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(SwapCallbackErrorInnerAlertTriangle, {
+      children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.AlertTriangle, {
         size: 24
       })
-    }), /*#__PURE__*/jsx("p", {
+    }), /*#__PURE__*/jsxRuntime.jsx("p", {
       style: {
         wordBreak: 'break-word'
       },
@@ -11948,21 +11987,21 @@ function SwapCallbackError(_ref9) {
     })]
   });
 }
-const SwapShowAcceptChanges = _styled(AutoColumn).withConfig({
+const SwapShowAcceptChanges = _styled__default["default"](AutoColumn).withConfig({
   displayName: "styleds__SwapShowAcceptChanges",
   componentId: "sc-11ce2lf-8"
 })(["background-color:", ";color:", ";padding:0.5rem;border-radius:12px;margin-top:8px;"], _ref10 => {
   let {
     theme
   } = _ref10;
-  return transparentize(0.95, theme.primary3);
+  return polished.transparentize(0.95, theme.primary3);
 }, _ref11 => {
   let {
     theme
   } = _ref11;
   return theme.primaryText1;
 });
-const TransactionDetailsLabel = _styled(ThemedText.Black).withConfig({
+const TransactionDetailsLabel = _styled__default["default"](ThemedText.Black).withConfig({
   displayName: "styleds__TransactionDetailsLabel",
   componentId: "sc-11ce2lf-9"
 })(["border-bottom:1px solid ", ";padding-bottom:0.5rem;"], _ref12 => {
@@ -11971,7 +12010,7 @@ const TransactionDetailsLabel = _styled(ThemedText.Black).withConfig({
   } = _ref12;
   return theme.bg2;
 });
-const ResponsiveTooltipContainer = _styled(TooltipContainer).withConfig({
+const ResponsiveTooltipContainer = _styled__default["default"](TooltipContainer).withConfig({
   displayName: "styleds__ResponsiveTooltipContainer",
   componentId: "sc-11ce2lf-10"
 })(["background-color:", ";border:1px solid ", ";padding:1rem;width:", ";", ""], _ref13 => {
@@ -11999,19 +12038,19 @@ const ResponsiveTooltipContainer = _styled(TooltipContainer).withConfig({
     transform-origin: ${origin !== null && origin !== void 0 ? origin : 'top left'};
   `;
 });
-_styled(TradePrice).withConfig({
+_styled__default["default"](TradePrice).withConfig({
   displayName: "styleds__StyledTradePrice",
   componentId: "sc-11ce2lf-11"
 })(["", ""], loadingOpacityMixin);
 
-const SOCKS = new Token(SupportedChainId.MAINNET, SOCKS_CONTROLLER_ADDRESSES[SupportedChainId.MAINNET], 0);
+const SOCKS = new sdkCore.Token(SupportedChainId.MAINNET, SOCKS_CONTROLLER_ADDRESSES[SupportedChainId.MAINNET], 0);
 function useHasSocks() {
   const {
     account,
     chainId
   } = useActiveWeb3React();
   const balance = useTokenBalance(account !== null && account !== void 0 ? account : undefined, chainId === SupportedChainId.MAINNET ? SOCKS : undefined);
-  return useMemo(() => Boolean(balance === null || balance === void 0 ? void 0 : balance.greaterThan(0)), [balance]);
+  return React.useMemo(() => Boolean(balance === null || balance === void 0 ? void 0 : balance.greaterThan(0)), [balance]);
 }
 
 var COINBASE_ICON_URL = "d13f13f5694ec91f.svg";
@@ -12066,9 +12105,9 @@ function uriToHttp(uri) {
 function useENSAvatar(address) {
   let enforceOwnership = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   const debouncedAddress = useDebounce(address, 200);
-  const node = useMemo(() => {
+  const node = React.useMemo(() => {
     if (!debouncedAddress || !isAddress(debouncedAddress)) return undefined;
-    return namehash(`${debouncedAddress.toLowerCase().substr(2)}.addr.reverse`);
+    return hash.namehash(`${debouncedAddress.toLowerCase().substr(2)}.addr.reverse`);
   }, [debouncedAddress]);
   const addressAvatar = useAvatarFromNode(node);
   const ENSName = useENSName(address).ENSName;
@@ -12078,7 +12117,7 @@ function useENSAvatar(address) {
   avatar = nftAvatar.avatar || avatar;
   const http = avatar && uriToHttp(avatar)[0];
   const changed = debouncedAddress !== address;
-  return useMemo(() => ({
+  return React.useMemo(() => ({
     avatar: changed ? null : http !== null && http !== void 0 ? http : null,
     loading: changed || addressAvatar.loading || nameAvatar.loading || nftAvatar.loading
   }), [addressAvatar.loading, changed, http, nameAvatar.loading, nftAvatar.loading]);
@@ -12087,14 +12126,14 @@ function useENSAvatar(address) {
 function useAvatarFromNode(node) {
   var _resolverAddress$resu;
 
-  const nodeArgument = useMemo(() => [node], [node]);
-  const textArgument = useMemo(() => [node, 'avatar'], [node]);
+  const nodeArgument = React.useMemo(() => [node], [node]);
+  const textArgument = React.useMemo(() => [node, 'avatar'], [node]);
   const registrarContract = useENSRegistrarContract(false);
   const resolverAddress = useSingleCallResult(registrarContract, 'resolver', nodeArgument);
   const resolverAddressResult = (_resolverAddress$resu = resolverAddress.result) === null || _resolverAddress$resu === void 0 ? void 0 : _resolverAddress$resu[0];
   const resolverContract = useENSResolverContract(resolverAddressResult && !isZero(resolverAddressResult) ? resolverAddressResult : undefined, false);
   const avatar = useSingleCallResult(resolverContract, 'text', textArgument);
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _avatar$result;
 
     return {
@@ -12121,9 +12160,9 @@ function useAvatarFromNFT() {
   const erc1155 = useERC1155Uri(isERC1155 ? contractAddress : undefined, id, enforceOwnership);
   const uri = erc721.uri || erc1155.uri;
   const http = uri && uriToHttp(uri)[0];
-  const [loading, setLoading] = useState(false);
-  const [avatar, setAvatar] = useState(undefined);
-  useEffect(() => {
+  const [loading, setLoading] = React.useState(false);
+  const [avatar, setAvatar] = React.useState(undefined);
+  React.useEffect(() => {
     setAvatar(undefined);
 
     if (http) {
@@ -12138,21 +12177,21 @@ function useAvatarFromNFT() {
       });
     }
   }, [http]);
-  return useMemo(() => ({
+  return React.useMemo(() => ({
     avatar,
     loading: erc721.loading || erc1155.loading || loading
   }), [avatar, erc1155.loading, erc721.loading, loading]);
 }
 
 function useERC721Uri(contractAddress, id, enforceOwnership) {
-  const idArgument = useMemo(() => [id], [id]);
+  const idArgument = React.useMemo(() => [id], [id]);
   const {
     account
   } = useActiveWeb3React();
   const contract = useERC721Contract(contractAddress);
   const owner = useSingleCallResult(contract, 'ownerOf', idArgument);
   const uri = useSingleCallResult(contract, 'tokenURI', idArgument);
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _owner$result, _uri$result;
 
     return {
@@ -12166,12 +12205,12 @@ function useERC1155Uri(contractAddress, id, enforceOwnership) {
   const {
     account
   } = useActiveWeb3React();
-  const idArgument = useMemo(() => [id], [id]);
-  const accountArgument = useMemo(() => [account || '', id], [account, id]);
+  const idArgument = React.useMemo(() => [id], [id]);
+  const accountArgument = React.useMemo(() => [account || '', id], [account, id]);
   const contract = useERC1155Contract(contractAddress);
   const balance = useSingleCallResult(contract, 'balanceOf', accountArgument);
   const uri = useSingleCallResult(contract, 'uri', idArgument);
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _balance$result, _uri$result2;
 
     return {
@@ -12181,7 +12220,7 @@ function useERC1155Uri(contractAddress, id, enforceOwnership) {
   }, [balance.loading, balance.result, enforceOwnership, uri.loading, uri.result]);
 }
 
-const StyledIdenticon = _styled.div.withConfig({
+const StyledIdenticon = _styled__default["default"].div.withConfig({
   displayName: "Identicon__StyledIdenticon",
   componentId: "sc-z4caw7-0"
 })(["height:1rem;width:1rem;border-radius:1.125rem;background-color:", ";font-size:initial;"], _ref => {
@@ -12191,7 +12230,7 @@ const StyledIdenticon = _styled.div.withConfig({
   return theme.bg4;
 });
 
-const StyledAvatar = _styled.img.withConfig({
+const StyledAvatar = _styled__default["default"].img.withConfig({
   displayName: "Identicon__StyledAvatar",
   componentId: "sc-z4caw7-1"
 })(["height:inherit;width:inherit;border-radius:inherit;"]);
@@ -12203,10 +12242,10 @@ function Identicon() {
   const {
     avatar
   } = useENSAvatar(account !== null && account !== void 0 ? account : undefined);
-  const [fetchable, setFetchable] = useState(true);
-  const icon = useMemo(() => account && jazzicon(16, parseInt(account.slice(2, 10), 16)), [account]);
-  const iconRef = useRef(null);
-  useLayoutEffect(() => {
+  const [fetchable, setFetchable] = React.useState(true);
+  const icon = React.useMemo(() => account && jazzicon__default["default"](16, parseInt(account.slice(2, 10), 16)), [account]);
+  const iconRef = React.useRef(null);
+  React.useLayoutEffect(() => {
     const current = iconRef.current;
 
     if (icon) {
@@ -12218,12 +12257,12 @@ function Identicon() {
 
     return;
   }, [icon, iconRef]);
-  return /*#__PURE__*/jsx(StyledIdenticon, {
-    children: avatar && fetchable ? /*#__PURE__*/jsx(StyledAvatar, {
+  return /*#__PURE__*/jsxRuntime.jsx(StyledIdenticon, {
+    children: avatar && fetchable ? /*#__PURE__*/jsxRuntime.jsx(StyledAvatar, {
       alt: "avatar",
       src: avatar,
       onError: () => setFetchable(false)
-    }) : /*#__PURE__*/jsx("span", {
+    }) : /*#__PURE__*/jsxRuntime.jsx("span", {
       ref: iconRef
     })
   });
@@ -12236,28 +12275,28 @@ function StatusIcon(_ref) {
 
   switch (connector) {
     case injected:
-      return /*#__PURE__*/jsx(Identicon, {});
+      return /*#__PURE__*/jsxRuntime.jsx(Identicon, {});
 
     case walletconnect:
-      return /*#__PURE__*/jsx("img", {
+      return /*#__PURE__*/jsxRuntime.jsx("img", {
         src: WALLETCONNECT_ICON_URL,
         alt: 'WalletConnect'
       });
 
     case walletlink:
-      return /*#__PURE__*/jsx("img", {
+      return /*#__PURE__*/jsxRuntime.jsx("img", {
         src: COINBASE_ICON_URL,
         alt: 'Coinbase Wallet'
       });
 
     case fortmatic:
-      return /*#__PURE__*/jsx("img", {
+      return /*#__PURE__*/jsxRuntime.jsx("img", {
         src: FORTMATIC_ICON_URL,
         alt: 'Fortmatic'
       });
 
     case portis:
-      return /*#__PURE__*/jsx("img", {
+      return /*#__PURE__*/jsxRuntime.jsx("img", {
         src: PORTIS_ICON_URL,
         alt: 'Portis'
       });
@@ -12273,7 +12312,7 @@ var _line$1, _line2;
 
 function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
 
-const SvgX = props => /*#__PURE__*/React.createElement("svg", _extends$4({
+const SvgX = props => /*#__PURE__*/React__namespace.createElement("svg", _extends$4({
   xmlns: "http://www.w3.org/2000/svg",
   width: 20,
   height: 20,
@@ -12284,12 +12323,12 @@ const SvgX = props => /*#__PURE__*/React.createElement("svg", _extends$4({
   strokeLinecap: "round",
   strokeLinejoin: "round",
   className: "feather feather-x"
-}, props), _line$1 || (_line$1 = /*#__PURE__*/React.createElement("line", {
+}, props), _line$1 || (_line$1 = /*#__PURE__*/React__namespace.createElement("line", {
   x1: 18,
   y1: 6,
   x2: 6,
   y2: 18
-})), _line2 || (_line2 = /*#__PURE__*/React.createElement("line", {
+})), _line2 || (_line2 = /*#__PURE__*/React__namespace.createElement("line", {
   x1: 6,
   y1: 6,
   x2: 18,
@@ -12365,9 +12404,9 @@ const SUPPORTED_WALLETS = {
 function usePrevious(value) {
   // The ref object is a generic container whose current property is mutable ...
   // ... and can hold any value, similar to an instance property on a class
-  const ref = useRef(); // Store current value in ref
+  const ref = React.useRef(); // Store current value in ref
 
-  useEffect(() => {
+  React.useEffect(() => {
     ref.current = value;
   }, [value]); // Only re-run if value changes
   // Return previous value (happens before update in useEffect above)
@@ -12377,12 +12416,12 @@ function usePrevious(value) {
 
 function useCopyClipboard() {
   let timeout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 500;
-  const [isCopied, setIsCopied] = useState(false);
-  const staticCopy = useCallback(text => {
-    const didCopy = copy(text);
+  const [isCopied, setIsCopied] = React.useState(false);
+  const staticCopy = React.useCallback(text => {
+    const didCopy = copy__default["default"](text);
     setIsCopied(didCopy);
   }, []);
-  useEffect(() => {
+  React.useEffect(() => {
     if (isCopied) {
       const hide = setTimeout(() => {
         setIsCopied(false);
@@ -12397,7 +12436,7 @@ function useCopyClipboard() {
   return [isCopied, staticCopy];
 }
 
-const CopyIcon = _styled(LinkStyledButton).withConfig({
+const CopyIcon = _styled__default["default"](LinkStyledButton).withConfig({
   displayName: "Copy__CopyIcon",
   componentId: "sc-jaq3xr-0"
 })(["color:", ";flex-shrink:0;display:flex;text-decoration:none;font-size:0.825rem;:hover,:active,:focus{text-decoration:none;color:", ";}"], _ref => {
@@ -12412,7 +12451,7 @@ const CopyIcon = _styled(LinkStyledButton).withConfig({
   return theme.text2;
 });
 
-const TransactionStatusText$1 = _styled.span.withConfig({
+const TransactionStatusText$1 = _styled__default["default"].span.withConfig({
   displayName: "Copy__TransactionStatusText",
   componentId: "sc-jaq3xr-1"
 })(["margin-left:0.25rem;font-size:0.825rem;", ";align-items:center;"], _ref3 => {
@@ -12424,18 +12463,18 @@ const TransactionStatusText$1 = _styled.span.withConfig({
 
 function CopyHelper(props) {
   const [isCopied, setCopied] = useCopyClipboard();
-  return /*#__PURE__*/jsxs(CopyIcon, {
+  return /*#__PURE__*/jsxRuntime.jsxs(CopyIcon, {
     onClick: () => setCopied(props.toCopy),
-    children: [isCopied ? /*#__PURE__*/jsxs(TransactionStatusText$1, {
-      children: [/*#__PURE__*/jsx(CheckCircle, {
+    children: [isCopied ? /*#__PURE__*/jsxRuntime.jsxs(TransactionStatusText$1, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.CheckCircle, {
         size: '16'
-      }), /*#__PURE__*/jsx(TransactionStatusText$1, {
-        children: /*#__PURE__*/jsx(Trans, {
+      }), /*#__PURE__*/jsxRuntime.jsx(TransactionStatusText$1, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Copied"
         })
       })]
-    }) : /*#__PURE__*/jsx(TransactionStatusText$1, {
-      children: /*#__PURE__*/jsx(Copy$1, {
+    }) : /*#__PURE__*/jsxRuntime.jsx(TransactionStatusText$1, {
+      children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.Copy, {
         size: '16'
       })
     }), isCopied ? '' : props.children]
@@ -12451,7 +12490,7 @@ let VoteOption;
 })(VoteOption || (VoteOption = {}));
 
 function formatAmount(amountRaw, decimals, sigFigs) {
-  return new Fraction(amountRaw, JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimals))).toSignificant(sigFigs);
+  return new sdkCore.Fraction(amountRaw, JSBI__default["default"].exponentiate(JSBI__default["default"].BigInt(10), JSBI__default["default"].BigInt(decimals))).toSignificant(sigFigs);
 }
 
 function FormattedCurrencyAmount(_ref) {
@@ -12461,7 +12500,7 @@ function FormattedCurrencyAmount(_ref) {
     decimals,
     sigFigs
   } = _ref;
-  return /*#__PURE__*/jsxs(Fragment, {
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
     children: [formatAmount(rawAmount, decimals, sigFigs), " ", symbol]
   });
 }
@@ -12475,7 +12514,7 @@ function FormattedCurrencyAmountManaged(_ref2) {
     sigFigs = 6
   } = _ref2;
   const currency = useCurrency(currencyId);
-  return currency ? /*#__PURE__*/jsx(FormattedCurrencyAmount, {
+  return currency ? /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmount, {
     rawAmount: rawAmount,
     decimals: currency.decimals,
     sigFigs: sigFigs,
@@ -12493,20 +12532,20 @@ function ClaimSummary(_ref3) {
   const {
     ENSName
   } = useENSName();
-  return typeof uniAmountRaw === 'string' ? /*#__PURE__*/jsx(Trans, {
+  return typeof uniAmountRaw === 'string' ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Claim <0/> for {0}",
     values: {
       0: ENSName !== null && ENSName !== void 0 ? ENSName : recipient
     },
     components: {
-      0: /*#__PURE__*/jsx(FormattedCurrencyAmount, {
+      0: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmount, {
         rawAmount: uniAmountRaw,
         symbol: 'UNI',
         decimals: 18,
         sigFigs: 4
       })
     }
-  }) : /*#__PURE__*/jsx(Trans, {
+  }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Claim UNI reward for {0}",
     values: {
       0: ENSName !== null && ENSName !== void 0 ? ENSName : recipient
@@ -12515,7 +12554,7 @@ function ClaimSummary(_ref3) {
 }
 
 function SubmitProposalTransactionSummary(_) {
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Submit new proposal"
   });
 }
@@ -12525,7 +12564,7 @@ function ApprovalSummary(_ref4) {
     info
   } = _ref4;
   const token = useToken(info.tokenAddress);
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Approve {0}",
     values: {
       0: token === null || token === void 0 ? void 0 : token.symbol
@@ -12542,7 +12581,7 @@ function VoteSummary(_ref5) {
   if (info.reason && info.reason.trim().length > 0) {
     switch (info.decision) {
       case VoteOption.For:
-        return /*#__PURE__*/jsx(Trans, {
+        return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Vote for proposal {proposalKey}",
           values: {
             proposalKey: proposalKey
@@ -12550,7 +12589,7 @@ function VoteSummary(_ref5) {
         });
 
       case VoteOption.Abstain:
-        return /*#__PURE__*/jsx(Trans, {
+        return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Vote to abstain on proposal {proposalKey}",
           values: {
             proposalKey: proposalKey
@@ -12558,7 +12597,7 @@ function VoteSummary(_ref5) {
         });
 
       case VoteOption.Against:
-        return /*#__PURE__*/jsx(Trans, {
+        return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Vote against proposal {proposalKey}",
           values: {
             proposalKey: proposalKey
@@ -12568,7 +12607,7 @@ function VoteSummary(_ref5) {
   } else {
     switch (info.decision) {
       case VoteOption.For:
-        return /*#__PURE__*/jsx(Trans, {
+        return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Vote for proposal {proposalKey} with reason \"{0}\"",
           values: {
             0: info.reason,
@@ -12577,7 +12616,7 @@ function VoteSummary(_ref5) {
         });
 
       case VoteOption.Abstain:
-        return /*#__PURE__*/jsx(Trans, {
+        return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Vote to abstain on proposal {proposalKey} with reason \"{0}\"",
           values: {
             0: info.reason,
@@ -12586,7 +12625,7 @@ function VoteSummary(_ref5) {
         });
 
       case VoteOption.Against:
-        return /*#__PURE__*/jsx(Trans, {
+        return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Vote against proposal {proposalKey} with reason \"{0}\"",
           values: {
             0: info.reason,
@@ -12606,7 +12645,7 @@ function DelegateSummary(_ref6) {
   const {
     ENSName
   } = useENSName(delegatee);
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Delegate voting power to {0}",
     values: {
       0: ENSName !== null && ENSName !== void 0 ? ENSName : delegatee
@@ -12623,10 +12662,10 @@ function WrapSummary(_ref7) {
   } = _ref7;
 
   if (unwrapped) {
-    return /*#__PURE__*/jsx(Trans, {
+    return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Unwrap <0/> to ETH",
       components: {
-        0: /*#__PURE__*/jsx(FormattedCurrencyAmount, {
+        0: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmount, {
           rawAmount: currencyAmountRaw,
           symbol: 'WETH',
           decimals: 18,
@@ -12635,10 +12674,10 @@ function WrapSummary(_ref7) {
       }
     });
   } else {
-    return /*#__PURE__*/jsx(Trans, {
+    return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Wrap <0/> to WETH",
       components: {
-        0: /*#__PURE__*/jsx(FormattedCurrencyAmount, {
+        0: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmount, {
           rawAmount: currencyAmountRaw,
           symbol: 'ETH',
           decimals: 18,
@@ -12652,13 +12691,13 @@ function WrapSummary(_ref7) {
 function DepositLiquidityStakingSummary(_) {
   // not worth rendering the tokens since you can should no longer deposit liquidity in the staking contracts
   // todo: deprecate and delete the code paths that allow this, show user more information
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Deposit liquidity"
   });
 }
 
 function WithdrawLiquidityStakingSummary(_) {
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Withdraw deposited liquidity"
   });
 }
@@ -12672,7 +12711,7 @@ function MigrateLiquidityToV3Summary(_ref8) {
   } = _ref8;
   const baseCurrency = useCurrency(baseCurrencyId);
   const quoteCurrency = useCurrency(quoteCurrencyId);
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Migrate {0}/{1} liquidity to V3",
     values: {
       0: baseCurrency === null || baseCurrency === void 0 ? void 0 : baseCurrency.symbol,
@@ -12690,7 +12729,7 @@ function CreateV3PoolSummary(_ref9) {
   } = _ref9;
   const baseCurrency = useCurrency(baseCurrencyId);
   const quoteCurrency = useCurrency(quoteCurrencyId);
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Create {0}/{1} V3 pool",
     values: {
       0: baseCurrency === null || baseCurrency === void 0 ? void 0 : baseCurrency.symbol,
@@ -12708,7 +12747,7 @@ function CollectFeesSummary(_ref10) {
   } = _ref10;
   const currency0 = useCurrency(currencyId0);
   const currency1 = useCurrency(currencyId1);
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Collect {0}/{1} fees",
     values: {
       0: currency0 === null || currency0 === void 0 ? void 0 : currency0.symbol,
@@ -12726,15 +12765,15 @@ function RemoveLiquidityV3Summary(_ref11) {
       expectedAmountQuoteRaw
     }
   } = _ref11;
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Remove <0/> and <1/>",
     components: {
-      0: /*#__PURE__*/jsx(FormattedCurrencyAmountManaged, {
+      0: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmountManaged, {
         rawAmount: expectedAmountBaseRaw,
         currencyId: baseCurrencyId,
         sigFigs: 3
       }),
-      1: /*#__PURE__*/jsx(FormattedCurrencyAmountManaged, {
+      1: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmountManaged, {
         rawAmount: expectedAmountQuoteRaw,
         currencyId: quoteCurrencyId,
         sigFigs: 3
@@ -12753,13 +12792,13 @@ function AddLiquidityV3PoolSummary(_ref12) {
   } = _ref12;
   const baseCurrency = useCurrency(baseCurrencyId);
   const quoteCurrency = useCurrency(quoteCurrencyId);
-  return createPool ? /*#__PURE__*/jsx(Trans, {
+  return createPool ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Create pool and add {0}/{1} V3 liquidity",
     values: {
       0: baseCurrency === null || baseCurrency === void 0 ? void 0 : baseCurrency.symbol,
       1: quoteCurrency === null || quoteCurrency === void 0 ? void 0 : quoteCurrency.symbol
     }
-  }) : /*#__PURE__*/jsx(Trans, {
+  }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Add {0}/{1} V3 liquidity",
     values: {
       0: baseCurrency === null || baseCurrency === void 0 ? void 0 : baseCurrency.symbol,
@@ -12777,15 +12816,15 @@ function AddLiquidityV2PoolSummary(_ref13) {
       baseCurrencyId
     }
   } = _ref13;
-  return /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Add <0/> and <1/> to Uniswap V2",
     components: {
-      0: /*#__PURE__*/jsx(FormattedCurrencyAmountManaged, {
+      0: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmountManaged, {
         rawAmount: expectedAmountBaseRaw,
         currencyId: baseCurrencyId,
         sigFigs: 3
       }),
-      1: /*#__PURE__*/jsx(FormattedCurrencyAmountManaged, {
+      1: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmountManaged, {
         rawAmount: expectedAmountQuoteRaw,
         currencyId: quoteCurrencyId,
         sigFigs: 3
@@ -12799,16 +12838,16 @@ function SwapSummary(_ref14) {
     info
   } = _ref14;
 
-  if (info.tradeType === TradeType.EXACT_INPUT) {
-    return /*#__PURE__*/jsx(Trans, {
+  if (info.tradeType === sdkCore.TradeType.EXACT_INPUT) {
+    return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Swap exactly <0/> for <1/>",
       components: {
-        0: /*#__PURE__*/jsx(FormattedCurrencyAmountManaged, {
+        0: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmountManaged, {
           rawAmount: info.inputCurrencyAmountRaw,
           currencyId: info.inputCurrencyId,
           sigFigs: 6
         }),
-        1: /*#__PURE__*/jsx(FormattedCurrencyAmountManaged, {
+        1: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmountManaged, {
           rawAmount: info.expectedOutputCurrencyAmountRaw,
           currencyId: info.outputCurrencyId,
           sigFigs: 6
@@ -12816,15 +12855,15 @@ function SwapSummary(_ref14) {
       }
     });
   } else {
-    return /*#__PURE__*/jsx(Trans, {
+    return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Swap <0/> for exactly <1/>",
       components: {
-        0: /*#__PURE__*/jsx(FormattedCurrencyAmountManaged, {
+        0: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmountManaged, {
           rawAmount: info.expectedInputCurrencyAmountRaw,
           currencyId: info.inputCurrencyId,
           sigFigs: 6
         }),
-        1: /*#__PURE__*/jsx(FormattedCurrencyAmountManaged, {
+        1: /*#__PURE__*/jsxRuntime.jsx(FormattedCurrencyAmountManaged, {
           rawAmount: info.outputCurrencyAmountRaw,
           currencyId: info.outputCurrencyId,
           sigFigs: 6
@@ -12841,88 +12880,88 @@ function TransactionSummary(_ref15) {
 
   switch (info.type) {
     case TransactionType.ADD_LIQUIDITY_V3_POOL:
-      return /*#__PURE__*/jsx(AddLiquidityV3PoolSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(AddLiquidityV3PoolSummary, {
         info: info
       });
 
     case TransactionType.ADD_LIQUIDITY_V2_POOL:
-      return /*#__PURE__*/jsx(AddLiquidityV2PoolSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(AddLiquidityV2PoolSummary, {
         info: info
       });
 
     case TransactionType.CLAIM:
-      return /*#__PURE__*/jsx(ClaimSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(ClaimSummary, {
         info: info
       });
 
     case TransactionType.DEPOSIT_LIQUIDITY_STAKING:
-      return /*#__PURE__*/jsx(DepositLiquidityStakingSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(DepositLiquidityStakingSummary, {
         info: info
       });
 
     case TransactionType.WITHDRAW_LIQUIDITY_STAKING:
-      return /*#__PURE__*/jsx(WithdrawLiquidityStakingSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(WithdrawLiquidityStakingSummary, {
         info: info
       });
 
     case TransactionType.SWAP:
-      return /*#__PURE__*/jsx(SwapSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(SwapSummary, {
         info: info
       });
 
     case TransactionType.APPROVAL:
-      return /*#__PURE__*/jsx(ApprovalSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(ApprovalSummary, {
         info: info
       });
 
     case TransactionType.VOTE:
-      return /*#__PURE__*/jsx(VoteSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(VoteSummary, {
         info: info
       });
 
     case TransactionType.DELEGATE:
-      return /*#__PURE__*/jsx(DelegateSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(DelegateSummary, {
         info: info
       });
 
     case TransactionType.WRAP:
-      return /*#__PURE__*/jsx(WrapSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(WrapSummary, {
         info: info
       });
 
     case TransactionType.CREATE_V3_POOL:
-      return /*#__PURE__*/jsx(CreateV3PoolSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(CreateV3PoolSummary, {
         info: info
       });
 
     case TransactionType.MIGRATE_LIQUIDITY_V3:
-      return /*#__PURE__*/jsx(MigrateLiquidityToV3Summary, {
+      return /*#__PURE__*/jsxRuntime.jsx(MigrateLiquidityToV3Summary, {
         info: info
       });
 
     case TransactionType.COLLECT_FEES:
-      return /*#__PURE__*/jsx(CollectFeesSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(CollectFeesSummary, {
         info: info
       });
 
     case TransactionType.REMOVE_LIQUIDITY_V3:
-      return /*#__PURE__*/jsx(RemoveLiquidityV3Summary, {
+      return /*#__PURE__*/jsxRuntime.jsx(RemoveLiquidityV3Summary, {
         info: info
       });
 
     case TransactionType.SUBMIT_PROPOSAL:
-      return /*#__PURE__*/jsx(SubmitProposalTransactionSummary, {
+      return /*#__PURE__*/jsxRuntime.jsx(SubmitProposalTransactionSummary, {
         info: info
       });
   }
 }
 
-const TransactionStatusText = _styled.div.withConfig({
+const TransactionStatusText = _styled__default["default"].div.withConfig({
   displayName: "Transaction__TransactionStatusText",
   componentId: "sc-1epcs64-0"
 })(["margin-right:0.5rem;display:flex;align-items:center;:hover{text-decoration:underline;}"]);
 
-const TransactionState = _styled(ExternalLink).withConfig({
+const TransactionState = _styled__default["default"](ExternalLink).withConfig({
   displayName: "Transaction__TransactionState",
   componentId: "sc-1epcs64-1"
 })(["display:flex;justify-content:space-between;align-items:center;text-decoration:none !important;border-radius:0.5rem;padding:0.25rem 0rem;font-weight:500;font-size:0.825rem;color:", ";"], _ref => {
@@ -12932,7 +12971,7 @@ const TransactionState = _styled(ExternalLink).withConfig({
   return theme.primary1;
 });
 
-const IconWrapper$3 = _styled.div.withConfig({
+const IconWrapper$3 = _styled__default["default"].div.withConfig({
   displayName: "Transaction__IconWrapper",
   componentId: "sc-1epcs64-2"
 })(["color:", ";"], _ref2 => {
@@ -12959,23 +12998,23 @@ function Transaction(_ref3) {
   const pending = !(tx !== null && tx !== void 0 && tx.receipt);
   const success = !pending && tx && (((_tx$receipt = tx.receipt) === null || _tx$receipt === void 0 ? void 0 : _tx$receipt.status) === 1 || typeof ((_tx$receipt2 = tx.receipt) === null || _tx$receipt2 === void 0 ? void 0 : _tx$receipt2.status) === 'undefined');
   if (!chainId) return null;
-  return /*#__PURE__*/jsx("div", {
-    children: /*#__PURE__*/jsxs(TransactionState, {
+  return /*#__PURE__*/jsxRuntime.jsx("div", {
+    children: /*#__PURE__*/jsxRuntime.jsxs(TransactionState, {
       href: getExplorerLink(chainId, hash, ExplorerDataType.TRANSACTION),
       pending: pending,
       success: success,
-      children: [/*#__PURE__*/jsx(RowFixed, {
-        children: /*#__PURE__*/jsxs(TransactionStatusText, {
-          children: [/*#__PURE__*/jsx(TransactionSummary, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(RowFixed, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(TransactionStatusText, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(TransactionSummary, {
             info: info
           }), " \u2197"]
         })
-      }), /*#__PURE__*/jsx(IconWrapper$3, {
+      }), /*#__PURE__*/jsxRuntime.jsx(IconWrapper$3, {
         pending: pending,
         success: success,
-        children: pending ? /*#__PURE__*/jsx(Loader, {}) : success ? /*#__PURE__*/jsx(CheckCircle, {
+        children: pending ? /*#__PURE__*/jsxRuntime.jsx(Loader, {}) : success ? /*#__PURE__*/jsxRuntime.jsx(reactFeather.CheckCircle, {
           size: "16"
-        }) : /*#__PURE__*/jsx(Triangle, {
+        }) : /*#__PURE__*/jsxRuntime.jsx(reactFeather.Triangle, {
           size: "16"
         })
       })]
@@ -12983,7 +13022,7 @@ function Transaction(_ref3) {
   });
 }
 
-const HeaderRow$1 = _styled.div.withConfig({
+const HeaderRow$1 = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__HeaderRow",
   componentId: "sc-1ir7xlr-0"
 })(["", ";padding:1rem 1rem;font-weight:500;color:", ";", ";"], _ref => {
@@ -13005,12 +13044,12 @@ const HeaderRow$1 = _styled.div.withConfig({
   `;
 });
 
-const UpperSection$1 = _styled.div.withConfig({
+const UpperSection$1 = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__UpperSection",
   componentId: "sc-1ir7xlr-1"
 })(["position:relative;h5{margin:0;margin-bottom:0.5rem;font-size:1rem;font-weight:400;}h5:last-child{margin-bottom:0px;}h4{margin-top:0;font-weight:500;}"]);
 
-const InfoCard$1 = _styled.div.withConfig({
+const InfoCard$1 = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__InfoCard",
   componentId: "sc-1ir7xlr-2"
 })(["padding:1rem;border:1px solid ", ";border-radius:20px;position:relative;display:grid;grid-row-gap:12px;margin-bottom:20px;"], _ref4 => {
@@ -13020,7 +13059,7 @@ const InfoCard$1 = _styled.div.withConfig({
   return theme.bg3;
 });
 
-const AccountGroupingRow = _styled.div.withConfig({
+const AccountGroupingRow = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__AccountGroupingRow",
   componentId: "sc-1ir7xlr-3"
 })(["", ";justify-content:space-between;align-items:center;font-weight:400;color:", ";div{", " align-items:center;}"], _ref5 => {
@@ -13040,7 +13079,7 @@ const AccountGroupingRow = _styled.div.withConfig({
   return theme.flexRowNoWrap;
 });
 
-const AccountSection = _styled.div.withConfig({
+const AccountSection = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__AccountSection",
   componentId: "sc-1ir7xlr-4"
 })(["padding:0rem 1rem;", ";"], _ref8 => {
@@ -13050,12 +13089,12 @@ const AccountSection = _styled.div.withConfig({
   return theme.mediaWidth.upToMedium`padding: 0rem 1rem 1.5rem 1rem;`;
 });
 
-const YourAccount = _styled.div.withConfig({
+const YourAccount = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__YourAccount",
   componentId: "sc-1ir7xlr-5"
 })(["h5{margin:0 0 1rem 0;font-weight:400;}h4{margin:0;font-weight:500;}"]);
 
-const LowerSection = _styled.div.withConfig({
+const LowerSection = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__LowerSection",
   componentId: "sc-1ir7xlr-6"
 })(["", " padding:1.5rem;flex-grow:1;overflow:auto;background-color:", ";border-bottom-left-radius:20px;border-bottom-right-radius:20px;h5{margin:0;font-weight:400;color:", ";}"], _ref9 => {
@@ -13075,12 +13114,12 @@ const LowerSection = _styled.div.withConfig({
   return theme.text3;
 });
 
-const AccountControl = _styled.div.withConfig({
+const AccountControl = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__AccountControl",
   componentId: "sc-1ir7xlr-7"
 })(["display:flex;justify-content:space-between;min-width:0;width:100%;font-weight:500;font-size:1.25rem;a:hover{text-decoration:underline;}p{min-width:0;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}"]);
 
-const AddressLink = _styled(ExternalLink).withConfig({
+const AddressLink = _styled__default["default"](ExternalLink).withConfig({
   displayName: "AccountDetails__AddressLink",
   componentId: "sc-1ir7xlr-8"
 })(["font-size:0.825rem;color:", ";margin-left:1rem;font-size:0.825rem;display:flex;:hover{color:", ";}"], _ref12 => {
@@ -13095,12 +13134,12 @@ const AddressLink = _styled(ExternalLink).withConfig({
   return theme.text2;
 });
 
-const CloseIcon$2 = _styled.div.withConfig({
+const CloseIcon$2 = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__CloseIcon",
   componentId: "sc-1ir7xlr-9"
 })(["position:absolute;right:1rem;top:14px;&:hover{cursor:pointer;opacity:0.6;}"]);
 
-const CloseColor$1 = _styled(SvgX).withConfig({
+const CloseColor$1 = _styled__default["default"](SvgX).withConfig({
   displayName: "AccountDetails__CloseColor",
   componentId: "sc-1ir7xlr-10"
 })(["path{stroke:", ";}"], _ref14 => {
@@ -13110,7 +13149,7 @@ const CloseColor$1 = _styled(SvgX).withConfig({
   return theme.text4;
 });
 
-const WalletName = _styled.div.withConfig({
+const WalletName = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__WalletName",
   componentId: "sc-1ir7xlr-11"
 })(["width:initial;font-size:0.825rem;font-weight:500;color:", ";"], _ref15 => {
@@ -13120,7 +13159,7 @@ const WalletName = _styled.div.withConfig({
   return theme.text3;
 });
 
-const IconWrapper$2 = _styled.div.withConfig({
+const IconWrapper$2 = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__IconWrapper",
   componentId: "sc-1ir7xlr-12"
 })(["", ";align-items:center;justify-content:center;margin-right:8px;& > img,span{height:", ";width:", ";}", ";"], _ref16 => {
@@ -13151,22 +13190,22 @@ function WrappedStatusIcon$1(_ref20) {
   let {
     connector
   } = _ref20;
-  return /*#__PURE__*/jsxs(IconWrapper$2, {
+  return /*#__PURE__*/jsxRuntime.jsxs(IconWrapper$2, {
     size: 16,
-    children: [/*#__PURE__*/jsx(StatusIcon, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(StatusIcon, {
       connector: connector
-    }), connector === portis && /*#__PURE__*/jsx(MainWalletAction, {
+    }), connector === portis && /*#__PURE__*/jsxRuntime.jsx(MainWalletAction, {
       onClick: () => {
         portis.portis.showPortis();
       },
-      children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Show Portis"
       })
     })]
   });
 }
 
-const TransactionListWrapper = _styled.div.withConfig({
+const TransactionListWrapper = _styled__default["default"].div.withConfig({
   displayName: "AccountDetails__TransactionListWrapper",
   componentId: "sc-1ir7xlr-13"
 })(["", ";"], _ref21 => {
@@ -13176,12 +13215,12 @@ const TransactionListWrapper = _styled.div.withConfig({
   return theme.flexColumnNoWrap;
 });
 
-const WalletAction = _styled(ButtonSecondary).withConfig({
+const WalletAction = _styled__default["default"](ButtonSecondary).withConfig({
   displayName: "AccountDetails__WalletAction",
   componentId: "sc-1ir7xlr-14"
 })(["width:fit-content;font-weight:400;margin-left:8px;font-size:0.825rem;padding:4px 6px;:hover{cursor:pointer;text-decoration:underline;}"]);
 
-const MainWalletAction = _styled(WalletAction).withConfig({
+const MainWalletAction = _styled__default["default"](WalletAction).withConfig({
   displayName: "AccountDetails__MainWalletAction",
   componentId: "sc-1ir7xlr-15"
 })(["color:", ";"], _ref22 => {
@@ -13192,9 +13231,9 @@ const MainWalletAction = _styled(WalletAction).withConfig({
 });
 
 function renderTransactions(transactions) {
-  return /*#__PURE__*/jsx(TransactionListWrapper, {
+  return /*#__PURE__*/jsxRuntime.jsx(TransactionListWrapper, {
     children: transactions.map((hash, i) => {
-      return /*#__PURE__*/jsx(Transaction, {
+      return /*#__PURE__*/jsxRuntime.jsx(Transaction, {
         hash: hash
       }, i);
     })
@@ -13214,7 +13253,7 @@ function AccountDetails(_ref23) {
     account,
     connector
   } = useActiveWeb3React();
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   const dispatch = useAppDispatch();
 
   function formatConnectorName() {
@@ -13223,8 +13262,8 @@ function AccountDetails(_ref23) {
     } = window;
     const isMetaMask = !!(ethereum && ethereum.isMetaMask);
     const name = Object.keys(SUPPORTED_WALLETS).filter(k => SUPPORTED_WALLETS[k].connector === connector && (connector !== injected || isMetaMask === (k === 'METAMASK'))).map(k => SUPPORTED_WALLETS[k].name)[0];
-    return /*#__PURE__*/jsx(WalletName, {
-      children: /*#__PURE__*/jsx(Trans, {
+    return /*#__PURE__*/jsxRuntime.jsx(WalletName, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Connected with {name}",
         values: {
           name: name
@@ -13233,26 +13272,26 @@ function AccountDetails(_ref23) {
     });
   }
 
-  const clearAllTransactionsCallback = useCallback(() => {
+  const clearAllTransactionsCallback = React.useCallback(() => {
     if (chainId) dispatch(clearAllTransactions({
       chainId
     }));
   }, [dispatch, chainId]);
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsxs(UpperSection$1, {
-      children: [/*#__PURE__*/jsx(CloseIcon$2, {
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(UpperSection$1, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CloseIcon$2, {
         onClick: toggleWalletModal,
-        children: /*#__PURE__*/jsx(CloseColor$1, {})
-      }), /*#__PURE__*/jsx(HeaderRow$1, {
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(CloseColor$1, {})
+      }), /*#__PURE__*/jsxRuntime.jsx(HeaderRow$1, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Account"
         })
-      }), /*#__PURE__*/jsx(AccountSection, {
-        children: /*#__PURE__*/jsx(YourAccount, {
-          children: /*#__PURE__*/jsxs(InfoCard$1, {
-            children: [/*#__PURE__*/jsxs(AccountGroupingRow, {
-              children: [formatConnectorName(), /*#__PURE__*/jsxs("div", {
-                children: [connector !== injected && connector !== walletlink && /*#__PURE__*/jsx(WalletAction, {
+      }), /*#__PURE__*/jsxRuntime.jsx(AccountSection, {
+        children: /*#__PURE__*/jsxRuntime.jsx(YourAccount, {
+          children: /*#__PURE__*/jsxRuntime.jsxs(InfoCard$1, {
+            children: [/*#__PURE__*/jsxRuntime.jsxs(AccountGroupingRow, {
+              children: [formatConnectorName(), /*#__PURE__*/jsxRuntime.jsxs("div", {
+                children: [connector !== injected && connector !== walletlink && /*#__PURE__*/jsxRuntime.jsx(WalletAction, {
                   style: {
                     fontSize: '.825rem',
                     fontWeight: 400,
@@ -13261,10 +13300,10 @@ function AccountDetails(_ref23) {
                   onClick: () => {
                     connector.close();
                   },
-                  children: /*#__PURE__*/jsx(Trans, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Disconnect"
                   })
-                }), /*#__PURE__*/jsx(WalletAction, {
+                }), /*#__PURE__*/jsxRuntime.jsx(WalletAction, {
                   style: {
                     fontSize: '.825rem',
                     fontWeight: 400
@@ -13272,87 +13311,87 @@ function AccountDetails(_ref23) {
                   onClick: () => {
                     openOptions();
                   },
-                  children: /*#__PURE__*/jsx(Trans, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Change"
                   })
                 })]
               })]
-            }), /*#__PURE__*/jsx(AccountGroupingRow, {
+            }), /*#__PURE__*/jsxRuntime.jsx(AccountGroupingRow, {
               id: "web3-account-identifier-row",
-              children: /*#__PURE__*/jsx(AccountControl, {
-                children: ENSName ? /*#__PURE__*/jsx(Fragment, {
-                  children: /*#__PURE__*/jsxs("div", {
-                    children: [connector && /*#__PURE__*/jsx(WrappedStatusIcon$1, {
+              children: /*#__PURE__*/jsxRuntime.jsx(AccountControl, {
+                children: ENSName ? /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
+                  children: /*#__PURE__*/jsxRuntime.jsxs("div", {
+                    children: [connector && /*#__PURE__*/jsxRuntime.jsx(WrappedStatusIcon$1, {
                       connector: connector
-                    }), /*#__PURE__*/jsxs("p", {
+                    }), /*#__PURE__*/jsxRuntime.jsxs("p", {
                       children: [" ", ENSName]
                     })]
                   })
-                }) : /*#__PURE__*/jsx(Fragment, {
-                  children: /*#__PURE__*/jsxs("div", {
-                    children: [connector && /*#__PURE__*/jsx(WrappedStatusIcon$1, {
+                }) : /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
+                  children: /*#__PURE__*/jsxRuntime.jsxs("div", {
+                    children: [connector && /*#__PURE__*/jsxRuntime.jsx(WrappedStatusIcon$1, {
                       connector: connector
-                    }), /*#__PURE__*/jsxs("p", {
+                    }), /*#__PURE__*/jsxRuntime.jsxs("p", {
                       children: [" ", account && shortenAddress(account)]
                     })]
                   })
                 })
               })
-            }), /*#__PURE__*/jsx(AccountGroupingRow, {
-              children: ENSName ? /*#__PURE__*/jsx(Fragment, {
-                children: /*#__PURE__*/jsx(AccountControl, {
-                  children: /*#__PURE__*/jsxs("div", {
-                    children: [account && /*#__PURE__*/jsx(CopyHelper, {
+            }), /*#__PURE__*/jsxRuntime.jsx(AccountGroupingRow, {
+              children: ENSName ? /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
+                children: /*#__PURE__*/jsxRuntime.jsx(AccountControl, {
+                  children: /*#__PURE__*/jsxRuntime.jsxs("div", {
+                    children: [account && /*#__PURE__*/jsxRuntime.jsx(CopyHelper, {
                       toCopy: account,
-                      children: /*#__PURE__*/jsx("span", {
+                      children: /*#__PURE__*/jsxRuntime.jsx("span", {
                         style: {
                           marginLeft: '4px'
                         },
-                        children: /*#__PURE__*/jsx(Trans, {
+                        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                           id: "Copy Address"
                         })
                       })
-                    }), chainId && account && /*#__PURE__*/jsxs(AddressLink, {
+                    }), chainId && account && /*#__PURE__*/jsxRuntime.jsxs(AddressLink, {
                       hasENS: !!ENSName,
                       isENS: true,
                       href: getExplorerLink(chainId, ENSName, ExplorerDataType.ADDRESS),
-                      children: [/*#__PURE__*/jsx(ExternalLink$1, {
+                      children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.ExternalLink, {
                         size: 16
-                      }), /*#__PURE__*/jsx("span", {
+                      }), /*#__PURE__*/jsxRuntime.jsx("span", {
                         style: {
                           marginLeft: '4px'
                         },
-                        children: /*#__PURE__*/jsx(Trans, {
+                        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                           id: "View on Explorer"
                         })
                       })]
                     })]
                   })
                 })
-              }) : /*#__PURE__*/jsx(Fragment, {
-                children: /*#__PURE__*/jsx(AccountControl, {
-                  children: /*#__PURE__*/jsxs("div", {
-                    children: [account && /*#__PURE__*/jsx(CopyHelper, {
+              }) : /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
+                children: /*#__PURE__*/jsxRuntime.jsx(AccountControl, {
+                  children: /*#__PURE__*/jsxRuntime.jsxs("div", {
+                    children: [account && /*#__PURE__*/jsxRuntime.jsx(CopyHelper, {
                       toCopy: account,
-                      children: /*#__PURE__*/jsx("span", {
+                      children: /*#__PURE__*/jsxRuntime.jsx("span", {
                         style: {
                           marginLeft: '4px'
                         },
-                        children: /*#__PURE__*/jsx(Trans, {
+                        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                           id: "Copy Address"
                         })
                       })
-                    }), chainId && account && /*#__PURE__*/jsxs(AddressLink, {
+                    }), chainId && account && /*#__PURE__*/jsxRuntime.jsxs(AddressLink, {
                       hasENS: !!ENSName,
                       isENS: false,
                       href: getExplorerLink(chainId, account, ExplorerDataType.ADDRESS),
-                      children: [/*#__PURE__*/jsx(ExternalLink$1, {
+                      children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.ExternalLink, {
                         size: 16
-                      }), /*#__PURE__*/jsx("span", {
+                      }), /*#__PURE__*/jsxRuntime.jsx("span", {
                         style: {
                           marginLeft: '4px'
                         },
-                        children: /*#__PURE__*/jsx(Trans, {
+                        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                           id: "View on Explorer"
                         })
                       })]
@@ -13364,27 +13403,27 @@ function AccountDetails(_ref23) {
           })
         })
       })]
-    }), !!pendingTransactions.length || !!confirmedTransactions.length ? /*#__PURE__*/jsxs(LowerSection, {
-      children: [/*#__PURE__*/jsxs(AutoRow, {
+    }), !!pendingTransactions.length || !!confirmedTransactions.length ? /*#__PURE__*/jsxRuntime.jsxs(LowerSection, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
         mb: '1rem',
         style: {
           justifyContent: 'space-between'
         },
-        children: [/*#__PURE__*/jsx(ThemedText.Body, {
-          children: /*#__PURE__*/jsx(Trans, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Recent Transactions"
           })
-        }), /*#__PURE__*/jsx(LinkStyledButton, {
+        }), /*#__PURE__*/jsxRuntime.jsx(LinkStyledButton, {
           onClick: clearAllTransactionsCallback,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "(clear all)"
           })
         })]
       }), renderTransactions(pendingTransactions), renderTransactions(confirmedTransactions)]
-    }) : /*#__PURE__*/jsx(LowerSection, {
-      children: /*#__PURE__*/jsx(ThemedText.Body, {
+    }) : /*#__PURE__*/jsxRuntime.jsx(LowerSection, {
+      children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
         color: theme.text1,
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Your transactions will appear here..."
         })
       })
@@ -13392,7 +13431,7 @@ function AccountDetails(_ref23) {
   });
 }
 
-const InfoCard = _styled.button.withConfig({
+const InfoCard = _styled__default["default"].button.withConfig({
   displayName: "Option__InfoCard",
   componentId: "sc-us24id-0"
 })(["background-color:", ";padding:1rem;outline:none;border:1px solid;border-radius:12px;width:100% !important;&:focus{box-shadow:0 0 0 1px ", ";}border-color:", ";"], _ref => {
@@ -13414,12 +13453,12 @@ const InfoCard = _styled.button.withConfig({
   return active ? 'transparent' : theme.bg3;
 });
 
-const OptionCard = _styled(InfoCard).withConfig({
+const OptionCard = _styled__default["default"](InfoCard).withConfig({
   displayName: "Option__OptionCard",
   componentId: "sc-us24id-1"
 })(["display:flex;flex-direction:row;align-items:center;justify-content:space-between;margin-top:2rem;padding:1rem;"]);
 
-const OptionCardLeft = _styled.div.withConfig({
+const OptionCardLeft = _styled__default["default"].div.withConfig({
   displayName: "Option__OptionCardLeft",
   componentId: "sc-us24id-2"
 })(["", ";justify-content:center;height:100%;"], _ref4 => {
@@ -13429,7 +13468,7 @@ const OptionCardLeft = _styled.div.withConfig({
   return theme.flexColumnNoWrap;
 });
 
-const OptionCardClickable = _styled(OptionCard).withConfig({
+const OptionCardClickable = _styled__default["default"](OptionCard).withConfig({
   displayName: "Option__OptionCardClickable",
   componentId: "sc-us24id-3"
 })(["margin-top:0;&:hover{cursor:", ";border:", ";}opacity:", ";"], _ref5 => {
@@ -13450,7 +13489,7 @@ const OptionCardClickable = _styled(OptionCard).withConfig({
   return disabled ? '0.5' : '1';
 });
 
-const GreenCircle = _styled.div.withConfig({
+const GreenCircle = _styled__default["default"].div.withConfig({
   displayName: "Option__GreenCircle",
   componentId: "sc-us24id-4"
 })(["", " justify-content:center;align-items:center;&:first-child{height:8px;width:8px;margin-right:8px;background-color:", ";border-radius:50%;}"], _ref8 => {
@@ -13465,7 +13504,7 @@ const GreenCircle = _styled.div.withConfig({
   return theme.green1;
 });
 
-const CircleWrapper = _styled.div.withConfig({
+const CircleWrapper = _styled__default["default"].div.withConfig({
   displayName: "Option__CircleWrapper",
   componentId: "sc-us24id-5"
 })(["color:", ";display:flex;justify-content:center;align-items:center;"], _ref10 => {
@@ -13475,7 +13514,7 @@ const CircleWrapper = _styled.div.withConfig({
   return theme.green1;
 });
 
-const HeaderText = _styled.div.withConfig({
+const HeaderText = _styled__default["default"].div.withConfig({
   displayName: "Option__HeaderText",
   componentId: "sc-us24id-6"
 })(["", ";color:", ";font-size:1rem;font-weight:500;"], _ref11 => {
@@ -13495,7 +13534,7 @@ const HeaderText = _styled.div.withConfig({
   return theme.text1;
 });
 
-const SubHeader = _styled.div.withConfig({
+const SubHeader = _styled__default["default"].div.withConfig({
   displayName: "Option__SubHeader",
   componentId: "sc-us24id-7"
 })(["color:", ";margin-top:10px;font-size:12px;"], _ref14 => {
@@ -13505,7 +13544,7 @@ const SubHeader = _styled.div.withConfig({
   return theme.text1;
 });
 
-const IconWrapper$1 = _styled.div.withConfig({
+const IconWrapper$1 = _styled__default["default"].div.withConfig({
   displayName: "Option__IconWrapper",
   componentId: "sc-us24id-8"
 })(["", ";align-items:center;justify-content:center;& > img,span{height:", ";width:", ";}", ";"], _ref15 => {
@@ -13546,25 +13585,25 @@ function Option$1(_ref19) {
     id
   } = _ref19;
 
-  const content = /*#__PURE__*/jsxs(OptionCardClickable, {
+  const content = /*#__PURE__*/jsxRuntime.jsxs(OptionCardClickable, {
     id: id,
     onClick: onClick,
     clickable: clickable && !active,
     active: active,
-    children: [/*#__PURE__*/jsxs(OptionCardLeft, {
-      children: [/*#__PURE__*/jsxs(HeaderText, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(OptionCardLeft, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(HeaderText, {
         color: color,
-        children: [active ? /*#__PURE__*/jsx(CircleWrapper, {
-          children: /*#__PURE__*/jsx(GreenCircle, {
-            children: /*#__PURE__*/jsx("div", {})
+        children: [active ? /*#__PURE__*/jsxRuntime.jsx(CircleWrapper, {
+          children: /*#__PURE__*/jsxRuntime.jsx(GreenCircle, {
+            children: /*#__PURE__*/jsxRuntime.jsx("div", {})
           })
         }) : '', header]
-      }), subheader && /*#__PURE__*/jsx(SubHeader, {
+      }), subheader && /*#__PURE__*/jsxRuntime.jsx(SubHeader, {
         children: subheader
       })]
-    }), /*#__PURE__*/jsx(IconWrapper$1, {
+    }), /*#__PURE__*/jsxRuntime.jsx(IconWrapper$1, {
       size: size,
-      children: /*#__PURE__*/jsx("img", {
+      children: /*#__PURE__*/jsxRuntime.jsx("img", {
         src: icon,
         alt: 'Icon'
       })
@@ -13572,7 +13611,7 @@ function Option$1(_ref19) {
   });
 
   if (link) {
-    return /*#__PURE__*/jsx(ExternalLink, {
+    return /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
       href: link,
       children: content
     });
@@ -13581,7 +13620,7 @@ function Option$1(_ref19) {
   return content;
 }
 
-const PendingSection = _styled.div.withConfig({
+const PendingSection = _styled__default["default"].div.withConfig({
   displayName: "PendingView__PendingSection",
   componentId: "sc-14xbiak-0"
 })(["", ";align-items:center;justify-content:center;width:100%;& > *{width:100%;}"], _ref => {
@@ -13591,12 +13630,12 @@ const PendingSection = _styled.div.withConfig({
   return theme.flexColumnNoWrap;
 });
 
-const StyledLoader = _styled(Loader).withConfig({
+const StyledLoader = _styled__default["default"](Loader).withConfig({
   displayName: "PendingView__StyledLoader",
   componentId: "sc-14xbiak-1"
 })(["margin-right:1rem;"]);
 
-const LoadingMessage = _styled.div.withConfig({
+const LoadingMessage = _styled__default["default"].div.withConfig({
   displayName: "PendingView__LoadingMessage",
   componentId: "sc-14xbiak-2"
 })(["", ";align-items:center;justify-content:flex-start;border-radius:12px;margin-bottom:20px;color:", ";border:1px solid ", ";& > *{padding:1rem;}"], _ref2 => {
@@ -13618,7 +13657,7 @@ const LoadingMessage = _styled.div.withConfig({
   return error ? theme.red1 : theme.text4;
 });
 
-const ErrorGroup = _styled.div.withConfig({
+const ErrorGroup = _styled__default["default"].div.withConfig({
   displayName: "PendingView__ErrorGroup",
   componentId: "sc-14xbiak-3"
 })(["", ";align-items:center;justify-content:flex-start;"], _ref5 => {
@@ -13628,7 +13667,7 @@ const ErrorGroup = _styled.div.withConfig({
   return theme.flexRowNoWrap;
 });
 
-const ErrorButton = _styled.div.withConfig({
+const ErrorButton = _styled__default["default"].div.withConfig({
   displayName: "PendingView__ErrorButton",
   componentId: "sc-14xbiak-4"
 })(["border-radius:8px;font-size:12px;color:", ";background-color:", ";margin-left:1rem;padding:0.5rem;font-weight:600;user-select:none;&:hover{cursor:pointer;background-color:", ";}"], _ref6 => {
@@ -13645,10 +13684,10 @@ const ErrorButton = _styled.div.withConfig({
   let {
     theme
   } = _ref8;
-  return darken(0.1, theme.text4);
+  return polished.darken(0.1, theme.text4);
 });
 
-const LoadingWrapper = _styled.div.withConfig({
+const LoadingWrapper = _styled__default["default"].div.withConfig({
   displayName: "PendingView__LoadingWrapper",
   componentId: "sc-14xbiak-5"
 })(["", ";align-items:center;justify-content:center;"], _ref9 => {
@@ -13668,26 +13707,26 @@ function PendingView(_ref10) {
     tryActivation
   } = _ref10;
   const isMetamask = (_window = window) === null || _window === void 0 ? void 0 : (_window$ethereum = _window.ethereum) === null || _window$ethereum === void 0 ? void 0 : _window$ethereum.isMetaMask;
-  return /*#__PURE__*/jsxs(PendingSection, {
-    children: [/*#__PURE__*/jsx(LoadingMessage, {
+  return /*#__PURE__*/jsxRuntime.jsxs(PendingSection, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(LoadingMessage, {
       error: error,
-      children: /*#__PURE__*/jsx(LoadingWrapper, {
-        children: error ? /*#__PURE__*/jsxs(ErrorGroup, {
-          children: [/*#__PURE__*/jsx("div", {
-            children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(LoadingWrapper, {
+        children: error ? /*#__PURE__*/jsxRuntime.jsxs(ErrorGroup, {
+          children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Error connecting"
             })
-          }), /*#__PURE__*/jsx(ErrorButton, {
+          }), /*#__PURE__*/jsxRuntime.jsx(ErrorButton, {
             onClick: () => {
               setPendingError(false);
               connector && tryActivation(connector);
             },
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Try Again"
             })
           })]
-        }) : /*#__PURE__*/jsxs(Fragment, {
-          children: [/*#__PURE__*/jsx(StyledLoader, {}), /*#__PURE__*/jsx(Trans, {
+        }) : /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(StyledLoader, {}), /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Initializing..."
           })]
         })
@@ -13706,7 +13745,7 @@ function PendingView(_ref10) {
           }
         }
 
-        return /*#__PURE__*/jsx(Option$1, {
+        return /*#__PURE__*/jsxRuntime.jsx(Option$1, {
           id: `connect-${key}`,
           clickable: false,
           color: option.color,
@@ -13721,12 +13760,12 @@ function PendingView(_ref10) {
   });
 }
 
-const CloseIcon$1 = _styled.div.withConfig({
+const CloseIcon$1 = _styled__default["default"].div.withConfig({
   displayName: "WalletModal__CloseIcon",
   componentId: "sc-1hmbv05-0"
 })(["position:absolute;right:1rem;top:14px;&:hover{cursor:pointer;opacity:0.6;}"]);
 
-const CloseColor = _styled(SvgX).withConfig({
+const CloseColor = _styled__default["default"](SvgX).withConfig({
   displayName: "WalletModal__CloseColor",
   componentId: "sc-1hmbv05-1"
 })(["path{stroke:", ";}"], _ref => {
@@ -13736,7 +13775,7 @@ const CloseColor = _styled(SvgX).withConfig({
   return theme.text4;
 });
 
-const Wrapper$c = _styled.div.withConfig({
+const Wrapper$c = _styled__default["default"].div.withConfig({
   displayName: "WalletModal__Wrapper",
   componentId: "sc-1hmbv05-2"
 })(["", " margin:0;padding:0;width:100%;"], _ref2 => {
@@ -13746,7 +13785,7 @@ const Wrapper$c = _styled.div.withConfig({
   return theme.flexColumnNoWrap;
 });
 
-const HeaderRow = _styled.div.withConfig({
+const HeaderRow = _styled__default["default"].div.withConfig({
   displayName: "WalletModal__HeaderRow",
   componentId: "sc-1hmbv05-3"
 })(["", ";padding:1rem 1rem;font-weight:500;color:", ";", ";"], _ref3 => {
@@ -13768,7 +13807,7 @@ const HeaderRow = _styled.div.withConfig({
   `;
 });
 
-const ContentWrapper$3 = _styled.div.withConfig({
+const ContentWrapper$3 = _styled__default["default"].div.withConfig({
   displayName: "WalletModal__ContentWrapper",
   componentId: "sc-1hmbv05-4"
 })(["background-color:", ";padding:0 1rem 1rem 1rem;border-bottom-left-radius:20px;border-bottom-right-radius:20px;", ";"], _ref6 => {
@@ -13783,12 +13822,12 @@ const ContentWrapper$3 = _styled.div.withConfig({
   return theme.mediaWidth.upToMedium`padding: 0 1rem 1rem 1rem`;
 });
 
-const UpperSection = _styled.div.withConfig({
+const UpperSection = _styled__default["default"].div.withConfig({
   displayName: "WalletModal__UpperSection",
   componentId: "sc-1hmbv05-5"
 })(["position:relative;h5{margin:0;margin-bottom:0.5rem;font-size:1rem;font-weight:400;}h5:last-child{margin-bottom:0px;}h4{margin-top:0;font-weight:500;}"]);
 
-const OptionGrid = _styled.div.withConfig({
+const OptionGrid = _styled__default["default"].div.withConfig({
   displayName: "WalletModal__OptionGrid",
   componentId: "sc-1hmbv05-6"
 })(["display:grid;grid-gap:10px;", ";"], _ref8 => {
@@ -13801,7 +13840,7 @@ const OptionGrid = _styled.div.withConfig({
   `;
 });
 
-const HoverText = _styled.div.withConfig({
+const HoverText = _styled__default["default"].div.withConfig({
   displayName: "WalletModal__HoverText",
   componentId: "sc-1hmbv05-7"
 })(["text-decoration:none;color:", ";display:flex;align-items:center;:hover{cursor:pointer;}"], _ref9 => {
@@ -13811,7 +13850,7 @@ const HoverText = _styled.div.withConfig({
   return theme.text1;
 });
 
-const LinkCard = _styled(Card).withConfig({
+const LinkCard = _styled__default["default"](Card).withConfig({
   displayName: "WalletModal__LinkCard",
   componentId: "sc-1hmbv05-8"
 })(["background-color:", ";color:", ";:hover{cursor:pointer;filter:brightness(0.9);}"], _ref10 => {
@@ -13846,23 +13885,23 @@ function WalletModal(_ref12) {
     connector,
     activate,
     error
-  } = useWeb3React();
-  const [walletView, setWalletView] = useState(WALLET_VIEWS.ACCOUNT);
+  } = core.useWeb3React();
+  const [walletView, setWalletView] = React.useState(WALLET_VIEWS.ACCOUNT);
   const previousWalletView = usePrevious(walletView);
-  const [pendingWallet, setPendingWallet] = useState();
-  const [pendingError, setPendingError] = useState();
+  const [pendingWallet, setPendingWallet] = React.useState();
+  const [pendingError, setPendingError] = React.useState();
   const walletModalOpen = useModalOpen(ApplicationModal.WALLET);
   const toggleWalletModal = useWalletModalToggle();
   const previousAccount = usePrevious(account);
   const logMonitoringEvent = useWalletConnectMonitoringEventCallback(); // close on connection, when logged out before
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (account && !previousAccount && walletModalOpen) {
       toggleWalletModal();
     }
   }, [account, previousAccount, toggleWalletModal, walletModalOpen]); // always reset to account view
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (walletModalOpen) {
       setPendingError(false);
       setWalletView(WALLET_VIEWS.ACCOUNT);
@@ -13871,7 +13910,7 @@ function WalletModal(_ref12) {
 
   const activePrevious = usePrevious(active);
   const connectorPrevious = usePrevious(connector);
-  useEffect(() => {
+  React.useEffect(() => {
     if (walletModalOpen && (active && !activePrevious || connector && connector !== connectorPrevious && !error)) {
       setWalletView(WALLET_VIEWS.ACCOUNT);
     }
@@ -13887,7 +13926,7 @@ function WalletModal(_ref12) {
       return true;
     }); // log selected wallet
 
-    ReactGA.event({
+    ReactGA__default["default"].event({
       category: 'Wallet',
       action: 'Change Wallet',
       label: name
@@ -13896,7 +13935,7 @@ function WalletModal(_ref12) {
 
     setWalletView(WALLET_VIEWS.PENDING); // if the connector is walletconnect and the user has already tried to connect, manually reset the connector
 
-    if (connector instanceof WalletConnectConnector) {
+    if (connector instanceof walletconnectConnector.WalletConnectConnector) {
       connector.walletConnectProvider = undefined;
     }
 
@@ -13906,7 +13945,7 @@ function WalletModal(_ref12) {
         walletAddress
       });
     }).catch(error => {
-      if (error instanceof UnsupportedChainIdError) {
+      if (error instanceof core.UnsupportedChainIdError) {
         activate(connector); // a little janky...can't use setError because the connector isn't set
       } else {
         setPendingError(true);
@@ -13915,7 +13954,7 @@ function WalletModal(_ref12) {
   }; // close wallet modal if fortmatic modal is active
 
 
-  useEffect(() => {
+  React.useEffect(() => {
     fortmatic.on(OVERLAY_READY, () => {
       toggleWalletModal();
     });
@@ -13933,7 +13972,7 @@ function WalletModal(_ref12) {
         }
 
         if (!window.web3 && !window.ethereum && option.mobile) {
-          return /*#__PURE__*/jsx(Option$1, {
+          return /*#__PURE__*/jsxRuntime.jsx(Option$1, {
             onClick: () => {
               option.connector !== connector && !option.href && tryActivation(option.connector);
             },
@@ -13955,10 +13994,10 @@ function WalletModal(_ref12) {
         // don't show injected if there's no injected provider
         if (!(window.web3 || window.ethereum)) {
           if (option.name === 'MetaMask') {
-            return /*#__PURE__*/jsx(Option$1, {
+            return /*#__PURE__*/jsxRuntime.jsx(Option$1, {
               id: `connect-${key}`,
               color: '#E8831D',
-              header: /*#__PURE__*/jsx(Trans, {
+              header: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Install Metamask"
               }),
               subheader: null,
@@ -13978,7 +14017,7 @@ function WalletModal(_ref12) {
       } // return rest of options
 
 
-      return !isMobile && !option.mobileOnly && /*#__PURE__*/jsx(Option$1, {
+      return !isMobile && !option.mobileOnly && /*#__PURE__*/jsxRuntime.jsx(Option$1, {
         id: `connect-${key}`,
         onClick: () => {
           option.connector === connector ? setWalletView(WALLET_VIEWS.ACCOUNT) : !option.href && tryActivation(option.connector);
@@ -13996,22 +14035,22 @@ function WalletModal(_ref12) {
 
   function getModalContent() {
     if (error) {
-      return /*#__PURE__*/jsxs(UpperSection, {
-        children: [/*#__PURE__*/jsx(CloseIcon$1, {
+      return /*#__PURE__*/jsxRuntime.jsxs(UpperSection, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(CloseIcon$1, {
           onClick: toggleWalletModal,
-          children: /*#__PURE__*/jsx(CloseColor, {})
-        }), /*#__PURE__*/jsx(HeaderRow, {
-          children: error instanceof UnsupportedChainIdError ? /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(CloseColor, {})
+        }), /*#__PURE__*/jsxRuntime.jsx(HeaderRow, {
+          children: error instanceof core.UnsupportedChainIdError ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Wrong Network"
-          }) : /*#__PURE__*/jsx(Trans, {
+          }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Error connecting"
           })
-        }), /*#__PURE__*/jsx(ContentWrapper$3, {
-          children: error instanceof UnsupportedChainIdError ? /*#__PURE__*/jsx("h5", {
-            children: /*#__PURE__*/jsx(Trans, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ContentWrapper$3, {
+          children: error instanceof core.UnsupportedChainIdError ? /*#__PURE__*/jsxRuntime.jsx("h5", {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Please connect to the appropriate Ethereum network."
             })
-          }) : /*#__PURE__*/jsx(Trans, {
+          }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Error connecting. Try refreshing the page."
           })
         })]
@@ -14019,29 +14058,29 @@ function WalletModal(_ref12) {
     }
 
     if (walletView === WALLET_VIEWS.LEGAL) {
-      return /*#__PURE__*/jsxs(UpperSection, {
-        children: [/*#__PURE__*/jsxs(HeaderRow, {
-          children: [/*#__PURE__*/jsx(HoverText, {
+      return /*#__PURE__*/jsxRuntime.jsxs(UpperSection, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(HeaderRow, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(HoverText, {
             onClick: () => {
               var _ref13;
 
               setWalletView((_ref13 = previousWalletView === WALLET_VIEWS.LEGAL ? WALLET_VIEWS.ACCOUNT : previousWalletView) !== null && _ref13 !== void 0 ? _ref13 : WALLET_VIEWS.ACCOUNT);
             },
-            children: /*#__PURE__*/jsx(ArrowLeft, {})
-          }), /*#__PURE__*/jsx(Row, {
+            children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowLeft, {})
+          }), /*#__PURE__*/jsxRuntime.jsx(Row, {
             justify: "center",
-            children: /*#__PURE__*/jsx(ThemedText.MediumHeader, {
-              children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.MediumHeader, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Legal & Privacy"
               })
             })
           })]
-        }), /*#__PURE__*/jsx(PrivacyPolicy, {})]
+        }), /*#__PURE__*/jsxRuntime.jsx(PrivacyPolicy, {})]
       });
     }
 
     if (account && walletView === WALLET_VIEWS.ACCOUNT) {
-      return /*#__PURE__*/jsx(AccountDetails, {
+      return /*#__PURE__*/jsxRuntime.jsx(AccountDetails, {
         toggleWalletModal: toggleWalletModal,
         pendingTransactions: pendingTransactions,
         confirmedTransactions: confirmedTransactions,
@@ -14050,73 +14089,73 @@ function WalletModal(_ref12) {
       });
     }
 
-    return /*#__PURE__*/jsxs(UpperSection, {
-      children: [/*#__PURE__*/jsx(CloseIcon$1, {
+    return /*#__PURE__*/jsxRuntime.jsxs(UpperSection, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CloseIcon$1, {
         onClick: toggleWalletModal,
-        children: /*#__PURE__*/jsx(CloseColor, {})
-      }), walletView !== WALLET_VIEWS.ACCOUNT ? /*#__PURE__*/jsx(HeaderRow, {
+        children: /*#__PURE__*/jsxRuntime.jsx(CloseColor, {})
+      }), walletView !== WALLET_VIEWS.ACCOUNT ? /*#__PURE__*/jsxRuntime.jsx(HeaderRow, {
         color: "blue",
-        children: /*#__PURE__*/jsx(HoverText, {
+        children: /*#__PURE__*/jsxRuntime.jsx(HoverText, {
           onClick: () => {
             setPendingError(false);
             setWalletView(WALLET_VIEWS.ACCOUNT);
           },
-          children: /*#__PURE__*/jsx(ArrowLeft, {})
+          children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowLeft, {})
         })
-      }) : /*#__PURE__*/jsx(HeaderRow, {
-        children: /*#__PURE__*/jsx(HoverText, {
-          children: /*#__PURE__*/jsx(Trans, {
+      }) : /*#__PURE__*/jsxRuntime.jsx(HeaderRow, {
+        children: /*#__PURE__*/jsxRuntime.jsx(HoverText, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Connect a wallet"
           })
         })
-      }), /*#__PURE__*/jsx(ContentWrapper$3, {
-        children: /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsx(ContentWrapper$3, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
           gap: "16px",
-          children: [/*#__PURE__*/jsx(LightCard, {
-            children: /*#__PURE__*/jsx(AutoRow, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(LightCard, {
+            children: /*#__PURE__*/jsxRuntime.jsx(AutoRow, {
               style: {
                 flexWrap: 'nowrap'
               },
-              children: /*#__PURE__*/jsx(ThemedText.Black, {
+              children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
                 fontSize: 14,
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "By connecting a wallet, you agree to Uniswap Labs\u2019 <0>Terms of Service</0> and acknowledge that you have read and understand the Uniswap <1>Protocol Disclaimer</1>.",
                   components: {
-                    0: /*#__PURE__*/jsx(ExternalLink, {
+                    0: /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
                       href: "https://uniswap.org/terms-of-service/"
                     }),
-                    1: /*#__PURE__*/jsx(ExternalLink, {
+                    1: /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
                       href: "https://uniswap.org/disclaimer/"
                     })
                   }
                 })
               })
             })
-          }), /*#__PURE__*/jsx(LinkCard, {
+          }), /*#__PURE__*/jsxRuntime.jsx(LinkCard, {
             padding: ".5rem",
             $borderRadius: ".75rem",
             onClick: () => setWalletView(WALLET_VIEWS.LEGAL),
-            children: /*#__PURE__*/jsxs(RowBetween, {
-              children: [/*#__PURE__*/jsxs(AutoRow, {
+            children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+              children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
                 gap: "4px",
-                children: [/*#__PURE__*/jsx(Info, {
+                children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.Info, {
                   size: 20
-                }), /*#__PURE__*/jsx(ThemedText.White, {
+                }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
                   fontSize: 14,
-                  children: /*#__PURE__*/jsx(Trans, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "How this app uses APIs"
                   })
                 })]
-              }), /*#__PURE__*/jsx(ArrowRight, {
+              }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowRight, {
                 size: 16
               })]
             })
-          }), walletView === WALLET_VIEWS.PENDING ? /*#__PURE__*/jsx(PendingView, {
+          }), walletView === WALLET_VIEWS.PENDING ? /*#__PURE__*/jsxRuntime.jsx(PendingView, {
             connector: pendingWallet,
             error: pendingError,
             setPendingError: setPendingError,
             tryActivation: tryActivation
-          }) : /*#__PURE__*/jsx(OptionGrid, {
+          }) : /*#__PURE__*/jsxRuntime.jsx(OptionGrid, {
             children: getOptions()
           })]
         })
@@ -14124,18 +14163,18 @@ function WalletModal(_ref12) {
     });
   }
 
-  return /*#__PURE__*/jsx(Modal, {
+  return /*#__PURE__*/jsxRuntime.jsx(Modal, {
     isOpen: walletModalOpen,
     onDismiss: toggleWalletModal,
     minHeight: false,
     maxHeight: 90,
-    children: /*#__PURE__*/jsx(Wrapper$c, {
+    children: /*#__PURE__*/jsxRuntime.jsx(Wrapper$c, {
       children: getModalContent()
     })
   });
 }
 
-const IconWrapper = _styled.div.withConfig({
+const IconWrapper = _styled__default["default"].div.withConfig({
   displayName: "Web3Status__IconWrapper",
   componentId: "sc-m6ivbz-0"
 })(["", ";align-items:center;justify-content:center;& > *{height:", ";width:", ";}"], _ref => {
@@ -14155,7 +14194,7 @@ const IconWrapper = _styled.div.withConfig({
   return size ? size + 'px' : '32px';
 });
 
-const Web3StatusGeneric = _styled(ButtonSecondary).withConfig({
+const Web3StatusGeneric = _styled__default["default"](ButtonSecondary).withConfig({
   displayName: "Web3Status__Web3StatusGeneric",
   componentId: "sc-m6ivbz-1"
 })(["", " width:100%;align-items:center;padding:0.5rem;border-radius:12px;cursor:pointer;user-select:none;:focus{outline:none;}"], _ref4 => {
@@ -14165,7 +14204,7 @@ const Web3StatusGeneric = _styled(ButtonSecondary).withConfig({
   return theme.flexRowNoWrap;
 });
 
-const Web3StatusError = _styled(Web3StatusGeneric).withConfig({
+const Web3StatusError = _styled__default["default"](Web3StatusGeneric).withConfig({
   displayName: "Web3Status__Web3StatusError",
   componentId: "sc-m6ivbz-2"
 })(["background-color:", ";border:1px solid ", ";color:", ";font-weight:500;:hover,:focus{background-color:", ";}"], _ref5 => {
@@ -14187,10 +14226,10 @@ const Web3StatusError = _styled(Web3StatusGeneric).withConfig({
   let {
     theme
   } = _ref8;
-  return darken(0.1, theme.red1);
+  return polished.darken(0.1, theme.red1);
 });
 
-const Web3StatusConnect = _styled(Web3StatusGeneric).withConfig({
+const Web3StatusConnect = _styled__default["default"](Web3StatusGeneric).withConfig({
   displayName: "Web3Status__Web3StatusConnect",
   componentId: "sc-m6ivbz-3"
 })(["background-color:", ";border:none;color:", ";font-weight:500;:hover,:focus{border:1px solid ", ";color:", ";}", ""], _ref9 => {
@@ -14207,7 +14246,7 @@ const Web3StatusConnect = _styled(Web3StatusGeneric).withConfig({
   let {
     theme
   } = _ref11;
-  return darken(0.05, theme.primary4);
+  return polished.darken(0.05, theme.primary4);
 }, _ref12 => {
   let {
     theme
@@ -14217,7 +14256,7 @@ const Web3StatusConnect = _styled(Web3StatusGeneric).withConfig({
   let {
     faded
   } = _ref13;
-  return faded && css`
+  return faded && _styled.css`
       background-color: ${_ref14 => {
     let {
       theme
@@ -14243,19 +14282,19 @@ const Web3StatusConnect = _styled(Web3StatusGeneric).withConfig({
     let {
       theme
     } = _ref17;
-    return darken(0.05, theme.primary4);
+    return polished.darken(0.05, theme.primary4);
   }};
         color: ${_ref18 => {
     let {
       theme
     } = _ref18;
-    return darken(0.05, theme.primaryText1);
+    return polished.darken(0.05, theme.primaryText1);
   }};
       }
     `;
 });
 
-const Web3StatusConnected = _styled(Web3StatusGeneric).withConfig({
+const Web3StatusConnected = _styled__default["default"](Web3StatusGeneric).withConfig({
   displayName: "Web3Status__Web3StatusConnected",
   componentId: "sc-m6ivbz-4"
 })(["background-color:", ";border:1px solid ", ";color:", ";font-weight:500;:hover,:focus{border:1px solid ", ";:focus{border:1px solid ", ";}}"], _ref19 => {
@@ -14280,21 +14319,21 @@ const Web3StatusConnected = _styled(Web3StatusGeneric).withConfig({
   let {
     theme
   } = _ref22;
-  return darken(0.05, theme.bg3);
+  return polished.darken(0.05, theme.bg3);
 }, _ref23 => {
   let {
     pending,
     theme
   } = _ref23;
-  return pending ? darken(0.1, theme.primary1) : darken(0.1, theme.bg2);
+  return pending ? polished.darken(0.1, theme.primary1) : polished.darken(0.1, theme.bg2);
 });
 
-const Text = _styled.p.withConfig({
+const Text = _styled__default["default"].p.withConfig({
   displayName: "Web3Status__Text",
   componentId: "sc-m6ivbz-5"
 })(["flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin:0 0.5rem 0 0.25rem;font-size:1rem;width:fit-content;font-weight:500;"]);
 
-const NetworkIcon = _styled(Activity).withConfig({
+const NetworkIcon = _styled__default["default"](reactFeather.Activity).withConfig({
   displayName: "Web3Status__NetworkIcon",
   componentId: "sc-m6ivbz-6"
 })(["margin-left:0.25rem;margin-right:0.5rem;width:16px;height:16px;"]); // we want the latest one to come first, so return negative if a is after b
@@ -14305,11 +14344,11 @@ function newTransactionsFirst(a, b) {
 }
 
 function Sock() {
-  return /*#__PURE__*/jsx("span", {
+  return /*#__PURE__*/jsxRuntime.jsx("span", {
     role: "img",
     "aria-label":
     /*i18n*/
-    i18n._("has socks emoji"),
+    core$1.i18n._("has socks emoji"),
     style: {
       marginTop: -4,
       marginBottom: -4
@@ -14322,9 +14361,9 @@ function WrappedStatusIcon(_ref24) {
   let {
     connector
   } = _ref24;
-  return /*#__PURE__*/jsx(IconWrapper, {
+  return /*#__PURE__*/jsxRuntime.jsx(IconWrapper, {
     size: 16,
-    children: /*#__PURE__*/jsx(StatusIcon, {
+    children: /*#__PURE__*/jsxRuntime.jsx(StatusIcon, {
       connector: connector
     })
   });
@@ -14335,12 +14374,12 @@ function Web3StatusInner() {
     account,
     connector,
     error
-  } = useWeb3React();
+  } = core.useWeb3React();
   const {
     ENSName
   } = useENSName(account !== null && account !== void 0 ? account : undefined);
   const allTransactions = useAllTransactions();
-  const sortedRecentTransactions = useMemo(() => {
+  const sortedRecentTransactions = React.useMemo(() => {
     const txs = Object.values(allTransactions);
     return txs.filter(isTransactionRecent).sort(newTransactionsFirst);
   }, [allTransactions]);
@@ -14350,47 +14389,47 @@ function Web3StatusInner() {
   const toggleWalletModal = useWalletModalToggle();
 
   if (account) {
-    return /*#__PURE__*/jsxs(Web3StatusConnected, {
+    return /*#__PURE__*/jsxRuntime.jsxs(Web3StatusConnected, {
       id: "web3-status-connected",
       onClick: toggleWalletModal,
       pending: hasPendingTransactions,
-      children: [hasPendingTransactions ? /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx(Text, {
-          children: /*#__PURE__*/jsx(Trans, {
+      children: [hasPendingTransactions ? /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(Text, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "{0} Pending",
             values: {
               0: pending === null || pending === void 0 ? void 0 : pending.length
             }
           })
-        }), ' ', /*#__PURE__*/jsx(Loader, {
+        }), ' ', /*#__PURE__*/jsxRuntime.jsx(Loader, {
           stroke: "white"
         })]
-      }) : /*#__PURE__*/jsxs(Fragment, {
-        children: [hasSocks ? /*#__PURE__*/jsx(Sock, {}) : null, /*#__PURE__*/jsx(Text, {
+      }) : /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+        children: [hasSocks ? /*#__PURE__*/jsxRuntime.jsx(Sock, {}) : null, /*#__PURE__*/jsxRuntime.jsx(Text, {
           children: ENSName || shortenAddress(account)
         })]
-      }), !hasPendingTransactions && connector && /*#__PURE__*/jsx(WrappedStatusIcon, {
+      }), !hasPendingTransactions && connector && /*#__PURE__*/jsxRuntime.jsx(WrappedStatusIcon, {
         connector: connector
       })]
     });
   } else if (error) {
-    return /*#__PURE__*/jsxs(Web3StatusError, {
+    return /*#__PURE__*/jsxRuntime.jsxs(Web3StatusError, {
       onClick: toggleWalletModal,
-      children: [/*#__PURE__*/jsx(NetworkIcon, {}), /*#__PURE__*/jsx(Text, {
-        children: error instanceof UnsupportedChainIdError ? /*#__PURE__*/jsx(Trans, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(NetworkIcon, {}), /*#__PURE__*/jsxRuntime.jsx(Text, {
+        children: error instanceof core.UnsupportedChainIdError ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Wrong Network"
-        }) : /*#__PURE__*/jsx(Trans, {
+        }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Error"
         })
       })]
     });
   } else {
-    return /*#__PURE__*/jsx(Web3StatusConnect, {
+    return /*#__PURE__*/jsxRuntime.jsx(Web3StatusConnect, {
       id: "connect-wallet",
       onClick: toggleWalletModal,
       faded: !account,
-      children: /*#__PURE__*/jsx(Text, {
-        children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(Text, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Connect Wallet"
         })
       })
@@ -14402,20 +14441,20 @@ function Web3Status() {
   const {
     active,
     account
-  } = useWeb3React();
-  const contextNetwork = useWeb3React(NetworkContextName);
+  } = core.useWeb3React();
+  const contextNetwork = core.useWeb3React(NetworkContextName);
   const {
     ENSName
   } = useENSName(account !== null && account !== void 0 ? account : undefined);
   const allTransactions = useAllTransactions();
-  const sortedRecentTransactions = useMemo(() => {
+  const sortedRecentTransactions = React.useMemo(() => {
     const txs = Object.values(allTransactions);
     return txs.filter(isTransactionRecent).sort(newTransactionsFirst);
   }, [allTransactions]);
   const pending = sortedRecentTransactions.filter(tx => !tx.receipt).map(tx => tx.hash);
   const confirmed = sortedRecentTransactions.filter(tx => tx.receipt).map(tx => tx.hash);
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsx(Web3StatusInner, {}), (contextNetwork.active || active) && /*#__PURE__*/jsx(WalletModal, {
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(Web3StatusInner, {}), (contextNetwork.active || active) && /*#__PURE__*/jsxRuntime.jsx(WalletModal, {
       ENSName: ENSName !== null && ENSName !== void 0 ? ENSName : undefined,
       pendingTransactions: pending,
       confirmedTransactions: confirmed
@@ -14438,7 +14477,7 @@ async function addNetwork(_ref) {
     return;
   }
 
-  const formattedChainId = hexStripZeros(BigNumber.from(chainId).toHexString());
+  const formattedChainId = bytes.hexStripZeros(bignumber.BigNumber.from(chainId).toHexString());
 
   try {
     await (library === null || library === void 0 ? void 0 : library.provider.request({
@@ -14476,7 +14515,7 @@ async function switchToNetwork(_ref) {
     } = await library.getNetwork());
   }
 
-  const formattedChainId = hexStripZeros(BigNumber.from(chainId).toHexString());
+  const formattedChainId = bytes.hexStripZeros(bignumber.BigNumber.from(chainId).toHexString());
 
   try {
     await (library === null || library === void 0 ? void 0 : library.provider.request({
@@ -14507,7 +14546,7 @@ async function switchToNetwork(_ref) {
   }
 }
 
-const ActiveRowLinkList = _styled.div.withConfig({
+const ActiveRowLinkList = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__ActiveRowLinkList",
   componentId: "sc-w04zhs-0"
 })(["display:flex;flex-direction:column;padding:0 8px;& > a{align-items:center;color:", ";display:flex;flex-direction:row;font-size:14px;font-weight:500;justify-content:space-between;padding:8px 0 4px;text-decoration:none;}& > a:first-child{border-top:1px solid ", ";margin:0;margin-top:6px;padding-top:10px;}"], _ref => {
@@ -14522,7 +14561,7 @@ const ActiveRowLinkList = _styled.div.withConfig({
   return theme.text2;
 });
 
-const ActiveRowWrapper = _styled.div.withConfig({
+const ActiveRowWrapper = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__ActiveRowWrapper",
   componentId: "sc-w04zhs-1"
 })(["background-color:", ";border-radius:8px;cursor:pointer;padding:8px 0 8px 0;width:100%;"], _ref3 => {
@@ -14532,7 +14571,7 @@ const ActiveRowWrapper = _styled.div.withConfig({
   return theme.bg2;
 });
 
-const FlyoutHeader = _styled.div.withConfig({
+const FlyoutHeader = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__FlyoutHeader",
   componentId: "sc-w04zhs-2"
 })(["color:", ";font-weight:400;"], _ref4 => {
@@ -14542,7 +14581,7 @@ const FlyoutHeader = _styled.div.withConfig({
   return theme.text2;
 });
 
-const FlyoutMenu = _styled.div.withConfig({
+const FlyoutMenu = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__FlyoutMenu",
   componentId: "sc-w04zhs-3"
 })(["align-items:flex-start;background-color:", ";box-shadow:0px 0px 1px rgba(0,0,0,0.01),0px 4px 8px rgba(0,0,0,0.04),0px 16px 24px rgba(0,0,0,0.04),0px 24px 32px rgba(0,0,0,0.01);border-radius:20px;display:flex;flex-direction:column;font-size:16px;overflow:auto;padding:16px;position:absolute;top:64px;width:272px;z-index:99;& > *:not(:last-child){margin-bottom:12px;}@media screen and (min-width:", "px){top:50px;}"], _ref5 => {
@@ -14552,7 +14591,7 @@ const FlyoutMenu = _styled.div.withConfig({
   return theme.bg1;
 }, MEDIA_WIDTHS.upToSmall);
 
-const FlyoutRow = _styled.div.withConfig({
+const FlyoutRow = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__FlyoutRow",
   componentId: "sc-w04zhs-4"
 })(["align-items:center;background-color:", ";border-radius:8px;cursor:pointer;display:flex;font-weight:500;justify-content:space-between;padding:6px 8px;text-align:left;width:100%;"], _ref6 => {
@@ -14563,7 +14602,7 @@ const FlyoutRow = _styled.div.withConfig({
   return active ? theme.bg2 : 'transparent';
 });
 
-const FlyoutRowActiveIndicator = _styled.div.withConfig({
+const FlyoutRowActiveIndicator = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__FlyoutRowActiveIndicator",
   componentId: "sc-w04zhs-5"
 })(["background-color:", ";border-radius:50%;height:9px;width:9px;"], _ref7 => {
@@ -14573,27 +14612,27 @@ const FlyoutRowActiveIndicator = _styled.div.withConfig({
   return theme.green1;
 });
 
-const LinkOutCircle$1 = _styled(ArrowDownCircle).withConfig({
+const LinkOutCircle$1 = _styled__default["default"](reactFeather.ArrowDownCircle).withConfig({
   displayName: "NetworkSelector__LinkOutCircle",
   componentId: "sc-w04zhs-6"
 })(["transform:rotate(230deg);width:16px;height:16px;"]);
 
-const Logo$1 = _styled.img.withConfig({
+const Logo$1 = _styled__default["default"].img.withConfig({
   displayName: "NetworkSelector__Logo",
   componentId: "sc-w04zhs-7"
 })(["height:20px;width:20px;margin-right:8px;"]);
 
-const NetworkLabel = _styled.div.withConfig({
+const NetworkLabel = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__NetworkLabel",
   componentId: "sc-w04zhs-8"
 })(["flex:1 1 auto;"]);
 
-const SelectorLabel = _styled(NetworkLabel).withConfig({
+const SelectorLabel = _styled__default["default"](NetworkLabel).withConfig({
   displayName: "NetworkSelector__SelectorLabel",
   componentId: "sc-w04zhs-9"
 })(["display:none;@media screen and (min-width:", "px){display:block;margin-right:8px;}"], MEDIA_WIDTHS.upToSmall);
 
-const SelectorControls = _styled.div.withConfig({
+const SelectorControls = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__SelectorControls",
   componentId: "sc-w04zhs-10"
 })(["align-items:center;background-color:", ";border:2px solid ", ";border-radius:12px;color:", ";cursor:", ";display:flex;font-weight:500;justify-content:space-between;padding:6px 8px;"], _ref8 => {
@@ -14618,7 +14657,7 @@ const SelectorControls = _styled.div.withConfig({
   return interactive ? 'pointer' : 'auto';
 });
 
-const SelectorLogo = _styled(Logo$1).withConfig({
+const SelectorLogo = _styled__default["default"](Logo$1).withConfig({
   displayName: "NetworkSelector__SelectorLogo",
   componentId: "sc-w04zhs-11"
 })(["margin-right:", "px;@media screen and (min-width:", "px){margin-right:8px;}"], _ref12 => {
@@ -14628,12 +14667,12 @@ const SelectorLogo = _styled(Logo$1).withConfig({
   return interactive ? 8 : 0;
 }, MEDIA_WIDTHS.upToSmall);
 
-const SelectorWrapper = _styled.div.withConfig({
+const SelectorWrapper = _styled__default["default"].div.withConfig({
   displayName: "NetworkSelector__SelectorWrapper",
   componentId: "sc-w04zhs-12"
 })(["@media screen and (min-width:", "px){position:relative;}"], MEDIA_WIDTHS.upToSmall);
 
-const StyledChevronDown = _styled(ChevronDown).withConfig({
+const StyledChevronDown = _styled__default["default"](reactFeather.ChevronDown).withConfig({
   displayName: "NetworkSelector__StyledChevronDown",
   componentId: "sc-w04zhs-13"
 })(["width:12px;"]);
@@ -14646,18 +14685,18 @@ const BridgeText = _ref13 => {
   switch (chainId) {
     case SupportedChainId.ARBITRUM_ONE:
     case SupportedChainId.ARBITRUM_RINKEBY:
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Arbitrum Bridge"
       });
 
     case SupportedChainId.OPTIMISM:
     case SupportedChainId.OPTIMISTIC_KOVAN:
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Optimism Gateway"
       });
 
     default:
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Bridge"
       });
   }
@@ -14671,18 +14710,18 @@ const ExplorerText = _ref14 => {
   switch (chainId) {
     case SupportedChainId.ARBITRUM_ONE:
     case SupportedChainId.ARBITRUM_RINKEBY:
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Arbiscan"
       });
 
     case SupportedChainId.OPTIMISM:
     case SupportedChainId.OPTIMISTIC_KOVAN:
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Optimistic Etherscan"
       });
 
     default:
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Explorer"
       });
   }
@@ -14693,7 +14732,7 @@ function NetworkSelector() {
     chainId,
     library
   } = useActiveWeb3React();
-  const node = useRef();
+  const node = React.useRef();
   const open = useModalOpen(ApplicationModal.NETWORK_SELECTOR);
   const toggle = useToggleModal(ApplicationModal.NETWORK_SELECTOR);
   useOnClickOutside(node, open ? toggle : undefined);
@@ -14702,7 +14741,7 @@ function NetworkSelector() {
   const isOnL2 = chainId ? L2_CHAIN_IDS.includes(chainId) : false;
   const showSelector = Boolean(implements3085 || isOnL2);
   const mainnetInfo = CHAIN_INFO[SupportedChainId.MAINNET];
-  const conditionalToggle = useCallback(() => {
+  const conditionalToggle = React.useCallback(() => {
     if (showSelector) {
       toggle();
     }
@@ -14734,65 +14773,65 @@ function NetworkSelector() {
     const isOptimism = targetChain === SupportedChainId.OPTIMISM;
     const rowText = `${CHAIN_INFO[targetChain].label}${isOptimism ? ' (Optimism)' : ''}`;
 
-    const RowContent = () => /*#__PURE__*/jsxs(FlyoutRow, {
+    const RowContent = () => /*#__PURE__*/jsxRuntime.jsxs(FlyoutRow, {
       onClick: handleRowClick,
       active: active,
-      children: [/*#__PURE__*/jsx(Logo$1, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(Logo$1, {
         src: CHAIN_INFO[targetChain].logoUrl
-      }), /*#__PURE__*/jsx(NetworkLabel, {
+      }), /*#__PURE__*/jsxRuntime.jsx(NetworkLabel, {
         children: rowText
-      }), chainId === targetChain && /*#__PURE__*/jsx(FlyoutRowActiveIndicator, {})]
+      }), chainId === targetChain && /*#__PURE__*/jsxRuntime.jsx(FlyoutRowActiveIndicator, {})]
     });
 
     const helpCenterLink = isOptimism ? OPTIMISM_HELP_CENTER_LINK : ARBITRUM_HELP_CENTER_LINK;
 
     if (active && hasExtendedInfo) {
-      return /*#__PURE__*/jsxs(ActiveRowWrapper, {
-        children: [/*#__PURE__*/jsx(RowContent, {}), /*#__PURE__*/jsxs(ActiveRowLinkList, {
-          children: [/*#__PURE__*/jsxs(ExternalLink, {
+      return /*#__PURE__*/jsxRuntime.jsxs(ActiveRowWrapper, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(RowContent, {}), /*#__PURE__*/jsxRuntime.jsxs(ActiveRowLinkList, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(ExternalLink, {
             href: CHAIN_INFO[targetChain].bridge,
-            children: [/*#__PURE__*/jsx(BridgeText, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(BridgeText, {
               chainId: chainId
-            }), " ", /*#__PURE__*/jsx(LinkOutCircle$1, {})]
-          }), /*#__PURE__*/jsxs(ExternalLink, {
+            }), " ", /*#__PURE__*/jsxRuntime.jsx(LinkOutCircle$1, {})]
+          }), /*#__PURE__*/jsxRuntime.jsxs(ExternalLink, {
             href: CHAIN_INFO[targetChain].explorer,
-            children: [/*#__PURE__*/jsx(ExplorerText, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ExplorerText, {
               chainId: chainId
-            }), " ", /*#__PURE__*/jsx(LinkOutCircle$1, {})]
-          }), /*#__PURE__*/jsxs(ExternalLink, {
+            }), " ", /*#__PURE__*/jsxRuntime.jsx(LinkOutCircle$1, {})]
+          }), /*#__PURE__*/jsxRuntime.jsxs(ExternalLink, {
             href: helpCenterLink,
-            children: [/*#__PURE__*/jsx(Trans, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Help Center"
-            }), " ", /*#__PURE__*/jsx(LinkOutCircle$1, {})]
+            }), " ", /*#__PURE__*/jsxRuntime.jsx(LinkOutCircle$1, {})]
           })]
         })]
       });
     }
 
-    return /*#__PURE__*/jsx(RowContent, {});
+    return /*#__PURE__*/jsxRuntime.jsx(RowContent, {});
   }
 
-  return /*#__PURE__*/jsxs(SelectorWrapper, {
+  return /*#__PURE__*/jsxRuntime.jsxs(SelectorWrapper, {
     ref: node,
-    children: [/*#__PURE__*/jsxs(SelectorControls, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(SelectorControls, {
       onClick: conditionalToggle,
       interactive: showSelector,
-      children: [/*#__PURE__*/jsx(SelectorLogo, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(SelectorLogo, {
         interactive: showSelector,
         src: info.logoUrl || mainnetInfo.logoUrl
-      }), /*#__PURE__*/jsx(SelectorLabel, {
+      }), /*#__PURE__*/jsxRuntime.jsx(SelectorLabel, {
         children: info.label
-      }), showSelector && /*#__PURE__*/jsx(StyledChevronDown, {})]
-    }), open && /*#__PURE__*/jsxs(FlyoutMenu, {
-      children: [/*#__PURE__*/jsx(FlyoutHeader, {
-        children: /*#__PURE__*/jsx(Trans, {
+      }), showSelector && /*#__PURE__*/jsxRuntime.jsx(StyledChevronDown, {})]
+    }), open && /*#__PURE__*/jsxRuntime.jsxs(FlyoutMenu, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(FlyoutHeader, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Select a network"
         })
-      }), /*#__PURE__*/jsx(Row, {
+      }), /*#__PURE__*/jsxRuntime.jsx(Row, {
         targetChain: SupportedChainId.MAINNET
-      }), /*#__PURE__*/jsx(Row, {
+      }), /*#__PURE__*/jsxRuntime.jsx(Row, {
         targetChain: SupportedChainId.OPTIMISM
-      }), /*#__PURE__*/jsx(Row, {
+      }), /*#__PURE__*/jsxRuntime.jsx(Row, {
         targetChain: SupportedChainId.ARBITRUM_ONE
       })]
     })]
@@ -14806,7 +14845,7 @@ function useTotalSupply(token) {
 
   const contract = useTokenContract(token !== null && token !== void 0 && token.isToken ? token.address : undefined, false);
   const totalSupply = (_useSingleCallResult = useSingleCallResult(contract, 'totalSupply')) === null || _useSingleCallResult === void 0 ? void 0 : (_useSingleCallResult$ = _useSingleCallResult.result) === null || _useSingleCallResult$ === void 0 ? void 0 : _useSingleCallResult$[0];
-  return token !== null && token !== void 0 && token.isToken && totalSupply ? CurrencyAmount.fromRawAmount(token, totalSupply.toString()) : undefined;
+  return token !== null && token !== void 0 && token.isToken && totalSupply ? sdkCore.CurrencyAmount.fromRawAmount(token, totalSupply.toString()) : undefined;
 }
 
 const STAKING_END = STAKING_GENESIS + 60 * 60 * 24 * 60;
@@ -14837,10 +14876,10 @@ const TEAM_YEAR_4_AMOUNT = 4000000;
 function withVesting(before, time, amount, start, end, cliff) {
   if (time.gt(start)) {
     if (time.gte(end)) {
-      return JSBI.add(before, JSBI.BigInt(amount));
+      return JSBI__default["default"].add(before, JSBI__default["default"].BigInt(amount));
     } else {
       if (typeof cliff === 'number' && time.gte(cliff) || typeof cliff === 'undefined') {
-        return JSBI.add(before, JSBI.divide(JSBI.multiply(JSBI.BigInt(amount), JSBI.BigInt(time.sub(start).toString())), JSBI.subtract(JSBI.BigInt(end), JSBI.BigInt(start))));
+        return JSBI__default["default"].add(before, JSBI__default["default"].divide(JSBI__default["default"].multiply(JSBI__default["default"].BigInt(amount), JSBI__default["default"].BigInt(time.sub(start).toString())), JSBI__default["default"].subtract(JSBI__default["default"].BigInt(end), JSBI__default["default"].BigInt(start))));
       }
     }
   }
@@ -14849,7 +14888,7 @@ function withVesting(before, time, amount, start, end, cliff) {
 }
 
 function computeUniCirculation(uni, blockTimestamp, unclaimedUni) {
-  let wholeAmount = JSBI.BigInt(USERS_AMOUNT); // staking rewards
+  let wholeAmount = JSBI__default["default"].BigInt(USERS_AMOUNT); // staking rewards
 
   wholeAmount = withVesting(wholeAmount, blockTimestamp, STAKING_REWARDS_AMOUNT, STAKING_GENESIS, STAKING_END); // treasury vesting
 
@@ -14862,21 +14901,21 @@ function computeUniCirculation(uni, blockTimestamp, unclaimedUni) {
   wholeAmount = withVesting(wholeAmount, blockTimestamp, TEAM_YEAR_2_AMOUNT, TREASURY_BEGIN_YEAR_2, TREASURY_END_YEAR_2);
   wholeAmount = withVesting(wholeAmount, blockTimestamp, TEAM_YEAR_3_AMOUNT, TREASURY_BEGIN_YEAR_3, TREASURY_END_YEAR_3);
   wholeAmount = withVesting(wholeAmount, blockTimestamp, TEAM_YEAR_4_AMOUNT, TREASURY_BEGIN_YEAR_4, TREASURY_END_YEAR_4);
-  const total = CurrencyAmount.fromRawAmount(uni, JSBI.multiply(wholeAmount, JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(18))));
+  const total = sdkCore.CurrencyAmount.fromRawAmount(uni, JSBI__default["default"].multiply(wholeAmount, JSBI__default["default"].exponentiate(JSBI__default["default"].BigInt(10), JSBI__default["default"].BigInt(18))));
   return unclaimedUni ? total.subtract(unclaimedUni) : total;
 }
 
-const ContentWrapper$2 = _styled(AutoColumn).withConfig({
+const ContentWrapper$2 = _styled__default["default"](AutoColumn).withConfig({
   displayName: "UniBalanceContent__ContentWrapper",
   componentId: "sc-bufqi0-0"
 })(["width:100%;"]);
 
-const ModalUpper = _styled(DataCard).withConfig({
+const ModalUpper = _styled__default["default"](DataCard).withConfig({
   displayName: "UniBalanceContent__ModalUpper",
   componentId: "sc-bufqi0-1"
 })(["box-shadow:0px 4px 10px rgba(0,0,0,0.1);background:radial-gradient(76.02% 75.41% at 1.84% 0%,#ff007a 0%,#021d43 100%);padding:0.5rem;"]);
 
-const StyledClose$2 = _styled(X).withConfig({
+const StyledClose$2 = _styled__default["default"](reactFeather.X).withConfig({
   displayName: "UniBalanceContent__StyledClose",
   componentId: "sc-bufqi0-2"
 })(["position:absolute;right:16px;top:16px;:hover{cursor:pointer;}"]);
@@ -14903,36 +14942,36 @@ function UniBalanceContent(_ref) {
   const uniPrice = useUSDCPrice(uni);
   const blockTimestamp = useCurrentBlockTimestamp();
   const unclaimedUni = useTokenBalance((_useMerkleDistributor = useMerkleDistributorContract()) === null || _useMerkleDistributor === void 0 ? void 0 : _useMerkleDistributor.address, uni);
-  const circulation = useMemo(() => blockTimestamp && uni && chainId === 1 ? computeUniCirculation(uni, blockTimestamp, unclaimedUni) : totalSupply, [blockTimestamp, chainId, totalSupply, unclaimedUni, uni]);
+  const circulation = React.useMemo(() => blockTimestamp && uni && chainId === 1 ? computeUniCirculation(uni, blockTimestamp, unclaimedUni) : totalSupply, [blockTimestamp, chainId, totalSupply, unclaimedUni, uni]);
   const {
     infoLink
   } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET];
-  return /*#__PURE__*/jsx(ContentWrapper$2, {
+  return /*#__PURE__*/jsxRuntime.jsx(ContentWrapper$2, {
     gap: "lg",
-    children: /*#__PURE__*/jsxs(ModalUpper, {
-      children: [/*#__PURE__*/jsx(CardBGImage, {}), /*#__PURE__*/jsx(CardNoise, {}), /*#__PURE__*/jsx(CardSection, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(ModalUpper, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CardBGImage, {}), /*#__PURE__*/jsxRuntime.jsx(CardNoise, {}), /*#__PURE__*/jsxRuntime.jsx(CardSection, {
         gap: "md",
-        children: /*#__PURE__*/jsxs(RowBetween, {
-          children: [/*#__PURE__*/jsx(ThemedText.White, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
             color: "white",
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Your UNI Breakdown"
             })
-          }), /*#__PURE__*/jsx(StyledClose$2, {
+          }), /*#__PURE__*/jsxRuntime.jsx(StyledClose$2, {
             stroke: "white",
             onClick: () => setShowUniBalanceModal(false)
           })]
         })
-      }), /*#__PURE__*/jsx(Break$1, {}), account && /*#__PURE__*/jsxs(Fragment, {
-        children: [/*#__PURE__*/jsxs(CardSection, {
+      }), /*#__PURE__*/jsxRuntime.jsx(Break$1, {}), account && /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(CardSection, {
           gap: "sm",
-          children: [/*#__PURE__*/jsxs(AutoColumn, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
             gap: "md",
             justify: "center",
-            children: [/*#__PURE__*/jsx(UniTokenAnimated, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(UniTokenAnimated, {
               width: "48px",
               src: tokenLogo
-            }), ' ', /*#__PURE__*/jsx(ThemedText.White, {
+            }), ' ', /*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               fontSize: 48,
               fontWeight: 600,
               color: "white",
@@ -14940,82 +14979,82 @@ function UniBalanceContent(_ref) {
                 groupSeparator: ','
               })
             })]
-          }), /*#__PURE__*/jsxs(AutoColumn, {
+          }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
             gap: "md",
-            children: [/*#__PURE__*/jsxs(RowBetween, {
-              children: [/*#__PURE__*/jsx(ThemedText.White, {
+            children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
                 color: "white",
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Balance:"
                 })
-              }), /*#__PURE__*/jsx(ThemedText.White, {
+              }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
                 color: "white",
                 children: uniBalance === null || uniBalance === void 0 ? void 0 : uniBalance.toFixed(2, {
                   groupSeparator: ','
                 })
               })]
-            }), /*#__PURE__*/jsxs(RowBetween, {
-              children: [/*#__PURE__*/jsx(ThemedText.White, {
+            }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
                 color: "white",
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Unclaimed:"
                 })
-              }), /*#__PURE__*/jsxs(ThemedText.White, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(ThemedText.White, {
                 color: "white",
                 children: [uniToClaim === null || uniToClaim === void 0 ? void 0 : uniToClaim.toFixed(4, {
                   groupSeparator: ','
-                }), ' ', uniToClaim && uniToClaim.greaterThan('0') && /*#__PURE__*/jsx(StyledInternalLink, {
+                }), ' ', uniToClaim && uniToClaim.greaterThan('0') && /*#__PURE__*/jsxRuntime.jsx(StyledInternalLink, {
                   onClick: () => setShowUniBalanceModal(false),
                   to: "/uni",
-                  children: /*#__PURE__*/jsx(Trans, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "(claim)"
                   })
                 })]
               })]
             })]
           })]
-        }), /*#__PURE__*/jsx(Break$1, {})]
-      }), /*#__PURE__*/jsx(CardSection, {
+        }), /*#__PURE__*/jsxRuntime.jsx(Break$1, {})]
+      }), /*#__PURE__*/jsxRuntime.jsx(CardSection, {
         gap: "sm",
-        children: /*#__PURE__*/jsxs(AutoColumn, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
           gap: "md",
-          children: [/*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.White, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               color: "white",
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "UNI price:"
               })
-            }), /*#__PURE__*/jsxs(ThemedText.White, {
+            }), /*#__PURE__*/jsxRuntime.jsxs(ThemedText.White, {
               color: "white",
               children: ["$", (_uniPrice$toFixed = uniPrice === null || uniPrice === void 0 ? void 0 : uniPrice.toFixed(2)) !== null && _uniPrice$toFixed !== void 0 ? _uniPrice$toFixed : '-']
             })]
-          }), /*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.White, {
+          }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               color: "white",
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "UNI in circulation:"
               })
-            }), /*#__PURE__*/jsx(ThemedText.White, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               color: "white",
               children: circulation === null || circulation === void 0 ? void 0 : circulation.toFixed(0, {
                 groupSeparator: ','
               })
             })]
-          }), /*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.White, {
+          }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               color: "white",
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Total Supply"
               })
-            }), /*#__PURE__*/jsx(ThemedText.White, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               color: "white",
               children: totalSupply === null || totalSupply === void 0 ? void 0 : totalSupply.toFixed(0, {
                 groupSeparator: ','
               })
             })]
-          }), uni && uni.chainId === 1 ? /*#__PURE__*/jsx(ExternalLink, {
+          }), uni && uni.chainId === 1 ? /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
             href: `${infoLink}/token/${uni.address}`,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "View UNI Analytics"
             })
           }) : null]
@@ -15025,7 +15064,7 @@ function UniBalanceContent(_ref) {
   });
 }
 
-const HeaderFrame = _styled.div.withConfig({
+const HeaderFrame = _styled__default["default"].div.withConfig({
   displayName: "Header__HeaderFrame",
   componentId: "sc-pradxg-0"
 })(["display:grid;grid-template-columns:120px 1fr 120px;align-items:center;justify-content:space-between;align-items:center;flex-direction:row;width:100%;top:0;position:relative;padding:1rem;z-index:21;position:relative;background-image:", ";background-position:", ";background-size:100% 200%;box-shadow:0px 0px 0px 1px ", ";transition:background-position 0.1s,box-shadow 0.1s;background-blend-mode:hard-light;", ";", ";", ";"], _ref => {
@@ -15069,12 +15108,12 @@ const HeaderFrame = _styled.div.withConfig({
   `;
 });
 
-const HeaderControls = _styled.div.withConfig({
+const HeaderControls = _styled__default["default"].div.withConfig({
   displayName: "Header__HeaderControls",
   componentId: "sc-pradxg-1"
 })(["display:flex;flex-direction:row;align-items:center;justify-self:flex-end;"]);
 
-const HeaderElement = _styled.div.withConfig({
+const HeaderElement = _styled__default["default"].div.withConfig({
   displayName: "Header__HeaderElement",
   componentId: "sc-pradxg-2"
 })(["display:flex;align-items:center;&:not(:first-child){margin-left:0.5em;}& > *:not(:first-child){margin-left:8px;}", ";"], _ref7 => {
@@ -15086,7 +15125,7 @@ const HeaderElement = _styled.div.withConfig({
   `;
 });
 
-const HeaderLinks = _styled(Row).withConfig({
+const HeaderLinks = _styled__default["default"](Row).withConfig({
   displayName: "Header__HeaderLinks",
   componentId: "sc-pradxg-3"
 })(["justify-self:center;background-color:", ";width:fit-content;padding:4px;border-radius:16px;display:grid;grid-auto-flow:column;grid-gap:10px;overflow:auto;align-items:center;", ";", ";", ";"], _ref8 => {
@@ -15137,7 +15176,7 @@ const HeaderLinks = _styled(Row).withConfig({
   `;
 });
 
-const AccountElement = _styled.div.withConfig({
+const AccountElement = _styled__default["default"].div.withConfig({
   displayName: "Header__AccountElement",
   componentId: "sc-pradxg-4"
 })(["display:flex;flex-direction:row;align-items:center;background-color:", ";border-radius:12px;white-space:nowrap;width:100%;:focus{border:1px solid blue;}"], _ref14 => {
@@ -15148,7 +15187,7 @@ const AccountElement = _styled.div.withConfig({
   return !active ? theme.bg1 : theme.bg1;
 });
 
-const UNIAmount = _styled(AccountElement).withConfig({
+const UNIAmount = _styled__default["default"](AccountElement).withConfig({
   displayName: "Header__UNIAmount",
   componentId: "sc-pradxg-5"
 })(["color:white;padding:4px 8px;height:36px;font-weight:500;background-color:", ";background:radial-gradient(174.47% 188.91% at 1.84% 0%,#ff007a 0%,#2172e5 100%),#edeef2;"], _ref15 => {
@@ -15158,12 +15197,12 @@ const UNIAmount = _styled(AccountElement).withConfig({
   return theme.bg3;
 });
 
-const UNIWrapper = _styled.span.withConfig({
+const UNIWrapper = _styled__default["default"].span.withConfig({
   displayName: "Header__UNIWrapper",
   componentId: "sc-pradxg-6"
 })(["width:fit-content;position:relative;cursor:pointer;:hover{opacity:0.8;}:active{opacity:0.9;}"]);
 
-const BalanceText = _styled(Text$1).withConfig({
+const BalanceText = _styled__default["default"](rebass.Text).withConfig({
   displayName: "Header__BalanceText",
   componentId: "sc-pradxg-7"
 })(["", ";"], _ref16 => {
@@ -15175,7 +15214,7 @@ const BalanceText = _styled(Text$1).withConfig({
   `;
 });
 
-const Title = _styled.a.withConfig({
+const Title = _styled__default["default"].a.withConfig({
   displayName: "Header__Title",
   componentId: "sc-pradxg-8"
 })(["display:flex;align-items:center;pointer-events:auto;justify-self:flex-start;margin-right:12px;", ";:hover{cursor:pointer;}"], _ref17 => {
@@ -15187,14 +15226,14 @@ const Title = _styled.a.withConfig({
   `;
 });
 
-const UniIcon = _styled.div.withConfig({
+const UniIcon = _styled__default["default"].div.withConfig({
   displayName: "Header__UniIcon",
   componentId: "sc-pradxg-9"
 })(["transition:transform 0.3s ease;:hover{transform:rotate(-5deg);}"]);
 
 const activeClassName = 'ACTIVE';
 
-const StyledNavLink = _styled(NavLink).attrs({
+const StyledNavLink = _styled__default["default"](reactRouterDom.NavLink).attrs({
   activeClassName
 }).withConfig({
   displayName: "Header__StyledNavLink",
@@ -15223,10 +15262,10 @@ const StyledNavLink = _styled(NavLink).attrs({
   let {
     theme
   } = _ref22;
-  return darken(0.1, theme.text1);
+  return polished.darken(0.1, theme.text1);
 });
 
-const StyledExternalLink = _styled(ExternalLink).attrs({
+const StyledExternalLink = _styled__default["default"](ExternalLink).attrs({
   activeClassName
 }).withConfig({
   displayName: "Header__StyledExternalLink",
@@ -15250,7 +15289,7 @@ const StyledExternalLink = _styled(ExternalLink).attrs({
   let {
     theme
   } = _ref26;
-  return darken(0.1, theme.text1);
+  return polished.darken(0.1, theme.text1);
 });
 
 function Header$2() {
@@ -15271,38 +15310,38 @@ function Header$2() {
   const {
     claimTxn
   } = useUserHasSubmittedClaim(account !== null && account !== void 0 ? account : undefined);
-  const [showUniBalanceModal, setShowUniBalanceModal] = useState(false);
+  const [showUniBalanceModal, setShowUniBalanceModal] = React.useState(false);
   const showClaimPopup = useShowClaimPopup();
-  const scrollY = useScrollPosition();
+  const scrollY = useScrollPosition__default["default"]();
   const {
     infoLink
   } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET];
-  return /*#__PURE__*/jsxs(HeaderFrame, {
+  return /*#__PURE__*/jsxRuntime.jsxs(HeaderFrame, {
     showBackground: scrollY > 45,
-    children: [/*#__PURE__*/jsx(ClaimModal, {}), /*#__PURE__*/jsx(Modal, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(ClaimModal, {}), /*#__PURE__*/jsxRuntime.jsx(Modal, {
       isOpen: showUniBalanceModal,
       onDismiss: () => setShowUniBalanceModal(false),
-      children: /*#__PURE__*/jsx(UniBalanceContent, {
+      children: /*#__PURE__*/jsxRuntime.jsx(UniBalanceContent, {
         setShowUniBalanceModal: setShowUniBalanceModal
       })
-    }), /*#__PURE__*/jsx(Title, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Title, {
       href: ".",
-      children: /*#__PURE__*/jsx(UniIcon, {
-        children: /*#__PURE__*/jsx(SvgLogo, {
+      children: /*#__PURE__*/jsxRuntime.jsx(UniIcon, {
+        children: /*#__PURE__*/jsxRuntime.jsx(SvgLogo, {
           fill: darkMode ? white : black,
           width: "24px",
           height: "100%",
           title: "logo"
         })
       })
-    }), /*#__PURE__*/jsxs(HeaderLinks, {
-      children: [/*#__PURE__*/jsx(StyledNavLink, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(HeaderLinks, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(StyledNavLink, {
         id: `swap-nav-link`,
         to: '/swap',
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Swap"
         })
-      }), /*#__PURE__*/jsx(StyledNavLink, {
+      }), /*#__PURE__*/jsxRuntime.jsx(StyledNavLink, {
         id: `pool-nav-link`,
         to: '/pool',
         isActive: (match, _ref27) => {
@@ -15311,49 +15350,49 @@ function Header$2() {
           } = _ref27;
           return Boolean(match) || pathname.startsWith('/add') || pathname.startsWith('/remove') || pathname.startsWith('/increase') || pathname.startsWith('/find');
         },
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Pool"
         })
-      }), (!chainId || chainId === SupportedChainId.MAINNET) && /*#__PURE__*/jsx(StyledNavLink, {
+      }), (!chainId || chainId === SupportedChainId.MAINNET) && /*#__PURE__*/jsxRuntime.jsx(StyledNavLink, {
         id: `vote-nav-link`,
         to: '/vote',
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Vote"
         })
-      }), /*#__PURE__*/jsxs(StyledExternalLink, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(StyledExternalLink, {
         id: `charts-nav-link`,
         href: infoLink,
-        children: [/*#__PURE__*/jsx(Trans, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Charts"
-        }), /*#__PURE__*/jsx("sup", {
+        }), /*#__PURE__*/jsxRuntime.jsx("sup", {
           children: "\u2197"
         })]
       })]
-    }), /*#__PURE__*/jsxs(HeaderControls, {
-      children: [/*#__PURE__*/jsx(HeaderElement, {
-        children: /*#__PURE__*/jsx(NetworkSelector, {})
-      }), /*#__PURE__*/jsxs(HeaderElement, {
-        children: [availableClaim && !showClaimPopup && /*#__PURE__*/jsxs(UNIWrapper, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(HeaderControls, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(HeaderElement, {
+        children: /*#__PURE__*/jsxRuntime.jsx(NetworkSelector, {})
+      }), /*#__PURE__*/jsxRuntime.jsxs(HeaderElement, {
+        children: [availableClaim && !showClaimPopup && /*#__PURE__*/jsxRuntime.jsxs(UNIWrapper, {
           onClick: toggleClaimModal,
-          children: [/*#__PURE__*/jsx(UNIAmount, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(UNIAmount, {
             active: !!account && !availableClaim,
             style: {
               pointerEvents: 'auto'
             },
-            children: /*#__PURE__*/jsx(ThemedText.White, {
+            children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.White, {
               padding: "0 2px",
-              children: claimTxn && !(claimTxn !== null && claimTxn !== void 0 && claimTxn.receipt) ? /*#__PURE__*/jsx(Dots, {
-                children: /*#__PURE__*/jsx(Trans, {
+              children: claimTxn && !(claimTxn !== null && claimTxn !== void 0 && claimTxn.receipt) ? /*#__PURE__*/jsxRuntime.jsx(Dots, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Claiming UNI"
                 })
-              }) : /*#__PURE__*/jsx(Trans, {
+              }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Claim UNI"
               })
             })
-          }), /*#__PURE__*/jsx(CardNoise, {})]
-        }), /*#__PURE__*/jsxs(AccountElement, {
+          }), /*#__PURE__*/jsxRuntime.jsx(CardNoise, {})]
+        }), /*#__PURE__*/jsxRuntime.jsxs(AccountElement, {
           active: !!account,
-          children: [account && userEthBalance ? /*#__PURE__*/jsx(BalanceText, {
+          children: [account && userEthBalance ? /*#__PURE__*/jsxRuntime.jsx(BalanceText, {
             style: {
               flexShrink: 0,
               userSelect: 'none'
@@ -15361,30 +15400,30 @@ function Header$2() {
             pl: "0.75rem",
             pr: "0.5rem",
             fontWeight: 500,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "{0} ETH",
               values: {
                 0: userEthBalance === null || userEthBalance === void 0 ? void 0 : userEthBalance.toSignificant(3)
               }
             })
-          }) : null, /*#__PURE__*/jsx(Web3Status, {})]
+          }) : null, /*#__PURE__*/jsxRuntime.jsx(Web3Status, {})]
         })]
-      }), /*#__PURE__*/jsx(HeaderElement, {
-        children: /*#__PURE__*/jsx(Menu, {})
+      }), /*#__PURE__*/jsxRuntime.jsx(HeaderElement, {
+        children: /*#__PURE__*/jsxRuntime.jsx(Menu, {})
       })]
     })]
   });
 }
 
 const useMachineTimeMs = updateInterval => {
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = React.useState(Date.now());
   useInterval(() => {
     setNow(Date.now());
   }, updateInterval);
   return now;
 };
 
-const BodyRow = _styled.div.withConfig({
+const BodyRow = _styled__default["default"].div.withConfig({
   displayName: "ChainConnectivityWarning__BodyRow",
   componentId: "sc-zncp67-0"
 })(["color:", ";font-size:12px;"], _ref => {
@@ -15394,7 +15433,7 @@ const BodyRow = _styled.div.withConfig({
   return theme.black;
 });
 
-const CautionIcon = _styled(AlertOctagon).withConfig({
+const CautionIcon = _styled__default["default"](reactFeather.AlertOctagon).withConfig({
   displayName: "ChainConnectivityWarning__CautionIcon",
   componentId: "sc-zncp67-1"
 })(["color:", ";"], _ref2 => {
@@ -15404,7 +15443,7 @@ const CautionIcon = _styled(AlertOctagon).withConfig({
   return theme.black;
 });
 
-const Link = _styled(ExternalLink).withConfig({
+const Link = _styled__default["default"](ExternalLink).withConfig({
   displayName: "ChainConnectivityWarning__Link",
   componentId: "sc-zncp67-2"
 })(["color:", ";text-decoration:underline;"], _ref3 => {
@@ -15414,17 +15453,17 @@ const Link = _styled(ExternalLink).withConfig({
   return theme.black;
 });
 
-const TitleRow = _styled.div.withConfig({
+const TitleRow = _styled__default["default"].div.withConfig({
   displayName: "ChainConnectivityWarning__TitleRow",
   componentId: "sc-zncp67-3"
 })(["align-items:center;display:flex;justify-content:flex-start;margin-bottom:8px;"]);
 
-const TitleText = _styled.div.withConfig({
+const TitleText = _styled__default["default"].div.withConfig({
   displayName: "ChainConnectivityWarning__TitleText",
   componentId: "sc-zncp67-4"
 })(["color:black;font-weight:600;font-size:16px;line-height:20px;margin:0px 12px;"]);
 
-const Wrapper$b = _styled.div.withConfig({
+const Wrapper$b = _styled__default["default"].div.withConfig({
   displayName: "ChainConnectivityWarning__Wrapper",
   componentId: "sc-zncp67-5"
 })(["background-color:", ";border-radius:12px;bottom:60px;display:none;max-width:348px;padding:16px 20px;position:absolute;right:16px;@media screen and (min-width:", "px){display:block;}"], _ref4 => {
@@ -15440,27 +15479,27 @@ function ChainConnectivityWarning() {
   } = useActiveWeb3React();
   const info = CHAIN_INFO[chainId !== null && chainId !== void 0 ? chainId : SupportedChainId.MAINNET];
   const label = info === null || info === void 0 ? void 0 : info.label;
-  return /*#__PURE__*/jsxs(Wrapper$b, {
-    children: [/*#__PURE__*/jsxs(TitleRow, {
-      children: [/*#__PURE__*/jsx(CautionIcon, {}), /*#__PURE__*/jsx(TitleText, {
-        children: /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$b, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(TitleRow, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CautionIcon, {}), /*#__PURE__*/jsxRuntime.jsx(TitleText, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Network Warning"
         })
       })]
-    }), /*#__PURE__*/jsxs(BodyRow, {
-      children: [chainId === SupportedChainId.MAINNET ? /*#__PURE__*/jsx(Trans, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(BodyRow, {
+      children: [chainId === SupportedChainId.MAINNET ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "You may have lost your network connection."
-      }) : /*#__PURE__*/jsx(Trans, {
+      }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "You may have lost your network connection, or {label} might be down right now.",
         values: {
           label: label
         }
-      }), ' ', info.statusPage !== undefined && /*#__PURE__*/jsxs("span", {
-        children: [/*#__PURE__*/jsx(Trans, {
+      }), ' ', info.statusPage !== undefined && /*#__PURE__*/jsxRuntime.jsxs("span", {
+        children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Check network status"
-        }), ' ', /*#__PURE__*/jsx(Link, {
+        }), ' ', /*#__PURE__*/jsxRuntime.jsx(Link, {
           href: info.statusPage || '',
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "here."
           })
         })]
@@ -15469,7 +15508,7 @@ function ChainConnectivityWarning() {
   });
 }
 
-const StyledPolling = _styled.div.withConfig({
+const StyledPolling = _styled__default["default"].div.withConfig({
   displayName: "Polling__StyledPolling",
   componentId: "sc-123dig8-0"
 })(["position:fixed;display:flex;align-items:center;right:0;bottom:0;padding:1rem;color:", ";transition:250ms ease color;", ""], _ref => {
@@ -15487,7 +15526,7 @@ const StyledPolling = _styled.div.withConfig({
   `;
 });
 
-const StyledPollingNumber = _styled(ThemedText.Small).withConfig({
+const StyledPollingNumber = _styled__default["default"](ThemedText.Small).withConfig({
   displayName: "Polling__StyledPollingNumber",
   componentId: "sc-123dig8-1"
 })(["transition:opacity 0.25s ease;opacity:", ";:hover{opacity:1;}"], _ref3 => {
@@ -15498,7 +15537,7 @@ const StyledPollingNumber = _styled(ThemedText.Small).withConfig({
   return hovering ? 0.7 : breathe ? 1 : 0.5;
 });
 
-const StyledPollingDot = _styled.div.withConfig({
+const StyledPollingDot = _styled__default["default"].div.withConfig({
   displayName: "Polling__StyledPollingDot",
   componentId: "sc-123dig8-2"
 })(["width:8px;height:8px;min-height:8px;min-width:8px;border-radius:50%;position:relative;background-color:", ";transition:250ms ease background-color;"], _ref4 => {
@@ -15509,7 +15548,7 @@ const StyledPollingDot = _styled.div.withConfig({
   return warning ? theme.yellow3 : theme.green1;
 });
 
-const rotate360 = keyframes`
+const rotate360 = _styled.keyframes`
   from {
     transform: rotate(0deg);
   }
@@ -15518,7 +15557,7 @@ const rotate360 = keyframes`
   }
 `;
 
-const Spinner = _styled.div.withConfig({
+const Spinner = _styled__default["default"].div.withConfig({
   displayName: "Polling__Spinner",
   componentId: "sc-123dig8-3"
 })(["animation:", " 1s cubic-bezier(0.83,0,0.17,1) infinite;transform:translateZ(0);border-top:1px solid transparent;border-right:1px solid transparent;border-bottom:1px solid transparent;border-left:2px solid ", ";background:transparent;width:14px;height:14px;border-radius:50%;position:relative;transition:250ms ease border-color;left:-3px;top:-3px;"], rotate360, _ref5 => {
@@ -15538,13 +15577,13 @@ function Polling() {
     chainId
   } = useActiveWeb3React();
   const blockNumber = useBlockNumber();
-  const [isMounting, setIsMounting] = useState(false);
-  const [isHover, setIsHover] = useState(false);
+  const [isMounting, setIsMounting] = React.useState(false);
+  const [isHover, setIsHover] = React.useState(false);
   const machineTime = useMachineTimeMs(NETWORK_HEALTH_CHECK_MS);
   const blockTime = useCurrentBlockTimestamp();
   const waitMsBeforeWarning = (_ref6 = chainId ? (_CHAIN_INFO$chainId = CHAIN_INFO[chainId]) === null || _CHAIN_INFO$chainId === void 0 ? void 0 : _CHAIN_INFO$chainId.blockWaitMsBeforeWarning : DEFAULT_MS_BEFORE_WARNING) !== null && _ref6 !== void 0 ? _ref6 : DEFAULT_MS_BEFORE_WARNING;
   const warning = Boolean(!!blockTime && machineTime - blockTime.mul(1000).toNumber() > waitMsBeforeWarning);
-  useEffect(() => {
+  React.useEffect(() => {
     if (!blockNumber) {
       return;
     }
@@ -15558,39 +15597,39 @@ function Polling() {
   }, [blockNumber] //useEffect will run only one time
   //if you pass a value to array, like this [data] than clearTimeout will run every time this value changes (useEffect re-run)
   );
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsx(ExternalLink, {
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
       href: chainId && blockNumber ? getExplorerLink(chainId, blockNumber.toString(), ExplorerDataType.BLOCK) : '',
-      children: /*#__PURE__*/jsxs(StyledPolling, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(StyledPolling, {
         onMouseEnter: () => setIsHover(true),
         onMouseLeave: () => setIsHover(false),
         warning: warning,
-        children: [/*#__PURE__*/jsxs(StyledPollingNumber, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(StyledPollingNumber, {
           breathe: isMounting,
           hovering: isHover,
           children: [blockNumber, "\u2002"]
-        }), /*#__PURE__*/jsx(StyledPollingDot, {
+        }), /*#__PURE__*/jsxRuntime.jsx(StyledPollingDot, {
           warning: warning,
-          children: isMounting && /*#__PURE__*/jsx(Spinner, {
+          children: isMounting && /*#__PURE__*/jsxRuntime.jsx(Spinner, {
             warning: warning
           })
         }), ' ']
       })
-    }), warning && /*#__PURE__*/jsx(ChainConnectivityWarning, {})]
+    }), warning && /*#__PURE__*/jsxRuntime.jsx(ChainConnectivityWarning, {})]
   });
 }
 
-const StyledClaimPopup = _styled(AutoColumn).withConfig({
+const StyledClaimPopup = _styled__default["default"](AutoColumn).withConfig({
   displayName: "ClaimPopup__StyledClaimPopup",
   componentId: "sc-fwaiaw-0"
 })(["background:radial-gradient(76.02% 75.41% at 1.84% 0%,#ff007a 0%,#021d43 100%);border-radius:20px;padding:1.5rem;overflow:hidden;position:relative;max-width:360px;box-shadow:0px 4px 10px rgba(0,0,0,0.1);"]);
 
-const StyledClose$1 = _styled(X).withConfig({
+const StyledClose$1 = _styled__default["default"](reactFeather.X).withConfig({
   displayName: "ClaimPopup__StyledClose",
   componentId: "sc-fwaiaw-1"
 })(["position:absolute;right:10px;top:10px;:hover{cursor:pointer;}"]);
 
-const rotate = keyframes`
+const rotate = _styled.keyframes`
   0% {
     transform: perspective(1000px) rotateY(0deg);
   }
@@ -15600,7 +15639,7 @@ const rotate = keyframes`
   }
 `;
 
-const UniToken = _styled.img.withConfig({
+const UniToken = _styled__default["default"].img.withConfig({
   displayName: "ClaimPopup__UniToken",
   componentId: "sc-fwaiaw-2"
 })(["animation:", " 5s cubic-bezier(0.83,0,0.17,1) infinite;"], rotate);
@@ -15617,8 +15656,8 @@ function ClaimPopup() {
 
   const showClaimModal = useModalOpen(ApplicationModal.SELF_CLAIM);
   const toggleSelfClaimModal = useToggleSelfClaimModal();
-  const handleToggleSelfClaimModal = useCallback(() => {
-    ReactGA.event({
+  const handleToggleSelfClaimModal = React.useCallback(() => {
+    ReactGA__default["default"].event({
       category: 'MerkleDrop',
       action: 'Toggle self claim modal'
     });
@@ -15628,9 +15667,9 @@ function ClaimPopup() {
   const userHasAvailableclaim = useUserHasAvailableClaim(account);
   const unclaimedAmount = useUserUnclaimedAmount(account); // listen for available claim and show popup if needed
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (userHasAvailableclaim) {
-      ReactGA.event({
+      ReactGA__default["default"].event({
         category: 'MerkleDrop',
         action: 'Show claim popup'
       });
@@ -15639,22 +15678,22 @@ function ClaimPopup() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
   }, [userHasAvailableclaim]);
-  return /*#__PURE__*/jsx(Fragment, {
-    children: showClaimPopup && !showClaimModal && /*#__PURE__*/jsxs(StyledClaimPopup, {
+  return /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
+    children: showClaimPopup && !showClaimModal && /*#__PURE__*/jsxRuntime.jsxs(StyledClaimPopup, {
       gap: "md",
-      children: [/*#__PURE__*/jsx(CardBGImage, {}), /*#__PURE__*/jsx(CardNoise, {}), /*#__PURE__*/jsx(StyledClose$1, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CardBGImage, {}), /*#__PURE__*/jsxRuntime.jsx(CardNoise, {}), /*#__PURE__*/jsxRuntime.jsx(StyledClose$1, {
         stroke: "white",
         onClick: toggleShowClaimPopup
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         style: {
           padding: '2rem 0',
           zIndex: 10
         },
         justify: "center",
-        children: [/*#__PURE__*/jsx(UniToken, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(UniToken, {
           width: "48px",
           src: tokenLogo
-        }), ' ', /*#__PURE__*/jsxs(ThemedText.White, {
+        }), ' ', /*#__PURE__*/jsxRuntime.jsxs(ThemedText.White, {
           style: {
             marginTop: '1rem'
           },
@@ -15663,50 +15702,50 @@ function ClaimPopup() {
           children: [unclaimedAmount === null || unclaimedAmount === void 0 ? void 0 : unclaimedAmount.toFixed(0, (_groupSeparator = {
             groupSeparator: ','
           }) !== null && _groupSeparator !== void 0 ? _groupSeparator : '-'), " UNI"]
-        }), /*#__PURE__*/jsxs(ThemedText.White, {
+        }), /*#__PURE__*/jsxRuntime.jsxs(ThemedText.White, {
           style: {
             paddingTop: '1.25rem',
             textAlign: 'center'
           },
           fontWeight: 600,
           color: "white",
-          children: [/*#__PURE__*/jsx("span", {
+          children: [/*#__PURE__*/jsxRuntime.jsx("span", {
             role: "img",
             "aria-label": "party",
             children: "\uD83C\uDF89"
-          }), ' ', /*#__PURE__*/jsx(Trans, {
+          }), ' ', /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "UNI has arrived"
-          }), ' ', /*#__PURE__*/jsx("span", {
+          }), ' ', /*#__PURE__*/jsxRuntime.jsx("span", {
             role: "img",
             "aria-label": "party",
             children: "\uD83C\uDF89"
           })]
-        }), /*#__PURE__*/jsx(ThemedText.SubHeader, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           style: {
             paddingTop: '0.5rem',
             textAlign: 'center'
           },
           color: "white",
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Thanks for being part of the Uniswap community <0/>",
             components: {
-              0: /*#__PURE__*/jsx(Heart, {
+              0: /*#__PURE__*/jsxRuntime.jsx(reactFeather.Heart, {
                 size: 12
               })
             }
           })
         })]
-      }), /*#__PURE__*/jsx(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsx(AutoColumn, {
         style: {
           zIndex: 10
         },
         justify: "center",
-        children: /*#__PURE__*/jsx(ButtonPrimary, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
           padding: "8px",
           $borderRadius: "8px",
           width: 'fit-content',
           onClick: handleToggleSelfClaimModal,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Claim your UNI tokens"
           })
         })
@@ -15715,7 +15754,7 @@ function ClaimPopup() {
   });
 }
 
-const RowNoFlex = _styled(AutoRow).withConfig({
+const RowNoFlex = _styled__default["default"](AutoRow).withConfig({
   displayName: "TransactionPopup__RowNoFlex",
   componentId: "sc-13d9pmm-0"
 })(["flex-wrap:nowrap;"]);
@@ -15728,29 +15767,29 @@ function TransactionPopup(_ref) {
     chainId
   } = useActiveWeb3React();
   const tx = useTransaction(hash);
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   if (!tx) return null;
   const success = Boolean(tx.receipt && tx.receipt.status === 1);
-  return /*#__PURE__*/jsxs(RowNoFlex, {
-    children: [/*#__PURE__*/jsx("div", {
+  return /*#__PURE__*/jsxRuntime.jsxs(RowNoFlex, {
+    children: [/*#__PURE__*/jsxRuntime.jsx("div", {
       style: {
         paddingRight: 16
       },
-      children: success ? /*#__PURE__*/jsx(CheckCircle, {
+      children: success ? /*#__PURE__*/jsxRuntime.jsx(reactFeather.CheckCircle, {
         color: theme.green1,
         size: 24
-      }) : /*#__PURE__*/jsx(AlertCircle, {
+      }) : /*#__PURE__*/jsxRuntime.jsx(reactFeather.AlertCircle, {
         color: theme.red1,
         size: 24
       })
-    }), /*#__PURE__*/jsxs(AutoColumn, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "8px",
-      children: [/*#__PURE__*/jsx(ThemedText.Body, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
         fontWeight: 500,
-        children: /*#__PURE__*/jsx(TransactionSummary, {
+        children: /*#__PURE__*/jsxRuntime.jsx(TransactionSummary, {
           info: tx.info
         })
-      }), chainId && /*#__PURE__*/jsx(ExternalLink, {
+      }), chainId && /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
         href: getExplorerLink(chainId, hash, ExplorerDataType.TRANSACTION),
         children: "View on Explorer"
       })]
@@ -15758,12 +15797,12 @@ function TransactionPopup(_ref) {
   });
 }
 
-const StyledClose = _styled(X).withConfig({
+const StyledClose = _styled__default["default"](reactFeather.X).withConfig({
   displayName: "PopupItem__StyledClose",
   componentId: "sc-a10u6v-0"
 })(["position:absolute;right:10px;top:10px;:hover{cursor:pointer;}"]);
 
-const Popup = _styled.div.withConfig({
+const Popup = _styled__default["default"].div.withConfig({
   displayName: "PopupItem__Popup",
   componentId: "sc-a10u6v-1"
 })(["display:inline-block;width:100%;padding:1em;background-color:", ";position:relative;border-radius:10px;padding:20px;padding-right:35px;overflow:hidden;", ""], _ref => {
@@ -15783,7 +15822,7 @@ const Popup = _styled.div.withConfig({
   `;
 });
 
-const Fader = _styled.div.withConfig({
+const Fader = _styled__default["default"].div.withConfig({
   displayName: "PopupItem__Fader",
   componentId: "sc-a10u6v-2"
 })(["position:absolute;bottom:0px;left:0px;width:100%;height:2px;background-color:", ";"], _ref3 => {
@@ -15793,7 +15832,7 @@ const Fader = _styled.div.withConfig({
   return theme.bg3;
 });
 
-const AnimatedFader = animated(Fader);
+const AnimatedFader = reactSpring.animated(Fader);
 function PopupItem(_ref4) {
   let {
     removeAfterMs,
@@ -15801,8 +15840,8 @@ function PopupItem(_ref4) {
     popKey
   } = _ref4;
   const removePopup = useRemovePopup();
-  const removeThisPopup = useCallback(() => removePopup(popKey), [popKey, removePopup]);
-  useEffect(() => {
+  const removeThisPopup = React.useCallback(() => removePopup(popKey), [popKey, removePopup]);
+  React.useEffect(() => {
     if (removeAfterMs === null) return undefined;
     const timeout = setTimeout(() => {
       removeThisPopup();
@@ -15811,7 +15850,7 @@ function PopupItem(_ref4) {
       clearTimeout(timeout);
     };
   }, [removeAfterMs, removeThisPopup]);
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   let popupContent;
 
   if ('txn' in content) {
@@ -15820,12 +15859,12 @@ function PopupItem(_ref4) {
         hash
       }
     } = content;
-    popupContent = /*#__PURE__*/jsx(TransactionPopup, {
+    popupContent = /*#__PURE__*/jsxRuntime.jsx(TransactionPopup, {
       hash: hash
     });
   }
 
-  const faderStyle = useSpring$1({
+  const faderStyle = web.useSpring({
     from: {
       width: '100%'
     },
@@ -15836,17 +15875,17 @@ function PopupItem(_ref4) {
       duration: removeAfterMs !== null && removeAfterMs !== void 0 ? removeAfterMs : undefined
     }
   });
-  return /*#__PURE__*/jsxs(Popup, {
-    children: [/*#__PURE__*/jsx(StyledClose, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Popup, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(StyledClose, {
       color: theme.text2,
       onClick: removeThisPopup
-    }), popupContent, removeAfterMs !== null ? /*#__PURE__*/jsx(AnimatedFader, {
+    }), popupContent, removeAfterMs !== null ? /*#__PURE__*/jsxRuntime.jsx(AnimatedFader, {
       style: faderStyle
     }) : null]
   });
 }
 
-const MobilePopupWrapper = _styled.div.withConfig({
+const MobilePopupWrapper = _styled__default["default"].div.withConfig({
   displayName: "Popups__MobilePopupWrapper",
   componentId: "sc-fo3pji-0"
 })(["position:relative;max-width:100%;height:", ";margin:", ";margin-bottom:", "};display:none;", ";"], _ref => {
@@ -15873,14 +15912,14 @@ const MobilePopupWrapper = _styled.div.withConfig({
   `;
 });
 
-const MobilePopupInner = _styled.div.withConfig({
+const MobilePopupInner = _styled__default["default"].div.withConfig({
   displayName: "Popups__MobilePopupInner",
   componentId: "sc-fo3pji-1"
 })(["height:99%;overflow-x:auto;overflow-y:hidden;display:flex;flex-direction:row;-webkit-overflow-scrolling:touch;::-webkit-scrollbar{display:none;}"]);
 
 const StopOverflowQuery = `@media screen and (min-width: ${MEDIA_WIDTHS.upToMedium + 1}px) and (max-width: ${MEDIA_WIDTHS.upToMedium + 500}px)`;
 
-const FixedPopupColumn = _styled(AutoColumn).withConfig({
+const FixedPopupColumn = _styled__default["default"](AutoColumn).withConfig({
   displayName: "Popups__FixedPopupColumn",
   componentId: "sc-fo3pji-2"
 })(["position:fixed;top:", ";right:1rem;max-width:355px !important;width:100%;z-index:3;", ";", "{top:", ";}"], _ref5 => {
@@ -15912,21 +15951,21 @@ function Popups() {
     chainId
   } = useActiveWeb3React();
   const isNotOnMainnet = Boolean(chainId && chainId !== SupportedChainId.MAINNET);
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsxs(FixedPopupColumn, {
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(FixedPopupColumn, {
       gap: "20px",
       extraPadding: urlWarningActive,
       xlPadding: isNotOnMainnet,
-      children: [/*#__PURE__*/jsx(ClaimPopup, {}), activePopups.map(item => /*#__PURE__*/jsx(PopupItem, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(ClaimPopup, {}), activePopups.map(item => /*#__PURE__*/jsxRuntime.jsx(PopupItem, {
         content: item.content,
         popKey: item.key,
         removeAfterMs: item.removeAfterMs
       }, item.key))]
-    }), /*#__PURE__*/jsx(MobilePopupWrapper, {
+    }), /*#__PURE__*/jsxRuntime.jsx(MobilePopupWrapper, {
       height: (activePopups === null || activePopups === void 0 ? void 0 : activePopups.length) > 0 ? 'fit-content' : 0,
-      children: /*#__PURE__*/jsx(MobilePopupInner, {
+      children: /*#__PURE__*/jsxRuntime.jsx(MobilePopupInner, {
         children: activePopups // reverse so new items up front
-        .slice(0).reverse().map(item => /*#__PURE__*/jsx(PopupItem, {
+        .slice(0).reverse().map(item => /*#__PURE__*/jsxRuntime.jsx(PopupItem, {
           content: item.content,
           popKey: item.key,
           removeAfterMs: item.removeAfterMs
@@ -15936,12 +15975,12 @@ function Popups() {
   });
 }
 
-const MessageWrapper = _styled.div.withConfig({
+const MessageWrapper = _styled__default["default"].div.withConfig({
   displayName: "Web3ReactManager__MessageWrapper",
   componentId: "sc-1bdulxg-0"
 })(["display:flex;align-items:center;justify-content:center;height:20rem;"]);
 
-const Message = _styled.h2.withConfig({
+const Message = _styled__default["default"].h2.withConfig({
   displayName: "Web3ReactManager__Message",
   componentId: "sc-1bdulxg-1"
 })(["color:", ";"], _ref => {
@@ -15957,16 +15996,16 @@ function Web3ReactManager(_ref2) {
   } = _ref2;
   const {
     active
-  } = useWeb3React();
+  } = core.useWeb3React();
   const {
     active: networkActive,
     error: networkError,
     activate: activateNetwork
-  } = useWeb3React(NetworkContextName); // try to eagerly connect to an injected provider, if it exists and has granted access already
+  } = core.useWeb3React(NetworkContextName); // try to eagerly connect to an injected provider, if it exists and has granted access already
 
   const triedEager = useEagerConnect(); // after eagerly trying injected, if the network connect ever isn't active or in an error state, activate itd
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (triedEager && !networkActive && !networkError && !active) {
       activateNetwork(network);
     }
@@ -15975,9 +16014,9 @@ function Web3ReactManager(_ref2) {
   useInactiveListener(!triedEager); // if the account context isn't active, and there's an error on the network context, it's an irrecoverable error
 
   if (triedEager && !active && networkError) {
-    return /*#__PURE__*/jsx(MessageWrapper, {
-      children: /*#__PURE__*/jsx(Message, {
-        children: /*#__PURE__*/jsx(Trans, {
+    return /*#__PURE__*/jsxRuntime.jsx(MessageWrapper, {
+      children: /*#__PURE__*/jsxRuntime.jsx(Message, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device."
         })
       })
@@ -15987,17 +16026,17 @@ function Web3ReactManager(_ref2) {
   return children;
 }
 
-_styled.div.withConfig({
+_styled__default["default"].div.withConfig({
   displayName: "NetworkAlert__DesktopTextBreak",
   componentId: "sc-17mb1wp-0"
 })(["display:none;@media screen and (min-width:", "px){display:block;}"], MEDIA_WIDTHS.upToMedium);
 
-const L2Icon = _styled.img.withConfig({
+const L2Icon = _styled__default["default"].img.withConfig({
   displayName: "NetworkAlert__L2Icon",
   componentId: "sc-17mb1wp-1"
 })(["width:36px;height:36px;justify-self:center;"]);
 
-const BetaTag = _styled.span.withConfig({
+const BetaTag = _styled__default["default"].span.withConfig({
   displayName: "NetworkAlert__BetaTag",
   componentId: "sc-17mb1wp-2"
 })(["align-items:center;background-color:", ";border-radius:6px;color:", ";display:flex;font-size:14px;height:28px;justify-content:center;left:-16px;position:absolute;transform:rotate(-15deg);top:-16px;width:60px;z-index:1;"], _ref => {
@@ -16012,34 +16051,34 @@ const BetaTag = _styled.span.withConfig({
   return theme.white;
 });
 
-const Body = _styled.p.withConfig({
+const Body = _styled__default["default"].p.withConfig({
   displayName: "NetworkAlert__Body",
   componentId: "sc-17mb1wp-3"
 })(["font-size:12px;grid-column:1 / 3;line-height:143%;margin:0;@media screen and (min-width:", "px){grid-column:2 / 3;}"], MEDIA_WIDTHS.upToSmall);
 
-const Controls = _styled.div.withConfig({
+const Controls = _styled__default["default"].div.withConfig({
   displayName: "NetworkAlert__Controls",
   componentId: "sc-17mb1wp-4"
 })(["align-items:center;display:flex;justify-content:flex-start;", ""], _ref3 => {
   let {
     thin
   } = _ref3;
-  return thin && css`
+  return thin && _styled.css`
       margin: auto 32px auto 0;
     `;
 });
 
-const CloseIcon = _styled(X).withConfig({
+const CloseIcon = _styled__default["default"](reactFeather.X).withConfig({
   displayName: "NetworkAlert__CloseIcon",
   componentId: "sc-17mb1wp-5"
 })(["cursor:pointer;position:absolute;top:16px;right:16px;"]);
 
-const BodyText = _styled.div.withConfig({
+const BodyText = _styled__default["default"].div.withConfig({
   displayName: "NetworkAlert__BodyText",
   componentId: "sc-17mb1wp-6"
 })(["align-items:center;display:grid;grid-gap:4px;grid-template-columns:40px 4fr;grid-template-rows:auto auto;margin:20px 16px;@media screen and (min-width:", "px){grid-template-columns:42px 4fr;grid-gap:8px;}"], MEDIA_WIDTHS.upToSmall);
 
-const LearnMoreLink = _styled(ExternalLink).withConfig({
+const LearnMoreLink = _styled__default["default"](ExternalLink).withConfig({
   displayName: "NetworkAlert__LearnMoreLink",
   componentId: "sc-17mb1wp-7"
 })(["align-items:center;background-color:transparent;border:1px solid rgba(255,255,255,0.4);border-radius:8px;color:", ";display:flex;font-size:16px;height:44px;justify-content:space-between;margin:0 0 20px 0;padding:12px 16px;text-decoration:none;width:auto;:hover,:focus,:active{background-color:rgba(255,255,255,0.05);}transition:background-color 150ms ease-in-out;", ""], _ref4 => {
@@ -16051,36 +16090,36 @@ const LearnMoreLink = _styled(ExternalLink).withConfig({
   let {
     thin
   } = _ref5;
-  return thin && css`
+  return thin && _styled.css`
       font-size: 14px;
       margin: auto;
       width: 112px;
     `;
 });
 
-const RootWrapper = _styled.div.withConfig({
+const RootWrapper = _styled__default["default"].div.withConfig({
   displayName: "NetworkAlert__RootWrapper",
   componentId: "sc-17mb1wp-8"
 })(["position:relative;"]);
 
-const ArbitrumWrapperBackgroundDarkMode = css`
+const ArbitrumWrapperBackgroundDarkMode = _styled.css`
   background: radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.1) 0%, rgba(219, 255, 0, 0) 100%),
     radial-gradient(75% 75% at 0% 0%, rgba(150, 190, 220, 0.3) 0%, rgba(33, 114, 229, 0.3) 100%), hsla(0, 0%, 100%, 0.1);
 `;
-const ArbitrumWrapperBackgroundLightMode = css`
+const ArbitrumWrapperBackgroundLightMode = _styled.css`
   background: radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.1) 0%, rgba(219, 255, 0, 0) 100%),
     radial-gradient(circle at top left, hsla(206, 50%, 75%, 0.01), hsla(215, 79%, 51%, 0.12)), hsla(0, 0%, 100%, 0.1);
 `;
-const OptimismWrapperBackgroundDarkMode = css`
+const OptimismWrapperBackgroundDarkMode = _styled.css`
   background: radial-gradient(948% 292% at 42% 0%, rgba(255, 58, 212, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%),
     radial-gradient(98% 96% at 2% 0%, rgba(255, 39, 39, 0.5) 0%, rgba(235, 0, 255, 0.345) 96%);
 `;
-const OptimismWrapperBackgroundLightMode = css`
+const OptimismWrapperBackgroundLightMode = _styled.css`
   background: radial-gradient(92% 105% at 50% 7%, rgba(255, 58, 212, 0.04) 0%, rgba(255, 255, 255, 0.03) 100%),
     radial-gradient(100% 97% at 0% 12%, rgba(235, 0, 255, 0.1) 0%, rgba(243, 19, 19, 0.1) 100%), hsla(0, 0%, 100%, 0.5);
 `;
 
-const ContentWrapper$1 = _styled.div.withConfig({
+const ContentWrapper$1 = _styled__default["default"].div.withConfig({
   displayName: "NetworkAlert__ContentWrapper",
   componentId: "sc-17mb1wp-9"
 })(["", ";border-radius:20px;display:flex;flex-direction:column;max-width:480px;min-height:174px;overflow:hidden;position:relative;width:100%;", ":before{background-image:url(", ");background-repeat:no-repeat;background-size:300px;content:'';height:300px;opacity:0.1;position:absolute;transform:rotate(25deg) translate(-90px,-40px);width:300px;z-index:-1;}"], _ref6 => {
@@ -16093,7 +16132,7 @@ const ContentWrapper$1 = _styled.div.withConfig({
   let {
     thin
   } = _ref7;
-  return thin && css`
+  return thin && _styled.css`
       flex-direction: row;
       max-width: max-content;
       min-height: min-content;
@@ -16105,7 +16144,7 @@ const ContentWrapper$1 = _styled.div.withConfig({
   return logoUrl;
 });
 
-const Header$1 = _styled.h2.withConfig({
+const Header$1 = _styled__default["default"].h2.withConfig({
   displayName: "NetworkAlert__Header",
   componentId: "sc-17mb1wp-10"
 })(["font-weight:600;font-size:20px;margin:0;padding-right:30px;display:", ";"], _ref9 => {
@@ -16115,19 +16154,19 @@ const Header$1 = _styled.h2.withConfig({
   return thin ? 'none' : 'block';
 });
 
-const LinkOutCircle = _styled(ArrowDownCircle).withConfig({
+const LinkOutCircle = _styled__default["default"](reactFeather.ArrowDownCircle).withConfig({
   displayName: "NetworkAlert__LinkOutCircle",
   componentId: "sc-17mb1wp-11"
 })(["margin-left:12px;transform:rotate(230deg);width:20px;height:20px;"]);
 
-const LinkOutToBridge = _styled(ExternalLink).withConfig({
+const LinkOutToBridge = _styled__default["default"](ExternalLink).withConfig({
   displayName: "NetworkAlert__LinkOutToBridge",
   componentId: "sc-17mb1wp-12"
 })(["align-items:center;background-color:black;border-radius:8px;color:white;display:flex;font-size:16px;height:44px;justify-content:space-between;margin:0 12px 20px 18px;padding:12px 16px;text-decoration:none;width:auto;:hover,:focus,:active{background-color:black;}", ""], _ref10 => {
   let {
     thin
   } = _ref10;
-  return thin && css`
+  return thin && _styled.css`
       font-size: 14px;
       margin: auto 10px;
       width: 168px;
@@ -16144,9 +16183,9 @@ function NetworkAlert(props) {
   const [darkMode] = useDarkModeManager();
   const [arbitrumAlphaAcknowledged, setArbitrumAlphaAcknowledged] = useArbitrumAlphaAlert();
   const [optimismAlphaAcknowledged, setOptimismAlphaAcknowledged] = useOptimismAlphaAlert();
-  const [locallyDismissed, setLocallyDimissed] = useState(false);
+  const [locallyDismissed, setLocallyDimissed] = React.useState(false);
   const userEthBalance = (_useETHBalances = useETHBalances(account ? [account] : [])) === null || _useETHBalances === void 0 ? void 0 : _useETHBalances[account !== null && account !== void 0 ? account : ''];
-  const dismiss = useCallback(() => {
+  const dismiss = React.useCallback(() => {
     if (userEthBalance !== null && userEthBalance !== void 0 && userEthBalance.greaterThan(0)) {
       switch (chainId) {
         case SupportedChainId.OPTIMISM:
@@ -16173,30 +16212,30 @@ function NetworkAlert(props) {
   const depositUrl = isOptimism ? `${info.bridge}?chainId=1` : info.bridge;
   const helpCenterLink = isOptimism ? OPTIMISM_HELP_CENTER_LINK : ARBITRUM_HELP_CENTER_LINK;
   const showCloseIcon = Boolean((userEthBalance === null || userEthBalance === void 0 ? void 0 : userEthBalance.greaterThan(0)) && !props.thin);
-  return /*#__PURE__*/jsxs(RootWrapper, {
-    children: [/*#__PURE__*/jsx(BetaTag, {
+  return /*#__PURE__*/jsxRuntime.jsxs(RootWrapper, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(BetaTag, {
       color: isOptimism ? '#ff0420' : '#0490ed',
       children: "Beta"
-    }), /*#__PURE__*/jsxs(ContentWrapper$1, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(ContentWrapper$1, {
       chainId: chainId,
       darkMode: darkMode,
       logoUrl: info.logoUrl,
       thin: props.thin,
-      children: [showCloseIcon && /*#__PURE__*/jsx(CloseIcon, {
+      children: [showCloseIcon && /*#__PURE__*/jsxRuntime.jsx(CloseIcon, {
         onClick: dismiss
-      }), /*#__PURE__*/jsxs(BodyText, {
-        children: [/*#__PURE__*/jsx(L2Icon, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(BodyText, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(L2Icon, {
           src: info.logoUrl
-        }), /*#__PURE__*/jsx(Header$1, {
+        }), /*#__PURE__*/jsxRuntime.jsx(Header$1, {
           thin: props.thin,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Uniswap on {0}",
             values: {
               0: info.label
             }
           })
-        }), /*#__PURE__*/jsx(Body, {
-          children: /*#__PURE__*/jsx(Trans, {
+        }), /*#__PURE__*/jsxRuntime.jsx(Body, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "To start trading on {0}, first bridge your assets from L1 to L2. Please treat this as a beta release and learn about the risks before using {1}.",
             values: {
               0: info.label,
@@ -16204,18 +16243,18 @@ function NetworkAlert(props) {
             }
           })
         })]
-      }), /*#__PURE__*/jsxs(Controls, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(Controls, {
         thin: props.thin,
-        children: [/*#__PURE__*/jsxs(LinkOutToBridge, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(LinkOutToBridge, {
           href: depositUrl,
           thin: props.thin,
-          children: [/*#__PURE__*/jsx(Trans, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Deposit Assets"
-          }), /*#__PURE__*/jsx(LinkOutCircle, {})]
-        }), /*#__PURE__*/jsx(LearnMoreLink, {
+          }), /*#__PURE__*/jsxRuntime.jsx(LinkOutCircle, {})]
+        }), /*#__PURE__*/jsxRuntime.jsx(LearnMoreLink, {
           href: helpCenterLink,
           thin: props.thin,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Learn More"
           })
         })]
@@ -16224,14 +16263,14 @@ function NetworkAlert(props) {
   });
 }
 
-const THIRTY_BIPS_FEE = new Percent(JSBI.BigInt(30), JSBI.BigInt(10000));
-const ONE_HUNDRED_PERCENT = new Percent(JSBI.BigInt(10000), JSBI.BigInt(10000));
+const THIRTY_BIPS_FEE = new sdkCore.Percent(JSBI__default["default"].BigInt(30), JSBI__default["default"].BigInt(10000));
+const ONE_HUNDRED_PERCENT = new sdkCore.Percent(JSBI__default["default"].BigInt(10000), JSBI__default["default"].BigInt(10000));
 const INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(THIRTY_BIPS_FEE); // computes realized lp fee as a percent
 
 function computeRealizedLPFeePercent(trade) {
   let percent;
 
-  if (trade instanceof Trade) {
+  if (trade instanceof v2Sdk.Trade) {
     // for each hop in our trade, take away the x*y=k price impact from 0.3% fees
     // e.g. for 3 tokens/2 hops: 1 - ((1 - .03) * (1-.03))
     percent = ONE_HUNDRED_PERCENT.subtract(trade.route.pairs.reduce(currentFee => currentFee.multiply(INPUT_FRACTION_AFTER_FEE), ONE_HUNDRED_PERCENT));
@@ -16244,13 +16283,13 @@ function computeRealizedLPFeePercent(trade) {
         numerator,
         denominator
       } = swap.inputAmount.divide(trade.inputAmount);
-      const overallPercent = new Percent(numerator, denominator);
-      const routeRealizedLPFeePercent = overallPercent.multiply(ONE_HUNDRED_PERCENT.subtract(swap.route.pools.reduce((currentFee, pool) => currentFee.multiply(ONE_HUNDRED_PERCENT.subtract(new Fraction(pool.fee, 1000000))), ONE_HUNDRED_PERCENT)));
+      const overallPercent = new sdkCore.Percent(numerator, denominator);
+      const routeRealizedLPFeePercent = overallPercent.multiply(ONE_HUNDRED_PERCENT.subtract(swap.route.pools.reduce((currentFee, pool) => currentFee.multiply(ONE_HUNDRED_PERCENT.subtract(new sdkCore.Fraction(pool.fee, 1000000))), ONE_HUNDRED_PERCENT)));
       percent = percent.add(routeRealizedLPFeePercent);
     }
   }
 
-  return new Percent(percent.numerator, percent.denominator);
+  return new sdkCore.Percent(percent.numerator, percent.denominator);
 } // computes price breakdown for the trade
 const IMPACT_TIERS = [BLOCKED_PRICE_IMPACT_NON_EXPERT, ALLOWED_PRICE_IMPACT_HIGH, ALLOWED_PRICE_IMPACT_MEDIUM, ALLOWED_PRICE_IMPACT_LOW];
 function warningSeverity(priceImpact) {
@@ -16269,7 +16308,7 @@ function FormattedPriceImpact(_ref) {
   let {
     priceImpact
   } = _ref;
-  return /*#__PURE__*/jsx(ErrorText, {
+  return /*#__PURE__*/jsxRuntime.jsx(ErrorText, {
     fontWeight: 500,
     fontSize: 14,
     severity: warningSeverity(priceImpact),
@@ -16283,8 +16322,8 @@ function TextWithLoadingPlaceholder(_ref) {
     width,
     children
   } = _ref;
-  return syncing ? /*#__PURE__*/jsx(LoadingRows, {
-    children: /*#__PURE__*/jsx("div", {
+  return syncing ? /*#__PURE__*/jsxRuntime.jsx(LoadingRows, {
+    children: /*#__PURE__*/jsxRuntime.jsx("div", {
       style: {
         height: '15px',
         width: `${width}px`
@@ -16299,11 +16338,11 @@ function AdvancedSwapDetails(_ref2) {
     allowedSlippage,
     syncing = false
   } = _ref2;
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   const {
     realizedLPFee,
     priceImpact
-  } = useMemo(() => {
+  } = React.useMemo(() => {
     if (!trade) return {
       realizedLPFee: undefined,
       priceImpact: undefined
@@ -16316,84 +16355,84 @@ function AdvancedSwapDetails(_ref2) {
       realizedLPFee
     };
   }, [trade]);
-  return !trade ? null : /*#__PURE__*/jsxs(AutoColumn, {
+  return !trade ? null : /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
     gap: "8px",
-    children: [/*#__PURE__*/jsx(TransactionDetailsLabel, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(TransactionDetailsLabel, {
       fontWeight: 500,
       fontSize: 14,
-      children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Transaction Details"
       })
-    }), /*#__PURE__*/jsxs(RowBetween, {
-      children: [/*#__PURE__*/jsx(RowFixed, {
-        children: /*#__PURE__*/jsx(ThemedText.SubHeader, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(RowFixed, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           color: theme.text1,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Liquidity Provider Fee"
           })
         })
-      }), /*#__PURE__*/jsx(TextWithLoadingPlaceholder, {
+      }), /*#__PURE__*/jsxRuntime.jsx(TextWithLoadingPlaceholder, {
         syncing: syncing,
         width: 65,
-        children: /*#__PURE__*/jsx(ThemedText.Black, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
           textAlign: "right",
           fontSize: 14,
           children: realizedLPFee ? `${realizedLPFee.toSignificant(4)} ${realizedLPFee.currency.symbol}` : '-'
         })
       })]
-    }), /*#__PURE__*/jsxs(RowBetween, {
-      children: [/*#__PURE__*/jsx(RowFixed, {
-        children: /*#__PURE__*/jsx(ThemedText.SubHeader, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(RowFixed, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           color: theme.text1,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Price Impact"
           })
         })
-      }), /*#__PURE__*/jsx(TextWithLoadingPlaceholder, {
+      }), /*#__PURE__*/jsxRuntime.jsx(TextWithLoadingPlaceholder, {
         syncing: syncing,
         width: 50,
-        children: /*#__PURE__*/jsx(ThemedText.Black, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
           textAlign: "right",
           fontSize: 14,
-          children: /*#__PURE__*/jsx(FormattedPriceImpact, {
+          children: /*#__PURE__*/jsxRuntime.jsx(FormattedPriceImpact, {
             priceImpact: priceImpact
           })
         })
       })]
-    }), /*#__PURE__*/jsxs(RowBetween, {
-      children: [/*#__PURE__*/jsx(RowFixed, {
-        children: /*#__PURE__*/jsx(ThemedText.SubHeader, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(RowFixed, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           color: theme.text1,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Allowed Slippage"
           })
         })
-      }), /*#__PURE__*/jsx(TextWithLoadingPlaceholder, {
+      }), /*#__PURE__*/jsxRuntime.jsx(TextWithLoadingPlaceholder, {
         syncing: syncing,
         width: 45,
-        children: /*#__PURE__*/jsxs(ThemedText.Black, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(ThemedText.Black, {
           textAlign: "right",
           fontSize: 14,
           children: [allowedSlippage.toFixed(2), "%"]
         })
       })]
-    }), /*#__PURE__*/jsxs(RowBetween, {
-      children: [/*#__PURE__*/jsx(RowFixed, {
-        children: /*#__PURE__*/jsx(ThemedText.SubHeader, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(RowFixed, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.SubHeader, {
           color: theme.text1,
-          children: trade.tradeType === TradeType.EXACT_INPUT ? /*#__PURE__*/jsx(Trans, {
+          children: trade.tradeType === sdkCore.TradeType.EXACT_INPUT ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Minimum received"
-          }) : /*#__PURE__*/jsx(Trans, {
+          }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Maximum sent"
           })
         })
-      }), /*#__PURE__*/jsx(TextWithLoadingPlaceholder, {
+      }), /*#__PURE__*/jsxRuntime.jsx(TextWithLoadingPlaceholder, {
         syncing: syncing,
         width: 70,
-        children: /*#__PURE__*/jsx(ThemedText.Black, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
           textAlign: "right",
           fontSize: 14,
-          children: trade.tradeType === TradeType.EXACT_INPUT ? `${trade.minimumAmountOut(allowedSlippage).toSignificant(6)} ${trade.outputAmount.currency.symbol}` : `${trade.maximumAmountIn(allowedSlippage).toSignificant(6)} ${trade.inputAmount.currency.symbol}`
+          children: trade.tradeType === sdkCore.TradeType.EXACT_INPUT ? `${trade.minimumAmountOut(allowedSlippage).toSignificant(6)} ${trade.outputAmount.currency.symbol}` : `${trade.maximumAmountIn(allowedSlippage).toSignificant(6)} ${trade.inputAmount.currency.symbol}`
         })
       })]
     })]
@@ -16404,32 +16443,32 @@ var _defs, _path$2;
 
 function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
 
-const SvgAutoRouter = props => /*#__PURE__*/React.createElement("svg", _extends$3({
+const SvgAutoRouter = props => /*#__PURE__*/React__namespace.createElement("svg", _extends$3({
   width: 23,
   height: 20,
   viewBox: "0 0 23 20",
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
-}, props), _defs || (_defs = /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("linearGradient", {
+}, props), _defs || (_defs = /*#__PURE__*/React__namespace.createElement("defs", null, /*#__PURE__*/React__namespace.createElement("linearGradient", {
   id: "gradient1",
   x1: 0,
   y1: 0,
   x2: 1,
   y2: 0,
   gradientTransform: "rotate(95)"
-}, /*#__PURE__*/React.createElement("stop", {
+}, /*#__PURE__*/React__namespace.createElement("stop", {
   id: "stop1",
   offset: 0,
   stopColor: "#2274E2"
-}), /*#__PURE__*/React.createElement("stop", {
+}), /*#__PURE__*/React__namespace.createElement("stop", {
   id: "stop1",
   offset: 0.5,
   stopColor: "#2274E2"
-}), /*#__PURE__*/React.createElement("stop", {
+}), /*#__PURE__*/React__namespace.createElement("stop", {
   id: "stop2",
   offset: 1,
   stopColor: "#3FB672"
-})))), _path$2 || (_path$2 = /*#__PURE__*/React.createElement("path", {
+})))), _path$2 || (_path$2 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M16 16C10 16 9 10 5 10M16 16C16 17.6569 17.3431 19 19 19C20.6569 19 22 17.6569 22 16C22 14.3431 20.6569 13 19 13C17.3431 13 16 14.3431 16 16ZM5 10C9 10 10 4 16 4M5 10H1.5M16 4C16 5.65685 17.3431 7 19 7C20.6569 7 22 5.65685 22 4C22 2.34315 20.6569 1 19 1C17.3431 1 16 2.34315 16 4Z",
   strokeWidth: 2,
   strokeLinecap: "round",
@@ -16441,22 +16480,22 @@ var _path$1;
 
 function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
 
-const SvgStaticRoute = props => /*#__PURE__*/React.createElement("svg", _extends$2({
+const SvgStaticRoute = props => /*#__PURE__*/React__namespace.createElement("svg", _extends$2({
   width: 20,
   height: 20,
   viewBox: "0 0 20 22",
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
-}, props), _path$1 || (_path$1 = /*#__PURE__*/React.createElement("path", {
+}, props), _path$1 || (_path$1 = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M19 18C19 18.5523 18.5523 19 18 19V21C19.6569 21 21 19.6569 21 18H19ZM18 19C17.4477 19 17 18.5523 17 18H15C15 19.6569 16.3431 21 18 21V19ZM17 18C17 17.4477 17.4477 17 18 17V15C16.3431 15 15 16.3431 15 18H17ZM18 17C18.5523 17 19 17.4477 19 18H21C21 16.3431 19.6569 15 18 15V17ZM8 7H16V5H8V7ZM16 11H8V13H16V11ZM8 19H16V17H8V19ZM4 15C4 17.2091 5.79086 19 8 19V17C6.89543 17 6 16.1046 6 15H4ZM8 11C5.79086 11 4 12.7909 4 15H6C6 13.8954 6.89543 13 8 13V11ZM18 9C18 10.1046 17.1046 11 16 11V13C18.2091 13 20 11.2091 20 9H18ZM16 7C17.1046 7 18 7.89543 18 9H20C20 6.79086 18.2091 5 16 5V7ZM7 6C7 6.55228 6.55228 7 6 7V9C7.65685 9 9 7.65685 9 6H7ZM6 7C5.44772 7 5 6.55228 5 6H3C3 7.65685 4.34315 9 6 9V7ZM5 6C5 5.44772 5.44772 5 6 5V3C4.34315 3 3 4.34315 3 6H5ZM6 5C6.55228 5 7 5.44772 7 6H9C9 4.34315 7.65685 3 6 3V5Z"
 })));
 
-const StyledAutoRouterIcon = _styled(SvgAutoRouter).withConfig({
+const StyledAutoRouterIcon = _styled__default["default"](SvgAutoRouter).withConfig({
   displayName: "RouterLabel__StyledAutoRouterIcon",
   componentId: "sc-1uzj9pr-0"
 })(["height:16px;width:16px;:hover{filter:brightness(1.3);}"]);
 
-const StyledStaticRouterIcon = _styled(SvgStaticRoute).withConfig({
+const StyledStaticRouterIcon = _styled__default["default"](SvgStaticRoute).withConfig({
   displayName: "RouterLabel__StyledStaticRouterIcon",
   componentId: "sc-1uzj9pr-1"
 })(["height:16px;width:16px;fill:", ";:hover{filter:brightness(1.3);}"], _ref => {
@@ -16466,7 +16505,7 @@ const StyledStaticRouterIcon = _styled(SvgStaticRoute).withConfig({
   return theme.text3;
 });
 
-const StyledAutoRouterLabel = _styled(ThemedText.Black).withConfig({
+const StyledAutoRouterLabel = _styled__default["default"](ThemedText.Black).withConfig({
   displayName: "RouterLabel__StyledAutoRouterLabel",
   componentId: "sc-1uzj9pr-2"
 })(["line-height:1rem;color:", ";@supports (-webkit-background-clip:text) and (-webkit-text-fill-color:transparent){background-image:linear-gradient(90deg,#2172e5 0%,#54e521 163.16%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}"], _ref2 => {
@@ -16478,16 +16517,16 @@ const StyledAutoRouterLabel = _styled(ThemedText.Black).withConfig({
 
 function AutoRouterLogo() {
   const routingAPIEnabled = useRoutingAPIEnabled();
-  return routingAPIEnabled ? /*#__PURE__*/jsx(StyledAutoRouterIcon, {}) : /*#__PURE__*/jsx(StyledStaticRouterIcon, {});
+  return routingAPIEnabled ? /*#__PURE__*/jsxRuntime.jsx(StyledAutoRouterIcon, {}) : /*#__PURE__*/jsxRuntime.jsx(StyledStaticRouterIcon, {});
 }
 function AutoRouterLabel() {
   const routingAPIEnabled = useRoutingAPIEnabled();
-  return routingAPIEnabled ? /*#__PURE__*/jsx(StyledAutoRouterLabel, {
+  return routingAPIEnabled ? /*#__PURE__*/jsxRuntime.jsx(StyledAutoRouterLabel, {
     fontSize: 14,
     children: "Auto Router"
-  }) : /*#__PURE__*/jsx(ThemedText.Black, {
+  }) : /*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
     fontSize: 14,
-    children: /*#__PURE__*/jsx(Trans, {
+    children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Trade Route"
     })
   });
@@ -16539,23 +16578,23 @@ function pickBorder(variant, theme) {
 function pickFontColor(variant, theme) {
   switch (variant) {
     case BadgeVariant.NEGATIVE:
-      return readableColor(theme.error);
+      return polished.readableColor(theme.error);
 
     case BadgeVariant.POSITIVE:
-      return readableColor(theme.success);
+      return polished.readableColor(theme.success);
 
     case BadgeVariant.WARNING:
-      return readableColor(theme.warning);
+      return polished.readableColor(theme.warning);
 
     case BadgeVariant.WARNING_OUTLINE:
       return theme.warning;
 
     default:
-      return readableColor(theme.bg2);
+      return polished.readableColor(theme.bg2);
   }
 }
 
-const Badge = _styled.div.withConfig({
+const Badge = _styled__default["default"].div.withConfig({
   displayName: "Badge",
   componentId: "sc-1mhw5si-0"
 })(["align-items:center;background-color:", ";border:", ";border-radius:0.5rem;color:", ";display:inline-flex;padding:4px 6px;justify-content:center;font-weight:500;"], _ref => {
@@ -16597,26 +16636,26 @@ const UTF_8_DECODER = new TextDecoder('utf-8');
 
 function contenthashToUri(contenthash) {
   const data = hexToUint8Array(contenthash);
-  const codec = getNameFromData(data);
+  const codec = multicodec.getNameFromData(data);
 
   switch (codec) {
     case 'ipfs-ns':
       {
-        const unprefixedData = rmPrefix(data);
-        const cid = new CID(unprefixedData);
-        return `ipfs://${toB58String(cid.multihash)}`;
+        const unprefixedData = multicodec.rmPrefix(data);
+        const cid = new CID__default["default"](unprefixedData);
+        return `ipfs://${multihashes.toB58String(cid.multihash)}`;
       }
 
     case 'ipns-ns':
       {
-        const unprefixedData = rmPrefix(data);
-        const cid = new CID(unprefixedData);
-        const multihash = decode(cid.multihash);
+        const unprefixedData = multicodec.rmPrefix(data);
+        const cid = new CID__default["default"](unprefixedData);
+        const multihash = multihashes.decode(cid.multihash);
 
         if (multihash.name === 'identity') {
           return `ipns://${UTF_8_DECODER.decode(multihash.digest).trim()}`;
         } else {
-          return `ipns://${toB58String(cid.multihash)}`;
+          return `ipns://${multihashes.toB58String(cid.multihash)}`;
         }
       }
 
@@ -16642,13 +16681,13 @@ function parseENSAddress(ensAddress) {
 function useENSContentHash(ensName) {
   var _resolverAddressResul;
 
-  const ensNodeArgument = useMemo(() => [ensName === null ? undefined : safeNamehash(ensName)], [ensName]);
+  const ensNodeArgument = React.useMemo(() => [ensName === null ? undefined : safeNamehash(ensName)], [ensName]);
   const registrarContract = useENSRegistrarContract(false);
   const resolverAddressResult = useSingleCallResult(registrarContract, 'resolver', ensNodeArgument);
   const resolverAddress = (_resolverAddressResul = resolverAddressResult.result) === null || _resolverAddressResul === void 0 ? void 0 : _resolverAddressResul[0];
   const resolverContract = useENSResolverContract(resolverAddress && isZero(resolverAddress) ? undefined : resolverAddress, false);
   const contenthash = useSingleCallResult(resolverContract, 'contenthash', ensNodeArgument);
-  return useMemo(() => {
+  return React.useMemo(() => {
     var _contenthash$result$, _contenthash$result;
 
     return {
@@ -16659,9 +16698,9 @@ function useENSContentHash(ensName) {
 }
 
 function useHttpLocations(uri) {
-  const ens = useMemo(() => uri ? parseENSAddress(uri) : undefined, [uri]);
+  const ens = React.useMemo(() => uri ? parseENSAddress(uri) : undefined, [uri]);
   const resolvedContentHash = useENSContentHash(ens === null || ens === void 0 ? void 0 : ens.ensName);
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (ens) {
       return resolvedContentHash.contenthash ? uriToHttp(contenthashToUri(resolvedContentHash.contenthash)) : [];
     } else {
@@ -16682,12 +16721,12 @@ function Logo(_ref) {
     style,
     ...rest
   } = _ref;
-  const [, refresh] = useState(0);
+  const [, refresh] = React.useState(0);
   const theme = useTheme();
   const src = srcs.find(src => !BAD_SRCS[src]);
 
   if (src) {
-    return /*#__PURE__*/jsx("img", { ...rest,
+    return /*#__PURE__*/jsxRuntime.jsx("img", { ...rest,
       alt: alt,
       src: src,
       style: style,
@@ -16698,7 +16737,7 @@ function Logo(_ref) {
     });
   }
 
-  return /*#__PURE__*/jsx(Slash, { ...rest,
+  return /*#__PURE__*/jsxRuntime.jsx(reactFeather.Slash, { ...rest,
     style: { ...style,
       color: theme.bg4
     }
@@ -16731,7 +16770,7 @@ const getTokenLogoURL = function (address) {
   }
 };
 
-const StyledEthereumLogo = _styled.img.withConfig({
+const StyledEthereumLogo = _styled__default["default"].img.withConfig({
   displayName: "CurrencyLogo__StyledEthereumLogo",
   componentId: "sc-1fvnadz-0"
 })(["width:", ";height:", ";box-shadow:0px 6px 10px rgba(0,0,0,0.075);border-radius:24px;"], _ref => {
@@ -16746,7 +16785,7 @@ const StyledEthereumLogo = _styled.img.withConfig({
   return size;
 });
 
-const StyledLogo$1 = _styled(Logo).withConfig({
+const StyledLogo$1 = _styled__default["default"](Logo).withConfig({
   displayName: "CurrencyLogo__StyledLogo",
   componentId: "sc-1fvnadz-1"
 })(["width:", ";height:", ";border-radius:", ";box-shadow:0px 6px 10px rgba(0,0,0,0.075);background-color:", ";"], _ref3 => {
@@ -16781,7 +16820,7 @@ function CurrencyLogo(_ref7) {
     ...rest
   } = _ref7;
   const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined);
-  const srcs = useMemo(() => {
+  const srcs = React.useMemo(() => {
     if (!currency || currency.isNative) return [];
 
     if (currency.isToken) {
@@ -16803,7 +16842,7 @@ function CurrencyLogo(_ref7) {
   }, [currency, uriLocations]);
 
   if (currency !== null && currency !== void 0 && currency.isNative) {
-    return /*#__PURE__*/jsx(StyledEthereumLogo, {
+    return /*#__PURE__*/jsxRuntime.jsx(StyledEthereumLogo, {
       src: EthereumLogo,
       alt: "ethereum logo",
       size: size,
@@ -16812,7 +16851,7 @@ function CurrencyLogo(_ref7) {
     });
   }
 
-  return /*#__PURE__*/jsx(StyledLogo$1, {
+  return /*#__PURE__*/jsxRuntime.jsx(StyledLogo$1, {
     size: size,
     srcs: srcs,
     alt: `${(_currency$symbol = currency === null || currency === void 0 ? void 0 : currency.symbol) !== null && _currency$symbol !== void 0 ? _currency$symbol : 'token'} logo`,
@@ -16821,7 +16860,7 @@ function CurrencyLogo(_ref7) {
   });
 }
 
-const Wrapper$a = _styled.div.withConfig({
+const Wrapper$a = _styled__default["default"].div.withConfig({
   displayName: "DoubleLogo__Wrapper",
   componentId: "sc-skatqk-0"
 })(["position:relative;display:flex;flex-direction:row;margin-left:", ";"], _ref => {
@@ -16832,12 +16871,12 @@ const Wrapper$a = _styled.div.withConfig({
   return margin && (sizeraw / 3 + 8).toString() + 'px';
 });
 
-const HigherLogo = _styled(CurrencyLogo).withConfig({
+const HigherLogo = _styled__default["default"](CurrencyLogo).withConfig({
   displayName: "DoubleLogo__HigherLogo",
   componentId: "sc-skatqk-1"
 })(["z-index:2;"]);
 
-const CoveredLogo = _styled(CurrencyLogo).withConfig({
+const CoveredLogo = _styled__default["default"](CurrencyLogo).withConfig({
   displayName: "DoubleLogo__CoveredLogo",
   componentId: "sc-skatqk-2"
 })(["position:absolute;left:", " !important;"], _ref2 => {
@@ -16854,13 +16893,13 @@ function DoubleCurrencyLogo(_ref3) {
     size = 16,
     margin = false
   } = _ref3;
-  return /*#__PURE__*/jsxs(Wrapper$a, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$a, {
     sizeraw: size,
     margin: margin,
-    children: [currency0 && /*#__PURE__*/jsx(HigherLogo, {
+    children: [currency0 && /*#__PURE__*/jsxRuntime.jsx(HigherLogo, {
       currency: currency0,
       size: size.toString() + 'px'
-    }), currency1 && /*#__PURE__*/jsx(CoveredLogo, {
+    }), currency1 && /*#__PURE__*/jsxRuntime.jsx(CoveredLogo, {
       currency: currency1,
       size: size.toString() + 'px',
       sizeraw: size
@@ -16877,7 +16916,7 @@ function useTokenInfoFromActiveList(currency) {
     chainId
   } = useActiveWeb3React();
   const activeList = useCombinedActiveList();
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!chainId) return;
     if (currency.isNative) return currency;
 
@@ -16893,12 +16932,12 @@ var _line;
 
 function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 
-const SvgDotLine = props => /*#__PURE__*/React.createElement("svg", _extends$1({
+const SvgDotLine = props => /*#__PURE__*/React__namespace.createElement("svg", _extends$1({
   width: "100%",
   height: 35,
   viewBox: "800 0 300 200",
   xmlns: "http://www.w3.org/2000/svg"
-}, props), _line || (_line = /*#__PURE__*/React.createElement("line", {
+}, props), _line || (_line = /*#__PURE__*/React__namespace.createElement("line", {
   x1: 0,
   x2: 2000,
   y1: 100,
@@ -16909,7 +16948,7 @@ const SvgDotLine = props => /*#__PURE__*/React.createElement("svg", _extends$1({
   strokeDasharray: "1, 45"
 })));
 
-const Wrapper$9 = _styled(Box$1).withConfig({
+const Wrapper$9 = _styled__default["default"](rebass.Box).withConfig({
   displayName: "RoutingDiagram__Wrapper",
   componentId: "sc-o1ook0-0"
 })(["align-items:center;background-color:", ";width:400px;"], _ref => {
@@ -16919,27 +16958,27 @@ const Wrapper$9 = _styled(Box$1).withConfig({
   return theme.bg0;
 });
 
-const RouteContainerRow = _styled(Row).withConfig({
+const RouteContainerRow = _styled__default["default"](Row).withConfig({
   displayName: "RoutingDiagram__RouteContainerRow",
   componentId: "sc-o1ook0-1"
 })(["display:grid;grid-gap:8px;grid-template-columns:24px 1fr 24px;"]);
 
-const RouteRow = _styled(Row).withConfig({
+const RouteRow = _styled__default["default"](Row).withConfig({
   displayName: "RoutingDiagram__RouteRow",
   componentId: "sc-o1ook0-2"
 })(["align-items:center;display:flex;justify-content:center;padding:0.1rem 0.5rem;position:relative;"]);
 
-const PoolBadge = _styled(Badge).withConfig({
+const PoolBadge = _styled__default["default"](Badge).withConfig({
   displayName: "RoutingDiagram__PoolBadge",
   componentId: "sc-o1ook0-3"
 })(["display:flex;padding:0.25rem 0.5rem;"]);
 
-const DottedLine = _styled.div.withConfig({
+const DottedLine = _styled__default["default"].div.withConfig({
   displayName: "RoutingDiagram__DottedLine",
   componentId: "sc-o1ook0-4"
 })(["display:flex;align-items:center;position:absolute;width:calc(100%);z-index:1;opacity:0.5;"]);
 
-const DotColor = _styled(SvgDotLine).withConfig({
+const DotColor = _styled__default["default"](SvgDotLine).withConfig({
   displayName: "RoutingDiagram__DotColor",
   componentId: "sc-o1ook0-5"
 })(["path{stroke:", ";}"], _ref2 => {
@@ -16949,7 +16988,7 @@ const DotColor = _styled(SvgDotLine).withConfig({
   return theme.bg4;
 });
 
-const OpaqueBadge = _styled(Badge).withConfig({
+const OpaqueBadge = _styled__default["default"](Badge).withConfig({
   displayName: "RoutingDiagram__OpaqueBadge",
   componentId: "sc-o1ook0-6"
 })(["background-color:", ";z-index:2;"], _ref3 => {
@@ -16967,19 +17006,19 @@ function RoutingDiagram(_ref4) {
   } = _ref4;
   const tokenIn = useTokenInfoFromActiveList(currencyIn);
   const tokenOut = useTokenInfoFromActiveList(currencyOut);
-  return /*#__PURE__*/jsx(Wrapper$9, {
+  return /*#__PURE__*/jsxRuntime.jsx(Wrapper$9, {
     children: routes.map((_ref5, index) => {
       let {
         percent,
         path
       } = _ref5;
-      return /*#__PURE__*/jsxs(RouteContainerRow, {
-        children: [/*#__PURE__*/jsx(CurrencyLogo, {
+      return /*#__PURE__*/jsxRuntime.jsxs(RouteContainerRow, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
           currency: tokenIn
-        }), /*#__PURE__*/jsx(Route, {
+        }), /*#__PURE__*/jsxRuntime.jsx(Route, {
           percent: percent,
           path: path
-        }), /*#__PURE__*/jsx(CurrencyLogo, {
+        }), /*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
           currency: tokenOut
         })]
       }, index);
@@ -16992,18 +17031,18 @@ function Route(_ref6) {
     percent,
     path
   } = _ref6;
-  return /*#__PURE__*/jsxs(RouteRow, {
-    children: [/*#__PURE__*/jsx(DottedLine, {
-      children: /*#__PURE__*/jsx(DotColor, {})
-    }), /*#__PURE__*/jsx(OpaqueBadge, {
-      children: /*#__PURE__*/jsxs(ThemedText.Small, {
+  return /*#__PURE__*/jsxRuntime.jsxs(RouteRow, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(DottedLine, {
+      children: /*#__PURE__*/jsxRuntime.jsx(DotColor, {})
+    }), /*#__PURE__*/jsxRuntime.jsx(OpaqueBadge, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(ThemedText.Small, {
         fontSize: 12,
         style: {
           wordBreak: 'normal'
         },
         children: [percent.toSignificant(2), "%"]
       })
-    }), /*#__PURE__*/jsx(AutoRow, {
+    }), /*#__PURE__*/jsxRuntime.jsx(AutoRow, {
       gap: "1px",
       width: "100%",
       style: {
@@ -17012,7 +17051,7 @@ function Route(_ref6) {
       },
       children: path.map((_ref7, index) => {
         let [currency0, currency1, feeAmount] = _ref7;
-        return /*#__PURE__*/jsx(Pool, {
+        return /*#__PURE__*/jsxRuntime.jsx(Pool, {
           currency0: currency0,
           currency1: currency1,
           feeAmount: feeAmount
@@ -17030,15 +17069,15 @@ function Pool(_ref8) {
   } = _ref8;
   const tokenInfo0 = useTokenInfoFromActiveList(currency0);
   const tokenInfo1 = useTokenInfoFromActiveList(currency1);
-  return /*#__PURE__*/jsxs(PoolBadge, {
-    children: [/*#__PURE__*/jsx(Box$1, {
+  return /*#__PURE__*/jsxRuntime.jsxs(PoolBadge, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Box, {
       margin: "0 5px 0 10px",
-      children: /*#__PURE__*/jsx(DoubleCurrencyLogo, {
+      children: /*#__PURE__*/jsxRuntime.jsx(DoubleCurrencyLogo, {
         currency0: tokenInfo1,
         currency1: tokenInfo0,
         size: 20
       })
-    }), /*#__PURE__*/jsxs(ThemedText.Small, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(ThemedText.Small, {
       fontSize: 12,
       children: [feeAmount / 10000, "%"]
     })]
@@ -17047,11 +17086,11 @@ function Pool(_ref8) {
 
 function getTradeVersion(trade) {
   if (!trade) return undefined;
-  if (trade instanceof Trade) return Version.v2;
+  if (trade instanceof v2Sdk.Trade) return Version.v2;
   return Version.v3;
 }
 
-const Separator$1 = _styled.div.withConfig({
+const Separator$1 = _styled__default["default"].div.withConfig({
   displayName: "SwapRoute__Separator",
   componentId: "sc-176vpyh-0"
 })(["border-top:1px solid ", ";height:1px;width:100%;"], _ref => {
@@ -17062,51 +17101,51 @@ const Separator$1 = _styled.div.withConfig({
 });
 
 const V2_DEFAULT_FEE_TIER = 3000;
-var SwapRoute = /*#__PURE__*/memo(function SwapRoute(_ref2) {
+var SwapRoute = /*#__PURE__*/React.memo(function SwapRoute(_ref2) {
   let {
     trade,
     syncing
   } = _ref2;
   const routingAPIEnabled = useRoutingAPIEnabled();
-  return /*#__PURE__*/jsxs(AutoColumn, {
+  return /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
     gap: "12px",
-    children: [/*#__PURE__*/jsxs(RowBetween, {
-      children: [/*#__PURE__*/jsxs(AutoRow, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
         gap: "4px",
         width: "auto",
-        children: [/*#__PURE__*/jsx(AutoRouterLogo, {}), /*#__PURE__*/jsx(AutoRouterLabel, {})]
-      }), syncing ? /*#__PURE__*/jsx(LoadingRows, {
-        children: /*#__PURE__*/jsx("div", {
+        children: [/*#__PURE__*/jsxRuntime.jsx(AutoRouterLogo, {}), /*#__PURE__*/jsxRuntime.jsx(AutoRouterLabel, {})]
+      }), syncing ? /*#__PURE__*/jsxRuntime.jsx(LoadingRows, {
+        children: /*#__PURE__*/jsxRuntime.jsx("div", {
           style: {
             width: '30px',
             height: '24px'
           }
         })
-      }) : /*#__PURE__*/jsx(Badge, {
-        children: /*#__PURE__*/jsx(ThemedText.Black, {
+      }) : /*#__PURE__*/jsxRuntime.jsx(Badge, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
           fontSize: 12,
-          children: getTradeVersion(trade) === Version.v2 ? /*#__PURE__*/jsx(Trans, {
+          children: getTradeVersion(trade) === Version.v2 ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "V2"
-          }) : /*#__PURE__*/jsx(Trans, {
+          }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "V3"
           })
         })
       })]
-    }), /*#__PURE__*/jsx(Separator$1, {}), syncing ? /*#__PURE__*/jsx(LoadingRows, {
-      children: /*#__PURE__*/jsx("div", {
+    }), /*#__PURE__*/jsxRuntime.jsx(Separator$1, {}), syncing ? /*#__PURE__*/jsxRuntime.jsx(LoadingRows, {
+      children: /*#__PURE__*/jsxRuntime.jsx("div", {
         style: {
           width: '400px',
           height: '30px'
         }
       })
-    }) : /*#__PURE__*/jsx(RoutingDiagram, {
+    }) : /*#__PURE__*/jsxRuntime.jsx(RoutingDiagram, {
       currencyIn: trade.inputAmount.currency,
       currencyOut: trade.outputAmount.currency,
       routes: getTokenPath(trade)
-    }), routingAPIEnabled && /*#__PURE__*/jsx(ThemedText.Main, {
+    }), routingAPIEnabled && /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
       fontSize: 12,
       width: 400,
-      children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "This route optimizes your price by considering split routes, multiple hops, and gas costs."
       })
     })]
@@ -17115,7 +17154,7 @@ var SwapRoute = /*#__PURE__*/memo(function SwapRoute(_ref2) {
 
 function getTokenPath(trade) {
   // convert V2 path to a list of routes
-  if (trade instanceof Trade) {
+  if (trade instanceof v2Sdk.Trade) {
     const {
       path: tokenPath
     } = trade.route;
@@ -17126,7 +17165,7 @@ function getTokenPath(trade) {
     }
 
     return [{
-      percent: new Percent(100, 100),
+      percent: new sdkCore.Percent(100, 100),
       path
     }];
   }
@@ -17140,8 +17179,8 @@ function getTokenPath(trade) {
       inputAmount,
       outputAmount
     } = _ref3;
-    const portion = trade.tradeType === TradeType.EXACT_INPUT ? inputAmount.divide(trade.inputAmount) : outputAmount.divide(trade.outputAmount);
-    const percent = new Percent(portion.numerator, portion.denominator);
+    const portion = trade.tradeType === sdkCore.TradeType.EXACT_INPUT ? inputAmount.divide(trade.inputAmount) : outputAmount.divide(trade.outputAmount);
+    const percent = new sdkCore.Percent(portion.numerator, portion.denominator);
     const path = [];
 
     for (let i = 0; i < pools.length; i++) {
@@ -17158,7 +17197,7 @@ function getTokenPath(trade) {
   });
 }
 
-const DetailsFooter = _styled.div.withConfig({
+const DetailsFooter = _styled__default["default"].div.withConfig({
   displayName: "UnsupportedCurrencyFooter__DetailsFooter",
   componentId: "sc-1ya6914-0"
 })(["padding-top:calc(16px + 2rem);padding-bottom:20px;margin-left:auto;margin-right:auto;margin-top:-2rem;width:100%;max-width:400px;border-bottom-left-radius:20px;border-bottom-right-radius:20px;color:", ";background-color:", ";z-index:", ";transform:", ";transition:transform 300ms ease-in-out;text-align:center;"], _ref => {
@@ -17178,12 +17217,12 @@ const DetailsFooter = _styled.div.withConfig({
   return show ? 'translateY(0%)' : 'translateY(-100%)';
 });
 
-const StyledButtonEmpty = _styled(ButtonEmpty).withConfig({
+const StyledButtonEmpty = _styled__default["default"](ButtonEmpty).withConfig({
   displayName: "UnsupportedCurrencyFooter__StyledButtonEmpty",
   componentId: "sc-1ya6914-1"
 })(["text-decoration:none;"]);
 
-const AddressText$1 = _styled(ThemedText.Blue).withConfig({
+const AddressText$1 = _styled__default["default"](ThemedText.Blue).withConfig({
   displayName: "UnsupportedCurrencyFooter__AddressText",
   componentId: "sc-1ya6914-2"
 })(["font-size:12px;", ""], _ref4 => {
@@ -17203,68 +17242,68 @@ function UnsupportedCurrencyFooter(_ref5) {
   const {
     chainId
   } = useActiveWeb3React();
-  const [showDetails, setShowDetails] = useState(false);
+  const [showDetails, setShowDetails] = React.useState(false);
   const tokens = chainId && currencies ? currencies.map(currency => {
     return currency === null || currency === void 0 ? void 0 : currency.wrapped;
   }) : [];
   const unsupportedTokens = useUnsupportedTokens();
-  return /*#__PURE__*/jsxs(DetailsFooter, {
+  return /*#__PURE__*/jsxRuntime.jsxs(DetailsFooter, {
     show: show,
-    children: [/*#__PURE__*/jsx(Modal, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(Modal, {
       isOpen: showDetails,
       onDismiss: () => setShowDetails(false),
-      children: /*#__PURE__*/jsx(Card, {
+      children: /*#__PURE__*/jsxRuntime.jsx(Card, {
         padding: "2rem",
-        children: /*#__PURE__*/jsxs(AutoColumn, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
           gap: "lg",
-          children: [/*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsx(ThemedText.MediumHeader, {
-              children: /*#__PURE__*/jsx(Trans, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.MediumHeader, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Unsupported Assets"
               })
-            }), /*#__PURE__*/jsx(CloseIcon$3, {
+            }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
               onClick: () => setShowDetails(false)
             })]
           }), tokens.map(token => {
             var _token$address;
 
-            return token && unsupportedTokens && Object.keys(unsupportedTokens).includes(token.address) && /*#__PURE__*/jsx(OutlineCard, {
-              children: /*#__PURE__*/jsxs(AutoColumn, {
+            return token && unsupportedTokens && Object.keys(unsupportedTokens).includes(token.address) && /*#__PURE__*/jsxRuntime.jsx(OutlineCard, {
+              children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
                 gap: "10px",
-                children: [/*#__PURE__*/jsxs(AutoRow, {
+                children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
                   gap: "5px",
                   align: "center",
-                  children: [/*#__PURE__*/jsx(CurrencyLogo, {
+                  children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
                     currency: token,
                     size: '24px'
-                  }), /*#__PURE__*/jsx(ThemedText.Body, {
+                  }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
                     fontWeight: 500,
                     children: token.symbol
                   })]
-                }), chainId && /*#__PURE__*/jsx(ExternalLink, {
+                }), chainId && /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
                   href: getExplorerLink(chainId, token.address, ExplorerDataType.ADDRESS),
-                  children: /*#__PURE__*/jsx(AddressText$1, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(AddressText$1, {
                     children: token.address
                   })
                 })]
               })
             }, (_token$address = token.address) === null || _token$address === void 0 ? void 0 : _token$address.concat('not-supported'));
-          }), /*#__PURE__*/jsx(AutoColumn, {
+          }), /*#__PURE__*/jsxRuntime.jsx(AutoColumn, {
             gap: "lg",
-            children: /*#__PURE__*/jsx(ThemedText.Body, {
+            children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
               fontWeight: 500,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Some assets are not available through this interface because they may not work well with the smart contracts or we are unable to allow trading for legal reasons."
               })
             })
           })]
         })
       })
-    }), /*#__PURE__*/jsx(StyledButtonEmpty, {
+    }), /*#__PURE__*/jsxRuntime.jsx(StyledButtonEmpty, {
       padding: '0',
       onClick: () => setShowDetails(true),
-      children: /*#__PURE__*/jsx(ThemedText.Blue, {
-        children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Blue, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Read more about unsupported assets"
         })
       })
@@ -17277,11 +17316,11 @@ function formatCurrencyAmount(amount, sigFigs) {
     return '-';
   }
 
-  if (JSBI.equal(amount.quotient, JSBI.BigInt(0))) {
+  if (JSBI__default["default"].equal(amount.quotient, JSBI__default["default"].BigInt(0))) {
     return '0';
   }
 
-  if (amount.divide(amount.decimalScale).lessThan(new Fraction(1, 100000))) {
+  if (amount.divide(amount.decimalScale).lessThan(new sdkCore.Fraction(1, 100000))) {
     return '<0.00001';
   }
 
@@ -17292,18 +17331,18 @@ var _path;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-const SvgDropdown = props => /*#__PURE__*/React.createElement("svg", _extends({
+const SvgDropdown = props => /*#__PURE__*/React__namespace.createElement("svg", _extends({
   width: 12,
   height: 7,
   viewBox: "0 0 12 7",
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
-}, props), _path || (_path = /*#__PURE__*/React.createElement("path", {
+}, props), _path || (_path = /*#__PURE__*/React__namespace.createElement("path", {
   d: "M0.97168 1L6.20532 6L11.439 1",
   stroke: "#AEAEAE"
 })));
 
-const StyledInput = _styled.input.withConfig({
+const StyledInput = _styled__default["default"].input.withConfig({
   displayName: "NumericalInput__StyledInput",
   componentId: "sc-1x3stf0-0"
 })(["color:", ";width:0;position:relative;font-weight:500;outline:none;border:none;flex:1 1 auto;background-color:", ";font-size:", ";text-align:", ";white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0px;-webkit-appearance:textfield;text-align:right;::-webkit-search-decoration{-webkit-appearance:none;}[type='number']{-moz-appearance:textfield;}::-webkit-outer-spin-button,::-webkit-inner-spin-button{-webkit-appearance:none;}::placeholder{color:", ";}"], _ref => {
@@ -17336,7 +17375,7 @@ const StyledInput = _styled.input.withConfig({
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`); // match escaped "." characters via in a non-capturing group
 
-const Input$1 = /*#__PURE__*/React__default.memo(function InnerInput(_ref6) {
+const Input$1 = /*#__PURE__*/React__default["default"].memo(function InnerInput(_ref6) {
   let {
     value,
     onUserInput,
@@ -17351,7 +17390,7 @@ const Input$1 = /*#__PURE__*/React__default.memo(function InnerInput(_ref6) {
     }
   };
 
-  return /*#__PURE__*/jsx(StyledInput, { ...rest,
+  return /*#__PURE__*/jsxRuntime.jsx(StyledInput, { ...rest,
     value: prependSymbol && value ? prependSymbol + value : value,
     onChange: event => {
       if (prependSymbol) {
@@ -17386,8 +17425,8 @@ const Input$1 = /*#__PURE__*/React__default.memo(function InnerInput(_ref6) {
  */
 
 function useLast(value, filterFn) {
-  const [last, setLast] = useState(filterFn && filterFn(value) ? value : undefined);
-  useEffect(() => {
+  const [last, setLast] = React.useState(filterFn && filterFn(value) ? value : undefined);
+  React.useEffect(() => {
     setLast(last => {
       const shouldUse = filterFn ? filterFn(value) : true;
       if (shouldUse) return value;
@@ -17399,12 +17438,12 @@ function useLast(value, filterFn) {
 
 function useToggle() {
   let initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-  const [state, setState] = useState(initialState);
-  const toggle = useCallback(() => setState(state => !state), []);
+  const [state, setState] = React.useState(initialState);
+  const toggle = React.useCallback(() => setState(state => !state), []);
   return [state, toggle];
 }
 
-const QuestionWrapper = _styled.div.withConfig({
+const QuestionWrapper = _styled__default["default"].div.withConfig({
   displayName: "QuestionHelper__QuestionWrapper",
   componentId: "sc-bjeulj-0"
 })(["display:flex;align-items:center;justify-content:center;padding:0px;width:18px;height:18px;border:none;background:none;outline:none;cursor:default;border-radius:36px;font-size:12px;background-color:", ";color:", ";:hover,:focus{opacity:0.7;}"], _ref => {
@@ -17419,7 +17458,7 @@ const QuestionWrapper = _styled.div.withConfig({
   return theme.text2;
 });
 
-const QuestionMark = _styled.span.withConfig({
+const QuestionMark = _styled__default["default"].span.withConfig({
   displayName: "QuestionHelper__QuestionMark",
   componentId: "sc-bjeulj-1"
 })(["font-size:14px;"]);
@@ -17428,23 +17467,23 @@ function QuestionHelper(_ref3) {
   let {
     text
   } = _ref3;
-  const [show, setShow] = useState(false);
-  const open = useCallback(() => setShow(true), [setShow]);
-  const close = useCallback(() => setShow(false), [setShow]);
-  return /*#__PURE__*/jsx("span", {
+  const [show, setShow] = React.useState(false);
+  const open = React.useCallback(() => setShow(true), [setShow]);
+  const close = React.useCallback(() => setShow(false), [setShow]);
+  return /*#__PURE__*/jsxRuntime.jsx("span", {
     style: {
       marginLeft: 4,
       display: 'flex',
       alignItems: 'center'
     },
-    children: /*#__PURE__*/jsx(Tooltip, {
+    children: /*#__PURE__*/jsxRuntime.jsx(Tooltip, {
       text: text,
       show: show,
-      children: /*#__PURE__*/jsx(QuestionWrapper, {
+      children: /*#__PURE__*/jsxRuntime.jsx(QuestionWrapper, {
         onClick: open,
         onMouseEnter: open,
         onMouseLeave: close,
-        children: /*#__PURE__*/jsx(QuestionMark, {
+        children: /*#__PURE__*/jsxRuntime.jsx(QuestionMark, {
           children: "?"
         })
       })
@@ -17458,7 +17497,7 @@ function currencyId(currency) {
   throw new Error('invalid currency');
 }
 
-const MobileWrapper = _styled(AutoColumn).withConfig({
+const MobileWrapper = _styled__default["default"](AutoColumn).withConfig({
   displayName: "CommonBases__MobileWrapper",
   componentId: "sc-jm24e0-0"
 })(["", ";"], _ref => {
@@ -17470,7 +17509,7 @@ const MobileWrapper = _styled(AutoColumn).withConfig({
   `;
 });
 
-const BaseWrapper = _styled.div.withConfig({
+const BaseWrapper = _styled__default["default"].div.withConfig({
   displayName: "CommonBases__BaseWrapper",
   componentId: "sc-jm24e0-1"
 })(["border:1px solid ", ";border-radius:10px;display:flex;padding:6px;align-items:center;:hover{cursor:", ";background-color:", ";}color:", ";background-color:", ";filter:", ";"], _ref2 => {
@@ -17518,30 +17557,30 @@ function CommonBases(_ref8) {
     selectedCurrency
   } = _ref8;
   const bases = typeof chainId !== 'undefined' ? (_COMMON_BASES$chainId = COMMON_BASES[chainId]) !== null && _COMMON_BASES$chainId !== void 0 ? _COMMON_BASES$chainId : [] : [];
-  return bases.length > 0 ? /*#__PURE__*/jsxs(MobileWrapper, {
+  return bases.length > 0 ? /*#__PURE__*/jsxRuntime.jsxs(MobileWrapper, {
     gap: "md",
-    children: [/*#__PURE__*/jsxs(AutoRow, {
-      children: [/*#__PURE__*/jsx(Text$1, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
         fontWeight: 500,
         fontSize: 14,
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Common bases"
         })
-      }), /*#__PURE__*/jsx(QuestionHelper, {
-        text: /*#__PURE__*/jsx(Trans, {
+      }), /*#__PURE__*/jsxRuntime.jsx(QuestionHelper, {
+        text: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "These tokens are commonly paired with other tokens."
         })
       })]
-    }), /*#__PURE__*/jsx(AutoRow, {
+    }), /*#__PURE__*/jsxRuntime.jsx(AutoRow, {
       gap: "4px",
       children: bases.map(currency => {
         const isSelected = selectedCurrency === null || selectedCurrency === void 0 ? void 0 : selectedCurrency.equals(currency);
-        return /*#__PURE__*/jsxs(BaseWrapper, {
+        return /*#__PURE__*/jsxRuntime.jsxs(BaseWrapper, {
           onClick: () => !isSelected && onSelect(currency),
           disable: isSelected,
-          children: [/*#__PURE__*/jsx(CurrencyLogoFromList, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogoFromList, {
             currency: currency
-          }), /*#__PURE__*/jsx(Text$1, {
+          }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontWeight: 500,
             fontSize: 16,
             children: currency.symbol
@@ -17558,7 +17597,7 @@ function CurrencyLogoFromList(_ref9) {
     currency
   } = _ref9;
   const token = useTokenInfoFromActiveList(currency);
-  return /*#__PURE__*/jsx(CurrencyLogo, {
+  return /*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
     currency: token,
     style: {
       marginRight: 8
@@ -17568,7 +17607,7 @@ function CurrencyLogoFromList(_ref9) {
 
 var TokenListLogo = "data:image/svg+xml,%3Csvg%20width%3D%22225%22%20height%3D%22225%22%20viewBox%3D%220%200%20225%20225%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M74.8125%20190.529C65.7561%20190.513%2055.5298%20183.748%2051.9715%20175.42L19.9417%20100.456C16.3834%2092.1277%2020.8404%2085.39%2029.8968%2085.4068L111.417%2085.5579C120.473%2085.5747%20130.699%2092.3395%20134.258%20100.668L166.288%20175.632C169.846%20183.96%20165.389%20190.697%20156.332%20190.681L74.8125%20190.529Z%22%20fill%3D%22%23131313%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22white%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22url%28%23paint0_radial%29%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22url%28%23paint1_radial%29%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22url%28%23paint2_radial%29%22%2F%3E%3Cpath%20d%3D%22M92.1541%20164.065C83.0977%20164.049%2072.8715%20157.284%2069.3132%20148.956L28.3003%2052.9672C24.7419%2044.6391%2029.199%2037.9015%2038.2554%2037.9182L142.638%2038.1117C151.695%2038.1285%20161.921%2044.8933%20165.479%2053.2214L206.492%20149.21C210.051%20157.538%20205.594%20164.276%20196.537%20164.259L92.1541%20164.065Z%22%20fill%3D%22url%28%23paint3_radial%29%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M92.958%20165.95C82.7695%20165.931%2071.265%20158.321%2067.2619%20148.952L26.2489%2052.9632C22.2458%2043.5941%2027.26%2036.0143%2037.4485%2036.0332L141.832%2036.2266C152.02%2036.2455%20163.525%2043.8559%20167.528%2053.225L208.541%20149.214C212.544%20158.583%20207.53%20166.163%20197.341%20166.144L92.958%20165.95ZM71.3614%20148.959C74.475%20156.246%2083.4229%20162.166%2091.3473%20162.18L195.73%20162.374C203.655%20162.388%20207.555%20156.493%20204.441%20149.206L163.428%2053.2174C160.315%2045.9304%20151.367%2040.0111%20143.442%2039.9964L39.0592%2039.803C31.1349%2039.7883%2027.2349%2045.6837%2030.3485%2052.9708L71.3614%20148.959Z%22%20fill%3D%22%23131313%22%2F%3E%3Cpath%20d%3D%22M68.565%2053.3425C81.1781%2053.3659%2095.4205%2062.7875%20100.376%2074.3862C105.332%2085.985%2099.1246%2095.3687%2086.5115%2095.3454C73.8984%2095.322%2059.6559%2085.9004%2054.7001%2074.3016C49.7443%2062.7028%2055.9518%2053.3191%2068.565%2053.3425Z%22%20fill%3D%22%23131313%22%2F%3E%3Cpath%20d%3D%22M90.6891%20104.981C103.302%20105.004%20117.545%20114.425%20122.5%20126.024C127.456%20137.623%20121.249%20147.007%20108.636%20146.983C96.0225%20146.96%2081.7801%20137.538%2076.8243%20125.94C71.8685%20114.341%2078.076%20104.957%2090.6891%20104.981Z%22%20fill%3D%22%23131313%22%2F%3E%3Cpath%20d%3D%22M147.538%20105.142C160.151%20105.166%20174.394%20114.587%20179.349%20126.186C184.305%20137.785%20178.098%20147.168%20165.485%20147.145C152.871%20147.122%20138.629%20137.7%20133.673%20126.101C128.717%20114.503%20134.925%20105.119%20147.538%20105.142Z%22%20fill%3D%22%23131313%22%2F%3E%3Cdefs%3E%3CradialGradient%20id%3D%22paint0_radial%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientUnits%3D%22userSpaceOnUse%22%20gradientTransform%3D%22translate%28134.41%2068.3006%29%20rotate%28-33.9533%29%20scale%2890.6795%2083.3208%29%22%3E%3Cstop%20offset%3D%220.661458%22%20stop-color%3D%22%23C4FCF8%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22paint1_radial%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientUnits%3D%22userSpaceOnUse%22%20gradientTransform%3D%22translate%2842.7873%20129.218%29%20rotate%28-24.1606%29%20scale%28213.359%20196.045%29%22%3E%3Cstop%20stop-color%3D%22%23FF0099%22%20stop-opacity%3D%220.9%22%2F%3E%3Cstop%20offset%3D%220.770833%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22paint2_radial%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientUnits%3D%22userSpaceOnUse%22%20gradientTransform%3D%22translate%28176.854%20148.655%29%20rotate%28-53.4908%29%20scale%28107.342%2098.6309%29%22%3E%3Cstop%20stop-color%3D%22%23FFEC43%22%2F%3E%3Cstop%20offset%3D%220.805707%22%20stop-color%3D%22%23FFF6A8%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22paint3_radial%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientUnits%3D%22userSpaceOnUse%22%20gradientTransform%3D%22translate%2857.5443%2053.4752%29%20rotate%2820.3896%29%20scale%28137.027%20125.907%29%22%3E%3Cstop%20offset%3D%220.125%22%20stop-color%3D%22%235886FE%22%20stop-opacity%3D%220.46%22%2F%3E%3Cstop%20offset%3D%220.673044%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E";
 
-const StyledListLogo = _styled(Logo).withConfig({
+const StyledListLogo = _styled__default["default"](Logo).withConfig({
   displayName: "ListLogo__StyledListLogo",
   componentId: "sc-xz7emh-0"
 })(["width:", ";height:", ";"], _ref => {
@@ -17591,7 +17630,7 @@ function ListLogo(_ref3) {
     alt
   } = _ref3;
   const srcs = useHttpLocations(logoURI);
-  return /*#__PURE__*/jsx(StyledListLogo, {
+  return /*#__PURE__*/jsxRuntime.jsx(StyledListLogo, {
     alt: alt,
     size: size,
     srcs: srcs,
@@ -17599,7 +17638,7 @@ function ListLogo(_ref3) {
   });
 }
 
-const TokenSection = _styled.div.withConfig({
+const TokenSection = _styled__default["default"].div.withConfig({
   displayName: "ImportRow__TokenSection",
   componentId: "sc-1x3jvxb-0"
 })(["padding:4px 20px;height:56px;display:grid;grid-template-columns:auto minmax(auto,1fr) auto;grid-gap:16px;align-items:center;opacity:", ";"], _ref => {
@@ -17609,7 +17648,7 @@ const TokenSection = _styled.div.withConfig({
   return dim ? '0.4' : '1';
 });
 
-const CheckIcon = _styled(CheckCircle).withConfig({
+const CheckIcon = _styled__default["default"](reactFeather.CheckCircle).withConfig({
   displayName: "ImportRow__CheckIcon",
   componentId: "sc-1x3jvxb-1"
 })(["height:16px;width:16px;margin-right:6px;stroke:", ";"], _ref2 => {
@@ -17619,7 +17658,7 @@ const CheckIcon = _styled(CheckCircle).withConfig({
   return theme.green1;
 });
 
-const NameOverflow = _styled.div.withConfig({
+const NameOverflow = _styled__default["default"].div.withConfig({
   displayName: "ImportRow__NameOverflow",
   componentId: "sc-1x3jvxb-2"
 })(["white-space:nowrap;text-overflow:ellipsis;overflow:hidden;text-overflow:ellipsis;max-width:140px;font-size:12px;"]);
@@ -17637,47 +17676,47 @@ function ImportRow(_ref3) {
   const isAdded = useIsUserAddedToken(token);
   const isActive = useIsTokenActive(token);
   const list = token instanceof WrappedTokenInfo ? token.list : undefined;
-  return /*#__PURE__*/jsxs(TokenSection, {
+  return /*#__PURE__*/jsxRuntime.jsxs(TokenSection, {
     style: style,
-    children: [/*#__PURE__*/jsx(CurrencyLogo, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
       currency: token,
       size: '24px',
       style: {
         opacity: dim ? '0.6' : '1'
       }
-    }), /*#__PURE__*/jsxs(AutoColumn, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "4px",
       style: {
         opacity: dim ? '0.6' : '1'
       },
-      children: [/*#__PURE__*/jsxs(AutoRow, {
-        children: [/*#__PURE__*/jsx(ThemedText.Body, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
           fontWeight: 500,
           children: token.symbol
-        }), /*#__PURE__*/jsx(ThemedText.DarkGray, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.DarkGray, {
           ml: "8px",
           fontWeight: 300,
-          children: /*#__PURE__*/jsx(NameOverflow, {
+          children: /*#__PURE__*/jsxRuntime.jsx(NameOverflow, {
             title: token.name,
             children: token.name
           })
         })]
-      }), list && list.logoURI && /*#__PURE__*/jsxs(RowFixed, {
-        children: [/*#__PURE__*/jsx(ThemedText.Small, {
+      }), list && list.logoURI && /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Small, {
           mr: "4px",
           color: theme.text3,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "via {0}",
             values: {
               0: list.name
             }
           })
-        }), /*#__PURE__*/jsx(ListLogo, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ListLogo, {
           logoURI: list.logoURI,
           size: "12px"
         })]
       })]
-    }), !isActive && !isAdded ? /*#__PURE__*/jsx(ButtonPrimary, {
+    }), !isActive && !isAdded ? /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
       width: "fit-content",
       padding: "6px 12px",
       fontWeight: 500,
@@ -17686,16 +17725,16 @@ function ImportRow(_ref3) {
         setImportToken && setImportToken(token);
         showImportView();
       },
-      children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Import"
       })
-    }) : /*#__PURE__*/jsxs(RowFixed, {
+    }) : /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
       style: {
         minWidth: 'fit-content'
       },
-      children: [/*#__PURE__*/jsx(CheckIcon, {}), /*#__PURE__*/jsx(ThemedText.Main, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CheckIcon, {}), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
         color: theme.green1,
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Active"
         })
       })]
@@ -17703,7 +17742,7 @@ function ImportRow(_ref3) {
   });
 }
 
-const TextDot = _styled.div.withConfig({
+const TextDot = _styled__default["default"].div.withConfig({
   displayName: "styleds__TextDot",
   componentId: "sc-1xp9ndq-0"
 })(["height:3px;width:3px;background-color:", ";border-radius:50%;"], _ref => {
@@ -17712,7 +17751,7 @@ const TextDot = _styled.div.withConfig({
   } = _ref;
   return theme.text2;
 });
-const Checkbox = _styled.input.withConfig({
+const Checkbox = _styled__default["default"].input.withConfig({
   displayName: "styleds__Checkbox",
   componentId: "sc-1xp9ndq-1"
 })(["border:1px solid ", ";height:20px;margin:0;"], _ref2 => {
@@ -17721,11 +17760,11 @@ const Checkbox = _styled.input.withConfig({
   } = _ref2;
   return theme.red3;
 });
-const PaddedColumn = _styled(AutoColumn).withConfig({
+const PaddedColumn = _styled__default["default"](AutoColumn).withConfig({
   displayName: "styleds__PaddedColumn",
   componentId: "sc-1xp9ndq-2"
 })(["padding:20px;"]);
-const MenuItem = _styled(RowBetween).withConfig({
+const MenuItem = _styled__default["default"](RowBetween).withConfig({
   displayName: "styleds__MenuItem",
   componentId: "sc-1xp9ndq-3"
 })(["padding:4px 20px;height:56px;display:grid;grid-template-columns:auto minmax(auto,1fr) auto minmax(0,72px);grid-gap:16px;cursor:", ";pointer-events:", ";:hover{background-color:", ";}opacity:", ";"], _ref3 => {
@@ -17751,7 +17790,7 @@ const MenuItem = _styled(RowBetween).withConfig({
   } = _ref6;
   return disabled || selected ? 0.5 : 1;
 });
-const SearchInput = _styled.input.withConfig({
+const SearchInput = _styled__default["default"].input.withConfig({
   displayName: "styleds__SearchInput",
   componentId: "sc-1xp9ndq-4"
 })(["position:relative;display:flex;padding:16px;align-items:center;width:100%;white-space:nowrap;background:none;border:none;outline:none;border-radius:20px;color:", ";border-style:solid;border:1px solid ", ";-webkit-appearance:none;font-size:18px;::placeholder{color:", ";}transition:border 100ms;:focus{border:1px solid ", ";outline:none;}"], _ref7 => {
@@ -17775,7 +17814,7 @@ const SearchInput = _styled.input.withConfig({
   } = _ref10;
   return theme.primary1;
 });
-const Separator = _styled.div.withConfig({
+const Separator = _styled__default["default"].div.withConfig({
   displayName: "styleds__Separator",
   componentId: "sc-1xp9ndq-5"
 })(["width:100%;height:1px;background-color:", ";"], _ref11 => {
@@ -17784,7 +17823,7 @@ const Separator = _styled.div.withConfig({
   } = _ref11;
   return theme.bg2;
 });
-const SeparatorDark = _styled.div.withConfig({
+const SeparatorDark = _styled__default["default"].div.withConfig({
   displayName: "styleds__SeparatorDark",
   componentId: "sc-1xp9ndq-6"
 })(["width:100%;height:1px;background-color:", ";"], _ref12 => {
@@ -17798,12 +17837,12 @@ function currencyKey(currency) {
   return currency.isToken ? currency.address : 'ETHER';
 }
 
-const StyledBalanceText = _styled(Text$1).withConfig({
+const StyledBalanceText = _styled__default["default"](rebass.Text).withConfig({
   displayName: "CurrencyList__StyledBalanceText",
   componentId: "sc-1fzrxat-0"
 })(["white-space:nowrap;overflow:hidden;max-width:5rem;text-overflow:ellipsis;"]);
 
-const Tag = _styled.div.withConfig({
+const Tag = _styled__default["default"].div.withConfig({
   displayName: "CurrencyList__Tag",
   componentId: "sc-1fzrxat-1"
 })(["background-color:", ";color:", ";font-size:14px;border-radius:4px;padding:0.25rem 0.3rem 0.25rem 0.3rem;max-width:6rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;justify-self:flex-end;margin-right:4px;"], _ref => {
@@ -17818,7 +17857,7 @@ const Tag = _styled.div.withConfig({
   return theme.text2;
 });
 
-const FixedContentRow = _styled.div.withConfig({
+const FixedContentRow = _styled__default["default"].div.withConfig({
   displayName: "CurrencyList__FixedContentRow",
   componentId: "sc-1fzrxat-2"
 })(["padding:4px 20px;height:56px;display:grid;grid-gap:16px;align-items:center;"]);
@@ -17827,18 +17866,18 @@ function Balance(_ref3) {
   let {
     balance
   } = _ref3;
-  return /*#__PURE__*/jsx(StyledBalanceText, {
+  return /*#__PURE__*/jsxRuntime.jsx(StyledBalanceText, {
     title: balance.toExact(),
     children: balance.toSignificant(4)
   });
 }
 
-const TagContainer = _styled.div.withConfig({
+const TagContainer = _styled__default["default"].div.withConfig({
   displayName: "CurrencyList__TagContainer",
   componentId: "sc-1fzrxat-3"
 })(["display:flex;justify-content:flex-end;"]);
 
-const TokenListLogoWrapper = _styled.img.withConfig({
+const TokenListLogoWrapper = _styled__default["default"].img.withConfig({
   displayName: "CurrencyList__TokenListLogoWrapper",
   componentId: "sc-1fzrxat-4"
 })(["height:20px;"]);
@@ -17849,19 +17888,19 @@ function TokenTags(_ref4) {
   } = _ref4;
 
   if (!(currency instanceof WrappedTokenInfo)) {
-    return /*#__PURE__*/jsx("span", {});
+    return /*#__PURE__*/jsxRuntime.jsx("span", {});
   }
 
   const tags = currency.tags;
-  if (!tags || tags.length === 0) return /*#__PURE__*/jsx("span", {});
+  if (!tags || tags.length === 0) return /*#__PURE__*/jsxRuntime.jsx("span", {});
   const tag = tags[0];
-  return /*#__PURE__*/jsxs(TagContainer, {
-    children: [/*#__PURE__*/jsx(MouseoverTooltip, {
+  return /*#__PURE__*/jsxRuntime.jsxs(TagContainer, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(MouseoverTooltip, {
       text: tag.description,
-      children: /*#__PURE__*/jsx(Tag, {
+      children: /*#__PURE__*/jsxRuntime.jsx(Tag, {
         children: tag.name
       }, tag.id)
-    }), tags.length > 1 ? /*#__PURE__*/jsx(MouseoverTooltip, {
+    }), tags.length > 1 ? /*#__PURE__*/jsxRuntime.jsx(MouseoverTooltip, {
       text: tags.slice(1).map(_ref5 => {
         let {
           name,
@@ -17869,7 +17908,7 @@ function TokenTags(_ref4) {
         } = _ref5;
         return `${name}: ${description}`;
       }).join('; \n'),
-      children: /*#__PURE__*/jsx(Tag, {
+      children: /*#__PURE__*/jsxRuntime.jsx(Tag, {
         children: "..."
       })
     }) : null]
@@ -17894,40 +17933,40 @@ function CurrencyRow(_ref6) {
   const customAdded = useIsUserAddedToken(currency);
   const balance = useCurrencyBalance(account !== null && account !== void 0 ? account : undefined, currency); // only show add or remove buttons if not on selected list
 
-  return /*#__PURE__*/jsxs(MenuItem, {
+  return /*#__PURE__*/jsxRuntime.jsxs(MenuItem, {
     style: style,
     className: `token-item-${key}`,
     onClick: () => isSelected ? null : onSelect(),
     disabled: isSelected,
     selected: otherSelected,
-    children: [/*#__PURE__*/jsx(CurrencyLogo, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
       currency: currency,
       size: '24px'
-    }), /*#__PURE__*/jsxs(Column, {
-      children: [/*#__PURE__*/jsx(Text$1, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(Column, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
         title: currency.name,
         fontWeight: 500,
         children: currency.symbol
-      }), /*#__PURE__*/jsx(ThemedText.DarkGray, {
+      }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.DarkGray, {
         ml: "0px",
         fontSize: '12px',
         fontWeight: 300,
-        children: !currency.isNative && !isOnSelectedList && customAdded ? /*#__PURE__*/jsx(Trans, {
+        children: !currency.isNative && !isOnSelectedList && customAdded ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "{0} \u2022 Added by user",
           values: {
             0: currency.name
           }
         }) : currency.name
       })]
-    }), /*#__PURE__*/jsx(TokenTags, {
+    }), /*#__PURE__*/jsxRuntime.jsx(TokenTags, {
       currency: currency
-    }), showCurrencyAmount && /*#__PURE__*/jsx(RowFixed, {
+    }), showCurrencyAmount && /*#__PURE__*/jsxRuntime.jsx(RowFixed, {
       style: {
         justifySelf: 'flex-end'
       },
-      children: balance ? /*#__PURE__*/jsx(Balance, {
+      children: balance ? /*#__PURE__*/jsxRuntime.jsx(Balance, {
         balance: balance
-      }) : account ? /*#__PURE__*/jsx(Loader, {}) : null
+      }) : account ? /*#__PURE__*/jsxRuntime.jsx(Loader, {}) : null
     })]
   });
 }
@@ -17943,25 +17982,25 @@ function BreakLineComponent(_ref7) {
     style
   } = _ref7;
   const theme = useTheme();
-  return /*#__PURE__*/jsx(FixedContentRow, {
+  return /*#__PURE__*/jsxRuntime.jsx(FixedContentRow, {
     style: style,
-    children: /*#__PURE__*/jsx(LightGreyCard, {
+    children: /*#__PURE__*/jsxRuntime.jsx(LightGreyCard, {
       padding: "8px 12px",
       $borderRadius: "8px",
-      children: /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsxs(RowFixed, {
-          children: [/*#__PURE__*/jsx(TokenListLogoWrapper, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(TokenListLogoWrapper, {
             src: TokenListLogo
-          }), /*#__PURE__*/jsx(ThemedText.Main, {
+          }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
             ml: "6px",
             fontSize: "12px",
             color: theme.text1,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Expanded results from inactive Token Lists"
             })
           })]
-        }), /*#__PURE__*/jsx(QuestionHelper, {
-          text: /*#__PURE__*/jsx(Trans, {
+        }), /*#__PURE__*/jsxRuntime.jsx(QuestionHelper, {
+          text: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Tokens from inactive lists. Import specific tokens below or click Manage to activate more lists."
           })
         })]
@@ -17983,14 +18022,14 @@ function CurrencyList(_ref8) {
     setImportToken,
     showCurrencyAmount
   } = _ref8;
-  const itemData = useMemo(() => {
+  const itemData = React.useMemo(() => {
     if (otherListTokens && (otherListTokens === null || otherListTokens === void 0 ? void 0 : otherListTokens.length) > 0) {
       return [...currencies, BREAK_LINE, ...otherListTokens];
     }
 
     return currencies;
   }, [currencies, otherListTokens]);
-  const Row = useCallback(function TokenRow(_ref9) {
+  const Row = React.useCallback(function TokenRow(_ref9) {
     let {
       data,
       index,
@@ -17999,7 +18038,7 @@ function CurrencyList(_ref8) {
     const row = data[index];
 
     if (isBreakLine(row)) {
-      return /*#__PURE__*/jsx(BreakLineComponent, {
+      return /*#__PURE__*/jsxRuntime.jsx(BreakLineComponent, {
         style: style
       });
     }
@@ -18014,7 +18053,7 @@ function CurrencyList(_ref8) {
     const showImport = index > currencies.length;
 
     if (showImport && token) {
-      return /*#__PURE__*/jsx(ImportRow, {
+      return /*#__PURE__*/jsxRuntime.jsx(ImportRow, {
         style: style,
         token: token,
         showImportView: showImportView,
@@ -18022,7 +18061,7 @@ function CurrencyList(_ref8) {
         dim: true
       });
     } else if (currency) {
-      return /*#__PURE__*/jsx(CurrencyRow, {
+      return /*#__PURE__*/jsxRuntime.jsx(CurrencyRow, {
         style: style,
         currency: currency,
         isSelected: isSelected,
@@ -18034,12 +18073,12 @@ function CurrencyList(_ref8) {
       return null;
     }
   }, [currencies.length, onCurrencySelect, otherCurrency, selectedCurrency, setImportToken, showImportView, showCurrencyAmount]);
-  const itemKey = useCallback((index, data) => {
+  const itemKey = React.useCallback((index, data) => {
     const currency = data[index];
     if (isBreakLine(currency)) return BREAK_LINE;
     return currencyKey(currency);
   }, []);
-  return /*#__PURE__*/jsx(FixedSizeList, {
+  return /*#__PURE__*/jsxRuntime.jsx(reactWindow.FixedSizeList, {
     height: height,
     ref: fixedListRef,
     width: "100%",
@@ -18084,8 +18123,8 @@ function getTokenComparator(balances) {
 
 function useTokenComparator(inverted) {
   const balances = useAllTokenBalances();
-  const comparator = useMemo(() => getTokenComparator(balances !== null && balances !== void 0 ? balances : {}), [balances]);
-  return useMemo(() => {
+  const comparator = React.useMemo(() => getTokenComparator(balances !== null && balances !== void 0 ? balances : {}), [balances]);
+  return React.useMemo(() => {
     if (inverted) {
       return (tokenA, tokenB) => comparator(tokenA, tokenB) * -1;
     } else {
@@ -18094,12 +18133,12 @@ function useTokenComparator(inverted) {
   }, [inverted, comparator]);
 }
 
-const ContentWrapper = _styled(Column).withConfig({
+const ContentWrapper = _styled__default["default"](Column).withConfig({
   displayName: "CurrencySearch__ContentWrapper",
   componentId: "sc-1it7zu4-0"
 })(["width:100%;flex:1 1;position:relative;"]);
 
-const Footer$1 = _styled.div.withConfig({
+const Footer$1 = _styled__default["default"].div.withConfig({
   displayName: "CurrencySearch__Footer",
   componentId: "sc-1it7zu4-1"
 })(["width:100%;border-radius:20px;padding:20px;border-top-left-radius:0;border-top-right-radius:0;background-color:", ";border-top:1px solid ", ";"], _ref => {
@@ -18133,18 +18172,18 @@ function CurrencySearch(_ref3) {
   } = useActiveWeb3React();
   const theme = useTheme(); // refs for fixed size lists
 
-  const fixedList = useRef();
-  const [searchQuery, setSearchQuery] = useState('');
+  const fixedList = React.useRef();
+  const [searchQuery, setSearchQuery] = React.useState('');
   const debouncedQuery = useDebounce(searchQuery, 200);
-  const [invertSearchOrder] = useState(false);
+  const [invertSearchOrder] = React.useState(false);
   const allTokens = useAllTokens(); // if they input an address, use it
 
   const isAddressSearch = isAddress(debouncedQuery);
   const searchToken = useToken(debouncedQuery);
   const searchTokenIsAdded = useIsUserAddedToken(searchToken);
-  useEffect(() => {
+  React.useEffect(() => {
     if (isAddressSearch) {
-      ReactGA.event({
+      ReactGA__default["default"].event({
         category: 'Currency Select',
         action: 'Search by address',
         label: isAddressSearch
@@ -18152,15 +18191,15 @@ function CurrencySearch(_ref3) {
     }
   }, [isAddressSearch]);
   const tokenComparator = useTokenComparator(invertSearchOrder);
-  const filteredTokens = useMemo(() => {
+  const filteredTokens = React.useMemo(() => {
     return filterTokens(Object.values(allTokens), debouncedQuery);
   }, [allTokens, debouncedQuery]);
-  const sortedTokens = useMemo(() => {
+  const sortedTokens = React.useMemo(() => {
     return filteredTokens.sort(tokenComparator);
   }, [filteredTokens, tokenComparator]);
   const filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery);
-  const ether = useMemo(() => chainId && ExtendedEther.onChain(chainId), [chainId]);
-  const filteredSortedTokensWithETH = useMemo(() => {
+  const ether = React.useMemo(() => chainId && ExtendedEther.onChain(chainId), [chainId]);
+  const filteredSortedTokensWithETH = React.useMemo(() => {
     const s = debouncedQuery.toLowerCase().trim();
 
     if (s === '' || s === 'e' || s === 'et' || s === 'eth') {
@@ -18169,17 +18208,17 @@ function CurrencySearch(_ref3) {
 
     return filteredSortedTokens;
   }, [debouncedQuery, ether, filteredSortedTokens]);
-  const handleCurrencySelect = useCallback(currency => {
+  const handleCurrencySelect = React.useCallback(currency => {
     onCurrencySelect(currency);
     onDismiss();
   }, [onDismiss, onCurrencySelect]); // clear the input on open
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isOpen) setSearchQuery('');
   }, [isOpen]); // manage focus on modal show
 
-  const inputRef = useRef();
-  const handleInput = useCallback(event => {
+  const inputRef = React.useRef();
+  const handleInput = React.useCallback(event => {
     var _fixedList$current;
 
     const input = event.target.value;
@@ -18187,7 +18226,7 @@ function CurrencySearch(_ref3) {
     setSearchQuery(checksummedInput || input);
     (_fixedList$current = fixedList.current) === null || _fixedList$current === void 0 ? void 0 : _fixedList$current.scrollTo(0);
   }, []);
-  const handleEnter = useCallback(e => {
+  const handleEnter = React.useCallback(e => {
     if (e.key === 'Enter') {
       const s = debouncedQuery.toLowerCase().trim();
 
@@ -18204,62 +18243,62 @@ function CurrencySearch(_ref3) {
   }, [debouncedQuery, ether, filteredSortedTokensWithETH, handleCurrencySelect]); // menu ui
 
   const [open, toggle] = useToggle(false);
-  const node = useRef();
+  const node = React.useRef();
   useOnClickOutside(node, open ? toggle : undefined); // if no results on main list, show option to expand into inactive
 
   const filteredInactiveTokens = useSearchInactiveTokenLists(filteredTokens.length === 0 || debouncedQuery.length > 2 && !isAddressSearch ? debouncedQuery : undefined);
-  return /*#__PURE__*/jsxs(ContentWrapper, {
-    children: [/*#__PURE__*/jsxs(PaddedColumn, {
+  return /*#__PURE__*/jsxRuntime.jsxs(ContentWrapper, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(PaddedColumn, {
       gap: "16px",
-      children: [/*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx(Text$1, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 16,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Select a token"
           })
-        }), /*#__PURE__*/jsx(CloseIcon$3, {
+        }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
         })]
-      }), /*#__PURE__*/jsx(Row, {
-        children: /*#__PURE__*/jsx(SearchInput, {
+      }), /*#__PURE__*/jsxRuntime.jsx(Row, {
+        children: /*#__PURE__*/jsxRuntime.jsx(SearchInput, {
           type: "text",
           id: "token-search-input",
           placeholder:
           /*i18n*/
-          i18n._("Search name or paste address"),
+          core$1.i18n._("Search name or paste address"),
           autoComplete: "off",
           value: searchQuery,
           ref: inputRef,
           onChange: handleInput,
           onKeyDown: handleEnter
         })
-      }), showCommonBases && /*#__PURE__*/jsx(CommonBases, {
+      }), showCommonBases && /*#__PURE__*/jsxRuntime.jsx(CommonBases, {
         chainId: chainId,
         onSelect: handleCurrencySelect,
         selectedCurrency: selectedCurrency
       })]
-    }), /*#__PURE__*/jsx(Separator, {}), searchToken && !searchTokenIsAdded ? /*#__PURE__*/jsx(Column, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Separator, {}), searchToken && !searchTokenIsAdded ? /*#__PURE__*/jsxRuntime.jsx(Column, {
       style: {
         padding: '20px 0',
         height: '100%'
       },
-      children: /*#__PURE__*/jsx(ImportRow, {
+      children: /*#__PURE__*/jsxRuntime.jsx(ImportRow, {
         token: searchToken,
         showImportView: showImportView,
         setImportToken: setImportToken
       })
-    }) : (filteredSortedTokens === null || filteredSortedTokens === void 0 ? void 0 : filteredSortedTokens.length) > 0 || (filteredInactiveTokens === null || filteredInactiveTokens === void 0 ? void 0 : filteredInactiveTokens.length) > 0 ? /*#__PURE__*/jsx("div", {
+    }) : (filteredSortedTokens === null || filteredSortedTokens === void 0 ? void 0 : filteredSortedTokens.length) > 0 || (filteredInactiveTokens === null || filteredInactiveTokens === void 0 ? void 0 : filteredInactiveTokens.length) > 0 ? /*#__PURE__*/jsxRuntime.jsx("div", {
       style: {
         flex: '1'
       },
-      children: /*#__PURE__*/jsx(AutoSizer, {
+      children: /*#__PURE__*/jsxRuntime.jsx(AutoSizer__default["default"], {
         disableWidth: true,
         children: _ref4 => {
           let {
             height
           } = _ref4;
-          return /*#__PURE__*/jsx(CurrencyList, {
+          return /*#__PURE__*/jsxRuntime.jsx(CurrencyList, {
             height: height,
             currencies: disableNonToken ? filteredSortedTokens : filteredSortedTokensWithETH,
             otherListTokens: filteredInactiveTokens,
@@ -18273,35 +18312,35 @@ function CurrencySearch(_ref3) {
           });
         }
       })
-    }) : /*#__PURE__*/jsx(Column, {
+    }) : /*#__PURE__*/jsxRuntime.jsx(Column, {
       style: {
         padding: '20px',
         height: '100%'
       },
-      children: /*#__PURE__*/jsx(ThemedText.Main, {
+      children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
         color: theme.text3,
         textAlign: "center",
         mb: "20px",
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "No results found."
         })
       })
-    }), /*#__PURE__*/jsx(Footer$1, {
-      children: /*#__PURE__*/jsx(Row, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Footer$1, {
+      children: /*#__PURE__*/jsxRuntime.jsx(Row, {
         justify: "center",
-        children: /*#__PURE__*/jsx(ButtonText, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ButtonText, {
           onClick: showManageView,
           color: theme.primary1,
           className: "list-token-manage-button",
-          children: /*#__PURE__*/jsxs(RowFixed, {
-            children: [/*#__PURE__*/jsx(IconWrapper$4, {
+          children: /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(IconWrapper$4, {
               size: "16px",
               marginRight: "6px",
               stroke: theme.primaryText1,
-              children: /*#__PURE__*/jsx(Edit, {})
-            }), /*#__PURE__*/jsx(ThemedText.Main, {
+              children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.Edit, {})
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
               color: theme.primaryText1,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Manage Token Lists"
               })
             })]
@@ -18317,7 +18356,7 @@ const getTokenListValidator = (() => {
   return () => {
     if (!tokenListValidator) {
       tokenListValidator = new Promise(async resolve => {
-        const [ajv, schema] = await Promise.all([import('ajv'), import('@uniswap/token-lists/src/tokenlist.schema.json')]);
+        const [ajv, schema] = await Promise.all([Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('ajv')); }), Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('@uniswap/token-lists/src/tokenlist.schema.json')); })]);
         const validator = new ajv.default({
           allErrors: true
         }).compile(schema);
@@ -18441,7 +18480,7 @@ const RESOLVER_ABI = [{
 }]; // cache the resolver contracts since most of them are the public resolver
 
 function resolverContract(resolverAddress, provider) {
-  return new Contract(resolverAddress, RESOLVER_ABI, provider);
+  return new contracts.Contract(resolverAddress, RESOLVER_ABI, provider);
 }
 /**
  * Fetches and decodes the result of an ENS contenthash lookup on mainnet to a URI
@@ -18451,10 +18490,10 @@ function resolverContract(resolverAddress, provider) {
 
 
 async function resolveENSContentHash(ensName, provider) {
-  const ensRegistrarContract = new Contract(REGISTRAR_ADDRESS, REGISTRAR_ABI, provider);
-  const hash = namehash(ensName);
-  const resolverAddress = await ensRegistrarContract.resolver(hash);
-  return resolverContract(resolverAddress, provider).contenthash(hash);
+  const ensRegistrarContract = new contracts.Contract(REGISTRAR_ADDRESS, REGISTRAR_ABI, provider);
+  const hash$1 = hash.namehash(ensName);
+  const resolverAddress = await ensRegistrarContract.resolver(hash$1);
+  return resolverContract(resolverAddress, provider).contenthash(hash$1);
 }
 
 function useFetchListCallback() {
@@ -18463,7 +18502,7 @@ function useFetchListCallback() {
     library
   } = useActiveWeb3React();
   const dispatch = useAppDispatch();
-  const ensResolver = useCallback(async ensName => {
+  const ensResolver = React.useCallback(async ensName => {
     if (!library || chainId !== 1) {
       const networkLibrary = getNetworkLibrary();
       const network = await networkLibrary.getNetwork();
@@ -18478,9 +18517,9 @@ function useFetchListCallback() {
     return resolveENSContentHash(ensName, library);
   }, [chainId, library]); // note: prevent dispatch if using for list search or unsupported list
 
-  return useCallback(async function (listUrl) {
+  return React.useCallback(async function (listUrl) {
     let sendDispatch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-    const requestId = nanoid();
+    const requestId = toolkit.nanoid();
     sendDispatch && dispatch(fetchTokenList.pending({
       requestId,
       url: listUrl
@@ -18504,7 +18543,7 @@ function useFetchListCallback() {
   }, [dispatch, ensResolver]);
 }
 
-const Wrapper$8 = _styled.div.withConfig({
+const Wrapper$8 = _styled__default["default"].div.withConfig({
   displayName: "ImportList__Wrapper",
   componentId: "sc-11ypl1h-0"
 })(["position:relative;width:100%;overflow:auto;"]);
@@ -18521,17 +18560,17 @@ function ImportList(_ref) {
   const theme = useTheme();
   const dispatch = useAppDispatch(); // user must accept
 
-  const [confirmed, setConfirmed] = useState(false);
+  const [confirmed, setConfirmed] = React.useState(false);
   const lists = useAllLists();
   const fetchList = useFetchListCallback(); // monitor is list is loading
 
   const adding = Boolean((_lists$listURL = lists[listURL]) === null || _lists$listURL === void 0 ? void 0 : _lists$listURL.loadingRequestId);
-  const [addError, setAddError] = useState(null);
-  const handleAddList = useCallback(() => {
+  const [addError, setAddError] = React.useState(null);
+  const handleAddList = React.useCallback(() => {
     if (adding) return;
     setAddError(null);
     fetchList(listURL).then(() => {
-      ReactGA.event({
+      ReactGA__default["default"].event({
         category: 'Lists',
         action: 'Add List',
         label: listURL
@@ -18541,7 +18580,7 @@ function ImportList(_ref) {
 
       setModalView(CurrencyModalView.manage);
     }).catch(error => {
-      ReactGA.event({
+      ReactGA__default["default"].event({
         category: 'Lists',
         action: 'Add List Failed',
         label: listURL
@@ -18550,62 +18589,62 @@ function ImportList(_ref) {
       dispatch(removeList(listURL));
     });
   }, [adding, dispatch, fetchList, listURL, setModalView]);
-  return /*#__PURE__*/jsxs(Wrapper$8, {
-    children: [/*#__PURE__*/jsx(PaddedColumn, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$8, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(PaddedColumn, {
       gap: "14px",
       style: {
         width: '100%',
         flex: '1 1'
       },
-      children: /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx(ArrowLeft, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowLeft, {
           style: {
             cursor: 'pointer'
           },
           onClick: () => setModalView(CurrencyModalView.manage)
-        }), /*#__PURE__*/jsx(ThemedText.MediumHeader, {
-          children: /*#__PURE__*/jsx(Trans, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.MediumHeader, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Import List"
           })
-        }), /*#__PURE__*/jsx(CloseIcon$3, {
+        }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
         })]
       })
-    }), /*#__PURE__*/jsx(SectionBreak, {}), /*#__PURE__*/jsx(PaddedColumn, {
+    }), /*#__PURE__*/jsxRuntime.jsx(SectionBreak, {}), /*#__PURE__*/jsxRuntime.jsx(PaddedColumn, {
       gap: "md",
-      children: /*#__PURE__*/jsxs(AutoColumn, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "md",
-        children: [/*#__PURE__*/jsx(Card, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(Card, {
           backgroundColor: theme.bg2,
           padding: "12px 20px",
-          children: /*#__PURE__*/jsx(RowBetween, {
-            children: /*#__PURE__*/jsxs(RowFixed, {
-              children: [list.logoURI && /*#__PURE__*/jsx(ListLogo, {
+          children: /*#__PURE__*/jsxRuntime.jsx(RowBetween, {
+            children: /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+              children: [list.logoURI && /*#__PURE__*/jsxRuntime.jsx(ListLogo, {
                 logoURI: list.logoURI,
                 size: "40px"
-              }), /*#__PURE__*/jsxs(AutoColumn, {
+              }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
                 gap: "sm",
                 style: {
                   marginLeft: '20px'
                 },
-                children: [/*#__PURE__*/jsxs(RowFixed, {
-                  children: [/*#__PURE__*/jsx(ThemedText.Body, {
+                children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+                  children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
                     fontWeight: 600,
                     mr: "6px",
                     children: list.name
-                  }), /*#__PURE__*/jsx(TextDot, {}), /*#__PURE__*/jsx(ThemedText.Main, {
+                  }), /*#__PURE__*/jsxRuntime.jsx(TextDot, {}), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                     fontSize: '16px',
                     ml: "6px",
-                    children: /*#__PURE__*/jsx(Trans, {
+                    children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                       id: "{0} tokens",
                       values: {
                         0: list.tokens.length
                       }
                     })
                   })]
-                }), /*#__PURE__*/jsx(ExternalLink, {
+                }), /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
                   href: `https://tokenlists.org/token-list?url=${listURL}`,
-                  children: /*#__PURE__*/jsx(ThemedText.Main, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                     fontSize: '12px',
                     color: theme.blue1,
                     children: listURL
@@ -18614,78 +18653,78 @@ function ImportList(_ref) {
               })]
             })
           })
-        }), /*#__PURE__*/jsxs(Card, {
+        }), /*#__PURE__*/jsxRuntime.jsxs(Card, {
           style: {
-            backgroundColor: transparentize(0.8, theme.red1)
+            backgroundColor: polished.transparentize(0.8, theme.red1)
           },
-          children: [/*#__PURE__*/jsxs(AutoColumn, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
             justify: "center",
             style: {
               textAlign: 'center',
               gap: '16px',
               marginBottom: '12px'
             },
-            children: [/*#__PURE__*/jsx(AlertTriangle, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.AlertTriangle, {
               stroke: theme.red1,
               size: 32
-            }), /*#__PURE__*/jsx(ThemedText.Body, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
               fontWeight: 500,
               fontSize: 20,
               color: theme.red1,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Import at your own risk"
               })
             })]
-          }), /*#__PURE__*/jsxs(AutoColumn, {
+          }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
             style: {
               textAlign: 'center',
               gap: '16px',
               marginBottom: '12px'
             },
-            children: [/*#__PURE__*/jsx(ThemedText.Body, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
               fontWeight: 500,
               color: theme.red1,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one."
               })
-            }), /*#__PURE__*/jsx(ThemedText.Body, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
               fontWeight: 600,
               color: theme.red1,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "If you purchase a token from this list, you may not be able to sell it back."
               })
             })]
-          }), /*#__PURE__*/jsxs(AutoRow, {
+          }), /*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
             justify: "center",
             style: {
               cursor: 'pointer'
             },
             onClick: () => setConfirmed(!confirmed),
-            children: [/*#__PURE__*/jsx(Checkbox, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(Checkbox, {
               name: "confirmed",
               type: "checkbox",
               checked: confirmed,
               onChange: () => setConfirmed(!confirmed)
-            }), /*#__PURE__*/jsx(ThemedText.Body, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
               ml: "10px",
               fontSize: "16px",
               color: theme.red1,
               fontWeight: 500,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "I understand"
               })
             })]
           })]
-        }), /*#__PURE__*/jsx(ButtonPrimary, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
           disabled: !confirmed,
           altDisabledStyle: true,
           $borderRadius: "20px",
           padding: "10px 1rem",
           onClick: handleAddList,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Import"
           })
-        }), addError ? /*#__PURE__*/jsx(ThemedText.Error, {
+        }), addError ? /*#__PURE__*/jsxRuntime.jsx(ThemedText.Error, {
           title: addError,
           style: {
             textOverflow: 'ellipsis',
@@ -18699,7 +18738,7 @@ function ImportList(_ref) {
   });
 }
 
-const WarningWrapper = _styled(Card).withConfig({
+const WarningWrapper = _styled__default["default"](Card).withConfig({
   displayName: "TokenImportCard__WarningWrapper",
   componentId: "sc-1x9yxxr-0"
 })(["background-color:", ";width:fit-content;"], _ref => {
@@ -18707,10 +18746,10 @@ const WarningWrapper = _styled(Card).withConfig({
     theme,
     highWarning
   } = _ref;
-  return highWarning ? transparentize(0.8, theme.red1) : transparentize(0.8, theme.yellow2);
+  return highWarning ? polished.transparentize(0.8, theme.red1) : polished.transparentize(0.8, theme.yellow2);
 });
 
-const AddressText = _styled(ThemedText.Blue).withConfig({
+const AddressText = _styled__default["default"](ThemedText.Blue).withConfig({
   displayName: "TokenImportCard__AddressText",
   componentId: "sc-1x9yxxr-1"
 })(["font-size:12px;word-break:break-all;", ""], _ref2 => {
@@ -18728,69 +18767,69 @@ const TokenImportCard = _ref3 => {
     token
   } = _ref3;
 
-  const theme = useTheme$1();
+  const theme = _styled.useTheme();
 
   const {
     chainId
   } = useActiveWeb3React();
-  return /*#__PURE__*/jsx(Card, {
+  return /*#__PURE__*/jsxRuntime.jsx(Card, {
     backgroundColor: theme.bg2,
     padding: "2rem",
-    children: /*#__PURE__*/jsxs(AutoColumn, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "10px",
       justify: "center",
-      children: [/*#__PURE__*/jsx(CurrencyLogo, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
         currency: token,
         size: '32px'
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "4px",
         justify: "center",
-        children: [/*#__PURE__*/jsx(ThemedText.Body, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
           ml: "8px",
           mr: "8px",
           fontWeight: 500,
           fontSize: 20,
           children: token.symbol
-        }), /*#__PURE__*/jsx(ThemedText.DarkGray, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.DarkGray, {
           fontWeight: 400,
           fontSize: 14,
           children: token.name
         })]
-      }), chainId && /*#__PURE__*/jsx(ExternalLink, {
+      }), chainId && /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
         href: getExplorerLink(chainId, token.address, ExplorerDataType.ADDRESS),
-        children: /*#__PURE__*/jsx(AddressText, {
+        children: /*#__PURE__*/jsxRuntime.jsx(AddressText, {
           fontSize: 12,
           children: token.address
         })
-      }), list !== undefined ? /*#__PURE__*/jsxs(RowFixed, {
-        children: [list.logoURI && /*#__PURE__*/jsx(ListLogo, {
+      }), list !== undefined ? /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+        children: [list.logoURI && /*#__PURE__*/jsxRuntime.jsx(ListLogo, {
           logoURI: list.logoURI,
           size: "16px"
-        }), /*#__PURE__*/jsx(ThemedText.Small, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Small, {
           ml: "6px",
           fontSize: 14,
           color: theme.text3,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "via {0} token list",
             values: {
               0: list.name
             }
           })
         })]
-      }) : /*#__PURE__*/jsx(WarningWrapper, {
+      }) : /*#__PURE__*/jsxRuntime.jsx(WarningWrapper, {
         $borderRadius: "4px",
         padding: "4px",
         highWarning: true,
-        children: /*#__PURE__*/jsxs(RowFixed, {
-          children: [/*#__PURE__*/jsx(AlertCircle, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.AlertCircle, {
             stroke: theme.red1,
             size: "10px"
-          }), /*#__PURE__*/jsx(ThemedText.Body, {
+          }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
             color: theme.red1,
             ml: "4px",
             fontSize: "10px",
             fontWeight: 500,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Unknown Source"
             })
           })]
@@ -18800,32 +18839,32 @@ const TokenImportCard = _ref3 => {
   });
 };
 
-const Wrapper$7 = _styled.div.withConfig({
+const Wrapper$7 = _styled__default["default"].div.withConfig({
   displayName: "BlockedToken__Wrapper",
   componentId: "sc-1t8jv47-0"
 })(["align-items:center;display:flex;flex-direction:column;flex:1 1 auto;height:100%;width:100%;"]);
 
-const Button = _styled(ButtonPrimary).withConfig({
+const Button = _styled__default["default"](ButtonPrimary).withConfig({
   displayName: "BlockedToken__Button",
   componentId: "sc-1t8jv47-1"
 })(["margin-top:1em;padding:10px 1em;"]);
 
-const Content = _styled.div.withConfig({
+const Content = _styled__default["default"].div.withConfig({
   displayName: "BlockedToken__Content",
   componentId: "sc-1t8jv47-2"
 })(["padding:1em;"]);
 
-const Copy = _styled(ThemedText.Body).withConfig({
+const Copy = _styled__default["default"](ThemedText.Body).withConfig({
   displayName: "BlockedToken__Copy",
   componentId: "sc-1t8jv47-3"
 })(["text-align:center;margin:0 2em 1em !important;font-weight:400;font-size:16px;"]);
 
-const Header = _styled.div.withConfig({
+const Header = _styled__default["default"].div.withConfig({
   displayName: "BlockedToken__Header",
   componentId: "sc-1t8jv47-4"
 })(["align-items:center;display:flex;gap:14px;justify-content:space-between;padding:20px;width:100%;"]);
 
-const Icon = _styled(AlertCircle).withConfig({
+const Icon = _styled__default["default"](reactFeather.AlertCircle).withConfig({
   displayName: "BlockedToken__Icon",
   componentId: "sc-1t8jv47-5"
 })(["stroke:", ";width:48px;height:48px;"], _ref => {
@@ -18841,30 +18880,30 @@ const BlockedToken = _ref2 => {
     onDismiss,
     blockedTokens
   } = _ref2;
-  return /*#__PURE__*/jsxs(Wrapper$7, {
-    children: [/*#__PURE__*/jsxs(Header, {
-      children: [onBack ? /*#__PURE__*/jsx(ArrowLeft, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$7, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(Header, {
+      children: [onBack ? /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowLeft, {
         style: {
           cursor: 'pointer'
         },
         onClick: onBack
-      }) : /*#__PURE__*/jsx("div", {}), /*#__PURE__*/jsx(ThemedText.MediumHeader, {
-        children: /*#__PURE__*/jsx(Trans, {
+      }) : /*#__PURE__*/jsxRuntime.jsx("div", {}), /*#__PURE__*/jsxRuntime.jsx(ThemedText.MediumHeader, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Token not supported"
         })
-      }), onDismiss ? /*#__PURE__*/jsx(CloseIcon$3, {
+      }), onDismiss ? /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
         onClick: onDismiss
-      }) : /*#__PURE__*/jsx("div", {})]
-    }), /*#__PURE__*/jsx(Icon, {}), /*#__PURE__*/jsxs(Content, {
-      children: [/*#__PURE__*/jsx(Copy, {
-        children: /*#__PURE__*/jsx(Trans, {
+      }) : /*#__PURE__*/jsxRuntime.jsx("div", {})]
+    }), /*#__PURE__*/jsxRuntime.jsx(Icon, {}), /*#__PURE__*/jsxRuntime.jsxs(Content, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(Copy, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "This token is not supported in the Uniswap Labs app"
         })
-      }), /*#__PURE__*/jsx(TokenImportCard, {
+      }), /*#__PURE__*/jsxRuntime.jsx(TokenImportCard, {
         token: blockedTokens[0]
-      }), /*#__PURE__*/jsx(Button, {
+      }), /*#__PURE__*/jsxRuntime.jsx(Button, {
         disabled: true,
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Import"
         })
       })]
@@ -18872,7 +18911,7 @@ const BlockedToken = _ref2 => {
   });
 };
 
-const Wrapper$6 = _styled.div.withConfig({
+const Wrapper$6 = _styled__default["default"].div.withConfig({
   displayName: "ImportToken__Wrapper",
   componentId: "sc-7tqaay-0"
 })(["position:relative;width:100%;overflow:auto;"]);
@@ -18892,65 +18931,65 @@ function ImportToken(props) {
   const intersection = new Set(tokens.filter(token => unsupportedSet.has(token.address)));
 
   if (intersection.size > 0) {
-    return /*#__PURE__*/jsx(BlockedToken, {
+    return /*#__PURE__*/jsxRuntime.jsx(BlockedToken, {
       onBack: onBack,
       onDismiss: onDismiss,
       blockedTokens: Array.from(intersection)
     });
   }
 
-  return /*#__PURE__*/jsxs(Wrapper$6, {
-    children: [/*#__PURE__*/jsx(PaddedColumn, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$6, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(PaddedColumn, {
       gap: "14px",
       style: {
         width: '100%',
         flex: '1 1'
       },
-      children: /*#__PURE__*/jsxs(RowBetween, {
-        children: [onBack ? /*#__PURE__*/jsx(ArrowLeft, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [onBack ? /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowLeft, {
           style: {
             cursor: 'pointer'
           },
           onClick: onBack
-        }) : /*#__PURE__*/jsx("div", {}), /*#__PURE__*/jsx(ThemedText.MediumHeader, {
-          children: /*#__PURE__*/jsx(Trans, {
+        }) : /*#__PURE__*/jsxRuntime.jsx("div", {}), /*#__PURE__*/jsxRuntime.jsx(ThemedText.MediumHeader, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "{0, plural, one {Import token} other {Import tokens}}",
             values: {
               0: tokens.length
             }
           })
-        }), onDismiss ? /*#__PURE__*/jsx(CloseIcon$3, {
+        }), onDismiss ? /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
-        }) : /*#__PURE__*/jsx("div", {})]
+        }) : /*#__PURE__*/jsxRuntime.jsx("div", {})]
       })
-    }), /*#__PURE__*/jsx(SectionBreak, {}), /*#__PURE__*/jsxs(AutoColumn, {
+    }), /*#__PURE__*/jsxRuntime.jsx(SectionBreak, {}), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "md",
       style: {
         marginBottom: '32px',
         padding: '1rem'
       },
-      children: [/*#__PURE__*/jsxs(AutoColumn, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         justify: "center",
         style: {
           textAlign: 'center',
           gap: '16px',
           padding: '1rem'
         },
-        children: [/*#__PURE__*/jsx(AlertCircle, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.AlertCircle, {
           size: 48,
           stroke: theme.text2,
           strokeWidth: 1
-        }), /*#__PURE__*/jsx(ThemedText.Body, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
           fontWeight: 400,
           fontSize: 16,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "This token doesn't appear on the active token list(s). Make sure this is the token that you want to trade."
           })
         })]
-      }), tokens.map(token => /*#__PURE__*/jsx(TokenImportCard, {
+      }), tokens.map(token => /*#__PURE__*/jsxRuntime.jsx(TokenImportCard, {
         token: token,
         list: list
-      }, 'import' + token.address)), /*#__PURE__*/jsx(ButtonPrimary, {
+      }, 'import' + token.address)), /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
         altDisabledStyle: true,
         $borderRadius: "20px",
         padding: "10px 1rem",
@@ -18959,7 +18998,7 @@ function ImportToken(props) {
           handleCurrencySelect && handleCurrencySelect(tokens[0]);
         },
         className: ".token-dismiss-button",
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Import"
         })
       })]
@@ -18969,25 +19008,25 @@ function ImportToken(props) {
 
 async function getColorFromUriPath(uri) {
   const formattedPath = uriToHttp(uri)[0];
-  const palette = await Vibrant.from(formattedPath).getPalette();
+  const palette = await Vibrant__default["default"].from(formattedPath).getPalette();
 
   if (!(palette !== null && palette !== void 0 && palette.Vibrant)) {
     return null;
   }
 
   let detectedHex = palette.Vibrant.hex;
-  let AAscore = hex(detectedHex, '#FFF');
+  let AAscore = wcagContrast.hex(detectedHex, '#FFF');
 
   while (AAscore < 3) {
-    detectedHex = shade(0.005, detectedHex);
-    AAscore = hex(detectedHex, '#FFF');
+    detectedHex = polished.shade(0.005, detectedHex);
+    AAscore = wcagContrast.hex(detectedHex, '#FFF');
   }
 
   return detectedHex;
 }
 function useListColor(listImageUri) {
-  const [color, setColor] = useState('#2172E5');
-  useLayoutEffect(() => {
+  const [color, setColor] = React.useState('#2172E5');
+  React.useLayoutEffect(() => {
     let stale = false;
 
     if (listImageUri) {
@@ -19010,7 +19049,7 @@ function listVersionLabel(version) {
   return `v${version.major}.${version.minor}.${version.patch}`;
 }
 
-const Wrapper$5 = _styled.button.withConfig({
+const Wrapper$5 = _styled__default["default"].button.withConfig({
   displayName: "ListToggle__Wrapper",
   componentId: "sc-1ahjqam-0"
 })(["border-radius:20px;border:none;background:", ";display:flex;width:fit-content;cursor:pointer;outline:none;padding:0.4rem 0.4rem;align-items:center;"], _ref => {
@@ -19020,7 +19059,7 @@ const Wrapper$5 = _styled.button.withConfig({
   return theme.bg1;
 });
 
-const ToggleElement$1 = _styled.span.withConfig({
+const ToggleElement$1 = _styled__default["default"].span.withConfig({
   displayName: "ListToggle__ToggleElement",
   componentId: "sc-1ahjqam-1"
 })(["border-radius:50%;height:24px;width:24px;background-color:", ";:hover{opacity:0.8;}"], _ref2 => {
@@ -19032,7 +19071,7 @@ const ToggleElement$1 = _styled.span.withConfig({
   return isActive ? bgColor : theme.bg4;
 });
 
-const StatusText = _styled(ThemedText.Main).withConfig({
+const StatusText = _styled__default["default"](ThemedText.Main).withConfig({
   displayName: "ListToggle__StatusText",
   componentId: "sc-1ahjqam-2"
 })(["margin:0 10px;width:24px;color:", ";"], _ref3 => {
@@ -19050,37 +19089,37 @@ function ListToggle(_ref4) {
     bgColor,
     toggle
   } = _ref4;
-  return /*#__PURE__*/jsxs(Wrapper$5, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$5, {
     id: id,
     isActive: isActive,
     onClick: toggle,
-    children: [isActive && /*#__PURE__*/jsx(StatusText, {
+    children: [isActive && /*#__PURE__*/jsxRuntime.jsx(StatusText, {
       fontWeight: "600",
       margin: "0 6px",
       isActive: true,
-      children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "ON"
       })
-    }), /*#__PURE__*/jsx(ToggleElement$1, {
+    }), /*#__PURE__*/jsxRuntime.jsx(ToggleElement$1, {
       isActive: isActive,
       bgColor: bgColor
-    }), !isActive && /*#__PURE__*/jsx(StatusText, {
+    }), !isActive && /*#__PURE__*/jsxRuntime.jsx(StatusText, {
       fontWeight: "600",
       margin: "0 6px",
       isActive: false,
-      children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "OFF"
       })
     })]
   });
 }
 
-const Wrapper$4 = _styled(Column).withConfig({
+const Wrapper$4 = _styled__default["default"](Column).withConfig({
   displayName: "ManageLists__Wrapper",
   componentId: "sc-z8ju4z-0"
 })(["height:100%;"]);
 
-const UnpaddedLinkStyledButton = _styled(LinkStyledButton).withConfig({
+const UnpaddedLinkStyledButton = _styled__default["default"](LinkStyledButton).withConfig({
   displayName: "ManageLists__UnpaddedLinkStyledButton",
   componentId: "sc-z8ju4z-1"
 })(["padding:0;font-size:1rem;opacity:", ";"], _ref => {
@@ -19090,7 +19129,7 @@ const UnpaddedLinkStyledButton = _styled(LinkStyledButton).withConfig({
   return disabled ? '0.4' : '1';
 });
 
-const PopoverContainer = _styled.div.withConfig({
+const PopoverContainer = _styled__default["default"].div.withConfig({
   displayName: "ManageLists__PopoverContainer",
   componentId: "sc-z8ju4z-2"
 })(["z-index:100;visibility:", ";opacity:", ";transition:visibility 150ms linear,opacity 150ms linear;background:", ";border:1px solid ", ";box-shadow:0px 0px 1px rgba(0,0,0,0.01),0px 4px 8px rgba(0,0,0,0.04),0px 16px 24px rgba(0,0,0,0.04),0px 24px 32px rgba(0,0,0,0.01);color:", ";border-radius:0.5rem;padding:1rem;display:grid;grid-template-rows:1fr;grid-gap:8px;font-size:1rem;text-align:left;"], props => props.show ? 'visible' : 'hidden', props => props.show ? 1 : 0, _ref2 => {
@@ -19110,12 +19149,12 @@ const PopoverContainer = _styled.div.withConfig({
   return theme.text2;
 });
 
-const StyledMenu$1 = _styled.div.withConfig({
+const StyledMenu$1 = _styled__default["default"].div.withConfig({
   displayName: "ManageLists__StyledMenu",
   componentId: "sc-z8ju4z-3"
 })(["display:flex;justify-content:center;align-items:center;position:relative;border:none;"]);
 
-const StyledTitleText = _styled.div.withConfig({
+const StyledTitleText = _styled__default["default"].div.withConfig({
   displayName: "ManageLists__StyledTitleText",
   componentId: "sc-z8ju4z-4"
 })(["font-size:16px;overflow:hidden;text-overflow:ellipsis;font-weight:600;color:", ";"], _ref5 => {
@@ -19126,7 +19165,7 @@ const StyledTitleText = _styled.div.withConfig({
   return active ? theme.white : theme.text2;
 });
 
-const StyledListUrlText = _styled(ThemedText.Main).withConfig({
+const StyledListUrlText = _styled__default["default"](ThemedText.Main).withConfig({
   displayName: "ManageLists__StyledListUrlText",
   componentId: "sc-z8ju4z-5"
 })(["font-size:12px;color:", ";"], _ref6 => {
@@ -19137,7 +19176,7 @@ const StyledListUrlText = _styled(ThemedText.Main).withConfig({
   return active ? theme.white : theme.text2;
 });
 
-const RowWrapper = _styled(Row).withConfig({
+const RowWrapper = _styled__default["default"](Row).withConfig({
   displayName: "ManageLists__RowWrapper",
   componentId: "sc-z8ju4z-6"
 })(["background-color:", ";opacity:", ";transition:200ms;align-items:center;padding:1rem;border-radius:20px;"], _ref7 => {
@@ -19158,7 +19197,7 @@ function listUrlRowHTMLId(listUrl) {
   return `list-row-${listUrl.replace(/\./g, '-')}`;
 }
 
-const ListRow = /*#__PURE__*/memo(function ListRow(_ref9) {
+const ListRow = /*#__PURE__*/React.memo(function ListRow(_ref9) {
   let {
     listUrl
   } = _ref9;
@@ -19171,7 +19210,7 @@ const ListRow = /*#__PURE__*/memo(function ListRow(_ref9) {
     current: list,
     pendingUpdate: pending
   } = listsByUrl[listUrl];
-  const activeTokensOnThisChain = useMemo(() => {
+  const activeTokensOnThisChain = React.useMemo(() => {
     if (!list || !chainId) {
       return 0;
     }
@@ -19182,13 +19221,13 @@ const ListRow = /*#__PURE__*/memo(function ListRow(_ref9) {
   const listColor = useListColor(list === null || list === void 0 ? void 0 : list.logoURI);
   const isActive = useIsListActive(listUrl);
   const [open, toggle] = useToggle(false);
-  const node = useRef();
-  const [referenceElement, setReferenceElement] = useState();
-  const [popperElement, setPopperElement] = useState();
+  const node = React.useRef();
+  const [referenceElement, setReferenceElement] = React.useState();
+  const [popperElement, setPopperElement] = React.useState();
   const {
     styles,
     attributes
-  } = usePopper(referenceElement, popperElement, {
+  } = reactPopper.usePopper(referenceElement, popperElement, {
     placement: 'auto',
     strategy: 'fixed',
     modifiers: [{
@@ -19199,17 +19238,17 @@ const ListRow = /*#__PURE__*/memo(function ListRow(_ref9) {
     }]
   });
   useOnClickOutside(node, open ? toggle : undefined);
-  const handleAcceptListUpdate = useCallback(() => {
+  const handleAcceptListUpdate = React.useCallback(() => {
     if (!pending) return;
-    ReactGA.event({
+    ReactGA__default["default"].event({
       category: 'Lists',
       action: 'Update List from List Select',
       label: listUrl
     });
     dispatch(acceptListUpdate(listUrl));
   }, [dispatch, listUrl, pending]);
-  const handleRemoveList = useCallback(() => {
-    ReactGA.event({
+  const handleRemoveList = React.useCallback(() => {
+    ReactGA__default["default"].event({
       category: 'Lists',
       action: 'Start Remove List',
       label: listUrl
@@ -19217,8 +19256,8 @@ const ListRow = /*#__PURE__*/memo(function ListRow(_ref9) {
 
     if (window.prompt(
     /*i18n*/
-    i18n._("Please confirm you would like to remove this list by typing REMOVE")) === `REMOVE`) {
-      ReactGA.event({
+    core$1.i18n._("Please confirm you would like to remove this list by typing REMOVE")) === `REMOVE`) {
+      ReactGA__default["default"].event({
         category: 'Lists',
         action: 'Confirm Remove List',
         label: listUrl
@@ -19226,16 +19265,16 @@ const ListRow = /*#__PURE__*/memo(function ListRow(_ref9) {
       dispatch(removeList(listUrl));
     }
   }, [dispatch, listUrl]);
-  const handleEnableList = useCallback(() => {
-    ReactGA.event({
+  const handleEnableList = React.useCallback(() => {
+    ReactGA__default["default"].event({
       category: 'Lists',
       action: 'Enable List',
       label: listUrl
     });
     dispatch(enableList(listUrl));
   }, [dispatch, listUrl]);
-  const handleDisableList = useCallback(() => {
-    ReactGA.event({
+  const handleDisableList = React.useCallback(() => {
+    ReactGA__default["default"].event({
       category: 'Lists',
       action: 'Disable List',
       label: listUrl
@@ -19243,82 +19282,82 @@ const ListRow = /*#__PURE__*/memo(function ListRow(_ref9) {
     dispatch(disableList(listUrl));
   }, [dispatch, listUrl]);
   if (!list) return null;
-  return /*#__PURE__*/jsxs(RowWrapper, {
+  return /*#__PURE__*/jsxRuntime.jsxs(RowWrapper, {
     active: isActive,
     hasActiveTokens: activeTokensOnThisChain > 0,
     bgColor: listColor,
     id: listUrlRowHTMLId(listUrl),
-    children: [list.logoURI ? /*#__PURE__*/jsx(ListLogo, {
+    children: [list.logoURI ? /*#__PURE__*/jsxRuntime.jsx(ListLogo, {
       size: "40px",
       style: {
         marginRight: '1rem'
       },
       logoURI: list.logoURI,
       alt: `${list.name} list logo`
-    }) : /*#__PURE__*/jsx("div", {
+    }) : /*#__PURE__*/jsxRuntime.jsx("div", {
       style: {
         width: '24px',
         height: '24px',
         marginRight: '1rem'
       }
-    }), /*#__PURE__*/jsxs(Column, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(Column, {
       style: {
         flex: '1'
       },
-      children: [/*#__PURE__*/jsx(Row, {
-        children: /*#__PURE__*/jsx(StyledTitleText, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(Row, {
+        children: /*#__PURE__*/jsxRuntime.jsx(StyledTitleText, {
           active: isActive,
           children: list.name
         })
-      }), /*#__PURE__*/jsxs(RowFixed, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
         mt: "4px",
-        children: [/*#__PURE__*/jsx(StyledListUrlText, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(StyledListUrlText, {
           active: isActive,
           mr: "6px",
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "{activeTokensOnThisChain} tokens",
             values: {
               activeTokensOnThisChain: activeTokensOnThisChain
             }
           })
-        }), /*#__PURE__*/jsxs(StyledMenu$1, {
+        }), /*#__PURE__*/jsxRuntime.jsxs(StyledMenu$1, {
           ref: node,
-          children: [/*#__PURE__*/jsx(ButtonEmpty, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(ButtonEmpty, {
             onClick: toggle,
             ref: setReferenceElement,
             padding: "0",
-            children: /*#__PURE__*/jsx(Settings, {
+            children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.Settings, {
               stroke: isActive ? theme.bg1 : theme.text1,
               size: 12
             })
-          }), open && /*#__PURE__*/jsxs(PopoverContainer, {
+          }), open && /*#__PURE__*/jsxRuntime.jsxs(PopoverContainer, {
             show: true,
             ref: setPopperElement,
             style: styles.popper,
             ...attributes.popper,
-            children: [/*#__PURE__*/jsx("div", {
+            children: [/*#__PURE__*/jsxRuntime.jsx("div", {
               children: list && listVersionLabel(list.version)
-            }), /*#__PURE__*/jsx(SeparatorDark, {}), /*#__PURE__*/jsx(ExternalLink, {
+            }), /*#__PURE__*/jsxRuntime.jsx(SeparatorDark, {}), /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
               href: `https://tokenlists.org/token-list?url=${listUrl}`,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "View list"
               })
-            }), /*#__PURE__*/jsx(UnpaddedLinkStyledButton, {
+            }), /*#__PURE__*/jsxRuntime.jsx(UnpaddedLinkStyledButton, {
               onClick: handleRemoveList,
               disabled: Object.keys(listsByUrl).length === 1,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Remove list"
               })
-            }), pending && /*#__PURE__*/jsx(UnpaddedLinkStyledButton, {
+            }), pending && /*#__PURE__*/jsxRuntime.jsx(UnpaddedLinkStyledButton, {
               onClick: handleAcceptListUpdate,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Update list"
               })
             })]
           })]
         })]
       })]
-    }), /*#__PURE__*/jsx(ListToggle, {
+    }), /*#__PURE__*/jsxRuntime.jsx(ListToggle, {
       isActive: isActive,
       bgColor: listColor,
       toggle: () => {
@@ -19328,7 +19367,7 @@ const ListRow = /*#__PURE__*/memo(function ListRow(_ref9) {
   }, listUrl);
 });
 
-const ListContainer = _styled.div.withConfig({
+const ListContainer = _styled__default["default"].div.withConfig({
   displayName: "ManageLists__ListContainer",
   componentId: "sc-z8ju4z-7"
 })(["padding:1rem;height:100%;overflow:auto;padding-bottom:80px;"]);
@@ -19343,9 +19382,9 @@ function ManageLists(_ref10) {
     chainId
   } = useActiveWeb3React();
   const theme = useTheme();
-  const [listUrlInput, setListUrlInput] = useState('');
+  const [listUrlInput, setListUrlInput] = React.useState('');
   const lists = useAllLists();
-  const tokenCountByListName = useMemo(() => Object.values(lists).reduce((acc, _ref11) => {
+  const tokenCountByListName = React.useMemo(() => Object.values(lists).reduce((acc, _ref11) => {
     let {
       current: list
     } = _ref11;
@@ -19360,14 +19399,14 @@ function ManageLists(_ref10) {
   }, {}), [chainId, lists]); // sort by active but only if not visible
 
   const activeListUrls = useActiveListUrls();
-  const handleInput = useCallback(e => {
+  const handleInput = React.useCallback(e => {
     setListUrlInput(e.target.value);
   }, []);
   const fetchList = useFetchListCallback();
-  const validUrl = useMemo(() => {
+  const validUrl = React.useMemo(() => {
     return uriToHttp(listUrlInput).length > 0 || Boolean(parseENSAddress(listUrlInput));
   }, [listUrlInput]);
-  const sortedLists = useMemo(() => {
+  const sortedLists = React.useMemo(() => {
     const listUrls = Object.keys(lists);
     return listUrls.filter(listUrl => {
       // only show loaded lists, hide unsupported lists
@@ -19406,13 +19445,13 @@ function ManageLists(_ref10) {
     });
   }, [lists, activeListUrls, tokenCountByListName]); // temporary fetched list for import flow
 
-  const [tempList, setTempList] = useState();
-  const [addError, setAddError] = useState();
-  useEffect(() => {
+  const [tempList, setTempList] = React.useState();
+  const [addError, setAddError] = React.useState();
+  React.useEffect(() => {
     async function fetchTempList() {
       fetchList(listUrlInput, false).then(list => setTempList(list)).catch(() => setAddError(
       /*i18n*/
-      i18n._("Error importing list")));
+      core$1.i18n._("Error importing list")));
     } // if valid url, fetch details for card
 
 
@@ -19422,7 +19461,7 @@ function ManageLists(_ref10) {
       setTempList(undefined);
       listUrlInput !== '' && setAddError(
       /*i18n*/
-      i18n._("Enter valid list location"));
+      core$1.i18n._("Enter valid list location"));
     } // reset error
 
 
@@ -19433,26 +19472,26 @@ function ManageLists(_ref10) {
 
   const isImported = Object.keys(lists).includes(listUrlInput); // set list values and have parent modal switch to import list view
 
-  const handleImport = useCallback(() => {
+  const handleImport = React.useCallback(() => {
     if (!tempList) return;
     setImportList(tempList);
     setModalView(CurrencyModalView.importList);
     setListUrl(listUrlInput);
   }, [listUrlInput, setImportList, setListUrl, setModalView, tempList]);
-  return /*#__PURE__*/jsxs(Wrapper$4, {
-    children: [/*#__PURE__*/jsxs(PaddedColumn, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$4, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(PaddedColumn, {
       gap: "14px",
-      children: [/*#__PURE__*/jsx(Row, {
-        children: /*#__PURE__*/jsx(SearchInput, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(Row, {
+        children: /*#__PURE__*/jsxRuntime.jsx(SearchInput, {
           type: "text",
           id: "list-add-input",
           placeholder:
           /*i18n*/
-          i18n._("https:// or ipfs:// or ENS name"),
+          core$1.i18n._("https:// or ipfs:// or ENS name"),
           value: listUrlInput,
           onChange: handleInput
         })
-      }), addError ? /*#__PURE__*/jsx(ThemedText.Error, {
+      }), addError ? /*#__PURE__*/jsxRuntime.jsx(ThemedText.Error, {
         title: addError,
         style: {
           textOverflow: 'ellipsis',
@@ -19461,29 +19500,29 @@ function ManageLists(_ref10) {
         error: true,
         children: addError
       }) : null]
-    }), tempList && /*#__PURE__*/jsx(PaddedColumn, {
+    }), tempList && /*#__PURE__*/jsxRuntime.jsx(PaddedColumn, {
       style: {
         paddingTop: 0
       },
-      children: /*#__PURE__*/jsx(Card, {
+      children: /*#__PURE__*/jsxRuntime.jsx(Card, {
         backgroundColor: theme.bg2,
         padding: "12px 20px",
-        children: /*#__PURE__*/jsxs(RowBetween, {
-          children: [/*#__PURE__*/jsxs(RowFixed, {
-            children: [tempList.logoURI && /*#__PURE__*/jsx(ListLogo, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+            children: [tempList.logoURI && /*#__PURE__*/jsxRuntime.jsx(ListLogo, {
               logoURI: tempList.logoURI,
               size: "40px"
-            }), /*#__PURE__*/jsxs(AutoColumn, {
+            }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
               gap: "4px",
               style: {
                 marginLeft: '20px'
               },
-              children: [/*#__PURE__*/jsx(ThemedText.Body, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
                 fontWeight: 600,
                 children: tempList.name
-              }), /*#__PURE__*/jsx(ThemedText.Main, {
+              }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                 fontSize: '12px',
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "{0} tokens",
                   values: {
                     0: tempList.tokens.length
@@ -19491,35 +19530,35 @@ function ManageLists(_ref10) {
                 })
               })]
             })]
-          }), isImported ? /*#__PURE__*/jsxs(RowFixed, {
-            children: [/*#__PURE__*/jsx(IconWrapper$4, {
+          }), isImported ? /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(IconWrapper$4, {
               stroke: theme.text2,
               size: "16px",
               marginRight: '10px',
-              children: /*#__PURE__*/jsx(CheckCircle, {})
-            }), /*#__PURE__*/jsx(ThemedText.Body, {
+              children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.CheckCircle, {})
+            }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
               color: theme.text2,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Loaded"
               })
             })]
-          }) : /*#__PURE__*/jsx(ButtonPrimary, {
+          }) : /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
             style: {
               fontSize: '14px'
             },
             padding: "6px 8px",
             width: "fit-content",
             onClick: handleImport,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Import"
             })
           })]
         })
       })
-    }), /*#__PURE__*/jsx(Separator, {}), /*#__PURE__*/jsx(ListContainer, {
-      children: /*#__PURE__*/jsx(AutoColumn, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Separator, {}), /*#__PURE__*/jsxRuntime.jsx(ListContainer, {
+      children: /*#__PURE__*/jsxRuntime.jsx(AutoColumn, {
         gap: "md",
-        children: sortedLists.map(listUrl => /*#__PURE__*/jsx(ListRow, {
+        children: sortedLists.map(listUrl => /*#__PURE__*/jsxRuntime.jsx(ListRow, {
           listUrl: listUrl
         }, listUrl))
       })
@@ -19527,12 +19566,12 @@ function ManageLists(_ref10) {
   });
 }
 
-const Wrapper$3 = _styled.div.withConfig({
+const Wrapper$3 = _styled__default["default"].div.withConfig({
   displayName: "ManageTokens__Wrapper",
   componentId: "sc-s3wxjn-0"
 })(["width:100%;height:calc(100% - 60px);position:relative;padding-bottom:80px;"]);
 
-const Footer = _styled.div.withConfig({
+const Footer = _styled__default["default"].div.withConfig({
   displayName: "ManageTokens__Footer",
   componentId: "sc-s3wxjn-1"
 })(["position:absolute;bottom:0;width:100%;border-radius:20px;border-top-right-radius:0;border-top-left-radius:0;border-top:1px solid ", ";padding:20px;text-align:center;"], _ref => {
@@ -19550,11 +19589,11 @@ function ManageTokens(_ref2) {
   const {
     chainId
   } = useActiveWeb3React();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = React.useState('');
   const theme = useTheme(); // manage focus on modal show
 
-  const inputRef = useRef();
-  const handleInput = useCallback(event => {
+  const inputRef = React.useRef();
+  const handleInput = React.useCallback(event => {
     const input = event.target.value;
     const checksummedInput = isAddress(input);
     setSearchQuery(checksummedInput || input);
@@ -19565,48 +19604,48 @@ function ManageTokens(_ref2) {
 
   const userAddedTokens = useUserAddedTokens();
   const removeToken = useRemoveUserAddedToken();
-  const handleRemoveAll = useCallback(() => {
+  const handleRemoveAll = React.useCallback(() => {
     if (chainId && userAddedTokens) {
       userAddedTokens.map(token => {
         return removeToken(chainId, token.address);
       });
     }
   }, [removeToken, userAddedTokens, chainId]);
-  const tokenList = useMemo(() => {
-    return chainId && userAddedTokens.map(token => /*#__PURE__*/jsxs(RowBetween, {
+  const tokenList = React.useMemo(() => {
+    return chainId && userAddedTokens.map(token => /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
       width: "100%",
-      children: [/*#__PURE__*/jsxs(RowFixed, {
-        children: [/*#__PURE__*/jsx(CurrencyLogo, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
           currency: token,
           size: '20px'
-        }), /*#__PURE__*/jsx(ExternalLink, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
           href: getExplorerLink(chainId, token.address, ExplorerDataType.ADDRESS),
-          children: /*#__PURE__*/jsx(ThemedText.Main, {
+          children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
             ml: '10px',
             fontWeight: 600,
             children: token.symbol
           })
         })]
-      }), /*#__PURE__*/jsxs(RowFixed, {
-        children: [/*#__PURE__*/jsx(TrashIcon, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(TrashIcon, {
           onClick: () => removeToken(chainId, token.address)
-        }), /*#__PURE__*/jsx(ExternalLinkIcon, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ExternalLinkIcon, {
           href: getExplorerLink(chainId, token.address, ExplorerDataType.ADDRESS)
         })]
       })]
     }, token.address));
   }, [userAddedTokens, chainId, removeToken]);
-  return /*#__PURE__*/jsxs(Wrapper$3, {
-    children: [/*#__PURE__*/jsxs(Column, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$3, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(Column, {
       style: {
         width: '100%',
         height: '100%',
         flex: '1 1'
       },
-      children: [/*#__PURE__*/jsxs(PaddedColumn, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(PaddedColumn, {
         gap: "14px",
-        children: [/*#__PURE__*/jsx(Row, {
-          children: /*#__PURE__*/jsx(SearchInput, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(Row, {
+          children: /*#__PURE__*/jsxRuntime.jsx(SearchInput, {
             type: "text",
             id: "token-search-input",
             placeholder: '0x0000',
@@ -19615,15 +19654,15 @@ function ManageTokens(_ref2) {
             ref: inputRef,
             onChange: handleInput
           })
-        }), searchQuery !== '' && !isAddressSearch && /*#__PURE__*/jsx(ThemedText.Error, {
+        }), searchQuery !== '' && !isAddressSearch && /*#__PURE__*/jsxRuntime.jsx(ThemedText.Error, {
           error: true,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Enter valid token address"
           })
-        }), searchToken && /*#__PURE__*/jsx(Card, {
+        }), searchToken && /*#__PURE__*/jsxRuntime.jsx(Card, {
           backgroundColor: theme.bg2,
           padding: "10px 0",
-          children: /*#__PURE__*/jsx(ImportRow, {
+          children: /*#__PURE__*/jsxRuntime.jsx(ImportRow, {
             token: searchToken,
             showImportView: () => setModalView(CurrencyModalView.importToken),
             setImportToken: setImportToken,
@@ -19632,34 +19671,34 @@ function ManageTokens(_ref2) {
             }
           })
         })]
-      }), /*#__PURE__*/jsx(Separator, {}), /*#__PURE__*/jsxs(PaddedColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsx(Separator, {}), /*#__PURE__*/jsxRuntime.jsxs(PaddedColumn, {
         gap: "lg",
         style: {
           overflow: 'auto',
           marginBottom: '10px'
         },
-        children: [/*#__PURE__*/jsxs(RowBetween, {
-          children: [/*#__PURE__*/jsx(ThemedText.Main, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
             fontWeight: 600,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "{0} Custom Tokens",
               values: {
                 0: userAddedTokens === null || userAddedTokens === void 0 ? void 0 : userAddedTokens.length
               }
             })
-          }), userAddedTokens.length > 0 && /*#__PURE__*/jsx(ButtonText, {
+          }), userAddedTokens.length > 0 && /*#__PURE__*/jsxRuntime.jsx(ButtonText, {
             onClick: handleRemoveAll,
-            children: /*#__PURE__*/jsx(ThemedText.Blue, {
-              children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Blue, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Clear all"
               })
             })
           })]
         }), tokenList]
       })]
-    }), /*#__PURE__*/jsx(Footer, {
-      children: /*#__PURE__*/jsx(ThemedText.DarkGray, {
-        children: /*#__PURE__*/jsx(Trans, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Footer, {
+      children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.DarkGray, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Tip: Custom tokens are stored locally in your browser"
         })
       })
@@ -19667,12 +19706,12 @@ function ManageTokens(_ref2) {
   });
 }
 
-const Wrapper$2 = _styled.div.withConfig({
+const Wrapper$2 = _styled__default["default"].div.withConfig({
   displayName: "Manage__Wrapper",
   componentId: "sc-s8mduo-0"
 })(["width:100%;position:relative;padding-bottom:80px;"]);
 
-const ToggleWrapper = _styled(RowBetween).withConfig({
+const ToggleWrapper = _styled__default["default"](RowBetween).withConfig({
   displayName: "Manage__ToggleWrapper",
   componentId: "sc-s8mduo-1"
 })(["background-color:", ";border-radius:12px;padding:6px;"], _ref => {
@@ -19682,7 +19721,7 @@ const ToggleWrapper = _styled(RowBetween).withConfig({
   return theme.bg3;
 });
 
-const ToggleOption = _styled.div.withConfig({
+const ToggleOption = _styled__default["default"].div.withConfig({
   displayName: "Manage__ToggleOption",
   componentId: "sc-s8mduo-2"
 })(["width:48%;padding:10px;display:flex;align-items:center;justify-content:center;border-radius:12px;font-weight:600;background-color:", ";color:", ";user-select:none;:hover{cursor:pointer;opacity:0.7;}"], _ref2 => {
@@ -19708,49 +19747,49 @@ function Manage(_ref4) {
     setListUrl
   } = _ref4;
   // toggle between tokens and lists
-  const [showLists, setShowLists] = useState(true);
-  return /*#__PURE__*/jsxs(Wrapper$2, {
-    children: [/*#__PURE__*/jsx(PaddedColumn, {
-      children: /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx(ArrowLeft, {
+  const [showLists, setShowLists] = React.useState(true);
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper$2, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(PaddedColumn, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowLeft, {
           style: {
             cursor: 'pointer'
           },
           onClick: () => setModalView(CurrencyModalView.search)
-        }), /*#__PURE__*/jsx(Text$1, {
+        }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 20,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Manage"
           })
-        }), /*#__PURE__*/jsx(CloseIcon$3, {
+        }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
         })]
       })
-    }), /*#__PURE__*/jsx(Separator, {}), /*#__PURE__*/jsx(PaddedColumn, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Separator, {}), /*#__PURE__*/jsxRuntime.jsx(PaddedColumn, {
       style: {
         paddingBottom: 0
       },
-      children: /*#__PURE__*/jsxs(ToggleWrapper, {
-        children: [/*#__PURE__*/jsx(ToggleOption, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(ToggleWrapper, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ToggleOption, {
           onClick: () => setShowLists(!showLists),
           active: showLists,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Lists"
           })
-        }), /*#__PURE__*/jsx(ToggleOption, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ToggleOption, {
           onClick: () => setShowLists(!showLists),
           active: !showLists,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Tokens"
           })
         })]
       })
-    }), showLists ? /*#__PURE__*/jsx(ManageLists, {
+    }), showLists ? /*#__PURE__*/jsxRuntime.jsx(ManageLists, {
       setModalView: setModalView,
       setImportList: setImportList,
       setListUrl: setListUrl
-    }) : /*#__PURE__*/jsx(ManageTokens, {
+    }) : /*#__PURE__*/jsxRuntime.jsx(ManageTokens, {
       setModalView: setModalView,
       setImportToken: setImportToken
     })]
@@ -19777,34 +19816,34 @@ function CurrencySearchModal(_ref) {
     showCurrencyAmount = true,
     disableNonToken = false
   } = _ref;
-  const [modalView, setModalView] = useState(CurrencyModalView.manage);
+  const [modalView, setModalView] = React.useState(CurrencyModalView.manage);
   const lastOpen = useLast(isOpen);
-  useEffect(() => {
+  React.useEffect(() => {
     if (isOpen && !lastOpen) {
       setModalView(CurrencyModalView.search);
     }
   }, [isOpen, lastOpen]);
-  const handleCurrencySelect = useCallback(currency => {
+  const handleCurrencySelect = React.useCallback(currency => {
     onCurrencySelect(currency);
     onDismiss();
   }, [onDismiss, onCurrencySelect]); // for token import view
 
   const prevView = usePrevious(modalView); // used for import token flow
 
-  const [importToken, setImportToken] = useState(); // used for import list
+  const [importToken, setImportToken] = React.useState(); // used for import list
 
-  const [importList, setImportList] = useState();
-  const [listURL, setListUrl] = useState();
-  const showImportView = useCallback(() => setModalView(CurrencyModalView.importToken), [setModalView]);
-  const showManageView = useCallback(() => setModalView(CurrencyModalView.manage), [setModalView]);
-  const handleBackImport = useCallback(() => setModalView(prevView && prevView !== CurrencyModalView.importToken ? prevView : CurrencyModalView.search), [setModalView, prevView]); // change min height if not searching
+  const [importList, setImportList] = React.useState();
+  const [listURL, setListUrl] = React.useState();
+  const showImportView = React.useCallback(() => setModalView(CurrencyModalView.importToken), [setModalView]);
+  const showManageView = React.useCallback(() => setModalView(CurrencyModalView.manage), [setModalView]);
+  const handleBackImport = React.useCallback(() => setModalView(prevView && prevView !== CurrencyModalView.importToken ? prevView : CurrencyModalView.search), [setModalView, prevView]); // change min height if not searching
 
   const minHeight = modalView === CurrencyModalView.importToken || modalView === CurrencyModalView.importList ? 40 : 80;
   let content = null;
 
   switch (modalView) {
     case CurrencyModalView.search:
-      content = /*#__PURE__*/jsx(CurrencySearch, {
+      content = /*#__PURE__*/jsxRuntime.jsx(CurrencySearch, {
         isOpen: isOpen,
         onDismiss: onDismiss,
         onCurrencySelect: handleCurrencySelect,
@@ -19821,7 +19860,7 @@ function CurrencySearchModal(_ref) {
 
     case CurrencyModalView.importToken:
       if (importToken) {
-        content = /*#__PURE__*/jsx(ImportToken, {
+        content = /*#__PURE__*/jsxRuntime.jsx(ImportToken, {
           tokens: [importToken],
           onDismiss: onDismiss,
           list: importToken instanceof WrappedTokenInfo ? importToken.list : undefined,
@@ -19834,7 +19873,7 @@ function CurrencySearchModal(_ref) {
 
     case CurrencyModalView.importList:
       if (importList && listURL) {
-        content = /*#__PURE__*/jsx(ImportList, {
+        content = /*#__PURE__*/jsxRuntime.jsx(ImportList, {
           list: importList,
           listURL: listURL,
           onDismiss: onDismiss,
@@ -19845,7 +19884,7 @@ function CurrencySearchModal(_ref) {
       break;
 
     case CurrencyModalView.manage:
-      content = /*#__PURE__*/jsx(Manage, {
+      content = /*#__PURE__*/jsxRuntime.jsx(Manage, {
         onDismiss: onDismiss,
         setModalView: setModalView,
         setImportToken: setImportToken,
@@ -19855,7 +19894,7 @@ function CurrencySearchModal(_ref) {
       break;
   }
 
-  return /*#__PURE__*/jsx(Modal, {
+  return /*#__PURE__*/jsxRuntime.jsx(Modal, {
     isOpen: isOpen,
     onDismiss: onDismiss,
     maxHeight: 80,
@@ -19864,7 +19903,7 @@ function CurrencySearchModal(_ref) {
   });
 }
 
-const TextWrapper = _styled.span.withConfig({
+const TextWrapper = _styled__default["default"].span.withConfig({
   displayName: "HoverInlineText__TextWrapper",
   componentId: "sc-19p08fx-0"
 })(["margin-left:", ";color:", ";font-size:", ";@media screen and (max-width:600px){font-size:", ";}"], _ref => {
@@ -19900,17 +19939,17 @@ const HoverInlineText = _ref5 => {
     link,
     ...rest
   } = _ref5;
-  const [showHover, setShowHover] = useState(false);
+  const [showHover, setShowHover] = React.useState(false);
 
   if (!text) {
-    return /*#__PURE__*/jsx("span", {});
+    return /*#__PURE__*/jsxRuntime.jsx("span", {});
   }
 
   if (text.length > maxCharacters) {
-    return /*#__PURE__*/jsx(Tooltip, {
+    return /*#__PURE__*/jsxRuntime.jsx(Tooltip, {
       text: text,
       show: showHover,
-      children: /*#__PURE__*/jsx(TextWrapper, {
+      children: /*#__PURE__*/jsxRuntime.jsx(TextWrapper, {
         onMouseEnter: () => setShowHover(true),
         onMouseLeave: () => setShowHover(false),
         margin: margin,
@@ -19923,7 +19962,7 @@ const HoverInlineText = _ref5 => {
     });
   }
 
-  return /*#__PURE__*/jsx(TextWrapper, {
+  return /*#__PURE__*/jsxRuntime.jsx(TextWrapper, {
     margin: margin,
     adjustSize: adjustSize,
     link: link,
@@ -19939,7 +19978,7 @@ function FiatValue(_ref) {
     priceImpact
   } = _ref;
   const theme = useTheme();
-  const priceImpactColor = useMemo(() => {
+  const priceImpactColor = React.useMemo(() => {
     if (!priceImpact) return undefined;
     if (priceImpact.lessThan('0')) return theme.green1;
     const severity = warningSeverity(priceImpact);
@@ -19947,23 +19986,23 @@ function FiatValue(_ref) {
     if (severity < 3) return theme.yellow1;
     return theme.red1;
   }, [priceImpact, theme.green1, theme.red1, theme.text3, theme.yellow1]);
-  return /*#__PURE__*/jsxs(ThemedText.Body, {
+  return /*#__PURE__*/jsxRuntime.jsxs(ThemedText.Body, {
     fontSize: 14,
     color: fiatValue ? theme.text2 : theme.text4,
-    children: [fiatValue ? /*#__PURE__*/jsx(Trans, {
+    children: [fiatValue ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "~$ <0/>",
       components: {
-        0: /*#__PURE__*/jsx(HoverInlineText, {
+        0: /*#__PURE__*/jsxRuntime.jsx(HoverInlineText, {
           text: fiatValue === null || fiatValue === void 0 ? void 0 : fiatValue.toSignificant(6, {
             groupSeparator: ','
           })
         })
       }
-    }) : '', priceImpact ? /*#__PURE__*/jsxs("span", {
+    }) : '', priceImpact ? /*#__PURE__*/jsxRuntime.jsxs("span", {
       style: {
         color: priceImpactColor
       },
-      children: [' ', "(", /*#__PURE__*/jsx(Trans, {
+      children: [' ', "(", /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "{0}%",
         values: {
           0: priceImpact.multiply(-1).toSignificant(3)
@@ -19973,7 +20012,7 @@ function FiatValue(_ref) {
   });
 }
 
-const InputPanel = _styled.div.withConfig({
+const InputPanel = _styled__default["default"].div.withConfig({
   displayName: "CurrencyInputPanel__InputPanel",
   componentId: "sc-33m4yg-0"
 })(["", " position:relative;border-radius:", ";background-color:", ";z-index:1;width:", ";"], _ref => {
@@ -19999,7 +20038,7 @@ const InputPanel = _styled.div.withConfig({
   return hideInput ? '100%' : 'initial';
 });
 
-const FixedContainer = _styled.div.withConfig({
+const FixedContainer = _styled__default["default"].div.withConfig({
   displayName: "CurrencyInputPanel__FixedContainer",
   componentId: "sc-33m4yg-1"
 })(["width:100%;height:100%;position:absolute;border-radius:20px;background-color:", ";opacity:0.95;display:flex;align-items:center;justify-content:center;z-index:2;"], _ref5 => {
@@ -20009,7 +20048,7 @@ const FixedContainer = _styled.div.withConfig({
   return theme.bg1;
 });
 
-const Container$1 = _styled.div.withConfig({
+const Container$1 = _styled__default["default"].div.withConfig({
   displayName: "CurrencyInputPanel__Container",
   componentId: "sc-33m4yg-2"
 })(["border-radius:", ";border:1px solid ", ";background-color:", ";width:", ";:focus,:hover{border:1px solid ", ";}"], _ref6 => {
@@ -20041,7 +20080,7 @@ const Container$1 = _styled.div.withConfig({
   return hideInput ? ' transparent' : theme.bg3;
 });
 
-const CurrencySelect = _styled(ButtonGray).withConfig({
+const CurrencySelect = _styled__default["default"](ButtonGray).withConfig({
   displayName: "CurrencyInputPanel__CurrencySelect",
   componentId: "sc-33m4yg-3"
 })(["visibility:", ";align-items:center;font-size:24px;font-weight:500;background-color:", ";color:", ";border-radius:16px;box-shadow:", ";box-shadow:0px 6px 10px rgba(0,0,0,0.075);outline:none;cursor:pointer;user-select:none;border:none;height:", ";width:", ";padding:0 8px;justify-content:space-between;margin-right:", ";:focus,:hover{background-color:", ";}"], _ref11 => {
@@ -20086,10 +20125,10 @@ const CurrencySelect = _styled(ButtonGray).withConfig({
     selected,
     theme
   } = _ref18;
-  return selected ? theme.bg2 : darken(0.05, theme.primary1);
+  return selected ? theme.bg2 : polished.darken(0.05, theme.primary1);
 });
 
-const InputRow = _styled.div.withConfig({
+const InputRow = _styled__default["default"].div.withConfig({
   displayName: "CurrencyInputPanel__InputRow",
   componentId: "sc-33m4yg-4"
 })(["", " align-items:center;justify-content:space-between;padding:", ";"], _ref19 => {
@@ -20104,7 +20143,7 @@ const InputRow = _styled.div.withConfig({
   return selected ? ' 1rem 1rem 0.75rem 1rem' : '1rem 1rem 0.75rem 1rem';
 });
 
-const LabelRow = _styled.div.withConfig({
+const LabelRow = _styled__default["default"].div.withConfig({
   displayName: "CurrencyInputPanel__LabelRow",
   componentId: "sc-33m4yg-5"
 })(["", " align-items:center;color:", ";font-size:0.75rem;line-height:1rem;padding:0 1rem 1rem;span:hover{cursor:pointer;color:", ";}"], _ref21 => {
@@ -20121,20 +20160,20 @@ const LabelRow = _styled.div.withConfig({
   let {
     theme
   } = _ref23;
-  return darken(0.2, theme.text2);
+  return polished.darken(0.2, theme.text2);
 });
 
-const FiatRow = _styled(LabelRow).withConfig({
+const FiatRow = _styled__default["default"](LabelRow).withConfig({
   displayName: "CurrencyInputPanel__FiatRow",
   componentId: "sc-33m4yg-6"
 })(["justify-content:flex-end;"]);
 
-const Aligner = _styled.span.withConfig({
+const Aligner = _styled__default["default"].span.withConfig({
   displayName: "CurrencyInputPanel__Aligner",
   componentId: "sc-33m4yg-7"
 })(["display:flex;align-items:center;justify-content:space-between;width:100%;"]);
 
-const StyledDropDown = _styled(SvgDropdown).withConfig({
+const StyledDropDown = _styled__default["default"](SvgDropdown).withConfig({
   displayName: "CurrencyInputPanel__StyledDropDown",
   componentId: "sc-33m4yg-8"
 })(["margin:0 0.25rem 0 0.35rem;height:35%;path{stroke:", ";stroke-width:1.5px;}"], _ref24 => {
@@ -20145,7 +20184,7 @@ const StyledDropDown = _styled(SvgDropdown).withConfig({
   return selected ? theme.text1 : theme.white;
 });
 
-const StyledTokenName = _styled.span.withConfig({
+const StyledTokenName = _styled__default["default"].span.withConfig({
   displayName: "CurrencyInputPanel__StyledTokenName",
   componentId: "sc-33m4yg-9"
 })(["", " font-size:", ";"], _ref25 => {
@@ -20160,7 +20199,7 @@ const StyledTokenName = _styled.span.withConfig({
   return active ? '18px' : '18px';
 });
 
-const StyledBalanceMax = _styled.button.withConfig({
+const StyledBalanceMax = _styled__default["default"].button.withConfig({
   displayName: "CurrencyInputPanel__StyledBalanceMax",
   componentId: "sc-33m4yg-10"
 })(["background-color:transparent;border:none;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;padding:0;color:", ";opacity:", ";pointer-events:", ";margin-left:0.25rem;:focus{outline:none;}", ";"], _ref27 => {
@@ -20187,7 +20226,7 @@ const StyledBalanceMax = _styled.button.withConfig({
   `;
 });
 
-const StyledNumericalInput = _styled(Input$1).withConfig({
+const StyledNumericalInput = _styled__default["default"](Input$1).withConfig({
   displayName: "CurrencyInputPanel__StyledNumericalInput",
   componentId: "sc-33m4yg-11"
 })(["", ""], loadingOpacityMixin);
@@ -20216,41 +20255,41 @@ function CurrencyInputPanel(_ref31) {
     loading = false,
     ...rest
   } = _ref31;
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
   const {
     account
   } = useActiveWeb3React();
   const selectedCurrencyBalance = useCurrencyBalance(account !== null && account !== void 0 ? account : undefined, currency !== null && currency !== void 0 ? currency : undefined);
   const theme = useTheme();
-  const handleDismissSearch = useCallback(() => {
+  const handleDismissSearch = React.useCallback(() => {
     setModalOpen(false);
   }, [setModalOpen]);
-  return /*#__PURE__*/jsxs(InputPanel, {
+  return /*#__PURE__*/jsxRuntime.jsxs(InputPanel, {
     id: id,
     hideInput: hideInput,
     ...rest,
-    children: [locked && /*#__PURE__*/jsx(FixedContainer, {
-      children: /*#__PURE__*/jsxs(AutoColumn, {
+    children: [locked && /*#__PURE__*/jsxRuntime.jsx(FixedContainer, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "sm",
         justify: "center",
-        children: [/*#__PURE__*/jsx(Lock, {}), /*#__PURE__*/jsx(ThemedText.Label, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.Lock, {}), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Label, {
           fontSize: "12px",
           textAlign: "center",
           padding: "0 12px",
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "The market price is outside your specified price range. Single-asset deposit only."
           })
         })]
       })
-    }), /*#__PURE__*/jsxs(Container$1, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(Container$1, {
       hideInput: hideInput,
-      children: [/*#__PURE__*/jsxs(InputRow, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(InputRow, {
         style: hideInput ? {
           padding: '0',
           borderRadius: '8px'
         } : {},
         selected: !onCurrencySelect,
-        children: [/*#__PURE__*/jsx(CurrencySelect, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(CurrencySelect, {
           visible: currency !== undefined,
           selected: !!currency,
           hideInput: hideInput,
@@ -20260,51 +20299,51 @@ function CurrencyInputPanel(_ref31) {
               setModalOpen(true);
             }
           },
-          children: /*#__PURE__*/jsxs(Aligner, {
-            children: [/*#__PURE__*/jsxs(RowFixed, {
-              children: [pair ? /*#__PURE__*/jsx("span", {
+          children: /*#__PURE__*/jsxRuntime.jsxs(Aligner, {
+            children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+              children: [pair ? /*#__PURE__*/jsxRuntime.jsx("span", {
                 style: {
                   marginRight: '0.5rem'
                 },
-                children: /*#__PURE__*/jsx(DoubleCurrencyLogo, {
+                children: /*#__PURE__*/jsxRuntime.jsx(DoubleCurrencyLogo, {
                   currency0: pair.token0,
                   currency1: pair.token1,
                   size: 24,
                   margin: true
                 })
-              }) : currency ? /*#__PURE__*/jsx(CurrencyLogo, {
+              }) : currency ? /*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
                 style: {
                   marginRight: '0.5rem'
                 },
                 currency: currency,
                 size: '24px'
-              }) : null, pair ? /*#__PURE__*/jsxs(StyledTokenName, {
+              }) : null, pair ? /*#__PURE__*/jsxRuntime.jsxs(StyledTokenName, {
                 className: "pair-name-container",
                 children: [pair === null || pair === void 0 ? void 0 : pair.token0.symbol, ":", pair === null || pair === void 0 ? void 0 : pair.token1.symbol]
-              }) : /*#__PURE__*/jsx(StyledTokenName, {
+              }) : /*#__PURE__*/jsxRuntime.jsx(StyledTokenName, {
                 className: "token-symbol-container",
                 active: Boolean(currency && currency.symbol),
-                children: (currency && currency.symbol && currency.symbol.length > 20 ? currency.symbol.slice(0, 4) + '...' + currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length) : currency === null || currency === void 0 ? void 0 : currency.symbol) || /*#__PURE__*/jsx(Trans, {
+                children: (currency && currency.symbol && currency.symbol.length > 20 ? currency.symbol.slice(0, 4) + '...' + currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length) : currency === null || currency === void 0 ? void 0 : currency.symbol) || /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Select a token"
                 })
               })]
-            }), onCurrencySelect && /*#__PURE__*/jsx(StyledDropDown, {
+            }), onCurrencySelect && /*#__PURE__*/jsxRuntime.jsx(StyledDropDown, {
               selected: !!currency
             })]
           })
-        }), !hideInput && /*#__PURE__*/jsx(StyledNumericalInput, {
+        }), !hideInput && /*#__PURE__*/jsxRuntime.jsx(StyledNumericalInput, {
           className: "token-amount-input",
           value: value,
           onUserInput: onUserInput,
           $loading: loading
         })]
-      }), !hideInput && !hideBalance && /*#__PURE__*/jsx(FiatRow, {
-        children: /*#__PURE__*/jsxs(RowBetween, {
-          children: [account ? /*#__PURE__*/jsxs(RowFixed, {
+      }), !hideInput && !hideBalance && /*#__PURE__*/jsxRuntime.jsx(FiatRow, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+          children: [account ? /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
             style: {
               height: '17px'
             },
-            children: [/*#__PURE__*/jsx(ThemedText.Body, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
               onClick: onMax,
               color: theme.text2,
               fontWeight: 400,
@@ -20313,29 +20352,29 @@ function CurrencyInputPanel(_ref31) {
                 display: 'inline',
                 cursor: 'pointer'
               },
-              children: !hideBalance && currency && selectedCurrencyBalance ? renderBalance ? renderBalance(selectedCurrencyBalance) : /*#__PURE__*/jsx(Trans, {
+              children: !hideBalance && currency && selectedCurrencyBalance ? renderBalance ? renderBalance(selectedCurrencyBalance) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Balance: {0} {1}",
                 values: {
                   0: formatCurrencyAmount(selectedCurrencyBalance, 4),
                   1: currency.symbol
                 }
               }) : null
-            }), showMaxButton && selectedCurrencyBalance ? /*#__PURE__*/jsx(StyledBalanceMax, {
+            }), showMaxButton && selectedCurrencyBalance ? /*#__PURE__*/jsxRuntime.jsx(StyledBalanceMax, {
               onClick: onMax,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "(Max)"
               })
             }) : null]
-          }) : /*#__PURE__*/jsx("span", {}), /*#__PURE__*/jsx(LoadingOpacityContainer, {
+          }) : /*#__PURE__*/jsxRuntime.jsx("span", {}), /*#__PURE__*/jsxRuntime.jsx(LoadingOpacityContainer, {
             $loading: loading,
-            children: /*#__PURE__*/jsx(FiatValue, {
+            children: /*#__PURE__*/jsxRuntime.jsx(FiatValue, {
               fiatValue: fiatValue,
               priceImpact: priceImpact
             })
           })]
         })
       })]
-    }), onCurrencySelect && /*#__PURE__*/jsx(CurrencySearchModal, {
+    }), onCurrencySelect && /*#__PURE__*/jsxRuntime.jsx(CurrencySearchModal, {
       isOpen: modalOpen,
       onDismiss: handleDismissSearch,
       onCurrencySelect: onCurrencySelect,
@@ -20369,8 +20408,8 @@ function useAddTokenToMetamask(currencyToAdd) {
     library
   } = useActiveWeb3React();
   const token = currencyToAdd === null || currencyToAdd === void 0 ? void 0 : currencyToAdd.wrapped;
-  const [success, setSuccess] = useState();
-  const addToken = useCallback(() => {
+  const [success, setSuccess] = React.useState();
+  const addToken = React.useCallback(() => {
     if (library && library.provider.isMetaMask && library.provider.request && token) {
       library.provider.request({
         method: 'wallet_watchAsset',
@@ -20397,12 +20436,12 @@ function useAddTokenToMetamask(currencyToAdd) {
   };
 }
 
-const Wrapper$1 = _styled.div.withConfig({
+const Wrapper$1 = _styled__default["default"].div.withConfig({
   displayName: "AnimatedConfirmation__Wrapper",
   componentId: "sc-o25mq5-0"
 })(["height:90px;width:90px;"]);
 
-const dash = keyframes`
+const dash = _styled.keyframes`
   0% {
     stroke-dashoffset: 1000;
   }
@@ -20410,7 +20449,7 @@ const dash = keyframes`
     stroke-dashoffset: 0;
   }
 `;
-const dashCheck = keyframes`
+const dashCheck = _styled.keyframes`
   0% {
     stroke-dashoffset: -100;
   }
@@ -20419,25 +20458,25 @@ const dashCheck = keyframes`
   }
 `;
 
-const Circle = _styled.circle.withConfig({
+const Circle = _styled__default["default"].circle.withConfig({
   displayName: "AnimatedConfirmation__Circle",
   componentId: "sc-o25mq5-1"
 })(["stroke-dasharray:1000;stroke-dashoffset:0;-webkit-animation:", " 0.9s ease-in-out;animation:", " 0.9s ease-in-out;"], dash, dash);
 
-const PolyLine = _styled.polyline.withConfig({
+const PolyLine = _styled__default["default"].polyline.withConfig({
   displayName: "AnimatedConfirmation__PolyLine",
   componentId: "sc-o25mq5-2"
 })(["stroke-dasharray:1000;stroke-dashoffset:0;stroke-dashoffset:-100;-webkit-animation:", " 0.9s 0.35s ease-in-out forwards;animation:", " 0.9s 0.35s ease-in-out forwards;"], dashCheck, dashCheck);
 
 function AnimatedConfirmation() {
   const theme = useTheme();
-  return /*#__PURE__*/jsx(Wrapper$1, {
+  return /*#__PURE__*/jsxRuntime.jsx(Wrapper$1, {
     className: "w4rAnimated_checkmark",
-    children: /*#__PURE__*/jsxs("svg", {
+    children: /*#__PURE__*/jsxRuntime.jsxs("svg", {
       version: "1.1",
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 130.2 130.2",
-      children: [/*#__PURE__*/jsx(Circle, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(Circle, {
         className: "path circle",
         fill: "none",
         stroke: theme.green1,
@@ -20446,7 +20485,7 @@ function AnimatedConfirmation() {
         cx: "65.1",
         cy: "65.1",
         r: "62.1"
-      }), /*#__PURE__*/jsx(PolyLine, {
+      }), /*#__PURE__*/jsxRuntime.jsx(PolyLine, {
         className: "path check",
         fill: "none",
         stroke: theme.green1,
@@ -20459,12 +20498,12 @@ function AnimatedConfirmation() {
   });
 }
 
-const Wrapper = _styled.div.withConfig({
+const Wrapper = _styled__default["default"].div.withConfig({
   displayName: "TransactionConfirmationModal__Wrapper",
   componentId: "sc-12bigbw-0"
 })(["width:100%;padding:1rem;"]);
 
-const Section = _styled(AutoColumn).withConfig({
+const Section = _styled__default["default"](AutoColumn).withConfig({
   displayName: "TransactionConfirmationModal__Section",
   componentId: "sc-12bigbw-1"
 })(["padding:", ";"], _ref => {
@@ -20474,12 +20513,12 @@ const Section = _styled(AutoColumn).withConfig({
   return inline ? '0' : '0';
 });
 
-const BottomSection = _styled(Section).withConfig({
+const BottomSection = _styled__default["default"](Section).withConfig({
   displayName: "TransactionConfirmationModal__BottomSection",
   componentId: "sc-12bigbw-2"
 })(["border-bottom-left-radius:20px;border-bottom-right-radius:20px;"]);
 
-const ConfirmedIcon = _styled(ColumnCenter).withConfig({
+const ConfirmedIcon = _styled__default["default"](ColumnCenter).withConfig({
   displayName: "TransactionConfirmationModal__ConfirmedIcon",
   componentId: "sc-12bigbw-3"
 })(["padding:", ";"], _ref2 => {
@@ -20489,7 +20528,7 @@ const ConfirmedIcon = _styled(ColumnCenter).withConfig({
   return inline ? '20px 0' : '32px 0;';
 });
 
-const StyledLogo = _styled.img.withConfig({
+const StyledLogo = _styled__default["default"].img.withConfig({
   displayName: "TransactionConfirmationModal__StyledLogo",
   componentId: "sc-12bigbw-4"
 })(["height:16px;width:16px;margin-left:6px;"]);
@@ -20500,42 +20539,42 @@ function ConfirmationPendingContent(_ref3) {
     pendingText,
     inline
   } = _ref3;
-  return /*#__PURE__*/jsx(Wrapper, {
-    children: /*#__PURE__*/jsxs(AutoColumn, {
+  return /*#__PURE__*/jsxRuntime.jsx(Wrapper, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "md",
-      children: [!inline && /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx("div", {}), /*#__PURE__*/jsx(CloseIcon$3, {
+      children: [!inline && /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx("div", {}), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
         })]
-      }), /*#__PURE__*/jsx(ConfirmedIcon, {
+      }), /*#__PURE__*/jsxRuntime.jsx(ConfirmedIcon, {
         inline: inline,
-        children: /*#__PURE__*/jsx(CustomLightSpinner, {
+        children: /*#__PURE__*/jsxRuntime.jsx(CustomLightSpinner, {
           src: Circle$1,
           alt: "loader",
           size: inline ? '40px' : '90px'
         })
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "12px",
         justify: 'center',
-        children: [/*#__PURE__*/jsx(Text$1, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 20,
           textAlign: "center",
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Waiting For Confirmation"
           })
-        }), /*#__PURE__*/jsx(Text$1, {
+        }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 400,
           fontSize: 16,
           textAlign: "center",
           children: pendingText
-        }), /*#__PURE__*/jsx(Text$1, {
+        }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 14,
           color: "#565A69",
           textAlign: "center",
           marginBottom: "12px",
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Confirm this transaction in your wallet"
           })
         })]
@@ -20554,7 +20593,7 @@ function TransactionSubmittedContent(_ref4) {
     currencyToAdd,
     inline
   } = _ref4;
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   const {
     library
   } = useActiveWeb3React();
@@ -20562,64 +20601,64 @@ function TransactionSubmittedContent(_ref4) {
     addToken,
     success
   } = useAddTokenToMetamask(currencyToAdd);
-  return /*#__PURE__*/jsx(Wrapper, {
-    children: /*#__PURE__*/jsxs(Section, {
+  return /*#__PURE__*/jsxRuntime.jsx(Wrapper, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(Section, {
       inline: inline,
-      children: [!inline && /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx("div", {}), /*#__PURE__*/jsx(CloseIcon$3, {
+      children: [!inline && /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx("div", {}), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
         })]
-      }), /*#__PURE__*/jsx(ConfirmedIcon, {
+      }), /*#__PURE__*/jsxRuntime.jsx(ConfirmedIcon, {
         inline: inline,
-        children: /*#__PURE__*/jsx(ArrowUpCircle, {
+        children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowUpCircle, {
           strokeWidth: 0.5,
           size: inline ? '40px' : '90px',
           color: theme.primary1
         })
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "12px",
         justify: 'center',
-        children: [/*#__PURE__*/jsx(Text$1, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 20,
           textAlign: "center",
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Transaction Submitted"
           })
-        }), chainId && hash && /*#__PURE__*/jsx(ExternalLink, {
+        }), chainId && hash && /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
           href: getExplorerLink(chainId, hash, ExplorerDataType.TRANSACTION),
-          children: /*#__PURE__*/jsx(Text$1, {
+          children: /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontWeight: 500,
             fontSize: 14,
             color: theme.primary1,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "View on Explorer"
             })
           })
-        }), currencyToAdd && (library === null || library === void 0 ? void 0 : (_library$provider = library.provider) === null || _library$provider === void 0 ? void 0 : _library$provider.isMetaMask) && /*#__PURE__*/jsx(ButtonLight, {
+        }), currencyToAdd && (library === null || library === void 0 ? void 0 : (_library$provider = library.provider) === null || _library$provider === void 0 ? void 0 : _library$provider.isMetaMask) && /*#__PURE__*/jsxRuntime.jsx(ButtonLight, {
           mt: "12px",
           padding: "6px 12px",
           width: "fit-content",
           onClick: addToken,
-          children: !success ? /*#__PURE__*/jsx(RowFixed, {
-            children: /*#__PURE__*/jsx(Trans, {
+          children: !success ? /*#__PURE__*/jsxRuntime.jsx(RowFixed, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Add {0} to Metamask <0/>",
               values: {
                 0: currencyToAdd.symbol
               },
               components: {
-                0: /*#__PURE__*/jsx(StyledLogo, {
+                0: /*#__PURE__*/jsxRuntime.jsx(StyledLogo, {
                   src: MetaMaskLogo
                 })
               }
             })
-          }) : /*#__PURE__*/jsxs(RowFixed, {
-            children: [/*#__PURE__*/jsx(Trans, {
+          }) : /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Added {0}",
               values: {
                 0: currencyToAdd.symbol
               }
-            }), /*#__PURE__*/jsx(CheckCircle, {
+            }), /*#__PURE__*/jsxRuntime.jsx(reactFeather.CheckCircle, {
               size: '16px',
               stroke: theme.green1,
               style: {
@@ -20627,17 +20666,17 @@ function TransactionSubmittedContent(_ref4) {
               }
             })]
           })
-        }), /*#__PURE__*/jsx(ButtonPrimary, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
           onClick: onDismiss,
           style: {
             margin: '20px 0 0 0'
           },
-          children: /*#__PURE__*/jsx(Text$1, {
+          children: /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontWeight: 500,
             fontSize: 20,
-            children: inline ? /*#__PURE__*/jsx(Trans, {
+            children: inline ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Return"
-            }) : /*#__PURE__*/jsx(Trans, {
+            }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Close"
             })
           })
@@ -20654,18 +20693,18 @@ function ConfirmationModalContent(_ref5) {
     onDismiss,
     topContent
   } = _ref5;
-  return /*#__PURE__*/jsxs(Wrapper, {
-    children: [/*#__PURE__*/jsxs(Section, {
-      children: [/*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx(Text$1, {
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(Section, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 16,
           children: title
-        }), /*#__PURE__*/jsx(CloseIcon$3, {
+        }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
         })]
       }), topContent()]
-    }), bottomContent && /*#__PURE__*/jsx(BottomSection, {
+    }), bottomContent && /*#__PURE__*/jsxRuntime.jsx(BottomSection, {
       gap: "12px",
       children: bottomContent()
     })]
@@ -20676,33 +20715,33 @@ function TransactionErrorContent(_ref6) {
     message,
     onDismiss
   } = _ref6;
-  const theme = useContext(ThemeContext);
-  return /*#__PURE__*/jsxs(Wrapper, {
-    children: [/*#__PURE__*/jsxs(Section, {
-      children: [/*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx(Text$1, {
+  const theme = React.useContext(_styled.ThemeContext);
+  return /*#__PURE__*/jsxRuntime.jsxs(Wrapper, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(Section, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 20,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Error"
           })
-        }), /*#__PURE__*/jsx(CloseIcon$3, {
+        }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
         })]
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         style: {
           marginTop: 20,
           padding: '2rem 0'
         },
         gap: "24px",
         justify: "center",
-        children: [/*#__PURE__*/jsx(AlertTriangle, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.AlertTriangle, {
           color: theme.red1,
           style: {
             strokeWidth: 1.5
           },
           size: 64
-        }), /*#__PURE__*/jsx(Text$1, {
+        }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 16,
           color: theme.red1,
@@ -20714,11 +20753,11 @@ function TransactionErrorContent(_ref6) {
           children: message
         })]
       })]
-    }), /*#__PURE__*/jsx(BottomSection, {
+    }), /*#__PURE__*/jsxRuntime.jsx(BottomSection, {
       gap: "12px",
-      children: /*#__PURE__*/jsx(ButtonPrimary, {
+      children: /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
         onClick: onDismiss,
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Dismiss"
         })
       })
@@ -20736,95 +20775,95 @@ function L2Content(_ref7) {
     pendingText,
     inline
   } = _ref7;
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   const transaction = useTransaction(hash);
   const confirmed = useIsTransactionConfirmed(hash);
   const transactionSuccess = (transaction === null || transaction === void 0 ? void 0 : (_transaction$receipt = transaction.receipt) === null || _transaction$receipt === void 0 ? void 0 : _transaction$receipt.status) === 1; // convert unix time difference to seconds
 
   const secondsToConfirm = transaction !== null && transaction !== void 0 && transaction.confirmedTime ? (transaction.confirmedTime - transaction.addedTime) / 1000 : undefined;
   const info = CHAIN_INFO[chainId];
-  return /*#__PURE__*/jsx(Wrapper, {
-    children: /*#__PURE__*/jsxs(Section, {
+  return /*#__PURE__*/jsxRuntime.jsx(Wrapper, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(Section, {
       inline: inline,
-      children: [!inline && /*#__PURE__*/jsxs(RowBetween, {
+      children: [!inline && /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
         mb: "16px",
-        children: [/*#__PURE__*/jsx(Badge, {
-          children: /*#__PURE__*/jsxs(RowFixed, {
-            children: [/*#__PURE__*/jsx(StyledLogo, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(Badge, {
+          children: /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(StyledLogo, {
               src: info.logoUrl,
               style: {
                 margin: '0 8px 0 0'
               }
             }), info.label]
           })
-        }), /*#__PURE__*/jsx(CloseIcon$3, {
+        }), /*#__PURE__*/jsxRuntime.jsx(CloseIcon$3, {
           onClick: onDismiss
         })]
-      }), /*#__PURE__*/jsx(ConfirmedIcon, {
+      }), /*#__PURE__*/jsxRuntime.jsx(ConfirmedIcon, {
         inline: inline,
         children: confirmed ? transactionSuccess ?
         /*#__PURE__*/
         // <CheckCircle strokeWidth={1} size={inline ? '40px' : '90px'} color={theme.green1} />
-        jsx(AnimatedConfirmation, {}) : /*#__PURE__*/jsx(AlertCircle, {
+        jsxRuntime.jsx(AnimatedConfirmation, {}) : /*#__PURE__*/jsxRuntime.jsx(reactFeather.AlertCircle, {
           strokeWidth: 1,
           size: inline ? '40px' : '90px',
           color: theme.red1
-        }) : /*#__PURE__*/jsx(CustomLightSpinner, {
+        }) : /*#__PURE__*/jsxRuntime.jsx(CustomLightSpinner, {
           src: Circle$1,
           alt: "loader",
           size: inline ? '40px' : '90px'
         })
-      }), /*#__PURE__*/jsxs(AutoColumn, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: "12px",
         justify: 'center',
-        children: [/*#__PURE__*/jsx(Text$1, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 500,
           fontSize: 20,
           textAlign: "center",
-          children: !hash ? /*#__PURE__*/jsx(Trans, {
+          children: !hash ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Confirm transaction in wallet"
-          }) : !confirmed ? /*#__PURE__*/jsx(Trans, {
+          }) : !confirmed ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Transaction Submitted"
-          }) : transactionSuccess ? /*#__PURE__*/jsx(Trans, {
+          }) : transactionSuccess ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Success"
-          }) : /*#__PURE__*/jsx(Trans, {
+          }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Error"
           })
-        }), /*#__PURE__*/jsx(Text$1, {
+        }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontWeight: 400,
           fontSize: 16,
           textAlign: "center",
-          children: transaction ? /*#__PURE__*/jsx(TransactionSummary, {
+          children: transaction ? /*#__PURE__*/jsxRuntime.jsx(TransactionSummary, {
             info: transaction.info
           }) : pendingText
-        }), chainId && hash ? /*#__PURE__*/jsx(ExternalLink, {
+        }), chainId && hash ? /*#__PURE__*/jsxRuntime.jsx(ExternalLink, {
           href: getExplorerLink(chainId, hash, ExplorerDataType.TRANSACTION),
-          children: /*#__PURE__*/jsx(Text$1, {
+          children: /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontWeight: 500,
             fontSize: 14,
             color: theme.primary1,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "View on Explorer"
             })
           })
-        }) : /*#__PURE__*/jsx("div", {
+        }) : /*#__PURE__*/jsxRuntime.jsx("div", {
           style: {
             height: '17px'
           }
-        }), /*#__PURE__*/jsx(Text$1, {
+        }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           color: theme.text3,
           style: {
             margin: '20px 0 0 0'
           },
           fontSize: '14px',
-          children: !secondsToConfirm ? /*#__PURE__*/jsx("div", {
+          children: !secondsToConfirm ? /*#__PURE__*/jsxRuntime.jsx("div", {
             style: {
               height: '24px'
             }
-          }) : /*#__PURE__*/jsxs("div", {
-            children: [/*#__PURE__*/jsx(Trans, {
+          }) : /*#__PURE__*/jsxRuntime.jsxs("div", {
+            children: [/*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Transaction completed in"
-            }), /*#__PURE__*/jsxs("span", {
+            }), /*#__PURE__*/jsxRuntime.jsxs("span", {
               style: {
                 fontWeight: 500,
                 marginLeft: '4px',
@@ -20833,17 +20872,17 @@ function L2Content(_ref7) {
               children: [secondsToConfirm, " seconds \uD83C\uDF89"]
             })]
           })
-        }), /*#__PURE__*/jsx(ButtonPrimary, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
           onClick: onDismiss,
           style: {
             margin: '4px 0 0 0'
           },
-          children: /*#__PURE__*/jsx(Text$1, {
+          children: /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontWeight: 500,
             fontSize: 20,
-            children: inline ? /*#__PURE__*/jsx(Trans, {
+            children: inline ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Return"
-            }) : /*#__PURE__*/jsx(Trans, {
+            }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Close"
             })
           })
@@ -20869,19 +20908,19 @@ function TransactionConfirmationModal(_ref8) {
   const isL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId));
   if (!chainId) return null; // confirmation screen
 
-  return /*#__PURE__*/jsx(Modal, {
+  return /*#__PURE__*/jsxRuntime.jsx(Modal, {
     isOpen: isOpen,
     onDismiss: onDismiss,
     maxHeight: 90,
-    children: isL2 && (hash || attemptingTxn) ? /*#__PURE__*/jsx(L2Content, {
+    children: isL2 && (hash || attemptingTxn) ? /*#__PURE__*/jsxRuntime.jsx(L2Content, {
       chainId: chainId,
       hash: hash,
       onDismiss: onDismiss,
       pendingText: pendingText
-    }) : attemptingTxn ? /*#__PURE__*/jsx(ConfirmationPendingContent, {
+    }) : attemptingTxn ? /*#__PURE__*/jsxRuntime.jsx(ConfirmationPendingContent, {
       onDismiss: onDismiss,
       pendingText: pendingText
-    }) : hash ? /*#__PURE__*/jsx(TransactionSubmittedContent, {
+    }) : hash ? /*#__PURE__*/jsxRuntime.jsx(TransactionSubmittedContent, {
       chainId: chainId,
       hash: hash,
       onDismiss: onDismiss,
@@ -20896,23 +20935,23 @@ function SwapModalFooter(_ref) {
     swapErrorMessage,
     disabledConfirm
   } = _ref;
-  return /*#__PURE__*/jsx(Fragment, {
-    children: /*#__PURE__*/jsxs(AutoRow, {
-      children: [/*#__PURE__*/jsx(ButtonError, {
+  return /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(ButtonError, {
         onClick: onConfirm,
         disabled: disabledConfirm,
         style: {
           margin: '10px 0 0 0'
         },
         id: "confirm-swap-or-send",
-        children: /*#__PURE__*/jsx(Text$1, {
+        children: /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
           fontSize: 20,
           fontWeight: 500,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Confirm Swap"
           })
         })
-      }), swapErrorMessage ? /*#__PURE__*/jsx(SwapCallbackError, {
+      }), swapErrorMessage ? /*#__PURE__*/jsxRuntime.jsx(SwapCallbackError, {
         error: swapErrorMessage
       }) : null]
     })
@@ -20922,12 +20961,12 @@ function SwapModalFooter(_ref) {
 function computeFiatValuePriceImpact(fiatValueInput, fiatValueOutput) {
   if (!fiatValueOutput || !fiatValueInput) return undefined;
   if (!fiatValueInput.currency.equals(fiatValueOutput.currency)) return undefined;
-  if (JSBI.equal(fiatValueInput.quotient, JSBI.BigInt(0))) return undefined;
+  if (JSBI__default["default"].equal(fiatValueInput.quotient, JSBI__default["default"].BigInt(0))) return undefined;
   const pct = ONE_HUNDRED_PERCENT$1.subtract(fiatValueOutput.divide(fiatValueInput));
-  return new Percent(pct.numerator, pct.denominator);
+  return new sdkCore.Percent(pct.numerator, pct.denominator);
 }
 
-const ArrowWrapper = _styled.div.withConfig({
+const ArrowWrapper = _styled__default["default"].div.withConfig({
   displayName: "SwapModalHeader__ArrowWrapper",
   componentId: "sc-1zwhh3-0"
 })(["padding:4px;border-radius:12px;height:32px;width:32px;position:relative;margin-top:-18px;margin-bottom:-18px;left:calc(50% - 16px);display:flex;justify-content:center;align-items:center;background-color:", ";border:4px solid;border-color:", ";z-index:2;"], _ref => {
@@ -20950,102 +20989,102 @@ function SwapModalHeader(_ref3) {
     showAcceptChanges,
     onAcceptChanges
   } = _ref3;
-  const theme = useContext(ThemeContext);
-  const [showInverted, setShowInverted] = useState(false);
+  const theme = React.useContext(_styled.ThemeContext);
+  const [showInverted, setShowInverted] = React.useState(false);
   const fiatValueInput = useUSDCValue(trade.inputAmount);
   const fiatValueOutput = useUSDCValue(trade.outputAmount);
-  return /*#__PURE__*/jsxs(AutoColumn, {
+  return /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
     gap: '4px',
     style: {
       marginTop: '1rem'
     },
-    children: [/*#__PURE__*/jsx(LightCard, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(LightCard, {
       padding: "0.75rem 1rem",
-      children: /*#__PURE__*/jsxs(AutoColumn, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: '8px',
-        children: [/*#__PURE__*/jsxs(RowBetween, {
-          children: [/*#__PURE__*/jsx(ThemedText.Body, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
             color: theme.text3,
             fontWeight: 500,
             fontSize: 14,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "From"
             })
-          }), /*#__PURE__*/jsx(FiatValue, {
+          }), /*#__PURE__*/jsxRuntime.jsx(FiatValue, {
             fiatValue: fiatValueInput
           })]
-        }), /*#__PURE__*/jsxs(RowBetween, {
+        }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
           align: "center",
-          children: [/*#__PURE__*/jsxs(RowFixed, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
             gap: '0px',
-            children: [/*#__PURE__*/jsx(CurrencyLogo, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
               currency: trade.inputAmount.currency,
               size: '20px',
               style: {
                 marginRight: '12px'
               }
-            }), /*#__PURE__*/jsx(Text$1, {
+            }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
               fontSize: 20,
               fontWeight: 500,
               children: trade.inputAmount.currency.symbol
             })]
-          }), /*#__PURE__*/jsx(RowFixed, {
+          }), /*#__PURE__*/jsxRuntime.jsx(RowFixed, {
             gap: '0px',
-            children: /*#__PURE__*/jsx(TruncatedText, {
+            children: /*#__PURE__*/jsxRuntime.jsx(TruncatedText, {
               fontSize: 24,
               fontWeight: 500,
-              color: showAcceptChanges && trade.tradeType === TradeType.EXACT_OUTPUT ? theme.primary1 : '',
+              color: showAcceptChanges && trade.tradeType === sdkCore.TradeType.EXACT_OUTPUT ? theme.primary1 : '',
               children: trade.inputAmount.toSignificant(6)
             })
           })]
         })]
       })
-    }), /*#__PURE__*/jsx(ArrowWrapper, {
-      children: /*#__PURE__*/jsx(ArrowDown, {
+    }), /*#__PURE__*/jsxRuntime.jsx(ArrowWrapper, {
+      children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowDown, {
         size: "16",
         color: theme.text2
       })
-    }), /*#__PURE__*/jsx(LightCard, {
+    }), /*#__PURE__*/jsxRuntime.jsx(LightCard, {
       padding: "0.75rem 1rem",
       style: {
         marginBottom: '0.25rem'
       },
-      children: /*#__PURE__*/jsxs(AutoColumn, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
         gap: '8px',
-        children: [/*#__PURE__*/jsxs(RowBetween, {
-          children: [/*#__PURE__*/jsx(ThemedText.Body, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
             color: theme.text3,
             fontWeight: 500,
             fontSize: 14,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "To"
             })
-          }), /*#__PURE__*/jsx(ThemedText.Body, {
+          }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
             fontSize: 14,
             color: theme.text3,
-            children: /*#__PURE__*/jsx(FiatValue, {
+            children: /*#__PURE__*/jsxRuntime.jsx(FiatValue, {
               fiatValue: fiatValueOutput,
               priceImpact: computeFiatValuePriceImpact(fiatValueInput, fiatValueOutput)
             })
           })]
-        }), /*#__PURE__*/jsxs(RowBetween, {
+        }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
           align: "flex-end",
-          children: [/*#__PURE__*/jsxs(RowFixed, {
+          children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
             gap: '0px',
-            children: [/*#__PURE__*/jsx(CurrencyLogo, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
               currency: trade.outputAmount.currency,
               size: '20px',
               style: {
                 marginRight: '12px'
               }
-            }), /*#__PURE__*/jsx(Text$1, {
+            }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
               fontSize: 20,
               fontWeight: 500,
               children: trade.outputAmount.currency.symbol
             })]
-          }), /*#__PURE__*/jsx(RowFixed, {
+          }), /*#__PURE__*/jsxRuntime.jsx(RowFixed, {
             gap: '0px',
-            children: /*#__PURE__*/jsx(TruncatedText, {
+            children: /*#__PURE__*/jsxRuntime.jsx(TruncatedText, {
               fontSize: 24,
               fontWeight: 500,
               children: trade.outputAmount.toSignificant(6)
@@ -21053,50 +21092,50 @@ function SwapModalHeader(_ref3) {
           })]
         })]
       })
-    }), /*#__PURE__*/jsxs(RowBetween, {
+    }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
       style: {
         marginTop: '0.25rem',
         padding: '0 1rem'
       },
-      children: [/*#__PURE__*/jsx(ThemedText.Body, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
         color: theme.text2,
         fontWeight: 500,
         fontSize: 14,
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Price"
         })
-      }), /*#__PURE__*/jsx(TradePrice, {
+      }), /*#__PURE__*/jsxRuntime.jsx(TradePrice, {
         price: trade.executionPrice,
         showInverted: showInverted,
         setShowInverted: setShowInverted
       })]
-    }), /*#__PURE__*/jsx(LightCard, {
+    }), /*#__PURE__*/jsxRuntime.jsx(LightCard, {
       style: {
         padding: '.75rem',
         marginTop: '0.5rem'
       },
-      children: /*#__PURE__*/jsx(AdvancedSwapDetails, {
+      children: /*#__PURE__*/jsxRuntime.jsx(AdvancedSwapDetails, {
         trade: trade,
         allowedSlippage: allowedSlippage
       })
-    }), showAcceptChanges ? /*#__PURE__*/jsx(SwapShowAcceptChanges, {
+    }), showAcceptChanges ? /*#__PURE__*/jsxRuntime.jsx(SwapShowAcceptChanges, {
       justify: "flex-start",
       gap: '0px',
-      children: /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsxs(RowFixed, {
-          children: [/*#__PURE__*/jsx(AlertTriangle, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(reactFeather.AlertTriangle, {
             size: 20,
             style: {
               marginRight: '8px',
               minWidth: 24
             }
-          }), /*#__PURE__*/jsx(ThemedText.Main, {
+          }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
             color: theme.primary1,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Price Updated"
             })
           })]
-        }), /*#__PURE__*/jsx(ButtonPrimary, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
           style: {
             padding: '.5rem',
             width: 'fit-content',
@@ -21104,64 +21143,64 @@ function SwapModalHeader(_ref3) {
             borderRadius: '12px'
           },
           onClick: onAcceptChanges,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Accept"
           })
         })]
       })
-    }) : null, /*#__PURE__*/jsx(AutoColumn, {
+    }) : null, /*#__PURE__*/jsxRuntime.jsx(AutoColumn, {
       justify: "flex-start",
       gap: "sm",
       style: {
         padding: '.75rem 1rem'
       },
-      children: trade.tradeType === TradeType.EXACT_INPUT ? /*#__PURE__*/jsx(ThemedText.Italic, {
+      children: trade.tradeType === sdkCore.TradeType.EXACT_INPUT ? /*#__PURE__*/jsxRuntime.jsx(ThemedText.Italic, {
         fontWeight: 400,
         textAlign: "left",
         style: {
           width: '100%'
         },
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Output is estimated. You will receive at least <0>{0} {1}</0> or the transaction will revert.",
           values: {
             0: trade.minimumAmountOut(allowedSlippage).toSignificant(6),
             1: trade.outputAmount.currency.symbol
           },
           components: {
-            0: /*#__PURE__*/jsx("b", {})
+            0: /*#__PURE__*/jsxRuntime.jsx("b", {})
           }
         })
-      }) : /*#__PURE__*/jsx(ThemedText.Italic, {
+      }) : /*#__PURE__*/jsxRuntime.jsx(ThemedText.Italic, {
         fontWeight: 400,
         textAlign: "left",
         style: {
           width: '100%'
         },
-        children: /*#__PURE__*/jsx(Trans, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Input is estimated. You will sell at most <0>{0} {1}</0> or the transaction will revert.",
           values: {
             0: trade.maximumAmountIn(allowedSlippage).toSignificant(6),
             1: trade.inputAmount.currency.symbol
           },
           components: {
-            0: /*#__PURE__*/jsx("b", {})
+            0: /*#__PURE__*/jsxRuntime.jsx("b", {})
           }
         })
       })
-    }), recipient !== null ? /*#__PURE__*/jsx(AutoColumn, {
+    }), recipient !== null ? /*#__PURE__*/jsxRuntime.jsx(AutoColumn, {
       justify: "flex-start",
       gap: "sm",
       style: {
         padding: '12px 0 0 0px'
       },
-      children: /*#__PURE__*/jsx(ThemedText.Main, {
-        children: /*#__PURE__*/jsx(Trans, {
+      children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
+        children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Output will be sent to <0>{0}</0>",
           values: {
             0: isAddress(recipient) ? shortenAddress(recipient) : recipient
           },
           components: {
-            0: /*#__PURE__*/jsx("b", {
+            0: /*#__PURE__*/jsxRuntime.jsx("b", {
               title: recipient
             })
           }
@@ -21196,9 +21235,9 @@ function ConfirmSwapModal(_ref) {
     attemptingTxn,
     txHash
   } = _ref;
-  const showAcceptChanges = useMemo(() => Boolean(trade instanceof Trade && originalTrade instanceof Trade && tradeMeaningfullyDiffers(trade, originalTrade) || trade instanceof Trade$1 && originalTrade instanceof Trade$1 && tradeMeaningfullyDiffers(trade, originalTrade)), [originalTrade, trade]);
-  const modalHeader = useCallback(() => {
-    return trade ? /*#__PURE__*/jsx(SwapModalHeader, {
+  const showAcceptChanges = React.useMemo(() => Boolean(trade instanceof v2Sdk.Trade && originalTrade instanceof v2Sdk.Trade && tradeMeaningfullyDiffers(trade, originalTrade) || trade instanceof v3Sdk.Trade && originalTrade instanceof v3Sdk.Trade && tradeMeaningfullyDiffers(trade, originalTrade)), [originalTrade, trade]);
+  const modalHeader = React.useCallback(() => {
+    return trade ? /*#__PURE__*/jsxRuntime.jsx(SwapModalHeader, {
       trade: trade,
       allowedSlippage: allowedSlippage,
       recipient: recipient,
@@ -21206,8 +21245,8 @@ function ConfirmSwapModal(_ref) {
       onAcceptChanges: onAcceptChanges
     }) : null;
   }, [allowedSlippage, onAcceptChanges, recipient, showAcceptChanges, trade]);
-  const modalBottom = useCallback(() => {
-    return trade ? /*#__PURE__*/jsx(SwapModalFooter, {
+  const modalBottom = React.useCallback(() => {
+    return trade ? /*#__PURE__*/jsxRuntime.jsx(SwapModalFooter, {
       onConfirm: onConfirm,
       trade: trade,
       disabledConfirm: showAcceptChanges,
@@ -21215,7 +21254,7 @@ function ConfirmSwapModal(_ref) {
     }) : null;
   }, [onConfirm, showAcceptChanges, swapErrorMessage, trade]); // text to show while loading
 
-  const pendingText = /*#__PURE__*/jsx(Trans, {
+  const pendingText = /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
     id: "Swapping {0} {1} for {2} {3}",
     values: {
       0: trade === null || trade === void 0 ? void 0 : (_trade$inputAmount = trade.inputAmount) === null || _trade$inputAmount === void 0 ? void 0 : _trade$inputAmount.toSignificant(6),
@@ -21225,18 +21264,18 @@ function ConfirmSwapModal(_ref) {
     }
   });
 
-  const confirmationContent = useCallback(() => swapErrorMessage ? /*#__PURE__*/jsx(TransactionErrorContent, {
+  const confirmationContent = React.useCallback(() => swapErrorMessage ? /*#__PURE__*/jsxRuntime.jsx(TransactionErrorContent, {
     onDismiss: onDismiss,
     message: swapErrorMessage
-  }) : /*#__PURE__*/jsx(ConfirmationModalContent, {
-    title: /*#__PURE__*/jsx(Trans, {
+  }) : /*#__PURE__*/jsxRuntime.jsx(ConfirmationModalContent, {
+    title: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Confirm Swap"
     }),
     onDismiss: onDismiss,
     topContent: modalHeader,
     bottomContent: modalBottom
   }), [onDismiss, modalBottom, modalHeader, swapErrorMessage]);
-  return /*#__PURE__*/jsx(TransactionConfirmationModal, {
+  return /*#__PURE__*/jsxRuntime.jsx(TransactionConfirmationModal, {
     isOpen: isOpen,
     onDismiss: onDismiss,
     attemptingTxn: attemptingTxn,
@@ -21247,7 +21286,7 @@ function ConfirmSwapModal(_ref) {
   });
 }
 
-const ToggleElement = _styled.span.withConfig({
+const ToggleElement = _styled__default["default"].span.withConfig({
   displayName: "Toggle__ToggleElement",
   componentId: "sc-1poje5t-0"
 })(["padding:0.25rem 0.6rem;border-radius:9px;background:", ";color:", ";font-size:14px;font-weight:", ";:hover{user-select:", ";background:", ";color:", ";}"], _ref => {
@@ -21279,7 +21318,7 @@ const ToggleElement = _styled.span.withConfig({
     isActive,
     isOnSwitch
   } = _ref5;
-  return isActive ? isOnSwitch ? darken(0.05, theme.primary1) : darken(0.05, theme.bg4) : 'none';
+  return isActive ? isOnSwitch ? polished.darken(0.05, theme.primary1) : polished.darken(0.05, theme.bg4) : 'none';
 }, _ref6 => {
   let {
     theme,
@@ -21289,7 +21328,7 @@ const ToggleElement = _styled.span.withConfig({
   return isActive ? isOnSwitch ? theme.white : theme.white : theme.text3;
 });
 
-const StyledToggle = _styled.button.withConfig({
+const StyledToggle = _styled__default["default"].button.withConfig({
   displayName: "Toggle__StyledToggle",
   componentId: "sc-1poje5t-1"
 })(["border-radius:12px;border:none;background:", ";display:flex;width:fit-content;cursor:pointer;outline:none;padding:2px;"], _ref7 => {
@@ -21304,22 +21343,22 @@ function Toggle(_ref8) {
     id,
     isActive,
     toggle,
-    checked = /*#__PURE__*/jsx(Trans, {
+    checked = /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "On"
     }),
-    unchecked = /*#__PURE__*/jsx(Trans, {
+    unchecked = /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Off"
     })
   } = _ref8;
-  return /*#__PURE__*/jsxs(StyledToggle, {
+  return /*#__PURE__*/jsxRuntime.jsxs(StyledToggle, {
     id: id,
     isActive: isActive,
     onClick: toggle,
-    children: [/*#__PURE__*/jsx(ToggleElement, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(ToggleElement, {
       isActive: isActive,
       isOnSwitch: true,
       children: checked
-    }), /*#__PURE__*/jsx(ToggleElement, {
+    }), /*#__PURE__*/jsxRuntime.jsx(ToggleElement, {
       isActive: !isActive,
       isOnSwitch: false,
       children: unchecked
@@ -21339,7 +21378,7 @@ var DeadlineError;
   DeadlineError["InvalidInput"] = "InvalidInput";
 })(DeadlineError || (DeadlineError = {}));
 
-const FancyButton = _styled.button.withConfig({
+const FancyButton = _styled__default["default"].button.withConfig({
   displayName: "TransactionSettings__FancyButton",
   componentId: "sc-fzcgd8-0"
 })(["color:", ";align-items:center;height:2rem;border-radius:36px;font-size:1rem;width:auto;min-width:3.5rem;border:1px solid ", ";outline:none;background:", ";:hover{border:1px solid ", ";}:focus{border:1px solid ", ";}"], _ref => {
@@ -21369,7 +21408,7 @@ const FancyButton = _styled.button.withConfig({
   return theme.primary1;
 });
 
-const Option = _styled(FancyButton).withConfig({
+const Option = _styled__default["default"](FancyButton).withConfig({
   displayName: "TransactionSettings__Option",
   componentId: "sc-fzcgd8-1"
 })(["margin-right:8px;:hover{cursor:pointer;}background-color:", ";color:", ";"], _ref6 => {
@@ -21386,7 +21425,7 @@ const Option = _styled(FancyButton).withConfig({
   return active ? theme.white : theme.text1;
 });
 
-const Input = _styled.input.withConfig({
+const Input = _styled__default["default"].input.withConfig({
   displayName: "TransactionSettings__Input",
   componentId: "sc-fzcgd8-2"
 })(["background:", ";font-size:16px;width:auto;outline:none;&::-webkit-outer-spin-button,&::-webkit-inner-spin-button{-webkit-appearance:none;}color:", ";text-align:right;"], _ref8 => {
@@ -21402,7 +21441,7 @@ const Input = _styled.input.withConfig({
   return color === 'red' ? theme.red1 : theme.text1;
 });
 
-const OptionCustom = _styled(FancyButton).withConfig({
+const OptionCustom = _styled__default["default"](FancyButton).withConfig({
   displayName: "TransactionSettings__OptionCustom",
   componentId: "sc-fzcgd8-3"
 })(["height:2rem;position:relative;padding:0 0.75rem;flex:1;border:", ";:hover{border:", ";}input{width:100%;height:100%;border:0px;border-radius:2rem;}"], _ref10 => {
@@ -21418,10 +21457,10 @@ const OptionCustom = _styled(FancyButton).withConfig({
     active,
     warning
   } = _ref11;
-  return active && `1px solid ${warning ? darken(0.1, theme.red1) : darken(0.1, theme.primary1)}`;
+  return active && `1px solid ${warning ? polished.darken(0.1, theme.red1) : polished.darken(0.1, theme.primary1)}`;
 });
 
-const SlippageEmojiContainer = _styled.span.withConfig({
+const SlippageEmojiContainer = _styled__default["default"].span.withConfig({
   displayName: "TransactionSettings__SlippageEmojiContainer",
   componentId: "sc-fzcgd8-4"
 })(["color:#f3841e;", ""], _ref12 => {
@@ -21441,14 +21480,14 @@ function TransactionSettings(_ref13) {
   const {
     chainId
   } = useActiveWeb3React();
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   const userSlippageTolerance = useUserSlippageTolerance();
   const setUserSlippageTolerance = useSetUserSlippageTolerance();
   const [deadline, setDeadline] = useUserTransactionTTL();
-  const [slippageInput, setSlippageInput] = useState('');
-  const [slippageError, setSlippageError] = useState(false);
-  const [deadlineInput, setDeadlineInput] = useState('');
-  const [deadlineError, setDeadlineError] = useState(false);
+  const [slippageInput, setSlippageInput] = React.useState('');
+  const [slippageError, setSlippageError] = React.useState(false);
+  const [deadlineInput, setDeadlineInput] = React.useState('');
+  const [deadlineError, setDeadlineError] = React.useState(false);
 
   function parseSlippageInput(value) {
     // populate what the user typed and clear the error
@@ -21467,13 +21506,13 @@ function TransactionSettings(_ref13) {
           setSlippageError(SlippageError.InvalidInput);
         }
       } else {
-        setUserSlippageTolerance(new Percent(parsed, 10000));
+        setUserSlippageTolerance(new sdkCore.Percent(parsed, 10000));
       }
     }
   }
 
-  const tooLow = userSlippageTolerance !== 'auto' && userSlippageTolerance.lessThan(new Percent(5, 10000));
-  const tooHigh = userSlippageTolerance !== 'auto' && userSlippageTolerance.greaterThan(new Percent(1, 100));
+  const tooLow = userSlippageTolerance !== 'auto' && userSlippageTolerance.lessThan(new sdkCore.Percent(5, 10000));
+  const tooHigh = userSlippageTolerance !== 'auto' && userSlippageTolerance.greaterThan(new sdkCore.Percent(1, 100));
 
   function parseCustomDeadline(value) {
     // populate what the user typed and clear the error
@@ -21499,44 +21538,44 @@ function TransactionSettings(_ref13) {
   }
 
   const showCustomDeadlineRow = Boolean(chainId && !L2_CHAIN_IDS.includes(chainId));
-  return /*#__PURE__*/jsxs(AutoColumn, {
+  return /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
     gap: "md",
-    children: [/*#__PURE__*/jsxs(AutoColumn, {
+    children: [/*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "sm",
-      children: [/*#__PURE__*/jsxs(RowFixed, {
-        children: [/*#__PURE__*/jsx(ThemedText.Black, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
           fontWeight: 400,
           fontSize: 14,
           color: theme.text2,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Slippage tolerance"
           })
-        }), /*#__PURE__*/jsx(QuestionHelper, {
-          text: /*#__PURE__*/jsx(Trans, {
+        }), /*#__PURE__*/jsxRuntime.jsx(QuestionHelper, {
+          text: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Your transaction will revert if the price changes unfavorably by more than this percentage."
           })
         })]
-      }), /*#__PURE__*/jsxs(RowBetween, {
-        children: [/*#__PURE__*/jsx(Option, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(Option, {
           onClick: () => {
             parseSlippageInput('');
           },
           active: userSlippageTolerance === 'auto',
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Auto"
           })
-        }), /*#__PURE__*/jsx(OptionCustom, {
+        }), /*#__PURE__*/jsxRuntime.jsx(OptionCustom, {
           active: userSlippageTolerance !== 'auto',
           warning: !!slippageError,
           tabIndex: -1,
-          children: /*#__PURE__*/jsxs(RowBetween, {
-            children: [tooLow || tooHigh ? /*#__PURE__*/jsx(SlippageEmojiContainer, {
-              children: /*#__PURE__*/jsx("span", {
+          children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [tooLow || tooHigh ? /*#__PURE__*/jsxRuntime.jsx(SlippageEmojiContainer, {
+              children: /*#__PURE__*/jsxRuntime.jsx("span", {
                 role: "img",
                 "aria-label": "warning",
                 children: "\u26A0\uFE0F"
               })
-            }) : null, /*#__PURE__*/jsx(Input, {
+            }) : null, /*#__PURE__*/jsxRuntime.jsx(Input, {
               placeholder: placeholderSlippage.toFixed(2),
               value: slippageInput.length > 0 ? slippageInput : userSlippageTolerance === 'auto' ? '' : userSlippageTolerance.toFixed(2),
               onChange: e => parseSlippageInput(e.target.value),
@@ -21548,43 +21587,43 @@ function TransactionSettings(_ref13) {
             }), "%"]
           })
         })]
-      }), slippageError || tooLow || tooHigh ? /*#__PURE__*/jsx(RowBetween, {
+      }), slippageError || tooLow || tooHigh ? /*#__PURE__*/jsxRuntime.jsx(RowBetween, {
         style: {
           fontSize: '14px',
           paddingTop: '7px',
           color: slippageError ? 'red' : '#F3841E'
         },
-        children: slippageError ? /*#__PURE__*/jsx(Trans, {
+        children: slippageError ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Enter a valid slippage percentage"
-        }) : tooLow ? /*#__PURE__*/jsx(Trans, {
+        }) : tooLow ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Your transaction may fail"
-        }) : /*#__PURE__*/jsx(Trans, {
+        }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Your transaction may be frontrun"
         })
       }) : null]
-    }), showCustomDeadlineRow && /*#__PURE__*/jsxs(AutoColumn, {
+    }), showCustomDeadlineRow && /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
       gap: "sm",
-      children: [/*#__PURE__*/jsxs(RowFixed, {
-        children: [/*#__PURE__*/jsx(ThemedText.Black, {
+      children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
           fontSize: 14,
           fontWeight: 400,
           color: theme.text2,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Transaction deadline"
           })
-        }), /*#__PURE__*/jsx(QuestionHelper, {
-          text: /*#__PURE__*/jsx(Trans, {
+        }), /*#__PURE__*/jsxRuntime.jsx(QuestionHelper, {
+          text: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Your transaction will revert if it is pending for more than this period of time."
           })
         })]
-      }), /*#__PURE__*/jsxs(RowFixed, {
-        children: [/*#__PURE__*/jsx(OptionCustom, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(OptionCustom, {
           style: {
             width: '80px'
           },
           warning: !!deadlineError,
           tabIndex: -1,
-          children: /*#__PURE__*/jsx(Input, {
+          children: /*#__PURE__*/jsxRuntime.jsx(Input, {
             placeholder: (DEFAULT_DEADLINE_FROM_NOW / 60).toString(),
             value: deadlineInput.length > 0 ? deadlineInput : deadline === DEFAULT_DEADLINE_FROM_NOW ? '' : (deadline / 60).toString(),
             onChange: e => parseCustomDeadline(e.target.value),
@@ -21594,12 +21633,12 @@ function TransactionSettings(_ref13) {
             },
             color: deadlineError ? 'red' : ''
           })
-        }), /*#__PURE__*/jsx(ThemedText.Body, {
+        }), /*#__PURE__*/jsxRuntime.jsx(ThemedText.Body, {
           style: {
             paddingLeft: '8px'
           },
           fontSize: 14,
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "minutes"
           })
         })]
@@ -21608,7 +21647,7 @@ function TransactionSettings(_ref13) {
   });
 }
 
-const StyledMenuIcon = _styled(Settings).withConfig({
+const StyledMenuIcon = _styled__default["default"](reactFeather.Settings).withConfig({
   displayName: "Settings__StyledMenuIcon",
   componentId: "sc-1ndknrv-0"
 })(["height:20px;width:20px;> *{stroke:", ";}:hover{opacity:0.7;}"], _ref => {
@@ -21618,7 +21657,7 @@ const StyledMenuIcon = _styled(Settings).withConfig({
   return theme.text2;
 });
 
-const StyledCloseIcon = _styled(X).withConfig({
+const StyledCloseIcon = _styled__default["default"](reactFeather.X).withConfig({
   displayName: "Settings__StyledCloseIcon",
   componentId: "sc-1ndknrv-1"
 })(["height:20px;width:20px;:hover{cursor:pointer;}> *{stroke:", ";}"], _ref2 => {
@@ -21628,22 +21667,22 @@ const StyledCloseIcon = _styled(X).withConfig({
   return theme.text1;
 });
 
-const StyledMenuButton = _styled.button.withConfig({
+const StyledMenuButton = _styled__default["default"].button.withConfig({
   displayName: "Settings__StyledMenuButton",
   componentId: "sc-1ndknrv-2"
 })(["position:relative;width:100%;height:100%;border:none;background-color:transparent;margin:0;padding:0;border-radius:0.5rem;height:20px;:hover,:focus{cursor:pointer;outline:none;}"]);
 
-const EmojiWrapper = _styled.div.withConfig({
+const EmojiWrapper = _styled__default["default"].div.withConfig({
   displayName: "Settings__EmojiWrapper",
   componentId: "sc-1ndknrv-3"
 })(["position:absolute;bottom:-6px;right:0px;font-size:14px;"]);
 
-const StyledMenu = _styled.div.withConfig({
+const StyledMenu = _styled__default["default"].div.withConfig({
   displayName: "Settings__StyledMenu",
   componentId: "sc-1ndknrv-4"
 })(["margin-left:0.5rem;display:flex;justify-content:center;align-items:center;position:relative;border:none;text-align:left;"]);
 
-const MenuFlyout = _styled.span.withConfig({
+const MenuFlyout = _styled__default["default"].span.withConfig({
   displayName: "Settings__MenuFlyout",
   componentId: "sc-1ndknrv-5"
 })(["min-width:20.125rem;background-color:", ";border:1px solid ", ";box-shadow:0px 0px 1px rgba(0,0,0,0.01),0px 4px 8px rgba(0,0,0,0.04),0px 16px 24px rgba(0,0,0,0.04),0px 24px 32px rgba(0,0,0,0.01);border-radius:12px;display:flex;flex-direction:column;font-size:1rem;position:absolute;top:2rem;right:0rem;z-index:100;", ";user-select:none;"], _ref3 => {
@@ -21665,7 +21704,7 @@ const MenuFlyout = _styled.span.withConfig({
   `;
 });
 
-const Break = _styled.div.withConfig({
+const Break = _styled__default["default"].div.withConfig({
   displayName: "Settings__Break",
   componentId: "sc-1ndknrv-6"
 })(["width:100%;height:1px;background-color:", ";"], _ref6 => {
@@ -21675,7 +21714,7 @@ const Break = _styled.div.withConfig({
   return theme.bg3;
 });
 
-const ModalContentWrapper = _styled.div.withConfig({
+const ModalContentWrapper = _styled__default["default"].div.withConfig({
   displayName: "Settings__ModalContentWrapper",
   componentId: "sc-1ndknrv-7"
 })(["display:flex;align-items:center;justify-content:center;padding:2rem 0;background-color:", ";border-radius:20px;"], _ref7 => {
@@ -21692,79 +21731,79 @@ function SettingsTab(_ref8) {
   const {
     chainId
   } = useActiveWeb3React();
-  const node = useRef();
+  const node = React.useRef();
   const open = useModalOpen(ApplicationModal.SETTINGS);
   const toggle = useToggleSettingsMenu();
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(_styled.ThemeContext);
   const [expertMode, toggleExpertMode] = useExpertModeManager();
   const [clientSideRouter, setClientSideRouter] = useClientSideRouter(); // show confirmation view before turning on
 
-  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showConfirmation, setShowConfirmation] = React.useState(false);
   useOnClickOutside(node, open ? toggle : undefined);
   return (
     /*#__PURE__*/
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
-    jsxs(StyledMenu, {
+    jsxRuntime.jsxs(StyledMenu, {
       ref: node,
-      children: [/*#__PURE__*/jsx(Modal, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(Modal, {
         isOpen: showConfirmation,
         onDismiss: () => setShowConfirmation(false),
         maxHeight: 100,
-        children: /*#__PURE__*/jsx(ModalContentWrapper, {
-          children: /*#__PURE__*/jsxs(AutoColumn, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ModalContentWrapper, {
+          children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
             gap: "lg",
-            children: [/*#__PURE__*/jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
               style: {
                 padding: '0 2rem'
               },
-              children: [/*#__PURE__*/jsx("div", {}), /*#__PURE__*/jsx(Text$1, {
+              children: [/*#__PURE__*/jsxRuntime.jsx("div", {}), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
                 fontWeight: 500,
                 fontSize: 20,
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Are you sure?"
                 })
-              }), /*#__PURE__*/jsx(StyledCloseIcon, {
+              }), /*#__PURE__*/jsxRuntime.jsx(StyledCloseIcon, {
                 onClick: () => setShowConfirmation(false)
               })]
-            }), /*#__PURE__*/jsx(Break, {}), /*#__PURE__*/jsxs(AutoColumn, {
+            }), /*#__PURE__*/jsxRuntime.jsx(Break, {}), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
               gap: "lg",
               style: {
                 padding: '0 2rem'
               },
-              children: [/*#__PURE__*/jsx(Text$1, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
                 fontWeight: 500,
                 fontSize: 20,
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Expert mode turns off the confirm transaction prompt and allows high slippage trades that often result in bad rates and lost funds."
                 })
-              }), /*#__PURE__*/jsx(Text$1, {
+              }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
                 fontWeight: 600,
                 fontSize: 20,
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING."
                 })
-              }), /*#__PURE__*/jsx(ButtonError, {
+              }), /*#__PURE__*/jsxRuntime.jsx(ButtonError, {
                 error: true,
                 padding: '12px',
                 onClick: () => {
                   const confirmWord =
                   /*i18n*/
-                  i18n._("confirm");
+                  core$1.i18n._("confirm");
 
                   if (window.prompt(
                   /*i18n*/
-                  i18n._("Please type the word \"{confirmWord}\" to enable expert mode.", {
+                  core$1.i18n._("Please type the word \"{confirmWord}\" to enable expert mode.", {
                     confirmWord: confirmWord
                   })) === confirmWord) {
                     toggleExpertMode();
                     setShowConfirmation(false);
                   }
                 },
-                children: /*#__PURE__*/jsx(Text$1, {
+                children: /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
                   fontSize: 20,
                   fontWeight: 500,
                   id: "confirm-expert-mode",
-                  children: /*#__PURE__*/jsx(Trans, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Turn On Expert Mode"
                   })
                 })
@@ -21772,79 +21811,79 @@ function SettingsTab(_ref8) {
             })]
           })
         })
-      }), /*#__PURE__*/jsxs(StyledMenuButton, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(StyledMenuButton, {
         onClick: toggle,
         id: "open-settings-dialog-button",
         "aria-label":
         /*i18n*/
-        i18n._("Transaction Settings"),
-        children: [/*#__PURE__*/jsx(StyledMenuIcon, {}), expertMode ? /*#__PURE__*/jsx(EmojiWrapper, {
-          children: /*#__PURE__*/jsx("span", {
+        core$1.i18n._("Transaction Settings"),
+        children: [/*#__PURE__*/jsxRuntime.jsx(StyledMenuIcon, {}), expertMode ? /*#__PURE__*/jsxRuntime.jsx(EmojiWrapper, {
+          children: /*#__PURE__*/jsxRuntime.jsx("span", {
             role: "img",
             "aria-label": "wizard-icon",
             children: "\uD83E\uDDD9"
           })
         }) : null]
-      }), open && /*#__PURE__*/jsx(MenuFlyout, {
-        children: /*#__PURE__*/jsxs(AutoColumn, {
+      }), open && /*#__PURE__*/jsxRuntime.jsx(MenuFlyout, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
           gap: "md",
           style: {
             padding: '1rem'
           },
-          children: [/*#__PURE__*/jsx(Text$1, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontWeight: 600,
             fontSize: 14,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Transaction Settings"
             })
-          }), /*#__PURE__*/jsx(TransactionSettings, {
+          }), /*#__PURE__*/jsxRuntime.jsx(TransactionSettings, {
             placeholderSlippage: placeholderSlippage
-          }), /*#__PURE__*/jsx(Text$1, {
+          }), /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
             fontWeight: 600,
             fontSize: 14,
-            children: /*#__PURE__*/jsx(Trans, {
+            children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
               id: "Interface Settings"
             })
-          }), chainId === SupportedChainId.MAINNET && /*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsxs(RowFixed, {
-              children: [/*#__PURE__*/jsx(ThemedText.Black, {
+          }), chainId === SupportedChainId.MAINNET && /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
                 fontWeight: 400,
                 fontSize: 14,
                 color: theme.text2,
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Auto Router"
                 })
-              }), /*#__PURE__*/jsx(QuestionHelper, {
-                text: /*#__PURE__*/jsx(Trans, {
+              }), /*#__PURE__*/jsxRuntime.jsx(QuestionHelper, {
+                text: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Use the Uniswap Labs API to get better pricing through a more efficient route."
                 })
               })]
-            }), /*#__PURE__*/jsx(Toggle, {
+            }), /*#__PURE__*/jsxRuntime.jsx(Toggle, {
               id: "toggle-optimized-router-button",
               isActive: !clientSideRouter,
               toggle: () => {
-                ReactGA.event({
+                ReactGA__default["default"].event({
                   category: 'Routing',
                   action: clientSideRouter ? 'enable routing API' : 'disable routing API'
                 });
                 setClientSideRouter(!clientSideRouter);
               }
             })]
-          }), /*#__PURE__*/jsxs(RowBetween, {
-            children: [/*#__PURE__*/jsxs(RowFixed, {
-              children: [/*#__PURE__*/jsx(ThemedText.Black, {
+          }), /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+            children: [/*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
                 fontWeight: 400,
                 fontSize: 14,
                 color: theme.text2,
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Expert Mode"
                 })
-              }), /*#__PURE__*/jsx(QuestionHelper, {
-                text: /*#__PURE__*/jsx(Trans, {
+              }), /*#__PURE__*/jsxRuntime.jsx(QuestionHelper, {
+                text: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Allow high price impact trades and skip the confirm screen. Use at your own risk."
                 })
               })]
-            }), /*#__PURE__*/jsx(Toggle, {
+            }), /*#__PURE__*/jsxRuntime.jsx(Toggle, {
               id: "toggle-expert-mode-button",
               isActive: expertMode,
               toggle: expertMode ? () => {
@@ -21862,7 +21901,7 @@ function SettingsTab(_ref8) {
   );
 }
 
-const StyledSwapHeader = _styled.div.withConfig({
+const StyledSwapHeader = _styled__default["default"].div.withConfig({
   displayName: "SwapHeader__StyledSwapHeader",
   componentId: "sc-jhay2b-0"
 })(["padding:1rem 1.25rem 0.5rem 1.25rem;width:100%;color:", ";"], _ref => {
@@ -21876,21 +21915,21 @@ function SwapHeader(_ref2) {
   let {
     allowedSlippage
   } = _ref2;
-  return /*#__PURE__*/jsx(StyledSwapHeader, {
-    children: /*#__PURE__*/jsxs(RowBetween, {
-      children: [/*#__PURE__*/jsx(RowFixed, {
-        children: /*#__PURE__*/jsx(ThemedText.Black, {
+  return /*#__PURE__*/jsxRuntime.jsx(StyledSwapHeader, {
+    children: /*#__PURE__*/jsxRuntime.jsxs(RowBetween, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(RowFixed, {
+        children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Black, {
           fontWeight: 500,
           fontSize: 16,
           style: {
             marginRight: '8px'
           },
-          children: /*#__PURE__*/jsx(Trans, {
+          children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Swap"
           })
         })
-      }), /*#__PURE__*/jsx(RowFixed, {
-        children: /*#__PURE__*/jsx(SettingsTab, {
+      }), /*#__PURE__*/jsxRuntime.jsx(RowFixed, {
+        children: /*#__PURE__*/jsxRuntime.jsx(SettingsTab, {
           placeholderSlippage: allowedSlippage
         })
       })]
@@ -21898,13 +21937,13 @@ function SwapHeader(_ref2) {
   });
 }
 
-const Container = _styled(ThemedText.Small).withConfig({
+const Container = _styled__default["default"](ThemedText.Small).withConfig({
   displayName: "SwitchLocaleLink__Container",
   componentId: "sc-1a9mfh8-0"
 })(["opacity:0.6;:hover{opacity:1;}margin-top:1rem !important;"]);
 
 const useTargetLocale = activeLocale => {
-  const browserLocale = useMemo(() => navigatorLocale(), []);
+  const browserLocale = React.useMemo(() => navigatorLocale(), []);
 
   if (browserLocale && (browserLocale !== DEFAULT_LOCALE || activeLocale !== DEFAULT_LOCALE)) {
     if (activeLocale === browserLocale) {
@@ -21925,14 +21964,14 @@ function SwitchLocaleLink() {
     onClick
   } = useLocationLinkProps(targetLocale);
   if (!targetLocale || !to) return null;
-  return /*#__PURE__*/jsx(Container, {
-    children: /*#__PURE__*/jsx(Trans, {
+  return /*#__PURE__*/jsxRuntime.jsx(Container, {
+    children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
       id: "Uniswap available in: <0>{0}</0>",
       values: {
         0: LOCALE_LABEL[targetLocale]
       },
       components: {
-        0: /*#__PURE__*/jsx(StyledInternalLink, {
+        0: /*#__PURE__*/jsxRuntime.jsx(StyledInternalLink, {
           onClick: onClick,
           to: to
         })
@@ -21948,11 +21987,11 @@ function TokenWarningModal(_ref) {
     onConfirm,
     onDismiss
   } = _ref;
-  return /*#__PURE__*/jsx(Modal, {
+  return /*#__PURE__*/jsxRuntime.jsx(Modal, {
     isOpen: isOpen,
     onDismiss: onDismiss,
     maxHeight: 100,
-    children: /*#__PURE__*/jsx(ImportToken, {
+    children: /*#__PURE__*/jsxRuntime.jsx(ImportToken, {
       tokens: tokens,
       handleCurrencySelect: onConfirm
     })
@@ -21961,9 +22000,9 @@ function TokenWarningModal(_ref) {
 
 function useTokenAllowance(token, owner, spender) {
   const contract = useTokenContract(token === null || token === void 0 ? void 0 : token.address, false);
-  const inputs = useMemo(() => [owner, spender], [owner, spender]);
+  const inputs = React.useMemo(() => [owner, spender], [owner, spender]);
   const allowance = useSingleCallResult(contract, 'allowance', inputs).result;
-  return useMemo(() => token && allowance ? CurrencyAmount.fromRawAmount(token, allowance.toString()) : undefined, [token, allowance]);
+  return React.useMemo(() => token && allowance ? sdkCore.CurrencyAmount.fromRawAmount(token, allowance.toString()) : undefined, [token, allowance]);
 }
 
 let ApprovalState; // returns a variable indicating the state of the approval and a function which approves if necessary or early returns
@@ -21986,7 +22025,7 @@ function useApproveCallback(amountToApprove, spender) {
   const currentAllowance = useTokenAllowance(token, account !== null && account !== void 0 ? account : undefined, spender);
   const pendingApproval = useHasPendingApproval(token === null || token === void 0 ? void 0 : token.address, spender); // check the current approval status
 
-  const approvalState = useMemo(() => {
+  const approvalState = React.useMemo(() => {
     if (!amountToApprove || !spender) return ApprovalState.UNKNOWN;
     if (amountToApprove.currency.isNative) return ApprovalState.APPROVED; // we might not have enough data to know whether or not we need to approve
 
@@ -21996,7 +22035,7 @@ function useApproveCallback(amountToApprove, spender) {
   }, [amountToApprove, currentAllowance, pendingApproval, spender]);
   const tokenContract = useTokenContract(token === null || token === void 0 ? void 0 : token.address);
   const addTransaction = useTransactionAdder();
-  const approve = useCallback(async () => {
+  const approve = React.useCallback(async () => {
     if (approvalState !== ApprovalState.NOT_APPROVED) {
       console.error('approve was called unnecessarily');
       return;
@@ -22028,12 +22067,12 @@ function useApproveCallback(amountToApprove, spender) {
     }
 
     let useExact = false;
-    const estimatedGas = await tokenContract.estimateGas.approve(spender, MaxUint256).catch(() => {
+    const estimatedGas = await tokenContract.estimateGas.approve(spender, constants.MaxUint256).catch(() => {
       // general fallback for tokens who restrict approval amounts
       useExact = true;
       return tokenContract.estimateGas.approve(spender, amountToApprove.quotient.toString());
     });
-    return tokenContract.approve(spender, useExact ? amountToApprove.quotient.toString() : MaxUint256, {
+    return tokenContract.approve(spender, useExact ? amountToApprove.quotient.toString() : constants.MaxUint256, {
       gasLimit: calculateGasMargin(estimatedGas)
     }).then(response => {
       addTransaction(response, {
@@ -22054,8 +22093,8 @@ function useApproveCallbackFromTrade(trade, allowedSlippage) {
     chainId
   } = useActiveWeb3React();
   const v3SwapRouterAddress = chainId ? SWAP_ROUTER_ADDRESSES[chainId] : undefined;
-  const amountToApprove = useMemo(() => trade && trade.inputAmount.currency.isToken ? trade.maximumAmountIn(allowedSlippage) : undefined, [trade, allowedSlippage]);
-  return useApproveCallback(amountToApprove, chainId ? trade instanceof Trade ? V2_ROUTER_ADDRESS[chainId] : trade instanceof Trade$1 ? v3SwapRouterAddress : undefined : undefined);
+  const amountToApprove = React.useMemo(() => trade && trade.inputAmount.currency.isToken ? trade.maximumAmountIn(allowedSlippage) : undefined, [trade, allowedSlippage]);
+  return useApproveCallback(amountToApprove, chainId ? trade instanceof v2Sdk.Trade ? V2_ROUTER_ADDRESS[chainId] : trade instanceof v3Sdk.Trade ? v3SwapRouterAddress : undefined : undefined);
 }
 
 function useIsArgentWallet() {
@@ -22065,8 +22104,8 @@ function useIsArgentWallet() {
     account
   } = useActiveWeb3React();
   const argentWalletDetector = useArgentWalletDetectorContract();
-  const inputs = useMemo(() => [account !== null && account !== void 0 ? account : undefined], [account]);
-  const call = useSingleCallResult(argentWalletDetector, 'isArgentWallet', inputs, NEVER_RELOAD);
+  const inputs = React.useMemo(() => [account !== null && account !== void 0 ? account : undefined], [account]);
+  const call = useSingleCallResult(argentWalletDetector, 'isArgentWallet', inputs, reduxMulticall.NEVER_RELOAD);
   return (_call$result$ = call === null || call === void 0 ? void 0 : (_call$result = call.result) === null || _call$result === void 0 ? void 0 : _call$result[0]) !== null && _call$result$ !== void 0 ? _call$result$ : false;
 }
 
@@ -22076,7 +22115,7 @@ function useTransactionDeadline() {
   } = useActiveWeb3React();
   const ttl = useAppSelector(state => state.user.userDeadline);
   const blockTimestamp = useCurrentBlockTimestamp();
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (blockTimestamp && chainId && L2_CHAIN_IDS.includes(chainId)) return blockTimestamp.add(L2_DEADLINE_FROM_NOW);
     if (blockTimestamp && ttl) return blockTimestamp.add(ttl);
     return undefined;
@@ -22221,11 +22260,11 @@ function useERC20Permit(currencyAmount, spender, overridePermitInfo) {
   const tokenAddress = currencyAmount !== null && currencyAmount !== void 0 && (_currencyAmount$curre = currencyAmount.currency) !== null && _currencyAmount$curre !== void 0 && _currencyAmount$curre.isToken ? currencyAmount.currency.address : undefined;
   const eip2612Contract = useEIP2612Contract(tokenAddress);
   const isArgentWallet = useIsArgentWallet();
-  const nonceInputs = useMemo(() => [account !== null && account !== void 0 ? account : undefined], [account]);
+  const nonceInputs = React.useMemo(() => [account !== null && account !== void 0 ? account : undefined], [account]);
   const tokenNonceState = useSingleCallResult(eip2612Contract, 'nonces', nonceInputs);
   const permitInfo = overridePermitInfo !== null && overridePermitInfo !== void 0 ? overridePermitInfo : chainId && tokenAddress ? (_PERMITTABLE_TOKENS$c = PERMITTABLE_TOKENS[chainId]) === null || _PERMITTABLE_TOKENS$c === void 0 ? void 0 : _PERMITTABLE_TOKENS$c[tokenAddress] : undefined;
-  const [signatureData, setSignatureData] = useState(null);
-  return useMemo(() => {
+  const [signatureData, setSignatureData] = React.useState(null);
+  return React.useMemo(() => {
     var _tokenNonceState$resu, _tokenNonceState$resu2;
 
     if (isArgentWallet || !currencyAmount || !eip2612Contract || !account || !chainId || !transactionDeadline || !library || !tokenNonceState.valid || !tokenAddress || !spender || !permitInfo) {
@@ -22246,7 +22285,7 @@ function useERC20Permit(currencyAmount, spender, overridePermitInfo) {
       };
     }
 
-    const isSignatureDataValid = signatureData && signatureData.owner === account && signatureData.deadline >= transactionDeadline.toNumber() && signatureData.tokenAddress === tokenAddress && signatureData.nonce === nonceNumber && signatureData.spender === spender && ('allowed' in signatureData || JSBI.equal(JSBI.BigInt(signatureData.amount), currencyAmount.quotient));
+    const isSignatureDataValid = signatureData && signatureData.owner === account && signatureData.deadline >= transactionDeadline.toNumber() && signatureData.tokenAddress === tokenAddress && signatureData.nonce === nonceNumber && signatureData.spender === spender && ('allowed' in signatureData || JSBI__default["default"].equal(JSBI__default["default"].BigInt(signatureData.amount), currencyAmount.quotient));
     return {
       state: isSignatureDataValid ? UseERC20PermitState.SIGNED : UseERC20PermitState.NOT_SIGNED,
       signatureData: isSignatureDataValid ? signatureData : null,
@@ -22286,7 +22325,7 @@ function useERC20Permit(currencyAmount, spender, overridePermitInfo) {
           primaryType: 'Permit',
           message
         });
-        return library.send('eth_signTypedData_v4', [account, data]).then(splitSignature).then(signature => {
+        return library.send('eth_signTypedData_v4', [account, data]).then(bytes.splitSignature).then(signature => {
           setSignatureData({
             v: signature.v,
             r: signature.r,
@@ -22320,9 +22359,9 @@ function useERC20PermitFromTrade(trade, allowedSlippage) {
     chainId
   } = useActiveWeb3React();
   const swapRouterAddress = chainId ? SWAP_ROUTER_ADDRESSES[chainId] : undefined;
-  const amountToApprove = useMemo(() => trade ? trade.maximumAmountIn(allowedSlippage) : undefined, [trade, allowedSlippage]);
+  const amountToApprove = React.useMemo(() => trade ? trade.maximumAmountIn(allowedSlippage) : undefined, [trade, allowedSlippage]);
   return useERC20Permit(amountToApprove, // v2 router does not support
-  trade instanceof Trade ? undefined : trade instanceof Trade$1 ? swapRouterAddress : undefined, null);
+  trade instanceof v2Sdk.Trade ? undefined : trade instanceof v3Sdk.Trade ? swapRouterAddress : undefined, null);
 }
 
 /**
@@ -22333,7 +22372,7 @@ function useERC20PermitFromTrade(trade, allowedSlippage) {
 
 function useIsSwapUnsupported(currencyIn, currencyOut) {
   const unsupportedTokens = useUnsupportedTokens();
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!unsupportedTokens) {
       return false;
     }
@@ -22344,7 +22383,7 @@ function useIsSwapUnsupported(currencyIn, currencyOut) {
   }, [currencyIn, currencyOut, unsupportedTokens]);
 }
 
-const ERC20_INTERFACE = new Interface([{
+const ERC20_INTERFACE = new abi.Interface([{
   constant: false,
   inputs: [{
     name: '_spender',
@@ -22364,7 +22403,7 @@ const ERC20_INTERFACE = new Interface([{
 }]);
 function approveAmountCalldata(amount, spender) {
   if (!amount.currency.isToken) throw new Error('Must call with an amount of token');
-  const approveData = ERC20_INTERFACE.encodeFunctionData('approve', [spender, toHex(amount.quotient)]);
+  const approveData = ERC20_INTERFACE.encodeFunctionData('approve', [spender, v3Sdk.toHex(amount.quotient)]);
   return {
     to: amount.currency.address,
     data: approveData,
@@ -22473,21 +22512,21 @@ signatureData) {
   const deadline = useTransactionDeadline();
   const routerContract = useV2RouterContract();
   const argentWalletContract = useArgentWalletContract();
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!trade || !recipient || !library || !account || !chainId || !deadline) return [];
 
-    if (trade instanceof Trade) {
+    if (trade instanceof v2Sdk.Trade) {
       if (!routerContract) return [];
       const swapMethods = [];
-      swapMethods.push(Router.swapCallParameters(trade, {
+      swapMethods.push(v2Sdk.Router.swapCallParameters(trade, {
         feeOnTransfer: false,
         allowedSlippage,
         recipient,
         deadline: deadline.toNumber()
       }));
 
-      if (trade.tradeType === TradeType.EXACT_INPUT) {
-        swapMethods.push(Router.swapCallParameters(trade, {
+      if (trade.tradeType === sdkCore.TradeType.EXACT_INPUT) {
+        swapMethods.push(v2Sdk.Router.swapCallParameters(trade, {
           feeOnTransfer: true,
           allowedSlippage,
           recipient,
@@ -22527,7 +22566,7 @@ signatureData) {
       const {
         value,
         calldata
-      } = SwapRouter.swapCallParameters(trade, {
+      } = v3Sdk.SwapRouter.swapCallParameters(trade, {
         recipient,
         slippageTolerance: allowedSlippage,
         deadline: deadline.toString(),
@@ -22591,52 +22630,52 @@ function swapErrorToUserReadableMessage(error) {
 
   switch (reason) {
     case 'UniswapV2Router: EXPIRED':
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low."
       });
 
     case 'UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT':
     case 'UniswapV2Router: EXCESSIVE_INPUT_AMOUNT':
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
       });
 
     case 'TransferHelper: TRANSFER_FROM_FAILED':
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "The input token cannot be transferred. There may be an issue with the input token."
       });
 
     case 'UniswapV2: TRANSFER_FAILED':
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "The output token cannot be transferred. There may be an issue with the output token."
       });
 
     case 'UniswapV2: K':
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer."
       });
 
     case 'Too little received':
     case 'Too much requested':
     case 'STF':
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
       });
 
     case 'TF':
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
       });
 
     default:
       if (((_reason2 = reason) === null || _reason2 === void 0 ? void 0 : _reason2.indexOf('undefined is not an object')) !== -1) {
         console.error(error, reason);
-        return /*#__PURE__*/jsx(Trans, {
+        return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
         });
       }
 
-      return /*#__PURE__*/jsx(Trans, {
+      return /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Unknown error{0}. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3.",
         values: {
           0: reason ? `: "${reason}"` : ''
@@ -22662,12 +22701,12 @@ signatureData) {
     address: recipientAddress
   } = useENS(recipientAddressOrName);
   const recipient = recipientAddressOrName === null ? account : recipientAddress;
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!trade || !library || !account || !chainId) {
       return {
         state: SwapCallbackState.INVALID,
         callback: null,
-        error: /*#__PURE__*/jsx(Trans, {
+        error: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
           id: "Missing dependencies"
         })
       };
@@ -22678,7 +22717,7 @@ signatureData) {
         return {
           state: SwapCallbackState.INVALID,
           callback: null,
-          error: /*#__PURE__*/jsx(Trans, {
+          error: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
             id: "Invalid recipient"
           })
         };
@@ -22721,7 +22760,7 @@ signatureData) {
               console.debug('Unexpected successful call after failed estimate gas', call, gasError, result);
               return {
                 call,
-                error: /*#__PURE__*/jsx(Trans, {
+                error: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Unexpected issue with estimating the gas. Please try again."
                 })
               };
@@ -22743,7 +22782,7 @@ signatureData) {
           const firstNoErrorCall = estimatedCalls.find(call => !('error' in call));
           if (!firstNoErrorCall) throw new Error(
           /*i18n*/
-          i18n._("Unexpected error. Could not estimate gas for the swap."));
+          core$1.i18n._("Unexpected error. Could not estimate gas for the swap."));
           bestCallOption = firstNoErrorCall;
         }
 
@@ -22766,9 +22805,9 @@ signatureData) {
             value
           } : {})
         }).then(response => {
-          addTransaction(response, trade.tradeType === TradeType.EXACT_INPUT ? {
+          addTransaction(response, trade.tradeType === sdkCore.TradeType.EXACT_INPUT ? {
             type: TransactionType.SWAP,
-            tradeType: TradeType.EXACT_INPUT,
+            tradeType: sdkCore.TradeType.EXACT_INPUT,
             inputCurrencyId: currencyId(trade.inputAmount.currency),
             inputCurrencyAmountRaw: trade.inputAmount.quotient.toString(),
             expectedOutputCurrencyAmountRaw: trade.outputAmount.quotient.toString(),
@@ -22776,7 +22815,7 @@ signatureData) {
             minimumOutputCurrencyAmountRaw: trade.minimumAmountOut(allowedSlippage).quotient.toString()
           } : {
             type: TransactionType.SWAP,
-            tradeType: TradeType.EXACT_OUTPUT,
+            tradeType: sdkCore.TradeType.EXACT_OUTPUT,
             inputCurrencyId: currencyId(trade.inputAmount.currency),
             maximumInputCurrencyAmountRaw: trade.maximumAmountIn(allowedSlippage).quotient.toString(),
             outputCurrencyId: currencyId(trade.outputAmount.currency),
@@ -22789,13 +22828,13 @@ signatureData) {
           if ((error === null || error === void 0 ? void 0 : error.code) === 4001) {
             throw new Error(
             /*i18n*/
-            i18n._("Transaction rejected."));
+            core$1.i18n._("Transaction rejected."));
           } else {
             // otherwise, the error was unexpected and we need to convey that
             console.error(`Swap failed`, error, address, calldata, value);
             throw new Error(
             /*i18n*/
-            i18n._("Swap failed: {0}", {
+            core$1.i18n._("Swap failed: {0}", {
               0: swapErrorToUserReadableMessage(error)
             }));
           }
@@ -22832,9 +22871,9 @@ function useWrapCallback(inputCurrency, outputCurrency, typedValue) {
   const wethContract = useWETHContract();
   const balance = useCurrencyBalance(account !== null && account !== void 0 ? account : undefined, inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : undefined); // we can always parse the amount typed as the input currency, since wrapping is 1:1
 
-  const inputAmount = useMemo(() => tryParseAmount(typedValue, inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : undefined), [inputCurrency, typedValue]);
+  const inputAmount = React.useMemo(() => tryParseAmount(typedValue, inputCurrency !== null && inputCurrency !== void 0 ? inputCurrency : undefined), [inputCurrency, typedValue]);
   const addTransaction = useTransactionAdder();
-  return useMemo(() => {
+  return React.useMemo(() => {
     if (!wethContract || !chainId || !inputCurrency || !outputCurrency) return NOT_APPLICABLE;
     const weth = WETH9_EXTENDED[chainId];
     if (!weth) return NOT_APPLICABLE;
@@ -22883,7 +22922,7 @@ function useWrapCallback(inputCurrency, outputCurrency, typedValue) {
   }, [wethContract, chainId, inputCurrency, outputCurrency, inputAmount, balance, addTransaction]);
 }
 
-const MIN_NATIVE_CURRENCY_FOR_GAS = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16)); // .01 ETH
+const MIN_NATIVE_CURRENCY_FOR_GAS = JSBI__default["default"].exponentiate(JSBI__default["default"].BigInt(10), JSBI__default["default"].BigInt(16)); // .01 ETH
 
 /**
  * Given some token amount, return the max that can be spent of it
@@ -22894,17 +22933,17 @@ function maxAmountSpend(currencyAmount) {
   if (!currencyAmount) return undefined;
 
   if (currencyAmount.currency.isNative) {
-    if (JSBI.greaterThan(currencyAmount.quotient, MIN_NATIVE_CURRENCY_FOR_GAS)) {
-      return CurrencyAmount.fromRawAmount(currencyAmount.currency, JSBI.subtract(currencyAmount.quotient, MIN_NATIVE_CURRENCY_FOR_GAS));
+    if (JSBI__default["default"].greaterThan(currencyAmount.quotient, MIN_NATIVE_CURRENCY_FOR_GAS)) {
+      return sdkCore.CurrencyAmount.fromRawAmount(currencyAmount.currency, JSBI__default["default"].subtract(currencyAmount.quotient, MIN_NATIVE_CURRENCY_FOR_GAS));
     } else {
-      return CurrencyAmount.fromRawAmount(currencyAmount.currency, JSBI.BigInt(0));
+      return sdkCore.CurrencyAmount.fromRawAmount(currencyAmount.currency, JSBI__default["default"].BigInt(0));
     }
   }
 
   return currencyAmount;
 }
 
-const BodyWrapper$1 = _styled.main.withConfig({
+const BodyWrapper$1 = _styled__default["default"].main.withConfig({
   displayName: "AppBody__BodyWrapper",
   componentId: "sc-ebxalf-0"
 })(["position:relative;margin-top:", ";max-width:", ";width:100%;background:", ";box-shadow:0px 0px 1px rgba(0,0,0,0.01),0px 4px 8px rgba(0,0,0,0.04),0px 16px 24px rgba(0,0,0,0.04),0px 24px 32px rgba(0,0,0,0.01);border-radius:24px;margin-top:1rem;margin-left:auto;margin-right:auto;z-index:", ";"], _ref => {
@@ -22932,12 +22971,12 @@ function AppBody(_ref4) {
     children,
     ...rest
   } = _ref4;
-  return /*#__PURE__*/jsx(BodyWrapper$1, { ...rest,
+  return /*#__PURE__*/jsxRuntime.jsx(BodyWrapper$1, { ...rest,
     children: children
   });
 }
 
-const StyledInfo = _styled(Info).withConfig({
+const StyledInfo = _styled__default["default"](reactFeather.Info).withConfig({
   displayName: "Swap__StyledInfo",
   componentId: "sc-1es900k-0"
 })(["height:16px;width:16px;margin-left:4px;color:", ";:hover{color:", ";}"], _ref => {
@@ -22964,8 +23003,8 @@ function Swap(_ref3) {
   const loadedUrlParams = useDefaultsFromURLSearch(); // token warning stuff
 
   const [loadedInputCurrency, loadedOutputCurrency] = [useCurrency(loadedUrlParams === null || loadedUrlParams === void 0 ? void 0 : loadedUrlParams.inputCurrencyId), useCurrency(loadedUrlParams === null || loadedUrlParams === void 0 ? void 0 : loadedUrlParams.outputCurrencyId)];
-  const [dismissTokenWarning, setDismissTokenWarning] = useState(false);
-  const urlLoadedTokens = useMemo(() => {
+  const [dismissTokenWarning, setDismissTokenWarning] = React.useState(false);
+  const urlLoadedTokens = React.useMemo(() => {
     var _filter, _ref4;
 
     return (_filter = (_ref4 = [loadedInputCurrency, loadedOutputCurrency]) === null || _ref4 === void 0 ? void 0 : _ref4.filter(c => {
@@ -22974,15 +23013,15 @@ function Swap(_ref3) {
       return (_c$isToken = c === null || c === void 0 ? void 0 : c.isToken) !== null && _c$isToken !== void 0 ? _c$isToken : false;
     })) !== null && _filter !== void 0 ? _filter : [];
   }, [loadedInputCurrency, loadedOutputCurrency]);
-  const handleConfirmTokenWarning = useCallback(() => {
+  const handleConfirmTokenWarning = React.useCallback(() => {
     setDismissTokenWarning(true);
   }, []); // dismiss warning if all imported tokens are in active lists
 
   const defaultTokens = useAllTokens();
-  const importTokensNotInDefault = useMemo(() => urlLoadedTokens && urlLoadedTokens.filter(token => {
+  const importTokensNotInDefault = React.useMemo(() => urlLoadedTokens && urlLoadedTokens.filter(token => {
     return !Boolean(token.address in defaultTokens);
   }), [defaultTokens, urlLoadedTokens]);
-  const theme = useContext(ThemeContext); // toggle wallet when disconnected
+  const theme = React.useContext(_styled.ThemeContext); // toggle wallet when disconnected
 
   const toggleWalletModal = useWalletModalToggle(); // for expert mode
 
@@ -23015,14 +23054,14 @@ function Swap(_ref3) {
   const {
     address: recipientAddress
   } = useENSAddress(recipient);
-  const parsedAmounts = useMemo(() => showWrap ? {
+  const parsedAmounts = React.useMemo(() => showWrap ? {
     [Field.INPUT]: parsedAmount,
     [Field.OUTPUT]: parsedAmount
   } : {
     [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade === null || trade === void 0 ? void 0 : trade.inputAmount,
     [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade === null || trade === void 0 ? void 0 : trade.outputAmount
   }, [independentField, parsedAmount, showWrap, trade]);
-  const [routeNotFound, routeIsLoading, routeIsSyncing] = useMemo(() => [trade instanceof Trade$1 ? !(trade !== null && trade !== void 0 && trade.swaps) : !(trade !== null && trade !== void 0 && trade.route), V3TradeState.LOADING === v3TradeState, V3TradeState.SYNCING === v3TradeState], [trade, v3TradeState]);
+  const [routeNotFound, routeIsLoading, routeIsSyncing] = React.useMemo(() => [trade instanceof v3Sdk.Trade ? !(trade !== null && trade !== void 0 && trade.swaps) : !(trade !== null && trade !== void 0 && trade.route), V3TradeState.LOADING === v3TradeState, V3TradeState.SYNCING === v3TradeState], [trade, v3TradeState]);
   const fiatValueInput = useUSDCValue(parsedAmounts[Field.INPUT]);
   const fiatValueOutput = useUSDCValue(parsedAmounts[Field.OUTPUT]);
   const priceImpact = routeIsSyncing ? undefined : computeFiatValuePriceImpact(fiatValueInput, fiatValueOutput);
@@ -23034,14 +23073,14 @@ function Swap(_ref3) {
   } = useSwapActionHandlers();
   const isValid = !swapInputError;
   const dependentField = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT;
-  const handleTypeInput = useCallback(value => {
+  const handleTypeInput = React.useCallback(value => {
     onUserInput(Field.INPUT, value);
   }, [onUserInput]);
-  const handleTypeOutput = useCallback(value => {
+  const handleTypeOutput = React.useCallback(value => {
     onUserInput(Field.OUTPUT, value);
   }, [onUserInput]); // reset if they close warning without tokens in params
 
-  const handleDismissTokenWarning = useCallback(() => {
+  const handleDismissTokenWarning = React.useCallback(() => {
     setDismissTokenWarning(true);
     history.push('/swap/');
   }, [history]); // modal and loading
@@ -23052,14 +23091,14 @@ function Swap(_ref3) {
     swapErrorMessage,
     attemptingTxn,
     txHash
-  }, setSwapState] = useState({
+  }, setSwapState] = React.useState({
     showConfirm: false,
     tradeToConfirm: undefined,
     attemptingTxn: false,
     swapErrorMessage: undefined,
     txHash: undefined
   });
-  const formattedAmounts = useMemo(() => {
+  const formattedAmounts = React.useMemo(() => {
     var _parsedAmounts$indepe, _parsedAmounts$indepe2, _parsedAmounts$depend, _parsedAmounts$depend2;
 
     return {
@@ -23067,7 +23106,7 @@ function Swap(_ref3) {
       [dependentField]: showWrap ? (_parsedAmounts$indepe = (_parsedAmounts$indepe2 = parsedAmounts[independentField]) === null || _parsedAmounts$indepe2 === void 0 ? void 0 : _parsedAmounts$indepe2.toExact()) !== null && _parsedAmounts$indepe !== void 0 ? _parsedAmounts$indepe : '' : (_parsedAmounts$depend = (_parsedAmounts$depend2 = parsedAmounts[dependentField]) === null || _parsedAmounts$depend2 === void 0 ? void 0 : _parsedAmounts$depend2.toSignificant(6)) !== null && _parsedAmounts$depend !== void 0 ? _parsedAmounts$depend : ''
     };
   }, [dependentField, independentField, parsedAmounts, showWrap, typedValue]);
-  const userHasSpecifiedInputOutput = Boolean(currencies[Field.INPUT] && currencies[Field.OUTPUT] && ((_parsedAmounts$indepe3 = parsedAmounts[independentField]) === null || _parsedAmounts$indepe3 === void 0 ? void 0 : _parsedAmounts$indepe3.greaterThan(JSBI.BigInt(0)))); // check whether the user has approved the router on the input token
+  const userHasSpecifiedInputOutput = Boolean(currencies[Field.INPUT] && currencies[Field.OUTPUT] && ((_parsedAmounts$indepe3 = parsedAmounts[independentField]) === null || _parsedAmounts$indepe3 === void 0 ? void 0 : _parsedAmounts$indepe3.greaterThan(JSBI__default["default"].BigInt(0)))); // check whether the user has approved the router on the input token
 
   const [approvalState, approveCallback] = useApproveCallbackFromTrade(trade, allowedSlippage);
   const {
@@ -23075,7 +23114,7 @@ function Swap(_ref3) {
     signatureData,
     gatherPermitSignature
   } = useERC20PermitFromTrade(trade, allowedSlippage);
-  const handleApprove = useCallback(async () => {
+  const handleApprove = React.useCallback(async () => {
     if (signatureState === UseERC20PermitState.NOT_SIGNED && gatherPermitSignature) {
       try {
         await gatherPermitSignature();
@@ -23087,7 +23126,7 @@ function Swap(_ref3) {
       }
     } else {
       await approveCallback();
-      ReactGA.event({
+      ReactGA__default["default"].event({
         category: 'Swap',
         action: 'Approve',
         label: [trade === null || trade === void 0 ? void 0 : trade.inputAmount.currency.symbol, toggledVersion].join('/')
@@ -23095,21 +23134,21 @@ function Swap(_ref3) {
     }
   }, [approveCallback, gatherPermitSignature, signatureState, toggledVersion, trade === null || trade === void 0 ? void 0 : trade.inputAmount.currency.symbol]); // check if user has gone through approval process, used to show two step buttons, reset on token change
 
-  const [approvalSubmitted, setApprovalSubmitted] = useState(false); // mark when a user has submitted an approval, reset onTokenSelection for input field
+  const [approvalSubmitted, setApprovalSubmitted] = React.useState(false); // mark when a user has submitted an approval, reset onTokenSelection for input field
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (approvalState === ApprovalState.PENDING) {
       setApprovalSubmitted(true);
     }
   }, [approvalState, approvalSubmitted]);
-  const maxInputAmount = useMemo(() => maxAmountSpend(currencyBalances[Field.INPUT]), [currencyBalances]);
+  const maxInputAmount = React.useMemo(() => maxAmountSpend(currencyBalances[Field.INPUT]), [currencyBalances]);
   const showMaxButton = Boolean((maxInputAmount === null || maxInputAmount === void 0 ? void 0 : maxInputAmount.greaterThan(0)) && !((_parsedAmounts$Field$ = parsedAmounts[Field.INPUT]) !== null && _parsedAmounts$Field$ !== void 0 && _parsedAmounts$Field$.equalTo(maxInputAmount))); // the callback to execute the swap
 
   const {
     callback: swapCallback,
     error: swapCallbackError
   } = useSwapCallback(trade, allowedSlippage, recipient, signatureData);
-  const handleSwap = useCallback(() => {
+  const handleSwap = React.useCallback(() => {
     if (!swapCallback) {
       return;
     }
@@ -23135,7 +23174,7 @@ function Swap(_ref3) {
         swapErrorMessage: undefined,
         txHash: hash
       });
-      ReactGA.event({
+      ReactGA__default["default"].event({
         category: 'Swap',
         action: recipient === null ? 'Swap w/o Send' : (recipientAddress !== null && recipientAddress !== void 0 ? recipientAddress : recipient) === account ? 'Swap w/o Send + recipient' : 'Swap w/ Send',
         label: [trade === null || trade === void 0 ? void 0 : (_trade$inputAmount = trade.inputAmount) === null || _trade$inputAmount === void 0 ? void 0 : (_trade$inputAmount$cu = _trade$inputAmount.currency) === null || _trade$inputAmount$cu === void 0 ? void 0 : _trade$inputAmount$cu.symbol, trade === null || trade === void 0 ? void 0 : (_trade$outputAmount = trade.outputAmount) === null || _trade$outputAmount === void 0 ? void 0 : (_trade$outputAmount$c = _trade$outputAmount.currency) === null || _trade$outputAmount$c === void 0 ? void 0 : _trade$outputAmount$c.symbol, getTradeVersion(trade), 'MH'].join('/')
@@ -23151,9 +23190,9 @@ function Swap(_ref3) {
     });
   }, [swapCallback, priceImpact, tradeToConfirm, showConfirm, recipient, recipientAddress, account, trade]); // errors
 
-  const [showInverted, setShowInverted] = useState(false); // warnings on the greater of fiat value price impact and execution price impact
+  const [showInverted, setShowInverted] = React.useState(false); // warnings on the greater of fiat value price impact and execution price impact
 
-  const priceImpactSeverity = useMemo(() => {
+  const priceImpactSeverity = React.useMemo(() => {
     const executionPriceImpact = trade === null || trade === void 0 ? void 0 : trade.priceImpact;
     return warningSeverity(executionPriceImpact && priceImpact ? executionPriceImpact.greaterThan(priceImpact) ? executionPriceImpact : priceImpact : executionPriceImpact !== null && executionPriceImpact !== void 0 ? executionPriceImpact : priceImpact);
   }, [priceImpact, trade]);
@@ -23161,7 +23200,7 @@ function Swap(_ref3) {
   // never show if price impact is above threshold in non expert mode
 
   const showApproveFlow = !isArgentWallet && !swapInputError && (approvalState === ApprovalState.NOT_APPROVED || approvalState === ApprovalState.PENDING || approvalSubmitted && approvalState === ApprovalState.APPROVED) && !(priceImpactSeverity > 3 && !isExpertMode);
-  const handleConfirmDismiss = useCallback(() => {
+  const handleConfirmDismiss = React.useCallback(() => {
     setSwapState({
       showConfirm: false,
       tradeToConfirm,
@@ -23174,7 +23213,7 @@ function Swap(_ref3) {
       onUserInput(Field.INPUT, '');
     }
   }, [attemptingTxn, onUserInput, swapErrorMessage, tradeToConfirm, txHash]);
-  const handleAcceptChanges = useCallback(() => {
+  const handleAcceptChanges = React.useCallback(() => {
     setSwapState({
       tradeToConfirm: trade,
       swapErrorMessage,
@@ -23183,33 +23222,33 @@ function Swap(_ref3) {
       showConfirm
     });
   }, [attemptingTxn, showConfirm, swapErrorMessage, trade, txHash]);
-  const handleInputSelect = useCallback(inputCurrency => {
+  const handleInputSelect = React.useCallback(inputCurrency => {
     setApprovalSubmitted(false); // reset 2 step UI for approvals
 
     onCurrencySelection(Field.INPUT, inputCurrency);
   }, [onCurrencySelection]);
-  const handleMaxInput = useCallback(() => {
+  const handleMaxInput = React.useCallback(() => {
     maxInputAmount && onUserInput(Field.INPUT, maxInputAmount.toExact());
-    ReactGA.event({
+    ReactGA__default["default"].event({
       category: 'Swap',
       action: 'Max'
     });
   }, [maxInputAmount, onUserInput]);
-  const handleOutputSelect = useCallback(outputCurrency => onCurrencySelection(Field.OUTPUT, outputCurrency), [onCurrencySelection]);
+  const handleOutputSelect = React.useCallback(outputCurrency => onCurrencySelection(Field.OUTPUT, outputCurrency), [onCurrencySelection]);
   const swapIsUnsupported = useIsSwapUnsupported(currencies[Field.INPUT], currencies[Field.OUTPUT]);
   const priceImpactTooHigh = priceImpactSeverity > 3 && !isExpertMode;
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsx(TokenWarningModal, {
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(TokenWarningModal, {
       isOpen: importTokensNotInDefault.length > 0 && !dismissTokenWarning,
       tokens: importTokensNotInDefault,
       onConfirm: handleConfirmTokenWarning,
       onDismiss: handleDismissTokenWarning
-    }), /*#__PURE__*/jsx(NetworkAlert, {}), /*#__PURE__*/jsxs(AppBody, {
-      children: [/*#__PURE__*/jsx(SwapHeader, {
+    }), /*#__PURE__*/jsxRuntime.jsx(NetworkAlert, {}), /*#__PURE__*/jsxRuntime.jsxs(AppBody, {
+      children: [/*#__PURE__*/jsxRuntime.jsx(SwapHeader, {
         allowedSlippage: allowedSlippage
-      }), /*#__PURE__*/jsxs(Wrapper$d, {
+      }), /*#__PURE__*/jsxRuntime.jsxs(Wrapper$d, {
         id: "swap-page",
-        children: [/*#__PURE__*/jsx(ConfirmSwapModal, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(ConfirmSwapModal, {
           isOpen: showConfirm,
           trade: trade,
           originalTrade: tradeToConfirm,
@@ -23221,16 +23260,16 @@ function Swap(_ref3) {
           onConfirm: handleSwap,
           swapErrorMessage: swapErrorMessage,
           onDismiss: handleConfirmDismiss
-        }), /*#__PURE__*/jsxs(AutoColumn, {
+        }), /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
           gap: 'sm',
-          children: [/*#__PURE__*/jsxs("div", {
+          children: [/*#__PURE__*/jsxRuntime.jsxs("div", {
             style: {
               display: 'relative'
             },
-            children: [/*#__PURE__*/jsx(CurrencyInputPanel, {
-              label: independentField === Field.OUTPUT && !showWrap ? /*#__PURE__*/jsx(Trans, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyInputPanel, {
+              label: independentField === Field.OUTPUT && !showWrap ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "From (at most)"
-              }) : /*#__PURE__*/jsx(Trans, {
+              }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "From"
               }),
               value: formattedAmounts[Field.INPUT],
@@ -23244,9 +23283,9 @@ function Swap(_ref3) {
               showCommonBases: true,
               id: "swap-currency-input",
               loading: independentField === Field.OUTPUT && routeIsSyncing
-            }), /*#__PURE__*/jsx(ArrowWrapper$1, {
+            }), /*#__PURE__*/jsxRuntime.jsx(ArrowWrapper$1, {
               clickable: true,
-              children: /*#__PURE__*/jsx(ArrowDown, {
+              children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowDown, {
                 size: "16",
                 onClick: () => {
                   setApprovalSubmitted(false); // reset 2 step UI for approvals
@@ -23255,12 +23294,12 @@ function Swap(_ref3) {
                 },
                 color: currencies[Field.INPUT] && currencies[Field.OUTPUT] ? theme.text1 : theme.text3
               })
-            }), /*#__PURE__*/jsx(CurrencyInputPanel, {
+            }), /*#__PURE__*/jsxRuntime.jsx(CurrencyInputPanel, {
               value: formattedAmounts[Field.OUTPUT],
               onUserInput: handleTypeOutput,
-              label: independentField === Field.INPUT && !showWrap ? /*#__PURE__*/jsx(Trans, {
+              label: independentField === Field.INPUT && !showWrap ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "To (at least)"
-              }) : /*#__PURE__*/jsx(Trans, {
+              }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "To"
               }),
               showMaxButton: false,
@@ -23274,190 +23313,190 @@ function Swap(_ref3) {
               id: "swap-currency-output",
               loading: independentField === Field.INPUT && routeIsSyncing
             })]
-          }), recipient !== null && !showWrap ? /*#__PURE__*/jsxs(Fragment, {
-            children: [/*#__PURE__*/jsxs(AutoRow, {
+          }), recipient !== null && !showWrap ? /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+            children: [/*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
               justify: "space-between",
               style: {
                 padding: '0 1rem'
               },
-              children: [/*#__PURE__*/jsx(ArrowWrapper$1, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(ArrowWrapper$1, {
                 clickable: false,
-                children: /*#__PURE__*/jsx(ArrowDown, {
+                children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.ArrowDown, {
                   size: "16",
                   color: theme.text2
                 })
-              }), /*#__PURE__*/jsx(LinkStyledButton, {
+              }), /*#__PURE__*/jsxRuntime.jsx(LinkStyledButton, {
                 id: "remove-recipient-button",
                 onClick: () => onChangeRecipient(null),
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "- Remove recipient"
                 })
               })]
-            }), /*#__PURE__*/jsx(AddressInputPanel, {
+            }), /*#__PURE__*/jsxRuntime.jsx(AddressInputPanel, {
               id: "recipient",
               value: recipient,
               onChange: onChangeRecipient
             })]
-          }) : null, !showWrap && trade && /*#__PURE__*/jsxs(Row, {
+          }) : null, !showWrap && trade && /*#__PURE__*/jsxRuntime.jsxs(Row, {
             justify: !trade ? 'center' : 'space-between',
-            children: [/*#__PURE__*/jsx(RowFixed, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(RowFixed, {
               style: {
                 position: 'relative'
               },
-              children: /*#__PURE__*/jsx(MouseoverTooltipContent, {
+              children: /*#__PURE__*/jsxRuntime.jsx(MouseoverTooltipContent, {
                 wrap: false,
-                content: /*#__PURE__*/jsx(ResponsiveTooltipContainer, {
-                  children: /*#__PURE__*/jsx(SwapRoute, {
+                content: /*#__PURE__*/jsxRuntime.jsx(ResponsiveTooltipContainer, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(SwapRoute, {
                     trade: trade,
                     syncing: routeIsSyncing
                   })
                 }),
                 placement: "bottom",
-                onOpen: () => ReactGA.event({
+                onOpen: () => ReactGA__default["default"].event({
                   category: 'Swap',
                   action: 'Router Tooltip Open'
                 }),
-                children: /*#__PURE__*/jsxs(AutoRow, {
+                children: /*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
                   gap: "4px",
                   width: "auto",
-                  children: [/*#__PURE__*/jsx(AutoRouterLogo, {}), /*#__PURE__*/jsx(LoadingOpacityContainer, {
+                  children: [/*#__PURE__*/jsxRuntime.jsx(AutoRouterLogo, {}), /*#__PURE__*/jsxRuntime.jsx(LoadingOpacityContainer, {
                     $loading: routeIsSyncing,
-                    children: trade instanceof Trade$1 && trade.swaps.length > 1 && /*#__PURE__*/jsxs(ThemedText.Blue, {
+                    children: trade instanceof v3Sdk.Trade && trade.swaps.length > 1 && /*#__PURE__*/jsxRuntime.jsxs(ThemedText.Blue, {
                       fontSize: 14,
                       children: [trade.swaps.length, " routes"]
                     })
                   })]
                 })
               })
-            }), /*#__PURE__*/jsxs(RowFixed, {
-              children: [/*#__PURE__*/jsx(LoadingOpacityContainer, {
+            }), /*#__PURE__*/jsxRuntime.jsxs(RowFixed, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(LoadingOpacityContainer, {
                 $loading: routeIsSyncing,
-                children: /*#__PURE__*/jsx(TradePrice, {
+                children: /*#__PURE__*/jsxRuntime.jsx(TradePrice, {
                   price: trade.executionPrice,
                   showInverted: showInverted,
                   setShowInverted: setShowInverted
                 })
-              }), /*#__PURE__*/jsx(MouseoverTooltipContent, {
+              }), /*#__PURE__*/jsxRuntime.jsx(MouseoverTooltipContent, {
                 wrap: false,
-                content: /*#__PURE__*/jsx(ResponsiveTooltipContainer, {
+                content: /*#__PURE__*/jsxRuntime.jsx(ResponsiveTooltipContainer, {
                   origin: "top right",
                   width: '295px',
-                  children: /*#__PURE__*/jsx(AdvancedSwapDetails, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(AdvancedSwapDetails, {
                     trade: trade,
                     allowedSlippage: allowedSlippage,
                     syncing: routeIsSyncing
                   })
                 }),
                 placement: "bottom",
-                onOpen: () => ReactGA.event({
+                onOpen: () => ReactGA__default["default"].event({
                   category: 'Swap',
                   action: 'Transaction Details Tooltip Open'
                 }),
-                children: /*#__PURE__*/jsx(StyledInfo, {})
+                children: /*#__PURE__*/jsxRuntime.jsx(StyledInfo, {})
               })]
             })]
-          }), /*#__PURE__*/jsxs("div", {
-            children: [swapIsUnsupported ? /*#__PURE__*/jsx(ButtonPrimary, {
+          }), /*#__PURE__*/jsxRuntime.jsxs("div", {
+            children: [swapIsUnsupported ? /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
               disabled: true,
-              children: /*#__PURE__*/jsx(ThemedText.Main, {
+              children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                 mb: "4px",
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Unsupported Asset"
                 })
               })
-            }) : !account ? /*#__PURE__*/jsx(ButtonLight, {
+            }) : !account ? /*#__PURE__*/jsxRuntime.jsx(ButtonLight, {
               onClick: toggleWalletModal,
-              children: /*#__PURE__*/jsx(Trans, {
+              children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Connect Wallet"
               })
-            }) : showWrap ? /*#__PURE__*/jsx(ButtonPrimary, {
+            }) : showWrap ? /*#__PURE__*/jsxRuntime.jsx(ButtonPrimary, {
               disabled: Boolean(wrapInputError),
               onClick: onWrap,
-              children: wrapInputError !== null && wrapInputError !== void 0 ? wrapInputError : wrapType === WrapType.WRAP ? /*#__PURE__*/jsx(Trans, {
+              children: wrapInputError !== null && wrapInputError !== void 0 ? wrapInputError : wrapType === WrapType.WRAP ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Wrap"
-              }) : wrapType === WrapType.UNWRAP ? /*#__PURE__*/jsx(Trans, {
+              }) : wrapType === WrapType.UNWRAP ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                 id: "Unwrap"
               }) : null
-            }) : routeIsSyncing || routeIsLoading ? /*#__PURE__*/jsx(GreyCard, {
+            }) : routeIsSyncing || routeIsLoading ? /*#__PURE__*/jsxRuntime.jsx(GreyCard, {
               style: {
                 textAlign: 'center'
               },
-              children: /*#__PURE__*/jsx(ThemedText.Main, {
+              children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                 mb: "4px",
-                children: /*#__PURE__*/jsx(Dots, {
-                  children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(Dots, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                     id: "Loading"
                   })
                 })
               })
-            }) : routeNotFound && userHasSpecifiedInputOutput ? /*#__PURE__*/jsx(GreyCard, {
+            }) : routeNotFound && userHasSpecifiedInputOutput ? /*#__PURE__*/jsxRuntime.jsx(GreyCard, {
               style: {
                 textAlign: 'center'
               },
-              children: /*#__PURE__*/jsx(ThemedText.Main, {
+              children: /*#__PURE__*/jsxRuntime.jsx(ThemedText.Main, {
                 mb: "4px",
-                children: /*#__PURE__*/jsx(Trans, {
+                children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Insufficient liquidity for this trade."
                 })
               })
-            }) : showApproveFlow ? /*#__PURE__*/jsx(AutoRow, {
+            }) : showApproveFlow ? /*#__PURE__*/jsxRuntime.jsx(AutoRow, {
               style: {
                 flexWrap: 'nowrap',
                 width: '100%'
               },
-              children: /*#__PURE__*/jsxs(AutoColumn, {
+              children: /*#__PURE__*/jsxRuntime.jsxs(AutoColumn, {
                 style: {
                   width: '100%'
                 },
                 gap: "12px",
-                children: [/*#__PURE__*/jsx(ButtonConfirmed, {
+                children: [/*#__PURE__*/jsxRuntime.jsx(ButtonConfirmed, {
                   onClick: handleApprove,
                   disabled: approvalState !== ApprovalState.NOT_APPROVED || approvalSubmitted || signatureState === UseERC20PermitState.SIGNED,
                   width: "100%",
                   altDisabledStyle: approvalState === ApprovalState.PENDING // show solid button while waiting
                   ,
                   confirmed: approvalState === ApprovalState.APPROVED || signatureState === UseERC20PermitState.SIGNED,
-                  children: /*#__PURE__*/jsxs(AutoRow, {
+                  children: /*#__PURE__*/jsxRuntime.jsxs(AutoRow, {
                     justify: "space-between",
                     style: {
                       flexWrap: 'nowrap'
                     },
-                    children: [/*#__PURE__*/jsxs("span", {
+                    children: [/*#__PURE__*/jsxRuntime.jsxs("span", {
                       style: {
                         display: 'flex',
                         alignItems: 'center'
                       },
-                      children: [/*#__PURE__*/jsx(CurrencyLogo, {
+                      children: [/*#__PURE__*/jsxRuntime.jsx(CurrencyLogo, {
                         currency: currencies[Field.INPUT],
                         size: '20px',
                         style: {
                           marginRight: '8px',
                           flexShrink: 0
                         }
-                      }), approvalState === ApprovalState.APPROVED || signatureState === UseERC20PermitState.SIGNED ? /*#__PURE__*/jsx(Trans, {
+                      }), approvalState === ApprovalState.APPROVED || signatureState === UseERC20PermitState.SIGNED ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                         id: "You can now trade {0}",
                         values: {
                           0: (_currencies$Field$INP = currencies[Field.INPUT]) === null || _currencies$Field$INP === void 0 ? void 0 : _currencies$Field$INP.symbol
                         }
-                      }) : /*#__PURE__*/jsx(Trans, {
+                      }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                         id: "Allow the Uniswap Protocol to use your {0}",
                         values: {
                           0: (_currencies$Field$INP2 = currencies[Field.INPUT]) === null || _currencies$Field$INP2 === void 0 ? void 0 : _currencies$Field$INP2.symbol
                         }
                       })]
-                    }), approvalState === ApprovalState.PENDING ? /*#__PURE__*/jsx(Loader, {
+                    }), approvalState === ApprovalState.PENDING ? /*#__PURE__*/jsxRuntime.jsx(Loader, {
                       stroke: "white"
-                    }) : approvalSubmitted && approvalState === ApprovalState.APPROVED || signatureState === UseERC20PermitState.SIGNED ? /*#__PURE__*/jsx(CheckCircle, {
+                    }) : approvalSubmitted && approvalState === ApprovalState.APPROVED || signatureState === UseERC20PermitState.SIGNED ? /*#__PURE__*/jsxRuntime.jsx(reactFeather.CheckCircle, {
                       size: "20",
                       color: theme.green1
-                    }) : /*#__PURE__*/jsx(MouseoverTooltip, {
-                      text: /*#__PURE__*/jsx(Trans, {
+                    }) : /*#__PURE__*/jsxRuntime.jsx(MouseoverTooltip, {
+                      text: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                         id: "You must give the Uniswap smart contracts permission to use your {0}. You only have to do this once per token.",
                         values: {
                           0: (_currencies$Field$INP3 = currencies[Field.INPUT]) === null || _currencies$Field$INP3 === void 0 ? void 0 : _currencies$Field$INP3.symbol
                         }
                       }),
-                      children: /*#__PURE__*/jsx(HelpCircle, {
+                      children: /*#__PURE__*/jsxRuntime.jsx(reactFeather.HelpCircle, {
                         size: "20",
                         color: 'white',
                         style: {
@@ -23466,7 +23505,7 @@ function Swap(_ref3) {
                       })
                     })]
                   })
-                }), /*#__PURE__*/jsx(ButtonError, {
+                }), /*#__PURE__*/jsxRuntime.jsx(ButtonError, {
                   onClick: () => {
                     if (isExpertMode) {
                       handleSwap();
@@ -23484,20 +23523,20 @@ function Swap(_ref3) {
                   id: "swap-button",
                   disabled: !isValid || approvalState !== ApprovalState.APPROVED && signatureState !== UseERC20PermitState.SIGNED || priceImpactTooHigh,
                   error: isValid && priceImpactSeverity > 2,
-                  children: /*#__PURE__*/jsx(Text$1, {
+                  children: /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
                     fontSize: 16,
                     fontWeight: 500,
-                    children: priceImpactTooHigh ? /*#__PURE__*/jsx(Trans, {
+                    children: priceImpactTooHigh ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                       id: "High Price Impact"
-                    }) : priceImpactSeverity > 2 ? /*#__PURE__*/jsx(Trans, {
+                    }) : priceImpactSeverity > 2 ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                       id: "Swap Anyway"
-                    }) : /*#__PURE__*/jsx(Trans, {
+                    }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                       id: "Swap"
                     })
                   })
                 })]
               })
-            }) : /*#__PURE__*/jsx(ButtonError, {
+            }) : /*#__PURE__*/jsxRuntime.jsx(ButtonError, {
               onClick: () => {
                 if (isExpertMode) {
                   handleSwap();
@@ -23514,24 +23553,24 @@ function Swap(_ref3) {
               id: "swap-button",
               disabled: !isValid || priceImpactTooHigh || !!swapCallbackError,
               error: isValid && priceImpactSeverity > 2 && !swapCallbackError,
-              children: /*#__PURE__*/jsx(Text$1, {
+              children: /*#__PURE__*/jsxRuntime.jsx(rebass.Text, {
                 fontSize: 20,
                 fontWeight: 500,
-                children: swapInputError ? swapInputError : priceImpactTooHigh ? /*#__PURE__*/jsx(Trans, {
+                children: swapInputError ? swapInputError : priceImpactTooHigh ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Price Impact Too High"
-                }) : priceImpactSeverity > 2 ? /*#__PURE__*/jsx(Trans, {
+                }) : priceImpactSeverity > 2 ? /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Swap Anyway"
-                }) : /*#__PURE__*/jsx(Trans, {
+                }) : /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
                   id: "Swap"
                 })
               })
-            }), isExpertMode && swapErrorMessage ? /*#__PURE__*/jsx(SwapCallbackError, {
+            }), isExpertMode && swapErrorMessage ? /*#__PURE__*/jsxRuntime.jsx(SwapCallbackError, {
               error: swapErrorMessage
             }) : null]
           })]
         })]
       })]
-    }), /*#__PURE__*/jsx(SwitchLocaleLink, {}), !swapIsUnsupported ? null : /*#__PURE__*/jsx(UnsupportedCurrencyFooter, {
+    }), /*#__PURE__*/jsxRuntime.jsx(SwitchLocaleLink, {}), !swapIsUnsupported ? null : /*#__PURE__*/jsxRuntime.jsx(UnsupportedCurrencyFooter, {
       show: swapIsUnsupported,
       currencies: [currencies[Field.INPUT], currencies[Field.OUTPUT]]
     })]
@@ -23542,7 +23581,7 @@ function RedirectPathToSwapOnly(_ref) {
   let {
     location
   } = _ref;
-  return /*#__PURE__*/jsx(Redirect, {
+  return /*#__PURE__*/jsxRuntime.jsx(reactRouterDom.Redirect, {
     to: { ...location,
       pathname: '/swap'
     }
@@ -23556,10 +23595,10 @@ function DarkModeQueryParamReader(_ref) {
     }
   } = _ref;
   const dispatch = useAppDispatch();
-  useEffect(() => {
+  React.useEffect(() => {
     if (!search) return;
     if (search.length < 2) return;
-    const parsed = parse(search, {
+    const parsed = qs.parse(search, {
       parseArrays: false,
       ignoreQueryPrefix: true
     });
@@ -23579,12 +23618,12 @@ function DarkModeQueryParamReader(_ref) {
   return null;
 }
 
-const AppWrapper = _styled.div.withConfig({
+const AppWrapper = _styled__default["default"].div.withConfig({
   displayName: "App__AppWrapper",
   componentId: "sc-zfenkb-0"
 })(["display:flex;flex-flow:column;align-items:flex-start;"]);
 
-const BodyWrapper = _styled.div.withConfig({
+const BodyWrapper = _styled__default["default"].div.withConfig({
   displayName: "App__BodyWrapper",
   componentId: "sc-zfenkb-1"
 })(["display:flex;flex-direction:column;width:100%;padding:120px 16px 0px 16px;align-items:center;flex:1;z-index:1;", ";"], _ref => {
@@ -23596,7 +23635,7 @@ const BodyWrapper = _styled.div.withConfig({
   `;
 });
 
-const HeaderWrapper = _styled.div.withConfig({
+const HeaderWrapper = _styled__default["default"].div.withConfig({
   displayName: "App__HeaderWrapper",
   componentId: "sc-zfenkb-2"
 })(["", " width:100%;justify-content:space-between;position:fixed;top:0;z-index:2;"], _ref2 => {
@@ -23606,7 +23645,7 @@ const HeaderWrapper = _styled.div.withConfig({
   return theme.flexRowNoWrap;
 });
 
-const Marginer = _styled.div.withConfig({
+const Marginer = _styled__default["default"].div.withConfig({
   displayName: "App__Marginer",
   componentId: "sc-zfenkb-3"
 })(["margin-top:5rem;"]);
@@ -23614,36 +23653,36 @@ const Marginer = _styled.div.withConfig({
 function TopLevelModals() {
   const open = useModalOpen(ApplicationModal.ADDRESS_CLAIM);
   const toggle = useToggleModal(ApplicationModal.ADDRESS_CLAIM);
-  return /*#__PURE__*/jsx(AddressClaimModal, {
+  return /*#__PURE__*/jsxRuntime.jsx(AddressClaimModal, {
     isOpen: open,
     onDismiss: toggle
   });
 }
 
 function App() {
-  return /*#__PURE__*/jsxs(ErrorBoundary, {
-    children: [/*#__PURE__*/jsx(Route$2, {
+  return /*#__PURE__*/jsxRuntime.jsxs(ErrorBoundary, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(reactRouterDom.Route, {
       component: DarkModeQueryParamReader
-    }), /*#__PURE__*/jsx(Route$2, {
+    }), /*#__PURE__*/jsxRuntime.jsx(reactRouterDom.Route, {
       component: ApeModeQueryParamReader
-    }), /*#__PURE__*/jsx(Web3ReactManager, {
-      children: /*#__PURE__*/jsxs(AppWrapper, {
-        children: [/*#__PURE__*/jsx(HeaderWrapper, {
-          children: /*#__PURE__*/jsx(Header$2, {})
-        }), /*#__PURE__*/jsxs(BodyWrapper, {
-          children: [/*#__PURE__*/jsx(Popups, {}), /*#__PURE__*/jsx(Polling, {}), /*#__PURE__*/jsx(TopLevelModals, {}), /*#__PURE__*/jsx(Suspense, {
-            fallback: /*#__PURE__*/jsx(Loader, {}),
-            children: /*#__PURE__*/jsxs(Switch, {
-              children: [/*#__PURE__*/jsx(Route$2, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Web3ReactManager, {
+      children: /*#__PURE__*/jsxRuntime.jsxs(AppWrapper, {
+        children: [/*#__PURE__*/jsxRuntime.jsx(HeaderWrapper, {
+          children: /*#__PURE__*/jsxRuntime.jsx(Header$2, {})
+        }), /*#__PURE__*/jsxRuntime.jsxs(BodyWrapper, {
+          children: [/*#__PURE__*/jsxRuntime.jsx(Popups, {}), /*#__PURE__*/jsxRuntime.jsx(Polling, {}), /*#__PURE__*/jsxRuntime.jsx(TopLevelModals, {}), /*#__PURE__*/jsxRuntime.jsx(React.Suspense, {
+            fallback: /*#__PURE__*/jsxRuntime.jsx(Loader, {}),
+            children: /*#__PURE__*/jsxRuntime.jsxs(reactRouterDom.Switch, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(reactRouterDom.Route, {
                 exact: true,
                 strict: true,
                 path: "/swap",
                 component: Swap
-              }), /*#__PURE__*/jsx(Route$2, {
+              }), /*#__PURE__*/jsxRuntime.jsx(reactRouterDom.Route, {
                 component: RedirectPathToSwapOnly
               })]
             })
-          }), /*#__PURE__*/jsx(Marginer, {})]
+          }), /*#__PURE__*/jsxRuntime.jsx(Marginer, {})]
         })]
       })
     })]
@@ -23658,67 +23697,67 @@ function Blocklist(_ref) {
   const {
     account
   } = useActiveWeb3React();
-  const blocked = useMemo(() => Boolean(account && BLOCKED_ADDRESSES.indexOf(account) !== -1), [account]);
+  const blocked = React.useMemo(() => Boolean(account && BLOCKED_ADDRESSES.indexOf(account) !== -1), [account]);
 
   if (blocked) {
-    return /*#__PURE__*/jsx("div", {
-      children: /*#__PURE__*/jsx(Trans, {
+    return /*#__PURE__*/jsxRuntime.jsx("div", {
+      children: /*#__PURE__*/jsxRuntime.jsx(react.Trans, {
         id: "Blocked address"
       })
     });
   }
 
-  return /*#__PURE__*/jsx(Fragment, {
+  return /*#__PURE__*/jsxRuntime.jsx(jsxRuntime.Fragment, {
     children: children
   });
 }
 
 const plurals = {
-  'af-ZA': af,
-  'ar-SA': ar,
-  'ca-ES': ca,
-  'cs-CZ': cs,
-  'da-DK': da,
-  'de-DE': de,
-  'el-GR': el,
-  'en-US': en,
-  'es-ES': es,
-  'fi-FI': fi,
-  'fr-FR': fr,
-  'he-IL': he,
-  'hu-HU': hu,
-  'id-ID': id,
-  'it-IT': it,
-  'ja-JP': ja,
-  'ko-KR': ko,
-  'nl-NL': nl,
-  'no-NO': no,
-  'pl-PL': pl,
-  'pt-BR': pt,
-  'pt-PT': pt,
-  'ro-RO': ro,
-  'ru-RU': ru,
-  'sr-SP': sr,
-  'sv-SE': sv,
-  'sw-TZ': sw,
-  'tr-TR': tr,
-  'uk-UA': uk,
-  'vi-VN': vi,
-  'zh-CN': zh,
-  'zh-TW': zh
+  'af-ZA': plurals$1.af,
+  'ar-SA': plurals$1.ar,
+  'ca-ES': plurals$1.ca,
+  'cs-CZ': plurals$1.cs,
+  'da-DK': plurals$1.da,
+  'de-DE': plurals$1.de,
+  'el-GR': plurals$1.el,
+  'en-US': plurals$1.en,
+  'es-ES': plurals$1.es,
+  'fi-FI': plurals$1.fi,
+  'fr-FR': plurals$1.fr,
+  'he-IL': plurals$1.he,
+  'hu-HU': plurals$1.hu,
+  'id-ID': plurals$1.id,
+  'it-IT': plurals$1.it,
+  'ja-JP': plurals$1.ja,
+  'ko-KR': plurals$1.ko,
+  'nl-NL': plurals$1.nl,
+  'no-NO': plurals$1.no,
+  'pl-PL': plurals$1.pl,
+  'pt-BR': plurals$1.pt,
+  'pt-PT': plurals$1.pt,
+  'ro-RO': plurals$1.ro,
+  'ru-RU': plurals$1.ru,
+  'sr-SP': plurals$1.sr,
+  'sv-SE': plurals$1.sv,
+  'sw-TZ': plurals$1.sw,
+  'tr-TR': plurals$1.tr,
+  'uk-UA': plurals$1.uk,
+  'vi-VN': plurals$1.vi,
+  'zh-CN': plurals$1.zh,
+  'zh-TW': plurals$1.zh
 };
 
 async function dynamicActivate(locale) {
-  i18n.loadLocaleData(locale, {
+  core$1.i18n.loadLocaleData(locale, {
     plurals: () => plurals[locale]
   });
   const {
     messages: messages$1
   } = locale === DEFAULT_LOCALE ? {
     messages: messages
-  } : await import(`locales/${locale}`);
-  i18n.load(locale, messages$1);
-  i18n.activate(locale);
+  } : await (function (t) { return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(t)); }); })(`locales/${locale}`);
+  core$1.i18n.load(locale, messages$1);
+  core$1.i18n.activate(locale);
 }
 
 dynamicActivate(initialLocale);
@@ -23728,7 +23767,7 @@ function LanguageProvider(_ref) {
   } = _ref;
   const locale = useActiveLocale();
   const [, setUserLocale] = useUserLocaleManager();
-  useEffect(() => {
+  React.useEffect(() => {
     dynamicActivate(locale).then(() => {
       document.documentElement.setAttribute('lang', locale);
       setUserLocale(locale); // stores the selected locale to persist across sessions
@@ -23736,9 +23775,9 @@ function LanguageProvider(_ref) {
       console.error('Failed to activate locale', locale, error);
     });
   }, [locale, setUserLocale]);
-  return /*#__PURE__*/jsx(I18nProvider, {
+  return /*#__PURE__*/jsxRuntime.jsx(react.I18nProvider, {
     forceRenderOnLocaleChange: false,
-    i18n: i18n,
+    i18n: core$1.i18n,
     children: children
   });
 }
@@ -24248,7 +24287,7 @@ function useQueryCacheInvalidator() {
   // `chainId` is available in redux to build the subgraph url
 
   const chainId = useAppSelector(state => state.application.chainId);
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(api.util.invalidateTags([CHAIN_TAG]));
   }, [chainId, dispatch]);
 }
@@ -24261,12 +24300,12 @@ function Updater$5() {
   } = useActiveWeb3React();
   const dispatch = useAppDispatch();
   const windowVisible = useIsWindowVisible();
-  const [state, setState] = useState({
+  const [state, setState] = React.useState({
     chainId,
     blockNumber: null
   });
   useQueryCacheInvalidator();
-  const blockNumberCallback = useCallback(blockNumber => {
+  const blockNumberCallback = React.useCallback(blockNumber => {
     setState(state => {
       if (chainId === state.chainId) {
         if (typeof state.blockNumber !== 'number') return {
@@ -24283,7 +24322,7 @@ function Updater$5() {
     });
   }, [chainId, setState]); // attach/detach listeners
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!library || !chainId || !windowVisible) return undefined;
     setState({
       chainId,
@@ -24296,14 +24335,14 @@ function Updater$5() {
     };
   }, [dispatch, chainId, library, blockNumberCallback, windowVisible]);
   const debouncedState = useDebounce(state, 100);
-  useEffect(() => {
+  React.useEffect(() => {
     if (!debouncedState.chainId || !debouncedState.blockNumber || !windowVisible) return;
     dispatch(updateBlockNumber({
       chainId: debouncedState.chainId,
       blockNumber: debouncedState.blockNumber
     }));
   }, [windowVisible, dispatch, debouncedState.blockNumber, debouncedState.chainId]);
-  useEffect(() => {
+  React.useEffect(() => {
     var _supportedChainId;
 
     dispatch(updateChainId({
@@ -24311,7 +24350,7 @@ function Updater$5() {
     }));
   }, [dispatch, debouncedState.chainId]);
   const implements3085 = useAppSelector(state => state.application.implements3085);
-  useEffect(() => {
+  React.useEffect(() => {
     var _library$provider;
 
     if (!(library !== null && library !== void 0 && (_library$provider = library.provider) !== null && _library$provider !== void 0 && _library$provider.request)) {
@@ -24346,11 +24385,11 @@ function Updater$4() {
   const lists = useAllLists();
   const activeListUrls = useActiveListUrls();
   const fetchList = useFetchListCallback();
-  const fetchAllListsCallback = useCallback(() => {
+  const fetchAllListsCallback = React.useCallback(() => {
     if (!isWindowVisible) return;
     Object.keys(lists).forEach(url => fetchList(url).catch(error => console.debug('interval list fetching error', error)));
   }, [fetchList, isWindowVisible, lists]);
-  useEffect(() => {
+  React.useEffect(() => {
     if (chainId && [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)) {
       dispatch(enableList(OPTIMISM_LIST));
     }
@@ -24362,7 +24401,7 @@ function Updater$4() {
 
   useInterval(fetchAllListsCallback, library ? 1000 * 60 * 10 : null); // whenever a list is not loaded and not loading, try again to load it
 
-  useEffect(() => {
+  React.useEffect(() => {
     Object.keys(lists).forEach(listUrl => {
       const list = lists[listUrl];
 
@@ -24372,7 +24411,7 @@ function Updater$4() {
     });
   }, [dispatch, fetchList, library, lists]); // if any lists from unsupported lists are loaded, check them too (in case new updates since last visit)
 
-  useEffect(() => {
+  React.useEffect(() => {
     UNSUPPORTED_LIST_URLS.forEach(listUrl => {
       const list = lists[listUrl];
 
@@ -24382,20 +24421,20 @@ function Updater$4() {
     });
   }, [dispatch, fetchList, library, lists]); // automatically update lists if versions are minor/patch
 
-  useEffect(() => {
+  React.useEffect(() => {
     Object.keys(lists).forEach(listUrl => {
       const list = lists[listUrl];
 
       if (list.current && list.pendingUpdate) {
-        const bump = getVersionUpgrade(list.current.version, list.pendingUpdate.version);
+        const bump = tokenLists.getVersionUpgrade(list.current.version, list.pendingUpdate.version);
 
         switch (bump) {
-          case VersionUpgrade.NONE:
+          case tokenLists.VersionUpgrade.NONE:
             throw new Error('unexpected no version bump');
 
-          case VersionUpgrade.PATCH:
-          case VersionUpgrade.MINOR:
-            const min = minVersionBump(list.current.tokens, list.pendingUpdate.tokens); // automatically update minor/patch as long as bump matches the min update
+          case tokenLists.VersionUpgrade.PATCH:
+          case tokenLists.VersionUpgrade.MINOR:
+            const min = tokenLists.minVersionBump(list.current.tokens, list.pendingUpdate.tokens); // automatically update minor/patch as long as bump matches the min update
 
             if (bump >= min) {
               dispatch(acceptListUpdate(listUrl));
@@ -24406,7 +24445,7 @@ function Updater$4() {
             break;
           // update any active or inactive lists
 
-          case VersionUpgrade.MAJOR:
+          case tokenLists.VersionUpgrade.MAJOR:
             dispatch(acceptListUpdate(listUrl));
         }
       }
@@ -24423,7 +24462,7 @@ function Updater$3() {
     library
   } = useActiveWeb3React();
   const blockNumber = useBlockNumber();
-  const filtersNeedFetch = useMemo(() => {
+  const filtersNeedFetch = React.useMemo(() => {
     if (!chainId || typeof blockNumber !== 'number') return [];
     const active = state[chainId];
     if (!active) return [];
@@ -24439,7 +24478,7 @@ function Updater$3() {
       return true;
     }).map(key => keyToFilter(key));
   }, [blockNumber, chainId, state]);
-  useEffect(() => {
+  React.useEffect(() => {
     if (!library || !chainId || typeof blockNumber !== 'number' || filtersNeedFetch.length === 0) return;
     dispatch(fetchingLogs({
       chainId,
@@ -24478,7 +24517,7 @@ function Updater$2() {
     chainId
   } = useActiveWeb3React();
   const multicall2Contract = useMulticall2Contract();
-  return /*#__PURE__*/jsx(multicall.Updater, {
+  return /*#__PURE__*/jsxRuntime.jsx(multicall.Updater, {
     chainId: chainId,
     latestBlockNumber: latestBlockNumber,
     contract: multicall2Contract
@@ -24627,7 +24666,7 @@ function Updater$1() {
   const lastBlockNumber = useBlockNumber();
   const dispatch = useAppDispatch();
   const state = useAppSelector(state => state.transactions);
-  const transactions = useMemo(() => {
+  const transactions = React.useMemo(() => {
     var _state$chainId;
 
     return chainId ? (_state$chainId = state[chainId]) !== null && _state$chainId !== void 0 ? _state$chainId : {} : {};
@@ -24636,7 +24675,7 @@ function Updater$1() {
   const addPopup = useAddPopup(); // speed up popup dismisall time if on L2
 
   const isL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId));
-  const getReceipt = useCallback(hash => {
+  const getReceipt = React.useCallback(hash => {
     var _RETRY_OPTIONS_BY_CHA;
 
     if (!library || !chainId) throw new Error('No library or chainId');
@@ -24650,7 +24689,7 @@ function Updater$1() {
       return receipt;
     }), retryOptions);
   }, [chainId, library]);
-  useEffect(() => {
+  React.useEffect(() => {
     if (!chainId || !library || !lastBlockNumber) return;
     const cancels = Object.keys(transactions).filter(hash => shouldCheck(lastBlockNumber, transactions[hash])).map(hash => {
       const {
@@ -24709,7 +24748,7 @@ function Updater$1() {
 function Updater() {
   const dispatch = useAppDispatch(); // keep dark mode in sync with the system
 
-  useEffect(() => {
+  React.useEffect(() => {
     var _window;
 
     const darkHandler = match => {
@@ -24766,7 +24805,7 @@ function RadialGradientByChainUpdater() {
   } = useActiveWeb3React();
   const [darkMode] = useDarkModeManager(); // manage background color
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!backgroundRadialGradientElement) {
       return;
     }
@@ -24797,23 +24836,23 @@ function RadialGradientByChainUpdater() {
 }
 
 function Updaters() {
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [/*#__PURE__*/jsx(RadialGradientByChainUpdater, {}), /*#__PURE__*/jsx(Updater$4, {}), /*#__PURE__*/jsx(Updater, {}), /*#__PURE__*/jsx(Updater$5, {}), /*#__PURE__*/jsx(Updater$1, {}), /*#__PURE__*/jsx(Updater$2, {}), /*#__PURE__*/jsx(Updater$3, {})]
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsx(RadialGradientByChainUpdater, {}), /*#__PURE__*/jsxRuntime.jsx(Updater$4, {}), /*#__PURE__*/jsxRuntime.jsx(Updater, {}), /*#__PURE__*/jsxRuntime.jsx(Updater$5, {}), /*#__PURE__*/jsxRuntime.jsx(Updater$1, {}), /*#__PURE__*/jsxRuntime.jsx(Updater$2, {}), /*#__PURE__*/jsxRuntime.jsx(Updater$3, {})]
   });
 }
 
-const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
-const Providers = props => /*#__PURE__*/jsx(Provider, {
+const Web3ProviderNetwork = core.createWeb3ReactRoot(NetworkContextName);
+const Providers = props => /*#__PURE__*/jsxRuntime.jsx(reactRedux.Provider, {
   store: store,
-  children: /*#__PURE__*/jsx(HashRouter, {
-    children: /*#__PURE__*/jsx(LanguageProvider, {
-      children: /*#__PURE__*/jsx(Web3ReactProvider, {
+  children: /*#__PURE__*/jsxRuntime.jsx(reactRouterDom.HashRouter, {
+    children: /*#__PURE__*/jsxRuntime.jsx(LanguageProvider, {
+      children: /*#__PURE__*/jsxRuntime.jsx(core.Web3ReactProvider, {
         getLibrary: getLibrary,
-        children: /*#__PURE__*/jsx(Web3ProviderNetwork, {
+        children: /*#__PURE__*/jsxRuntime.jsx(Web3ProviderNetwork, {
           getLibrary: getLibrary,
-          children: /*#__PURE__*/jsxs(Blocklist, {
-            children: [/*#__PURE__*/jsx(Updaters, {}), /*#__PURE__*/jsxs(ThemeProvider, {
-              children: [/*#__PURE__*/jsx(ThemedGlobalStyle, {}), props.children]
+          children: /*#__PURE__*/jsxRuntime.jsxs(Blocklist, {
+            children: [/*#__PURE__*/jsxRuntime.jsx(Updaters, {}), /*#__PURE__*/jsxRuntime.jsxs(ThemeProvider, {
+              children: [/*#__PURE__*/jsxRuntime.jsx(ThemedGlobalStyle, {}), props.children]
             })]
           })
         })
@@ -24822,5 +24861,7 @@ const Providers = props => /*#__PURE__*/jsx(Provider, {
   })
 });
 
-export { App, Providers, serviceWorkerRegistration };
-//# sourceMappingURL=snowflake.esm.js.map
+exports.App = App;
+exports.Providers = Providers;
+exports.serviceWorkerRegistration = serviceWorkerRegistration;
+//# sourceMappingURL=snowflake.js.map

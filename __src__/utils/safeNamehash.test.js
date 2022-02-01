@@ -1,5 +1,5 @@
 import { namehash } from '@ethersproject/hash';
-import { safeNamehash } from './safeNamehash';
+import { safeNamehash } from "./safeNamehash";
 describe('#safeNamehash', () => {
   const emoji = '🤔';
   it('#namehash fails', () => {

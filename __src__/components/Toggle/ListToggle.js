@@ -1,6 +1,6 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ThemedText } from '../../theme';
+import { ThemedText } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

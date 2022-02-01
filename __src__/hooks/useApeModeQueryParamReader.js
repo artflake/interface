@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from 'state/hooks';
-import { updateUserExpertMode } from '../state/user/actions';
-import useParsedQueryString from './useParsedQueryString';
+import { useAppDispatch } from "../state/hooks";
+import { updateUserExpertMode } from "../state/user/actions";
+import useParsedQueryString from "./useParsedQueryString";
 export default function ApeModeQueryParamReader() {
   useApeModeQueryParamReader();
   return null;

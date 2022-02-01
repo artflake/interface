@@ -1,8 +1,8 @@
 import { Trans } from "@lingui/react";
-import Badge from 'components/Badge';
-import { PoolState } from 'hooks/usePools';
+import Badge from "../Badge";
+import { PoolState } from "../../hooks/usePools";
 import React from 'react';
-import { ThemedText } from 'theme';
+import { ThemedText } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 export function FeeTierPercentageBadge(_ref) {
   var _distributions$feeAmo;

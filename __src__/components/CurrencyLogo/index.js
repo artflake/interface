@@ -1,10 +1,10 @@
 import _styled from "styled-components";
-import { SupportedChainId } from 'constants/chains';
+import { SupportedChainId } from "../../constants/chains";
 import React, { useMemo } from 'react';
-import EthereumLogo from '../../assets/images/ethereum-logo.png';
-import useHttpLocations from '../../hooks/useHttpLocations';
-import { WrappedTokenInfo } from '../../state/lists/wrappedTokenInfo';
-import Logo from '../Logo';
+import EthereumLogo from "../../assets/images/ethereum-logo.png";
+import useHttpLocations from "../../hooks/useHttpLocations";
+import { WrappedTokenInfo } from "../../state/lists/wrappedTokenInfo";
+import Logo from "../Logo";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 function chainIdToNetworkName(networkId) {

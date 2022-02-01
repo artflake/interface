@@ -1,9 +1,9 @@
-import { SupportedChainId } from 'constants/chains';
+import { SupportedChainId } from "../constants/chains";
 import Vibrant from 'node-vibrant/lib/bundle';
 import { shade } from 'polished';
 import { useLayoutEffect, useState } from 'react';
-import { WrappedTokenInfo } from 'state/lists/wrappedTokenInfo';
-import uriToHttp from 'utils/uriToHttp';
+import { WrappedTokenInfo } from "../state/lists/wrappedTokenInfo";
+import uriToHttp from "../utils/uriToHttp";
 import { hex } from 'wcag-contrast';
 
 function URIForEthToken(address) {

@@ -1,7 +1,7 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
 import { i18n } from "@lingui/core";
-import { ResizingTextArea, TextInput } from 'components/TextInput';
+import { ResizingTextArea, TextInput } from "../../components/TextInput";
 import React, { memo } from 'react';
 import { Text } from 'rebass';
 import { jsx as _jsx } from "react/jsx-runtime";

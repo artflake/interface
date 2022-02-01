@@ -1,10 +1,10 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ButtonOutlined } from 'components/Button';
-import { AutoRow } from 'components/Row';
+import { ButtonOutlined } from "../Button";
+import { AutoRow } from "../Row";
 import React from 'react';
 import ReactGA from 'react-ga';
-import { ThemedText } from 'theme';
+import { ThemedText } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const Button = _styled(ButtonOutlined).attrs(() => ({

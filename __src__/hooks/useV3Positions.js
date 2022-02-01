@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { useMemo } from 'react';
-import { useSingleCallResult, useSingleContractMultipleData } from 'state/multicall/hooks';
-import { useV3NFTPositionManagerContract } from './useContract';
+import { useSingleCallResult, useSingleContractMultipleData } from "../state/multicall/hooks";
+import { useV3NFTPositionManagerContract } from "./useContract";
 
 function useV3PositionsFromTokenIds(tokenIds) {
   const positionManager = useV3NFTPositionManagerContract();

@@ -1,8 +1,8 @@
 import { Trans } from "@lingui/react";
 import { Text } from 'rebass';
-import { ButtonError } from '../Button';
-import { AutoRow } from '../Row';
-import { SwapCallbackError } from './styleds';
+import { ButtonError } from "../Button";
+import { AutoRow } from "../Row";
+import { SwapCallbackError } from "./styleds";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";

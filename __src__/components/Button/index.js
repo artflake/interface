@@ -1,9 +1,9 @@
 import _styled from "styled-components";
-import useTheme from 'hooks/useTheme';
+import useTheme from "../../hooks/useTheme";
 import { darken } from 'polished';
 import { Check, ChevronDown } from 'react-feather';
 import { Button as RebassButton } from 'rebass/styled-components';
-import { RowBetween } from '../Row';
+import { RowBetween } from "../Row";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 export const BaseButton = _styled(RebassButton).withConfig({

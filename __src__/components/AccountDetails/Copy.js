@@ -2,8 +2,8 @@ import _styled from "styled-components";
 import { Trans } from "@lingui/react";
 import React from 'react';
 import { CheckCircle, Copy } from 'react-feather';
-import useCopyClipboard from '../../hooks/useCopyClipboard';
-import { LinkStyledButton } from '../../theme';
+import useCopyClipboard from "../../hooks/useCopyClipboard";
+import { LinkStyledButton } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

@@ -1,9 +1,9 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ButtonPrimary } from 'components/Button';
+import { ButtonPrimary } from "../Button";
 import { AlertCircle, ArrowLeft } from 'react-feather';
-import { CloseIcon, ThemedText } from 'theme';
-import TokenImportCard from './TokenImportCard';
+import { CloseIcon, ThemedText } from "../../theme";
+import TokenImportCard from "./TokenImportCard";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from 'react';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { useBlockNumber } from '../application/hooks';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { fetchedLogs, fetchedLogsError, fetchingLogs } from './slice';
-import { keyToFilter } from './utils';
+import { useActiveWeb3React } from "../../hooks/web3";
+import { useBlockNumber } from "../application/hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { fetchedLogs, fetchedLogsError, fetchingLogs } from "./slice";
+import { keyToFilter } from "./utils";
 export default function Updater() {
   const dispatch = useAppDispatch();
   const state = useAppSelector(state => state.logs);

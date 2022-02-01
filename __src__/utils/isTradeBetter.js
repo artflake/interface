@@ -1,4 +1,4 @@
-import { ONE_HUNDRED_PERCENT, ZERO_PERCENT } from '../constants/misc'; // returns whether tradeB is better than tradeA by at least a threshold percentage amount
+import { ONE_HUNDRED_PERCENT, ZERO_PERCENT } from "../constants/misc"; // returns whether tradeB is better than tradeA by at least a threshold percentage amount
 
 export function isTradeBetter(tradeA, tradeB) {
   let minimumDelta = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ZERO_PERCENT;

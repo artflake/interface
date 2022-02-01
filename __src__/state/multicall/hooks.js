@@ -1,6 +1,6 @@
-import { useActiveWeb3React } from '../../hooks/web3';
-import { useBlockNumber } from '../application/hooks';
-import { multicall } from './instance';
+import { useActiveWeb3React } from "../../hooks/web3";
+import { useBlockNumber } from "../application/hooks";
+import { multicall } from "./instance";
 // re-export for convenience
 export { NEVER_RELOAD } from '@uniswap/redux-multicall'; // re-export for convenience
 

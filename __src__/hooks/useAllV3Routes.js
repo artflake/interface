@@ -1,7 +1,7 @@
 import { Route } from '@uniswap/v3-sdk';
 import { useMemo } from 'react';
-import { useV3SwapPools } from './useV3SwapPools';
-import { useActiveWeb3React } from './web3';
+import { useV3SwapPools } from "./useV3SwapPools";
+import { useActiveWeb3React } from "./web3";
 /**
  * Returns true if poolA is equivalent to poolB
  * @param poolA one of the two pools

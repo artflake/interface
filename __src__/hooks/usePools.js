@@ -3,9 +3,9 @@ import { abi as IUniswapV3PoolStateABI } from '@uniswap/v3-core/artifacts/contra
 import { computePoolAddress } from '@uniswap/v3-sdk';
 import { Pool } from '@uniswap/v3-sdk';
 import { useMemo } from 'react';
-import { V3_CORE_FACTORY_ADDRESSES } from '../constants/addresses';
-import { useMultipleContractSingleData } from '../state/multicall/hooks';
-import { useActiveWeb3React } from './web3';
+import { V3_CORE_FACTORY_ADDRESSES } from "../constants/addresses";
+import { useMultipleContractSingleData } from "../state/multicall/hooks";
+import { useActiveWeb3React } from "./web3";
 const POOL_STATE_INTERFACE = new Interface(IUniswapV3PoolStateABI);
 export let PoolState;
 

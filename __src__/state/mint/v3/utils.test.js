@@ -1,5 +1,5 @@
 import { Token } from '@uniswap/sdk-core';
-import { tryParsePrice } from './utils';
+import { tryParsePrice } from "./utils";
 describe('hooks', () => {
   describe('#tryParsePrice', () => {
     it('should return undefined if amount is not a number', () => {

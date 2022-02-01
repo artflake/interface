@@ -1,4 +1,4 @@
-import { ExplorerDataType, getExplorerLink } from './getExplorerLink';
+import { ExplorerDataType, getExplorerLink } from "./getExplorerLink";
 describe('#getExplorerLink', () => {
   it('correct for tx', () => {
     expect(getExplorerLink(1, 'abc', ExplorerDataType.TRANSACTION)).toEqual('https://etherscan.io/tx/abc');

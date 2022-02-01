@@ -1,8 +1,8 @@
-import { useTransactionMonitoringEventCallback } from 'hooks/useMonitoringEventCallback';
+import { useTransactionMonitoringEventCallback } from "../../hooks/useMonitoringEventCallback";
 import { useCallback, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from 'state/hooks';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { addTransaction, TransactionType } from './actions';
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { useActiveWeb3React } from "../../hooks/web3";
+import { addTransaction, TransactionType } from "./actions";
 // helper that can take a ethers library transaction response and add it to the list of transactions
 export function useTransactionAdder() {
   const {

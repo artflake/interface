@@ -1,10 +1,10 @@
 import { ThemeContext as _ThemeContext } from "styled-components";
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import useUSDCPrice from 'hooks/useUSDCPrice';
+import useUSDCPrice from "../../hooks/useUSDCPrice";
 import { useCallback, useContext } from 'react';
 import { Text } from 'rebass';
-import { ThemedText } from 'theme';
+import { ThemedText } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

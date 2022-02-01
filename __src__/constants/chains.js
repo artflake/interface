@@ -1,7 +1,7 @@
-import ethereumLogoUrl from '../assets/images/ethereum-logo.png';
-import arbitrumLogoUrl from '../assets/svg/arbitrum_logo.svg';
-import optimismLogoUrl from '../assets/svg/optimistic_ethereum.svg';
-import { ARBITRUM_LIST, OPTIMISM_LIST } from './lists';
+import ethereumLogoUrl from "../assets/images/ethereum-logo.png";
+import arbitrumLogoUrl from "../assets/svg/arbitrum_logo.svg";
+import optimismLogoUrl from "../assets/svg/optimistic_ethereum.svg";
+import { ARBITRUM_LIST, OPTIMISM_LIST } from "./lists";
 export let SupportedChainId;
 
 (function (SupportedChainId) {

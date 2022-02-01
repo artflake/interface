@@ -6,20 +6,20 @@ import { formatUnits } from '@ethersproject/units'; // eslint-disable-next-line 
 
 import { abi as GOV_ABI } from '@uniswap/governance/build/GovernorAlpha.json';
 import { CurrencyAmount } from '@uniswap/sdk-core';
-import { POLYGON_PROPOSAL_TITLE } from 'constants/proposals/polygon_proposal_title';
-import { UNISWAP_GRANTS_PROPOSAL_DESCRIPTION } from 'constants/proposals/uniswap_grants_proposal_description';
-import { useGovernanceBravoContract, useGovernanceV0Contract, useGovernanceV1Contract, useLatestGovernanceContract, useUniContract } from 'hooks/useContract';
-import { useActiveWeb3React } from 'hooks/web3';
+import { POLYGON_PROPOSAL_TITLE } from "../../constants/proposals/polygon_proposal_title";
+import { UNISWAP_GRANTS_PROPOSAL_DESCRIPTION } from "../../constants/proposals/uniswap_grants_proposal_description";
+import { useGovernanceBravoContract, useGovernanceV0Contract, useGovernanceV1Contract, useLatestGovernanceContract, useUniContract } from "../../hooks/useContract";
+import { useActiveWeb3React } from "../../hooks/web3";
 import { useCallback, useMemo } from 'react';
-import { calculateGasMargin } from 'utils/calculateGasMargin';
-import { SupportedChainId } from '../../constants/chains';
-import { BRAVO_START_BLOCK, ONE_BIP_START_BLOCK, POLYGON_START_BLOCK, UNISWAP_GRANTS_START_BLOCK } from '../../constants/proposals';
-import { UNI } from '../../constants/tokens';
-import { useLogs } from '../logs/hooks';
-import { useSingleCallResult, useSingleContractMultipleData } from '../multicall/hooks';
-import { TransactionType } from '../transactions/actions';
-import { useTransactionAdder } from '../transactions/hooks';
-import { VoteOption } from './types';
+import { calculateGasMargin } from "../../utils/calculateGasMargin";
+import { SupportedChainId } from "../../constants/chains";
+import { BRAVO_START_BLOCK, ONE_BIP_START_BLOCK, POLYGON_START_BLOCK, UNISWAP_GRANTS_START_BLOCK } from "../../constants/proposals";
+import { UNI } from "../../constants/tokens";
+import { useLogs } from "../logs/hooks";
+import { useSingleCallResult, useSingleContractMultipleData } from "../multicall/hooks";
+import { TransactionType } from "../transactions/actions";
+import { useTransactionAdder } from "../transactions/hooks";
+import { VoteOption } from "./types";
 export let ProposalState;
 
 (function (ProposalState) {

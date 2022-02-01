@@ -1,6 +1,6 @@
 import { parse } from 'qs';
-import { Field } from './actions';
-import { queryParametersToSwapState } from './hooks';
+import { Field } from "./actions";
+import { queryParametersToSwapState } from "./hooks";
 describe('hooks', () => {
   describe('#queryParametersToSwapState', () => {
     test('ETH to DAI', () => {

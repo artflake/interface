@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react";
-import { ToggleElement, ToggleWrapper } from 'components/Toggle/MultiToggle'; // the order of displayed base currencies from left to right is always in sort order
+import { ToggleElement, ToggleWrapper } from "../Toggle/MultiToggle"; // the order of displayed base currencies from left to right is always in sort order
 // currencyA is treated as the preferred base currency
 
 import { jsx as _jsx } from "react/jsx-runtime";

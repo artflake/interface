@@ -22,9 +22,9 @@ import typescript from 'rollup-plugin-typescript2'
 require('dotenv').config()
 // import external from 'rollup-plugin-peer-deps-external'
 
-// import { dependencies } from './package.json'
+import { dependencies } from './package.json'
 
-// const deps = Object.keys(dependencies)
+const deps = Object.keys(dependencies)
 // const extensions = ['.ts', '.tsx']
 
 // const replacements = {
@@ -34,14 +34,14 @@ require('dotenv').config()
 // const ignore = ['styled-components']
 
 const library = {
-  external: ['@babel/runtime', '@metamask/jazzicon'],
-  input: 'src/snowflake/index.ts',
+  // external: ['@babel/runtime', '@metamask/jazzicon'],
+  input: '__src__/snowflake/index.js',
   output: [
     {
       file: 'dist2/snowflake.js',
       format: 'cjs',
       inlineDynamicImports: true,
-      sourcemap: false,
+      sourcemap: true,
       // plugins: [
       //   getBabelOutputPlugin({
       //     plugins: ['macros'],
@@ -52,16 +52,16 @@ const library = {
       file: 'dist2/snowflake.esm.js',
       format: 'esm',
       inlineDynamicImports: true,
-      sourcemap: false,
-      plugins: [
-        getBabelOutputPlugin({
-          plugins: ['babel-plugin-macros'],
-        }),
-      ],
+      sourcemap: true,
+      // plugins: [
+      //   getBabelOutputPlugin({
+      //     plugins: ['babel-plugin-macros'],
+      //   }),
+      // ],
     },
   ],
   // necessary because some nested imports (eg jotai/*) would otherwise not resolve.
-  // external: (source: string) => Boolean(deps.find((dep) => source === dep || source.startsWith(dep + '/'))),
+  // external: (source) => Boolean(deps.find((dep) => source === dep || source.startsWith(dep + '/'))),
   // external: (source: string) => ignore.includes(source),
   plugins: [
     // external(),
@@ -74,7 +74,7 @@ const library = {
     commonjs(),
 
     // replace({ ...replacements, preventAssignment: true }),
-    typescript({ tsconfig: './tsconfig.json', useTsconfigDeclarationDir: false }),
+    // typescript({ tsconfig: './tsconfig.json', useTsconfigDeclarationDir: false }),
     // babel({
     //   // presets: [['babel-preset-react-app/dependencies', { helpers: true }]],
     //   presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript', '@lingui/babel-preset-react'],

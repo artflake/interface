@@ -1,10 +1,10 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { CurrencyAmount } from '@uniswap/sdk-core';
 import { useEffect, useState } from 'react';
-import { useBlockNumber } from 'state/application/hooks';
-import { useSingleCallResult } from 'state/multicall/hooks';
-import { unwrappedToken } from 'utils/unwrappedToken';
-import { useV3NFTPositionManagerContract } from './useContract';
+import { useBlockNumber } from "../state/application/hooks";
+import { useSingleCallResult } from "../state/multicall/hooks";
+import { unwrappedToken } from "../utils/unwrappedToken";
+import { useV3NFTPositionManagerContract } from "./useContract";
 const MAX_UINT128 = BigNumber.from(2).pow(128).sub(1); // compute current + counterfactual fees for a v3 position
 
 export function useV3PositionFees(pool, tokenId) {

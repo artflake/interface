@@ -1,10 +1,10 @@
 import { CurrencyAmount, Price, TradeType } from '@uniswap/sdk-core';
 import { useMemo } from 'react';
-import { SupportedChainId } from '../constants/chains';
-import { DAI_OPTIMISM, USDC, USDC_ARBITRUM } from '../constants/tokens';
-import { useBestV2Trade } from './useBestV2Trade';
-import { useClientSideV3Trade } from './useClientSideV3Trade';
-import { useActiveWeb3React } from './web3'; // Stablecoin amounts used when calculating spot price for a given currency.
+import { SupportedChainId } from "../constants/chains";
+import { DAI_OPTIMISM, USDC, USDC_ARBITRUM } from "../constants/tokens";
+import { useBestV2Trade } from "./useBestV2Trade";
+import { useClientSideV3Trade } from "./useClientSideV3Trade";
+import { useActiveWeb3React } from "./web3"; // Stablecoin amounts used when calculating spot price for a given currency.
 // The amount is large enough to filter low liquidity pairs.
 
 const STABLECOIN_AMOUNT_OUT = {

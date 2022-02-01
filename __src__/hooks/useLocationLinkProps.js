@@ -1,9 +1,9 @@
-import useParsedQueryString from 'hooks/useParsedQueryString';
+import useParsedQueryString from "./useParsedQueryString";
 import { stringify } from 'qs';
 import { useMemo } from 'react';
 import ReactGA from 'react-ga';
 import { useLocation } from 'react-router-dom';
-import { useActiveLocale } from './useActiveLocale';
+import { useActiveLocale } from "./useActiveLocale";
 export function useLocationLinkProps(locale) {
   const location = useLocation();
   const qs = useParsedQueryString();

@@ -1,4 +1,4 @@
-import { retry, RetryableError } from './retry';
+import { retry, RetryableError } from "./retry";
 describe('retry', () => {
   function makeFn(fails, result) {
     let retryable = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;

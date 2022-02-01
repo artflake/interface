@@ -1,8 +1,8 @@
 import _styled from "styled-components";
 import jazzicon from '@metamask/jazzicon';
-import useENSAvatar from 'hooks/useENSAvatar';
+import useENSAvatar from "../../hooks/useENSAvatar";
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { useActiveWeb3React } from '../../hooks/web3';
+import { useActiveWeb3React } from "../../hooks/web3";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const StyledIdenticon = _styled.div.withConfig({

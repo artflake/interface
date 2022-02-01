@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react";
 import { useMemo } from 'react';
-import { useActiveWeb3React } from '../../hooks/web3'; // SDN OFAC addresses
+import { useActiveWeb3React } from "../../hooks/web3"; // SDN OFAC addresses
 
 import { jsx as _jsx } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";

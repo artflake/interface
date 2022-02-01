@@ -1,8 +1,8 @@
 import { Trans } from "@lingui/react";
-import { AutoColumn } from 'components/Column';
-import StepCounter from 'components/InputStepCounter/InputStepCounter';
-import { RowBetween } from 'components/Row';
-import { Bound } from 'state/mint/v3/actions'; // currencyA is the base token
+import { AutoColumn } from "../Column";
+import StepCounter from "../InputStepCounter/InputStepCounter";
+import { RowBetween } from "../Row";
+import { Bound } from "../../state/mint/v3/actions"; // currencyA is the base token
 
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";

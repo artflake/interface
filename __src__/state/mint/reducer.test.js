@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import { Field, typeInput } from './actions';
-import reducer, { initialState } from './reducer';
+import { Field, typeInput } from "./actions";
+import reducer, { initialState } from "./reducer";
 describe('mint reducer', () => {
   let store;
   beforeEach(() => {

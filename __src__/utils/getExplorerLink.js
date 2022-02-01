@@ -1,4 +1,4 @@
-import { SupportedChainId } from '../constants/chains';
+import { SupportedChainId } from "../constants/chains";
 const ETHERSCAN_PREFIXES = {
   [SupportedChainId.MAINNET]: '',
   [SupportedChainId.ROPSTEN]: 'ropsten.',

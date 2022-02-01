@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { safeNamehash } from 'utils/safeNamehash';
-import { useSingleCallResult } from '../state/multicall/hooks';
-import isZero from '../utils/isZero';
-import { useENSRegistrarContract, useENSResolverContract } from './useContract';
+import { safeNamehash } from "../utils/safeNamehash";
+import { useSingleCallResult } from "../state/multicall/hooks";
+import isZero from "../utils/isZero";
+import { useENSRegistrarContract, useENSResolverContract } from "./useContract";
 /**
  * Does a lookup for an ENS name to find its contenthash.
  */

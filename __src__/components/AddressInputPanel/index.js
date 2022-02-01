@@ -3,12 +3,12 @@ import _styled from "styled-components";
 import { i18n } from "@lingui/core";
 import { Trans } from "@lingui/react";
 import { useCallback, useContext } from 'react';
-import useENS from '../../hooks/useENS';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { ExternalLink, ThemedText } from '../../theme';
-import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink';
-import { AutoColumn } from '../Column';
-import { RowBetween } from '../Row';
+import useENS from "../../hooks/useENS";
+import { useActiveWeb3React } from "../../hooks/web3";
+import { ExternalLink, ThemedText } from "../../theme";
+import { ExplorerDataType, getExplorerLink } from "../../utils/getExplorerLink";
+import { AutoColumn } from "../Column";
+import { RowBetween } from "../Row";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

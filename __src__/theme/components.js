@@ -4,7 +4,7 @@ import React from 'react';
 import { ArrowLeft, ExternalLink as LinkIconFeather, Trash, X } from 'react-feather';
 import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
-import { anonymizeLink } from '../utils/anonymizeLink';
+import { anonymizeLink } from "../utils/anonymizeLink";
 import { jsx as _jsx } from "react/jsx-runtime";
 export const ButtonText = _styled.button.withConfig({
   displayName: "components__ButtonText",

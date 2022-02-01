@@ -1,4 +1,4 @@
-import { api } from './slice';
+import { api } from "./slice";
 export let Bundle_OrderBy;
 
 (function (Bundle_OrderBy) {

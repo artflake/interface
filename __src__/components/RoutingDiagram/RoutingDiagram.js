@@ -1,12 +1,12 @@
 import _styled from "styled-components";
-import Badge from 'components/Badge';
-import CurrencyLogo from 'components/CurrencyLogo';
-import DoubleCurrencyLogo from 'components/DoubleLogo';
-import Row, { AutoRow } from 'components/Row';
-import { useTokenInfoFromActiveList } from 'hooks/useTokenInfoFromActiveList';
+import Badge from "../Badge";
+import CurrencyLogo from "../CurrencyLogo";
+import DoubleCurrencyLogo from "../DoubleLogo";
+import Row, { AutoRow } from "../Row";
+import { useTokenInfoFromActiveList } from "../../hooks/useTokenInfoFromActiveList";
 import { Box } from 'rebass';
-import { ThemedText } from 'theme';
-import { ReactComponent as DotLine } from '../../assets/svg/dot_line.svg';
+import { ThemedText } from "../../theme";
+import { ReactComponent as DotLine } from "../../assets/svg/dot_line.svg";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

@@ -1,14 +1,14 @@
 import { Trans } from "@lingui/react";
 import { CurrencyAmount, Percent } from '@uniswap/sdk-core';
 import { Position } from '@uniswap/v3-sdk';
-import { useToken } from 'hooks/Tokens';
-import { usePool } from 'hooks/usePools';
-import { useV3PositionFees } from 'hooks/useV3PositionFees';
-import { useActiveWeb3React } from 'hooks/web3';
+import { useToken } from "../../../hooks/Tokens";
+import { usePool } from "../../../hooks/usePools";
+import { useV3PositionFees } from "../../../hooks/useV3PositionFees";
+import { useActiveWeb3React } from "../../../hooks/web3";
 import { useCallback, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from 'state/hooks';
-import { unwrappedToken } from 'utils/unwrappedToken';
-import { selectPercent } from './actions';
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { unwrappedToken } from "../../../utils/unwrappedToken";
+import { selectPercent } from "./actions";
 import { jsx as _jsx } from "react/jsx-runtime";
 export function useBurnV3State() {
   return useAppSelector(state => state.burnV3);

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useUnsupportedTokens } from './Tokens';
+import { useUnsupportedTokens } from "./Tokens";
 /**
  * Returns true if the input currency or output currency cannot be traded in the interface
  * @param currencyIn the input currency to check

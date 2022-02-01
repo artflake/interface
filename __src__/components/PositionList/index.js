@@ -1,8 +1,8 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import PositionListItem from 'components/PositionListItem';
+import PositionListItem from "../PositionListItem";
 import React from 'react';
-import { MEDIA_WIDTHS } from 'theme';
+import { MEDIA_WIDTHS } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";

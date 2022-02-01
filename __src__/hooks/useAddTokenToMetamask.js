@@ -1,6 +1,6 @@
-import { useActiveWeb3React } from 'hooks/web3';
+import { useActiveWeb3React } from "./web3";
 import { useCallback, useState } from 'react';
-import { getTokenLogoURL } from './../components/CurrencyLogo/index';
+import { getTokenLogoURL } from "./../components/CurrencyLogo/index";
 export default function useAddTokenToMetamask(currencyToAdd) {
   const {
     library

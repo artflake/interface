@@ -1,10 +1,10 @@
 import { Trans } from "@lingui/react";
 import { Fraction, TradeType } from '@uniswap/sdk-core';
 import JSBI from 'jsbi';
-import { useCurrency, useToken } from '../../hooks/Tokens';
-import useENSName from '../../hooks/useENSName';
-import { VoteOption } from '../../state/governance/types';
-import { TransactionType } from '../../state/transactions/actions';
+import { useCurrency, useToken } from "../../hooks/Tokens";
+import useENSName from "../../hooks/useENSName";
+import { VoteOption } from "../../state/governance/types";
+import { TransactionType } from "../../state/transactions/actions";
 import { Fragment as _Fragment } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 import { jsx as _jsx } from "react/jsx-runtime";

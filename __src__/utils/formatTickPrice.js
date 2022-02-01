@@ -1,5 +1,5 @@
-import { Bound } from '../state/mint/v3/actions';
-import { formatPrice } from './formatCurrencyAmount';
+import { Bound } from "../state/mint/v3/actions";
+import { formatPrice } from "./formatCurrencyAmount";
 export function formatTickPrice(price, atLimit, direction, placeholder) {
   if (atLimit[direction]) {
     return direction === Bound.LOWER ? '0' : '∞';

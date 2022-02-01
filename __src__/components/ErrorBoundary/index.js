@@ -2,11 +2,11 @@ import _styled from "styled-components";
 import { Trans } from "@lingui/react";
 import React from 'react';
 import ReactGA from 'react-ga';
-import store from '../../state';
-import { ExternalLink, ThemedText } from '../../theme';
-import { userAgent } from '../../utils/userAgent';
-import { AutoColumn } from '../Column';
-import { AutoRow } from '../Row';
+import store from "../../state";
+import { ExternalLink, ThemedText } from "../../theme";
+import { userAgent } from "../../utils/userAgent";
+import { AutoColumn } from "../Column";
+import { AutoRow } from "../Row";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

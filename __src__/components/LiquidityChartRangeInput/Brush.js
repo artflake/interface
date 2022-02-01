@@ -1,7 +1,7 @@
 import _styled from "styled-components";
-import { brushHandleAccentPath, brushHandlePath, OffScreenHandle } from 'components/LiquidityChartRangeInput/svg';
+import { brushHandleAccentPath, brushHandlePath, OffScreenHandle } from "./svg";
 import { brushX, select } from 'd3';
-import usePrevious from 'hooks/usePrevious';
+import usePrevious from "../../hooks/usePrevious";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";

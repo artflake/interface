@@ -50,6 +50,21 @@ module.exports = function (api) {
       ],
       require('@babel/plugin-proposal-optional-chaining').default,
       require('@babel/plugin-proposal-nullish-coalescing-operator').default,
+      [
+        'module-resolver',
+        {
+          root: ['./src'],
+          alias: {
+            hooks: './src/hooks',
+            components: './src/components',
+            theme: './src/theme',
+            state: './src/state',
+            constants: './src/constants',
+            abis: './src/abis',
+            utils: './src/utils',
+          },
+        },
+      ],
     ],
     overrides: [
       {

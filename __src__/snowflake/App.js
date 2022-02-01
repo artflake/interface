@@ -1,19 +1,19 @@
 import _styled from "styled-components";
-import Loader from 'components/Loader';
-import ApeModeQueryParamReader from 'hooks/useApeModeQueryParamReader';
+import Loader from "../components/Loader";
+import ApeModeQueryParamReader from "../hooks/useApeModeQueryParamReader";
 import { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import AddressClaimModal from '../components/claim/AddressClaimModal';
-import ErrorBoundary from '../components/ErrorBoundary';
-import Header from '../components/Header';
-import Polling from '../components/Header/Polling';
-import Popups from '../components/Popups';
-import Web3ReactManager from '../components/Web3ReactManager';
-import Swap from '../pages/Swap';
-import { RedirectPathToSwapOnly } from '../pages/Swap/redirects';
-import { useModalOpen, useToggleModal } from '../state/application/hooks';
-import { ApplicationModal } from '../state/application/reducer';
-import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'; // const Vote = lazy(() => import('./Vote'))
+import AddressClaimModal from "../components/claim/AddressClaimModal";
+import ErrorBoundary from "../components/ErrorBoundary";
+import Header from "../components/Header";
+import Polling from "../components/Header/Polling";
+import Popups from "../components/Popups";
+import Web3ReactManager from "../components/Web3ReactManager";
+import Swap from "../pages/Swap";
+import { RedirectPathToSwapOnly } from "../pages/Swap/redirects";
+import { useModalOpen, useToggleModal } from "../state/application/hooks";
+import { ApplicationModal } from "../state/application/reducer";
+import DarkModeQueryParamReader from "../theme/DarkModeQueryParamReader"; // const Vote = lazy(() => import('./Vote'))
 
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";

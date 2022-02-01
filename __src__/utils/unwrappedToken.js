@@ -1,5 +1,5 @@
-import { ExtendedEther, WETH9_EXTENDED } from '../constants/tokens';
-import { supportedChainId } from './supportedChainId';
+import { ExtendedEther, WETH9_EXTENDED } from "../constants/tokens";
+import { supportedChainId } from "./supportedChainId";
 export function unwrappedToken(currency) {
   if (currency.isNative) return currency;
   const formattedChainId = supportedChainId(currency.chainId);

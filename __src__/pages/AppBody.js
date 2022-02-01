@@ -1,6 +1,6 @@
 import _styled from "styled-components";
 import React from 'react';
-import { Z_INDEX } from 'theme';
+import { Z_INDEX } from "../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 export const BodyWrapper = _styled.main.withConfig({
   displayName: "AppBody__BodyWrapper",

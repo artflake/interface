@@ -8,21 +8,21 @@ import { abi as QuoterABI } from '@uniswap/v3-periphery/artifacts/contracts/lens
 import { abi as MulticallABI } from '@uniswap/v3-periphery/artifacts/contracts/lens/UniswapInterfaceMulticall.sol/UniswapInterfaceMulticall.json';
 import { abi as NFTPositionManagerABI } from '@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json';
 import { abi as V2MigratorABI } from '@uniswap/v3-periphery/artifacts/contracts/V3Migrator.sol/V3Migrator.json';
-import ARGENT_WALLET_DETECTOR_ABI from 'abis/argent-wallet-detector.json';
-import EIP_2612 from 'abis/eip_2612.json';
-import ENS_PUBLIC_RESOLVER_ABI from 'abis/ens-public-resolver.json';
-import ENS_ABI from 'abis/ens-registrar.json';
-import ERC20_ABI from 'abis/erc20.json';
-import ERC20_BYTES32_ABI from 'abis/erc20_bytes32.json';
-import ERC721_ABI from 'abis/erc721.json';
-import ERC1155_ABI from 'abis/erc1155.json';
-import GOVERNOR_BRAVO_ABI from 'abis/governor-bravo.json';
-import WETH_ABI from 'abis/weth.json';
-import { ARGENT_WALLET_DETECTOR_ADDRESS, ENS_REGISTRAR_ADDRESSES, GOVERNANCE_ALPHA_V0_ADDRESSES, GOVERNANCE_ALPHA_V1_ADDRESSES, GOVERNANCE_BRAVO_ADDRESSES, MERKLE_DISTRIBUTOR_ADDRESS, MULTICALL_ADDRESS, NONFUNGIBLE_POSITION_MANAGER_ADDRESSES, QUOTER_ADDRESSES, V2_ROUTER_ADDRESS, V3_MIGRATOR_ADDRESSES } from 'constants/addresses';
+import ARGENT_WALLET_DETECTOR_ABI from "../abis/argent-wallet-detector.json";
+import EIP_2612 from "../abis/eip_2612.json";
+import ENS_PUBLIC_RESOLVER_ABI from "../abis/ens-public-resolver.json";
+import ENS_ABI from "../abis/ens-registrar.json";
+import ERC20_ABI from "../abis/erc20.json";
+import ERC20_BYTES32_ABI from "../abis/erc20_bytes32.json";
+import ERC721_ABI from "../abis/erc721.json";
+import ERC1155_ABI from "../abis/erc1155.json";
+import GOVERNOR_BRAVO_ABI from "../abis/governor-bravo.json";
+import WETH_ABI from "../abis/weth.json";
+import { ARGENT_WALLET_DETECTOR_ADDRESS, ENS_REGISTRAR_ADDRESSES, GOVERNANCE_ALPHA_V0_ADDRESSES, GOVERNANCE_ALPHA_V1_ADDRESSES, GOVERNANCE_BRAVO_ADDRESSES, MERKLE_DISTRIBUTOR_ADDRESS, MULTICALL_ADDRESS, NONFUNGIBLE_POSITION_MANAGER_ADDRESSES, QUOTER_ADDRESSES, V2_ROUTER_ADDRESS, V3_MIGRATOR_ADDRESSES } from "../constants/addresses";
 import { useMemo } from 'react';
-import { getContract } from 'utils';
-import { UNI, WETH9_EXTENDED } from '../constants/tokens';
-import { useActiveWeb3React } from './web3'; // returns null on errors
+import { getContract } from "../utils";
+import { UNI, WETH9_EXTENDED } from "../constants/tokens";
+import { useActiveWeb3React } from "./web3"; // returns null on errors
 
 export function useContract(addressOrAddressMap, ABI) {
   let withSignerIfPossible = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;

@@ -1,16 +1,16 @@
 import { useTheme as _useTheme } from "styled-components";
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import Card from 'components/Card';
-import { AutoColumn } from 'components/Column';
-import CurrencyLogo from 'components/CurrencyLogo';
-import ListLogo from 'components/ListLogo';
-import { RowFixed } from 'components/Row';
-import { useActiveWeb3React } from 'hooks/web3';
+import Card from "../Card";
+import { AutoColumn } from "../Column";
+import CurrencyLogo from "../CurrencyLogo";
+import ListLogo from "../ListLogo";
+import { RowFixed } from "../Row";
+import { useActiveWeb3React } from "../../hooks/web3";
 import { transparentize } from 'polished';
 import { AlertCircle } from 'react-feather';
-import { ExternalLink, ThemedText } from 'theme';
-import { ExplorerDataType, getExplorerLink } from 'utils/getExplorerLink';
+import { ExternalLink, ThemedText } from "../../theme";
+import { ExplorerDataType, getExplorerLink } from "../../utils/getExplorerLink";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

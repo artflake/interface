@@ -1,4 +1,4 @@
-import { usePoolActiveLiquidity } from 'hooks/usePoolTickData';
+import { usePoolActiveLiquidity } from "../../hooks/usePoolTickData";
 import { useCallback, useMemo } from 'react';
 export function useDensityChartData(_ref) {
   let {

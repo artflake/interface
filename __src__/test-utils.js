@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from 'state';
-import ThemeProvider from 'theme';
+import store from "./state";
+import ThemeProvider from "./theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const WithProviders = _ref => {

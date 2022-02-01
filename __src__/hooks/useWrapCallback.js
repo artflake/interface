@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
-import { WETH9_EXTENDED } from '../constants/tokens';
-import { tryParseAmount } from '../state/swap/hooks';
-import { TransactionType } from '../state/transactions/actions';
-import { useTransactionAdder } from '../state/transactions/hooks';
-import { useCurrencyBalance } from '../state/wallet/hooks';
-import { useWETHContract } from './useContract';
-import { useActiveWeb3React } from './web3';
+import { WETH9_EXTENDED } from "../constants/tokens";
+import { tryParseAmount } from "../state/swap/hooks";
+import { TransactionType } from "../state/transactions/actions";
+import { useTransactionAdder } from "../state/transactions/hooks";
+import { useCurrencyBalance } from "../state/wallet/hooks";
+import { useWETHContract } from "./useContract";
+import { useActiveWeb3React } from "./web3";
 export let WrapType;
 
 (function (WrapType) {

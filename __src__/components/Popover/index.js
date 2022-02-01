@@ -2,7 +2,7 @@ import _styled from "styled-components";
 import Portal from '@reach/portal';
 import React, { useCallback, useMemo, useState } from 'react';
 import { usePopper } from 'react-popper';
-import useInterval from '../../hooks/useInterval';
+import useInterval from "../../hooks/useInterval";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";

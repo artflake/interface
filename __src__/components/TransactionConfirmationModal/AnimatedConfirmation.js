@@ -1,6 +1,6 @@
 import { keyframes as _keyframes } from "styled-components";
 import _styled from "styled-components";
-import useTheme from 'hooks/useTheme';
+import useTheme from "../../hooks/useTheme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

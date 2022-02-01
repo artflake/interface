@@ -1,8 +1,8 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ThemedText } from '../../theme';
-import { RowBetween, RowFixed } from '../Row';
-import SettingsTab from '../Settings';
+import { ThemedText } from "../../theme";
+import { RowBetween, RowFixed } from "../Row";
+import SettingsTab from "../Settings";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useInterval from './useInterval';
+import useInterval from "./useInterval";
 
 const useMachineTimeMs = updateInterval => {
   const [now, setNow] = useState(Date.now());

@@ -1,6 +1,6 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ProposalState } from '../../state/governance/hooks';
+import { ProposalState } from "../../state/governance/hooks";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const handleColorType = (status, theme) => {

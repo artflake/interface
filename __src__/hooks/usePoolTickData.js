@@ -2,9 +2,9 @@ import { skipToken } from '@reduxjs/toolkit/query/react';
 import { Pool, TICK_SPACINGS, tickToPrice } from '@uniswap/v3-sdk';
 import JSBI from 'jsbi';
 import { useMemo } from 'react';
-import { useAllV3TicksQuery } from 'state/data/enhanced';
-import computeSurroundingTicks from 'utils/computeSurroundingTicks';
-import { PoolState, usePool } from './usePools';
+import { useAllV3TicksQuery } from "../state/data/enhanced";
+import computeSurroundingTicks from "../utils/computeSurroundingTicks";
+import { PoolState, usePool } from "./usePools";
 const PRICE_FIXED_DIGITS = 8; // Tick with fields parsed to JSBIs, and active liquidity computed.
 
 const getActiveTick = (tickCurrent, feeAmount) => tickCurrent && feeAmount ? Math.floor(tickCurrent / TICK_SPACINGS[feeAmount]) * TICK_SPACINGS[feeAmount] : undefined; // Fetches all ticks for a given pool

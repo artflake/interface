@@ -1,9 +1,9 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { useRoutingAPIEnabled } from 'state/user/hooks';
-import { ThemedText } from 'theme';
-import { ReactComponent as AutoRouterIcon } from '../../assets/svg/auto_router.svg';
-import { ReactComponent as StaticRouterIcon } from '../../assets/svg/static_route.svg';
+import { useRoutingAPIEnabled } from "../../state/user/hooks";
+import { ThemedText } from "../../theme";
+import { ReactComponent as AutoRouterIcon } from "../../assets/svg/auto_router.svg";
+import { ReactComponent as StaticRouterIcon } from "../../assets/svg/static_route.svg";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const StyledAutoRouterIcon = _styled(AutoRouterIcon).withConfig({

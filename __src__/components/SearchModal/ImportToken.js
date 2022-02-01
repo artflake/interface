@@ -1,17 +1,17 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ButtonPrimary } from 'components/Button';
-import { AutoColumn } from 'components/Column';
-import { RowBetween } from 'components/Row';
-import { SectionBreak } from 'components/swap/styleds';
-import { useUnsupportedTokens } from 'hooks/Tokens';
-import useTheme from 'hooks/useTheme';
+import { ButtonPrimary } from "../Button";
+import { AutoColumn } from "../Column";
+import { RowBetween } from "../Row";
+import { SectionBreak } from "../swap/styleds";
+import { useUnsupportedTokens } from "../../hooks/Tokens";
+import useTheme from "../../hooks/useTheme";
 import { AlertCircle, ArrowLeft } from 'react-feather';
-import { useAddUserToken } from 'state/user/hooks';
-import { CloseIcon, ThemedText } from 'theme';
-import BlockedToken from './BlockedToken';
-import { PaddedColumn } from './styleds';
-import TokenImportCard from './TokenImportCard';
+import { useAddUserToken } from "../../state/user/hooks";
+import { CloseIcon, ThemedText } from "../../theme";
+import BlockedToken from "./BlockedToken";
+import { PaddedColumn } from "./styleds";
+import TokenImportCard from "./TokenImportCard";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

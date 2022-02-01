@@ -1,6 +1,6 @@
 import _styled from "styled-components";
 import React from 'react';
-import { ExternalLink } from '../../theme';
+import { ExternalLink } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

@@ -1,10 +1,10 @@
-import ApplicationUpdater from '../state/application/updater';
-import ListsUpdater from '../state/lists/updater';
-import LogsUpdater from '../state/logs/updater';
-import MulticallUpdater from '../state/multicall/updater';
-import TransactionUpdater from '../state/transactions/updater';
-import UserUpdater from '../state/user/updater';
-import RadialGradientByChainUpdater from '../theme/RadialGradientByChainUpdater';
+import ApplicationUpdater from "../state/application/updater";
+import ListsUpdater from "../state/lists/updater";
+import LogsUpdater from "../state/logs/updater";
+import MulticallUpdater from "../state/multicall/updater";
+import TransactionUpdater from "../state/transactions/updater";
+import UserUpdater from "../state/user/updater";
+import RadialGradientByChainUpdater from "../theme/RadialGradientByChainUpdater";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";

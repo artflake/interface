@@ -1,9 +1,9 @@
 import { createStore } from 'redux';
-import { DEFAULT_LIST_OF_LISTS } from '../../constants/lists';
-import { DEFAULT_ACTIVE_LIST_URLS } from '../../constants/lists';
-import { updateVersion } from '../global/actions';
-import { acceptListUpdate, addList, enableList, fetchTokenList, removeList } from './actions';
-import reducer from './reducer';
+import { DEFAULT_LIST_OF_LISTS } from "../../constants/lists";
+import { DEFAULT_ACTIVE_LIST_URLS } from "../../constants/lists";
+import { updateVersion } from "../global/actions";
+import { acceptListUpdate, addList, enableList, fetchTokenList, removeList } from "./actions";
+import reducer from "./reducer";
 const STUB_TOKEN_LIST = {
   name: '',
   timestamp: '',

@@ -1,9 +1,9 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import AddressInputPanel from 'components/AddressInputPanel';
-import CurrencyInputPanel from 'components/CurrencyInputPanel';
+import AddressInputPanel from "../../components/AddressInputPanel";
+import CurrencyInputPanel from "../../components/CurrencyInputPanel";
 import React from 'react';
-import { ProposalAction } from './ProposalActionSelector';
+import { ProposalAction } from "./ProposalActionSelector";
 import { jsx as _jsx } from "react/jsx-runtime";
 var ProposalActionDetailField;
 

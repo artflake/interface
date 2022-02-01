@@ -1,10 +1,10 @@
 import { TradeType } from '@uniswap/sdk-core';
 import { Trade } from '@uniswap/v2-sdk';
 import { useMemo } from 'react';
-import { isTradeBetter } from 'utils/isTradeBetter';
-import { BETTER_TRADE_LESS_HOPS_THRESHOLD } from '../constants/misc';
-import { useAllCurrencyCombinations } from './useAllCurrencyCombinations';
-import { PairState, useV2Pairs } from './useV2Pairs';
+import { isTradeBetter } from "../utils/isTradeBetter";
+import { BETTER_TRADE_LESS_HOPS_THRESHOLD } from "../constants/misc";
+import { useAllCurrencyCombinations } from "./useAllCurrencyCombinations";
+import { PairState, useV2Pairs } from "./useV2Pairs";
 
 function useAllCommonPairs(currencyA, currencyB) {
   const allCurrencyCombinations = useAllCurrencyCombinations(currencyA, currencyB);

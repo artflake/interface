@@ -1,5 +1,5 @@
 import _styled from "styled-components";
-import { ButtonGray } from 'components/Button';
+import { ButtonGray } from "../Button";
 import { select, zoom, zoomIdentity } from 'd3';
 import React, { useEffect, useMemo, useRef } from 'react';
 import { RefreshCcw, ZoomIn, ZoomOut } from 'react-feather';

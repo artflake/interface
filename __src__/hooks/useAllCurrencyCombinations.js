@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST, CUSTOM_BASES } from '../constants/routing';
+import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST, CUSTOM_BASES } from "../constants/routing";
 export function useAllCurrencyCombinations(currencyA, currencyB) {
   const chainId = currencyA === null || currencyA === void 0 ? void 0 : currencyA.chainId;
   const [tokenA, tokenB] = chainId ? [currencyA === null || currencyA === void 0 ? void 0 : currencyA.wrapped, currencyB === null || currencyB === void 0 ? void 0 : currencyB.wrapped] : [undefined, undefined];

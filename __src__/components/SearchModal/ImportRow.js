@@ -1,15 +1,15 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ButtonPrimary } from 'components/Button';
-import { AutoColumn } from 'components/Column';
-import CurrencyLogo from 'components/CurrencyLogo';
-import ListLogo from 'components/ListLogo';
-import { AutoRow, RowFixed } from 'components/Row';
-import { useIsTokenActive, useIsUserAddedToken } from 'hooks/Tokens';
-import useTheme from 'hooks/useTheme';
+import { ButtonPrimary } from "../Button";
+import { AutoColumn } from "../Column";
+import CurrencyLogo from "../CurrencyLogo";
+import ListLogo from "../ListLogo";
+import { AutoRow, RowFixed } from "../Row";
+import { useIsTokenActive, useIsUserAddedToken } from "../../hooks/Tokens";
+import useTheme from "../../hooks/useTheme";
 import { CheckCircle } from 'react-feather';
-import { ThemedText } from 'theme';
-import { WrappedTokenInfo } from '../../state/lists/wrappedTokenInfo';
+import { ThemedText } from "../../theme";
+import { WrappedTokenInfo } from "../../state/lists/wrappedTokenInfo";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

@@ -1,14 +1,14 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { RowBetween } from 'components/Row';
+import { RowBetween } from "../Row";
 import { useState } from 'react';
 import { ArrowLeft } from 'react-feather';
 import { Text } from 'rebass';
-import { CloseIcon } from 'theme';
-import { CurrencyModalView } from './CurrencySearchModal';
-import { ManageLists } from './ManageLists';
-import ManageTokens from './ManageTokens';
-import { PaddedColumn, Separator } from './styleds';
+import { CloseIcon } from "../../theme";
+import { CurrencyModalView } from "./CurrencySearchModal";
+import { ManageLists } from "./ManageLists";
+import ManageTokens from "./ManageTokens";
+import { PaddedColumn, Separator } from "./styleds";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

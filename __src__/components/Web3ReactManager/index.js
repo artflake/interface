@@ -2,9 +2,9 @@ import _styled from "styled-components";
 import { Trans } from "@lingui/react";
 import { useWeb3React } from '@web3-react/core';
 import { useEffect } from 'react';
-import { network } from '../../connectors';
-import { NetworkContextName } from '../../constants/misc';
-import { useEagerConnect, useInactiveListener } from '../../hooks/web3';
+import { network } from "../../connectors";
+import { NetworkContextName } from "../../constants/misc";
+import { useEagerConnect, useInactiveListener } from "../../hooks/web3";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const MessageWrapper = _styled.div.withConfig({

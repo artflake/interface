@@ -1,7 +1,7 @@
 import _styled from "styled-components";
 import { transparentize } from 'polished';
 import { useCallback, useState } from 'react';
-import Popover from '../Popover';
+import Popover from "../Popover";
 import { jsx as _jsx } from "react/jsx-runtime";
 export const TooltipContainer = _styled.div.withConfig({
   displayName: "Tooltip__TooltipContainer",

@@ -1,12 +1,12 @@
-import { DEFAULT_TXN_DISMISS_MS, L2_TXN_DISMISS_MS } from 'constants/misc';
+import { DEFAULT_TXN_DISMISS_MS, L2_TXN_DISMISS_MS } from "../../constants/misc";
 import { useCallback, useEffect, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from 'state/hooks';
-import { L2_CHAIN_IDS, SupportedChainId } from '../../constants/chains';
-import { useActiveWeb3React } from '../../hooks/web3';
-import { retry, RetryableError } from '../../utils/retry';
-import { useAddPopup, useBlockNumber } from '../application/hooks';
-import { updateBlockNumber } from '../application/reducer';
-import { checkedTransaction, finalizeTransaction } from './actions';
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { L2_CHAIN_IDS, SupportedChainId } from "../../constants/chains";
+import { useActiveWeb3React } from "../../hooks/web3";
+import { retry, RetryableError } from "../../utils/retry";
+import { useAddPopup, useBlockNumber } from "../application/hooks";
+import { updateBlockNumber } from "../application/reducer";
+import { checkedTransaction, finalizeTransaction } from "./actions";
 export function shouldCheck(lastBlockNumber, tx) {
   if (tx.receipt) return false;
   if (!tx.lastCheckedBlockNumber) return true;

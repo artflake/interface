@@ -1,14 +1,14 @@
 import { ThemeContext as _ThemeContext } from "styled-components";
 import { Trans } from "@lingui/react";
-import { ButtonPrimary } from 'components/Button';
-import { AutoColumn } from 'components/Column';
-import Modal from 'components/Modal';
-import { LoadingView, SubmittedView } from 'components/ModalViews';
+import { ButtonPrimary } from "../../components/Button";
+import { AutoColumn } from "../../components/Column";
+import Modal from "../../components/Modal";
+import { LoadingView, SubmittedView } from "../../components/ModalViews";
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Text } from 'rebass';
-import { ExternalLink, ThemedText } from 'theme';
-import { ExplorerDataType, getExplorerLink } from 'utils/getExplorerLink';
+import { ExternalLink, ThemedText } from "../../theme";
+import { ExplorerDataType, getExplorerLink } from "../../utils/getExplorerLink";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 export const ProposalSubmissionModal = _ref => {

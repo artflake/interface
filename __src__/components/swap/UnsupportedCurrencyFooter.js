@@ -1,16 +1,16 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ButtonEmpty } from 'components/Button';
-import Card, { OutlineCard } from 'components/Card';
-import { AutoColumn } from 'components/Column';
-import CurrencyLogo from 'components/CurrencyLogo';
-import Modal from 'components/Modal';
-import { AutoRow, RowBetween } from 'components/Row';
-import { useActiveWeb3React } from 'hooks/web3';
+import { ButtonEmpty } from "../Button";
+import Card, { OutlineCard } from "../Card";
+import { AutoColumn } from "../Column";
+import CurrencyLogo from "../CurrencyLogo";
+import Modal from "../Modal";
+import { AutoRow, RowBetween } from "../Row";
+import { useActiveWeb3React } from "../../hooks/web3";
 import { useState } from 'react';
-import { CloseIcon, ExternalLink, ThemedText, Z_INDEX } from 'theme';
-import { useUnsupportedTokens } from '../../hooks/Tokens';
-import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink';
+import { CloseIcon, ExternalLink, ThemedText, Z_INDEX } from "../../theme";
+import { useUnsupportedTokens } from "../../hooks/Tokens";
+import { ExplorerDataType, getExplorerLink } from "../../utils/getExplorerLink";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

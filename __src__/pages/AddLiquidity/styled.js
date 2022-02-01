@@ -1,7 +1,7 @@
 import _styled from "styled-components";
-import { AutoColumn } from 'components/Column';
-import CurrencyInputPanel from 'components/CurrencyInputPanel';
-import Input from 'components/NumericalInput';
+import { AutoColumn } from "../../components/Column";
+import CurrencyInputPanel from "../../components/CurrencyInputPanel";
+import Input from "../../components/NumericalInput";
 import { BodyWrapper } from 'pages/AppBody';
 export const PageWrapper = _styled(BodyWrapper).withConfig({
   displayName: "styled__PageWrapper",

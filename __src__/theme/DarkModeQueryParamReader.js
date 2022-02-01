@@ -1,7 +1,7 @@
 import { parse } from 'qs';
 import { useEffect } from 'react';
-import { useAppDispatch } from 'state/hooks';
-import { updateUserDarkMode } from '../state/user/actions';
+import { useAppDispatch } from "../state/hooks";
+import { updateUserDarkMode } from "../state/user/actions";
 export default function DarkModeQueryParamReader(_ref) {
   let {
     location: {

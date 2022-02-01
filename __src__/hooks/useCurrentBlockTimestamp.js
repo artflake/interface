@@ -1,5 +1,5 @@
-import { useSingleCallResult } from '../state/multicall/hooks';
-import { useMulticall2Contract } from './useContract'; // gets the current timestamp from the blockchain
+import { useSingleCallResult } from "../state/multicall/hooks";
+import { useMulticall2Contract } from "./useContract"; // gets the current timestamp from the blockchain
 
 export default function useCurrentBlockTimestamp() {
   var _useSingleCallResult, _useSingleCallResult$;

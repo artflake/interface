@@ -2,11 +2,11 @@ import { ThemeContext as _ThemeContext } from "styled-components";
 import { Trans } from "@lingui/react";
 import { useContext } from 'react';
 import { Text } from 'rebass';
-import { AutoColumn } from '../../components/Column';
-import { AutoRow } from '../../components/Row';
-import { ONE_BIPS } from '../../constants/misc';
-import { Field } from '../../state/mint/actions';
-import { ThemedText } from '../../theme';
+import { AutoColumn } from "../../components/Column";
+import { AutoRow } from "../../components/Row";
+import { ONE_BIPS } from "../../constants/misc";
+import { Field } from "../../state/mint/actions";
+import { ThemedText } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 export function PoolPriceBar(_ref) {

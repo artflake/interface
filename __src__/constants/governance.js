@@ -1,5 +1,5 @@
-import { GOVERNANCE_ALPHA_V0_ADDRESSES, GOVERNANCE_ALPHA_V1_ADDRESSES, TIMELOCK_ADDRESS, UNI_ADDRESS } from './addresses';
-import { SupportedChainId } from './chains';
+import { GOVERNANCE_ALPHA_V0_ADDRESSES, GOVERNANCE_ALPHA_V1_ADDRESSES, TIMELOCK_ADDRESS, UNI_ADDRESS } from "./addresses";
+import { SupportedChainId } from "./chains";
 export const COMMON_CONTRACT_NAMES = {
   [SupportedChainId.MAINNET]: {
     [UNI_ADDRESS[SupportedChainId.MAINNET]]: 'UNI',

@@ -1,10 +1,10 @@
 import { Trans } from "@lingui/react";
 import { Text } from 'rebass';
-import { ButtonPrimary } from '../../components/Button';
-import CurrencyLogo from '../../components/CurrencyLogo';
-import { RowBetween, RowFixed } from '../../components/Row';
-import { Field } from '../../state/mint/actions';
-import { ThemedText } from '../../theme';
+import { ButtonPrimary } from "../../components/Button";
+import CurrencyLogo from "../../components/CurrencyLogo";
+import { RowBetween, RowFixed } from "../../components/Row";
+import { Field } from "../../state/mint/actions";
+import { ThemedText } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";

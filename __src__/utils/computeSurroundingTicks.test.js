@@ -1,7 +1,7 @@
 import { Token } from '@uniswap/sdk-core';
 import { FeeAmount, TICK_SPACINGS } from '@uniswap/v3-sdk';
 import JSBI from 'jsbi';
-import computeSurroundingTicks from './computeSurroundingTicks';
+import computeSurroundingTicks from "./computeSurroundingTicks";
 
 const getV3Tick = (tickIdx, liquidityNet) => ({
   tickIdx,

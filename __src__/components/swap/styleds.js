@@ -1,13 +1,13 @@
 import { css as _css } from "styled-components";
 import _styled from "styled-components";
-import { loadingOpacityMixin } from 'components/Loader/styled';
-import { TooltipContainer } from 'components/Tooltip';
+import { loadingOpacityMixin } from "../Loader/styled";
+import { TooltipContainer } from "../Tooltip";
 import { transparentize } from 'polished';
 import { AlertTriangle } from 'react-feather';
 import { Text } from 'rebass';
-import { ThemedText } from '../../theme';
-import { AutoColumn } from '../Column';
-import TradePrice from './TradePrice';
+import { ThemedText } from "../../theme";
+import { AutoColumn } from "../Column";
+import TradePrice from "./TradePrice";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 export const Wrapper = _styled.div.withConfig({

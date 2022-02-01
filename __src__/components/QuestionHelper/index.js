@@ -1,6 +1,6 @@
 import _styled from "styled-components";
 import { useCallback, useState } from 'react';
-import Tooltip from '../Tooltip';
+import Tooltip from "../Tooltip";
 import { jsx as _jsx } from "react/jsx-runtime";
 
 const QuestionWrapper = _styled.div.withConfig({

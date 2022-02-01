@@ -1,8 +1,8 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { L2_CHAIN_IDS } from 'constants/chains';
-import { useActiveWeb3React } from 'hooks/web3';
-import { ThemedText } from 'theme';
+import { L2_CHAIN_IDS } from "../../constants/chains";
+import { useActiveWeb3React } from "../../hooks/web3";
+import { ThemedText } from "../../theme";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

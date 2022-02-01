@@ -1,6 +1,6 @@
-import contenthashToUri from './contenthashToUri';
-import { parseENSAddress } from './parseENSAddress';
-import uriToHttp from './uriToHttp'; // lazily get the validator the first time it is used
+import contenthashToUri from "./contenthashToUri";
+import { parseENSAddress } from "./parseENSAddress";
+import uriToHttp from "./uriToHttp"; // lazily get the validator the first time it is used
 
 const getTokenListValidator = (() => {
   let tokenListValidator;

@@ -1,15 +1,15 @@
 import _styled from "styled-components";
 import { Trans } from "@lingui/react";
-import { ARBITRUM_HELP_CENTER_LINK, CHAIN_INFO, L2_CHAIN_IDS, OPTIMISM_HELP_CENTER_LINK, SupportedChainId } from 'constants/chains';
-import { useOnClickOutside } from 'hooks/useOnClickOutside';
-import { useActiveWeb3React } from 'hooks/web3';
+import { ARBITRUM_HELP_CENTER_LINK, CHAIN_INFO, L2_CHAIN_IDS, OPTIMISM_HELP_CENTER_LINK, SupportedChainId } from "../../constants/chains";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { useActiveWeb3React } from "../../hooks/web3";
 import { useCallback, useRef } from 'react';
 import { ArrowDownCircle, ChevronDown } from 'react-feather';
-import { useModalOpen, useToggleModal } from 'state/application/hooks';
-import { ApplicationModal } from 'state/application/reducer';
-import { useAppSelector } from 'state/hooks';
-import { ExternalLink, MEDIA_WIDTHS } from 'theme';
-import { switchToNetwork } from 'utils/switchToNetwork';
+import { useModalOpen, useToggleModal } from "../../state/application/hooks";
+import { ApplicationModal } from "../../state/application/reducer";
+import { useAppSelector } from "../../state/hooks";
+import { ExternalLink, MEDIA_WIDTHS } from "../../theme";
+import { switchToNetwork } from "../../utils/switchToNetwork";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

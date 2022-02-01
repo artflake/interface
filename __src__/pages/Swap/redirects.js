@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useAppDispatch } from 'state/hooks';
-import { ApplicationModal, setOpenModal } from '../../state/application/reducer'; // Redirects to swap but only replace the pathname
+import { useAppDispatch } from "../../state/hooks";
+import { ApplicationModal, setOpenModal } from "../../state/application/reducer"; // Redirects to swap but only replace the pathname
 
 import { jsx as _jsx } from "react/jsx-runtime";
 export function RedirectPathToSwapOnly(_ref) {

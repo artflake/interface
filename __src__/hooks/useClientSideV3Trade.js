@@ -1,13 +1,13 @@
 import { CurrencyAmount, TradeType } from '@uniswap/sdk-core';
 import { SwapQuoter, Trade } from '@uniswap/v3-sdk';
-import { SupportedChainId } from 'constants/chains';
+import { SupportedChainId } from "../constants/chains";
 import JSBI from 'jsbi';
 import { useMemo } from 'react';
-import { V3TradeState } from 'state/routing/types';
-import { useSingleContractWithCallData } from '../state/multicall/hooks';
-import { useAllV3Routes } from './useAllV3Routes';
-import { useV3Quoter } from './useContract';
-import { useActiveWeb3React } from './web3';
+import { V3TradeState } from "../state/routing/types";
+import { useSingleContractWithCallData } from "../state/multicall/hooks";
+import { useAllV3Routes } from "./useAllV3Routes";
+import { useV3Quoter } from "./useContract";
+import { useActiveWeb3React } from "./web3";
 const QUOTE_GAS_OVERRIDES = {
   [SupportedChainId.ARBITRUM_ONE]: 25000000,
   [SupportedChainId.ARBITRUM_RINKEBY]: 25000000

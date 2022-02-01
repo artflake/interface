@@ -1,7 +1,7 @@
 // a list of tokens by chain
 import { Token } from '@uniswap/sdk-core';
-import { SupportedChainId } from './chains';
-import { AMPL, DAI, DAI_ARBITRUM_ONE, DAI_OPTIMISM, ETH2X_FLI, ExtendedEther, FEI, FRAX, FXS, renBTC, rETH2, sETH2, SWISE, TRIBE, USDC, USDC_ARBITRUM, USDC_OPTIMISM, USDT, USDT_ARBITRUM_ONE, USDT_OPTIMISM, WBTC, WBTC_ARBITRUM_ONE, WBTC_OPTIMISM, WETH9_EXTENDED } from './tokens';
+import { SupportedChainId } from "./chains";
+import { AMPL, DAI, DAI_ARBITRUM_ONE, DAI_OPTIMISM, ETH2X_FLI, ExtendedEther, FEI, FRAX, FXS, renBTC, rETH2, sETH2, SWISE, TRIBE, USDC, USDC_ARBITRUM, USDC_OPTIMISM, USDT, USDT_ARBITRUM_ONE, USDT_OPTIMISM, WBTC, WBTC_ARBITRUM_ONE, WBTC_OPTIMISM, WETH9_EXTENDED } from "./tokens";
 const WETH_ONLY = Object.fromEntries(Object.entries(WETH9_EXTENDED).map(_ref => {
   let [key, value] = _ref;
   return [key, [value]];

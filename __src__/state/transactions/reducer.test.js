@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
-import { updateVersion } from '../global/actions';
-import { addTransaction, checkedTransaction, clearAllTransactions, finalizeTransaction, TransactionType } from './actions';
-import reducer, { initialState } from './reducer';
+import { updateVersion } from "../global/actions";
+import { addTransaction, checkedTransaction, clearAllTransactions, finalizeTransaction, TransactionType } from "./actions";
+import reducer, { initialState } from "./reducer";
 describe('transaction reducer', () => {
   let store;
   beforeEach(() => {

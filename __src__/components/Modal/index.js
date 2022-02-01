@@ -5,7 +5,7 @@ import { transparentize } from 'polished';
 import React from 'react';
 import { animated, useSpring, useTransition } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
-import { isMobile } from '../../utils/userAgent';
+import { isMobile } from "../../utils/userAgent";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment as _Fragment } from "react/jsx-runtime";

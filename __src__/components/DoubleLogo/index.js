@@ -1,5 +1,5 @@
 import _styled from "styled-components";
-import CurrencyLogo from '../CurrencyLogo';
+import CurrencyLogo from "../CurrencyLogo";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 

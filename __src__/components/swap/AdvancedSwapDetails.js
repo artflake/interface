@@ -1,14 +1,14 @@
 import { ThemeContext as _ThemeContext } from "styled-components";
 import { Trans } from "@lingui/react";
 import { TradeType } from '@uniswap/sdk-core';
-import { LoadingRows } from 'components/Loader/styled';
+import { LoadingRows } from "../Loader/styled";
 import { useContext, useMemo } from 'react';
-import { ThemedText } from '../../theme';
-import { computeRealizedLPFeePercent } from '../../utils/prices';
-import { AutoColumn } from '../Column';
-import { RowBetween, RowFixed } from '../Row';
-import FormattedPriceImpact from './FormattedPriceImpact';
-import { TransactionDetailsLabel } from './styleds';
+import { ThemedText } from "../../theme";
+import { computeRealizedLPFeePercent } from "../../utils/prices";
+import { AutoColumn } from "../Column";
+import { RowBetween, RowFixed } from "../Row";
+import FormattedPriceImpact from "./FormattedPriceImpact";
+import { TransactionDetailsLabel } from "./styleds";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
 
