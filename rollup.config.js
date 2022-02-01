@@ -9,7 +9,7 @@
 
 // import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 // import { DEFAULT_EXTENSIONS } from '@babel/core'
-// import babel from '@rollup/plugin-babel'
+import babel, { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import url from '@rollup/plugin-url'
@@ -34,34 +34,29 @@ require('dotenv').config()
 // const ignore = ['styled-components']
 
 const library = {
-  external: ['@babel/runtime', '@metamask/jazzicon', '@lingui/**'],
+  external: ['@babel/runtime', '@metamask/jazzicon'],
   input: 'src/snowflake/index.ts',
   output: [
-    // {
-    //   file: 'dist2/snowflake.js',
-    //   format: 'cjs',
-    //   inlineDynamicImports: true,
-    //   sourcemap: true,
-    // },
+    {
+      file: 'dist2/snowflake.js',
+      format: 'cjs',
+      inlineDynamicImports: true,
+      sourcemap: false,
+      // plugins: [
+      //   getBabelOutputPlugin({
+      //     plugins: ['macros'],
+      //   }),
+      // ],
+    },
     {
       file: 'dist2/snowflake.esm.js',
       format: 'esm',
       inlineDynamicImports: true,
       sourcemap: false,
       plugins: [
-        // getBabelOutputPlugin({
-        //   presets: [
-        //     [
-        //       'react-app',
-        //       {
-        //         runtime: 'automatic',
-        //       },
-        //     ],
-        //   ],
-        //   // include: ['./src/**'],
-        //   // extensions,
-        //   // babelHelpers: 'runtime',
-        // }),
+        getBabelOutputPlugin({
+          plugins: ['babel-plugin-macros'],
+        }),
       ],
     },
   ],
@@ -79,15 +74,16 @@ const library = {
     commonjs(),
 
     // replace({ ...replacements, preventAssignment: true }),
-
+    typescript({ tsconfig: './tsconfig.json', useTsconfigDeclarationDir: false }),
     // babel({
-    //   presets: [['babel-preset-react-app/dependencies', { helpers: true }]],
+    //   // presets: [['babel-preset-react-app/dependencies', { helpers: true }]],
+    //   presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript', '@lingui/babel-preset-react'],
     //   exclude: /@babel(?:\/|\\{1,2})runtime/,
-    //   extensions: ['js', 'mjs'],
-    //   babelHelpers: 'bundled',
+    //   extensions: ['js', 'mjs', 'ts', 'tsx'],
+    //   babelHelpers: 'runtime',
+    //   plugins: ['@babel/plugin-syntax-dynamic-import', '@babel/plugin-transform-runtime', 'macros'],
     // }),
 
-    typescript({ tsconfig: './tsconfig.json', useTsconfigDeclarationDir: false }),
     // commonjs({ esmExternals: true, requireReturnsDefault: false }),
     // resolve(),
 
