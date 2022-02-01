@@ -39,7 +39,7 @@ const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024
 const isInteractive = process.stdout.isTTY
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appSnowfalkeJs])) {
+if (!checkRequiredFiles([paths.appIndexJs])) {
   process.exit(1)
 }
 
@@ -56,12 +56,12 @@ checkBrowsers(paths.appPath, isInteractive)
   .then(() => {
     // First, read the current file sizes in build directory.
     // This lets us display how much they changed later.
-    return measureFileSizesBeforeBuild(paths.appBundle)
+    return measureFileSizesBeforeBuild(paths.appBuild)
   })
   .then((previousFileSizes) => {
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
-    fs.emptyDirSync(paths.appBundle)
+    fs.emptyDirSync(paths.appBuild)
     // Merge with the public folder
     // Start the webpack build
     return build(previousFileSizes)
@@ -83,7 +83,7 @@ checkBrowsers(paths.appPath, isInteractive)
       printFileSizesAfterBuild(
         stats,
         previousFileSizes,
-        paths.appBundle,
+        paths.appBuild,
         WARN_AFTER_BUNDLE_GZIP_SIZE,
         WARN_AFTER_CHUNK_GZIP_SIZE
       )
@@ -92,7 +92,7 @@ checkBrowsers(paths.appPath, isInteractive)
       const appPackage = require(paths.appPackageJson)
       const publicUrl = paths.publicUrlOrPath
       const publicPath = config.output.publicPath
-      const buildFolder = path.relative(process.cwd(), paths.appBundle)
+      const buildFolder = path.relative(process.cwd(), paths.appBuild)
       printHostingInstructions(appPackage, publicUrl, publicPath, buildFolder, useYarn)
     },
     (err) => {
@@ -174,7 +174,7 @@ function build(previousFileSizes) {
 
       if (writeStatsJson) {
         return bfj
-          .write(paths.appBundle + '/bundle-stats.json', stats.toJson())
+          .write(paths.appBuild + '/bundle-stats.json', stats.toJson())
           .then(() => resolve(resolveArgs))
           .catch((error) => reject(new Error(error)))
       }
