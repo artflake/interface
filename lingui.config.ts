@@ -5,7 +5,7 @@ const linguiConfig = {
       include: ['<rootDir>/src'],
     },
   ],
-  compileNamespace: 'cjs',
+  compileNamespace: 'es',
   fallbackLocales: {
     default: 'en-US',
   },
