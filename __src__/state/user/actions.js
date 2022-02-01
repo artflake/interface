@@ -1,0 +1,15 @@
+import { createAction } from '@reduxjs/toolkit';
+export const updateMatchesDarkMode = createAction('user/updateMatchesDarkMode');
+export const updateArbitrumAlphaAcknowledged = createAction('user/updateArbitrumAlphaAcknowledged');
+export const updateOptimismAlphaAcknowledged = createAction('user/updateOptimismAlphaAcknowledged');
+export const updateUserDarkMode = createAction('user/updateUserDarkMode');
+export const updateUserExpertMode = createAction('user/updateUserExpertMode');
+export const updateUserLocale = createAction('user/updateUserLocale');
+export const updateUserClientSideRouter = createAction('user/updateUserClientSideRouter');
+export const updateHideClosedPositions = createAction('user/hideClosedPositions');
+export const updateUserSlippageTolerance = createAction('user/updateUserSlippageTolerance');
+export const updateUserDeadline = createAction('user/updateUserDeadline');
+export const addSerializedToken = createAction('user/addSerializedToken');
+export const removeSerializedToken = createAction('user/removeSerializedToken');
+export const addSerializedPair = createAction('user/addSerializedPair');
+export const removeSerializedPair = createAction('user/removeSerializedPair');
