@@ -6,7 +6,7 @@
   "files": [
     "bundle"
   ],
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": false,
   "devDependencies": {
     "@babel/core": "7.16.12",

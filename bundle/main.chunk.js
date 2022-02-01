@@ -1,5 +1,14 @@
-module.exports =
-exports.ids = [32];
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["snowflake"] = factory();
+	else
+		root["snowflake"] = factory();
+})(this, function() {
+return exports.ids = [32];
 exports.modules = [
 /* 0 */
 /***/ (function(module, exports) {
@@ -3601,5 +3610,6 @@ module.exports = require("ajv");
 module.exports = require("@uniswap/token-lists/src/tokenlist.schema.json");
 
 /***/ })
-];["default"];
+];;
+});
 //# sourceMappingURL=main.chunk.js.map
